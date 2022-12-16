@@ -461,7 +461,7 @@ function checkPageExistsAndRedirect(event) {
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        primivitivename : str</span>
+<span class="sd">        primivitivename : str or :class:`pyaedt.modeler.object3dlayout.Line3dLayout`</span>
 <span class="sd">            Name of the primitive to create the edge port on.</span>
 <span class="sd">        edgenumber :</span>
 <span class="sd">            Edge number to create the edge port on.</span>
@@ -492,6 +492,7 @@ function checkPageExistsAndRedirect(event) {
 
 <span class="sd">        &gt;&gt;&gt; oEditor.CreateEdgePort</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">primivitivename</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">convert_to_selections</span><span class="p">(</span><span class="n">primivitivename</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
         <span class="n">listp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">port_list</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">oeditor</span><span class="o">.</span><span class="n">CreateEdgePort</span><span class="p">(</span>
             <span class="p">[</span>

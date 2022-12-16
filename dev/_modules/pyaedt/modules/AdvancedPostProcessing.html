@@ -315,7 +315,6 @@ function checkPageExistsAndRedirect(event) {
 <span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">absolute_import</span>  <span class="c1"># noreorder</span>
 
 <span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">time</span>
 <span class="kn">import</span> <span class="nn">warnings</span>
 
 <span class="kn">from</span> <span class="nn">pyaedt.generic.general_methods</span> <span class="kn">import</span> <span class="n">is_ironpython</span>
@@ -477,6 +476,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">force_opacity_value</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">array_coordinates</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">generate_mesh</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">get_objects_from_aedt</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
     <span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Initialize the Model Plotter object with actual modeler objects and return it.</span>
 
@@ -494,6 +494,10 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        array_coordinates : list of list</span>
 <span class="sd">            List of array element centers. The modeler objects will be duplicated and translated.</span>
 <span class="sd">            List of [[x1,y1,z1], [x2,y2,z2]...].</span>
+<span class="sd">        generate_mesh : bool, optional</span>
+<span class="sd">            Whether to generate the mesh after importing objects. The default is ``True``.</span>
+<span class="sd">        get_objects_from_aedt : bool, optional</span>
+<span class="sd">            Whether to export objects from AEDT and initialize them. The default is ``True``.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -502,14 +506,14 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">_aedt_version</span> <span class="o">&gt;=</span> <span class="s2">&quot;2021.2&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Object is supported from AEDT 2021 R2.&quot;</span><span class="p">)</span>
-        <span class="n">files</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">export_model_obj</span><span class="p">(</span>
-            <span class="n">obj_list</span><span class="o">=</span><span class="n">objects</span><span class="p">,</span>
-            <span class="n">export_as_single_objects</span><span class="o">=</span><span class="n">plot_as_separate_objects</span><span class="p">,</span>
-            <span class="n">air_objects</span><span class="o">=</span><span class="n">plot_air_objects</span><span class="p">,</span>
-        <span class="p">)</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">files</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;No Objects exported. Try other options or include Air objects.&quot;</span><span class="p">)</span>
-            <span class="k">return</span> <span class="kc">False</span>
+
+        <span class="n">files</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">if</span> <span class="n">get_objects_from_aedt</span><span class="p">:</span>
+            <span class="n">files</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">export_model_obj</span><span class="p">(</span>
+                <span class="n">obj_list</span><span class="o">=</span><span class="n">objects</span><span class="p">,</span>
+                <span class="n">export_as_single_objects</span><span class="o">=</span><span class="n">plot_as_separate_objects</span><span class="p">,</span>
+                <span class="n">air_objects</span><span class="o">=</span><span class="n">plot_air_objects</span><span class="p">,</span>
+            <span class="p">)</span>
 
         <span class="n">model</span> <span class="o">=</span> <span class="n">ModelPlotter</span><span class="p">()</span>
         <span class="n">model</span><span class="o">.</span><span class="n">off_screen</span> <span class="o">=</span> <span class="kc">True</span>
@@ -603,6 +607,8 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
         <span class="n">scale_min</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">scale_max</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">plot_cad_objs</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">log_scale</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
     <span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Export a field plot to an image file (JPG or PNG) using Python PyVista.</span>
 
@@ -636,6 +642,10 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">            Fix the Scale Minimum value.</span>
 <span class="sd">        scale_max : float, optional</span>
 <span class="sd">            Fix the Scale Maximum value.</span>
+<span class="sd">        plot_cad_objs : bool, optional</span>
+<span class="sd">            Whether to include objects in the plot. The default is ``True``.</span>
+<span class="sd">        log_scale : bool, optional</span>
+<span class="sd">            Whether to plot fields in log scale. The default is ``True``.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -647,14 +657,15 @@ function checkPageExistsAndRedirect(event) {
         <span class="k">else</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">ofieldsreporter</span><span class="o">.</span><span class="n">UpdateQuantityFieldsPlots</span><span class="p">(</span><span class="n">plot_folder</span><span class="p">)</span>
 
-        <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
         <span class="n">file_to_add</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">export_field_plot</span><span class="p">(</span><span class="n">plotname</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">working_directory</span><span class="p">)</span>
 
-        <span class="n">model</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_model_plotter_geometries</span><span class="p">(</span><span class="n">generate_mesh</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_model_plotter_geometries</span><span class="p">(</span><span class="n">generate_mesh</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">get_objects_from_aedt</span><span class="o">=</span><span class="n">plot_cad_objs</span><span class="p">)</span>
 
         <span class="n">model</span><span class="o">.</span><span class="n">off_screen</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">show</span>
         <span class="k">if</span> <span class="n">file_to_add</span><span class="p">:</span>
-            <span class="n">model</span><span class="o">.</span><span class="n">add_field_from_file</span><span class="p">(</span><span class="n">file_to_add</span><span class="p">,</span> <span class="n">coordinate_units</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">model_units</span><span class="p">,</span> <span class="n">show_edges</span><span class="o">=</span><span class="n">meshplot</span><span class="p">)</span>
+            <span class="n">model</span><span class="o">.</span><span class="n">add_field_from_file</span><span class="p">(</span>
+                <span class="n">file_to_add</span><span class="p">,</span> <span class="n">coordinate_units</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">model_units</span><span class="p">,</span> <span class="n">show_edges</span><span class="o">=</span><span class="n">meshplot</span><span class="p">,</span> <span class="n">log_scale</span><span class="o">=</span><span class="n">log_scale</span>
+            <span class="p">)</span>
             <span class="k">if</span> <span class="n">plot_label</span><span class="p">:</span>
                 <span class="n">model</span><span class="o">.</span><span class="n">fields</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="n">plot_label</span>
 
@@ -766,6 +777,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">export_gif</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
         <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
         <span class="n">zoom</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">log_scale</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
     <span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Generate a field plot to an animated gif file using PyVista.</span>
 
@@ -807,6 +819,8 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">            Generate the animation without showing an interactive plot.  The default is ``True``.</span>
 <span class="sd">        zoom : float, optional</span>
 <span class="sd">            Zoom factor.</span>
+<span class="sd">        log_scale : bool, optional</span>
+<span class="sd">            Whether to plot fields in log scale. The default is ``True``.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -836,7 +850,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">model</span><span class="o">.</span><span class="n">off_screen</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">show</span>
 
         <span class="k">if</span> <span class="n">fields_to_add</span><span class="p">:</span>
-            <span class="n">model</span><span class="o">.</span><span class="n">add_frames_from_file</span><span class="p">(</span><span class="n">fields_to_add</span><span class="p">)</span>
+            <span class="n">model</span><span class="o">.</span><span class="n">add_frames_from_file</span><span class="p">(</span><span class="n">fields_to_add</span><span class="p">,</span> <span class="n">log_scale</span><span class="o">=</span><span class="n">log_scale</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">export_gif</span><span class="p">:</span>
             <span class="n">model</span><span class="o">.</span><span class="n">gif_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">working_directory</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">project_name</span> <span class="o">+</span> <span class="s2">&quot;.gif&quot;</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">zoom</span><span class="p">:</span>
@@ -878,7 +892,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="k">return</span> <span class="n">solution_data</span><span class="o">.</span><span class="n">plot_3d</span><span class="p">(</span><span class="n">x_axis</span><span class="o">=</span><span class="n">primary_sweep</span><span class="p">,</span> <span class="n">y_axis</span><span class="o">=</span><span class="n">secondary_sweep</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="PostProcessor.plot_scene"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.AdvancedPostProcessing.PostProcessor.plot_scene.html#pyaedt.modules.AdvancedPostProcessing.PostProcessor.plot_scene">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
-    <span class="k">def</span> <span class="nf">plot_scene</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">frames_list</span><span class="p">,</span> <span class="n">output_gif_path</span><span class="p">,</span> <span class="n">norm_index</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">dy_rng</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">fps</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">plot_scene</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">frames_list</span><span class="p">,</span> <span class="n">output_gif_path</span><span class="p">,</span> <span class="n">norm_index</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">dy_rng</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">fps</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">view</span><span class="o">=</span><span class="s2">&quot;yz&quot;</span><span class="p">,</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Plot the current model 3D scene with overlapping animation coming from a file list and save the gif.</span>
 
 
@@ -899,6 +913,11 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">            Frames per Second.</span>
 <span class="sd">        show : bool, optional</span>
 <span class="sd">            Either if show or only export gif.</span>
+<span class="sd">        view : str, optional</span>
+<span class="sd">           View to export. Options are ``&quot;isometric&quot;``, ``&quot;xy&quot;``, ``&quot;xz&quot;``, and ``&quot;yz&quot;``.</span>
+<span class="sd">           The default is ``&quot;isometric&quot;``.</span>
+<span class="sd">        zoom : float, optional</span>
+<span class="sd">            Default zoom. Default Value is `2`.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -924,17 +943,17 @@ function checkPageExistsAndRedirect(event) {
 
         <span class="c1"># Specifying the attributes of the scene through the ModelPlotter object</span>
         <span class="n">scene</span><span class="o">.</span><span class="n">off_screen</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">show</span>
-        <span class="n">scene</span><span class="o">.</span><span class="n">isometric_view</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">if</span> <span class="n">view</span> <span class="o">!=</span> <span class="s2">&quot;isometric&quot;</span> <span class="ow">and</span> <span class="n">view</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;xy&quot;</span><span class="p">,</span> <span class="s2">&quot;xz&quot;</span><span class="p">,</span> <span class="s2">&quot;yz&quot;</span><span class="p">]:</span>
+            <span class="n">scene</span><span class="o">.</span><span class="n">camera_position</span> <span class="o">=</span> <span class="n">view</span>
         <span class="n">scene</span><span class="o">.</span><span class="n">range_min</span> <span class="o">=</span> <span class="n">v_min</span>
         <span class="n">scene</span><span class="o">.</span><span class="n">range_max</span> <span class="o">=</span> <span class="n">v_max</span>
         <span class="n">scene</span><span class="o">.</span><span class="n">show_grid</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="n">scene</span><span class="o">.</span><span class="n">windows_size</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1920</span><span class="p">,</span> <span class="mi">1080</span><span class="p">]</span>
         <span class="n">scene</span><span class="o">.</span><span class="n">show_legend</span> <span class="o">=</span> <span class="kc">False</span>
-        <span class="n">scene</span><span class="o">.</span><span class="n">show_bounding_box</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="n">scene</span><span class="o">.</span><span class="n">show_boundingbox</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="n">scene</span><span class="o">.</span><span class="n">legend</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="n">scene</span><span class="o">.</span><span class="n">frame_per_seconds</span> <span class="o">=</span> <span class="n">fps</span>
-        <span class="n">scene</span><span class="o">.</span><span class="n">camera_position</span> <span class="o">=</span> <span class="s2">&quot;yz&quot;</span>
-        <span class="n">scene</span><span class="o">.</span><span class="n">zoom</span> <span class="o">=</span> <span class="mi">2</span>
+        <span class="n">scene</span><span class="o">.</span><span class="n">zoom</span> <span class="o">=</span> <span class="n">zoom</span>
         <span class="n">scene</span><span class="o">.</span><span class="n">bounding_box</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="n">scene</span><span class="o">.</span><span class="n">color_bar</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="n">scene</span><span class="o">.</span><span class="n">gif_file</span> <span class="o">=</span> <span class="n">output_gif_path</span>  <span class="c1"># This gif may be a bit slower so we can speed it up a bit</span>

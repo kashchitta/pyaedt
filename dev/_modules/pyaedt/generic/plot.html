@@ -1923,8 +1923,10 @@ function checkPageExistsAndRedirect(event) {
             <span class="n">opacity</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">frames</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">opacity</span><span class="p">,</span>
         <span class="p">)</span>
         <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">pv</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">force_redraw</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">pv</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">force_redraw</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="k">pass</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">gif_file</span><span class="p">:</span>
             <span class="n">first_loop</span> <span class="o">=</span> <span class="kc">True</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">pv</span><span class="o">.</span><span class="n">write_frame</span><span class="p">()</span>

@@ -345,6 +345,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="bp">self</span><span class="o">.</span><span class="n">_pedbpadstack</span> <span class="o">=</span> <span class="n">p_edb_padstack</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">layer_name</span> <span class="o">=</span> <span class="n">layer_name</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">pad_type</span> <span class="o">=</span> <span class="n">pad_type</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_parameters_values</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="k">pass</span>
 
     <span class="nd">@property</span>
@@ -412,11 +413,12 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        list</span>
 <span class="sd">            List of parameters.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-
+        <span class="bp">self</span><span class="o">.</span><span class="n">_parameters_values</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="n">pad_values</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb_padstack</span><span class="o">.</span><span class="n">GetData</span><span class="p">()</span><span class="o">.</span><span class="n">GetPadParametersValue</span><span class="p">(</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">layer_name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">int_to_pad_type</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pad_type</span><span class="p">)</span>
         <span class="p">)</span>
-        <span class="k">return</span> <span class="p">[</span><span class="n">i</span><span class="o">.</span><span class="n">ToDouble</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">pad_values</span><span class="p">[</span><span class="mi">2</span><span class="p">]]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_parameters_values</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="o">.</span><span class="n">ToDouble</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">pad_values</span><span class="p">[</span><span class="mi">2</span><span class="p">]]</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parameters_values</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">polygon_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -638,6 +640,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="bp">self</span><span class="o">.</span><span class="n">antipad_by_layer</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">thermalpad_by_layer</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_bounding_box</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_hole_params</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">via_layers</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">pad_by_layer</span><span class="p">[</span><span class="n">layer</span><span class="p">]</span> <span class="o">=</span> <span class="n">EDBPadProperties</span><span class="p">(</span><span class="n">edb_padstack</span><span class="p">,</span> <span class="n">layer</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">antipad_by_layer</span><span class="p">[</span><span class="n">layer</span><span class="p">]</span> <span class="o">=</span> <span class="n">EDBPadProperties</span><span class="p">(</span><span class="n">edb_padstack</span><span class="p">,</span> <span class="n">layer</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
@@ -702,10 +705,12 @@ function checkPageExistsAndRedirect(event) {
         <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">via_layers</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">_hole_params</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">hole_params</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Via Hole parameters values.&quot;&quot;&quot;</span>
+
         <span class="n">viaData</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">edb_padstack</span><span class="o">.</span><span class="n">GetData</span><span class="p">()</span>
-        <span class="n">out</span> <span class="o">=</span> <span class="n">viaData</span><span class="o">.</span><span class="n">GetHoleParametersValue</span><span class="p">()</span>
-        <span class="k">return</span> <span class="n">out</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_hole_params</span> <span class="o">=</span> <span class="n">viaData</span><span class="o">.</span><span class="n">GetHoleParametersValue</span><span class="p">()</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hole_params</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">hole_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -716,7 +721,7 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        list</span>
 <span class="sd">            List of the hole parameters.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_hole_parameters</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hole_params</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_hole_parameters</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">hole_params</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hole_parameters</span>
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
@@ -773,7 +778,7 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        list</span>
 <span class="sd">            List of float values for hole properties.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_hole_properties</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="o">.</span><span class="n">ToDouble</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hole_params</span><span class="p">[</span><span class="mi">2</span><span class="p">]]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_hole_properties</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="o">.</span><span class="n">ToDouble</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">hole_params</span><span class="p">[</span><span class="mi">2</span><span class="p">]]</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hole_properties</span>
 
     <span class="nd">@hole_properties</span><span class="o">.</span><span class="n">setter</span>
@@ -794,7 +799,7 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        int</span>
 <span class="sd">            Type of the hole.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_hole_type</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hole_params</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_hole_type</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">hole_params</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hole_type</span>
 
     <span class="nd">@property</span>
@@ -806,7 +811,7 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        str</span>
 <span class="sd">            Hole offset value for the X axis.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_hole_offset_x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hole_params</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">ToString</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_hole_offset_x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">hole_params</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">ToString</span><span class="p">()</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hole_offset_x</span>
 
     <span class="nd">@hole_offset_x</span><span class="o">.</span><span class="n">setter</span>
@@ -824,7 +829,7 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        str</span>
 <span class="sd">            Hole offset value for the Y axis.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_hole_offset_y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hole_params</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">ToString</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_hole_offset_y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">hole_params</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">ToString</span><span class="p">()</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hole_offset_y</span>
 
     <span class="nd">@hole_offset_y</span><span class="o">.</span><span class="n">setter</span>
@@ -842,7 +847,7 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        str</span>
 <span class="sd">            Value for the hole rotation.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_hole_rotation</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hole_params</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="o">.</span><span class="n">ToString</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_hole_rotation</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">hole_params</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="o">.</span><span class="n">ToString</span><span class="p">()</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hole_rotation</span>
 
     <span class="nd">@hole_rotation</span><span class="o">.</span><span class="n">setter</span>
@@ -1220,6 +1225,8 @@ function checkPageExistsAndRedirect(event) {
         <span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span> <span class="o">=</span> <span class="n">_pedb</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_bounding_box</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_object_instance</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_position</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_pdef</span> <span class="o">=</span> <span class="kc">None</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">object_instance</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -1317,7 +1324,8 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        str</span>
 <span class="sd">            Name of the padstack definition.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb_padstackinstance</span><span class="o">.</span><span class="n">GetPadstackDef</span><span class="p">()</span><span class="o">.</span><span class="n">GetName</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_pdef</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb_padstackinstance</span><span class="o">.</span><span class="n">GetPadstackDef</span><span class="p">()</span><span class="o">.</span><span class="n">GetName</span><span class="p">()</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pdef</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">backdrill_top</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -1479,13 +1487,14 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        list</span>
 <span class="sd">            List of ``[x, y]``` coordinates for the padstack instance position.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_position</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb_padstackinstance</span><span class="o">.</span><span class="n">GetPositionAndRotationValue</span><span class="p">()</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb_padstackinstance</span><span class="o">.</span><span class="n">IsLayoutPin</span><span class="p">():</span>
             <span class="n">out2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb_padstackinstance</span><span class="o">.</span><span class="n">GetComponent</span><span class="p">()</span><span class="o">.</span><span class="n">GetTransform</span><span class="p">()</span><span class="o">.</span><span class="n">TransformPoint</span><span class="p">(</span><span class="n">out</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-            <span class="k">return</span> <span class="p">[</span><span class="n">out2</span><span class="o">.</span><span class="n">X</span><span class="o">.</span><span class="n">ToDouble</span><span class="p">(),</span> <span class="n">out2</span><span class="o">.</span><span class="n">Y</span><span class="o">.</span><span class="n">ToDouble</span><span class="p">()]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_position</span> <span class="o">=</span> <span class="p">[</span><span class="n">out2</span><span class="o">.</span><span class="n">X</span><span class="o">.</span><span class="n">ToDouble</span><span class="p">(),</span> <span class="n">out2</span><span class="o">.</span><span class="n">Y</span><span class="o">.</span><span class="n">ToDouble</span><span class="p">()]</span>
         <span class="k">if</span> <span class="n">out</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
-            <span class="k">return</span> <span class="p">[</span><span class="n">out</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">X</span><span class="o">.</span><span class="n">ToDouble</span><span class="p">(),</span> <span class="n">out</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">Y</span><span class="o">.</span><span class="n">ToDouble</span><span class="p">()]</span>
-        <span class="k">return</span> <span class="p">[]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_position</span> <span class="o">=</span> <span class="p">[</span><span class="n">out</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">X</span><span class="o">.</span><span class="n">ToDouble</span><span class="p">(),</span> <span class="n">out</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">Y</span><span class="o">.</span><span class="n">ToDouble</span><span class="p">()]</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_position</span>
 
     <span class="nd">@position</span><span class="o">.</span><span class="n">setter</span>
     <span class="k">def</span> <span class="nf">position</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>

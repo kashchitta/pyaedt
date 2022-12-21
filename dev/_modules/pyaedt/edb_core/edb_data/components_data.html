@@ -579,13 +579,21 @@ function checkPageExistsAndRedirect(event) {
         <span class="bp">self</span><span class="o">.</span><span class="n">_pcomponents</span> <span class="o">=</span> <span class="n">components</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">edbcomponent</span> <span class="o">=</span> <span class="n">cmp</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_layout_instance</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_comp_instance</span> <span class="o">=</span> <span class="kc">None</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">layout_instance</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Edb layout instance object.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_layout_instance</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_layout_instance</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">edbcomponent</span><span class="o">.</span><span class="n">GetLayout</span><span class="p">()</span><span class="o">.</span><span class="n">GetLayoutInstance</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_layout_instance</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pcomponents</span><span class="o">.</span><span class="n">_pedb</span><span class="o">.</span><span class="n">layout_instance</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_layout_instance</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">component_instance</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Edb component instance.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_comp_instance</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_comp_instance</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">layout_instance</span><span class="o">.</span><span class="n">GetLayoutObjInstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">edbcomponent</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_comp_instance</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">_pedb</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
@@ -846,8 +854,7 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        -------</span>
 <span class="sd">        list</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">cmpinst</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">layout_instance</span><span class="o">.</span><span class="n">GetLayoutObjInstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">edbcomponent</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-        <span class="n">center</span> <span class="o">=</span> <span class="n">cmpinst</span><span class="o">.</span><span class="n">GetCenter</span><span class="p">()</span>
+        <span class="n">center</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">component_instance</span><span class="o">.</span><span class="n">GetCenter</span><span class="p">()</span>
         <span class="k">return</span> <span class="p">[</span><span class="n">center</span><span class="o">.</span><span class="n">X</span><span class="o">.</span><span class="n">ToDouble</span><span class="p">(),</span> <span class="n">center</span><span class="o">.</span><span class="n">Y</span><span class="o">.</span><span class="n">ToDouble</span><span class="p">()]</span>
 
     <span class="nd">@property</span>
@@ -861,8 +868,7 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">            coordinates in this order: [X lower left corner, Y lower left corner,</span>
 <span class="sd">            X upper right corner, Y upper right corner].</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">cmpinst</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">layout_instance</span><span class="o">.</span><span class="n">GetLayoutObjInstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">edbcomponent</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-        <span class="n">bbox</span> <span class="o">=</span> <span class="n">cmpinst</span><span class="o">.</span><span class="n">GetBBox</span><span class="p">()</span>
+        <span class="n">bbox</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">component_instance</span><span class="o">.</span><span class="n">GetBBox</span><span class="p">()</span>
         <span class="n">pt1</span> <span class="o">=</span> <span class="n">bbox</span><span class="o">.</span><span class="n">Item1</span>
         <span class="n">pt2</span> <span class="o">=</span> <span class="n">bbox</span><span class="o">.</span><span class="n">Item2</span>
         <span class="k">return</span> <span class="p">[</span><span class="n">pt1</span><span class="o">.</span><span class="n">X</span><span class="o">.</span><span class="n">ToDouble</span><span class="p">(),</span> <span class="n">pt1</span><span class="o">.</span><span class="n">Y</span><span class="o">.</span><span class="n">ToDouble</span><span class="p">(),</span> <span class="n">pt2</span><span class="o">.</span><span class="n">X</span><span class="o">.</span><span class="n">ToDouble</span><span class="p">(),</span> <span class="n">pt2</span><span class="o">.</span><span class="n">Y</span><span class="o">.</span><span class="n">ToDouble</span><span class="p">()]</span>

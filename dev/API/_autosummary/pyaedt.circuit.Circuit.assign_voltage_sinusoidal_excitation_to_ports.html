@@ -574,6 +574,11 @@ function checkPageExistsAndRedirect(event) {
       </a>
      </li>
      <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.circuit.Circuit.create_source.html">
+       create_source
+      </a>
+     </li>
+     <li class="toctree-l3">
       <a class="reference internal" href="pyaedt.circuit.Circuit.create_touchstone_report.html">
        create_touchstone_report
       </a>
@@ -1009,6 +1014,16 @@ function checkPageExistsAndRedirect(event) {
       </a>
      </li>
      <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.circuit.Circuit.excitation_names.html">
+       excitation_names
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.circuit.Circuit.excitation_objets.html">
+       excitation_objets
+      </a>
+     </li>
+     <li class="toctree-l3">
       <a class="reference internal" href="pyaedt.circuit.Circuit.excitations.html">
        excitations
       </a>
@@ -1284,6 +1299,21 @@ function checkPageExistsAndRedirect(event) {
       </a>
      </li>
      <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.circuit.Circuit.source_names.html">
+       source_names
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.circuit.Circuit.source_objects.html">
+       source_objects
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.circuit.Circuit.sources.html">
+       sources
+      </a>
+     </li>
+     <li class="toctree-l3">
       <a class="reference internal" href="pyaedt.circuit.Circuit.src_dir.html">
        src_dir
       </a>
@@ -1436,35 +1466,18 @@ function checkPageExistsAndRedirect(event) {
 <h1>assign_voltage_sinusoidal_excitation_to_ports<a class="headerlink" href="#assign-voltage-sinusoidal-excitation-to-ports" title="Permalink to this heading">#</a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="pyaedt.circuit.Circuit.assign_voltage_sinusoidal_excitation_to_ports">
-<span class="sig-prename descclassname"><span class="pre">Circuit.</span></span><span class="sig-name descname"><span class="pre">assign_voltage_sinusoidal_excitation_to_ports</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ports</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">settings</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pyaedt/circuit.html#Circuit.assign_voltage_sinusoidal_excitation_to_ports"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyaedt.circuit.Circuit.assign_voltage_sinusoidal_excitation_to_ports" title="Permalink to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">Circuit.</span></span><span class="sig-name descname"><span class="pre">assign_voltage_sinusoidal_excitation_to_ports</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ports</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pyaedt/circuit.html#Circuit.assign_voltage_sinusoidal_excitation_to_ports"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyaedt.circuit.Circuit.assign_voltage_sinusoidal_excitation_to_ports" title="Permalink to this definition">#</a></dt>
 <dd><p>Assign a voltage sinusoidal excitation to circuit ports.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
 <dt><strong>ports</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#list" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">list</span></code></a></span></dt><dd><p>List of circuit ports to assign to the sinusoidal excitation.</p>
 </dd>
-<dt><strong>settings</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#list" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">list</span></code></a></span></dt><dd><p>List of parameter values to use to create the voltage sinusoidal excitation.
-All settings must be provided as strings. An empty string (<code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code>) sets the
-parameter to its default.</p>
-<p>Values are given in this order:</p>
-<ul class="simple">
-<li><p>0: AC magnitude for small-signal analysis. For example, <code class="docutils literal notranslate"><span class="pre">&quot;33V&quot;</span></code>. The default is <code class="docutils literal notranslate"><span class="pre">&quot;nan</span> <span class="pre">V&quot;</span></code>.</p></li>
-<li><p>1: AC phase for small-signal analysis. For example, <code class="docutils literal notranslate"><span class="pre">&quot;44deg&quot;</span></code>. The default is <code class="docutils literal notranslate"><span class="pre">&quot;0deg&quot;</span></code>.</p></li>
-<li><p>2: DC voltage. For example, <code class="docutils literal notranslate"><span class="pre">&quot;1V&quot;</span></code>. The default is <code class="docutils literal notranslate"><span class="pre">&quot;0V&quot;</span></code>.</p></li>
-<li><p>3: Voltage offset from zero. For example, <code class="docutils literal notranslate"><span class="pre">&quot;1V&quot;</span></code>. The default is <code class="docutils literal notranslate"><span class="pre">&quot;0V&quot;</span></code>.</p></li>
-<li><p>4: Voltage amplitude. For example, <code class="docutils literal notranslate"><span class="pre">&quot;3V&quot;</span></code>. The default is <code class="docutils literal notranslate"><span class="pre">&quot;0V&quot;</span></code>.</p></li>
-<li><p>5: Frequency. For example, <code class="docutils literal notranslate"><span class="pre">&quot;15GHz&quot;</span></code>. The default is <code class="docutils literal notranslate"><span class="pre">&quot;1GHz&quot;</span></code>.</p></li>
-<li><p>6: Delay to start of sine wave. For example, <code class="docutils literal notranslate"><span class="pre">&quot;16s&quot;</span></code>. The default is <code class="docutils literal notranslate"><span class="pre">&quot;0s&quot;</span></code>.</p></li>
-<li><p>7: Damping factor (1/seconds). For example, <code class="docutils literal notranslate"><span class="pre">&quot;2&quot;</span></code>. The default is <code class="docutils literal notranslate"><span class="pre">&quot;0&quot;</span></code>.</p></li>
-<li><p>8: Phase delay. For example, <code class="docutils literal notranslate"><span class="pre">&quot;18deg&quot;</span></code>. The default is <code class="docutils literal notranslate"><span class="pre">&quot;0deg&quot;</span></code>.</p></li>
-<li><p>9: Frequency to use for harmonic balance analysis. For example, <code class="docutils literal notranslate"><span class="pre">&quot;20Hz&quot;</span></code>. The default is <code class="docutils literal notranslate"><span class="pre">&quot;0Hz&quot;</span></code>.</p></li>
-</ul>
-</dd>
 </dl>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#bltin-boolean-values" title="(in Python v3.12)"><span class="xref std std-ref">bool</span></a></dt><dd><p><code class="docutils literal notranslate"><span class="pre">True</span></code> when successful, <code class="docutils literal notranslate"><span class="pre">False</span></code> when failed.</p>
+<dt><code class="xref py py-class docutils literal notranslate"><span class="pre">pyaedt.modules.Boundary.Source</span></code></dt><dd><p>Circuit Source Object.</p>
 </dd>
 </dl>
 </dd>

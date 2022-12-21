@@ -200,7 +200,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.37 variable.
+            // this version, rather than using sphinx's 0.6.38 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -2389,9 +2389,9 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">_context</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">ctxt</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Context:=&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">polyline</span><span class="p">]</span>
-        <span class="n">ctxt</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;PointCount:=&quot;</span><span class="p">)</span>
-        <span class="n">ctxt</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">point_number</span><span class="p">)</span>
+        <span class="n">ctxt</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">polyline</span><span class="p">:</span>
+            <span class="n">ctxt</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Context:=&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">polyline</span><span class="p">,</span> <span class="s2">&quot;PointCount:=&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">point_number</span><span class="p">]</span>
         <span class="k">return</span> <span class="n">ctxt</span></div>
 
 

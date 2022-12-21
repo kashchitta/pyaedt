@@ -200,7 +200,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.37 variable.
+            // this version, rather than using sphinx's 0.6.38 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -2845,7 +2845,7 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        list</span>
 <span class="sd">            List of plot settings.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">surfaces_indexes</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">surfaces_indexes</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">cutplane_indexes</span><span class="p">:</span>
             <span class="n">arg</span> <span class="o">=</span> <span class="p">[</span>
                 <span class="s2">&quot;NAME:PlotOnSurfaceSettings&quot;</span><span class="p">,</span>
                 <span class="s2">&quot;Filled:=&quot;</span><span class="p">,</span>

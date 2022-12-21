@@ -200,7 +200,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.37 variable.
+            // this version, rather than using sphinx's 0.6.38 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -949,7 +949,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="sd">&quot;&quot;&quot;Write an info message to the global logger.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">args</span><span class="p">:</span>
             <span class="k">try</span><span class="p">:</span>
-                <span class="n">msg1</span> <span class="o">=</span> <span class="n">msg</span> <span class="o">%</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">args</span><span class="p">]</span>
+                <span class="n">msg1</span> <span class="o">=</span> <span class="n">msg</span> <span class="o">%</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">args</span><span class="p">)</span>
             <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
                 <span class="n">msg1</span> <span class="o">=</span> <span class="n">msg</span>
         <span class="k">else</span><span class="p">:</span>
@@ -974,7 +974,7 @@ function checkPageExistsAndRedirect(event) {
             <span class="n">msg</span> <span class="o">+=</span> <span class="s2">&quot; Elapsed time: </span><span class="si">{}</span><span class="s2">m </span><span class="si">{}</span><span class="s2">sec&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">m</span><span class="p">),</span> <span class="nb">round</span><span class="p">(</span><span class="n">s</span><span class="p">))</span>
         <span class="k">if</span> <span class="n">args</span><span class="p">:</span>
             <span class="k">try</span><span class="p">:</span>
-                <span class="n">msg1</span> <span class="o">=</span> <span class="n">msg</span> <span class="o">%</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">args</span><span class="p">]</span>
+                <span class="n">msg1</span> <span class="o">=</span> <span class="n">msg</span> <span class="o">%</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">args</span><span class="p">)</span>
             <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
                 <span class="n">msg1</span> <span class="o">=</span> <span class="n">msg</span>
         <span class="k">else</span><span class="p">:</span>
@@ -986,7 +986,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="sd">&quot;&quot;&quot;Write a warning message to the global logger.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">args</span><span class="p">:</span>
             <span class="k">try</span><span class="p">:</span>
-                <span class="n">msg1</span> <span class="o">=</span> <span class="n">msg</span> <span class="o">%</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">args</span><span class="p">]</span>
+                <span class="n">msg1</span> <span class="o">=</span> <span class="n">msg</span> <span class="o">%</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">args</span><span class="p">)</span>
             <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
                 <span class="n">msg1</span> <span class="o">=</span> <span class="n">msg</span>
         <span class="k">else</span><span class="p">:</span>
@@ -998,7 +998,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="sd">&quot;&quot;&quot;Write an error message to the global logger.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">args</span><span class="p">:</span>
             <span class="k">try</span><span class="p">:</span>
-                <span class="n">msg1</span> <span class="o">=</span> <span class="n">msg</span> <span class="o">%</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">args</span><span class="p">]</span>
+                <span class="n">msg1</span> <span class="o">=</span> <span class="n">msg</span> <span class="o">%</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">args</span><span class="p">)</span>
             <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
                 <span class="n">msg1</span> <span class="o">=</span> <span class="n">msg</span>
         <span class="k">else</span><span class="p">:</span>
@@ -1010,7 +1010,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="sd">&quot;&quot;&quot;Write a debug message to the global logger.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">args</span><span class="p">:</span>
             <span class="k">try</span><span class="p">:</span>
-                <span class="n">msg1</span> <span class="o">=</span> <span class="n">msg</span> <span class="o">%</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">args</span><span class="p">]</span>
+                <span class="n">msg1</span> <span class="o">=</span> <span class="n">msg</span> <span class="o">%</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">args</span><span class="p">)</span>
             <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
                 <span class="n">msg1</span> <span class="o">=</span> <span class="n">msg</span>
         <span class="k">else</span><span class="p">:</span>

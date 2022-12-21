@@ -200,7 +200,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.37 variable.
+            // this version, rather than using sphinx's 0.6.38 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -2235,8 +2235,8 @@ function checkPageExistsAndRedirect(event) {
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">app</span><span class="p">,</span> <span class="n">solutiontype</span><span class="p">,</span> <span class="n">setupname</span><span class="o">=</span><span class="s2">&quot;MySetupAuto&quot;</span><span class="p">,</span> <span class="n">isnewsetup</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
         <span class="n">Setup</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">app</span><span class="p">,</span> <span class="n">solutiontype</span><span class="p">,</span> <span class="n">setupname</span><span class="p">,</span> <span class="n">isnewsetup</span><span class="p">)</span>
 
-<div class="viewcode-block" id="SetupHFSSAuto.get_derivative_varibles"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.SolveSetup.SetupHFSSAuto.get_derivative_varibles.html#pyaedt.modules.SolveSetup.SetupHFSSAuto.get_derivative_varibles">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
-    <span class="k">def</span> <span class="nf">get_derivative_varibles</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="SetupHFSSAuto.get_derivative_variables"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.SolveSetup.SetupHFSSAuto.get_derivative_variables.html#pyaedt.modules.SolveSetup.SetupHFSSAuto.get_derivative_variables">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">get_derivative_variables</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return Derivative Enabled variables.</span>
 
 <span class="sd">        Returns</span>
@@ -2270,7 +2270,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">derivative_list</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
             <span class="n">derivative_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">derivative_list</span><span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">auto_update</span> <span class="o">=</span> <span class="kc">False</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">props</span><span class="p">[</span><span class="s2">&quot;VariablesForDerivatives&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">derivative_list</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_derivative_varibles</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">props</span><span class="p">[</span><span class="s2">&quot;VariablesForDerivatives&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">derivative_list</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_derivative_variables</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">auto_update</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">()</span></div>
 

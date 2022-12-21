@@ -200,7 +200,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.37 variable.
+            // this version, rather than using sphinx's 0.6.38 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -320,6 +320,7 @@ function checkPageExistsAndRedirect(event) {
 <span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">absolute_import</span>  <span class="c1"># noreorder</span>
 
 <span class="kn">import</span> <span class="nn">datetime</span>
+<span class="kn">import</span> <span class="nn">json</span>
 <span class="kn">import</span> <span class="nn">os.path</span>
 <span class="kn">import</span> <span class="nn">warnings</span>
 
@@ -1037,7 +1038,154 @@ function checkPageExistsAndRedirect(event) {
 
         <span class="n">objs_after</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">object_names</span><span class="p">]</span>
         <span class="n">new_objects</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">objs_after</span> <span class="k">if</span> <span class="n">i</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">objs_before</span><span class="p">]</span>
-        <span class="k">return</span> <span class="n">new_objects</span></div></div>
+        <span class="k">return</span> <span class="n">new_objects</span></div>
+
+<div class="viewcode-block" id="Modeler3D.import_from_openstreet_map"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modeler.Model3D.Modeler3D.import_from_openstreet_map.html#pyaedt.modeler.Model3D.Modeler3D.import_from_openstreet_map">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">import_from_openstreet_map</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">latitude_longitude</span><span class="p">,</span>
+        <span class="n">env_name</span><span class="o">=</span><span class="s2">&quot;default&quot;</span><span class="p">,</span>
+        <span class="n">terrain_radius</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span>
+        <span class="n">include_osm_buildings</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">including_osm_roads</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">import_in_aedt</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">plot_before_importing</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">z_offset</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+        <span class="n">road_step</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+        <span class="n">road_width</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
+        <span class="n">create_lightweigth_part</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Import OpenStreet Maps into AEDT.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        latitude_longitude : list</span>
+<span class="sd">            Latitude and longitude.</span>
+<span class="sd">        env_name : str</span>
+<span class="sd">        terrain_radius : float, int</span>
+<span class="sd">            Radius to take around center.</span>
+<span class="sd">        include_osm_buildings : bool</span>
+<span class="sd">            Either if include or not 3D Buildings. Default is ``True``.</span>
+<span class="sd">        including_osm_roads : bool</span>
+<span class="sd">            Either if include or not road. Default is ``True``.</span>
+<span class="sd">        import_in_aedt : bool</span>
+<span class="sd">            Either if import stl after generation or not. Default is ``True``.</span>
+<span class="sd">        plot_before_importing : bool</span>
+<span class="sd">            Either if plot before importing or not. Default is ``True``.</span>
+<span class="sd">        z_offset : float</span>
+<span class="sd">            Road elevation offset. Default is ``0``.</span>
+<span class="sd">        road_step : float</span>
+<span class="sd">            Road simplification steps in meter. Default is ``3``.</span>
+<span class="sd">        road_width : float</span>
+<span class="sd">            Road width  in meter. Default is ``8``.</span>
+<span class="sd">        create_lightweigth_part : bool</span>
+<span class="sd">            Either if import as lightweight object or not. Default is ``True``.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        dict</span>
+<span class="sd">            Dictionary of generated infos.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="kn">from</span> <span class="nn">pyaedt.modeler.oms</span> <span class="kn">import</span> <span class="n">BuildingsPrep</span>
+        <span class="kn">from</span> <span class="nn">pyaedt.modeler.oms</span> <span class="kn">import</span> <span class="n">RoadPrep</span>
+        <span class="kn">from</span> <span class="nn">pyaedt.modeler.oms</span> <span class="kn">import</span> <span class="n">TerrainPrep</span>
+
+        <span class="n">output_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">working_directory</span>
+
+        <span class="n">parts_dict</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="c1"># instiate terrain module</span>
+        <span class="n">terrainprep</span> <span class="o">=</span> <span class="n">TerrainPrep</span><span class="p">(</span><span class="n">cad_path</span><span class="o">=</span><span class="n">output_path</span><span class="p">)</span>
+        <span class="n">terrain_geo</span> <span class="o">=</span> <span class="n">terrainprep</span><span class="o">.</span><span class="n">get_terrain</span><span class="p">(</span><span class="n">latitude_longitude</span><span class="p">,</span> <span class="n">max_radius</span><span class="o">=</span><span class="n">terrain_radius</span><span class="p">,</span> <span class="n">grid_size</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+        <span class="n">terrain_stl</span> <span class="o">=</span> <span class="n">terrain_geo</span><span class="p">[</span><span class="s2">&quot;file_name&quot;</span><span class="p">]</span>
+        <span class="n">terrain_mesh</span> <span class="o">=</span> <span class="n">terrain_geo</span><span class="p">[</span><span class="s2">&quot;mesh&quot;</span><span class="p">]</span>
+        <span class="n">terrain_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;file_name&quot;</span><span class="p">:</span> <span class="n">terrain_stl</span><span class="p">,</span> <span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;brown&quot;</span><span class="p">,</span> <span class="s2">&quot;material&quot;</span><span class="p">:</span> <span class="s2">&quot;earth&quot;</span><span class="p">}</span>
+        <span class="n">parts_dict</span><span class="p">[</span><span class="s2">&quot;terrain&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">terrain_dict</span>
+        <span class="n">building_mesh</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">road_mesh</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="n">include_osm_buildings</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Generating Building Geometry&quot;</span><span class="p">)</span>
+            <span class="n">buildingprep</span> <span class="o">=</span> <span class="n">BuildingsPrep</span><span class="p">(</span><span class="n">cad_path</span><span class="o">=</span><span class="n">output_path</span><span class="p">)</span>
+            <span class="n">building_geo</span> <span class="o">=</span> <span class="n">buildingprep</span><span class="o">.</span><span class="n">generate_buildings</span><span class="p">(</span>
+                <span class="n">latitude_longitude</span><span class="p">,</span> <span class="n">terrain_mesh</span><span class="p">,</span> <span class="n">max_radius</span><span class="o">=</span><span class="n">terrain_radius</span> <span class="o">*</span> <span class="mf">0.8</span>
+            <span class="p">)</span>
+            <span class="n">building_stl</span> <span class="o">=</span> <span class="n">building_geo</span><span class="p">[</span><span class="s2">&quot;file_name&quot;</span><span class="p">]</span>
+            <span class="n">building_mesh</span> <span class="o">=</span> <span class="n">building_geo</span><span class="p">[</span><span class="s2">&quot;mesh&quot;</span><span class="p">]</span>
+            <span class="n">building_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;file_name&quot;</span><span class="p">:</span> <span class="n">building_stl</span><span class="p">,</span> <span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;grey&quot;</span><span class="p">,</span> <span class="s2">&quot;material&quot;</span><span class="p">:</span> <span class="s2">&quot;concrete&quot;</span><span class="p">}</span>
+            <span class="n">parts_dict</span><span class="p">[</span><span class="s2">&quot;buildings&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">building_dict</span>
+        <span class="k">if</span> <span class="n">including_osm_roads</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Generating Road Geometry&quot;</span><span class="p">)</span>
+            <span class="n">roadprep</span> <span class="o">=</span> <span class="n">RoadPrep</span><span class="p">(</span><span class="n">cad_path</span><span class="o">=</span><span class="n">output_path</span><span class="p">)</span>
+            <span class="n">road_geo</span> <span class="o">=</span> <span class="n">roadprep</span><span class="o">.</span><span class="n">create_roads</span><span class="p">(</span>
+                <span class="n">latitude_longitude</span><span class="p">,</span>
+                <span class="n">terrain_mesh</span><span class="p">,</span>
+                <span class="n">max_radius</span><span class="o">=</span><span class="n">terrain_radius</span><span class="p">,</span>
+                <span class="n">z_offset</span><span class="o">=</span><span class="n">z_offset</span><span class="p">,</span>
+                <span class="n">road_step</span><span class="o">=</span><span class="n">road_step</span><span class="p">,</span>
+                <span class="n">road_width</span><span class="o">=</span><span class="n">road_width</span><span class="p">,</span>
+            <span class="p">)</span>
+
+            <span class="n">road_stl</span> <span class="o">=</span> <span class="n">road_geo</span><span class="p">[</span><span class="s2">&quot;file_name&quot;</span><span class="p">]</span>
+            <span class="n">road_mesh</span> <span class="o">=</span> <span class="n">road_geo</span><span class="p">[</span><span class="s2">&quot;mesh&quot;</span><span class="p">]</span>
+            <span class="n">road_graph</span> <span class="o">=</span> <span class="n">road_geo</span><span class="p">[</span><span class="s2">&quot;graph&quot;</span><span class="p">]</span>
+            <span class="n">road_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;file_name&quot;</span><span class="p">:</span> <span class="n">road_stl</span><span class="p">,</span> <span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="s2">&quot;material&quot;</span><span class="p">:</span> <span class="s2">&quot;asphalt&quot;</span><span class="p">}</span>
+            <span class="n">parts_dict</span><span class="p">[</span><span class="s2">&quot;roads&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">road_dict</span>
+
+        <span class="n">json_path</span> <span class="o">=</span> <span class="n">output_path</span> <span class="o">+</span> <span class="n">env_name</span> <span class="o">+</span> <span class="s2">&quot;.json&quot;</span>
+
+        <span class="n">scene</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">env_name</span><span class="p">,</span>
+            <span class="s2">&quot;version&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;environment&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;center_lat_lon&quot;</span><span class="p">:</span> <span class="n">latitude_longitude</span><span class="p">,</span>
+            <span class="s2">&quot;radius&quot;</span><span class="p">:</span> <span class="n">terrain_radius</span><span class="p">,</span>
+            <span class="s2">&quot;road_network&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">.road_network&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">env_name</span><span class="p">),</span>
+            <span class="s2">&quot;parts&quot;</span><span class="p">:</span> <span class="n">parts_dict</span><span class="p">,</span>
+        <span class="p">}</span>
+
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">json_path</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">scene</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Done...&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">plot_before_importing</span><span class="p">:</span>
+            <span class="kn">import</span> <span class="nn">pyvista</span> <span class="k">as</span> <span class="nn">pv</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Viewing Geometry...&quot;</span><span class="p">)</span>
+            <span class="c1"># view results</span>
+            <span class="n">plt</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">Plotter</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">building_mesh</span><span class="p">:</span>
+                <span class="n">plt</span><span class="o">.</span><span class="n">add_mesh</span><span class="p">(</span><span class="n">building_mesh</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;Buildings&quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">road_mesh</span><span class="p">:</span>
+                <span class="n">plt</span><span class="o">.</span><span class="n">add_mesh</span><span class="p">(</span><span class="n">road_mesh</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;bone&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;Roads&quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">terrain_mesh</span><span class="p">:</span>
+                <span class="n">plt</span><span class="o">.</span><span class="n">add_mesh</span><span class="p">(</span><span class="n">terrain_mesh</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;terrain&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;Terrain&quot;</span><span class="p">)</span>  <span class="c1"># clim=[00, 100]</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">add_legend</span><span class="p">()</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">add_axes</span><span class="p">(</span><span class="n">line_width</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;X&quot;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Y&quot;</span><span class="p">,</span> <span class="n">zlabel</span><span class="o">=</span><span class="s2">&quot;Z&quot;</span><span class="p">)</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">add_axes_at_origin</span><span class="p">(</span><span class="n">x_color</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">y_color</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">z_color</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">line_width</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">labels_off</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">interactive</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">import_in_aedt</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">model_units</span> <span class="o">=</span> <span class="s2">&quot;meter&quot;</span>
+            <span class="k">for</span> <span class="n">part</span> <span class="ow">in</span> <span class="n">parts_dict</span><span class="p">:</span>
+                <span class="n">obj_names</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">object_names</span><span class="p">]</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">import_3d_cad</span><span class="p">(</span>
+                    <span class="n">parts_dict</span><span class="p">[</span><span class="n">part</span><span class="p">][</span><span class="s2">&quot;file_name&quot;</span><span class="p">],</span>
+                    <span class="n">create_lightweigth_part</span><span class="o">=</span><span class="n">create_lightweigth_part</span><span class="p">,</span>
+                <span class="p">)</span>
+                <span class="n">added_objs</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">object_names</span> <span class="k">if</span> <span class="n">i</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">obj_names</span><span class="p">]</span>
+                <span class="k">if</span> <span class="n">part</span> <span class="o">==</span> <span class="s2">&quot;terrain&quot;</span><span class="p">:</span>
+                    <span class="n">transparency</span> <span class="o">=</span> <span class="mf">0.2</span>
+                    <span class="n">color</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">125</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+                <span class="k">elif</span> <span class="n">part</span> <span class="o">==</span> <span class="s2">&quot;buildings&quot;</span><span class="p">:</span>
+                    <span class="n">transparency</span> <span class="o">=</span> <span class="mf">0.6</span>
+                    <span class="n">color</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">]</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">transparency</span> <span class="o">=</span> <span class="mf">0.0</span>
+                    <span class="n">color</span> <span class="o">=</span> <span class="p">[</span><span class="mi">40</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">40</span><span class="p">]</span>
+                <span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">added_objs</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="p">[</span><span class="n">obj</span><span class="p">]</span><span class="o">.</span><span class="n">transparency</span> <span class="o">=</span> <span class="n">transparency</span>
+                    <span class="bp">self</span><span class="p">[</span><span class="n">obj</span><span class="p">]</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span>
+        <span class="k">return</span> <span class="n">parts_dict</span></div></div>
 </pre></div>
 
               </article>

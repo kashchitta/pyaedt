@@ -200,7 +200,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.37 variable.
+            // this version, rather than using sphinx's 0.6.38 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -327,6 +327,7 @@ function checkPageExistsAndRedirect(event) {
 <span class="kn">import</span> <span class="nn">json</span>
 <span class="kn">import</span> <span class="nn">logging</span>
 <span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">os.path</span>
 <span class="kn">import</span> <span class="nn">warnings</span>
 <span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">OrderedDict</span>
 
@@ -815,7 +816,9 @@ function checkPageExistsAndRedirect(event) {
             <span class="bp">self</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">layer</span><span class="p">[</span><span class="s2">&quot;color&quot;</span><span class="p">]</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">layer</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span>
             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">layer</span><span class="p">[</span><span class="s2">&quot;material&quot;</span><span class="p">],</span> <span class="nb">str</span><span class="p">):</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">material</span> <span class="o">=</span> <span class="n">layer</span><span class="p">[</span><span class="s2">&quot;material&quot;</span><span class="p">]</span>
+                <span class="n">mat_keys</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pclass</span><span class="o">.</span><span class="n">_pedb</span><span class="o">.</span><span class="n">materials</span><span class="o">.</span><span class="n">materials</span><span class="o">.</span><span class="n">keys</span><span class="p">()]</span>
+                <span class="n">mat_keys_case</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pclass</span><span class="o">.</span><span class="n">_pedb</span><span class="o">.</span><span class="n">materials</span><span class="o">.</span><span class="n">materials</span><span class="o">.</span><span class="n">keys</span><span class="p">()]</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">material</span> <span class="o">=</span> <span class="n">mat_keys_case</span><span class="p">[</span><span class="n">mat_keys</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">layer</span><span class="p">[</span><span class="s2">&quot;material&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">())]</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_pclass</span><span class="o">.</span><span class="n">_pedb</span><span class="o">.</span><span class="n">materials</span><span class="o">.</span><span class="n">_load_materials</span><span class="p">(</span><span class="n">layer</span><span class="p">[</span><span class="s2">&quot;material&quot;</span><span class="p">])</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">material</span> <span class="o">=</span> <span class="n">layer</span><span class="p">[</span><span class="s2">&quot;material&quot;</span><span class="p">][</span><span class="s2">&quot;name&quot;</span><span class="p">]</span>
@@ -1279,6 +1282,14 @@ function checkPageExistsAndRedirect(event) {
             <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;layer </span><span class="si">{}</span><span class="s2"> exists.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">layer_name</span><span class="p">))</span>
             <span class="k">return</span> <span class="kc">False</span>
         <span class="n">materials_lower</span> <span class="o">=</span> <span class="p">{</span><span class="n">m</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span> <span class="n">m</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span><span class="o">.</span><span class="n">materials</span><span class="o">.</span><span class="n">materials</span><span class="o">.</span><span class="n">keys</span><span class="p">())}</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">material</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">layer_type</span> <span class="o">==</span> <span class="s2">&quot;signal&quot;</span><span class="p">:</span>
+                <span class="n">material</span> <span class="o">=</span> <span class="s2">&quot;copper&quot;</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">material</span> <span class="o">=</span> <span class="s2">&quot;fr4_epoxy&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">fillMaterial</span><span class="p">:</span>
+            <span class="n">fillMaterial</span> <span class="o">=</span> <span class="s2">&quot;fr4_epoxy&quot;</span>
+
         <span class="k">if</span> <span class="n">material</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">materials_lower</span><span class="p">:</span>
             <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">material</span> <span class="o">+</span> <span class="s2">&quot; does not exist in material library&quot;</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
@@ -1337,8 +1348,10 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        fpath : str</span>
-<span class="sd">            File path to csv file.</span>
+<span class="sd">            File path to csv or json file.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">fpath</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;.json&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_import_layer_stackup</span><span class="p">(</span><span class="n">fpath</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">is_ironpython</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Method working on CPython only.&quot;</span><span class="p">)</span>
             <span class="k">return</span> <span class="kc">False</span>
@@ -1462,7 +1475,37 @@ function checkPageExistsAndRedirect(event) {
                     <span class="k">for</span> <span class="n">material</span> <span class="ow">in</span> <span class="n">v</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
                         <span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span><span class="o">.</span><span class="n">materials</span><span class="o">.</span><span class="n">_load_materials</span><span class="p">(</span><span class="n">material</span><span class="p">)</span>
                 <span class="k">if</span> <span class="n">k</span> <span class="o">==</span> <span class="s2">&quot;layers&quot;</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">values</span><span class="p">()))</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">stackup_layers</span><span class="o">.</span><span class="n">values</span><span class="p">())):</span>
+                        <span class="n">imported_layers_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+                        <span class="n">layout_layer_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">stackup_layers</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+                        <span class="k">for</span> <span class="n">layer_name</span> <span class="ow">in</span> <span class="n">imported_layers_list</span><span class="p">:</span>
+                            <span class="n">layer_index</span> <span class="o">=</span> <span class="n">imported_layers_list</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">layer_name</span><span class="p">)</span>
+                            <span class="k">if</span> <span class="n">layout_layer_list</span><span class="p">[</span><span class="n">layer_index</span><span class="p">]</span> <span class="o">!=</span> <span class="n">layer_name</span><span class="p">:</span>
+                                <span class="bp">self</span><span class="o">.</span><span class="n">stackup_layers</span><span class="p">[</span><span class="n">layout_layer_list</span><span class="p">[</span><span class="n">layer_index</span><span class="p">]]</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">layer_name</span>
+                    <span class="n">prev_layer</span> <span class="o">=</span> <span class="kc">None</span>
                     <span class="k">for</span> <span class="n">layer_name</span><span class="p">,</span> <span class="n">layer</span> <span class="ow">in</span> <span class="n">v</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                        <span class="k">if</span> <span class="n">layer_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">stackup_layers</span><span class="p">:</span>
+                            <span class="k">if</span> <span class="ow">not</span> <span class="n">prev_layer</span><span class="p">:</span>
+                                <span class="bp">self</span><span class="o">.</span><span class="n">add_layer</span><span class="p">(</span>
+                                    <span class="n">layer_name</span><span class="p">,</span>
+                                    <span class="n">method</span><span class="o">=</span><span class="s2">&quot;add_on_top&quot;</span><span class="p">,</span>
+                                    <span class="n">layer_type</span><span class="o">=</span><span class="n">layer</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">],</span>
+                                    <span class="n">material</span><span class="o">=</span><span class="n">layer</span><span class="p">[</span><span class="s2">&quot;material&quot;</span><span class="p">],</span>
+                                    <span class="n">fillMaterial</span><span class="o">=</span><span class="n">layer</span><span class="p">[</span><span class="s2">&quot;dielectric_fill&quot;</span><span class="p">],</span>
+                                    <span class="n">thickness</span><span class="o">=</span><span class="n">layer</span><span class="p">[</span><span class="s2">&quot;thickness&quot;</span><span class="p">],</span>
+                                <span class="p">)</span>
+                                <span class="n">prev_layer</span> <span class="o">=</span> <span class="n">layer_name</span>
+                            <span class="k">else</span><span class="p">:</span>
+                                <span class="bp">self</span><span class="o">.</span><span class="n">add_layer</span><span class="p">(</span>
+                                    <span class="n">layer_name</span><span class="p">,</span>
+                                    <span class="n">base_layer</span><span class="o">=</span><span class="n">layer_name</span><span class="p">,</span>
+                                    <span class="n">method</span><span class="o">=</span><span class="s2">&quot;insert_below&quot;</span><span class="p">,</span>
+                                    <span class="n">layer_type</span><span class="o">=</span><span class="n">layer</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">],</span>
+                                    <span class="n">material</span><span class="o">=</span><span class="n">layer</span><span class="p">[</span><span class="s2">&quot;material&quot;</span><span class="p">],</span>
+                                    <span class="n">fillMaterial</span><span class="o">=</span><span class="n">layer</span><span class="p">[</span><span class="s2">&quot;dielectric_fill&quot;</span><span class="p">],</span>
+                                    <span class="n">thickness</span><span class="o">=</span><span class="n">layer</span><span class="p">[</span><span class="s2">&quot;thickness&quot;</span><span class="p">],</span>
+                                <span class="p">)</span>
+                                <span class="n">prev_layer</span> <span class="o">=</span> <span class="n">layer_name</span>
                         <span class="k">if</span> <span class="n">layer_name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">stackup_layers</span><span class="p">:</span>
                             <span class="bp">self</span><span class="o">.</span><span class="n">stackup_layers</span><span class="p">[</span><span class="n">layer</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">_load_layer</span><span class="p">(</span><span class="n">layer</span><span class="p">)</span>
             <span class="k">return</span> <span class="kc">True</span>

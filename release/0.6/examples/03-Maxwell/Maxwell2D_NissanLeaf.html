@@ -203,7 +203,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.37 variable.
+            // this version, rather than using sphinx's 0.6.38 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -476,6 +476,11 @@ function checkPageExistsAndRedirect(event) {
   </label>
   <ul>
    <li class="toctree-l2">
+    <a class="reference internal" href="../02-SBR%2B/SBR_City_Import.html">
+     SBR+: Import Geometry from Maps
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../02-SBR%2B/SBR_Doppler_Example.html">
      SBR+: doppler setup
     </a>
@@ -680,6 +685,23 @@ function checkPageExistsAndRedirect(event) {
    <li class="toctree-l2">
     <a class="reference internal" href="../07-TwinBuilder/02-Wiring_A_Rectifier.html">
      Twin Builder: wiring a rectifier with a capacitor filter
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../08-CableModeling/index.html">
+   Cable Modeling examples
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+  <label for="toctree-checkbox-12">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../08-CableModeling/01-Cable_Modeling_Workflow.html">
+     HFSS: Cable Modeling
     </a>
    </li>
   </ul>
@@ -1394,7 +1416,7 @@ coordinate systems in case of outer magnetization.</p>
                          <span class="n">start_position</span><span class="o">=</span><span class="s2">&quot;InitialPositionMD&quot;</span><span class="p">,</span> <span class="n">angular_velocity</span><span class="o">=</span><span class="s2">&quot;MachineRPM&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modules.Boundary.BoundaryObject object at 0x0000017567322850&gt;
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modules.Boundary.BoundaryObject object at 0x000002E99F7A5430&gt;
 </pre></div>
 </div>
 </section>
@@ -1483,7 +1505,7 @@ The points for edge picking are in the airgap.</p>
                         <span class="n">bound_name</span><span class="o">=</span><span class="s2">&quot;Matching&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>(&lt;pyaedt.modules.Boundary.BoundaryObject object at 0x0000017503A0DEE0&gt;, &lt;pyaedt.modules.Boundary.BoundaryObject object at 0x0000017503A0DFD0&gt;)
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>(&lt;pyaedt.modules.Boundary.BoundaryObject object at 0x000002E99F7A5DC0&gt;, &lt;pyaedt.modules.Boundary.BoundaryObject object at 0x000002E99F7A5C70&gt;)
 </pre></div>
 </div>
 </section>
@@ -1497,7 +1519,7 @@ The points for edge picking are in the airgap.</p>
 <span class="n">M2D</span><span class="o">.</span><span class="n">assign_vector_potential</span><span class="p">(</span><a href="https://docs.python.org/dev/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">id_bc_az</span></a><span class="p">,</span> <span class="n">vectorvalue</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">bound_name</span><span class="o">=</span><span class="s2">&quot;VectorPotentialZero&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modules.Boundary.BoundaryObject object at 0x0000017503A2CE80&gt;
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modules.Boundary.BoundaryObject object at 0x000002E99F7A53A0&gt;
 </pre></div>
 </div>
 </section>
@@ -1571,7 +1593,7 @@ The points for edge picking are in the airgap.</p>
 <span class="n">M2D</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">assign_length_mesh</span><span class="p">(</span><span class="n">rotor_id</span><span class="p">,</span> <span class="n">isinside</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">maxlength</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">maxel</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">meshop_name</span><span class="o">=</span><span class="s2">&quot;rotor&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modules.Mesh.MeshOperation object at 0x0000017503A21910&gt;
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modules.Mesh.MeshOperation object at 0x000002E99FA8D790&gt;
 </pre></div>
 </div>
 </section>
@@ -1761,7 +1783,7 @@ formerly created when the section is applied.</p>
 <span class="n">M2D</span><span class="o">.</span><span class="n">post</span><span class="o">.</span><span class="n">create_fieldplot_surface</span><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">faces_reg</span></a><span class="p">,</span> <span class="s1">&#39;Flux_Lines&#39;</span><span class="p">,</span> <span class="n">intrinsincDict</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Time&quot;</span><span class="p">:</span> <span class="s2">&quot;0.000&quot;</span><span class="p">},</span> <span class="n">plot_name</span><span class="o">=</span><span class="s2">&quot;Flux_Lines&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modules.solutions.FieldPlot object at 0x00000175016CBB50&gt;
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modules.solutions.FieldPlot object at 0x000002E99FAAF6A0&gt;
 </pre></div>
 </div>
 </section>
@@ -1785,7 +1807,7 @@ formerly created when the section is applied.</p>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>True
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 2 minutes  46.864 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 2 minutes  42.695 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-03-maxwell-maxwell2d-nissanleaf-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/f19681ed04b8eb18fe205d53191d34a9/Maxwell2D_NissanLeaf.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">Maxwell2D_NissanLeaf.py</span></code></a></p>

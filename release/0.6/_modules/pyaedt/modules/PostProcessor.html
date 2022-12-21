@@ -200,7 +200,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.37 variable.
+            // this version, rather than using sphinx's 0.6.38 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -957,6 +957,28 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        &gt;&gt;&gt; oModule.GetAvailableReportTypes</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">oreportsetup</span><span class="o">.</span><span class="n">GetAvailableReportTypes</span><span class="p">())</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">update_report_dinamically</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get/Set the boolean to automatically update reports on edits.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        bool</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">(</span>
+            <span class="kc">True</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">odesktop</span><span class="o">.</span><span class="n">GetRegistryInt</span><span class="p">(</span><span class="s2">&quot;Desktop/Settings/ProjectOptions/HFSS/UpdateReportsDynamicallyOnEdits&quot;</span><span class="p">)</span>
+            <span class="o">==</span> <span class="mi">1</span>
+            <span class="k">else</span> <span class="kc">False</span>
+        <span class="p">)</span>
+
+    <span class="nd">@update_report_dinamically</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">update_report_dinamically</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">value</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">odesktop</span><span class="o">.</span><span class="n">SetRegistryInt</span><span class="p">(</span><span class="s2">&quot;Desktop/Settings/ProjectOptions/HFSS/UpdateReportsDynamicallyOnEdits&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">odesktop</span><span class="o">.</span><span class="n">SetRegistryInt</span><span class="p">(</span><span class="s2">&quot;Desktop/Settings/ProjectOptions/HFSS/UpdateReportsDynamicallyOnEdits&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">available_display_types</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">report_category</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>

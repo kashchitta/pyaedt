@@ -203,7 +203,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.37 variable.
+            // this version, rather than using sphinx's 0.6.38 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -476,6 +476,11 @@ function checkPageExistsAndRedirect(event) {
   </label>
   <ul>
    <li class="toctree-l2">
+    <a class="reference internal" href="../02-SBR%2B/SBR_City_Import.html">
+     SBR+: Import Geometry from Maps
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../02-SBR%2B/SBR_Doppler_Example.html">
      SBR+: doppler setup
     </a>
@@ -680,6 +685,23 @@ function checkPageExistsAndRedirect(event) {
    <li class="toctree-l2">
     <a class="reference internal" href="../07-TwinBuilder/02-Wiring_A_Rectifier.html">
      Twin Builder: wiring a rectifier with a capacitor filter
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../08-CableModeling/index.html">
+   Cable Modeling examples
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+  <label for="toctree-checkbox-12">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../08-CableModeling/01-Cable_Modeling_Workflow.html">
+     HFSS: Cable Modeling
     </a>
    </li>
   </ul>
@@ -978,7 +1000,7 @@ edit or review parameter values.</p>
 <span class="n">aedtapp</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">assign_length_mesh</span><span class="p">(</span><span class="n">o2</span><span class="o">.</span><span class="n">faces</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2000</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modules.Mesh.MeshOperation object at 0x0000017500AFBB20&gt;
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modules.Mesh.MeshOperation object at 0x000002E9B5BA42E0&gt;
 </pre></div>
 </div>
 </section>
@@ -1038,7 +1060,7 @@ method imports a model from HFSS with all material settings.</p>
 <span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modules.Boundary.BoundaryObject object at 0x0000017503A0D340&gt;
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modules.Boundary.BoundaryObject object at 0x000002E99FC7FBB0&gt;
 </pre></div>
 </div>
 </section>
@@ -1074,7 +1096,7 @@ a mesh operation to edit or review parameter values.</p>
 <span class="n">ipkapp</span><span class="o">.</span><span class="n">assign_openings</span><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">airfaces</span></a><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modules.Boundary.BoundaryObject object at 0x0000017500F92130&gt;
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modules.Boundary.BoundaryObject object at 0x000002E99F6AAA60&gt;
 </pre></div>
 </div>
 </section>
@@ -1133,7 +1155,7 @@ can be helpful when performing operations on multiple projects.</p>
 <span class="p">)</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_Hfss_Icepak_Coupling_001.png" srcset="../../_images/sphx_glr_Hfss_Icepak_Coupling_001.png" alt="Hfss Icepak Coupling" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.generic.plot.ModelPlotter object at 0x0000017501E8F940&gt;
+<img src="../../_images/sphx_glr_Hfss_Icepak_Coupling_001.png" srcset="../../_images/sphx_glr_Hfss_Icepak_Coupling_001.png" alt="Hfss Icepak Coupling" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.generic.plot.ModelPlotter object at 0x000002E9A00EA850&gt;
 </pre></div>
 </div>
 </section>
@@ -1170,7 +1192,7 @@ can be helpful when performing operations on multiple projects.</p>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Total Time&quot;</span><span class="p">,</span> <a href="https://docs.python.org/dev/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">endtime</span></a><span class="p">)</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_Hfss_Icepak_Coupling_002.png" srcset="../../_images/sphx_glr_Hfss_Icepak_Coupling_002.png" alt="Hfss Icepak Coupling" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Total Time 11.00498080253601
+<img src="../../_images/sphx_glr_Hfss_Icepak_Coupling_002.png" srcset="../../_images/sphx_glr_Hfss_Icepak_Coupling_002.png" alt="Hfss Icepak Coupling" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Total Time 10.818068742752075
 </pre></div>
 </div>
 </section>
@@ -1224,7 +1246,7 @@ were used early. Only the quantity is different.</p>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>True
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 2 minutes  38.301 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 2 minutes  31.670 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-06-multiphysics-hfss-icepak-coupling-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/fa55c6e8c43f01f1040d789e3a1de422/Hfss_Icepak_Coupling.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">Hfss_Icepak_Coupling.py</span></code></a></p>

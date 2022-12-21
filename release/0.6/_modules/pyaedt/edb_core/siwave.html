@@ -200,7 +200,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.37 variable.
+            // this version, rather than using sphinx's 0.6.38 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -462,7 +462,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="k">if</span> <span class="n">source</span><span class="o">.</span><span class="n">source_type</span> <span class="ow">in</span> <span class="p">[</span><span class="n">SourceType</span><span class="o">.</span><span class="n">CoaxPort</span><span class="p">,</span> <span class="n">SourceType</span><span class="o">.</span><span class="n">CircPort</span><span class="p">,</span> <span class="n">SourceType</span><span class="o">.</span><span class="n">LumpedPort</span><span class="p">]:</span>
             <span class="n">pos_pingroup_terminal</span><span class="o">.</span><span class="n">SetBoundaryType</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Cell</span><span class="o">.</span><span class="n">Terminal</span><span class="o">.</span><span class="n">BoundaryType</span><span class="o">.</span><span class="n">PortBoundary</span><span class="p">)</span>
             <span class="n">neg_pingroup_terminal</span><span class="o">.</span><span class="n">SetBoundaryType</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Cell</span><span class="o">.</span><span class="n">Terminal</span><span class="o">.</span><span class="n">BoundaryType</span><span class="o">.</span><span class="n">PortBoundary</span><span class="p">)</span>
-            <span class="n">pos_pingroup_terminal</span><span class="o">.</span><span class="n">SetSourceAmplitude</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_get_edb_value</span><span class="p">(</span><span class="n">source</span><span class="o">.</span><span class="n">impedance</span><span class="p">))</span>
+            <span class="n">pos_pingroup_terminal</span><span class="o">.</span><span class="n">SetImpedance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_get_edb_value</span><span class="p">(</span><span class="n">source</span><span class="o">.</span><span class="n">impedance</span><span class="p">))</span>
             <span class="k">if</span> <span class="n">source</span><span class="o">.</span><span class="n">source_type</span> <span class="o">==</span> <span class="n">SourceType</span><span class="o">.</span><span class="n">CircPort</span><span class="p">:</span>
                 <span class="n">pos_pingroup_terminal</span><span class="o">.</span><span class="n">SetIsCircuitPort</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
                 <span class="n">neg_pingroup_terminal</span><span class="o">.</span><span class="n">SetIsCircuitPort</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
@@ -1514,6 +1514,35 @@ function checkPageExistsAndRedirect(event) {
             <span class="n">pos_terminal</span><span class="o">.</span><span class="n">SetName</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
         <span class="n">neg_pin_group_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pin_groups</span><span class="p">[</span><span class="n">neg_pin_group_name</span><span class="p">]</span>
         <span class="n">neg_terminal</span> <span class="o">=</span> <span class="n">neg_pin_group_name</span><span class="o">.</span><span class="n">create_voltage_source_terminal</span><span class="p">(</span><span class="n">magnitude</span><span class="p">,</span> <span class="n">phase</span><span class="p">)</span>
+        <span class="n">neg_terminal</span><span class="o">.</span><span class="n">SetName</span><span class="p">(</span><span class="n">name</span> <span class="o">+</span> <span class="s2">&quot;_ref&quot;</span><span class="p">)</span>
+        <span class="n">pos_terminal</span><span class="o">.</span><span class="n">SetReferenceTerminal</span><span class="p">(</span><span class="n">neg_terminal</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">True</span></div>
+
+<div class="viewcode-block" id="EdbSiwave.create_circuit_port_on_pin_group"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.siwave.EdbSiwave.create_circuit_port_on_pin_group.html#pyaedt.edb_core.siwave.EdbSiwave.create_circuit_port_on_pin_group">[docs]</a>    <span class="nd">@pyaedt_function_handler</span>
+    <span class="k">def</span> <span class="nf">create_circuit_port_on_pin_group</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos_pin_group_name</span><span class="p">,</span> <span class="n">neg_pin_group_name</span><span class="p">,</span> <span class="n">impedance</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create a port between two pin groups.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        pos_pin_group_name : str</span>
+<span class="sd">            Name of the positive pin group.</span>
+<span class="sd">        neg_pin_group_name : str</span>
+<span class="sd">            Name of the negative pin group.</span>
+<span class="sd">        impedance : int, float, optional</span>
+<span class="sd">            Impedance of the source.</span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">pos_pin_group</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pin_groups</span><span class="p">[</span><span class="n">pos_pin_group_name</span><span class="p">]</span>
+        <span class="n">pos_terminal</span> <span class="o">=</span> <span class="n">pos_pin_group</span><span class="o">.</span><span class="n">create_port_terminal</span><span class="p">(</span><span class="n">impedance</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">name</span><span class="p">:</span>
+            <span class="n">pos_terminal</span><span class="o">.</span><span class="n">SetName</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">name</span> <span class="o">=</span> <span class="n">generate_unique_name</span><span class="p">(</span><span class="s2">&quot;vsource&quot;</span><span class="p">)</span>
+            <span class="n">pos_terminal</span><span class="o">.</span><span class="n">SetName</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+        <span class="n">neg_pin_group_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pin_groups</span><span class="p">[</span><span class="n">neg_pin_group_name</span><span class="p">]</span>
+        <span class="n">neg_terminal</span> <span class="o">=</span> <span class="n">neg_pin_group_name</span><span class="o">.</span><span class="n">create_port_terminal</span><span class="p">(</span><span class="n">impedance</span><span class="p">)</span>
         <span class="n">neg_terminal</span><span class="o">.</span><span class="n">SetName</span><span class="p">(</span><span class="n">name</span> <span class="o">+</span> <span class="s2">&quot;_ref&quot;</span><span class="p">)</span>
         <span class="n">pos_terminal</span><span class="o">.</span><span class="n">SetReferenceTerminal</span><span class="p">(</span><span class="n">neg_terminal</span><span class="p">)</span>
         <span class="k">return</span> <span class="kc">True</span></div></div>

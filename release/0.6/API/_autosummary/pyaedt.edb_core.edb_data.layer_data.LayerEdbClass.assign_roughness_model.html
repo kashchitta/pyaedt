@@ -51,7 +51,7 @@
     <link rel="shortcut icon" href="../../_static/ansys-favicon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="color" href="pyaedt.edb_core.edb_data.layer_data.LayerEdbClass.color.html" />
+    <link rel="next" title="get_roughness_model" href="pyaedt.edb_core.edb_data.layer_data.LayerEdbClass.get_roughness_model.html" />
     <link rel="prev" title="pyaedt.edb_core.edb_data.layer_data.LayerEdbClass" href="pyaedt.edb_core.edb_data.layer_data.LayerEdbClass.html" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="docsearch:language" content="en">
@@ -203,7 +203,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.38 variable.
+            // this version, rather than using sphinx's 0.6.40 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -374,6 +374,21 @@ function checkPageExistsAndRedirect(event) {
       </a>
      </li>
      <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.layer_data.LayerEdbClass.get_roughness_model.html">
+       get_roughness_model
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.layer_data.LayerEdbClass.bottom_hallhuray_nodule_radius.html">
+       bottom_hallhuray_nodule_radius
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.layer_data.LayerEdbClass.bottom_hallhuray_surface_ratio.html">
+       bottom_hallhuray_surface_ratio
+      </a>
+     </li>
+     <li class="toctree-l3">
       <a class="reference internal" href="pyaedt.edb_core.edb_data.layer_data.LayerEdbClass.color.html">
        color
       </a>
@@ -404,6 +419,11 @@ function checkPageExistsAndRedirect(event) {
       </a>
      </li>
      <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.layer_data.LayerEdbClass.lower_elevation.html">
+       lower_elevation
+      </a>
+     </li>
+     <li class="toctree-l3">
       <a class="reference internal" href="pyaedt.edb_core.edb_data.layer_data.LayerEdbClass.material.html">
        material
       </a>
@@ -424,13 +444,43 @@ function checkPageExistsAndRedirect(event) {
       </a>
      </li>
      <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.layer_data.LayerEdbClass.side_hallhuray_nodule_radius.html">
+       side_hallhuray_nodule_radius
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.layer_data.LayerEdbClass.side_hallhuray_surface_ratio.html">
+       side_hallhuray_surface_ratio
+      </a>
+     </li>
+     <li class="toctree-l3">
       <a class="reference internal" href="pyaedt.edb_core.edb_data.layer_data.LayerEdbClass.thickness.html">
        thickness
       </a>
      </li>
      <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.layer_data.LayerEdbClass.top_hallhuray_nodule_radius.html">
+       top_hallhuray_nodule_radius
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.layer_data.LayerEdbClass.top_hallhuray_surface_ratio.html">
+       top_hallhuray_surface_ratio
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.layer_data.LayerEdbClass.transparency.html">
+       transparency
+      </a>
+     </li>
+     <li class="toctree-l3">
       <a class="reference internal" href="pyaedt.edb_core.edb_data.layer_data.LayerEdbClass.type.html">
        type
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.layer_data.LayerEdbClass.upper_elevation.html">
+       upper_elevation
       </a>
      </li>
     </ul>
@@ -708,7 +758,7 @@ function checkPageExistsAndRedirect(event) {
 <dd class="field-odd"><dl>
 <dt><strong>model_type</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#str" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Type of roughness model. The default is <code class="docutils literal notranslate"><span class="pre">&quot;huray&quot;</span></code>. Options are <code class="docutils literal notranslate"><span class="pre">&quot;huray&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;groisse&quot;</span></code>.</p>
 </dd>
-<dt><strong>huray_radius</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#str" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Radius of huray model. The default is <code class="docutils literal notranslate"><span class="pre">&quot;0.5um&quot;</span></code>.</p>
+<dt><strong>huray_radius</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#str" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/dev/library/functions.html#float" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">float</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Radius of huray model. The default is <code class="docutils literal notranslate"><span class="pre">&quot;0.5um&quot;</span></code>.</p>
 </dd>
 <dt><strong>huray_surface_ratio</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#str" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/dev/library/functions.html#float" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">float</span></code></a>, optional.</span></dt><dd><p>Surface ratio of huray model. The default is <code class="docutils literal notranslate"><span class="pre">&quot;2.9&quot;</span></code>.</p>
 </dd>

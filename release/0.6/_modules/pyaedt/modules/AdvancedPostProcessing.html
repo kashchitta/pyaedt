@@ -200,7 +200,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.38 variable.
+            // this version, rather than using sphinx's 0.6.40 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -689,7 +689,6 @@ function checkPageExistsAndRedirect(event) {
             <span class="n">model</span><span class="o">.</span><span class="n">range_max</span> <span class="o">=</span> <span class="n">scale_max</span>
         <span class="k">if</span> <span class="n">show</span> <span class="ow">or</span> <span class="n">project_path</span><span class="p">:</span>
             <span class="n">model</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">project_path</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">project_name</span> <span class="o">+</span> <span class="s2">&quot;.&quot;</span> <span class="o">+</span> <span class="n">imageformat</span><span class="p">))</span>
-            <span class="n">model</span><span class="o">.</span><span class="n">clean_cache_and_files</span><span class="p">(</span><span class="n">clean_cache</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">model</span></div>
 
 <div class="viewcode-block" id="PostProcessor.animate_fields_from_aedtplt"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.AdvancedPostProcessing.PostProcessor.animate_fields_from_aedtplt.html#pyaedt.modules.AdvancedPostProcessing.PostProcessor.animate_fields_from_aedtplt">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
@@ -769,7 +768,6 @@ function checkPageExistsAndRedirect(event) {
 
         <span class="k">if</span> <span class="n">show</span> <span class="ow">or</span> <span class="n">export_gif</span><span class="p">:</span>
             <span class="n">model</span><span class="o">.</span><span class="n">animate</span><span class="p">()</span>
-            <span class="n">model</span><span class="o">.</span><span class="n">clean_cache_and_files</span><span class="p">(</span><span class="n">clean_cache</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">model</span></div>
 
 <div class="viewcode-block" id="PostProcessor.animate_fields_from_aedtplt_2"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.AdvancedPostProcessing.PostProcessor.animate_fields_from_aedtplt_2.html#pyaedt.modules.AdvancedPostProcessing.PostProcessor.animate_fields_from_aedtplt_2">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
@@ -867,8 +865,6 @@ function checkPageExistsAndRedirect(event) {
             <span class="n">model</span><span class="o">.</span><span class="n">zoom</span> <span class="o">=</span> <span class="n">zoom</span>
         <span class="k">if</span> <span class="n">show</span> <span class="ow">or</span> <span class="n">export_gif</span><span class="p">:</span>
             <span class="n">model</span><span class="o">.</span><span class="n">animate</span><span class="p">()</span>
-            <span class="n">model</span><span class="o">.</span><span class="n">clean_cache_and_files</span><span class="p">(</span><span class="n">clean_cache</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-
         <span class="k">return</span> <span class="n">model</span></div>
 
 <div class="viewcode-block" id="PostProcessor.create_3d_plot"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.AdvancedPostProcessing.PostProcessor.create_3d_plot.html#pyaedt.modules.AdvancedPostProcessing.PostProcessor.create_3d_plot">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>

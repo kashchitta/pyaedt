@@ -200,7 +200,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.38 variable.
+            // this version, rather than using sphinx's 0.6.40 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -1061,9 +1061,10 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        ----------</span>
 <span class="sd">        latitude_longitude : list</span>
 <span class="sd">            Latitude and longitude.</span>
-<span class="sd">        env_name : str</span>
+<span class="sd">        env_name : str, optional</span>
+<span class="sd">            Name of the environment used to create the scene. The default value is ``&quot;default&quot;``.</span>
 <span class="sd">        terrain_radius : float, int</span>
-<span class="sd">            Radius to take around center.</span>
+<span class="sd">            Radius to take around center. The default value is ``500``.</span>
 <span class="sd">        include_osm_buildings : bool</span>
 <span class="sd">            Either if include or not 3D Buildings. Default is ``True``.</span>
 <span class="sd">        including_osm_roads : bool</span>
@@ -1094,9 +1095,9 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">output_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">working_directory</span>
 
         <span class="n">parts_dict</span> <span class="o">=</span> <span class="p">{}</span>
-        <span class="c1"># instiate terrain module</span>
-        <span class="n">terrainprep</span> <span class="o">=</span> <span class="n">TerrainPrep</span><span class="p">(</span><span class="n">cad_path</span><span class="o">=</span><span class="n">output_path</span><span class="p">)</span>
-        <span class="n">terrain_geo</span> <span class="o">=</span> <span class="n">terrainprep</span><span class="o">.</span><span class="n">get_terrain</span><span class="p">(</span><span class="n">latitude_longitude</span><span class="p">,</span> <span class="n">max_radius</span><span class="o">=</span><span class="n">terrain_radius</span><span class="p">,</span> <span class="n">grid_size</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+        <span class="c1"># instantiate terrain module</span>
+        <span class="n">terrain_prep</span> <span class="o">=</span> <span class="n">TerrainPrep</span><span class="p">(</span><span class="n">cad_path</span><span class="o">=</span><span class="n">output_path</span><span class="p">)</span>
+        <span class="n">terrain_geo</span> <span class="o">=</span> <span class="n">terrain_prep</span><span class="o">.</span><span class="n">get_terrain</span><span class="p">(</span><span class="n">latitude_longitude</span><span class="p">,</span> <span class="n">max_radius</span><span class="o">=</span><span class="n">terrain_radius</span><span class="p">,</span> <span class="n">grid_size</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
         <span class="n">terrain_stl</span> <span class="o">=</span> <span class="n">terrain_geo</span><span class="p">[</span><span class="s2">&quot;file_name&quot;</span><span class="p">]</span>
         <span class="n">terrain_mesh</span> <span class="o">=</span> <span class="n">terrain_geo</span><span class="p">[</span><span class="s2">&quot;mesh&quot;</span><span class="p">]</span>
         <span class="n">terrain_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;file_name&quot;</span><span class="p">:</span> <span class="n">terrain_stl</span><span class="p">,</span> <span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;brown&quot;</span><span class="p">,</span> <span class="s2">&quot;material&quot;</span><span class="p">:</span> <span class="s2">&quot;earth&quot;</span><span class="p">}</span>
@@ -1105,8 +1106,8 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">road_mesh</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="k">if</span> <span class="n">include_osm_buildings</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Generating Building Geometry&quot;</span><span class="p">)</span>
-            <span class="n">buildingprep</span> <span class="o">=</span> <span class="n">BuildingsPrep</span><span class="p">(</span><span class="n">cad_path</span><span class="o">=</span><span class="n">output_path</span><span class="p">)</span>
-            <span class="n">building_geo</span> <span class="o">=</span> <span class="n">buildingprep</span><span class="o">.</span><span class="n">generate_buildings</span><span class="p">(</span>
+            <span class="n">building_prep</span> <span class="o">=</span> <span class="n">BuildingsPrep</span><span class="p">(</span><span class="n">cad_path</span><span class="o">=</span><span class="n">output_path</span><span class="p">)</span>
+            <span class="n">building_geo</span> <span class="o">=</span> <span class="n">building_prep</span><span class="o">.</span><span class="n">generate_buildings</span><span class="p">(</span>
                 <span class="n">latitude_longitude</span><span class="p">,</span> <span class="n">terrain_mesh</span><span class="p">,</span> <span class="n">max_radius</span><span class="o">=</span><span class="n">terrain_radius</span> <span class="o">*</span> <span class="mf">0.8</span>
             <span class="p">)</span>
             <span class="n">building_stl</span> <span class="o">=</span> <span class="n">building_geo</span><span class="p">[</span><span class="s2">&quot;file_name&quot;</span><span class="p">]</span>
@@ -1115,8 +1116,8 @@ function checkPageExistsAndRedirect(event) {
             <span class="n">parts_dict</span><span class="p">[</span><span class="s2">&quot;buildings&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">building_dict</span>
         <span class="k">if</span> <span class="n">including_osm_roads</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Generating Road Geometry&quot;</span><span class="p">)</span>
-            <span class="n">roadprep</span> <span class="o">=</span> <span class="n">RoadPrep</span><span class="p">(</span><span class="n">cad_path</span><span class="o">=</span><span class="n">output_path</span><span class="p">)</span>
-            <span class="n">road_geo</span> <span class="o">=</span> <span class="n">roadprep</span><span class="o">.</span><span class="n">create_roads</span><span class="p">(</span>
+            <span class="n">road_prep</span> <span class="o">=</span> <span class="n">RoadPrep</span><span class="p">(</span><span class="n">cad_path</span><span class="o">=</span><span class="n">output_path</span><span class="p">)</span>
+            <span class="n">road_geo</span> <span class="o">=</span> <span class="n">road_prep</span><span class="o">.</span><span class="n">create_roads</span><span class="p">(</span>
                 <span class="n">latitude_longitude</span><span class="p">,</span>
                 <span class="n">terrain_mesh</span><span class="p">,</span>
                 <span class="n">max_radius</span><span class="o">=</span><span class="n">terrain_radius</span><span class="p">,</span>
@@ -1127,11 +1128,10 @@ function checkPageExistsAndRedirect(event) {
 
             <span class="n">road_stl</span> <span class="o">=</span> <span class="n">road_geo</span><span class="p">[</span><span class="s2">&quot;file_name&quot;</span><span class="p">]</span>
             <span class="n">road_mesh</span> <span class="o">=</span> <span class="n">road_geo</span><span class="p">[</span><span class="s2">&quot;mesh&quot;</span><span class="p">]</span>
-            <span class="n">road_graph</span> <span class="o">=</span> <span class="n">road_geo</span><span class="p">[</span><span class="s2">&quot;graph&quot;</span><span class="p">]</span>
             <span class="n">road_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;file_name&quot;</span><span class="p">:</span> <span class="n">road_stl</span><span class="p">,</span> <span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="s2">&quot;material&quot;</span><span class="p">:</span> <span class="s2">&quot;asphalt&quot;</span><span class="p">}</span>
             <span class="n">parts_dict</span><span class="p">[</span><span class="s2">&quot;roads&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">road_dict</span>
 
-        <span class="n">json_path</span> <span class="o">=</span> <span class="n">output_path</span> <span class="o">+</span> <span class="n">env_name</span> <span class="o">+</span> <span class="s2">&quot;.json&quot;</span>
+        <span class="n">json_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">output_path</span><span class="p">,</span> <span class="n">env_name</span> <span class="o">+</span> <span class="s2">&quot;.json&quot;</span><span class="p">)</span>
 
         <span class="n">scene</span> <span class="o">=</span> <span class="p">{</span>
             <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">env_name</span><span class="p">,</span>
@@ -1139,7 +1139,8 @@ function checkPageExistsAndRedirect(event) {
             <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;environment&quot;</span><span class="p">,</span>
             <span class="s2">&quot;center_lat_lon&quot;</span><span class="p">:</span> <span class="n">latitude_longitude</span><span class="p">,</span>
             <span class="s2">&quot;radius&quot;</span><span class="p">:</span> <span class="n">terrain_radius</span><span class="p">,</span>
-            <span class="s2">&quot;road_network&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">.road_network&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">env_name</span><span class="p">),</span>
+            <span class="s2">&quot;include_buildings&quot;</span><span class="p">:</span> <span class="n">include_osm_buildings</span><span class="p">,</span>
+            <span class="s2">&quot;include_roads&quot;</span><span class="p">:</span> <span class="n">including_osm_roads</span><span class="p">,</span>
             <span class="s2">&quot;parts&quot;</span><span class="p">:</span> <span class="n">parts_dict</span><span class="p">,</span>
         <span class="p">}</span>
 
@@ -1185,7 +1186,7 @@ function checkPageExistsAndRedirect(event) {
                 <span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">added_objs</span><span class="p">:</span>
                     <span class="bp">self</span><span class="p">[</span><span class="n">obj</span><span class="p">]</span><span class="o">.</span><span class="n">transparency</span> <span class="o">=</span> <span class="n">transparency</span>
                     <span class="bp">self</span><span class="p">[</span><span class="n">obj</span><span class="p">]</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span>
-        <span class="k">return</span> <span class="n">parts_dict</span></div></div>
+        <span class="k">return</span> <span class="n">scene</span></div></div>
 </pre></div>
 
               </article>

@@ -203,7 +203,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.38 variable.
+            // this version, rather than using sphinx's 0.6.40 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -803,8 +803,8 @@ to download the full example code</p>
 OpenStreeMaps.</p>
 <section id="perform-required-imports">
 <h2>Perform required imports<a class="headerlink" href="#perform-required-imports" title="Permalink to this heading">#</a></h2>
-<p>Perrform rquired imports and set up the local path to the path for the PyAEDT
-directory.</p>
+<p>Perform required imports and set up the local path to the PyAEDT
+directory path.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">from</span> <span class="nn">pyaedt</span> <span class="kn">import</span> <span class="n">Hfss</span>
 </pre></div>
@@ -821,8 +821,8 @@ You can set <code class="docutils literal notranslate"><span class="pre">non_gra
 </section>
 <section id="define-designs">
 <h2>Define designs<a class="headerlink" href="#define-designs" title="Permalink to this heading">#</a></h2>
-<p>Define two designs, one source and one target, with each design connected to
-a different object.</p>
+<p>Define two designs, one source and one target.
+Each design is connected to a different object.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">app</span> <span class="o">=</span> <span class="n">Hfss</span><span class="p">(</span>
     <span class="n">designname</span><span class="o">=</span><span class="s2">&quot;Ansys&quot;</span><span class="p">,</span>
     <span class="n">solution_type</span><span class="o">=</span><span class="s2">&quot;SBR+&quot;</span><span class="p">,</span>
@@ -877,10 +877,10 @@ INFO:Global:
 Percent Complete:####################################.... 90%
 INFO:Global:100% - Done
 INFO:Global:Processing Geometry
-INFO:Global:saving STL as D:/Project/Project1057.pyaedt\Ansys/terrain.stl
+INFO:Global:saving STL as D:/Project/Project1083.pyaedt\Ansys/terrain.stl
 INFO:Global:Generating Building Geometry
 DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): overpass-api.de:443
-DEBUG:urllib3.connectionpool:https://overpass-api.de:443 &quot;GET /api/status HTTP/1.1&quot; 200 180
+DEBUG:urllib3.connectionpool:https://overpass-api.de:443 &quot;GET /api/status HTTP/1.1&quot; 200 179
 DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): overpass-api.de:443
 DEBUG:urllib3.connectionpool:https://overpass-api.de:443 &quot;POST /api/interpreter HTTP/1.1&quot; 200 2315
 INFO:Global:
@@ -891,7 +891,7 @@ INFO:Global:
 Percent Complete:######################################## 100.0%
 INFO:Global:Generating Road Geometry
 DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): overpass-api.de:443
-DEBUG:urllib3.connectionpool:https://overpass-api.de:443 &quot;GET /api/status HTTP/1.1&quot; 200 206
+DEBUG:urllib3.connectionpool:https://overpass-api.de:443 &quot;GET /api/status HTTP/1.1&quot; 200 207
 DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): overpass-api.de:443
 DEBUG:urllib3.connectionpool:https://overpass-api.de:443 &quot;POST /api/interpreter HTTP/1.1&quot; 200 29457
 INFO:Global:
@@ -907,21 +907,27 @@ Percent Complete:################################........ 80.0%
 INFO:Global:
 Percent Complete:######################################## 100.0%
 INFO:Global:Done...
-INFO:Global:Step file D:/Project/Project1057.pyaedt\Ansys/terrain.stl imported
-INFO:Global:Step file D:/Project/Project1057.pyaedt\Ansys\buildings.stl imported
-INFO:Global:Step file D:/Project/Project1057.pyaedt\Ansys\roads.stl imported
+INFO:Global:Step file D:/Project/Project1083.pyaedt\Ansys/terrain.stl imported
+INFO:Global:Step file D:/Project/Project1083.pyaedt\Ansys\buildings.stl imported
+INFO:Global:Step file D:/Project/Project1083.pyaedt\Ansys\roads.stl imported
 
-{&#39;terrain&#39;: {&#39;file_name&#39;: &#39;D:/Project/Project1057.pyaedt\\Ansys/terrain.stl&#39;, &#39;color&#39;: &#39;brown&#39;, &#39;material&#39;: &#39;earth&#39;}, &#39;buildings&#39;: {&#39;file_name&#39;: &#39;D:/Project/Project1057.pyaedt\\Ansys\\buildings.stl&#39;, &#39;color&#39;: &#39;grey&#39;, &#39;material&#39;: &#39;concrete&#39;}, &#39;roads&#39;: {&#39;file_name&#39;: &#39;D:/Project/Project1057.pyaedt\\Ansys\\roads.stl&#39;, &#39;color&#39;: &#39;black&#39;, &#39;material&#39;: &#39;asphalt&#39;}}
+{&#39;name&#39;: &#39;default&#39;, &#39;version&#39;: 1, &#39;type&#39;: &#39;environment&#39;, &#39;center_lat_lon&#39;: [40.273726, -80.168269], &#39;radius&#39;: 250, &#39;include_buildings&#39;: True, &#39;include_roads&#39;: True, &#39;parts&#39;: {&#39;terrain&#39;: {&#39;file_name&#39;: &#39;D:/Project/Project1083.pyaedt\\Ansys/terrain.stl&#39;, &#39;color&#39;: &#39;brown&#39;, &#39;material&#39;: &#39;earth&#39;}, &#39;buildings&#39;: {&#39;file_name&#39;: &#39;D:/Project/Project1083.pyaedt\\Ansys\\buildings.stl&#39;, &#39;color&#39;: &#39;grey&#39;, &#39;material&#39;: &#39;concrete&#39;}, &#39;roads&#39;: {&#39;file_name&#39;: &#39;D:/Project/Project1083.pyaedt\\Ansys\\roads.stl&#39;, &#39;color&#39;: &#39;black&#39;, &#39;material&#39;: &#39;asphalt&#39;}}}
 </pre></div>
 </div>
 </section>
 <section id="plot-model">
 <h2>Plot model<a class="headerlink" href="#plot-model" title="Permalink to this heading">#</a></h2>
-<p>Plot the model</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">app</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">export_path</span><span class="o">=</span><a href="https://docs.python.org/dev/library/os.path.html#os.path.join" title="os.path.join" class="sphx-glr-backref-module-os-path sphx-glr-backref-type-py-function"><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span></a><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">working_directory</span><span class="p">,</span> <span class="s2">&quot;Source.jpg&quot;</span><span class="p">),</span> <span class="n">plot_air_objects</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<p>Plot the model.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">plot_obj</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">plot_air_objects</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plot_obj</span><span class="o">.</span><span class="n">background_color</span> <span class="o">=</span> <span class="p">[</span><span class="mi">153</span><span class="p">,</span><span class="mi">203</span><span class="p">,</span><span class="mi">255</span><span class="p">]</span>
+<span class="n">plot_obj</span><span class="o">.</span><span class="n">zoom</span> <span class="o">=</span> <span class="mf">1.5</span>
+<a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">plot_obj</span><span class="o">.</span><span class="n">show_grid</span></a> <span class="o">=</span> <span class="kc">False</span>
+<a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">plot_obj</span><span class="o">.</span><span class="n">show_axes</span></a> <span class="o">=</span> <span class="kc">False</span>
+<a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">plot_obj</span><span class="o">.</span><span class="n">bounding_box</span></a> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">plot_obj</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><a href="https://docs.python.org/dev/library/os.path.html#os.path.join" title="os.path.join" class="sphx-glr-backref-module-os-path sphx-glr-backref-type-py-function"><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span></a><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">working_directory</span><span class="p">,</span> <span class="s2">&quot;Source.jpg&quot;</span><span class="p">))</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_SBR_City_Import_001.png" srcset="../../_images/sphx_glr_SBR_City_Import_001.png" alt="SBR City Import" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.generic.plot.ModelPlotter object at 0x000002E9F207D1C0&gt;
+<img src="../../_images/sphx_glr_SBR_City_Import_001.png" srcset="../../_images/sphx_glr_SBR_City_Import_001.png" alt="SBR City Import" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>True
 </pre></div>
 </div>
 </section>
@@ -936,7 +942,7 @@ INFO:Global:Step file D:/Project/Project1057.pyaedt\Ansys\roads.stl imported
 INFO:Global:Project files removed from handlers.
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  49.719 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  47.812 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-02-sbr-sbr-city-import-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/34f36d0c0d4b96f1f1dad769b92ae654/SBR_City_Import.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">SBR_City_Import.py</span></code></a></p>

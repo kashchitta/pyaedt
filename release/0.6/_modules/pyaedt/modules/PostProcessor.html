@@ -200,7 +200,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.38 variable.
+            // this version, rather than using sphinx's 0.6.40 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -959,7 +959,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">oreportsetup</span><span class="o">.</span><span class="n">GetAvailableReportTypes</span><span class="p">())</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">update_report_dinamically</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">update_report_dynamically</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Get/Set the boolean to automatically update reports on edits.</span>
 
 <span class="sd">        Returns</span>
@@ -973,8 +973,8 @@ function checkPageExistsAndRedirect(event) {
             <span class="k">else</span> <span class="kc">False</span>
         <span class="p">)</span>
 
-    <span class="nd">@update_report_dinamically</span><span class="o">.</span><span class="n">setter</span>
-    <span class="k">def</span> <span class="nf">update_report_dinamically</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+    <span class="nd">@update_report_dynamically</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">update_report_dynamically</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">value</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">odesktop</span><span class="o">.</span><span class="n">SetRegistryInt</span><span class="p">(</span><span class="s2">&quot;Desktop/Settings/ProjectOptions/HFSS/UpdateReportsDynamicallyOnEdits&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>

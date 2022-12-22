@@ -27,8 +27,8 @@ OpenStreeMaps.
 
 Perform required imports
 ~~~~~~~~~~~~~~~~~~~~~~~~
-Perrform rquired imports and set up the local path to the path for the PyAEDT
-directory.
+Perform required imports and set up the local path to the PyAEDT
+directory path.
 
 .. GENERATED FROM PYTHON SOURCE LINES 12-17
 
@@ -72,8 +72,8 @@ You can set ``non_graphical`` either to ``True`` or ``False``.
 
 Define designs
 ~~~~~~~~~~~~~~
-Define two designs, one source and one target, with each design connected to
-a different object.
+Define two designs, one source and one target.
+Each design is connected to a different object.
 
 .. GENERATED FROM PYTHON SOURCE LINES 31-40
 
@@ -163,10 +163,10 @@ Assign boundaries.
     INFO:Global:    Percent Complete:####################################.... 90% 
     INFO:Global:100% - Done
     INFO:Global:Processing Geometry
-    INFO:Global:saving STL as D:/Project/Project1057.pyaedt\Ansys/terrain.stl
+    INFO:Global:saving STL as D:/Project/Project1083.pyaedt\Ansys/terrain.stl
     INFO:Global:Generating Building Geometry
     DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): overpass-api.de:443
-    DEBUG:urllib3.connectionpool:https://overpass-api.de:443 "GET /api/status HTTP/1.1" 200 180
+    DEBUG:urllib3.connectionpool:https://overpass-api.de:443 "GET /api/status HTTP/1.1" 200 179
     DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): overpass-api.de:443
     DEBUG:urllib3.connectionpool:https://overpass-api.de:443 "POST /api/interpreter HTTP/1.1" 200 2315
     INFO:Global:
@@ -176,7 +176,7 @@ Assign boundaries.
     INFO:Global:    Percent Complete:######################################## 100.0% 
     INFO:Global:Generating Road Geometry
     DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): overpass-api.de:443
-    DEBUG:urllib3.connectionpool:https://overpass-api.de:443 "GET /api/status HTTP/1.1" 200 206
+    DEBUG:urllib3.connectionpool:https://overpass-api.de:443 "GET /api/status HTTP/1.1" 200 207
     DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): overpass-api.de:443
     DEBUG:urllib3.connectionpool:https://overpass-api.de:443 "POST /api/interpreter HTTP/1.1" 200 29457
     INFO:Global:    Percent Complete:########................................ 20.0% 
@@ -186,11 +186,11 @@ Assign boundaries.
     INFO:Global:    Percent Complete:################################........ 80.0% 
     INFO:Global:    Percent Complete:######################################## 100.0% 
     INFO:Global:Done...
-    INFO:Global:Step file D:/Project/Project1057.pyaedt\Ansys/terrain.stl imported
-    INFO:Global:Step file D:/Project/Project1057.pyaedt\Ansys\buildings.stl imported
-    INFO:Global:Step file D:/Project/Project1057.pyaedt\Ansys\roads.stl imported
+    INFO:Global:Step file D:/Project/Project1083.pyaedt\Ansys/terrain.stl imported
+    INFO:Global:Step file D:/Project/Project1083.pyaedt\Ansys\buildings.stl imported
+    INFO:Global:Step file D:/Project/Project1083.pyaedt\Ansys\roads.stl imported
 
-    {'terrain': {'file_name': 'D:/Project/Project1057.pyaedt\\Ansys/terrain.stl', 'color': 'brown', 'material': 'earth'}, 'buildings': {'file_name': 'D:/Project/Project1057.pyaedt\\Ansys\\buildings.stl', 'color': 'grey', 'material': 'concrete'}, 'roads': {'file_name': 'D:/Project/Project1057.pyaedt\\Ansys\\roads.stl', 'color': 'black', 'material': 'asphalt'}}
+    {'name': 'default', 'version': 1, 'type': 'environment', 'center_lat_lon': [40.273726, -80.168269], 'radius': 250, 'include_buildings': True, 'include_roads': True, 'parts': {'terrain': {'file_name': 'D:/Project/Project1083.pyaedt\\Ansys/terrain.stl', 'color': 'brown', 'material': 'earth'}, 'buildings': {'file_name': 'D:/Project/Project1083.pyaedt\\Ansys\\buildings.stl', 'color': 'grey', 'material': 'concrete'}, 'roads': {'file_name': 'D:/Project/Project1083.pyaedt\\Ansys\\roads.stl', 'color': 'black', 'material': 'asphalt'}}}
 
 
 
@@ -198,14 +198,20 @@ Assign boundaries.
 
 Plot model
 ~~~~~~~~~~
-Plot the model
+Plot the model.
 
-.. GENERATED FROM PYTHON SOURCE LINES 67-71
+.. GENERATED FROM PYTHON SOURCE LINES 67-77
 
 .. code-block:: default
 
 
-    app.plot(show=False, export_path=os.path.join(app.working_directory, "Source.jpg"), plot_air_objects=True)
+    plot_obj = app.plot(show=False, plot_air_objects=True)
+    plot_obj.background_color = [153,203,255]
+    plot_obj.zoom = 1.5
+    plot_obj.show_grid = False
+    plot_obj.show_axes = False
+    plot_obj.bounding_box = False
+    plot_obj.plot(os.path.join(app.working_directory, "Source.jpg"))
 
 
 
@@ -222,17 +228,17 @@ Plot the model
  .. code-block:: none
 
 
-    <pyaedt.generic.plot.ModelPlotter object at 0x000002E9F207D1C0>
+    True
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 72-75
+.. GENERATED FROM PYTHON SOURCE LINES 78-81
 
 Release AEDT
 ~~~~~~~~~~~~
 Release AEDT and close the example.
 
-.. GENERATED FROM PYTHON SOURCE LINES 75-78
+.. GENERATED FROM PYTHON SOURCE LINES 81-84
 
 .. code-block:: default
 
@@ -256,7 +262,7 @@ Release AEDT and close the example.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  49.719 seconds)
+   **Total running time of the script:** ( 0 minutes  47.812 seconds)
 
 
 .. _sphx_glr_download_examples_02-SBR+_SBR_City_Import.py:

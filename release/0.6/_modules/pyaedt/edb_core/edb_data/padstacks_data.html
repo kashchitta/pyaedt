@@ -200,7 +200,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.38 variable.
+            // this version, rather than using sphinx's 0.6.40 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -1346,14 +1346,36 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        tuple</span>
 <span class="sd">            Tuple of the layer name and drill diameter.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">layer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span><span class="o">.</span><span class="n">edb</span><span class="o">.</span><span class="n">Cell</span><span class="o">.</span><span class="n">Layer</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">layer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span><span class="o">.</span><span class="n">edb</span><span class="o">.</span><span class="n">Cell</span><span class="o">.</span><span class="n">Layer</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span><span class="o">.</span><span class="n">edb</span><span class="o">.</span><span class="n">Cell</span><span class="o">.</span><span class="n">LayerType</span><span class="o">.</span><span class="n">SignalLayer</span><span class="p">)</span>
         <span class="n">val</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span><span class="o">.</span><span class="n">edb_value</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
         <span class="p">(</span>
-            <span class="n">_</span><span class="p">,</span>
-            <span class="n">depth</span><span class="p">,</span>
+            <span class="n">flag</span><span class="p">,</span>
+            <span class="n">drill_to_layer</span><span class="p">,</span>
             <span class="n">diameter</span><span class="p">,</span>
         <span class="p">)</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb_padstackinstance</span><span class="o">.</span><span class="n">GetBackDrillParametersLayerValue</span><span class="p">(</span><span class="n">layer</span><span class="p">,</span> <span class="n">val</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">depth</span><span class="o">.</span><span class="n">GetName</span><span class="p">(),</span> <span class="n">diameter</span><span class="o">.</span><span class="n">ToString</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">flag</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">drill_to_layer</span><span class="o">.</span><span class="n">GetName</span><span class="p">(),</span> <span class="n">diameter</span><span class="o">.</span><span class="n">ToString</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span>
+
+<div class="viewcode-block" id="EDBPadstackInstance.set_backdrill_top"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.padstacks_data.EDBPadstackInstance.set_backdrill_top.html#pyaedt.edb_core.edb_data.padstacks_data.EDBPadstackInstance.set_backdrill_top">[docs]</a>    <span class="k">def</span> <span class="nf">set_backdrill_top</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">drill_depth</span><span class="p">,</span> <span class="n">drill_diameter</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Set backdrill from top.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        drill_depth : str</span>
+<span class="sd">            Name of the drill to layer.</span>
+<span class="sd">        drill_diameter : float, str</span>
+<span class="sd">            Diameter of backdrill size.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        bool</span>
+<span class="sd">            True if success, False otherwise.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">layer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span><span class="o">.</span><span class="n">stackup</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="n">drill_depth</span><span class="p">]</span><span class="o">.</span><span class="n">_edb_layer</span>
+        <span class="n">val</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span><span class="o">.</span><span class="n">edb_value</span><span class="p">(</span><span class="n">drill_diameter</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb_padstackinstance</span><span class="o">.</span><span class="n">SetBackDrillParameters</span><span class="p">(</span><span class="n">layer</span><span class="p">,</span> <span class="n">val</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span></div>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">backdrill_bottom</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -1364,14 +1386,36 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        tuple</span>
 <span class="sd">            Tuple of the layer name and drill diameter.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">layer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span><span class="o">.</span><span class="n">edb</span><span class="o">.</span><span class="n">Cell</span><span class="o">.</span><span class="n">Layer</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">layer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span><span class="o">.</span><span class="n">edb</span><span class="o">.</span><span class="n">Cell</span><span class="o">.</span><span class="n">Layer</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span><span class="o">.</span><span class="n">edb</span><span class="o">.</span><span class="n">Cell</span><span class="o">.</span><span class="n">LayerType</span><span class="o">.</span><span class="n">SignalLayer</span><span class="p">)</span>
         <span class="n">val</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span><span class="o">.</span><span class="n">edb_value</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
         <span class="p">(</span>
-            <span class="n">_</span><span class="p">,</span>
-            <span class="n">depth</span><span class="p">,</span>
+            <span class="n">flag</span><span class="p">,</span>
+            <span class="n">drill_to_layer</span><span class="p">,</span>
             <span class="n">diameter</span><span class="p">,</span>
         <span class="p">)</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb_padstackinstance</span><span class="o">.</span><span class="n">GetBackDrillParametersLayerValue</span><span class="p">(</span><span class="n">layer</span><span class="p">,</span> <span class="n">val</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">depth</span><span class="o">.</span><span class="n">GetName</span><span class="p">(),</span> <span class="n">diameter</span><span class="o">.</span><span class="n">ToString</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">flag</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">drill_to_layer</span><span class="o">.</span><span class="n">GetName</span><span class="p">(),</span> <span class="n">diameter</span><span class="o">.</span><span class="n">ToString</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span>
+
+<div class="viewcode-block" id="EDBPadstackInstance.set_backdrill_bottom"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.padstacks_data.EDBPadstackInstance.set_backdrill_bottom.html#pyaedt.edb_core.edb_data.padstacks_data.EDBPadstackInstance.set_backdrill_bottom">[docs]</a>    <span class="k">def</span> <span class="nf">set_backdrill_bottom</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">drill_depth</span><span class="p">,</span> <span class="n">drill_diameter</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Set backdrill from bottom.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        drill_depth : str</span>
+<span class="sd">            Name of the drill to layer.</span>
+<span class="sd">        drill_diameter : float, str</span>
+<span class="sd">            Diameter of backdrill size.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        bool</span>
+<span class="sd">            True if success, False otherwise.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">layer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span><span class="o">.</span><span class="n">stackup</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="n">drill_depth</span><span class="p">]</span><span class="o">.</span><span class="n">_edb_layer</span>
+        <span class="n">val</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span><span class="o">.</span><span class="n">edb_value</span><span class="p">(</span><span class="n">drill_diameter</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb_padstackinstance</span><span class="o">.</span><span class="n">SetBackDrillParameters</span><span class="p">(</span><span class="n">layer</span><span class="p">,</span> <span class="n">val</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span></div>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">start_layer</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>

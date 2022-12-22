@@ -200,7 +200,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.38 variable.
+            // this version, rather than using sphinx's 0.6.40 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -319,6 +319,7 @@ function checkPageExistsAndRedirect(event) {
   <h1>Source code for pyaedt.generic.plot</h1><div class="highlight"><pre>
 <span></span><span class="kn">import</span> <span class="nn">ast</span>
 <span class="kn">import</span> <span class="nn">csv</span>
+<span class="kn">import</span> <span class="nn">math</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">tempfile</span>
 <span class="kn">import</span> <span class="nn">time</span>
@@ -1050,6 +1051,25 @@ function checkPageExistsAndRedirect(event) {
         <span class="bp">self</span><span class="o">.</span><span class="n">_x_scale</span> <span class="o">=</span> <span class="mf">1.0</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_y_scale</span> <span class="o">=</span> <span class="mf">1.0</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_z_scale</span> <span class="o">=</span> <span class="mf">1.0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_convert_fields_in_db</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">convert_fields_in_db</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Either if convert the fields before plotting in dB10. Log scale will be disabled.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        bool</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_convert_fields_in_db</span>
+
+    <span class="nd">@convert_fields_in_db</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">convert_fields_in_db</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_convert_fields_in_db</span> <span class="o">=</span> <span class="n">value</span>
+        <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">fields</span><span class="p">:</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">_cached_polydata</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">frames</span><span class="p">:</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">_cached_polydata</span> <span class="o">=</span> <span class="kc">None</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">x_scale</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -1547,6 +1567,8 @@ function checkPageExistsAndRedirect(event) {
             <span class="k">if</span> <span class="n">field</span><span class="o">.</span><span class="n">path</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">field</span><span class="o">.</span><span class="n">_cached_polydata</span><span class="p">:</span>
                 <span class="k">if</span> <span class="s2">&quot;.aedtplt&quot;</span> <span class="ow">in</span> <span class="n">field</span><span class="o">.</span><span class="n">path</span><span class="p">:</span>
                     <span class="n">vertices</span><span class="p">,</span> <span class="n">faces</span><span class="p">,</span> <span class="n">scalars</span><span class="p">,</span> <span class="n">log1</span> <span class="o">=</span> <span class="n">_parse_aedtplt</span><span class="p">(</span><span class="n">field</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">convert_fields_in_db</span><span class="p">:</span>
+                        <span class="n">scalars</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="mi">10</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">scalars</span><span class="p">]</span>
                     <span class="n">fields_vals</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">PolyData</span><span class="p">(</span><span class="n">vertices</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">faces</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
                     <span class="n">field</span><span class="o">.</span><span class="n">_cached_polydata</span> <span class="o">=</span> <span class="n">fields_vals</span>
                     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">scalars</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">list</span><span class="p">):</span>
@@ -1596,6 +1618,11 @@ function checkPageExistsAndRedirect(event) {
                                 <span class="n">is_vector</span> <span class="o">=</span> <span class="kc">True</span>
                             <span class="k">else</span><span class="p">:</span>
                                 <span class="n">values</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">tmp</span><span class="p">[</span><span class="mi">3</span><span class="p">]))</span>
+                    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">convert_fields_in_db</span><span class="p">:</span>
+                        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                            <span class="n">values</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">values</span><span class="p">]</span>
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="n">values</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">10</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">value</span><span class="p">]</span> <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">values</span><span class="p">]</span>
                     <span class="k">if</span> <span class="n">nodes</span><span class="p">:</span>
                         <span class="k">try</span><span class="p">:</span>
                             <span class="n">conv</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">AEDT_UNITS</span><span class="p">[</span><span class="s2">&quot;Length&quot;</span><span class="p">][</span><span class="bp">self</span><span class="o">.</span><span class="n">units</span><span class="p">]</span>
@@ -1766,7 +1793,7 @@ function checkPageExistsAndRedirect(event) {
                 <span class="bp">self</span><span class="o">.</span><span class="n">pv</span><span class="o">.</span><span class="n">add_mesh</span><span class="p">(</span>
                     <span class="n">field</span><span class="o">.</span><span class="n">_cached_polydata</span><span class="o">.</span><span class="n">arrows</span><span class="p">,</span>
                     <span class="n">scalars</span><span class="o">=</span><span class="n">field</span><span class="o">.</span><span class="n">label</span><span class="p">,</span>
-                    <span class="n">log_scale</span><span class="o">=</span><span class="n">field</span><span class="o">.</span><span class="n">log_scale</span><span class="p">,</span>
+                    <span class="n">log_scale</span><span class="o">=</span><span class="kc">False</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">convert_fields_in_db</span> <span class="k">else</span> <span class="n">field</span><span class="o">.</span><span class="n">log_scale</span><span class="p">,</span>
                     <span class="n">scalar_bar_args</span><span class="o">=</span><span class="n">sargs</span><span class="p">,</span>
                     <span class="n">cmap</span><span class="o">=</span><span class="n">field</span><span class="o">.</span><span class="n">color_map</span><span class="p">,</span>
                 <span class="p">)</span>
@@ -1775,7 +1802,7 @@ function checkPageExistsAndRedirect(event) {
                 <span class="n">field</span><span class="o">.</span><span class="n">_cached_mesh</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pv</span><span class="o">.</span><span class="n">add_mesh</span><span class="p">(</span>
                     <span class="n">field</span><span class="o">.</span><span class="n">_cached_polydata</span><span class="p">,</span>
                     <span class="n">scalars</span><span class="o">=</span><span class="n">field</span><span class="o">.</span><span class="n">label</span><span class="p">,</span>
-                    <span class="n">log_scale</span><span class="o">=</span><span class="n">field</span><span class="o">.</span><span class="n">log_scale</span><span class="p">,</span>
+                    <span class="n">log_scale</span><span class="o">=</span><span class="kc">False</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">convert_fields_in_db</span> <span class="k">else</span> <span class="n">field</span><span class="o">.</span><span class="n">log_scale</span><span class="p">,</span>
                     <span class="n">scalar_bar_args</span><span class="o">=</span><span class="n">sargs</span><span class="p">,</span>
                     <span class="n">cmap</span><span class="o">=</span><span class="n">field</span><span class="o">.</span><span class="n">color_map</span><span class="p">,</span>
                     <span class="n">clim</span><span class="o">=</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">range_min</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">range_max</span><span class="p">],</span>
@@ -1786,7 +1813,7 @@ function checkPageExistsAndRedirect(event) {
                 <span class="n">field</span><span class="o">.</span><span class="n">_cached_mesh</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pv</span><span class="o">.</span><span class="n">add_mesh</span><span class="p">(</span>
                     <span class="n">field</span><span class="o">.</span><span class="n">_cached_polydata</span><span class="p">,</span>
                     <span class="n">scalars</span><span class="o">=</span><span class="n">field</span><span class="o">.</span><span class="n">label</span><span class="p">,</span>
-                    <span class="n">log_scale</span><span class="o">=</span><span class="n">field</span><span class="o">.</span><span class="n">log_scale</span><span class="p">,</span>
+                    <span class="n">log_scale</span><span class="o">=</span><span class="kc">False</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">convert_fields_in_db</span> <span class="k">else</span> <span class="n">field</span><span class="o">.</span><span class="n">log_scale</span><span class="p">,</span>
                     <span class="n">scalar_bar_args</span><span class="o">=</span><span class="n">sargs</span><span class="p">,</span>
                     <span class="n">cmap</span><span class="o">=</span><span class="n">field</span><span class="o">.</span><span class="n">color_map</span><span class="p">,</span>
                     <span class="n">opacity</span><span class="o">=</span><span class="n">field</span><span class="o">.</span><span class="n">opacity</span><span class="p">,</span>
@@ -1966,7 +1993,7 @@ function checkPageExistsAndRedirect(event) {
             <span class="n">field</span><span class="o">.</span><span class="n">_cached_mesh</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pv</span><span class="o">.</span><span class="n">add_mesh</span><span class="p">(</span>
                 <span class="n">field</span><span class="o">.</span><span class="n">_cached_polydata</span><span class="p">,</span>
                 <span class="n">scalars</span><span class="o">=</span><span class="n">field</span><span class="o">.</span><span class="n">label</span><span class="p">,</span>
-                <span class="n">log_scale</span><span class="o">=</span><span class="n">field</span><span class="o">.</span><span class="n">log_scale</span><span class="p">,</span>
+                <span class="n">log_scale</span><span class="o">=</span><span class="kc">False</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">convert_fields_in_db</span> <span class="k">else</span> <span class="n">field</span><span class="o">.</span><span class="n">log_scale</span><span class="p">,</span>
                 <span class="n">scalar_bar_args</span><span class="o">=</span><span class="n">sargs</span><span class="p">,</span>
                 <span class="n">cmap</span><span class="o">=</span><span class="n">field</span><span class="o">.</span><span class="n">color_map</span><span class="p">,</span>
                 <span class="n">opacity</span><span class="o">=</span><span class="n">field</span><span class="o">.</span><span class="n">opacity</span><span class="p">,</span>
@@ -1992,7 +2019,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="bp">self</span><span class="o">.</span><span class="n">frames</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">_cached_mesh</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pv</span><span class="o">.</span><span class="n">add_mesh</span><span class="p">(</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">frames</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">_cached_polydata</span><span class="p">,</span>
             <span class="n">scalars</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">frames</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">label</span><span class="p">,</span>
-            <span class="n">log_scale</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">frames</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">log_scale</span><span class="p">,</span>
+            <span class="n">log_scale</span><span class="o">=</span><span class="kc">False</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">convert_fields_in_db</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">frames</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">log_scale</span><span class="p">,</span>
             <span class="n">scalar_bar_args</span><span class="o">=</span><span class="n">sargs</span><span class="p">,</span>
             <span class="n">cmap</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">frames</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">color_map</span><span class="p">,</span>
             <span class="n">clim</span><span class="o">=</span><span class="p">[</span><span class="n">mins</span><span class="p">,</span> <span class="n">maxs</span><span class="p">],</span>

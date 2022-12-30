@@ -49,17 +49,13 @@ Perform required imports
 ~~~~~~~~~~~~~~~~~~~~~~~~
 Perform required imports from PyAEDT.
 
-.. GENERATED FROM PYTHON SOURCE LINES 32-41
+.. GENERATED FROM PYTHON SOURCE LINES 32-37
 
 .. code-block:: default
 
 
     import os
-    import tempfile
-    import shutil
-    from pyaedt import Icepak
-    from pyaedt import examples
-    from pyaedt import generate_unique_folder_name
+    import pyaedt
 
 
 
@@ -69,7 +65,7 @@ Perform required imports from PyAEDT.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 42-47
+.. GENERATED FROM PYTHON SOURCE LINES 38-43
 
 Set non-graphical mode
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -77,7 +73,7 @@ Set non-graphical mode. ``"PYAEDT_NON_GRAPHICAL"`` is needed to generate
 documentation only.
 You can set ``non_graphical`` either to ``True`` or ``False``.
 
-.. GENERATED FROM PYTHON SOURCE LINES 47-50
+.. GENERATED FROM PYTHON SOURCE LINES 43-46
 
 .. code-block:: default
 
@@ -91,20 +87,20 @@ You can set ``non_graphical`` either to ``True`` or ``False``.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 51-54
+.. GENERATED FROM PYTHON SOURCE LINES 47-50
 
 Open project
 ~~~~~~~~~~~~
 Download the project, open it, and save it to the temporary folder.
 
-.. GENERATED FROM PYTHON SOURCE LINES 54-60
+.. GENERATED FROM PYTHON SOURCE LINES 50-56
 
 .. code-block:: default
 
 
-    project_full_name = examples.download_icepak(generate_unique_folder_name("Graphic_Card"))
+    project_full_name = pyaedt.downloads.download_icepak(pyaedt.generate_unique_folder_name(folder_name="Graphic_Card"))
 
-    ipk = Icepak(project_full_name, specified_version="2022.2", new_desktop_session=True, non_graphical=non_graphical)
+    ipk = pyaedt.Icepak(project_full_name, specified_version="2022.2", new_desktop_session=True, non_graphical=non_graphical)
     ipk.autosave_disable()
 
 
@@ -120,19 +116,19 @@ Download the project, open it, and save it to the temporary folder.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 61-64
+.. GENERATED FROM PYTHON SOURCE LINES 57-60
 
 Create source blocks
 ~~~~~~~~~~~~~~~~~~~~
 Create a source block on the CPU and memories.
 
-.. GENERATED FROM PYTHON SOURCE LINES 64-68
+.. GENERATED FROM PYTHON SOURCE LINES 60-64
 
 .. code-block:: default
 
 
-    ipk.create_source_block("CPU", "25W")
-    ipk.create_source_block(["MEMORY1", "MEMORY1_1"], "5W")
+    ipk.create_source_block(object_name="CPU", input_power="25W")
+    ipk.create_source_block(object_name=["MEMORY1", "MEMORY1_1"], input_power="5W")
 
 
 
@@ -143,17 +139,17 @@ Create a source block on the CPU and memories.
  .. code-block:: none
 
 
-    <pyaedt.modules.Boundary.BoundaryObject object at 0x0000022BD021DFA0>
+    <pyaedt.modules.Boundary.BoundaryObject object at 0x000002812042BCD0>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 69-72
+.. GENERATED FROM PYTHON SOURCE LINES 65-68
 
 Assign boundaries
 ~~~~~~~~~~~~~~~~~
 Assign the opening and grille.
 
-.. GENERATED FROM PYTHON SOURCE LINES 72-77
+.. GENERATED FROM PYTHON SOURCE LINES 68-73
 
 .. code-block:: default
 
@@ -171,11 +167,11 @@ Assign the opening and grille.
  .. code-block:: none
 
 
-    <pyaedt.modules.Boundary.BoundaryObject object at 0x0000022BDC4D8CD0>
+    <pyaedt.modules.Boundary.BoundaryObject object at 0x000002817E098520>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 78-83
+.. GENERATED FROM PYTHON SOURCE LINES 74-79
 
 Create setup
 ~~~~~~~~~~~~
@@ -183,7 +179,7 @@ Create the setup. Properties can be set up from the ``setup`` object
 with getters and setters. They don't have to perfectly match the property
 syntax.
 
-.. GENERATED FROM PYTHON SOURCE LINES 83-91
+.. GENERATED FROM PYTHON SOURCE LINES 79-87
 
 .. code-block:: default
 
@@ -208,13 +204,13 @@ syntax.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 92-95
+.. GENERATED FROM PYTHON SOURCE LINES 88-91
 
 Export project to step file
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Export the current project to the step file.
 
-.. GENERATED FROM PYTHON SOURCE LINES 95-100
+.. GENERATED FROM PYTHON SOURCE LINES 91-96
 
 .. code-block:: default
 
@@ -236,14 +232,14 @@ Export the current project to the step file.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 101-105
+.. GENERATED FROM PYTHON SOURCE LINES 97-101
 
 Export configuration files
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 Export the configuration files. You can optionally disable the export and
 import sections.
 
-.. GENERATED FROM PYTHON SOURCE LINES 105-109
+.. GENERATED FROM PYTHON SOURCE LINES 101-105
 
 .. code-block:: default
 
@@ -264,18 +260,18 @@ import sections.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 110-113
+.. GENERATED FROM PYTHON SOURCE LINES 106-109
 
 Create project
 ~~~~~~~~~~~~~~
 Create an Icepak project and import the step.
 
-.. GENERATED FROM PYTHON SOURCE LINES 113-117
+.. GENERATED FROM PYTHON SOURCE LINES 109-113
 
 .. code-block:: default
 
 
-    app = Icepak(projectname="new_proj_Ipk")
+    app = pyaedt.Icepak(projectname="new_proj_Ipk")
     app.modeler.import_3d_cad(file_path)
 
 
@@ -291,14 +287,14 @@ Create an Icepak project and import the step.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 118-122
+.. GENERATED FROM PYTHON SOURCE LINES 114-118
 
 Import and apply configuration file
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Import and apply the configuration file. You can apply all or part of the
 JSON file that you import using options in the ``configurations`` object.
 
-.. GENERATED FROM PYTHON SOURCE LINES 122-127
+.. GENERATED FROM PYTHON SOURCE LINES 118-123
 
 .. code-block:: default
 
@@ -320,30 +316,35 @@ JSON file that you import using options in the ``configurations`` object.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 128-131
+.. GENERATED FROM PYTHON SOURCE LINES 124-127
 
 Close project
 ~~~~~~~~~~~~~
 Close the project.
 
-.. GENERATED FROM PYTHON SOURCE LINES 131-134
+.. GENERATED FROM PYTHON SOURCE LINES 127-129
 
 .. code-block:: default
 
 
-    if os.name != "posix":
-        app.release_desktop()
+    app.release_desktop()
 
 
 
 
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+
+    True
 
 
 
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  29.218 seconds)
+   **Total running time of the script:** ( 0 minutes  29.241 seconds)
 
 
 .. _sphx_glr_download_examples_01-Modeling-Setup_Configurations.py:

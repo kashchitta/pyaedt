@@ -33,6 +33,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
 
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
@@ -51,8 +52,8 @@
     <link rel="shortcut icon" href="../_static/ansys-favicon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="pyaedt.modeler.actors.Person" href="_autosummary/pyaedt.modeler.actors.Person.html" />
-    <link rel="prev" title="GRM" href="_autosummary/pyaedt.modules.SetupTemplates.GRM.html" />
+    <link rel="next" title="pyaedt.modeler.advanced_cad.actors.Person" href="_autosummary/pyaedt.modeler.advanced_cad.actors.Person.html" />
+    <link rel="prev" title="v_sum" href="_autosummary/pyaedt.modeler.geometry_operators.GeometryOperators.v_sum.html" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="docsearch:language" content="en">
   </head>
@@ -111,7 +112,13 @@
 
 <li class="toctree-l1 current active nav-item">
  <a class="reference internal nav-link" href="index.html">
-  API reference
+  API AEDT reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../EDBAPI/index.html">
+  API EDB reference
  </a>
 </li>
 
@@ -203,7 +210,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.40 variable.
+            // this version, rather than using sphinx's 0.6.42 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -273,8 +280,8 @@ function checkPageExistsAndRedirect(event) {
         <li class="nav-item nav-item-0"><a href="../index.html">PyAEDT</a> » </li>
     
 
-          <li class="nav-item nav-item-1"><a href="index.html" >API reference</a> » </li>
-          <li class="nav-item nav-item-2"><a href="Common.html" accesskey="U">Desktop and common classes</a> » </li>
+          <li class="nav-item nav-item-1"><a href="index.html" >API AEDT reference</a> » </li>
+          <li class="nav-item nav-item-2"><a href="Primitives3D.html" accesskey="U">Modeler in 2D and 3D</a> » </li>
         <li class="nav-item nav-item-this"><a href="">Multi-part components</a></li> 
       </ul>
     </div>
@@ -297,9 +304,19 @@ function checkPageExistsAndRedirect(event) {
   <div class="bd-toc-item active">
     
     <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Application.html">
+   AEDT apps
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="MaterialManagement.html">
+   Material and stackup
+  </a>
+ </li>
  <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="Common.html">
-   Desktop and common classes
+  <a class="reference internal" href="Primitives3D.html">
+   Modeler in 2D and 3D
   </a>
   <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
@@ -308,28 +325,68 @@ function checkPageExistsAndRedirect(event) {
   </label>
   <ul class="current">
    <li class="toctree-l2">
-    <a class="reference internal" href="_autosummary/pyaedt.Desktop.html">
-     Desktop
+    <a class="reference internal" href="_autosummary/pyaedt.modeler.modeler2d.Modeler2D.html">
+     pyaedt.modeler.modeler2d.Modeler2D
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="ClientServer.html">
-     Initial setup and launching AEDT
+    <a class="reference internal" href="_autosummary/pyaedt.modeler.modeler3d.Modeler3D.html">
+     pyaedt.modeler.modeler3d.Modeler3D
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="Constants.html">
-     Constants
+    <a class="reference internal" href="_autosummary/pyaedt.modeler.cad.object3d.Object3d.html">
+     pyaedt.modeler.cad.object3d.Object3d
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="Configuration.html">
-     Configuration files
+    <a class="reference internal" href="_autosummary/pyaedt.modeler.cad.elements3d.FacePrimitive.html">
+     pyaedt.modeler.cad.elements3d.FacePrimitive
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="SetupTemplates.html">
-     Setup templates
+    <a class="reference internal" href="_autosummary/pyaedt.modeler.cad.elements3d.EdgePrimitive.html">
+     pyaedt.modeler.cad.elements3d.EdgePrimitive
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="_autosummary/pyaedt.modeler.cad.elements3d.VertexPrimitive.html">
+     pyaedt.modeler.cad.elements3d.VertexPrimitive
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="_autosummary/pyaedt.modeler.cad.polylines.PolylineSegment.html">
+     pyaedt.modeler.cad.polylines.PolylineSegment
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="_autosummary/pyaedt.modeler.cad.polylines.Polyline.html">
+     pyaedt.modeler.cad.polylines.Polyline
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="_autosummary/pyaedt.modeler.cad.components_3d.UserDefinedComponent.html">
+     pyaedt.modeler.cad.components_3d.UserDefinedComponent
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="_autosummary/pyaedt.modeler.cad.elements3d.Point.html">
+     pyaedt.modeler.cad.elements3d.Point
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="_autosummary/pyaedt.modeler.cad.elements3d.Plane.html">
+     pyaedt.modeler.cad.elements3d.Plane
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="_autosummary/pyaedt.modeler.cad.Modeler.CoordinateSystem.html">
+     pyaedt.modeler.cad.Modeler.CoordinateSystem
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="_autosummary/pyaedt.modeler.geometry_operators.GeometryOperators.html">
+     pyaedt.modeler.geometry_operators.GeometryOperators
     </a>
    </li>
    <li class="toctree-l2 current active has-children">
@@ -343,48 +400,48 @@ function checkPageExistsAndRedirect(event) {
     </label>
     <ul>
      <li class="toctree-l3">
-      <a class="reference internal" href="_autosummary/pyaedt.modeler.actors.Person.html">
-       pyaedt.modeler.actors.Person
+      <a class="reference internal" href="_autosummary/pyaedt.modeler.advanced_cad.actors.Person.html">
+       pyaedt.modeler.advanced_cad.actors.Person
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="_autosummary/pyaedt.modeler.actors.Vehicle.html">
-       pyaedt.modeler.actors.Vehicle
+      <a class="reference internal" href="_autosummary/pyaedt.modeler.advanced_cad.actors.Vehicle.html">
+       pyaedt.modeler.advanced_cad.actors.Vehicle
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="_autosummary/pyaedt.modeler.actors.Bird.html">
-       pyaedt.modeler.actors.Bird
+      <a class="reference internal" href="_autosummary/pyaedt.modeler.advanced_cad.actors.Bird.html">
+       pyaedt.modeler.advanced_cad.actors.Bird
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="_autosummary/pyaedt.modeler.actors.Radar.html">
-       pyaedt.modeler.actors.Radar
+      <a class="reference internal" href="_autosummary/pyaedt.modeler.advanced_cad.actors.Radar.html">
+       pyaedt.modeler.advanced_cad.actors.Radar
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="_autosummary/pyaedt.modeler.parts.Part.html">
-       pyaedt.modeler.parts.Part
+      <a class="reference internal" href="_autosummary/pyaedt.modeler.advanced_cad.parts.Part.html">
+       pyaedt.modeler.advanced_cad.parts.Part
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="_autosummary/pyaedt.modeler.parts.Antenna.html">
-       pyaedt.modeler.parts.Antenna
+      <a class="reference internal" href="_autosummary/pyaedt.modeler.advanced_cad.parts.Antenna.html">
+       pyaedt.modeler.advanced_cad.parts.Antenna
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="_autosummary/pyaedt.modeler.multiparts.MultiPartComponent.html">
-       pyaedt.modeler.multiparts.MultiPartComponent
+      <a class="reference internal" href="_autosummary/pyaedt.modeler.advanced_cad.multiparts.MultiPartComponent.html">
+       pyaedt.modeler.advanced_cad.multiparts.MultiPartComponent
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="_autosummary/pyaedt.modeler.multiparts.Environment.html">
-       pyaedt.modeler.multiparts.Environment
+      <a class="reference internal" href="_autosummary/pyaedt.modeler.advanced_cad.multiparts.Environment.html">
+       pyaedt.modeler.advanced_cad.multiparts.Environment
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="_autosummary/pyaedt.modeler.multiparts.Actor.html">
-       pyaedt.modeler.multiparts.Actor
+      <a class="reference internal" href="_autosummary/pyaedt.modeler.advanced_cad.multiparts.Actor.html">
+       pyaedt.modeler.advanced_cad.multiparts.Actor
       </a>
      </li>
     </ul>
@@ -394,46 +451,26 @@ function checkPageExistsAndRedirect(event) {
      Stackup 3D components
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="DesktopMessenger.html">
-     AEDT logger
-    </a>
-   </li>
   </ul>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="CoreEdb.html">
-   EDB editor
+  <a class="reference internal" href="Primitives3DLayout.html">
+   Modeler in  HFSS 3D Layout
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="Application.html">
-   AEDT apps
+  <a class="reference internal" href="PrimitivesCircuit.html">
+   Modeler and components Circuit
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="MaterialManagement.html">
-   Material and stackup
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Primitives.html">
-   Modeler and  primitives
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="CoreModules.html">
-   AEDT modules
+  <a class="reference internal" href="Boundaries.html">
+   Boundary objects
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Mesh.html">
    Mesh operations
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="CableModeling.html">
-   Cable modeling
   </a>
  </li>
  <li class="toctree-l1">
@@ -444,6 +481,41 @@ function checkPageExistsAndRedirect(event) {
  <li class="toctree-l1">
   <a class="reference internal" href="Post.html">
    Postprocessing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="DesktopMessenger.html">
+   Logger
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Optimetrics.html">
+   Optimetrics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Variables.html">
+   Variable
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Constants.html">
+   Constants
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Configuration.html">
+   Configuration files
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="SetupTemplates.html">
+   Setup templates
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="CableModeling.html">
+   Cable modeling
   </a>
  </li>
 </ul>
@@ -499,31 +571,31 @@ This consists of a set of one or more 3D component objects, linked together and 
 to allow movements.</p>
 <table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="_autosummary/pyaedt.modeler.actors.Person.html#pyaedt.modeler.actors.Person" title="pyaedt.modeler.actors.Person"><code class="xref py py-obj docutils literal notranslate"><span class="pre">actors.Person</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="_autosummary/pyaedt.modeler.advanced_cad.actors.Person.html#pyaedt.modeler.advanced_cad.actors.Person" title="pyaedt.modeler.advanced_cad.actors.Person"><code class="xref py py-obj docutils literal notranslate"><span class="pre">actors.Person</span></code></a></p></td>
 <td><p>Provides an instance of a person.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="_autosummary/pyaedt.modeler.actors.Vehicle.html#pyaedt.modeler.actors.Vehicle" title="pyaedt.modeler.actors.Vehicle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">actors.Vehicle</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="_autosummary/pyaedt.modeler.advanced_cad.actors.Vehicle.html#pyaedt.modeler.advanced_cad.actors.Vehicle" title="pyaedt.modeler.advanced_cad.actors.Vehicle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">actors.Vehicle</span></code></a></p></td>
 <td><p>Provides an instance of a vehicle.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="_autosummary/pyaedt.modeler.actors.Bird.html#pyaedt.modeler.actors.Bird" title="pyaedt.modeler.actors.Bird"><code class="xref py py-obj docutils literal notranslate"><span class="pre">actors.Bird</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="_autosummary/pyaedt.modeler.advanced_cad.actors.Bird.html#pyaedt.modeler.advanced_cad.actors.Bird" title="pyaedt.modeler.advanced_cad.actors.Bird"><code class="xref py py-obj docutils literal notranslate"><span class="pre">actors.Bird</span></code></a></p></td>
 <td><p>Provides an instance of a bird.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="_autosummary/pyaedt.modeler.actors.Radar.html#pyaedt.modeler.actors.Radar" title="pyaedt.modeler.actors.Radar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">actors.Radar</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="_autosummary/pyaedt.modeler.advanced_cad.actors.Radar.html#pyaedt.modeler.advanced_cad.actors.Radar" title="pyaedt.modeler.advanced_cad.actors.Radar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">actors.Radar</span></code></a></p></td>
 <td><p>Manages the radar definition and placement in the HFSS design.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="_autosummary/pyaedt.modeler.parts.Part.html#pyaedt.modeler.parts.Part" title="pyaedt.modeler.parts.Part"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parts.Part</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="_autosummary/pyaedt.modeler.advanced_cad.parts.Part.html#pyaedt.modeler.advanced_cad.parts.Part" title="pyaedt.modeler.advanced_cad.parts.Part"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parts.Part</span></code></a></p></td>
 <td><p>Manages 3D component placement and definition.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="_autosummary/pyaedt.modeler.parts.Antenna.html#pyaedt.modeler.parts.Antenna" title="pyaedt.modeler.parts.Antenna"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parts.Antenna</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="_autosummary/pyaedt.modeler.advanced_cad.parts.Antenna.html#pyaedt.modeler.advanced_cad.parts.Antenna" title="pyaedt.modeler.advanced_cad.parts.Antenna"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parts.Antenna</span></code></a></p></td>
 <td><p>Manages antennas.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="_autosummary/pyaedt.modeler.multiparts.MultiPartComponent.html#pyaedt.modeler.multiparts.MultiPartComponent" title="pyaedt.modeler.multiparts.MultiPartComponent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">multiparts.MultiPartComponent</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="_autosummary/pyaedt.modeler.advanced_cad.multiparts.MultiPartComponent.html#pyaedt.modeler.advanced_cad.multiparts.MultiPartComponent" title="pyaedt.modeler.advanced_cad.multiparts.MultiPartComponent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">multiparts.MultiPartComponent</span></code></a></p></td>
 <td><p>Supports multi-part 3D components for HFSS SBR+.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="_autosummary/pyaedt.modeler.multiparts.Environment.html#pyaedt.modeler.multiparts.Environment" title="pyaedt.modeler.multiparts.Environment"><code class="xref py py-obj docutils literal notranslate"><span class="pre">multiparts.Environment</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="_autosummary/pyaedt.modeler.advanced_cad.multiparts.Environment.html#pyaedt.modeler.advanced_cad.multiparts.Environment" title="pyaedt.modeler.advanced_cad.multiparts.Environment"><code class="xref py py-obj docutils literal notranslate"><span class="pre">multiparts.Environment</span></code></a></p></td>
 <td><p>Supports multi-part 3D components without motion for HFSS SBR+.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="_autosummary/pyaedt.modeler.multiparts.Actor.html#pyaedt.modeler.multiparts.Actor" title="pyaedt.modeler.multiparts.Actor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">multiparts.Actor</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="_autosummary/pyaedt.modeler.advanced_cad.multiparts.Actor.html#pyaedt.modeler.advanced_cad.multiparts.Actor" title="pyaedt.modeler.advanced_cad.multiparts.Actor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">multiparts.Actor</span></code></a></p></td>
 <td><p>Provides an instance of an actor.</p></td>
 </tr>
 </tbody>

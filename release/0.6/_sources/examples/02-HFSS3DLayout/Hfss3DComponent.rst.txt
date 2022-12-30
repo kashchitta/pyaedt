@@ -22,14 +22,12 @@ HFSS: 3D Components
 -------------------
 This example shows how you can use PyAEDT to place 3D Components in Hfss and in Hfss 3D Layout.
 
-.. GENERATED FROM PYTHON SOURCE LINES 6-11
+.. GENERATED FROM PYTHON SOURCE LINES 6-9
 
 .. code-block:: default
 
-
-    from pyaedt import Hfss, Hfss3dLayout
     import os
-    from pyaedt.examples import download_file
+    import pyaedt
 
 
 
@@ -38,7 +36,7 @@ This example shows how you can use PyAEDT to place 3D Components in Hfss and in 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 12-17
+.. GENERATED FROM PYTHON SOURCE LINES 10-15
 
 Set non-graphical mode
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -46,7 +44,7 @@ Set non-graphical mode. ``"PYAEDT_NON_GRAPHICAL"`` is needed to generate
 documentation only.
 You can set ``non_graphical`` either to ``True`` or ``False``.
 
-.. GENERATED FROM PYTHON SOURCE LINES 17-20
+.. GENERATED FROM PYTHON SOURCE LINES 15-18
 
 .. code-block:: default
 
@@ -60,12 +58,12 @@ You can set ``non_graphical`` either to ``True`` or ``False``.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 21-23
+.. GENERATED FROM PYTHON SOURCE LINES 19-21
 
 Common Properties
 ~~~~~~~~~~~~~~~~~
 
-.. GENERATED FROM PYTHON SOURCE LINES 23-32
+.. GENERATED FROM PYTHON SOURCE LINES 21-30
 
 .. code-block:: default
 
@@ -85,17 +83,17 @@ Common Properties
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 33-36
+.. GENERATED FROM PYTHON SOURCE LINES 31-34
 
 3D Component Definition
 ~~~~~~~~~~~~~~~~~~~~~~~
 File to be used in the example
 
-.. GENERATED FROM PYTHON SOURCE LINES 36-39
+.. GENERATED FROM PYTHON SOURCE LINES 34-37
 
 .. code-block:: default
 
-    component3d = download_file("component_3d", "SMA_RF_Jack.a3dcomp",)
+    component3d = pyaedt.downloads.download_file("component_3d", "SMA_RF_Jack.a3dcomp",)
     component3d
 
 
@@ -111,25 +109,25 @@ File to be used in the example
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 40-44
+.. GENERATED FROM PYTHON SOURCE LINES 38-42
 
 Hfss Example
 ------------
 This example will create a stackup in Hfss place a 3d component, build a ground plane, a trace,
 create excitation and solve it in Hfss.
 
-.. GENERATED FROM PYTHON SOURCE LINES 47-50
+.. GENERATED FROM PYTHON SOURCE LINES 45-48
 
 Launch Hfss
 ~~~~~~~~~~~
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 50-55
+.. GENERATED FROM PYTHON SOURCE LINES 48-53
 
 .. code-block:: default
 
 
-    hfss = Hfss(new_desktop_session=True, specified_version="2022.2", non_graphical=non_graphical)
+    hfss = pyaedt.Hfss(new_desktop_session=True, specified_version="2022.2", non_graphical=non_graphical)
 
     hfss.solution_type = "Terminal"
 
@@ -140,13 +138,13 @@ Launch Hfss
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 56-59
+.. GENERATED FROM PYTHON SOURCE LINES 54-57
 
 Insert 3d Component
 ~~~~~~~~~~~~~~~~~~~
 To insert a 3d component we need to read parameters and then import in Hfss.
 
-.. GENERATED FROM PYTHON SOURCE LINES 59-64
+.. GENERATED FROM PYTHON SOURCE LINES 57-62
 
 .. code-block:: default
 
@@ -164,17 +162,17 @@ To insert a 3d component we need to read parameters and then import in Hfss.
  .. code-block:: none
 
 
-    <pyaedt.modeler.Object3d.UserDefinedComponent object at 0x0000022BD8E08610>
+    <pyaedt.modeler.cad.components_3d.UserDefinedComponent object at 0x000002817E19C250>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 65-68
+.. GENERATED FROM PYTHON SOURCE LINES 63-66
 
 Add a new Stackup
 ~~~~~~~~~~~~~~~~~
 Pyaedt has a Stackup class which allows to parametrize stacked structures.
 
-.. GENERATED FROM PYTHON SOURCE LINES 68-74
+.. GENERATED FROM PYTHON SOURCE LINES 66-72
 
 .. code-block:: default
 
@@ -191,13 +189,13 @@ Pyaedt has a Stackup class which allows to parametrize stacked structures.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 75-78
+.. GENERATED FROM PYTHON SOURCE LINES 73-76
 
 Define stackup extensions
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 Define stackup elevation and size. Defines also the stackup origin.
 
-.. GENERATED FROM PYTHON SOURCE LINES 78-86
+.. GENERATED FROM PYTHON SOURCE LINES 76-84
 
 .. code-block:: default
 
@@ -216,14 +214,14 @@ Define stackup elevation and size. Defines also the stackup origin.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 87-91
+.. GENERATED FROM PYTHON SOURCE LINES 85-89
 
 Padstack Definition
 ~~~~~~~~~~~~~~~~~~~
 Padstacks are needed to create a clearance around 3d component since
 intersections are not allowed. There will be 1 padstack for Gnd and 1 for pin.
 
-.. GENERATED FROM PYTHON SOURCE LINES 91-112
+.. GENERATED FROM PYTHON SOURCE LINES 89-110
 
 .. code-block:: default
 
@@ -257,17 +255,17 @@ intersections are not allowed. There will be 1 padstack for Gnd and 1 for pin.
  .. code-block:: none
 
 
-    <pyaedt.modeler.Object3d.Object3d object at 0x0000022BE2B18CD0>
+    <pyaedt.modeler.cad.object3d.Object3d object at 0x000002817DA39A00>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 113-116
+.. GENERATED FROM PYTHON SOURCE LINES 111-114
 
 Trace Definition
 ~~~~~~~~~~~~~~~~
 The trace will connect the pin to the port on layer L1.
 
-.. GENERATED FROM PYTHON SOURCE LINES 116-123
+.. GENERATED FROM PYTHON SOURCE LINES 114-121
 
 .. code-block:: default
 
@@ -285,13 +283,13 @@ The trace will connect the pin to the port on layer L1.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 124-127
+.. GENERATED FROM PYTHON SOURCE LINES 122-125
 
 Set Simulation Boundaries
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 Define regione and simulation boundaries.
 
-.. GENERATED FROM PYTHON SOURCE LINES 127-133
+.. GENERATED FROM PYTHON SOURCE LINES 125-131
 
 .. code-block:: default
 
@@ -310,17 +308,17 @@ Define regione and simulation boundaries.
  .. code-block:: none
 
 
-    <pyaedt.modules.Boundary.BoundaryObject object at 0x0000022BDC566790>
+    <pyaedt.modules.Boundary.BoundaryObject object at 0x000002817E098580>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 134-137
+.. GENERATED FROM PYTHON SOURCE LINES 132-135
 
 Create Setup
 ~~~~~~~~~~~~
 Iterations will be reduced to reduce simulation time.
 
-.. GENERATED FROM PYTHON SOURCE LINES 137-143
+.. GENERATED FROM PYTHON SOURCE LINES 135-141
 
 .. code-block:: default
 
@@ -337,12 +335,12 @@ Iterations will be reduced to reduce simulation time.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 144-146
+.. GENERATED FROM PYTHON SOURCE LINES 142-144
 
 Solve Setup
 ~~~~~~~~~~~
 
-.. GENERATED FROM PYTHON SOURCE LINES 146-150
+.. GENERATED FROM PYTHON SOURCE LINES 144-148
 
 .. code-block:: default
 
@@ -363,12 +361,12 @@ Solve Setup
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 151-153
+.. GENERATED FROM PYTHON SOURCE LINES 149-151
 
 Plot results
 ~~~~~~~~~~~~
 
-.. GENERATED FROM PYTHON SOURCE LINES 153-158
+.. GENERATED FROM PYTHON SOURCE LINES 151-156
 
 .. code-block:: default
 
@@ -395,25 +393,25 @@ Plot results
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 159-163
+.. GENERATED FROM PYTHON SOURCE LINES 157-161
 
 Hfss 3D Layout Example
 ----------------------
 Previous example will be repeated this time in Hfss 3d Layout.
 Small differences are expected in layout but results should be similar.
 
-.. GENERATED FROM PYTHON SOURCE LINES 166-169
+.. GENERATED FROM PYTHON SOURCE LINES 164-167
 
 Launch Hfss3dLayout
 ~~~~~~~~~~~~~~~~~~~
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 169-172
+.. GENERATED FROM PYTHON SOURCE LINES 167-170
 
 .. code-block:: default
 
 
-    h3d = Hfss3dLayout(new_desktop_session=new_session, specified_version=desktop_version)
+    h3d = pyaedt.Hfss3dLayout(new_desktop_session=new_session, specified_version=desktop_version)
 
 
 
@@ -422,13 +420,13 @@ Launch Hfss3dLayout
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 173-176
+.. GENERATED FROM PYTHON SOURCE LINES 171-174
 
 Add stackup layers
 ~~~~~~~~~~~~~~~~~~
 Add stackup layers.
 
-.. GENERATED FROM PYTHON SOURCE LINES 176-181
+.. GENERATED FROM PYTHON SOURCE LINES 174-179
 
 .. code-block:: default
 
@@ -446,16 +444,16 @@ Add stackup layers.
  .. code-block:: none
 
 
-    <pyaedt.modules.LayerStackup.Layer object at 0x0000022BE65AB640>
+    <pyaedt.modules.LayerStackup.Layer object at 0x000002812BC2B2B0>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 182-184
+.. GENERATED FROM PYTHON SOURCE LINES 180-182
 
 Place 3d Component
 ~~~~~~~~~~~~~~~~~~
 
-.. GENERATED FROM PYTHON SOURCE LINES 184-189
+.. GENERATED FROM PYTHON SOURCE LINES 182-187
 
 .. code-block:: default
 
@@ -471,13 +469,13 @@ Place 3d Component
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 190-193
+.. GENERATED FROM PYTHON SOURCE LINES 188-191
 
 Create signal net and ground planes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Create a signal net and ground planes.
 
-.. GENERATED FROM PYTHON SOURCE LINES 193-199
+.. GENERATED FROM PYTHON SOURCE LINES 191-197
 
 .. code-block:: default
 
@@ -496,17 +494,17 @@ Create a signal net and ground planes.
  .. code-block:: none
 
 
-    <pyaedt.modules.Boundary.BoundaryObject3dLayout object at 0x0000022BE659D2E0>
+    <pyaedt.modules.Boundary.BoundaryObject3dLayout object at 0x000002812BC2BAF0>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 200-203
+.. GENERATED FROM PYTHON SOURCE LINES 198-201
 
 Create void on Ground plane for pin
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 203-205
+.. GENERATED FROM PYTHON SOURCE LINES 201-203
 
 .. code-block:: default
 
@@ -521,17 +519,17 @@ Create void on Ground plane for pin
  .. code-block:: none
 
 
-    <pyaedt.modeler.object3dlayout.Circle3dLayout object at 0x0000022BB017D040>
+    <pyaedt.modeler.pcb.object3dlayout.Circle3dLayout object at 0x000002812BC2BD60>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 206-209
+.. GENERATED FROM PYTHON SOURCE LINES 204-207
 
 Create Setup
 ~~~~~~~~~~~~
 Iterations will be reduced to reduce simulation time.
 
-.. GENERATED FROM PYTHON SOURCE LINES 209-219
+.. GENERATED FROM PYTHON SOURCE LINES 207-217
 
 .. code-block:: default
 
@@ -552,12 +550,12 @@ Iterations will be reduced to reduce simulation time.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 220-222
+.. GENERATED FROM PYTHON SOURCE LINES 218-220
 
 Solve Setup
 ~~~~~~~~~~~
 
-.. GENERATED FROM PYTHON SOURCE LINES 222-225
+.. GENERATED FROM PYTHON SOURCE LINES 220-223
 
 .. code-block:: default
 
@@ -577,12 +575,12 @@ Solve Setup
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 226-228
+.. GENERATED FROM PYTHON SOURCE LINES 224-226
 
 Plot results
 ~~~~~~~~~~~~
 
-.. GENERATED FROM PYTHON SOURCE LINES 228-235
+.. GENERATED FROM PYTHON SOURCE LINES 226-233
 
 .. code-block:: default
 
@@ -614,7 +612,7 @@ Plot results
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 3 minutes  31.148 seconds)
+   **Total running time of the script:** ( 3 minutes  33.374 seconds)
 
 
 .. _sphx_glr_download_examples_02-HFSS3DLayout_Hfss3DComponent.py:

@@ -29,16 +29,13 @@ Perform required imports
 ~~~~~~~~~~~~~~~~~~~~~~~~
 Perform required imports.
 
-.. GENERATED FROM PYTHON SOURCE LINES 12-19
+.. GENERATED FROM PYTHON SOURCE LINES 12-17
 
 .. code-block:: default
 
 
     import os
-    import tempfile
-    import shutil
-    from pyaedt import examples, generate_unique_folder_name
-    from pyaedt import Icepak
+    import pyaedt
 
 
 
@@ -47,7 +44,8 @@ Perform required imports.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 20-25
+
+.. GENERATED FROM PYTHON SOURCE LINES 18-23
 
 Set non-graphical mode
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -55,7 +53,7 @@ Set non-graphical mode. ``"PYAEDT_NON_GRAPHICAL"`` is needed to generate
 documentation only.
 You can set ``non_graphical`` either to ``True`` or ``False``.
 
-.. GENERATED FROM PYTHON SOURCE LINES 25-28
+.. GENERATED FROM PYTHON SOURCE LINES 23-26
 
 .. code-block:: default
 
@@ -69,22 +67,27 @@ You can set ``non_graphical`` either to ``True`` or ``False``.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 29-32
+.. GENERATED FROM PYTHON SOURCE LINES 27-30
 
 Download and open project
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 Download the project, open it, and save it to the temporary folder.
 
-.. GENERATED FROM PYTHON SOURCE LINES 32-40
+.. GENERATED FROM PYTHON SOURCE LINES 30-43
 
 .. code-block:: default
 
 
-    temp_folder = generate_unique_folder_name()
-    project_temp_name = examples.download_icepak(temp_folder)
+    temp_folder = pyaedt.generate_unique_folder_name()
+    project_temp_name = pyaedt.downloads.download_icepak(temp_folder)
 
 
-    ipk = Icepak(project_temp_name, specified_version="2022.2", new_desktop_session=True, non_graphical=non_graphical)
+    ipk = pyaedt.Icepak(project_temp_name,
+                        specified_version="2022.2",
+                        new_desktop_session=True,
+                        non_graphical=non_graphical
+                        )
+
     ipk.autosave_disable()
 
 
@@ -100,13 +103,13 @@ Download the project, open it, and save it to the temporary folder.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 41-44
+.. GENERATED FROM PYTHON SOURCE LINES 44-47
 
 Plot model
 ~~~~~~~~~~
 Plot the model.
 
-.. GENERATED FROM PYTHON SOURCE LINES 44-47
+.. GENERATED FROM PYTHON SOURCE LINES 47-50
 
 .. code-block:: default
 
@@ -127,17 +130,17 @@ Plot the model.
  .. code-block:: none
 
 
-    <pyaedt.generic.plot.ModelPlotter object at 0x0000022BE597B610>
+    <pyaedt.generic.plot.ModelPlotter object at 0x0000028129F70970>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 48-51
+.. GENERATED FROM PYTHON SOURCE LINES 51-54
 
 Create source blocks
 ~~~~~~~~~~~~~~~~~~~~
 Create source blocks on the CPU and memories.
 
-.. GENERATED FROM PYTHON SOURCE LINES 51-55
+.. GENERATED FROM PYTHON SOURCE LINES 54-58
 
 .. code-block:: default
 
@@ -154,17 +157,17 @@ Create source blocks on the CPU and memories.
  .. code-block:: none
 
 
-    <pyaedt.modules.Boundary.BoundaryObject object at 0x0000022BB420D4C0>
+    <pyaedt.modules.Boundary.BoundaryObject object at 0x000002812D229910>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 56-59
+.. GENERATED FROM PYTHON SOURCE LINES 59-62
 
 Assign openings and grille
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 Assign openings and a grille.
 
-.. GENERATED FROM PYTHON SOURCE LINES 59-64
+.. GENERATED FROM PYTHON SOURCE LINES 62-67
 
 .. code-block:: default
 
@@ -182,17 +185,17 @@ Assign openings and a grille.
  .. code-block:: none
 
 
-    <pyaedt.modules.Boundary.BoundaryObject object at 0x0000022BB420D370>
+    <pyaedt.modules.Boundary.BoundaryObject object at 0x0000028120E3AEB0>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 65-68
+.. GENERATED FROM PYTHON SOURCE LINES 68-71
 
 Assign mesh regions
 ~~~~~~~~~~~~~~~~~~~
 Assign a mesh region to the heat sink and CPU.
 
-.. GENERATED FROM PYTHON SOURCE LINES 68-77
+.. GENERATED FROM PYTHON SOURCE LINES 71-80
 
 .. code-block:: default
 
@@ -218,13 +221,13 @@ Assign a mesh region to the heat sink and CPU.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 78-81
+.. GENERATED FROM PYTHON SOURCE LINES 81-84
 
 Assign point monitor
 ~~~~~~~~~~~~~~~~~~~~
 Assign a point monitor and set it up.
 
-.. GENERATED FROM PYTHON SOURCE LINES 81-91
+.. GENERATED FROM PYTHON SOURCE LINES 84-94
 
 .. code-block:: default
 
@@ -251,13 +254,13 @@ Assign a point monitor and set it up.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 92-95
+.. GENERATED FROM PYTHON SOURCE LINES 95-98
 
 Solve project and postprocess
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Solve the project and plot temperatures.
 
-.. GENERATED FROM PYTHON SOURCE LINES 95-107
+.. GENERATED FROM PYTHON SOURCE LINES 98-110
 
 .. code-block:: default
 
@@ -286,13 +289,13 @@ Solve the project and plot temperatures.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 108-111
+.. GENERATED FROM PYTHON SOURCE LINES 111-114
 
 Release AEDT
 ~~~~~~~~~~~~
 Release AEDT.
 
-.. GENERATED FROM PYTHON SOURCE LINES 111-113
+.. GENERATED FROM PYTHON SOURCE LINES 114-116
 
 .. code-block:: default
 
@@ -314,7 +317,7 @@ Release AEDT.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 1 minutes  54.832 seconds)
+   **Total running time of the script:** ( 1 minutes  58.781 seconds)
 
 
 .. _sphx_glr_download_examples_04-Icepak_Icepak_Example.py:

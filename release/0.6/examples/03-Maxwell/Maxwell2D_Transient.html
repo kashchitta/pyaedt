@@ -33,6 +33,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
 
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
@@ -111,7 +112,13 @@
 
 <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="../../API/index.html">
-  API reference
+  API AEDT reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../EDBAPI/index.html">
+  API EDB reference
  </a>
 </li>
 
@@ -203,7 +210,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.40 variable.
+            // this version, rather than using sphinx's 0.6.42 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -846,8 +853,7 @@ used in this example:</p>
 <h2>Perform required imports<a class="headerlink" href="#perform-required-imports" title="Permalink to this heading">#</a></h2>
 <p>Perform required imports.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">from</span> <span class="nn">pyaedt</span> <span class="kn">import</span> <span class="n">Maxwell2d</span>
-<span class="kn">from</span> <span class="nn">pyaedt</span> <span class="kn">import</span> <span class="n">generate_unique_project_name</span>
+<span class="kn">import</span> <span class="nn">pyaedt</span>
 </pre></div>
 </div>
 </section>
@@ -863,8 +869,8 @@ You can set <code class="docutils literal notranslate"><span class="pre">non_gra
 <section id="insert-maxwell-2d-design-and-save-project">
 <h2>Insert Maxwell 2D design and save project<a class="headerlink" href="#insert-maxwell-2d-design-and-save-project" title="Permalink to this heading">#</a></h2>
 <p>Insert a Maxwell 2D design and save the project.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">maxwell_2d</span> <span class="o">=</span> <span class="n">Maxwell2d</span><span class="p">(</span><span class="n">solution_type</span><span class="o">=</span><span class="s2">&quot;TransientXY&quot;</span><span class="p">,</span> <span class="n">specified_version</span><span class="o">=</span><span class="s2">&quot;2022.2&quot;</span><span class="p">,</span> <a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a><span class="o">=</span><a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a><span class="p">,</span>
-                       <span class="n">new_desktop_session</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">projectname</span><span class="o">=</span><span class="n">generate_unique_project_name</span><span class="p">())</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">maxwell_2d</span> <span class="o">=</span> <span class="n">pyaedt</span><span class="o">.</span><span class="n">Maxwell2d</span><span class="p">(</span><span class="n">solution_type</span><span class="o">=</span><span class="s2">&quot;TransientXY&quot;</span><span class="p">,</span> <span class="n">specified_version</span><span class="o">=</span><span class="s2">&quot;2022.2&quot;</span><span class="p">,</span> <a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a><span class="o">=</span><a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a><span class="p">,</span>
+                       <span class="n">new_desktop_session</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">projectname</span><span class="o">=</span><span class="n">pyaedt</span><span class="o">.</span><span class="n">generate_unique_project_name</span><span class="p">())</span>
 </pre></div>
 </div>
 </section>
@@ -891,7 +897,7 @@ You can set <code class="docutils literal notranslate"><span class="pre">non_gra
 <span class="n">maxwell_2d</span><span class="o">.</span><span class="n">assign_balloon</span><span class="p">(</span><span class="n">region</span><span class="o">.</span><span class="n">edges</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modules.Boundary.BoundaryObject object at 0x0000022BD3DA06D0&gt;
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modules.Boundary.BoundaryObject object at 0x000002812C288940&gt;
 </pre></div>
 </div>
 </section>
@@ -901,7 +907,7 @@ You can set <code class="docutils literal notranslate"><span class="pre">non_gra
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">maxwell_2d</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">export_path</span><span class="o">=</span><a href="https://docs.python.org/dev/library/os.path.html#os.path.join" title="os.path.join" class="sphx-glr-backref-module-os-path sphx-glr-backref-type-py-function"><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span></a><span class="p">(</span><span class="n">maxwell_2d</span><span class="o">.</span><span class="n">working_directory</span><span class="p">,</span> <span class="s2">&quot;Image.jpg&quot;</span><span class="p">),</span> <span class="n">plot_air_objects</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_Maxwell2D_Transient_001.png" srcset="../../_images/sphx_glr_Maxwell2D_Transient_001.png" alt="Maxwell2D Transient" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.generic.plot.ModelPlotter object at 0x0000022BDAEB7550&gt;
+<img src="../../_images/sphx_glr_Maxwell2D_Transient_001.png" srcset="../../_images/sphx_glr_Maxwell2D_Transient_001.png" alt="Maxwell2D Transient" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.generic.plot.ModelPlotter object at 0x000002812C288BB0&gt;
 </pre></div>
 </div>
 </section>
@@ -926,7 +932,7 @@ You can set <code class="docutils literal notranslate"><span class="pre">non_gra
 <span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modules.report_templates.Standard object at 0x0000022B815C61C0&gt;
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modules.report_templates.Standard object at 0x000002812A067730&gt;
 </pre></div>
 </div>
 </section>
@@ -993,7 +999,7 @@ You can set <code class="docutils literal notranslate"><span class="pre">non_gra
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>True
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  39.844 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  39.774 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-03-maxwell-maxwell2d-transient-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/38cf371f204fc873b69798fddc2da554/Maxwell2D_Transient.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">Maxwell2D_Transient.py</span></code></a></p>

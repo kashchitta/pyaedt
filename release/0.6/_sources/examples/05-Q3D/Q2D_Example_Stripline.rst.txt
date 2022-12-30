@@ -29,15 +29,13 @@ Perform required imports
 ~~~~~~~~~~~~~~~~~~~~~~~~
 Perform required imports.
 
-.. GENERATED FROM PYTHON SOURCE LINES 11-18
+.. GENERATED FROM PYTHON SOURCE LINES 11-15
 
 .. code-block:: default
 
 
     import os
-
-    from pyaedt import Q2d
-    from pyaedt.generic.general_methods import generate_unique_project_name
+    import pyaedt
 
 
 
@@ -46,8 +44,7 @@ Perform required imports.
 
 
 
-
-.. GENERATED FROM PYTHON SOURCE LINES 19-24
+.. GENERATED FROM PYTHON SOURCE LINES 16-21
 
 Set non-graphical mode
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -55,14 +52,14 @@ Set non-graphical mode. ``"PYAEDT_NON_GRAPHICAL"`` is needed to generate
 documentation only.
 You can set ``non_graphical`` either to ``True`` or ``False``.
 
-.. GENERATED FROM PYTHON SOURCE LINES 24-29
+.. GENERATED FROM PYTHON SOURCE LINES 21-26
 
 .. code-block:: default
 
 
     non_graphical = os.getenv("PYAEDT_NON_GRAPHICAL", "False").lower() in ("true", "1", "t")
 
-    project_path = generate_unique_project_name()
+    project_path = pyaedt.generate_unique_project_name()
 
 
 
@@ -71,20 +68,24 @@ You can set ``non_graphical`` either to ``True`` or ``False``.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 30-34
+.. GENERATED FROM PYTHON SOURCE LINES 27-31
 
 Launch AEDT and 2D Extractor
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Launch AEDT 2022 R2 in graphical mode and launch 2D Extractor. This example
 uses SI units.
 
-.. GENERATED FROM PYTHON SOURCE LINES 34-38
+.. GENERATED FROM PYTHON SOURCE LINES 31-39
 
 .. code-block:: default
 
 
-    q = Q2d(projectname=project_path, designname="differential_stripline",
-            specified_version="2022.2", non_graphical=non_graphical, new_desktop_session=True)
+    q = pyaedt.Q2d(projectname=project_path,
+                   designname="differential_stripline",
+                   specified_version="2022.2",
+                   non_graphical=non_graphical,
+                   new_desktop_session=True
+                   )
 
 
 
@@ -93,13 +94,13 @@ uses SI units.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 39-42
+.. GENERATED FROM PYTHON SOURCE LINES 40-43
 
 Define variables
 ~~~~~~~~~~~~~~~~
 Define variables.
 
-.. GENERATED FROM PYTHON SOURCE LINES 42-70
+.. GENERATED FROM PYTHON SOURCE LINES 43-71
 
 .. code-block:: default
 
@@ -138,13 +139,13 @@ Define variables.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 71-74
+.. GENERATED FROM PYTHON SOURCE LINES 72-75
 
 Create primitives
 ~~~~~~~~~~~~~~~~~
 Create primitives and define the layer heights.
 
-.. GENERATED FROM PYTHON SOURCE LINES 74-82
+.. GENERATED FROM PYTHON SOURCE LINES 75-83
 
 .. code-block:: default
 
@@ -163,13 +164,13 @@ Create primitives and define the layer heights.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 83-86
+.. GENERATED FROM PYTHON SOURCE LINES 84-87
 
 Create positive signal
 ~~~~~~~~~~~~~~~~~~~~~~
 Create a positive signal.
 
-.. GENERATED FROM PYTHON SOURCE LINES 86-103
+.. GENERATED FROM PYTHON SOURCE LINES 87-104
 
 .. code-block:: default
 
@@ -203,13 +204,13 @@ Create a positive signal.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 104-107
+.. GENERATED FROM PYTHON SOURCE LINES 105-108
 
 Create coplanar ground
 ~~~~~~~~~~~~~~~~~~~~~~
 Create a coplanar ground.
 
-.. GENERATED FROM PYTHON SOURCE LINES 107-119
+.. GENERATED FROM PYTHON SOURCE LINES 108-120
 
 .. code-block:: default
 
@@ -238,13 +239,13 @@ Create a coplanar ground.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 120-123
+.. GENERATED FROM PYTHON SOURCE LINES 121-124
 
 Create reference ground plane
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Create a reference ground plane.
 
-.. GENERATED FROM PYTHON SOURCE LINES 123-127
+.. GENERATED FROM PYTHON SOURCE LINES 124-128
 
 .. code-block:: default
 
@@ -261,17 +262,17 @@ Create a reference ground plane.
  .. code-block:: none
 
 
-    <pyaedt.modeler.Object3d.Object3d object at 0x0000022BB4219250>
+    <pyaedt.modeler.cad.object3d.Object3d object at 0x000002812C4AB910>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 128-131
+.. GENERATED FROM PYTHON SOURCE LINES 129-132
 
 Create dielectric
 ~~~~~~~~~~~~~~~~~
 Create a dielectric.
 
-.. GENERATED FROM PYTHON SOURCE LINES 131-142
+.. GENERATED FROM PYTHON SOURCE LINES 132-143
 
 .. code-block:: default
 
@@ -295,17 +296,17 @@ Create a dielectric.
  .. code-block:: none
 
 
-    <pyaedt.modeler.Object3d.Object3d object at 0x0000022BB3FA1D00>
+    <pyaedt.modeler.cad.object3d.Object3d object at 0x000002812D2290D0>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 143-146
+.. GENERATED FROM PYTHON SOURCE LINES 144-147
 
 Assign conductors
 ~~~~~~~~~~~~~~~~~
 Assign conductors to the signal.
 
-.. GENERATED FROM PYTHON SOURCE LINES 146-157
+.. GENERATED FROM PYTHON SOURCE LINES 147-158
 
 .. code-block:: default
 
@@ -329,17 +330,17 @@ Assign conductors to the signal.
  .. code-block:: none
 
 
-    <pyaedt.modules.Boundary.BoundaryObject object at 0x0000022BCFDA39D0>
+    <pyaedt.modules.Boundary.BoundaryObject object at 0x000002812324AD00>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 158-161
+.. GENERATED FROM PYTHON SOURCE LINES 159-162
 
 Create reference ground
 ~~~~~~~~~~~~~~~~~~~~~~~
 Create a reference ground.
 
-.. GENERATED FROM PYTHON SOURCE LINES 161-167
+.. GENERATED FROM PYTHON SOURCE LINES 162-168
 
 .. code-block:: default
 
@@ -358,17 +359,17 @@ Create a reference ground.
  .. code-block:: none
 
 
-    <pyaedt.modules.Boundary.BoundaryObject object at 0x0000022BD8DA4BB0>
+    <pyaedt.modules.Boundary.BoundaryObject object at 0x000002812C4AB460>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 168-171
+.. GENERATED FROM PYTHON SOURCE LINES 169-172
 
 Assign Huray model on signals
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Assign the Huray model on the signals.
 
-.. GENERATED FROM PYTHON SOURCE LINES 171-178
+.. GENERATED FROM PYTHON SOURCE LINES 172-179
 
 .. code-block:: default
 
@@ -388,17 +389,17 @@ Assign the Huray model on the signals.
  .. code-block:: none
 
 
-    <pyaedt.modules.Boundary.BoundaryObject object at 0x0000022BB42B94C0>
+    <pyaedt.modules.Boundary.BoundaryObject object at 0x000002812C4F48B0>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 179-182
+.. GENERATED FROM PYTHON SOURCE LINES 180-183
 
 Define differential pair
 ~~~~~~~~~~~~~~~~~~~~~~~~
 Define the differential pair.
 
-.. GENERATED FROM PYTHON SOURCE LINES 182-185
+.. GENERATED FROM PYTHON SOURCE LINES 183-186
 
 .. code-block:: default
 
@@ -412,13 +413,13 @@ Define the differential pair.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 186-189
+.. GENERATED FROM PYTHON SOURCE LINES 187-190
 
 Create setup, analyze, and plot
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Create a setup, analyze, and plot solution data.
 
-.. GENERATED FROM PYTHON SOURCE LINES 189-215
+.. GENERATED FROM PYTHON SOURCE LINES 190-216
 
 .. code-block:: default
 
@@ -466,13 +467,13 @@ Create a setup, analyze, and plot solution data.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 216-219
+.. GENERATED FROM PYTHON SOURCE LINES 217-220
 
 Save project and release AEDT
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Save the project and release AEDT.
 
-.. GENERATED FROM PYTHON SOURCE LINES 219-221
+.. GENERATED FROM PYTHON SOURCE LINES 220-222
 
 .. code-block:: default
 
@@ -494,7 +495,7 @@ Save the project and release AEDT.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 3 minutes  14.810 seconds)
+   **Total running time of the script:** ( 3 minutes  19.947 seconds)
 
 
 .. _sphx_glr_download_examples_05-Q3D_Q2D_Example_Stripline.py:

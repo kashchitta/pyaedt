@@ -29,15 +29,13 @@ Perform required imports
 ~~~~~~~~~~~~~~~~~~~~~~~~
 Perform required imports.
 
-.. GENERATED FROM PYTHON SOURCE LINES 11-18
+.. GENERATED FROM PYTHON SOURCE LINES 11-16
 
 .. code-block:: default
 
 
     import os
-
-    from pyaedt import Q2d, Desktop
-    from pyaedt.generic.general_methods import generate_unique_name
+    import pyaedt
 
 
 
@@ -47,7 +45,7 @@ Perform required imports.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 19-24
+.. GENERATED FROM PYTHON SOURCE LINES 17-22
 
 Set non-graphical mode
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -55,7 +53,7 @@ Set non-graphical mode. ``"PYAEDT_NON_GRAPHICAL"`` is needed to generate
 documentation only.
 You can set ``non_graphical`` either to ``True`` or ``False``.
 
-.. GENERATED FROM PYTHON SOURCE LINES 24-27
+.. GENERATED FROM PYTHON SOURCE LINES 22-25
 
 .. code-block:: default
 
@@ -69,20 +67,23 @@ You can set ``non_graphical`` either to ``True`` or ``False``.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 28-32
+.. GENERATED FROM PYTHON SOURCE LINES 26-30
 
 Launch AEDT and 2D Extractor
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Launch AEDT 2022 R2 in graphical mode and launch 2D Extractor. This example
 uses SI units.
 
-.. GENERATED FROM PYTHON SOURCE LINES 32-36
+.. GENERATED FROM PYTHON SOURCE LINES 30-37
 
 .. code-block:: default
 
 
-    q = Q2d(specified_version="2022.2", non_graphical=non_graphical, new_desktop_session=True,
-            projectname=generate_unique_name("pyaedt_q2d_example"), designname="coplanar_waveguide")
+    q = pyaedt.Q2d(specified_version="2022.2",
+                   non_graphical=non_graphical,
+                   new_desktop_session=True,
+                   projectname=pyaedt.generate_unique_name("pyaedt_q2d_example"),
+                   designname="coplanar_waveguide")
 
 
 
@@ -91,13 +92,13 @@ uses SI units.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 37-40
+.. GENERATED FROM PYTHON SOURCE LINES 38-41
 
 Define variables
 ~~~~~~~~~~~~~~~~
 Define variables.
 
-.. GENERATED FROM PYTHON SOURCE LINES 40-65
+.. GENERATED FROM PYTHON SOURCE LINES 41-66
 
 .. code-block:: default
 
@@ -133,13 +134,13 @@ Define variables.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 66-69
+.. GENERATED FROM PYTHON SOURCE LINES 67-70
 
 Create primitives
 ~~~~~~~~~~~~~~~~~
 Create primitives and define the layer heights.
 
-.. GENERATED FROM PYTHON SOURCE LINES 69-75
+.. GENERATED FROM PYTHON SOURCE LINES 70-76
 
 .. code-block:: default
 
@@ -156,13 +157,13 @@ Create primitives and define the layer heights.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 76-79
+.. GENERATED FROM PYTHON SOURCE LINES 77-80
 
 Create signal
 ~~~~~~~~~~~~~
 Create a signal.
 
-.. GENERATED FROM PYTHON SOURCE LINES 79-86
+.. GENERATED FROM PYTHON SOURCE LINES 80-87
 
 .. code-block:: default
 
@@ -186,13 +187,13 @@ Create a signal.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 87-90
+.. GENERATED FROM PYTHON SOURCE LINES 88-91
 
 Create coplanar ground
 ~~~~~~~~~~~~~~~~~~~~~~
 Create a coplanar ground.
 
-.. GENERATED FROM PYTHON SOURCE LINES 90-102
+.. GENERATED FROM PYTHON SOURCE LINES 91-103
 
 .. code-block:: default
 
@@ -221,13 +222,13 @@ Create a coplanar ground.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 103-106
+.. GENERATED FROM PYTHON SOURCE LINES 104-107
 
 Create reference ground plane
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Create a reference ground plane.
 
-.. GENERATED FROM PYTHON SOURCE LINES 106-109
+.. GENERATED FROM PYTHON SOURCE LINES 107-110
 
 .. code-block:: default
 
@@ -243,17 +244,17 @@ Create a reference ground plane.
  .. code-block:: none
 
 
-    <pyaedt.modeler.Object3d.Object3d object at 0x0000022B819550D0>
+    <pyaedt.modeler.cad.object3d.Object3d object at 0x000002812C9C2880>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 110-113
+.. GENERATED FROM PYTHON SOURCE LINES 111-114
 
 Create dielectric
 ~~~~~~~~~~~~~~~~~
 Create a dielectric.
 
-.. GENERATED FROM PYTHON SOURCE LINES 113-118
+.. GENERATED FROM PYTHON SOURCE LINES 114-119
 
 .. code-block:: default
 
@@ -271,17 +272,17 @@ Create a dielectric.
  .. code-block:: none
 
 
-    <pyaedt.modeler.Object3d.Object3d object at 0x0000022BE5A0CC70>
+    <pyaedt.modeler.cad.object3d.Object3d object at 0x000002812C9C2BB0>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 119-122
+.. GENERATED FROM PYTHON SOURCE LINES 120-123
 
 Create conformal coating
 ~~~~~~~~~~~~~~~~~~~~~~~~
 Create a conformal coating.
 
-.. GENERATED FROM PYTHON SOURCE LINES 122-148
+.. GENERATED FROM PYTHON SOURCE LINES 123-149
 
 .. code-block:: default
 
@@ -318,13 +319,13 @@ Create a conformal coating.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 149-152
+.. GENERATED FROM PYTHON SOURCE LINES 150-153
 
 Assign conductor
 ~~~~~~~~~~~~~~~~
 Assign a conductor to the signal.
 
-.. GENERATED FROM PYTHON SOURCE LINES 152-158
+.. GENERATED FROM PYTHON SOURCE LINES 153-159
 
 .. code-block:: default
 
@@ -343,17 +344,17 @@ Assign a conductor to the signal.
  .. code-block:: none
 
 
-    <pyaedt.modules.Boundary.BoundaryObject object at 0x0000022BB3FA0340>
+    <pyaedt.modules.Boundary.BoundaryObject object at 0x000002812C4F4A60>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 159-162
+.. GENERATED FROM PYTHON SOURCE LINES 160-163
 
 Create reference ground
 ~~~~~~~~~~~~~~~~~~~~~~~
 Create a reference ground.
 
-.. GENERATED FROM PYTHON SOURCE LINES 162-168
+.. GENERATED FROM PYTHON SOURCE LINES 163-169
 
 .. code-block:: default
 
@@ -372,17 +373,17 @@ Create a reference ground.
  .. code-block:: none
 
 
-    <pyaedt.modules.Boundary.BoundaryObject object at 0x0000022BE5A0C310>
+    <pyaedt.modules.Boundary.BoundaryObject object at 0x000002812C4F4460>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 169-172
+.. GENERATED FROM PYTHON SOURCE LINES 170-173
 
 Assign Huray model on signal
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Assign the Huray model on the signal.
 
-.. GENERATED FROM PYTHON SOURCE LINES 172-176
+.. GENERATED FROM PYTHON SOURCE LINES 173-177
 
 .. code-block:: default
 
@@ -399,17 +400,17 @@ Assign the Huray model on the signal.
  .. code-block:: none
 
 
-    <pyaedt.modules.Boundary.BoundaryObject object at 0x0000022BD0135310>
+    <pyaedt.modules.Boundary.BoundaryObject object at 0x000002812C9BCA00>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 177-180
+.. GENERATED FROM PYTHON SOURCE LINES 178-181
 
 Create setup, analyze, and plot
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Create the setup, analyze it, and plot solution data.
 
-.. GENERATED FROM PYTHON SOURCE LINES 180-199
+.. GENERATED FROM PYTHON SOURCE LINES 181-200
 
 .. code-block:: default
 
@@ -450,13 +451,13 @@ Create the setup, analyze it, and plot solution data.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 200-203
+.. GENERATED FROM PYTHON SOURCE LINES 201-204
 
 Save project and close AEDT
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Save the project and close AEDT.
 
-.. GENERATED FROM PYTHON SOURCE LINES 203-207
+.. GENERATED FROM PYTHON SOURCE LINES 204-208
 
 .. code-block:: default
 
@@ -480,7 +481,7 @@ Save the project and close AEDT.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  35.532 seconds)
+   **Total running time of the script:** ( 0 minutes  36.471 seconds)
 
 
 .. _sphx_glr_download_examples_05-Q3D_Q2D_Example_CPWG.py:

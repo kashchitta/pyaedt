@@ -33,6 +33,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
 
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
@@ -111,7 +112,13 @@
 
 <li class="toctree-l1 current active nav-item">
  <a class="reference internal nav-link" href="../index.html">
-  API reference
+  API AEDT reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../EDBAPI/index.html">
+  API EDB reference
  </a>
 </li>
 
@@ -203,7 +210,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.40 variable.
+            // this version, rather than using sphinx's 0.6.42 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -273,7 +280,7 @@ function checkPageExistsAndRedirect(event) {
         <li class="nav-item nav-item-0"><a href="../../index.html">PyAEDT</a> » </li>
     
 
-          <li class="nav-item nav-item-1"><a href="../index.html" >API reference</a> » </li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >API AEDT reference</a> » </li>
           <li class="nav-item nav-item-2"><a href="../Application.html" >AEDT apps</a> » </li>
           <li class="nav-item nav-item-3"><a href="pyaedt.maxwell.Maxwell3d.html" accesskey="U">pyaedt.maxwell.Maxwell3d</a> » </li>
         <li class="nav-item nav-item-this"><a href="">omodelsetup</a></li> 
@@ -298,16 +305,6 @@ function checkPageExistsAndRedirect(event) {
   <div class="bd-toc-item active">
     
     <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../Common.html">
-   Desktop and common classes
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../CoreEdb.html">
-   EDB editor
-  </a>
- </li>
  <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="../Application.html">
    AEDT apps
@@ -904,6 +901,11 @@ function checkPageExistsAndRedirect(event) {
       </a>
      </li>
      <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.maxwell.Maxwell3d.heal_objects.html">
+       heal_objects
+      </a>
+     </li>
+     <li class="toctree-l3">
       <a class="reference internal" href="pyaedt.maxwell.Maxwell3d.hidden_variable.html">
        hidden_variable
       </a>
@@ -1011,6 +1013,11 @@ function checkPageExistsAndRedirect(event) {
      <li class="toctree-l3">
       <a class="reference internal" href="pyaedt.maxwell.Maxwell3d.setup_y_connection.html">
        setup_y_connection
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.maxwell.Maxwell3d.simplify_objects.html">
+       simplify_objects
       </a>
      </li>
      <li class="toctree-l3">
@@ -1369,6 +1376,11 @@ function checkPageExistsAndRedirect(event) {
       </a>
      </li>
      <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.maxwell.Maxwell3d.settings.html">
+       settings
+      </a>
+     </li>
+     <li class="toctree-l3">
       <a class="reference internal" href="pyaedt.maxwell.Maxwell3d.setup_names.html">
        setup_names
       </a>
@@ -1456,6 +1468,11 @@ function checkPageExistsAndRedirect(event) {
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.maxwellcircuit.MaxwellCircuit.html">
+     pyaedt.maxwellcircuit.MaxwellCircuit
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="pyaedt.emit.Emit.html">
      pyaedt.emit.Emit
     </a>
@@ -1473,23 +1490,28 @@ function checkPageExistsAndRedirect(event) {
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../Primitives.html">
-   Modeler and  primitives
+  <a class="reference internal" href="../Primitives3D.html">
+   Modeler in 2D and 3D
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../CoreModules.html">
-   AEDT modules
+  <a class="reference internal" href="../Primitives3DLayout.html">
+   Modeler in  HFSS 3D Layout
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../PrimitivesCircuit.html">
+   Modeler and components Circuit
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Boundaries.html">
+   Boundary objects
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Mesh.html">
    Mesh operations
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../CableModeling.html">
-   Cable modeling
   </a>
  </li>
  <li class="toctree-l1">
@@ -1500,6 +1522,41 @@ function checkPageExistsAndRedirect(event) {
  <li class="toctree-l1">
   <a class="reference internal" href="../Post.html">
    Postprocessing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../DesktopMessenger.html">
+   Logger
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Optimetrics.html">
+   Optimetrics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Variables.html">
+   Variable
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Constants.html">
+   Constants
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Configuration.html">
+   Configuration files
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../SetupTemplates.html">
+   Setup templates
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../CableModeling.html">
+   Cable modeling
   </a>
  </li>
 </ul>
@@ -1531,7 +1588,7 @@ function checkPageExistsAndRedirect(event) {
   <a class="reference internal nav-link" href="#pyaedt.maxwell.Maxwell3d.omodelsetup">
    <code class="docutils literal notranslate">
     <span class="pre">
-     Maxwell3d.omodelsetup
+     omodelsetup
     </span>
    </code>
   </a>

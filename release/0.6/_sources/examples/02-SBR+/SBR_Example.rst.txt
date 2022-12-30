@@ -36,10 +36,10 @@ directory.
 
 
     import os
-    from pyaedt import examples, generate_unique_project_name
-    from pyaedt import Hfss
+    import pyaedt
 
-    project_full_name = examples.download_sbr(generate_unique_project_name(project_name="sbr_freq"))
+
+    project_full_name = pyaedt.downloads.download_sbr(pyaedt.generate_unique_project_name(project_name="sbr_freq"))
 
 
 
@@ -78,12 +78,12 @@ Define designs
 Define two designs, one source and one target, with each design connected to
 a different object.
 
-.. GENERATED FROM PYTHON SOURCE LINES 34-45
+.. GENERATED FROM PYTHON SOURCE LINES 34-49
 
 .. code-block:: default
 
 
-    target = Hfss(
+    target = pyaedt.Hfss(
         projectname=project_full_name,
         designname="Cassegrain_",
         solution_type="SBR+",
@@ -91,7 +91,11 @@ a different object.
         new_desktop_session=True,
         non_graphical=non_graphical
     )
-    source = Hfss(projectname=target.project_name, designname="feeder", specified_version="2022.2", new_desktop_session=False)
+
+    source = pyaedt.Hfss(projectname=target.project_name,
+                         designname="feeder",
+                         specified_version="2022.2",
+                         )
 
 
 
@@ -100,13 +104,13 @@ a different object.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 46-49
+.. GENERATED FROM PYTHON SOURCE LINES 50-53
 
 Define linked antenna
 ~~~~~~~~~~~~~~~~~~~~~~~
 Define a linked antenna. This is HFSS far field applied to HFSS SBR+.
 
-.. GENERATED FROM PYTHON SOURCE LINES 49-52
+.. GENERATED FROM PYTHON SOURCE LINES 53-56
 
 .. code-block:: default
 
@@ -122,17 +126,17 @@ Define a linked antenna. This is HFSS far field applied to HFSS SBR+.
  .. code-block:: none
 
 
-    <pyaedt.modules.Boundary.NativeComponentObject object at 0x0000022BE2FC38E0>
+    <pyaedt.modules.Boundary.NativeComponentObject object at 0x000002817E12EB20>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 53-56
+.. GENERATED FROM PYTHON SOURCE LINES 57-60
 
 Assign boundaries
 ~~~~~~~~~~~~~~~~~
 Assign boundaries.
 
-.. GENERATED FROM PYTHON SOURCE LINES 56-61
+.. GENERATED FROM PYTHON SOURCE LINES 60-65
 
 .. code-block:: default
 
@@ -150,17 +154,17 @@ Assign boundaries.
  .. code-block:: none
 
 
-    <pyaedt.modules.Mesh.MeshOperation object at 0x0000022BB4219C40>
+    <pyaedt.modules.Mesh.MeshOperation object at 0x000002812C4B18E0>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 62-65
+.. GENERATED FROM PYTHON SOURCE LINES 66-69
 
 Plot model
 ~~~~~~~~~~
 Plot the model
 
-.. GENERATED FROM PYTHON SOURCE LINES 65-69
+.. GENERATED FROM PYTHON SOURCE LINES 69-73
 
 .. code-block:: default
 
@@ -194,17 +198,17 @@ Plot the model
  .. code-block:: none
 
 
-    <pyaedt.generic.plot.ModelPlotter object at 0x0000022BB3F74DF0>
+    <pyaedt.generic.plot.ModelPlotter object at 0x000002812C6A9250>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 70-73
+.. GENERATED FROM PYTHON SOURCE LINES 74-77
 
 Create setup and solve
 ~~~~~~~~~~~~~~~~~~~~~~~~
 Create a setup and solve it.
 
-.. GENERATED FROM PYTHON SOURCE LINES 73-83
+.. GENERATED FROM PYTHON SOURCE LINES 77-87
 
 .. code-block:: default
 
@@ -231,13 +235,13 @@ Create a setup and solve it.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 84-87
+.. GENERATED FROM PYTHON SOURCE LINES 88-91
 
 Plot results
 ~~~~~~~~~~~~
 Plot results.
 
-.. GENERATED FROM PYTHON SOURCE LINES 87-101
+.. GENERATED FROM PYTHON SOURCE LINES 91-105
 
 .. code-block:: default
 
@@ -264,17 +268,17 @@ Plot results.
  .. code-block:: none
 
 
-    <pyaedt.modules.report_templates.FarField object at 0x0000022BB3FB4280>
+    <pyaedt.modules.report_templates.FarField object at 0x000002812D3374F0>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 102-105
+.. GENERATED FROM PYTHON SOURCE LINES 106-109
 
 Plot results outside AEDT
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 Plot results using Matplotlib.
 
-.. GENERATED FROM PYTHON SOURCE LINES 105-117
+.. GENERATED FROM PYTHON SOURCE LINES 109-121
 
 .. code-block:: default
 
@@ -308,30 +312,35 @@ Plot results using Matplotlib.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 118-121
+.. GENERATED FROM PYTHON SOURCE LINES 122-125
 
 Release AEDT
 ~~~~~~~~~~~~
 Release AEDT and close the example.
 
-.. GENERATED FROM PYTHON SOURCE LINES 121-124
+.. GENERATED FROM PYTHON SOURCE LINES 125-127
 
 .. code-block:: default
 
 
-    if os.name != "posix":
-        target.release_desktop()
+    target.release_desktop()
 
 
 
 
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+
+    True
 
 
 
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 1 minutes  26.397 seconds)
+   **Total running time of the script:** ( 1 minutes  28.555 seconds)
 
 
 .. _sphx_glr_download_examples_02-SBR+_SBR_Example.py:

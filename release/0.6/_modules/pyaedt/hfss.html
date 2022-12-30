@@ -32,6 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
 
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
@@ -108,7 +109,13 @@
 
 <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="../../API/index.html">
-  API reference
+  API AEDT reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../EDBAPI/index.html">
+  API EDB reference
  </a>
 </li>
 
@@ -200,7 +207,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.40 variable.
+            // this version, rather than using sphinx's 0.6.42 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -337,9 +344,9 @@ function checkPageExistsAndRedirect(event) {
 <span class="kn">from</span> <span class="nn">pyaedt.generic.general_methods</span> <span class="kn">import</span> <span class="n">open_file</span>
 <span class="kn">from</span> <span class="nn">pyaedt.generic.general_methods</span> <span class="kn">import</span> <span class="n">parse_excitation_file</span>
 <span class="kn">from</span> <span class="nn">pyaedt.generic.general_methods</span> <span class="kn">import</span> <span class="n">pyaedt_function_handler</span>
-<span class="kn">from</span> <span class="nn">pyaedt.modeler.actors</span> <span class="kn">import</span> <span class="n">Radar</span>
-<span class="kn">from</span> <span class="nn">pyaedt.modeler.GeometryOperators</span> <span class="kn">import</span> <span class="n">GeometryOperators</span>
-<span class="kn">from</span> <span class="nn">pyaedt.modeler.Object3d</span> <span class="kn">import</span> <span class="n">UserDefinedComponent</span>
+<span class="kn">from</span> <span class="nn">pyaedt.modeler.advanced_cad.actors</span> <span class="kn">import</span> <span class="n">Radar</span>
+<span class="kn">from</span> <span class="nn">pyaedt.modeler.cad.components_3d</span> <span class="kn">import</span> <span class="n">UserDefinedComponent</span>
+<span class="kn">from</span> <span class="nn">pyaedt.modeler.geometry_operators</span> <span class="kn">import</span> <span class="n">GeometryOperators</span>
 <span class="kn">from</span> <span class="nn">pyaedt.modules.Boundary</span> <span class="kn">import</span> <span class="n">BoundaryObject</span>
 <span class="kn">from</span> <span class="nn">pyaedt.modules.Boundary</span> <span class="kn">import</span> <span class="n">FarFieldSetup</span>
 <span class="kn">from</span> <span class="nn">pyaedt.modules.Boundary</span> <span class="kn">import</span> <span class="n">NativeComponentObject</span>
@@ -2040,8 +2047,8 @@ function checkPageExistsAndRedirect(event) {
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        start_object : str or int or :class:`pyaedt.modeler.Object3d.Object3d`</span>
-<span class="sd">        end_object : str or int or :class:`pyaedt.modeler.Object3d.Object3d`</span>
+<span class="sd">        start_object : str or int or :class:`pyaedt.modeler.object3d.Object3d`</span>
+<span class="sd">        end_object : str or int or :class:`pyaedt.modeler.object3d.Object3d`</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -3443,7 +3450,7 @@ function checkPageExistsAndRedirect(event) {
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        sheet : str or int or list or :class:`pyaedt.modeler.Object3d.Object3d`</span>
+<span class="sd">        sheet : str or int or list or :class:`pyaedt.modeler.object3d.Object3d`</span>
 <span class="sd">            Name of the sheet.</span>
 <span class="sd">        deemb : float, optional</span>
 <span class="sd">            Deembedding value distance in model units. The default is ``0``.</span>
@@ -4761,7 +4768,7 @@ function checkPageExistsAndRedirect(event) {
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        obj_names : str or list or int or :class:`pyaedt.modeler.Object3d.Object3d`</span>
+<span class="sd">        obj_names : str or list or int or :class:`pyaedt.modeler.object3d.Object3d`</span>
 <span class="sd">            One or more object names or IDs.</span>
 <span class="sd">        boundary_name : str, optional</span>
 <span class="sd">            Name of the boundary. The default is ``&quot;&quot;``.</span>
@@ -4802,7 +4809,7 @@ function checkPageExistsAndRedirect(event) {
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        obj_names : str or list or int or :class:`pyaedt.modeler.Object3d.Object3d`</span>
+<span class="sd">        obj_names : str or list or int or :class:`pyaedt.modeler.object3d.Object3d`</span>
 <span class="sd">            One or more object names or IDs.</span>
 <span class="sd">        boundary_name : str, optional</span>
 <span class="sd">            Name of the boundary. The default is ``&quot;&quot;``.</span>

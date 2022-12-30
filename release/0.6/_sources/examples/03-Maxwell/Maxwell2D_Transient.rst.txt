@@ -48,8 +48,8 @@ Perform required imports.
 
 
     import os
-    from pyaedt import Maxwell2d
-    from pyaedt import generate_unique_project_name
+    import pyaedt
+
 
 
 
@@ -91,8 +91,8 @@ Insert a Maxwell 2D design and save the project.
 .. code-block:: default
 
 
-    maxwell_2d = Maxwell2d(solution_type="TransientXY", specified_version="2022.2", non_graphical=non_graphical,
-                           new_desktop_session=True, projectname=generate_unique_project_name())
+    maxwell_2d = pyaedt.Maxwell2d(solution_type="TransientXY", specified_version="2022.2", non_graphical=non_graphical,
+                           new_desktop_session=True, projectname=pyaedt.generate_unique_project_name())
 
 
 
@@ -167,7 +167,7 @@ Assigns windings to the sheets and a balloon to the air region.
  .. code-block:: none
 
 
-    <pyaedt.modules.Boundary.BoundaryObject object at 0x0000022BD3DA06D0>
+    <pyaedt.modules.Boundary.BoundaryObject object at 0x000002812C288940>
 
 
 
@@ -199,7 +199,7 @@ Plot the model.
  .. code-block:: none
 
 
-    <pyaedt.generic.plot.ModelPlotter object at 0x0000022BDAEB7550>
+    <pyaedt.generic.plot.ModelPlotter object at 0x000002812C288BB0>
 
 
 
@@ -253,7 +253,7 @@ Create a rectangular plot.
  .. code-block:: none
 
 
-    <pyaedt.modules.report_templates.Standard object at 0x0000022B815C61C0>
+    <pyaedt.modules.report_templates.Standard object at 0x000002812A067730>
 
 
 
@@ -397,7 +397,7 @@ Close AEDT.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  39.844 seconds)
+   **Total running time of the script:** ( 0 minutes  39.774 seconds)
 
 
 .. _sphx_glr_download_examples_03-Maxwell_Maxwell2D_Transient.py:

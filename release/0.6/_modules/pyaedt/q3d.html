@@ -32,6 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
 
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
@@ -108,7 +109,13 @@
 
 <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="../../API/index.html">
-  API reference
+  API AEDT reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../EDBAPI/index.html">
+  API EDB reference
  </a>
 </li>
 
@@ -200,7 +207,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.40 variable.
+            // this version, rather than using sphinx's 0.6.42 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -333,7 +340,7 @@ function checkPageExistsAndRedirect(event) {
 <span class="kn">from</span> <span class="nn">pyaedt.generic.constants</span> <span class="kn">import</span> <span class="n">MATRIXOPERATIONSQ3D</span>
 <span class="kn">from</span> <span class="nn">pyaedt.generic.general_methods</span> <span class="kn">import</span> <span class="n">generate_unique_name</span>
 <span class="kn">from</span> <span class="nn">pyaedt.generic.general_methods</span> <span class="kn">import</span> <span class="n">pyaedt_function_handler</span>
-<span class="kn">from</span> <span class="nn">pyaedt.modeler.GeometryOperators</span> <span class="kn">import</span> <span class="n">GeometryOperators</span> <span class="k">as</span> <span class="n">go</span>
+<span class="kn">from</span> <span class="nn">pyaedt.modeler.geometry_operators</span> <span class="kn">import</span> <span class="n">GeometryOperators</span> <span class="k">as</span> <span class="n">go</span>
 <span class="kn">from</span> <span class="nn">pyaedt.modules.Boundary</span> <span class="kn">import</span> <span class="n">BoundaryObject</span>
 <span class="kn">from</span> <span class="nn">pyaedt.modules.Boundary</span> <span class="kn">import</span> <span class="n">Matrix</span>
 
@@ -735,13 +742,14 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">length_setting</span><span class="o">=</span><span class="s2">&quot;Distributed&quot;</span><span class="p">,</span>
         <span class="n">length</span><span class="o">=</span><span class="s2">&quot;1meter&quot;</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Export matrix data.</span>
+        <span class="sd">&quot;&quot;&quot;Export matrix data.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        file_name : str</span>
 <span class="sd">            Full path to save the matrix data to.</span>
-<span class="sd">            Options for file extensions are: *.m, *.lvl, *.csv, *.txt.</span>
+<span class="sd">            Options for file extensions are: ``*.m``, ``*.lvl``, ``*.csv``,</span>
+<span class="sd">            and ``*.txt``.</span>
 <span class="sd">        problem_type : str, optional</span>
 <span class="sd">            Problem type. The default value is ``None``, in which case ``&quot;C&quot;`` is</span>
 <span class="sd">            used. Options are ``&quot;C&quot;``, ``&quot;AC RL&quot;``, and ``&quot;DC RL&quot;``.</span>
@@ -1119,7 +1127,7 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">            Default value is True.</span>
 <span class="sd">        coupling_limit_type : int, optional</span>
 <span class="sd">            Coupling limit types.</span>
-<span class="sd">            Values can be : &quot;By Value&quot; -&gt; 0  or &quot;By Fraction Of Self Term&quot; -&gt; 1.</span>
+<span class="sd">            Values can be: ``&quot;By Value&quot; -&gt; 0`` or ``&quot;By Fraction Of Self Term&quot; -&gt; 1``.</span>
 <span class="sd">            If None, no coupling limits are set.</span>
 <span class="sd">            Default value is None.</span>
 <span class="sd">        include_dcr : bool, optional</span>
@@ -1146,9 +1154,6 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        parse_pin_names : bool, optional</span>
 <span class="sd">            Parse pin names.</span>
 <span class="sd">            Default value is False.</span>
-<span class="sd">        cs : str, optional</span>
-<span class="sd">            Coordinate system for chip package control.</span>
-<span class="sd">            Default value is Global.</span>
 <span class="sd">        export_distributed : bool, optional</span>
 <span class="sd">            Flag to tell whether to export in distributed mode or Lumped mode.</span>
 <span class="sd">            Default value is True.</span>
@@ -1185,7 +1190,8 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">            Default value is 0.</span>
 <span class="sd">        file_type : str, optional</span>
 <span class="sd">            The type of file format.</span>
-<span class="sd">            Used to specify the type of &quot;HSPICE&quot; file format (all HSPICE file formats have same extension *.sp).</span>
+<span class="sd">            Type of HSPICE file format. (All HSPICE file formats have the same extension,</span>
+<span class="sd">            which is ``*.sp``.) Options are:</span>
 <span class="sd">            &quot;Hspice&quot;: simple HSPICE file format.</span>
 <span class="sd">            &quot;Welement&quot;: Nexxim/HSPICE W Element file format</span>
 <span class="sd">            &quot;RLGC&quot;: Nexxim/HSPICE RLGC W Element file format</span>
@@ -2295,7 +2301,7 @@ function checkPageExistsAndRedirect(event) {
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        :class:`pyaedt.modeler.Object3d.Object3d`</span>
+<span class="sd">        :class:`pyaedt.modeler.object3d.Object3d`</span>
 <span class="sd">            3D object.</span>
 
 <span class="sd">        References</span>

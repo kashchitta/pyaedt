@@ -32,6 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery-binder.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery-dataframe.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery-rendered-html.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/custom.css" />
 
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
@@ -108,7 +109,13 @@
 
 <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="../../../../API/index.html">
-  API reference
+  API AEDT reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../../EDBAPI/index.html">
+  API EDB reference
  </a>
 </li>
 
@@ -200,7 +207,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.40 variable.
+            // this version, rather than using sphinx's 0.6.42 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -336,7 +343,7 @@ function checkPageExistsAndRedirect(event) {
 <span class="kn">from</span> <span class="nn">pyaedt.generic.general_methods</span> <span class="kn">import</span> <span class="n">pyaedt_function_handler</span>
 
 
-<div class="viewcode-block" id="EDBComponentDef"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.components_data.EDBComponentDef.html#pyaedt.edb_core.edb_data.components_data.EDBComponentDef">[docs]</a><span class="k">class</span> <span class="nc">EDBComponentDef</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="EDBComponentDef"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.components_data.EDBComponentDef.html#pyaedt.edb_core.edb_data.components_data.EDBComponentDef">[docs]</a><span class="k">class</span> <span class="nc">EDBComponentDef</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Manages EDB functionalities for component definitions.</span>
 
 <span class="sd">    Parameters</span>
@@ -401,7 +408,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="p">]</span>
         <span class="k">return</span> <span class="p">{</span><span class="n">comp</span><span class="o">.</span><span class="n">refdes</span><span class="p">:</span> <span class="n">comp</span> <span class="k">for</span> <span class="n">comp</span> <span class="ow">in</span> <span class="n">comp_list</span><span class="p">}</span>
 
-<div class="viewcode-block" id="EDBComponentDef.assign_rlc_model"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.components_data.EDBComponentDef.assign_rlc_model.html#pyaedt.edb_core.edb_data.components_data.EDBComponentDef.assign_rlc_model">[docs]</a>    <span class="nd">@pyaedt_function_handler</span>
+<div class="viewcode-block" id="EDBComponentDef.assign_rlc_model"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.components_data.EDBComponentDef.assign_rlc_model.html#pyaedt.edb_core.edb_data.components_data.EDBComponentDef.assign_rlc_model">[docs]</a>    <span class="nd">@pyaedt_function_handler</span>
     <span class="k">def</span> <span class="nf">assign_rlc_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">res</span><span class="p">,</span> <span class="n">ind</span><span class="p">,</span> <span class="n">cap</span><span class="p">,</span> <span class="n">is_parallel</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Assign RLC to all components under this part name.</span>
 
@@ -421,7 +428,7 @@ function checkPageExistsAndRedirect(event) {
             <span class="n">comp</span><span class="o">.</span><span class="n">assign_rlc_model</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="n">ind</span><span class="p">,</span> <span class="n">cap</span><span class="p">,</span> <span class="n">is_parallel</span><span class="p">)</span>
         <span class="k">return</span> <span class="kc">True</span></div>
 
-<div class="viewcode-block" id="EDBComponentDef.assign_s_param_model"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.components_data.EDBComponentDef.assign_s_param_model.html#pyaedt.edb_core.edb_data.components_data.EDBComponentDef.assign_s_param_model">[docs]</a>    <span class="nd">@pyaedt_function_handler</span>
+<div class="viewcode-block" id="EDBComponentDef.assign_s_param_model"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.components_data.EDBComponentDef.assign_s_param_model.html#pyaedt.edb_core.edb_data.components_data.EDBComponentDef.assign_s_param_model">[docs]</a>    <span class="nd">@pyaedt_function_handler</span>
     <span class="k">def</span> <span class="nf">assign_s_param_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file_path</span><span class="p">,</span> <span class="n">model_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">reference_net</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Assign S-parameter to all components under this part name.</span>
 
@@ -439,7 +446,7 @@ function checkPageExistsAndRedirect(event) {
             <span class="n">comp</span><span class="o">.</span><span class="n">assign_s_param_model</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">model_name</span><span class="p">,</span> <span class="n">reference_net</span><span class="p">)</span>
         <span class="k">return</span> <span class="kc">True</span></div>
 
-<div class="viewcode-block" id="EDBComponentDef.assign_spice_model"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.components_data.EDBComponentDef.assign_spice_model.html#pyaedt.edb_core.edb_data.components_data.EDBComponentDef.assign_spice_model">[docs]</a>    <span class="nd">@pyaedt_function_handler</span>
+<div class="viewcode-block" id="EDBComponentDef.assign_spice_model"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.components_data.EDBComponentDef.assign_spice_model.html#pyaedt.edb_core.edb_data.components_data.EDBComponentDef.assign_spice_model">[docs]</a>    <span class="nd">@pyaedt_function_handler</span>
     <span class="k">def</span> <span class="nf">assign_spice_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file_path</span><span class="p">,</span> <span class="n">model_name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Assign Spice model to all components under this part name.</span>
 
@@ -458,7 +465,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="k">return</span> <span class="kc">True</span></div></div>
 
 
-<div class="viewcode-block" id="EDBComponent"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.components_data.EDBComponent.html#pyaedt.edb_core.edb_data.components_data.EDBComponent">[docs]</a><span class="k">class</span> <span class="nc">EDBComponent</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="EDBComponent"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.components_data.EDBComponent.html#pyaedt.edb_core.edb_data.components_data.EDBComponent">[docs]</a><span class="k">class</span> <span class="nc">EDBComponent</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Manages EDB functionalities for components.</span>
 
 <span class="sd">    Parameters</span>
@@ -1099,7 +1106,7 @@ function checkPageExistsAndRedirect(event) {
             <span class="k">return</span> <span class="kc">False</span>
         <span class="k">return</span> <span class="kc">True</span>
 
-<div class="viewcode-block" id="EDBComponent.assign_spice_model"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.components_data.EDBComponent.assign_spice_model.html#pyaedt.edb_core.edb_data.components_data.EDBComponent.assign_spice_model">[docs]</a>    <span class="nd">@pyaedt_function_handler</span>
+<div class="viewcode-block" id="EDBComponent.assign_spice_model"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.components_data.EDBComponent.assign_spice_model.html#pyaedt.edb_core.edb_data.components_data.EDBComponent.assign_spice_model">[docs]</a>    <span class="nd">@pyaedt_function_handler</span>
     <span class="k">def</span> <span class="nf">assign_spice_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file_path</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Assign Spice model to this component.</span>
 
@@ -1137,7 +1144,7 @@ function checkPageExistsAndRedirect(event) {
             <span class="k">return</span> <span class="kc">False</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set_model</span><span class="p">(</span><span class="n">model</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="EDBComponent.assign_s_param_model"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.components_data.EDBComponent.assign_s_param_model.html#pyaedt.edb_core.edb_data.components_data.EDBComponent.assign_s_param_model">[docs]</a>    <span class="nd">@pyaedt_function_handler</span>
+<div class="viewcode-block" id="EDBComponent.assign_s_param_model"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.components_data.EDBComponent.assign_s_param_model.html#pyaedt.edb_core.edb_data.components_data.EDBComponent.assign_s_param_model">[docs]</a>    <span class="nd">@pyaedt_function_handler</span>
     <span class="k">def</span> <span class="nf">assign_s_param_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file_path</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">reference_net</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Assign S-parameter to this component.</span>
 
@@ -1168,7 +1175,7 @@ function checkPageExistsAndRedirect(event) {
             <span class="n">model</span><span class="o">.</span><span class="n">SetReferenceNet</span><span class="p">(</span><span class="n">reference_net</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set_model</span><span class="p">(</span><span class="n">model</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="EDBComponent.assign_rlc_model"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.components_data.EDBComponent.assign_rlc_model.html#pyaedt.edb_core.edb_data.components_data.EDBComponent.assign_rlc_model">[docs]</a>    <span class="nd">@pyaedt_function_handler</span>
+<div class="viewcode-block" id="EDBComponent.assign_rlc_model"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.components_data.EDBComponent.assign_rlc_model.html#pyaedt.edb_core.edb_data.components_data.EDBComponent.assign_rlc_model">[docs]</a>    <span class="nd">@pyaedt_function_handler</span>
     <span class="k">def</span> <span class="nf">assign_rlc_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">res</span><span class="p">,</span> <span class="n">ind</span><span class="p">,</span> <span class="n">cap</span><span class="p">,</span> <span class="n">is_parallel</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Assign RLC to this component.</span>
 

@@ -33,6 +33,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
 
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
@@ -52,7 +53,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="activate_variable_optimization" href="pyaedt.emit.Emit.activate_variable_optimization.html" />
-    <link rel="prev" title="working_directory" href="pyaedt.circuit.Circuit.working_directory.html" />
+    <link rel="prev" title="working_directory" href="pyaedt.maxwellcircuit.MaxwellCircuit.working_directory.html" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="docsearch:language" content="en">
   </head>
@@ -111,7 +112,13 @@
 
 <li class="toctree-l1 current active nav-item">
  <a class="reference internal nav-link" href="../index.html">
-  API reference
+  API AEDT reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../EDBAPI/index.html">
+  API EDB reference
  </a>
 </li>
 
@@ -203,7 +210,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.40 variable.
+            // this version, rather than using sphinx's 0.6.42 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -273,7 +280,7 @@ function checkPageExistsAndRedirect(event) {
         <li class="nav-item nav-item-0"><a href="../../index.html">PyAEDT</a> » </li>
     
 
-          <li class="nav-item nav-item-1"><a href="../index.html" >API reference</a> » </li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >API AEDT reference</a> » </li>
           <li class="nav-item nav-item-2"><a href="../Application.html" accesskey="U">AEDT apps</a> » </li>
         <li class="nav-item nav-item-this"><a href="">pyaedt.emit.Emit</a></li> 
       </ul>
@@ -297,16 +304,6 @@ function checkPageExistsAndRedirect(event) {
   <div class="bd-toc-item active">
     
     <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../Common.html">
-   Desktop and common classes
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../CoreEdb.html">
-   EDB editor
-  </a>
- </li>
  <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="../Application.html">
    AEDT apps
@@ -370,6 +367,11 @@ function checkPageExistsAndRedirect(event) {
    <li class="toctree-l2">
     <a class="reference internal" href="pyaedt.circuit.Circuit.html">
      pyaedt.circuit.Circuit
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.maxwellcircuit.MaxwellCircuit.html">
+     pyaedt.maxwellcircuit.MaxwellCircuit
     </a>
    </li>
    <li class="toctree-l2 current active has-children">
@@ -988,6 +990,11 @@ function checkPageExistsAndRedirect(event) {
       </a>
      </li>
      <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.emit.Emit.settings.html">
+       settings
+      </a>
+     </li>
+     <li class="toctree-l3">
       <a class="reference internal" href="pyaedt.emit.Emit.setup_names.html">
        setup_names
       </a>
@@ -1052,23 +1059,28 @@ function checkPageExistsAndRedirect(event) {
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../Primitives.html">
-   Modeler and  primitives
+  <a class="reference internal" href="../Primitives3D.html">
+   Modeler in 2D and 3D
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../CoreModules.html">
-   AEDT modules
+  <a class="reference internal" href="../Primitives3DLayout.html">
+   Modeler in  HFSS 3D Layout
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../PrimitivesCircuit.html">
+   Modeler and components Circuit
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Boundaries.html">
+   Boundary objects
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Mesh.html">
    Mesh operations
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../CableModeling.html">
-   Cable modeling
   </a>
  </li>
  <li class="toctree-l1">
@@ -1079,6 +1091,41 @@ function checkPageExistsAndRedirect(event) {
  <li class="toctree-l1">
   <a class="reference internal" href="../Post.html">
    Postprocessing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../DesktopMessenger.html">
+   Logger
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Optimetrics.html">
+   Optimetrics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Variables.html">
+   Variable
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Constants.html">
+   Constants
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Configuration.html">
+   Configuration files
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../SetupTemplates.html">
+   Setup templates
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../CableModeling.html">
+   Cable modeling
   </a>
  </li>
 </ul>
@@ -1605,34 +1652,37 @@ that is defined in the interaction domain.</p>
 <tr class="row-even"><td><p><a class="reference internal" href="pyaedt.emit.Emit.results_directory.html#pyaedt.emit.Emit.results_directory" title="pyaedt.emit.Emit.results_directory"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.results_directory</span></code></a></p></td>
 <td><p>Results directory.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.emit.Emit.setup_names.html#pyaedt.emit.Emit.setup_names" title="pyaedt.emit.Emit.setup_names"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.setup_names</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.emit.Emit.settings.html#pyaedt.emit.Emit.settings" title="pyaedt.emit.Emit.settings"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.settings</span></code></a></p></td>
+<td><p>Settings of the current Python/Pyaedt session.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.emit.Emit.setup_names.html#pyaedt.emit.Emit.setup_names" title="pyaedt.emit.Emit.setup_names"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.setup_names</span></code></a></p></td>
 <td><p>Setup names.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.emit.Emit.solution_type.html#pyaedt.emit.Emit.solution_type" title="pyaedt.emit.Emit.solution_type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.solution_type</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.emit.Emit.solution_type.html#pyaedt.emit.Emit.solution_type" title="pyaedt.emit.Emit.solution_type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.solution_type</span></code></a></p></td>
 <td><p>Solution type.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.emit.Emit.src_dir.html#pyaedt.emit.Emit.src_dir" title="pyaedt.emit.Emit.src_dir"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.src_dir</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.emit.Emit.src_dir.html#pyaedt.emit.Emit.src_dir" title="pyaedt.emit.Emit.src_dir"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.src_dir</span></code></a></p></td>
 <td><p>Source directory for Python.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.emit.Emit.syslib.html#pyaedt.emit.Emit.syslib" title="pyaedt.emit.Emit.syslib"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.syslib</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.emit.Emit.syslib.html#pyaedt.emit.Emit.syslib" title="pyaedt.emit.Emit.syslib"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.syslib</span></code></a></p></td>
 <td><p>SysLib directory.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.emit.Emit.temp_directory.html#pyaedt.emit.Emit.temp_directory" title="pyaedt.emit.Emit.temp_directory"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.temp_directory</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.emit.Emit.temp_directory.html#pyaedt.emit.Emit.temp_directory" title="pyaedt.emit.Emit.temp_directory"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.temp_directory</span></code></a></p></td>
 <td><p>Path to the temporary directory.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.emit.Emit.toolkit_directory.html#pyaedt.emit.Emit.toolkit_directory" title="pyaedt.emit.Emit.toolkit_directory"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.toolkit_directory</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.emit.Emit.toolkit_directory.html#pyaedt.emit.Emit.toolkit_directory" title="pyaedt.emit.Emit.toolkit_directory"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.toolkit_directory</span></code></a></p></td>
 <td><p>Path to the toolkit directory.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.emit.Emit.userlib.html#pyaedt.emit.Emit.userlib" title="pyaedt.emit.Emit.userlib"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.userlib</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.emit.Emit.userlib.html#pyaedt.emit.Emit.userlib" title="pyaedt.emit.Emit.userlib"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.userlib</span></code></a></p></td>
 <td><p>UserLib directory.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.emit.Emit.valid_design.html#pyaedt.emit.Emit.valid_design" title="pyaedt.emit.Emit.valid_design"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.valid_design</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.emit.Emit.valid_design.html#pyaedt.emit.Emit.valid_design" title="pyaedt.emit.Emit.valid_design"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.valid_design</span></code></a></p></td>
 <td><p>Valid design.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.emit.Emit.variable_manager.html#pyaedt.emit.Emit.variable_manager" title="pyaedt.emit.Emit.variable_manager"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.variable_manager</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.emit.Emit.variable_manager.html#pyaedt.emit.Emit.variable_manager" title="pyaedt.emit.Emit.variable_manager"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.variable_manager</span></code></a></p></td>
 <td><p>Variable manager for creating and managing project design and postprocessing variables.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.emit.Emit.working_directory.html#pyaedt.emit.Emit.working_directory" title="pyaedt.emit.Emit.working_directory"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.working_directory</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.emit.Emit.working_directory.html#pyaedt.emit.Emit.working_directory" title="pyaedt.emit.Emit.working_directory"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.working_directory</span></code></a></p></td>
 <td><p>Path to the working directory.</p></td>
 </tr>
 </tbody>

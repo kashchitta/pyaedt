@@ -33,6 +33,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
 
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
@@ -111,7 +112,13 @@
 
 <li class="toctree-l1 current active nav-item">
  <a class="reference internal nav-link" href="../index.html">
-  API reference
+  API AEDT reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../EDBAPI/index.html">
+  API EDB reference
  </a>
 </li>
 
@@ -203,7 +210,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.40 variable.
+            // this version, rather than using sphinx's 0.6.42 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -273,7 +280,7 @@ function checkPageExistsAndRedirect(event) {
         <li class="nav-item nav-item-0"><a href="../../index.html">PyAEDT</a> » </li>
     
 
-          <li class="nav-item nav-item-1"><a href="../index.html" >API reference</a> » </li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >API AEDT reference</a> » </li>
           <li class="nav-item nav-item-2"><a href="../Post.html" accesskey="U">Postprocessing</a> » </li>
         <li class="nav-item nav-item-this"><a href="">pyaedt.modules.solutions.FfdSolutionData</a></li> 
       </ul>
@@ -298,16 +305,6 @@ function checkPageExistsAndRedirect(event) {
     
     <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../Common.html">
-   Desktop and common classes
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../CoreEdb.html">
-   EDB editor
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="../Application.html">
    AEDT apps
   </a>
@@ -318,23 +315,28 @@ function checkPageExistsAndRedirect(event) {
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../Primitives.html">
-   Modeler and  primitives
+  <a class="reference internal" href="../Primitives3D.html">
+   Modeler in 2D and 3D
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../CoreModules.html">
-   AEDT modules
+  <a class="reference internal" href="../Primitives3DLayout.html">
+   Modeler in  HFSS 3D Layout
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../PrimitivesCircuit.html">
+   Modeler and components Circuit
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Boundaries.html">
+   Boundary objects
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Mesh.html">
    Mesh operations
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../CableModeling.html">
-   Cable modeling
   </a>
  </li>
  <li class="toctree-l1">
@@ -352,11 +354,6 @@ function checkPageExistsAndRedirect(event) {
    </i>
   </label>
   <ul class="current">
-   <li class="toctree-l2">
-    <a class="reference internal" href="pyaedt.modules.PostProcessor.CircuitPostProcessor.html">
-     pyaedt.modules.PostProcessor.CircuitPostProcessor
-    </a>
-   </li>
    <li class="toctree-l2">
     <a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.html">
      pyaedt.modules.AdvancedPostProcessing.PostProcessor
@@ -460,11 +457,6 @@ function checkPageExistsAndRedirect(event) {
     </ul>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.ModelPlotter.html">
-     pyaedt.modules.AdvancedPostProcessing.ModelPlotter
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="pyaedt.modules.report_templates.Trace.html">
      pyaedt.modules.report_templates.Trace
     </a>
@@ -509,7 +501,144 @@ function checkPageExistsAndRedirect(event) {
      pyaedt.modules.report_templates.Spectral
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modules.solutions.SolutionData.html">
+     pyaedt.modules.solutions.SolutionData
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modules.solutions.FieldPlot.html">
+     pyaedt.modules.solutions.FieldPlot
+    </a>
+   </li>
+   <li class="toctree-l2 current active has-children">
+    <a class="current reference internal" href="#">
+     pyaedt.modules.solutions.FfdSolutionData
+    </a>
+    <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+    <label for="toctree-checkbox-3">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modules.solutions.FfdSolutionData.array_center_and_edge.html">
+       array_center_and_edge
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modules.solutions.FfdSolutionData.array_min_max_values.html">
+       array_min_max_values
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modules.solutions.FfdSolutionData.assign_weight.html">
+       assign_weight
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modules.solutions.FfdSolutionData.beamform.html">
+       beamform
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modules.solutions.FfdSolutionData.beamform_2beams.html">
+       beamform_2beams
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modules.solutions.FfdSolutionData.element_location.html">
+       element_location
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modules.solutions.FfdSolutionData.get_array_index.html">
+       get_array_index
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modules.solutions.FfdSolutionData.get_lattice_vectors.html">
+       get_lattice_vectors
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modules.solutions.FfdSolutionData.plot_2d_cut.html">
+       plot_2d_cut
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modules.solutions.FfdSolutionData.plot_farfield_contour.html">
+       plot_farfield_contour
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modules.solutions.FfdSolutionData.polar_plot_3d.html">
+       polar_plot_3d
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modules.solutions.FfdSolutionData.polar_plot_3d_pyvista.html">
+       polar_plot_3d_pyvista
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modules.solutions.FfdSolutionData.polar_plot_3d_pyvista_2beams.html">
+       polar_plot_3d_pyvista_2beams
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modules.solutions.FfdSolutionData.frequency.html">
+       frequency
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modules.solutions.FfdSolutionData.phase_offset.html">
+       phase_offset
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.ModelPlotter.html">
+     pyaedt.modules.AdvancedPostProcessing.ModelPlotter
+    </a>
+   </li>
   </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../DesktopMessenger.html">
+   Logger
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Optimetrics.html">
+   Optimetrics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Variables.html">
+   Variable
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Constants.html">
+   Constants
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Configuration.html">
+   Configuration files
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../SetupTemplates.html">
+   Setup templates
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../CableModeling.html">
+   Cable modeling
+  </a>
  </li>
 </ul>
 
@@ -576,7 +705,7 @@ function checkPageExistsAndRedirect(event) {
 <dl class="py class">
 <dt class="sig sig-object py" id="pyaedt.modules.solutions.FfdSolutionData">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyaedt.modules.solutions.</span></span><span class="sig-name descname"><span class="pre">FfdSolutionData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">app</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sphere_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">setup_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frequencies</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overwrite</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">taper</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'flat'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pyaedt/modules/solutions.html#FfdSolutionData"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyaedt.modules.solutions.FfdSolutionData" title="Permalink to this definition">#</a></dt>
-<dd><p>Class containing Hfss Far Field Solution Data (ffd).</p>
+<dd><p>Contains Hfss Far Field Solution Data (ffd).</p>
 <p class="rubric">Methods</p>
 <table class="autosummary longtable table autosummary">
 <tbody>

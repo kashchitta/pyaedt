@@ -29,14 +29,12 @@ Perform required imports
 Perform required imports, which includes importing the ``Hfss3dlayout`` object
 and initializing it on version 2022 R2.
 
-.. GENERATED FROM PYTHON SOURCE LINES 12-18
+.. GENERATED FROM PYTHON SOURCE LINES 12-16
 
 .. code-block:: default
 
 
-    from pyaedt import Edb
-    from pyaedt.generic.general_methods import generate_unique_folder_name, generate_unique_name
-    from pyaedt import Hfss3dLayout
+    import pyaedt
     import os
 
 
@@ -46,13 +44,13 @@ and initializing it on version 2022 R2.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 19-22
+.. GENERATED FROM PYTHON SOURCE LINES 17-20
 
 Set non-graphical mode
 ~~~~~~~~~~~~~~~~~~~~~~
 Set non-graphical mode. The default is ``False``.
 
-.. GENERATED FROM PYTHON SOURCE LINES 22-25
+.. GENERATED FROM PYTHON SOURCE LINES 20-23
 
 .. code-block:: default
 
@@ -66,20 +64,20 @@ Set non-graphical mode. The default is ``False``.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 26-29
+.. GENERATED FROM PYTHON SOURCE LINES 24-27
 
 Launch EDB
 ~~~~~~~~~~
 Launch EDB.
 
-.. GENERATED FROM PYTHON SOURCE LINES 29-34
+.. GENERATED FROM PYTHON SOURCE LINES 27-32
 
 .. code-block:: default
 
 
-    aedb_path = os.path.join(generate_unique_folder_name(), generate_unique_name("pcb") + ".aedb")
+    aedb_path = os.path.join(pyaedt.generate_unique_folder_name(), pyaedt.generate_unique_name("pcb") + ".aedb")
     print(aedb_path)
-    edb = Edb(edbpath=aedb_path, edbversion="2022.2")
+    edb = pyaedt.Edb(edbpath=aedb_path, edbversion="2022.2")
 
 
 
@@ -89,18 +87,18 @@ Launch EDB.
 
  .. code-block:: none
 
-    D:\Temp\pyaedt_prj_UGH\pcb_ZLXPEK.aedb
+    D:\Temp\pyaedt_prj_G1P\pcb_GWDN4B.aedb
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 35-38
+.. GENERATED FROM PYTHON SOURCE LINES 33-36
 
 Define parameters
 ~~~~~~~~~~~~~~~~~
 Define the parameters.
 
-.. GENERATED FROM PYTHON SOURCE LINES 38-56
+.. GENERATED FROM PYTHON SOURCE LINES 36-54
 
 .. code-block:: default
 
@@ -129,13 +127,13 @@ Define the parameters.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 57-60
+.. GENERATED FROM PYTHON SOURCE LINES 55-58
 
 Define stackup layers
 ~~~~~~~~~~~~~~~~~~~~~
 Define the stackup layers from bottom to top.
 
-.. GENERATED FROM PYTHON SOURCE LINES 60-79
+.. GENERATED FROM PYTHON SOURCE LINES 58-77
 
 .. code-block:: default
 
@@ -165,13 +163,13 @@ Define the stackup layers from bottom to top.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 80-83
+.. GENERATED FROM PYTHON SOURCE LINES 78-81
 
 Create padstack for signal via
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Create a parametrized padstack for the signal via.
 
-.. GENERATED FROM PYTHON SOURCE LINES 83-98
+.. GENERATED FROM PYTHON SOURCE LINES 81-96
 
 .. code-block:: default
 
@@ -203,13 +201,13 @@ Create a parametrized padstack for the signal via.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 99-102
+.. GENERATED FROM PYTHON SOURCE LINES 97-100
 
 Assign net names
 ~~~~~~~~~~~~~~~~
 # Assign net names. There are only two signal nets.
 
-.. GENERATED FROM PYTHON SOURCE LINES 102-106
+.. GENERATED FROM PYTHON SOURCE LINES 100-104
 
 .. code-block:: default
 
@@ -224,13 +222,13 @@ Assign net names
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 107-110
+.. GENERATED FROM PYTHON SOURCE LINES 105-108
 
 Place signal vias
 ~~~~~~~~~~~~~~~~~
 Place signal vias.
 
-.. GENERATED FROM PYTHON SOURCE LINES 110-212
+.. GENERATED FROM PYTHON SOURCE LINES 108-210
 
 .. code-block:: default
 
@@ -343,13 +341,13 @@ Place signal vias.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 213-216
+.. GENERATED FROM PYTHON SOURCE LINES 211-214
 
 Create wave ports
 ~~~~~~~~~~~~~~~~~
 Create wave ports:
 
-.. GENERATED FROM PYTHON SOURCE LINES 216-224
+.. GENERATED FROM PYTHON SOURCE LINES 214-222
 
 .. code-block:: default
 
@@ -370,17 +368,17 @@ Create wave ports:
  .. code-block:: none
 
 
-    ('wave_port_2', <pyaedt.edb_core.edb_data.sources.ExcitationDifferential object at 0x0000022BD3DC9190>)
+    ('wave_port_2', <pyaedt.edb_core.edb_data.sources.ExcitationDifferential object at 0x000002812042B610>)
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 225-228
+.. GENERATED FROM PYTHON SOURCE LINES 223-226
 
 Draw ground polygons
 ~~~~~~~~~~~~~~~~~~~~
 Draw ground polygons.
 
-.. GENERATED FROM PYTHON SOURCE LINES 228-269
+.. GENERATED FROM PYTHON SOURCE LINES 226-267
 
 .. code-block:: default
 
@@ -432,13 +430,13 @@ Draw ground polygons.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 270-273
+.. GENERATED FROM PYTHON SOURCE LINES 268-271
 
 Plot EDB
 ~~~~~~~~
 Plot EDB.
 
-.. GENERATED FROM PYTHON SOURCE LINES 273-276
+.. GENERATED FROM PYTHON SOURCE LINES 271-274
 
 .. code-block:: default
 
@@ -449,7 +447,7 @@ Plot EDB.
 
 
 .. image-sg:: /examples/00-EDB/images/sphx_glr_04_edb_parametrized_design_001.png
-   :alt: Cell_N9L4L2
+   :alt: Cell_P2JRY2
    :srcset: /examples/00-EDB/images/sphx_glr_04_edb_parametrized_design_001.png
    :class: sphx-glr-single-img
 
@@ -457,13 +455,13 @@ Plot EDB.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 277-280
+.. GENERATED FROM PYTHON SOURCE LINES 275-278
 
 Save EDB
 ~~~~~~~~
 Save EDB.
 
-.. GENERATED FROM PYTHON SOURCE LINES 280-285
+.. GENERATED FROM PYTHON SOURCE LINES 278-283
 
 .. code-block:: default
 
@@ -485,18 +483,19 @@ Save EDB.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 286-289
+.. GENERATED FROM PYTHON SOURCE LINES 284-287
 
 Open EDB in AEDT
 ~~~~~~~~~~~~~~~~
 Open EDB in AEDT.
 
-.. GENERATED FROM PYTHON SOURCE LINES 289-292
+.. GENERATED FROM PYTHON SOURCE LINES 287-291
 
 .. code-block:: default
 
 
-    h3d = Hfss3dLayout(projectname=os.path.join(aedb_path, "edb.def"), specified_version="2022.2", non_graphical=non_graphical)
+    h3d = pyaedt.Hfss3dLayout(projectname=os.path.join(aedb_path, "edb.def"), specified_version="2022.2",
+                              non_graphical=non_graphical)
 
 
 
@@ -505,13 +504,13 @@ Open EDB in AEDT.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 293-296
+.. GENERATED FROM PYTHON SOURCE LINES 292-295
 
 Add HFSS simulation setup
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 Add HFSS simulation setup.
 
-.. GENERATED FROM PYTHON SOURCE LINES 296-313
+.. GENERATED FROM PYTHON SOURCE LINES 295-312
 
 .. code-block:: default
 
@@ -541,17 +540,17 @@ Add HFSS simulation setup.
  .. code-block:: none
 
 
-    <pyaedt.modules.SetupTemplates.SweepHFSS3DLayout object at 0x0000022BD90A8070>
+    <pyaedt.modules.SetupTemplates.SweepHFSS3DLayout object at 0x000002811FF2AA00>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 314-317
+.. GENERATED FROM PYTHON SOURCE LINES 313-316
 
 Start HFSS solver
 ~~~~~~~~~~~~~~~~~
 Start the HFSS solver by uncommenting the ``h3d.analyze_nominal()`` command.
 
-.. GENERATED FROM PYTHON SOURCE LINES 317-322
+.. GENERATED FROM PYTHON SOURCE LINES 316-321
 
 .. code-block:: default
 
@@ -573,7 +572,7 @@ Start the HFSS solver by uncommenting the ``h3d.analyze_nominal()`` command.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 323-327
+.. GENERATED FROM PYTHON SOURCE LINES 322-326
 
 Note that the ground nets are only connected to each other due
 to the wave ports. The problem with poor grounding can be seen in the
@@ -583,7 +582,7 @@ the resonance.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  26.177 seconds)
+   **Total running time of the script:** ( 0 minutes  27.084 seconds)
 
 
 .. _sphx_glr_download_examples_00-EDB_04_edb_parametrized_design.py:

@@ -33,6 +33,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
 
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
@@ -111,7 +112,13 @@
 
 <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="../../API/index.html">
-  API reference
+  API AEDT reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../EDBAPI/index.html">
+  API EDB reference
  </a>
 </li>
 
@@ -203,7 +210,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.40 variable.
+            // this version, rather than using sphinx's 0.6.42 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -825,9 +832,7 @@ and set up a doppler analysis.</p>
 <h2>Perform required imports<a class="headerlink" href="#perform-required-imports" title="Permalink to this heading">#</a></h2>
 <p>Perform required imports.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">tempfile</span>
 <span class="kn">import</span> <span class="nn">pyaedt</span>
-<span class="kn">from</span> <span class="nn">pyaedt</span> <span class="kn">import</span> <span class="n">examples</span><span class="p">,</span> <span class="n">generate_unique_project_name</span>
 
 <span class="c1"># Launch AEDT</span>
 <span class="c1"># ~~~~~~~~~~~</span>
@@ -836,7 +841,7 @@ and set up a doppler analysis.</p>
 <a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">aedt_version</span></a> <span class="o">=</span> <span class="s2">&quot;2022.2&quot;</span>
 <a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">projectname</span></a> <span class="o">=</span> <span class="s2">&quot;MicroDoppler_with_ADP&quot;</span>
 <a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">designname</span></a> <span class="o">=</span> <span class="s2">&quot;doppler&quot;</span>
-<a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">library_path</span></a> <span class="o">=</span> <span class="n">examples</span><span class="o">.</span><span class="n">download_multiparts</span><span class="p">()</span>
+<a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">library_path</span></a> <span class="o">=</span> <span class="n">pyaedt</span><span class="o">.</span><span class="n">downloads</span><span class="o">.</span><span class="n">download_multiparts</span><span class="p">()</span>
 </pre></div>
 </div>
 </section>
@@ -852,7 +857,7 @@ You can set <code class="docutils literal notranslate"><span class="pre">non_gra
 <section id="download-and-open-project">
 <h2>Download and open project<a class="headerlink" href="#download-and-open-project" title="Permalink to this heading">#</a></h2>
 <p>Download and open the project.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">project_name</span></a> <span class="o">=</span> <span class="n">generate_unique_project_name</span><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">project_name</span></a><span class="o">=</span><span class="s2">&quot;doppler&quot;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">project_name</span></a> <span class="o">=</span> <span class="n">pyaedt</span><span class="o">.</span><span class="n">generate_unique_project_name</span><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">project_name</span></a><span class="o">=</span><span class="s2">&quot;doppler&quot;</span><span class="p">)</span>
 
 <span class="c1"># Instantiate the application.</span>
 <span class="n">app</span> <span class="o">=</span> <span class="n">pyaedt</span><span class="o">.</span><span class="n">Hfss</span><span class="p">(</span>
@@ -968,7 +973,7 @@ duration of two seconds. The step is computed automatically from CPI.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">app</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">export_path</span><span class="o">=</span><a href="https://docs.python.org/dev/library/os.path.html#os.path.join" title="os.path.join" class="sphx-glr-backref-module-os-path sphx-glr-backref-type-py-function"><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span></a><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">working_directory</span><span class="p">,</span> <span class="s2">&quot;Image.jpg&quot;</span><span class="p">),</span> <span class="n">plot_air_objects</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_SBR_Doppler_Example_001.png" srcset="../../_images/sphx_glr_SBR_Doppler_Example_001.png" alt="SBR Doppler Example" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.generic.plot.ModelPlotter object at 0x0000022BB4129A00&gt;
+<img src="../../_images/sphx_glr_SBR_Doppler_Example_001.png" srcset="../../_images/sphx_glr_SBR_Doppler_Example_001.png" alt="SBR Doppler Example" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.generic.plot.ModelPlotter object at 0x000002812C430280&gt;
 </pre></div>
 </div>
 </section>
@@ -984,7 +989,7 @@ to activate the simulation.</p>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>True
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  36.329 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  38.441 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-02-sbr-sbr-doppler-example-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/887227fdcb907ae11a1601894f08e00b/SBR_Doppler_Example.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">SBR_Doppler_Example.py</span></code></a></p>

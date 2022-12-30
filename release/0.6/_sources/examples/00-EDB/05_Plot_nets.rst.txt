@@ -34,7 +34,7 @@ Perform required imports, which includes importing a section.
 
 
     import os
-    from pyaedt import generate_unique_folder_name, examples, Edb
+    import pyaedt
 
 
 
@@ -54,9 +54,9 @@ Download the AEDT file and copy it into the temporary folder.
 .. code-block:: default
 
 
-    temp_folder = generate_unique_folder_name()
+    temp_folder = pyaedt.generate_unique_folder_name()
 
-    targetfolder = os.path.dirname(examples.download_aedb(temp_folder))
+    targetfolder = os.path.dirname(pyaedt.downloads.download_aedb(temp_folder))
 
 
 
@@ -77,7 +77,7 @@ Launch the :class:`pyaedt.Edb` class, using EDB 2022 R2 and SI units.
 .. code-block:: default
 
 
-    edb = Edb(edbpath=targetfolder, edbversion="2022.2")
+    edb = pyaedt.Edb(edbpath=targetfolder, edbversion="2022.2")
 
 
 
@@ -189,7 +189,7 @@ Close EDB.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  16.837 seconds)
+   **Total running time of the script:** ( 0 minutes  17.353 seconds)
 
 
 .. _sphx_glr_download_examples_00-EDB_05_Plot_nets.py:

@@ -28,40 +28,39 @@ Perform required imports
 ~~~~~~~~~~~~~~~~~~~~~~~~
 Perform required imports.
 
-.. GENERATED FROM PYTHON SOURCE LINES 10-19
+.. GENERATED FROM PYTHON SOURCE LINES 10-18
 
 .. code-block:: default
 
 
     import os
     import numpy as np
-    from pyaedt import Edb
-    from pyaedt.generic.general_methods import generate_unique_folder_name, generate_unique_name
+    import pyaedt
 
 
-    aedb_path = os.path.join(generate_unique_folder_name(), generate_unique_name("via_opt") + ".aedb")
-
-
+    aedb_path = os.path.join(pyaedt.generate_unique_folder_name(), pyaedt.generate_unique_name("via_opt") + ".aedb")
 
 
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 20-24
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 19-23
 
 Create stackup
 ~~~~~~~~~~~~~~
 The ``StackupSimple`` class creates a stackup based on few inputs. This stackup
 is used later.
 
-.. GENERATED FROM PYTHON SOURCE LINES 27-30
+.. GENERATED FROM PYTHON SOURCE LINES 26-29
 
 Create ground plane
 ~~~~~~~~~~~~~~~~~~~
 Create a ground plane on specific layers.
 
-.. GENERATED FROM PYTHON SOURCE LINES 30-37
+.. GENERATED FROM PYTHON SOURCE LINES 29-36
 
 .. code-block:: default
 
@@ -79,18 +78,18 @@ Create a ground plane on specific layers.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 38-41
+.. GENERATED FROM PYTHON SOURCE LINES 37-40
 
 Create EDB
 ~~~~~~~~~~
 Create EDB. If the path doesn't exist, PyAEDT automatically generates a new AEDB folder.
 
-.. GENERATED FROM PYTHON SOURCE LINES 41-44
+.. GENERATED FROM PYTHON SOURCE LINES 40-43
 
 .. code-block:: default
 
 
-    edb = Edb(edbpath=aedb_path, edbversion="2022.2")
+    edb = pyaedt.Edb(edbpath=aedb_path, edbversion="2022.2")
 
 
 
@@ -99,13 +98,13 @@ Create EDB. If the path doesn't exist, PyAEDT automatically generates a new AEDB
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 45-48
+.. GENERATED FROM PYTHON SOURCE LINES 44-47
 
 Create stackup layers
 ~~~~~~~~~~~~~~~~~~~~~
 Create stackup layers.
 
-.. GENERATED FROM PYTHON SOURCE LINES 48-71
+.. GENERATED FROM PYTHON SOURCE LINES 47-73
 
 .. code-block:: default
 
@@ -120,7 +119,10 @@ Create stackup layers.
     trace_out_layer = "L10"
     gvia_num = 10
     gvia_angle = 30
-    edb.stackup.create_symmetric_stackup(layer_count=layout_count, inner_layer_thickness=cond_thickness_inner, outer_layer_thickness=cond_thickness_outer, soldermask_thickness=soldermask_thickness,dielectric_thickness=diel_thickness, dielectric_material=diel_material_name )
+    edb.stackup.create_symmetric_stackup(layer_count=layout_count, inner_layer_thickness=cond_thickness_inner,
+                                         outer_layer_thickness=cond_thickness_outer,
+                                         soldermask_thickness=soldermask_thickness, dielectric_thickness=diel_thickness,
+                                         dielectric_material=diel_material_name)
 
     # StackupSimple(
     #     edb,
@@ -145,14 +147,14 @@ Create stackup layers.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 72-76
+.. GENERATED FROM PYTHON SOURCE LINES 74-78
 
 Create variables
 ~~~~~~~~~~~~~~~~
 Create all variables. If a variable has a ``$`` prefix, it is a project variable.
 Otherwise, is a design variable.
 
-.. GENERATED FROM PYTHON SOURCE LINES 76-86
+.. GENERATED FROM PYTHON SOURCE LINES 78-88
 
 .. code-block:: default
 
@@ -175,18 +177,18 @@ Otherwise, is a design variable.
  .. code-block:: none
 
 
-    (True, <Ansys.Ansoft.Edb.Utility.VariableServer object at 0x0000022BD0193680>)
+    (True, <Ansys.Ansoft.Edb.Utility.VariableServer object at 0x000002811AC09200>)
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 87-91
+.. GENERATED FROM PYTHON SOURCE LINES 89-93
 
 Create padstacks
 ~~~~~~~~~~~~~~~~
 Create two padstacks, one for the ground and one for the signal. The padstacks
 are parametric.
 
-.. GENERATED FROM PYTHON SOURCE LINES 91-97
+.. GENERATED FROM PYTHON SOURCE LINES 93-99
 
 .. code-block:: default
 
@@ -209,13 +211,13 @@ are parametric.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 98-101
+.. GENERATED FROM PYTHON SOURCE LINES 100-103
 
 Place padstack for signal
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 Place the padstack for the signal.
 
-.. GENERATED FROM PYTHON SOURCE LINES 101-104
+.. GENERATED FROM PYTHON SOURCE LINES 103-106
 
 .. code-block:: default
 
@@ -231,18 +233,18 @@ Place the padstack for the signal.
  .. code-block:: none
 
 
-    <pyaedt.edb_core.edb_data.padstacks_data.EDBPadstackInstance object at 0x0000022BCFEAC7F0>
+    <pyaedt.edb_core.edb_data.padstacks_data.EDBPadstackInstance object at 0x000002817E2BBF70>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 105-109
+.. GENERATED FROM PYTHON SOURCE LINES 107-111
 
 Place padstack for ground
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 Place the padstack for the  ground. A loop iterates and places multiple ground
 vias on different positions.
 
-.. GENERATED FROM PYTHON SOURCE LINES 109-137
+.. GENERATED FROM PYTHON SOURCE LINES 111-139
 
 .. code-block:: default
 
@@ -281,13 +283,13 @@ vias on different positions.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 138-141
+.. GENERATED FROM PYTHON SOURCE LINES 140-143
 
 Generate traces
 ~~~~~~~~~~~~~~~
 Generate and place parametric traces.
 
-.. GENERATED FROM PYTHON SOURCE LINES 141-155
+.. GENERATED FROM PYTHON SOURCE LINES 143-157
 
 .. code-block:: default
 
@@ -314,17 +316,17 @@ Generate and place parametric traces.
  .. code-block:: none
 
 
-    <pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives object at 0x0000022BD94E69D0>
+    <pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives object at 0x000002817E2BB730>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 156-159
+.. GENERATED FROM PYTHON SOURCE LINES 158-161
 
 Generate ground layers
 ~~~~~~~~~~~~~~~~~~~~~~
 Generate and place ground layers.
 
-.. GENERATED FROM PYTHON SOURCE LINES 159-165
+.. GENERATED FROM PYTHON SOURCE LINES 161-167
 
 .. code-block:: default
 
@@ -341,13 +343,13 @@ Generate and place ground layers.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 166-169
+.. GENERATED FROM PYTHON SOURCE LINES 168-171
 
 Save EDB and close
 ~~~~~~~~~~~~~~~~~~
 Save EDB and close.
 
-.. GENERATED FROM PYTHON SOURCE LINES 169-174
+.. GENERATED FROM PYTHON SOURCE LINES 171-176
 
 .. code-block:: default
 
@@ -364,7 +366,7 @@ Save EDB and close.
 
  .. code-block:: none
 
-    aedb Saved in D:\Temp\pyaedt_prj_QAF\via_opt_IUI6A6.aedb
+    aedb Saved in D:\Temp\pyaedt_prj_WOV\via_opt_OAU3LA.aedb
 
 
 
@@ -372,7 +374,7 @@ Save EDB and close.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  13.992 seconds)
+   **Total running time of the script:** ( 0 minutes  13.178 seconds)
 
 
 .. _sphx_glr_download_examples_00-EDB_06_Advanced_EDB.py:

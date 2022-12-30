@@ -32,6 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-binder.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-dataframe.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-rendered-html.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css" />
 
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
@@ -108,7 +109,13 @@
 
 <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="../../../API/index.html">
-  API reference
+  API AEDT reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../EDBAPI/index.html">
+  API EDB reference
  </a>
 </li>
 
@@ -200,7 +207,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.40 variable.
+            // this version, rather than using sphinx's 0.6.42 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -351,7 +358,7 @@ function checkPageExistsAndRedirect(event) {
 <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 
 
-<div class="viewcode-block" id="Stackup"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.stackup.Stackup.html#pyaedt.edb_core.stackup.Stackup">[docs]</a><span class="k">class</span> <span class="nc">Stackup</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="Stackup"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.stackup.Stackup.html#pyaedt.edb_core.stackup.Stackup">[docs]</a><span class="k">class</span> <span class="nc">Stackup</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Manages EDB methods for stackup accessible from `Edb.stackup` property.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
@@ -410,7 +417,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="k">elif</span> <span class="nb">int</span><span class="p">(</span><span class="n">val</span><span class="p">)</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">layer_types</span><span class="o">.</span><span class="n">UndefinedLayerType</span>
 
-<div class="viewcode-block" id="Stackup.create_symmetric_stackup"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.stackup.Stackup.create_symmetric_stackup.html#pyaedt.edb_core.stackup.Stackup.create_symmetric_stackup">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="Stackup.create_symmetric_stackup"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.stackup.Stackup.create_symmetric_stackup.html#pyaedt.edb_core.stackup.Stackup.create_symmetric_stackup">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">create_symmetric_stackup</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">layer_count</span><span class="p">,</span>
@@ -726,7 +733,7 @@ function checkPageExistsAndRedirect(event) {
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span><span class="o">.</span><span class="n">edb</span><span class="o">.</span><span class="n">Cell</span><span class="o">.</span><span class="n">Layer</span><span class="p">(</span><span class="n">layer_name</span><span class="p">,</span> <span class="n">_layer_type</span><span class="p">)</span>
 
-<div class="viewcode-block" id="Stackup.add_layer"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.stackup.Stackup.add_layer.html#pyaedt.edb_core.stackup.Stackup.add_layer">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="Stackup.add_layer"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.stackup.Stackup.add_layer.html#pyaedt.edb_core.stackup.Stackup.add_layer">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">add_layer</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">layer_name</span><span class="p">,</span>
@@ -816,7 +823,7 @@ function checkPageExistsAndRedirect(event) {
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="n">layer_name</span><span class="p">]</span></div>
 
-<div class="viewcode-block" id="Stackup.remove_layer"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.stackup.Stackup.remove_layer.html#pyaedt.edb_core.stackup.Stackup.remove_layer">[docs]</a>    <span class="k">def</span> <span class="nf">remove_layer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+<div class="viewcode-block" id="Stackup.remove_layer"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.stackup.Stackup.remove_layer.html#pyaedt.edb_core.stackup.Stackup.remove_layer">[docs]</a>    <span class="k">def</span> <span class="nf">remove_layer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Remove a layer from stackup.</span>
 
 <span class="sd">        Parameters</span>
@@ -834,7 +841,7 @@ function checkPageExistsAndRedirect(event) {
                 <span class="n">new_layer_collection</span><span class="o">.</span><span class="n">AddLayerBottom</span><span class="p">(</span><span class="n">lyr</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span><span class="o">.</span><span class="n">_active_layout</span><span class="o">.</span><span class="n">SetLayerCollection</span><span class="p">(</span><span class="n">new_layer_collection</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Stackup.import_stackup"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.stackup.Stackup.import_stackup.html#pyaedt.edb_core.stackup.Stackup.import_stackup">[docs]</a>    <span class="nd">@pyaedt_function_handler</span>
+<div class="viewcode-block" id="Stackup.import_stackup"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.stackup.Stackup.import_stackup.html#pyaedt.edb_core.stackup.Stackup.import_stackup">[docs]</a>    <span class="nd">@pyaedt_function_handler</span>
     <span class="k">def</span> <span class="nf">import_stackup</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fpath</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Import stackup defnition from csv file.</span>
 
@@ -890,7 +897,7 @@ function checkPageExistsAndRedirect(event) {
                 <span class="bp">self</span><span class="o">.</span><span class="n">remove_layer</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
         <span class="k">return</span> <span class="kc">True</span></div>
 
-<div class="viewcode-block" id="Stackup.export_stackup"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.stackup.Stackup.export_stackup.html#pyaedt.edb_core.stackup.Stackup.export_stackup">[docs]</a>    <span class="nd">@pyaedt_function_handler</span>
+<div class="viewcode-block" id="Stackup.export_stackup"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.stackup.Stackup.export_stackup.html#pyaedt.edb_core.stackup.Stackup.export_stackup">[docs]</a>    <span class="nd">@pyaedt_function_handler</span>
     <span class="k">def</span> <span class="nf">export_stackup</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fpath</span><span class="p">,</span> <span class="n">file_format</span><span class="o">=</span><span class="s2">&quot;csv&quot;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Export stackup definition to csv file.</span>
 
@@ -1003,7 +1010,7 @@ function checkPageExistsAndRedirect(event) {
                             <span class="bp">self</span><span class="o">.</span><span class="n">stackup_layers</span><span class="p">[</span><span class="n">layer</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">_load_layer</span><span class="p">(</span><span class="n">layer</span><span class="p">)</span>
             <span class="k">return</span> <span class="kc">True</span>
 
-<div class="viewcode-block" id="Stackup.stackup_limits"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.stackup.Stackup.stackup_limits.html#pyaedt.edb_core.stackup.Stackup.stackup_limits">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="Stackup.stackup_limits"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.stackup.Stackup.stackup_limits.html#pyaedt.edb_core.stackup.Stackup.stackup_limits">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">stackup_limits</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">only_metals</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Retrieve stackup limits.</span>
 
@@ -1025,7 +1032,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">res</span><span class="p">,</span> <span class="n">topl</span><span class="p">,</span> <span class="n">topz</span><span class="p">,</span> <span class="n">bottoml</span><span class="p">,</span> <span class="n">bottomz</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_layer_collection</span><span class="o">.</span><span class="n">GetTopBottomStackupLayers</span><span class="p">(</span><span class="n">input_layers</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">topl</span><span class="o">.</span><span class="n">GetName</span><span class="p">(),</span> <span class="n">topz</span><span class="p">,</span> <span class="n">bottoml</span><span class="o">.</span><span class="n">GetName</span><span class="p">(),</span> <span class="n">bottomz</span></div>
 
-<div class="viewcode-block" id="Stackup.flip_design"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.stackup.Stackup.flip_design.html#pyaedt.edb_core.stackup.Stackup.flip_design">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="Stackup.flip_design"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.stackup.Stackup.flip_design.html#pyaedt.edb_core.stackup.Stackup.flip_design">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">flip_design</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Flip the current design of a layout.</span>
 
@@ -1149,7 +1156,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="k">except</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">False</span></div>
 
-<div class="viewcode-block" id="Stackup.get_layout_thickness"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.stackup.Stackup.get_layout_thickness.html#pyaedt.edb_core.stackup.Stackup.get_layout_thickness">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="Stackup.get_layout_thickness"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.stackup.Stackup.get_layout_thickness.html#pyaedt.edb_core.stackup.Stackup.get_layout_thickness">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">get_layout_thickness</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return the layout thickness.</span>
 
@@ -1182,7 +1189,7 @@ function checkPageExistsAndRedirect(event) {
                 <span class="n">comp_prop</span><span class="o">.</span><span class="n">SetPortProperty</span><span class="p">(</span><span class="n">port_property</span><span class="p">)</span>
                 <span class="n">val</span><span class="o">.</span><span class="n">edbcomponent</span><span class="o">.</span><span class="n">SetComponentProperty</span><span class="p">(</span><span class="n">comp_prop</span><span class="p">)</span>
 
-<div class="viewcode-block" id="Stackup.adjust_solder_dielectrics"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.stackup.Stackup.adjust_solder_dielectrics.html#pyaedt.edb_core.stackup.Stackup.adjust_solder_dielectrics">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="Stackup.adjust_solder_dielectrics"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.stackup.Stackup.adjust_solder_dielectrics.html#pyaedt.edb_core.stackup.Stackup.adjust_solder_dielectrics">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">adjust_solder_dielectrics</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Adjust the stack-up by adding or modifying dielectric layers that contains Solder Balls.</span>
 <span class="sd">        This method identifies the solder-ball height and adjust the dielectric thickness on top (or bottom) to fit</span>
@@ -1219,7 +1226,7 @@ function checkPageExistsAndRedirect(event) {
                     <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">stackup_layers</span><span class="o">.</span><span class="n">values</span><span class="p">())[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">thickness</span> <span class="o">=</span> <span class="n">val</span><span class="o">.</span><span class="n">solder_ball_height</span>
         <span class="k">return</span> <span class="kc">True</span></div>
 
-<div class="viewcode-block" id="Stackup.place_in_layout"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.stackup.Stackup.place_in_layout.html#pyaedt.edb_core.stackup.Stackup.place_in_layout">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="Stackup.place_in_layout"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.stackup.Stackup.place_in_layout.html#pyaedt.edb_core.stackup.Stackup.place_in_layout">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">place_in_layout</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">edb</span><span class="p">,</span>
@@ -1314,7 +1321,7 @@ function checkPageExistsAndRedirect(event) {
 
         <span class="k">return</span> <span class="kc">True</span></div>
 
-<div class="viewcode-block" id="Stackup.place_in_layout_3d_placement"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.stackup.Stackup.place_in_layout_3d_placement.html#pyaedt.edb_core.stackup.Stackup.place_in_layout_3d_placement">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="Stackup.place_in_layout_3d_placement"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.stackup.Stackup.place_in_layout_3d_placement.html#pyaedt.edb_core.stackup.Stackup.place_in_layout_3d_placement">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">place_in_layout_3d_placement</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">edb</span><span class="p">,</span>
@@ -1449,7 +1456,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">cell_inst2</span><span class="o">.</span><span class="n">Set3DTransformation</span><span class="p">(</span><span class="n">point_loc</span><span class="p">,</span> <span class="n">point_from</span><span class="p">,</span> <span class="n">point_to</span><span class="p">,</span> <span class="n">rotation</span><span class="p">,</span> <span class="n">point3d_t</span><span class="p">)</span>
         <span class="k">return</span> <span class="kc">True</span></div>
 
-<div class="viewcode-block" id="Stackup.place_a3dcomp_3d_placement"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.stackup.Stackup.place_a3dcomp_3d_placement.html#pyaedt.edb_core.stackup.Stackup.place_a3dcomp_3d_placement">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="Stackup.place_a3dcomp_3d_placement"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.stackup.Stackup.place_a3dcomp_3d_placement.html#pyaedt.edb_core.stackup.Stackup.place_a3dcomp_3d_placement">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">place_a3dcomp_3d_placement</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a3dcomp_path</span><span class="p">,</span> <span class="n">angle</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">offset_x</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">offset_y</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">place_on_top</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Place a 3D Component into current layout.</span>
 <span class="sd">         3D Component ports are not visible via EDB. They will be visible after the EDB has been opened in Ansys</span>
@@ -1530,8 +1537,9 @@ function checkPageExistsAndRedirect(event) {
         <span class="k">return</span> <span class="kc">True</span></div></div>
 
 
-<div class="viewcode-block" id="EdbStackup"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.stackup.EdbStackup.html#pyaedt.edb_core.stackup.EdbStackup">[docs]</a><span class="k">class</span> <span class="nc">EdbStackup</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Manages EDB methods for stackup and material management accessible from `Edb.core_stackup` property.</span>
+<div class="viewcode-block" id="EdbStackup"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.stackup.EdbStackup.html#pyaedt.edb_core.stackup.EdbStackup">[docs]</a><span class="k">class</span> <span class="nc">EdbStackup</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Manages EDB methods for stackup and material management accessible from the</span>
+<span class="sd">     ``Edb.core_stackup`` property (deprecated).</span>
 
 <span class="sd">    .. deprecated:: 0.6.5</span>
 <span class="sd">        This class has been deprecated and replaced by the ``Stackup`` class.</span>
@@ -1626,7 +1634,7 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span><span class="o">.</span><span class="n">materials</span>
 
-<div class="viewcode-block" id="EdbStackup.create_dielectric"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.stackup.EdbStackup.create_dielectric.html#pyaedt.edb_core.stackup.EdbStackup.create_dielectric">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EdbStackup.create_dielectric"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.stackup.EdbStackup.create_dielectric.html#pyaedt.edb_core.stackup.EdbStackup.create_dielectric">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">create_dielectric</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">permittivity</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">loss_tangent</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Create a dielectric with simple properties.</span>
 
@@ -1650,12 +1658,13 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;Use `Edb.materials.create_dielectric` function instead.&quot;</span><span class="p">,</span> <span class="ne">DeprecationWarning</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span><span class="o">.</span><span class="n">materials</span><span class="o">.</span><span class="n">add_dielectric_material</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">permittivity</span><span class="o">=</span><span class="n">permittivity</span><span class="p">,</span> <span class="n">loss_tangent</span><span class="o">=</span><span class="n">loss_tangent</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="EdbStackup.create_conductor"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.stackup.EdbStackup.create_conductor.html#pyaedt.edb_core.stackup.EdbStackup.create_conductor">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EdbStackup.create_conductor"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.stackup.EdbStackup.create_conductor.html#pyaedt.edb_core.stackup.EdbStackup.create_conductor">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">create_conductor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">conductivity</span><span class="o">=</span><span class="mf">1e6</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Create a conductor with simple properties.</span>
 
 <span class="sd">        .. deprecated:: 0.6.27</span>
-<span class="sd">           Use :func:`Edb.materials.add_conductor_material` function instead.</span>
+<span class="sd">           Use the :func:`Edb.materials.add_conductor_material` function instead.</span>
+
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        name : str</span>
@@ -1665,14 +1674,14 @@ function checkPageExistsAndRedirect(event) {
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        type</span>
+<span class="sd">        :class:`pyaedt.edb_core.materials.Material`</span>
 <span class="sd">            Material definition.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;Use `Edb.materials.add_conductor_material` function instead.&quot;</span><span class="p">,</span> <span class="ne">DeprecationWarning</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span><span class="o">.</span><span class="n">materials</span><span class="o">.</span><span class="n">add_conductor_material</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">conductivity</span><span class="o">=</span><span class="n">conductivity</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="EdbStackup.create_debye_material"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.stackup.EdbStackup.create_debye_material.html#pyaedt.edb_core.stackup.EdbStackup.create_debye_material">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EdbStackup.create_debye_material"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.stackup.EdbStackup.create_debye_material.html#pyaedt.edb_core.stackup.EdbStackup.create_debye_material">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">create_debye_material</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">name</span><span class="p">,</span>
@@ -1726,7 +1735,7 @@ function checkPageExistsAndRedirect(event) {
             <span class="n">higher_frequency</span><span class="o">=</span><span class="n">higher_frequency</span><span class="p">,</span>
         <span class="p">)</span></div>
 
-<div class="viewcode-block" id="EdbStackup.create_multipole_debye_material"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.stackup.EdbStackup.create_multipole_debye_material.html#pyaedt.edb_core.stackup.EdbStackup.create_multipole_debye_material">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EdbStackup.create_multipole_debye_material"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.stackup.EdbStackup.create_multipole_debye_material.html#pyaedt.edb_core.stackup.EdbStackup.create_multipole_debye_material">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">create_multipole_debye_material</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">name</span><span class="p">,</span>
@@ -1773,7 +1782,7 @@ function checkPageExistsAndRedirect(event) {
             <span class="n">loss_tangents</span><span class="o">=</span><span class="n">loss_tangents</span><span class="p">,</span>
         <span class="p">)</span></div>
 
-<div class="viewcode-block" id="EdbStackup.get_layout_thickness"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.stackup.EdbStackup.get_layout_thickness.html#pyaedt.edb_core.stackup.EdbStackup.get_layout_thickness">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EdbStackup.get_layout_thickness"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.stackup.EdbStackup.get_layout_thickness.html#pyaedt.edb_core.stackup.EdbStackup.get_layout_thickness">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">get_layout_thickness</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return the layout thickness.</span>
 
@@ -1789,7 +1798,7 @@ function checkPageExistsAndRedirect(event) {
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span><span class="o">.</span><span class="n">stackup</span><span class="o">.</span><span class="n">get_layout_thickness</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="EdbStackup.duplicate_material"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.stackup.EdbStackup.duplicate_material.html#pyaedt.edb_core.stackup.EdbStackup.duplicate_material">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EdbStackup.duplicate_material"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.stackup.EdbStackup.duplicate_material.html#pyaedt.edb_core.stackup.EdbStackup.duplicate_material">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">duplicate_material</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">material_name</span><span class="p">,</span> <span class="n">new_material_name</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Duplicate a material from the database.</span>
 <span class="sd">        It duplicates these five properties: ``permittivity``, ``permeability``, ` conductivity,``</span>
@@ -1822,7 +1831,7 @@ function checkPageExistsAndRedirect(event) {
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span><span class="o">.</span><span class="n">materials</span><span class="o">.</span><span class="n">duplicate</span><span class="p">(</span><span class="n">material_name</span><span class="p">,</span> <span class="n">new_material_name</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="EdbStackup.material_name_to_id"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.stackup.EdbStackup.material_name_to_id.html#pyaedt.edb_core.stackup.EdbStackup.material_name_to_id">[docs]</a>    <span class="nd">@pyaedt_function_handler</span>
+<div class="viewcode-block" id="EdbStackup.material_name_to_id"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.stackup.EdbStackup.material_name_to_id.html#pyaedt.edb_core.stackup.EdbStackup.material_name_to_id">[docs]</a>    <span class="nd">@pyaedt_function_handler</span>
     <span class="k">def</span> <span class="nf">material_name_to_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">property_name</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Convert a material property name to a material property ID.</span>
 
@@ -1842,7 +1851,7 @@ function checkPageExistsAndRedirect(event) {
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span><span class="o">.</span><span class="n">materials</span><span class="o">.</span><span class="n">material_name_to_id</span><span class="p">(</span><span class="n">property_name</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="EdbStackup.get_property_by_material_name"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.stackup.EdbStackup.get_property_by_material_name.html#pyaedt.edb_core.stackup.EdbStackup.get_property_by_material_name">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EdbStackup.get_property_by_material_name"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.stackup.EdbStackup.get_property_by_material_name.html#pyaedt.edb_core.stackup.EdbStackup.get_property_by_material_name">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">get_property_by_material_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">property_name</span><span class="p">,</span> <span class="n">material_name</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Get the property of a material. If it is executed in IronPython,</span>
 <span class="sd">         you must only use the first element of the returned tuple, which is a float.</span>
@@ -1881,7 +1890,7 @@ function checkPageExistsAndRedirect(event) {
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span><span class="o">.</span><span class="n">materials</span><span class="o">.</span><span class="n">get_property_by_material_name</span><span class="p">(</span><span class="n">property_name</span><span class="p">,</span> <span class="n">material_name</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="EdbStackup.adjust_solder_dielectrics"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.stackup.EdbStackup.adjust_solder_dielectrics.html#pyaedt.edb_core.stackup.EdbStackup.adjust_solder_dielectrics">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EdbStackup.adjust_solder_dielectrics"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.stackup.EdbStackup.adjust_solder_dielectrics.html#pyaedt.edb_core.stackup.EdbStackup.adjust_solder_dielectrics">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">adjust_solder_dielectrics</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Adjust the stack-up by adding or modifying dielectric layers that contains Solder Balls.</span>
 <span class="sd">        This method identifies the solder-ball height and adjust the dielectric thickness on top (or bottom) to fit</span>
@@ -1898,7 +1907,7 @@ function checkPageExistsAndRedirect(event) {
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span><span class="o">.</span><span class="n">stackup</span><span class="o">.</span><span class="n">adjust_solder_dielectrics</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="EdbStackup.place_in_layout"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.stackup.EdbStackup.place_in_layout.html#pyaedt.edb_core.stackup.EdbStackup.place_in_layout">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EdbStackup.place_in_layout"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.stackup.EdbStackup.place_in_layout.html#pyaedt.edb_core.stackup.EdbStackup.place_in_layout">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">place_in_layout</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">edb</span><span class="p">,</span>
@@ -1965,7 +1974,7 @@ function checkPageExistsAndRedirect(event) {
             <span class="n">place_on_top</span><span class="o">=</span><span class="n">place_on_top</span><span class="p">,</span>
         <span class="p">)</span></div>
 
-<div class="viewcode-block" id="EdbStackup.place_in_layout_3d_placement"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.stackup.EdbStackup.place_in_layout_3d_placement.html#pyaedt.edb_core.stackup.EdbStackup.place_in_layout_3d_placement">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EdbStackup.place_in_layout_3d_placement"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.stackup.EdbStackup.place_in_layout_3d_placement.html#pyaedt.edb_core.stackup.EdbStackup.place_in_layout_3d_placement">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">place_in_layout_3d_placement</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">edb</span><span class="p">,</span>
@@ -2028,7 +2037,7 @@ function checkPageExistsAndRedirect(event) {
             <span class="n">solder_height</span><span class="o">=</span><span class="n">solder_height</span><span class="p">,</span>
         <span class="p">)</span></div>
 
-<div class="viewcode-block" id="EdbStackup.place_a3dcomp_3d_placement"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.stackup.EdbStackup.place_a3dcomp_3d_placement.html#pyaedt.edb_core.stackup.EdbStackup.place_a3dcomp_3d_placement">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EdbStackup.place_a3dcomp_3d_placement"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.stackup.EdbStackup.place_a3dcomp_3d_placement.html#pyaedt.edb_core.stackup.EdbStackup.place_a3dcomp_3d_placement">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">place_a3dcomp_3d_placement</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a3dcomp_path</span><span class="p">,</span> <span class="n">angle</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">offset_x</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">offset_y</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">place_on_top</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Place a 3D Component into current layout.</span>
 <span class="sd">         3D Component ports are not visible via EDB. They will be visible after the EDB has been opened in Ansys</span>
@@ -2072,7 +2081,7 @@ function checkPageExistsAndRedirect(event) {
             <span class="n">a3dcomp_path</span><span class="o">=</span><span class="n">a3dcomp_path</span><span class="p">,</span> <span class="n">angle</span><span class="o">=</span><span class="n">angle</span><span class="p">,</span> <span class="n">offset_x</span><span class="o">=</span><span class="n">offset_x</span><span class="p">,</span> <span class="n">offset_y</span><span class="o">=</span><span class="n">offset_y</span><span class="p">,</span> <span class="n">place_on_top</span><span class="o">=</span><span class="n">place_on_top</span>
         <span class="p">)</span></div>
 
-<div class="viewcode-block" id="EdbStackup.flip_design"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.stackup.EdbStackup.flip_design.html#pyaedt.edb_core.stackup.EdbStackup.flip_design">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EdbStackup.flip_design"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.stackup.EdbStackup.flip_design.html#pyaedt.edb_core.stackup.EdbStackup.flip_design">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">flip_design</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Flip the current design of a layout.</span>
 
@@ -2095,7 +2104,7 @@ function checkPageExistsAndRedirect(event) {
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span><span class="o">.</span><span class="n">stackup</span><span class="o">.</span><span class="n">flip_design</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="EdbStackup.create_djordjevicsarkar_material"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.stackup.EdbStackup.create_djordjevicsarkar_material.html#pyaedt.edb_core.stackup.EdbStackup.create_djordjevicsarkar_material">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EdbStackup.create_djordjevicsarkar_material"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.stackup.EdbStackup.create_djordjevicsarkar_material.html#pyaedt.edb_core.stackup.EdbStackup.create_djordjevicsarkar_material">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">create_djordjevicsarkar_material</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">relative_permittivity</span><span class="p">,</span> <span class="n">loss_tangent</span><span class="p">,</span> <span class="n">test_frequency</span><span class="p">,</span> <span class="n">dc_permittivity</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dc_conductivity</span><span class="o">=</span><span class="kc">None</span>
     <span class="p">):</span>
@@ -2134,7 +2143,7 @@ function checkPageExistsAndRedirect(event) {
             <span class="n">dc_conductivity</span><span class="o">=</span><span class="n">dc_conductivity</span><span class="p">,</span>
         <span class="p">)</span></div>
 
-<div class="viewcode-block" id="EdbStackup.stackup_limits"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.stackup.EdbStackup.stackup_limits.html#pyaedt.edb_core.stackup.EdbStackup.stackup_limits">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EdbStackup.stackup_limits"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.stackup.EdbStackup.stackup_limits.html#pyaedt.edb_core.stackup.EdbStackup.stackup_limits">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">stackup_limits</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">only_metals</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Retrieve stackup limits.</span>
 
@@ -2155,7 +2164,7 @@ function checkPageExistsAndRedirect(event) {
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span><span class="o">.</span><span class="n">stackup</span><span class="o">.</span><span class="n">stackup_limits</span><span class="p">(</span><span class="n">only_metals</span><span class="o">=</span><span class="n">only_metals</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="EdbStackup.create_symmetric_stackup"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.stackup.EdbStackup.create_symmetric_stackup.html#pyaedt.edb_core.stackup.EdbStackup.create_symmetric_stackup">[docs]</a>    <span class="k">def</span> <span class="nf">create_symmetric_stackup</span><span class="p">(</span>
+<div class="viewcode-block" id="EdbStackup.create_symmetric_stackup"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.stackup.EdbStackup.create_symmetric_stackup.html#pyaedt.edb_core.stackup.EdbStackup.create_symmetric_stackup">[docs]</a>    <span class="k">def</span> <span class="nf">create_symmetric_stackup</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">layer_count</span><span class="p">,</span>
         <span class="n">inner_layer_thickness</span><span class="o">=</span><span class="s2">&quot;17um&quot;</span><span class="p">,</span>

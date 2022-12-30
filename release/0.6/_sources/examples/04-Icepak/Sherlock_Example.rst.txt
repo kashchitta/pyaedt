@@ -29,21 +29,19 @@ Perform required imports
 ~~~~~~~~~~~~~~~~~~~~~~~~
 Perform required imports and set paths.
 
-.. GENERATED FROM PYTHON SOURCE LINES 11-23
+.. GENERATED FROM PYTHON SOURCE LINES 11-21
 
 .. code-block:: default
 
 
     import time
     import os
-    import tempfile
+    import pyaedt
     import datetime
 
-    from pyaedt import examples, generate_unique_folder_name
-
     # Set paths
-    project_folder = generate_unique_folder_name()
-    input_dir = examples.download_sherlock()
+    project_folder = pyaedt.generate_unique_folder_name()
+    input_dir = pyaedt.downloads.download_sherlock()
 
 
 
@@ -52,7 +50,7 @@ Perform required imports and set paths.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 24-29
+.. GENERATED FROM PYTHON SOURCE LINES 22-27
 
 Set non-graphical mode
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -60,7 +58,7 @@ Set non-graphical mode. ``"PYAEDT_NON_GRAPHICAL"`` is needed to generate
 documentation only.
 You can set ``non_graphical`` value either to ``True`` or ``False``.
 
-.. GENERATED FROM PYTHON SOURCE LINES 29-32
+.. GENERATED FROM PYTHON SOURCE LINES 27-30
 
 .. code-block:: default
 
@@ -74,14 +72,14 @@ You can set ``non_graphical`` value either to ``True`` or ``False``.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 33-37
+.. GENERATED FROM PYTHON SOURCE LINES 31-35
 
 Define variables
 ~~~~~~~~~~~~~~~~
 Define input variables. The following code creates all input variables that are needed
 to run this example.
 
-.. GENERATED FROM PYTHON SOURCE LINES 37-46
+.. GENERATED FROM PYTHON SOURCE LINES 35-44
 
 .. code-block:: default
 
@@ -101,39 +99,18 @@ to run this example.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 47-50
-
-Import Icepak and AEDT
-~~~~~~~~~~~~~~~~~~~~~~
-Import Icepak and AEDT.
-
-.. GENERATED FROM PYTHON SOURCE LINES 50-54
-
-.. code-block:: default
-
-
-    from pyaedt import Icepak
-    from pyaedt import Desktop
-
-
-
-
-
-
-
-
-.. GENERATED FROM PYTHON SOURCE LINES 55-58
+.. GENERATED FROM PYTHON SOURCE LINES 45-48
 
 Launch AEDT
 ~~~~~~~~~~~
 Launch AEDT 2022 R2 in graphical mode.
 
-.. GENERATED FROM PYTHON SOURCE LINES 58-68
+.. GENERATED FROM PYTHON SOURCE LINES 48-58
 
 .. code-block:: default
 
 
-    d = Desktop("2022.2", non_graphical=non_graphical, new_desktop_session=True)
+    d = pyaedt.launch_desktop("2022.2", non_graphical=non_graphical, new_desktop_session=True)
 
     start = time.time()
     material_list = os.path.join(input_dir, material_name)
@@ -149,18 +126,18 @@ Launch AEDT 2022 R2 in graphical mode.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 69-72
+.. GENERATED FROM PYTHON SOURCE LINES 59-62
 
 Create Icepak project
 ~~~~~~~~~~~~~~~~~~~~~
 Create an Icepak project.
 
-.. GENERATED FROM PYTHON SOURCE LINES 72-75
+.. GENERATED FROM PYTHON SOURCE LINES 62-65
 
 .. code-block:: default
 
 
-    ipk = Icepak(project_name)
+    ipk = pyaedt.Icepak(project_name)
 
 
 
@@ -169,13 +146,13 @@ Create an Icepak project.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 76-79
+.. GENERATED FROM PYTHON SOURCE LINES 66-69
 
 Delete region to speed up import
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Delete the region and disable autosave to speed up the import.
 
-.. GENERATED FROM PYTHON SOURCE LINES 79-84
+.. GENERATED FROM PYTHON SOURCE LINES 69-74
 
 .. code-block:: default
 
@@ -191,13 +168,13 @@ Delete the region and disable autosave to speed up the import.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 85-88
+.. GENERATED FROM PYTHON SOURCE LINES 75-78
 
 Import PCB from AEDB file
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 Import a PCB from an AEDB file.
 
-.. GENERATED FROM PYTHON SOURCE LINES 88-94
+.. GENERATED FROM PYTHON SOURCE LINES 78-84
 
 .. code-block:: default
 
@@ -216,18 +193,18 @@ Import a PCB from an AEDB file.
  .. code-block:: none
 
 
-    <pyaedt.modules.Boundary.NativeComponentObject object at 0x0000022BE58C8070>
+    <pyaedt.modules.Boundary.NativeComponentObject object at 0x000002812C4A01C0>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 95-99
+.. GENERATED FROM PYTHON SOURCE LINES 85-89
 
 Create offset coordinate system
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Create an offset coordinate system to match ODB++ with the
 Sherlock STEP file.
 
-.. GENERATED FROM PYTHON SOURCE LINES 99-102
+.. GENERATED FROM PYTHON SOURCE LINES 89-92
 
 .. code-block:: default
 
@@ -243,17 +220,17 @@ Sherlock STEP file.
  .. code-block:: none
 
 
-    <pyaedt.modeler.Modeler.CoordinateSystem object at 0x0000022BB420D610>
+    <pyaedt.modeler.cad.Modeler.CoordinateSystem object at 0x000002812C4B1AC0>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 103-106
+.. GENERATED FROM PYTHON SOURCE LINES 93-96
 
 Import CAD file
 ~~~~~~~~~~~~~~~
 Import a CAD file.
 
-.. GENERATED FROM PYTHON SOURCE LINES 106-109
+.. GENERATED FROM PYTHON SOURCE LINES 96-99
 
 .. code-block:: default
 
@@ -273,13 +250,13 @@ Import a CAD file.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 110-113
+.. GENERATED FROM PYTHON SOURCE LINES 100-103
 
 Save CAD file
 ~~~~~~~~~~~~~
 Save the CAD file and refresh the properties from the parsing of the AEDT file.
 
-.. GENERATED FROM PYTHON SOURCE LINES 113-117
+.. GENERATED FROM PYTHON SOURCE LINES 103-107
 
 .. code-block:: default
 
@@ -300,13 +277,13 @@ Save the CAD file and refresh the properties from the parsing of the AEDT file.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 118-121
+.. GENERATED FROM PYTHON SOURCE LINES 108-111
 
 Plot model
 ~~~~~~~~~~
 Plot the model.
 
-.. GENERATED FROM PYTHON SOURCE LINES 121-125
+.. GENERATED FROM PYTHON SOURCE LINES 111-115
 
 .. code-block:: default
 
@@ -328,17 +305,17 @@ Plot the model.
  .. code-block:: none
 
 
-    <pyaedt.generic.plot.ModelPlotter object at 0x0000022BD8DA4B80>
+    <pyaedt.generic.plot.ModelPlotter object at 0x000002812D229070>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 126-129
+.. GENERATED FROM PYTHON SOURCE LINES 116-119
 
 Delete PCB objects
 ~~~~~~~~~~~~~~~~~~
 Delete the PCB objects.
 
-.. GENERATED FROM PYTHON SOURCE LINES 129-132
+.. GENERATED FROM PYTHON SOURCE LINES 119-122
 
 .. code-block:: default
 
@@ -358,13 +335,13 @@ Delete the PCB objects.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 133-136
+.. GENERATED FROM PYTHON SOURCE LINES 123-126
 
 Create region
 ~~~~~~~~~~~~~
 Create an air region.
 
-.. GENERATED FROM PYTHON SOURCE LINES 136-139
+.. GENERATED FROM PYTHON SOURCE LINES 126-129
 
 .. code-block:: default
 
@@ -380,17 +357,17 @@ Create an air region.
  .. code-block:: none
 
 
-    <pyaedt.modeler.Object3d.Object3d object at 0x0000022BE59F9070>
+    <pyaedt.modeler.cad.object3d.Object3d object at 0x000002811FF2ACD0>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 140-143
+.. GENERATED FROM PYTHON SOURCE LINES 130-133
 
 Assign materials
 ~~~~~~~~~~~~~~~~
 Assign materials from the the Sherlock file.
 
-.. GENERATED FROM PYTHON SOURCE LINES 143-146
+.. GENERATED FROM PYTHON SOURCE LINES 133-136
 
 .. code-block:: default
 
@@ -410,13 +387,13 @@ Assign materials from the the Sherlock file.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 147-150
+.. GENERATED FROM PYTHON SOURCE LINES 137-140
 
 Delete objects with no material assignments
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Delete objects with no materials assignments.
 
-.. GENERATED FROM PYTHON SOURCE LINES 150-155
+.. GENERATED FROM PYTHON SOURCE LINES 140-145
 
 .. code-block:: default
 
@@ -438,13 +415,13 @@ Delete objects with no materials assignments.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 156-159
+.. GENERATED FROM PYTHON SOURCE LINES 146-149
 
 Assign power to component blocks
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Assign power to component blocks.
 
-.. GENERATED FROM PYTHON SOURCE LINES 159-162
+.. GENERATED FROM PYTHON SOURCE LINES 149-152
 
 .. code-block:: default
 
@@ -458,13 +435,13 @@ Assign power to component blocks.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 163-166
+.. GENERATED FROM PYTHON SOURCE LINES 153-156
 
 Assign power blocks
 ~~~~~~~~~~~~~~~~~~~
 Assign power blocks from the Sherlock file.
 
-.. GENERATED FROM PYTHON SOURCE LINES 166-170
+.. GENERATED FROM PYTHON SOURCE LINES 156-160
 
 .. code-block:: default
 
@@ -479,13 +456,13 @@ Assign power blocks from the Sherlock file.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 171-174
+.. GENERATED FROM PYTHON SOURCE LINES 161-164
 
 Plot model
 ~~~~~~~~~~
 Plot the model again now that materials are assigned.
 
-.. GENERATED FROM PYTHON SOURCE LINES 174-178
+.. GENERATED FROM PYTHON SOURCE LINES 164-168
 
 .. code-block:: default
 
@@ -507,17 +484,17 @@ Plot the model again now that materials are assigned.
  .. code-block:: none
 
 
-    <pyaedt.generic.plot.ModelPlotter object at 0x0000022BE55E2E20>
+    <pyaedt.generic.plot.ModelPlotter object at 0x000002811FF2AAF0>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 179-182
+.. GENERATED FROM PYTHON SOURCE LINES 169-172
 
 Set up boundaries
 ~~~~~~~~~~~~~~~~~
 Set up boundaries.
 
-.. GENERATED FROM PYTHON SOURCE LINES 182-192
+.. GENERATED FROM PYTHON SOURCE LINES 172-182
 
 .. code-block:: default
 
@@ -540,18 +517,18 @@ Set up boundaries.
  .. code-block:: none
 
 
-    <pyaedt.modules.Boundary.BoundaryObject object at 0x0000022B81A71520>
+    <pyaedt.modules.Boundary.BoundaryObject object at 0x000002812D523970>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 193-197
+.. GENERATED FROM PYTHON SOURCE LINES 183-187
 
 Check for intersections
 ~~~~~~~~~~~~~~~~~~~~~~~
 Check for intersections using validation and fix them by
 assigning priorities.
 
-.. GENERATED FROM PYTHON SOURCE LINES 197-200
+.. GENERATED FROM PYTHON SOURCE LINES 187-190
 
 .. code-block:: default
 
@@ -571,13 +548,13 @@ assigning priorities.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 201-204
+.. GENERATED FROM PYTHON SOURCE LINES 191-194
 
 Save project and release AEDT
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Save the project and release AEDT.
 
-.. GENERATED FROM PYTHON SOURCE LINES 204-213
+.. GENERATED FROM PYTHON SOURCE LINES 194-202
 
 .. code-block:: default
 
@@ -587,8 +564,7 @@ Save the project and release AEDT.
     end = time.time() - start
     print("Elapsed time: {}".format(datetime.timedelta(seconds=end)))
     print("Project Saved in {} ".format(ipk.project_file))
-    if os.name != "posix":
-        ipk.release_desktop()
+    ipk.release_desktop()
 
 
 
@@ -598,16 +574,17 @@ Save the project and release AEDT.
 
  .. code-block:: none
 
-    Elapsed time: 0:00:43.114340
-    Project Saved in D:/Temp/pyaedt_prj_XCH/TutorialBoard.aedt 
+    Elapsed time: 0:00:45.084888
+    Project Saved in D:/Temp/pyaedt_prj_V6Q/TutorialBoard.aedt 
 
+    True
 
 
 
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  49.828 seconds)
+   **Total running time of the script:** ( 0 minutes  51.824 seconds)
 
 
 .. _sphx_glr_download_examples_04-Icepak_Sherlock_Example.py:

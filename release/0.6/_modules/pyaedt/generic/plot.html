@@ -32,6 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-binder.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-dataframe.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-rendered-html.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css" />
 
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
@@ -108,7 +109,13 @@
 
 <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="../../../API/index.html">
-  API reference
+  API AEDT reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../EDBAPI/index.html">
+  API EDB reference
  </a>
 </li>
 
@@ -200,7 +207,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.40 variable.
+            // this version, rather than using sphinx's 0.6.42 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -732,16 +739,17 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        `[x points, y points, label]`.</span>
 <span class="sd">    size : tuple, optional</span>
 <span class="sd">        Image size in pixel (width, height).</span>
-<span class="sd">    show_legend : bool</span>
-<span class="sd">        Either to show legend or not.</span>
-<span class="sd">    xlabel : str</span>
-<span class="sd">        Plot X label.</span>
-<span class="sd">    ylabel : str</span>
-<span class="sd">        Plot Y label.</span>
-<span class="sd">    title : str</span>
-<span class="sd">        Plot Title label.</span>
-<span class="sd">    snapshot_path : str</span>
+<span class="sd">    show_legend : bool, optional</span>
+<span class="sd">        Either to show legend or not. The default value is ``True``.</span>
+<span class="sd">    xlabel : str, optional</span>
+<span class="sd">        Plot X label. The default value is ``&quot;&quot;``.</span>
+<span class="sd">    ylabel : str, optional</span>
+<span class="sd">        Plot Y label. The default value is ``&quot;&quot;``.</span>
+<span class="sd">    title : str, optional</span>
+<span class="sd">        Plot Title label. The default value is ``&quot;&quot;``.</span>
+<span class="sd">    snapshot_path : str, optional</span>
 <span class="sd">        Full path to image file if a snapshot is needed.</span>
+<span class="sd">        The default value is ``None``.</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
@@ -892,7 +900,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <span class="k">class</span> <span class="nc">ObjClass</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Class that manages mesh files to be plotted in pyvista.</span>
+    <span class="sd">&quot;&quot;&quot;Manages mesh files to be plotted in pyvista.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -985,12 +993,12 @@ function checkPageExistsAndRedirect(event) {
 
 
 <div class="viewcode-block" id="ModelPlotter"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.AdvancedPostProcessing.ModelPlotter.html#pyaedt.modules.AdvancedPostProcessing.ModelPlotter">[docs]</a><span class="k">class</span> <span class="nc">ModelPlotter</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Class that manage the plot data.</span>
+    <span class="sd">&quot;&quot;&quot;Manages the data to be plotted with ``pyvista``.</span>
 
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
 <span class="sd">    This Class can be instantiated within Pyaedt (with plot_model_object or different field plots</span>
-<span class="sd">    and standalone.</span>
+<span class="sd">    and standalone).</span>
 <span class="sd">    Here an example of standalone project</span>
 
 <span class="sd">    &gt;&gt;&gt; model = ModelPlotter()</span>
@@ -1180,12 +1188,8 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">camera_position</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Get/Set the camera position value. It disables the default iso view.</span>
-
-<span class="sd">        Parameters</span>
-<span class="sd">        ----------</span>
-<span class="sd">        value : str or tuple</span>
-<span class="sd">            Value of camera position. One of `&quot;xy&quot;`, `&quot;xz&quot;`,`&quot;yz&quot;`.</span>
+        <span class="sd">&quot;&quot;&quot;Get or set the camera position value. This parameter disables the default iso view.</span>
+<span class="sd">        Value for the camera position. The value is for ``&quot;xy&quot;``, ``&quot;xz&quot;`` or ``&quot;yz&quot;``.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>

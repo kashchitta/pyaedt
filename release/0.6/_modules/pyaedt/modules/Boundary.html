@@ -32,6 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-binder.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-dataframe.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-rendered-html.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css" />
 
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
@@ -108,7 +109,13 @@
 
 <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="../../../API/index.html">
-  API reference
+  API AEDT reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../EDBAPI/index.html">
+  API EDB reference
  </a>
 </li>
 
@@ -200,7 +207,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.40 variable.
+            // this version, rather than using sphinx's 0.6.42 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -328,13 +335,13 @@ function checkPageExistsAndRedirect(event) {
 <span class="kn">from</span> <span class="nn">pyaedt.generic.DataHandlers</span> <span class="kn">import</span> <span class="n">_dict2arg</span>
 <span class="kn">from</span> <span class="nn">pyaedt.generic.DataHandlers</span> <span class="kn">import</span> <span class="n">random_string</span>
 <span class="kn">from</span> <span class="nn">pyaedt.generic.general_methods</span> <span class="kn">import</span> <span class="n">PropsManager</span>
+<span class="kn">from</span> <span class="nn">pyaedt.generic.general_methods</span> <span class="kn">import</span> <span class="n">_dim_arg</span>
 <span class="kn">from</span> <span class="nn">pyaedt.generic.general_methods</span> <span class="kn">import</span> <span class="n">filter_tuple</span>
 <span class="kn">from</span> <span class="nn">pyaedt.generic.general_methods</span> <span class="kn">import</span> <span class="n">generate_unique_name</span>
 <span class="kn">from</span> <span class="nn">pyaedt.generic.general_methods</span> <span class="kn">import</span> <span class="n">pyaedt_function_handler</span>
-<span class="kn">from</span> <span class="nn">pyaedt.modeler.Object3d</span> <span class="kn">import</span> <span class="n">EdgePrimitive</span>
-<span class="kn">from</span> <span class="nn">pyaedt.modeler.Object3d</span> <span class="kn">import</span> <span class="n">FacePrimitive</span>
-<span class="kn">from</span> <span class="nn">pyaedt.modeler.Object3d</span> <span class="kn">import</span> <span class="n">VertexPrimitive</span>
-<span class="kn">from</span> <span class="nn">pyaedt.modeler.Object3d</span> <span class="kn">import</span> <span class="n">_dim_arg</span>
+<span class="kn">from</span> <span class="nn">pyaedt.modeler.cad.elements3d</span> <span class="kn">import</span> <span class="n">EdgePrimitive</span>
+<span class="kn">from</span> <span class="nn">pyaedt.modeler.cad.elements3d</span> <span class="kn">import</span> <span class="n">FacePrimitive</span>
+<span class="kn">from</span> <span class="nn">pyaedt.modeler.cad.elements3d</span> <span class="kn">import</span> <span class="n">VertexPrimitive</span>
 <span class="kn">from</span> <span class="nn">pyaedt.modules.CircuitTemplates</span> <span class="kn">import</span> <span class="n">SourceKeys</span>
 
 

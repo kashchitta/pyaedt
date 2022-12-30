@@ -29,15 +29,13 @@ Perform required imports
 ~~~~~~~~~~~~~~~~~~~~~~~~
 Perform required imports.
 
-.. GENERATED FROM PYTHON SOURCE LINES 12-27
+.. GENERATED FROM PYTHON SOURCE LINES 12-25
 
 .. code-block:: default
 
 
     import os
-    import tempfile
     import pyaedt
-    from pyaedt import examples, generate_unique_project_name
 
     # Launch AEDT
     # ~~~~~~~~~~~
@@ -46,7 +44,7 @@ Perform required imports.
     aedt_version = "2022.2"
     projectname = "MicroDoppler_with_ADP"
     designname = "doppler"
-    library_path = examples.download_multiparts()
+    library_path = pyaedt.downloads.download_multiparts()
 
 
 
@@ -55,7 +53,7 @@ Perform required imports.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 28-33
+.. GENERATED FROM PYTHON SOURCE LINES 26-31
 
 Set non-graphical mode
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -63,7 +61,7 @@ Set non-graphical mode. ``"PYAEDT_NON_GRAPHICAL"`` is needed to generate
 documentation only.
 You can set ``non_graphical`` either to ``True`` or ``False``.
 
-.. GENERATED FROM PYTHON SOURCE LINES 33-36
+.. GENERATED FROM PYTHON SOURCE LINES 31-34
 
 .. code-block:: default
 
@@ -77,18 +75,18 @@ You can set ``non_graphical`` either to ``True`` or ``False``.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 37-40
+.. GENERATED FROM PYTHON SOURCE LINES 35-38
 
 Download and open project
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 Download and open the project.
 
-.. GENERATED FROM PYTHON SOURCE LINES 40-56
+.. GENERATED FROM PYTHON SOURCE LINES 38-54
 
 .. code-block:: default
 
 
-    project_name = generate_unique_project_name(project_name="doppler")
+    project_name = pyaedt.generate_unique_project_name(project_name="doppler")
 
     # Instantiate the application.
     app = pyaedt.Hfss(
@@ -116,13 +114,13 @@ Download and open the project.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 57-60
+.. GENERATED FROM PYTHON SOURCE LINES 55-58
 
 Save project and rename design
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Save the project to the temporary folder and rename the design.
 
-.. GENERATED FROM PYTHON SOURCE LINES 60-65
+.. GENERATED FROM PYTHON SOURCE LINES 58-63
 
 .. code-block:: default
 
@@ -144,13 +142,13 @@ Save the project to the temporary folder and rename the design.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 66-69
+.. GENERATED FROM PYTHON SOURCE LINES 64-67
 
 Set up library paths
 ~~~~~~~~~~~~~~~~~~~~
 Set up library paths to 3D components.
 
-.. GENERATED FROM PYTHON SOURCE LINES 69-79
+.. GENERATED FROM PYTHON SOURCE LINES 67-77
 
 .. code-block:: default
 
@@ -171,13 +169,13 @@ Set up library paths to 3D components.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 80-83
+.. GENERATED FROM PYTHON SOURCE LINES 78-81
 
 Define environment
 ~~~~~~~~~~~~~~~~~~
 Define the background environment.
 
-.. GENERATED FROM PYTHON SOURCE LINES 83-87
+.. GENERATED FROM PYTHON SOURCE LINES 81-85
 
 .. code-block:: default
 
@@ -192,14 +190,14 @@ Define the background environment.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 88-92
+.. GENERATED FROM PYTHON SOURCE LINES 86-90
 
 Place actors
 ~~~~~~~~~~~~
 Place actors in the environment. This code places persons, birds, bikes, and cars
 in the environment.
 
-.. GENERATED FROM PYTHON SOURCE LINES 92-116
+.. GENERATED FROM PYTHON SOURCE LINES 90-114
 
 .. code-block:: default
 
@@ -234,14 +232,14 @@ in the environment.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 117-121
+.. GENERATED FROM PYTHON SOURCE LINES 115-119
 
 Place radar
 ~~~~~~~~~~~
 Place radar on the car. The radar is created relative to the car's coordinate
 system.
 
-.. GENERATED FROM PYTHON SOURCE LINES 121-130
+.. GENERATED FROM PYTHON SOURCE LINES 119-128
 
 .. code-block:: default
 
@@ -261,7 +259,7 @@ system.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 131-136
+.. GENERATED FROM PYTHON SOURCE LINES 129-134
 
 Create setup
 ~~~~~~~~~~~~
@@ -269,7 +267,7 @@ Create setup and validate it. The ``create_sbr_pulse_doppler_setup`` method
 creates a setup and a parametric sweep on the time variable with a
 duration of two seconds. The step is computed automatically from CPI.
 
-.. GENERATED FROM PYTHON SOURCE LINES 136-141
+.. GENERATED FROM PYTHON SOURCE LINES 134-139
 
 .. code-block:: default
 
@@ -291,13 +289,13 @@ duration of two seconds. The step is computed automatically from CPI.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 142-145
+.. GENERATED FROM PYTHON SOURCE LINES 140-143
 
 Plot model
 ~~~~~~~~~~
 Plot the model.
 
-.. GENERATED FROM PYTHON SOURCE LINES 145-148
+.. GENERATED FROM PYTHON SOURCE LINES 143-146
 
 .. code-block:: default
 
@@ -318,18 +316,18 @@ Plot the model.
  .. code-block:: none
 
 
-    <pyaedt.generic.plot.ModelPlotter object at 0x0000022BB4129A00>
+    <pyaedt.generic.plot.ModelPlotter object at 0x000002812C430280>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 149-153
+.. GENERATED FROM PYTHON SOURCE LINES 147-151
 
 Solve and release AEDT
 ~~~~~~~~~~~~~~~~~~~~~~
 Solve and release AEDT. To solve, uncomment the ``app.analyze_setup`` command
 to activate the simulation. 
 
-.. GENERATED FROM PYTHON SOURCE LINES 153-157
+.. GENERATED FROM PYTHON SOURCE LINES 151-155
 
 .. code-block:: default
 
@@ -353,7 +351,7 @@ to activate the simulation.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  36.329 seconds)
+   **Total running time of the script:** ( 0 minutes  38.441 seconds)
 
 
 .. _sphx_glr_download_examples_02-SBR+_SBR_Doppler_Example.py:

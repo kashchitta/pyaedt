@@ -35,8 +35,8 @@ Perform the required import.
 
 
     import os
-    from pyaedt import Circuit
-    from pyaedt import generate_unique_project_name
+    import pyaedt
+
 
 
 
@@ -73,12 +73,16 @@ Launch AEDT with Circuit
 ~~~~~~~~~~~~~~~~~~~~~~~~
 Launch AEDT 2022 R2 in graphical mode with Circuit.
 
-.. GENERATED FROM PYTHON SOURCE LINES 29-32
+.. GENERATED FROM PYTHON SOURCE LINES 29-36
 
 .. code-block:: default
 
 
-    circuit = Circuit(projectname=generate_unique_project_name(), specified_version="2022.2", non_graphical=non_graphical, new_desktop_session=True)
+    circuit = pyaedt.Circuit(projectname=pyaedt.generate_unique_project_name(),
+                             specified_version="2022.2",
+                             non_graphical=non_graphical,
+                             new_desktop_session=True
+                             )
 
 
 
@@ -87,14 +91,14 @@ Launch AEDT 2022 R2 in graphical mode with Circuit.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 33-37
+.. GENERATED FROM PYTHON SOURCE LINES 37-41
 
 Add subcircuit
 ~~~~~~~~~~~~~~
 Add a new subcircuit to the previously created circuit design, creating a
 child circuit. Push this child circuit down into the child subcircuit.
 
-.. GENERATED FROM PYTHON SOURCE LINES 37-42
+.. GENERATED FROM PYTHON SOURCE LINES 41-46
 
 .. code-block:: default
 
@@ -116,7 +120,7 @@ child circuit. Push this child circuit down into the child subcircuit.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 43-48
+.. GENERATED FROM PYTHON SOURCE LINES 47-52
 
 Parametrize subcircuit
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -124,7 +128,7 @@ Parametrize the subcircuit and add a resistor, inductor, and a capacitor with
 the parameter values in the following code example. Connect them in series
 and then use the ``pop_up`` # method to get back to the parent design.
 
-.. GENERATED FROM PYTHON SOURCE LINES 48-60
+.. GENERATED FROM PYTHON SOURCE LINES 52-64
 
 .. code-block:: default
 
@@ -153,14 +157,14 @@ and then use the ``pop_up`` # method to get back to the parent design.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 61-65
+.. GENERATED FROM PYTHON SOURCE LINES 65-69
 
 Duplicate subcircuit
 ~~~~~~~~~~~~~~~~~~~~
 Duplicate the previously created subcircuit and set a new parameter value.
 This works only in graphical mode.
 
-.. GENERATED FROM PYTHON SOURCE LINES 65-70
+.. GENERATED FROM PYTHON SOURCE LINES 69-74
 
 .. code-block:: default
 
@@ -176,13 +180,13 @@ This works only in graphical mode.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 71-74
+.. GENERATED FROM PYTHON SOURCE LINES 75-78
 
 Release AEDT
 ~~~~~~~~~~~~
 Release AEDT.
 
-.. GENERATED FROM PYTHON SOURCE LINES 74-76
+.. GENERATED FROM PYTHON SOURCE LINES 78-80
 
 .. code-block:: default
 
@@ -204,7 +208,7 @@ Release AEDT.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  9.519 seconds)
+   **Total running time of the script:** ( 0 minutes  9.335 seconds)
 
 
 .. _sphx_glr_download_examples_07-Circuit_Circuit_Subcircuit_Example.py:

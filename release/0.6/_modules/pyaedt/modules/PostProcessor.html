@@ -32,6 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-binder.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-dataframe.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-rendered-html.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css" />
 
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
@@ -108,7 +109,13 @@
 
 <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="../../../API/index.html">
-  API reference
+  API AEDT reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../EDBAPI/index.html">
+  API EDB reference
  </a>
 </li>
 
@@ -200,7 +207,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.40 variable.
+            // this version, rather than using sphinx's 0.6.42 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -968,7 +975,9 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="p">(</span>
             <span class="kc">True</span>
-            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">odesktop</span><span class="o">.</span><span class="n">GetRegistryInt</span><span class="p">(</span><span class="s2">&quot;Desktop/Settings/ProjectOptions/HFSS/UpdateReportsDynamicallyOnEdits&quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">odesktop</span><span class="o">.</span><span class="n">GetRegistryInt</span><span class="p">(</span>
+                <span class="s2">&quot;Desktop/Settings/ProjectOptions/</span><span class="si">{}</span><span class="s2">/UpdateReportsDynamicallyOnEdits&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">design_type</span><span class="p">)</span>
+            <span class="p">)</span>
             <span class="o">==</span> <span class="mi">1</span>
             <span class="k">else</span> <span class="kc">False</span>
         <span class="p">)</span>
@@ -976,9 +985,13 @@ function checkPageExistsAndRedirect(event) {
     <span class="nd">@update_report_dynamically</span><span class="o">.</span><span class="n">setter</span>
     <span class="k">def</span> <span class="nf">update_report_dynamically</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">value</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">odesktop</span><span class="o">.</span><span class="n">SetRegistryInt</span><span class="p">(</span><span class="s2">&quot;Desktop/Settings/ProjectOptions/HFSS/UpdateReportsDynamicallyOnEdits&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">odesktop</span><span class="o">.</span><span class="n">SetRegistryInt</span><span class="p">(</span>
+                <span class="s2">&quot;Desktop/Settings/ProjectOptions/</span><span class="si">{}</span><span class="s2">/UpdateReportsDynamicallyOnEdits&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">design_type</span><span class="p">),</span> <span class="mi">1</span>
+            <span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">odesktop</span><span class="o">.</span><span class="n">SetRegistryInt</span><span class="p">(</span><span class="s2">&quot;Desktop/Settings/ProjectOptions/HFSS/UpdateReportsDynamicallyOnEdits&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">odesktop</span><span class="o">.</span><span class="n">SetRegistryInt</span><span class="p">(</span>
+                <span class="s2">&quot;Desktop/Settings/ProjectOptions/</span><span class="si">{}</span><span class="s2">/UpdateReportsDynamicallyOnEdits&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">design_type</span><span class="p">),</span> <span class="mi">0</span>
+            <span class="p">)</span>
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">available_display_types</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">report_category</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -1979,7 +1992,7 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        expressions : str or list, optional</span>
-<span class="sd">            One or more formulas to add to the report. Example is value = ``&quot;dB(S(1,1))&quot;``.</span>
+<span class="sd">            One or more formulas to add to the report. Example is value ``&quot;dB(S(1,1))&quot;``.</span>
 <span class="sd">            Default is `None` which will return all traces.</span>
 <span class="sd">        setup_sweep_name : str, optional</span>
 <span class="sd">            Setup name with the sweep. The default is ``&quot;&quot;``.</span>
@@ -1997,23 +2010,23 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">            Depending on the setup different categories are available.</span>
 <span class="sd">            If `None` default category will be used (the first item in the Results drop down menu in AEDT).</span>
 <span class="sd">        context : str, dict, optional</span>
-<span class="sd">            The default is ``None``. It can be `None`, `&quot;Differential Pairs&quot;` or</span>
+<span class="sd">            The default is ``None``. It can be `None`, ``&quot;Differential Pairs&quot;`` or</span>
 <span class="sd">            Reduce Matrix Name for Q2d/Q3d solution or Infinite Sphere name for Far Fields Plot.</span>
 <span class="sd">            If dictionary is passed, key is the report property name and value is property value.</span>
 <span class="sd">        subdesign_id : int, optional</span>
-<span class="sd">            Specify a subdesign ID to export a Touchstone file of this subdesign. Valid for Circuit Only.</span>
+<span class="sd">            Subdesign ID for exporting a Touchstone file of this subdesign. This parameter</span>
+<span class="sd">            is valid for Circuit only.</span>
 <span class="sd">            The default value is ``None``.</span>
-<span class="sd">        polyline_points : int, optional,</span>
-<span class="sd">            Number of points on which create the report for plots on polylines.</span>
+<span class="sd">        polyline_points : int, optional</span>
+<span class="sd">            Number of points on which to create the report for plots on polylines.</span>
 <span class="sd">        math_formula : str, optional</span>
-<span class="sd">            It is one of the available AEDT mathematical formulas. Example abs, dB.</span>
+<span class="sd">            One of the available AEDT mathematical formulas. For example, ``abs, dB``.</span>
 
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
 <span class="sd">        :class:`pyaedt.modules.solutions.SolutionData`</span>
-<span class="sd">            `Solution Data object.</span>
-
+<span class="sd">            Solution Data object.</span>
 
 <span class="sd">        References</span>
 <span class="sd">        ----------</span>
@@ -3817,7 +3830,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="k">return</span> <span class="n">power_dict</span><span class="p">,</span> <span class="nb">sum</span><span class="p">(</span><span class="n">power_dict</span><span class="o">.</span><span class="n">values</span><span class="p">())</span></div>
 
 
-<div class="viewcode-block" id="CircuitPostProcessor"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.PostProcessor.CircuitPostProcessor.html#pyaedt.modules.AdvancedPostProcessing.CircuitPostProcessor">[docs]</a><span class="k">class</span> <span class="nc">CircuitPostProcessor</span><span class="p">(</span><span class="n">PostProcessorCommon</span><span class="p">,</span> <span class="nb">object</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">CircuitPostProcessor</span><span class="p">(</span><span class="n">PostProcessorCommon</span><span class="p">,</span> <span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Manages the main AEDT Nexxim postprocessing functions.</span>
 
 
@@ -3835,7 +3848,7 @@ function checkPageExistsAndRedirect(event) {
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">app</span><span class="p">):</span>
         <span class="n">PostProcessorCommon</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">app</span><span class="p">)</span>
 
-<div class="viewcode-block" id="CircuitPostProcessor.create_ami_initial_response_plot"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.PostProcessor.CircuitPostProcessor.create_ami_initial_response_plot.html#pyaedt.modules.AdvancedPostProcessing.CircuitPostProcessor.create_ami_initial_response_plot">[docs]</a>    <span class="k">def</span> <span class="nf">create_ami_initial_response_plot</span><span class="p">(</span>
+    <span class="k">def</span> <span class="nf">create_ami_initial_response_plot</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">setupname</span><span class="p">,</span>
         <span class="n">ami_name</span><span class="p">,</span>
@@ -3940,9 +3953,9 @@ function checkPageExistsAndRedirect(event) {
             <span class="n">variations</span><span class="p">,</span>
             <span class="p">[</span><span class="s2">&quot;X Component:=&quot;</span><span class="p">,</span> <span class="s2">&quot;__InitialTime&quot;</span><span class="p">,</span> <span class="s2">&quot;Y Component:=&quot;</span><span class="p">,</span> <span class="n">ycomponents</span><span class="p">],</span>
         <span class="p">)</span>
-        <span class="k">return</span> <span class="n">plotname</span></div>
+        <span class="k">return</span> <span class="n">plotname</span>
 
-<div class="viewcode-block" id="CircuitPostProcessor.create_ami_statistical_eye_plot"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.PostProcessor.CircuitPostProcessor.create_ami_statistical_eye_plot.html#pyaedt.modules.AdvancedPostProcessing.CircuitPostProcessor.create_ami_statistical_eye_plot">[docs]</a>    <span class="k">def</span> <span class="nf">create_ami_statistical_eye_plot</span><span class="p">(</span>
+    <span class="k">def</span> <span class="nf">create_ami_statistical_eye_plot</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">setupname</span><span class="p">,</span> <span class="n">ami_name</span><span class="p">,</span> <span class="n">variation_list_w_value</span><span class="p">,</span> <span class="n">ami_plot_type</span><span class="o">=</span><span class="s2">&quot;InitialEye&quot;</span><span class="p">,</span> <span class="n">plotname</span><span class="o">=</span><span class="kc">None</span>
     <span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Create an AMI statistical eye plot.</span>
@@ -4049,9 +4062,9 @@ function checkPageExistsAndRedirect(event) {
             <span class="n">variations</span><span class="p">,</span>
             <span class="p">[</span><span class="s2">&quot;X Component:=&quot;</span><span class="p">,</span> <span class="s2">&quot;__UnitInterval&quot;</span><span class="p">,</span> <span class="s2">&quot;Y Component:=&quot;</span><span class="p">,</span> <span class="s2">&quot;__Amplitude&quot;</span><span class="p">,</span> <span class="s2">&quot;Eye Diagram Component:=&quot;</span><span class="p">,</span> <span class="n">ycomponents</span><span class="p">],</span>
         <span class="p">)</span>
-        <span class="k">return</span> <span class="n">plotname</span></div>
+        <span class="k">return</span> <span class="n">plotname</span>
 
-<div class="viewcode-block" id="CircuitPostProcessor.create_statistical_eye_plot"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.PostProcessor.CircuitPostProcessor.create_statistical_eye_plot.html#pyaedt.modules.AdvancedPostProcessing.CircuitPostProcessor.create_statistical_eye_plot">[docs]</a>    <span class="k">def</span> <span class="nf">create_statistical_eye_plot</span><span class="p">(</span>
+    <span class="k">def</span> <span class="nf">create_statistical_eye_plot</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">setupname</span><span class="p">,</span> <span class="n">probe_names</span><span class="p">,</span> <span class="n">variation_list_w_value</span><span class="p">,</span> <span class="n">ami_plot_type</span><span class="o">=</span><span class="s2">&quot;InitialEye&quot;</span><span class="p">,</span> <span class="n">plotname</span><span class="o">=</span><span class="kc">None</span>
     <span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Create a statistical QuickEye, VerifEye, and/or Statistical Eye plot.</span>
@@ -4143,9 +4156,9 @@ function checkPageExistsAndRedirect(event) {
             <span class="n">variations</span><span class="p">,</span>
             <span class="p">[</span><span class="s2">&quot;X Component:=&quot;</span><span class="p">,</span> <span class="s2">&quot;__UnitInterval&quot;</span><span class="p">,</span> <span class="s2">&quot;Y Component:=&quot;</span><span class="p">,</span> <span class="s2">&quot;__Amplitude&quot;</span><span class="p">,</span> <span class="s2">&quot;Eye Diagram Component:=&quot;</span><span class="p">,</span> <span class="n">ycomponents</span><span class="p">],</span>
         <span class="p">)</span>
-        <span class="k">return</span> <span class="n">plotname</span></div>
+        <span class="k">return</span> <span class="n">plotname</span>
 
-<div class="viewcode-block" id="CircuitPostProcessor.sample_waveform"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.PostProcessor.CircuitPostProcessor.sample_waveform.html#pyaedt.modules.AdvancedPostProcessing.CircuitPostProcessor.sample_waveform">[docs]</a>    <span class="k">def</span> <span class="nf">sample_waveform</span><span class="p">(</span>
+    <span class="k">def</span> <span class="nf">sample_waveform</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">waveform_data</span><span class="p">,</span>
         <span class="n">waveform_sweep</span><span class="p">,</span>
@@ -4230,9 +4243,9 @@ function checkPageExistsAndRedirect(event) {
                     <span class="k">break</span>
         <span class="k">if</span> <span class="n">pandas_enabled</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">new_voltage</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">tic_in_s</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">outputdata</span></div>
+        <span class="k">return</span> <span class="n">outputdata</span>
 
-<div class="viewcode-block" id="CircuitPostProcessor.sample_ami_waveform"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.PostProcessor.CircuitPostProcessor.sample_ami_waveform.html#pyaedt.modules.AdvancedPostProcessing.CircuitPostProcessor.sample_ami_waveform">[docs]</a>    <span class="k">def</span> <span class="nf">sample_ami_waveform</span><span class="p">(</span>
+    <span class="k">def</span> <span class="nf">sample_ami_waveform</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">setupname</span><span class="p">,</span>
         <span class="n">probe_name</span><span class="p">,</span>
@@ -4341,7 +4354,7 @@ function checkPageExistsAndRedirect(event) {
                 <span class="n">clock_tics</span><span class="o">=</span><span class="n">tics</span><span class="p">,</span>
                 <span class="n">pandas_enabled</span><span class="o">=</span><span class="n">waveform_data</span><span class="o">.</span><span class="n">enable_pandas_output</span><span class="p">,</span>
             <span class="p">)</span>
-        <span class="k">return</span> <span class="n">outputdata</span></div></div>
+        <span class="k">return</span> <span class="n">outputdata</span>
 </pre></div>
 
               </article>

@@ -33,6 +33,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
 
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
@@ -111,7 +112,13 @@
 
 <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="../../API/index.html">
-  API reference
+  API AEDT reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../EDBAPI/index.html">
+  API EDB reference
  </a>
 </li>
 
@@ -203,7 +210,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.40 variable.
+            // this version, rather than using sphinx's 0.6.42 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -737,11 +744,6 @@ function checkPageExistsAndRedirect(event) {
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#import-main-classes">
-   Import main classes
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#launch-aedt">
    Launch AEDT
   </a>
@@ -816,23 +818,13 @@ to download the full example code</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># sphinx_gallery_thumbnail_path = &#39;Resources/spectrum_plot.png&#39;</span>
 <span class="kn">import</span> <span class="nn">os</span>
 
-<span class="kn">import</span> <span class="nn">shutil</span>
-<span class="kn">from</span> <span class="nn">pyaedt</span> <span class="kn">import</span> <span class="n">examples</span>
-<span class="kn">from</span> <span class="nn">pyaedt</span> <span class="kn">import</span> <span class="n">generate_unique_folder_name</span>
+<span class="kn">import</span> <span class="nn">pyaedt</span>
 
-<span class="kn">import</span> <span class="nn">tempfile</span>
+
 
 <span class="c1"># Set local path to path for PyAEDT</span>
-<a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">temp_folder</span></a> <span class="o">=</span> <span class="n">generate_unique_folder_name</span><span class="p">()</span>
-<a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">project_path</span></a> <span class="o">=</span> <span class="n">examples</span><span class="o">.</span><span class="n">download_custom_reports</span><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">temp_folder</span></a><span class="p">)</span>
-</pre></div>
-</div>
-</section>
-<section id="import-main-classes">
-<h2>Import main classes<a class="headerlink" href="#import-main-classes" title="Permalink to this heading">#</a></h2>
-<p>Import the main classes that are needed: <a class="reference internal" href="../../API/_autosummary/pyaedt.Desktop.html#pyaedt.Desktop" title="pyaedt.Desktop"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyaedt.Desktop</span></code></a> and <code class="xref py py-class docutils literal notranslate"><span class="pre">pyaedt.Circuit</span></code>.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyaedt</span> <span class="kn">import</span> <span class="n">Circuit</span>
-<span class="kn">from</span> <span class="nn">pyaedt.generic.DataHandlers</span> <span class="kn">import</span> <span class="n">json_to_dict</span>
+<a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">temp_folder</span></a> <span class="o">=</span> <span class="n">pyaedt</span><span class="o">.</span><span class="n">generate_unique_folder_name</span><span class="p">()</span>
+<a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">project_path</span></a> <span class="o">=</span> <span class="n">pyaedt</span><span class="o">.</span><span class="n">downloads</span><span class="o">.</span><span class="n">download_custom_reports</span><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">temp_folder</span></a><span class="p">)</span>
 </pre></div>
 </div>
 </section>
@@ -857,10 +849,12 @@ of AEDT or try to connect to an existing instance of it.</p>
 </section>
 <section id="launch-aedt-with-circuit">
 <h2>Launch AEDT with Circuit<a class="headerlink" href="#launch-aedt-with-circuit" title="Permalink to this heading">#</a></h2>
-<p>Launch AEDT with Circuit. The <a class="reference internal" href="../../API/_autosummary/pyaedt.Desktop.html#pyaedt.Desktop" title="pyaedt.Desktop"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyaedt.Desktop</span></code></a> class initializes AEDT
+<p>Launch AEDT with Circuit. The <code class="xref py py-class docutils literal notranslate"><span class="pre">pyaedt.Desktop</span></code> class initializes AEDT
 and starts the specified version in the specified mode.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cir</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="n">projectname</span><span class="o">=</span><a href="https://docs.python.org/dev/library/os.path.html#os.path.join" title="os.path.join" class="sphx-glr-backref-module-os-path sphx-glr-backref-type-py-function"><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span></a><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">project_path</span></a><span class="p">,</span> <span class="s1">&#39;CISPR25_Radiated_Emissions_Example22R1.aedtz&#39;</span><span class="p">),</span> <a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a><span class="o">=</span><a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a><span class="p">,</span>
-              <span class="n">specified_version</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">desktopVersion</span></a><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cir</span> <span class="o">=</span> <span class="n">pyaedt</span><span class="o">.</span><span class="n">Circuit</span><span class="p">(</span><span class="n">projectname</span><span class="o">=</span><a href="https://docs.python.org/dev/library/os.path.html#os.path.join" title="os.path.join" class="sphx-glr-backref-module-os-path sphx-glr-backref-type-py-function"><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span></a><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">project_path</span></a><span class="p">,</span> <span class="s1">&#39;CISPR25_Radiated_Emissions_Example22R1.aedtz&#39;</span><span class="p">),</span>
+                     <a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a><span class="o">=</span><a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a><span class="p">,</span>
+                     <span class="n">specified_version</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">desktopVersion</span></a>
+                     <span class="p">)</span>
 </pre></div>
 </div>
 </section>
@@ -885,9 +879,9 @@ before running the script. The following code modifies the traces
 before generating the report. You can create custom reports in non-graphical
 mode in AEDT 2022 R2 and later.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a><span class="p">:</span>
-    <a href="https://docs.python.org/dev/library/stdtypes.html#dict" title="builtins.dict" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">props</span></a> <span class="o">=</span> <span class="n">json_to_dict</span><span class="p">(</span><a href="https://docs.python.org/dev/library/os.path.html#os.path.join" title="os.path.join" class="sphx-glr-backref-module-os-path sphx-glr-backref-type-py-function"><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span></a><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">project_path</span></a><span class="p">,</span> <span class="s1">&#39;Transient_CISPR_Basic.json&#39;</span><span class="p">))</span>
+    <a href="https://docs.python.org/dev/library/stdtypes.html#dict" title="builtins.dict" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">props</span></a> <span class="o">=</span> <span class="n">pyaedt</span><span class="o">.</span><span class="n">data_handler</span><span class="o">.</span><span class="n">json_to_dict</span><span class="p">(</span><a href="https://docs.python.org/dev/library/os.path.html#os.path.join" title="os.path.join" class="sphx-glr-backref-module-os-path sphx-glr-backref-type-py-function"><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span></a><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">project_path</span></a><span class="p">,</span> <span class="s1">&#39;Transient_CISPR_Basic.json&#39;</span><span class="p">))</span>
 <span class="k">else</span><span class="p">:</span>
-    <a href="https://docs.python.org/dev/library/stdtypes.html#dict" title="builtins.dict" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">props</span></a> <span class="o">=</span> <span class="n">json_to_dict</span><span class="p">(</span><a href="https://docs.python.org/dev/library/os.path.html#os.path.join" title="os.path.join" class="sphx-glr-backref-module-os-path sphx-glr-backref-type-py-function"><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span></a><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">project_path</span></a><span class="p">,</span> <span class="s1">&#39;Transient_CISPR_Custom.json&#39;</span><span class="p">))</span>
+    <a href="https://docs.python.org/dev/library/stdtypes.html#dict" title="builtins.dict" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">props</span></a> <span class="o">=</span> <span class="n">pyaedt</span><span class="o">.</span><span class="n">data_handler</span><span class="o">.</span><span class="n">json_to_dict</span><span class="p">(</span><a href="https://docs.python.org/dev/library/os.path.html#os.path.join" title="os.path.join" class="sphx-glr-backref-module-os-path sphx-glr-backref-type-py-function"><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span></a><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">project_path</span></a><span class="p">,</span> <span class="s1">&#39;Transient_CISPR_Custom.json&#39;</span><span class="p">))</span>
 
 <span class="n">report2</span> <span class="o">=</span> <span class="n">cir</span><span class="o">.</span><span class="n">post</span><span class="o">.</span><span class="n">create_report_from_configuration</span><span class="p">(</span><span class="n">input_dict</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#dict" title="builtins.dict" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">props</span></a><span class="p">,</span> <span class="n">solution_name</span><span class="o">=</span><span class="s2">&quot;NexximTransient&quot;</span><span class="p">)</span>
 <a href="https://docs.python.org/dev/library/stdtypes.html#dict" title="builtins.dict" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">props</span></a><span class="p">[</span><span class="s2">&quot;expressions&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;V(Battery)&quot;</span><span class="p">:</span> <span class="p">{},</span> <span class="s2">&quot;V(U1_VDD)&quot;</span><span class="p">:</span> <span class="p">{}}</span>
@@ -924,7 +918,7 @@ non-graphical mode in AEDT 2022 R2 and later.</p>
 True
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  19.383 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  21.401 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-07-circuit-reports-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/f110684d9f38590baf1593188ee1a63b/Reports.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">Reports.py</span></code></a></p>

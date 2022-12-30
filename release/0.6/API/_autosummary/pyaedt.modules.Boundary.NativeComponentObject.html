@@ -33,6 +33,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
 
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
@@ -111,7 +112,13 @@
 
 <li class="toctree-l1 current active nav-item">
  <a class="reference internal nav-link" href="../index.html">
-  API reference
+  API AEDT reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../EDBAPI/index.html">
+  API EDB reference
  </a>
 </li>
 
@@ -203,7 +210,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.40 variable.
+            // this version, rather than using sphinx's 0.6.42 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -273,9 +280,8 @@ function checkPageExistsAndRedirect(event) {
         <li class="nav-item nav-item-0"><a href="../../index.html">PyAEDT</a> » </li>
     
 
-          <li class="nav-item nav-item-1"><a href="../index.html" >API reference</a> » </li>
-          <li class="nav-item nav-item-2"><a href="../CoreModules.html" >AEDT modules</a> » </li>
-          <li class="nav-item nav-item-3"><a href="../Boundaries.html" accesskey="U">Boundary objects</a> » </li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >API AEDT reference</a> » </li>
+          <li class="nav-item nav-item-2"><a href="../Boundaries.html" accesskey="U">Boundary objects</a> » </li>
         <li class="nav-item nav-item-this"><a href="">pyaedt.modules.Boundary.NativeComponentObject</a></li> 
       </ul>
     </div>
@@ -299,16 +305,6 @@ function checkPageExistsAndRedirect(event) {
     
     <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../Common.html">
-   Desktop and common classes
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../CoreEdb.html">
-   EDB editor
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="../Application.html">
    AEDT apps
   </a>
@@ -319,13 +315,23 @@ function checkPageExistsAndRedirect(event) {
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../Primitives.html">
-   Modeler and  primitives
+  <a class="reference internal" href="../Primitives3D.html">
+   Modeler in 2D and 3D
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Primitives3DLayout.html">
+   Modeler in  HFSS 3D Layout
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../PrimitivesCircuit.html">
+   Modeler and components Circuit
   </a>
  </li>
  <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="../CoreModules.html">
-   AEDT modules
+  <a class="reference internal" href="../Boundaries.html">
+   Boundary objects
   </a>
   <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
@@ -333,140 +339,83 @@ function checkPageExistsAndRedirect(event) {
    </i>
   </label>
   <ul class="current">
-   <li class="toctree-l2">
-    <a class="reference internal" href="pyaedt.application.Variables.CSVDataset.html">
-     pyaedt.application.Variables.CSVDataset
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="pyaedt.application.Variables.VariableManager.html">
-     pyaedt.application.Variables.VariableManager
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="pyaedt.application.Variables.Variable.html">
-     pyaedt.application.Variables.Variable
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="pyaedt.application.Variables.DataSet.html">
-     pyaedt.application.Variables.DataSet
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="pyaedt.modules.DesignXPloration.ParametricSetups.html">
-     pyaedt.modules.DesignXPloration.ParametricSetups
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="pyaedt.modules.DesignXPloration.OptimizationSetups.html">
-     pyaedt.modules.DesignXPloration.OptimizationSetups
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="pyaedt.modules.DesignXPloration.SetupParam.html">
-     pyaedt.modules.DesignXPloration.SetupParam
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="pyaedt.modules.DesignXPloration.SetupOpti.html">
-     pyaedt.modules.DesignXPloration.SetupOpti
-    </a>
-   </li>
    <li class="toctree-l2 current active has-children">
-    <a class="reference internal" href="../Boundaries.html">
-     Boundary objects
+    <a class="current reference internal" href="#">
+     pyaedt.modules.Boundary.NativeComponentObject
     </a>
     <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
     <label for="toctree-checkbox-2">
      <i class="fas fa-chevron-down">
      </i>
     </label>
-    <ul class="current">
-     <li class="toctree-l3 current active has-children">
-      <a class="current reference internal" href="#">
-       pyaedt.modules.Boundary.NativeComponentObject
-      </a>
-      <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-      <label for="toctree-checkbox-3">
-       <i class="fas fa-chevron-down">
-       </i>
-      </label>
-      <ul>
-       <li class="toctree-l4">
-        <a class="reference internal" href="pyaedt.modules.Boundary.NativeComponentObject.create.html">
-         create
-        </a>
-       </li>
-       <li class="toctree-l4">
-        <a class="reference internal" href="pyaedt.modules.Boundary.NativeComponentObject.delete.html">
-         delete
-        </a>
-       </li>
-       <li class="toctree-l4">
-        <a class="reference internal" href="pyaedt.modules.Boundary.NativeComponentObject.update.html">
-         update
-        </a>
-       </li>
-       <li class="toctree-l4">
-        <a class="reference internal" href="pyaedt.modules.Boundary.NativeComponentObject.available_properties.html">
-         available_properties
-        </a>
-       </li>
-       <li class="toctree-l4">
-        <a class="reference internal" href="pyaedt.modules.Boundary.NativeComponentObject.targetcs.html">
-         targetcs
-        </a>
-       </li>
-      </ul>
-     </li>
+    <ul>
      <li class="toctree-l3">
-      <a class="reference internal" href="pyaedt.modules.Boundary.BoundaryObject.html">
-       pyaedt.modules.Boundary.BoundaryObject
+      <a class="reference internal" href="pyaedt.modules.Boundary.NativeComponentObject.create.html">
+       create
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="pyaedt.modules.Boundary.BoundaryObject3dLayout.html">
-       pyaedt.modules.Boundary.BoundaryObject3dLayout
+      <a class="reference internal" href="pyaedt.modules.Boundary.NativeComponentObject.delete.html">
+       delete
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="pyaedt.modules.Boundary.FarFieldSetup.html">
-       pyaedt.modules.Boundary.FarFieldSetup
+      <a class="reference internal" href="pyaedt.modules.Boundary.NativeComponentObject.update.html">
+       update
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="pyaedt.modules.Boundary.Matrix.html">
-       pyaedt.modules.Boundary.Matrix
+      <a class="reference internal" href="pyaedt.modules.Boundary.NativeComponentObject.available_properties.html">
+       available_properties
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="pyaedt.modules.Boundary.BoundaryObject3dLayout.html">
-       pyaedt.modules.Boundary.BoundaryObject3dLayout
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="pyaedt.modules.Boundary.Sources.html">
-       pyaedt.modules.Boundary.Sources
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="pyaedt.modules.Boundary.Excitations.html">
-       pyaedt.modules.Boundary.Excitations
+      <a class="reference internal" href="pyaedt.modules.Boundary.NativeComponentObject.targetcs.html">
+       targetcs
       </a>
      </li>
     </ul>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modules.Boundary.BoundaryObject.html">
+     pyaedt.modules.Boundary.BoundaryObject
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modules.Boundary.BoundaryObject3dLayout.html">
+     pyaedt.modules.Boundary.BoundaryObject3dLayout
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modules.Boundary.FarFieldSetup.html">
+     pyaedt.modules.Boundary.FarFieldSetup
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modules.Boundary.Matrix.html">
+     pyaedt.modules.Boundary.Matrix
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modules.Boundary.BoundaryObject3dLayout.html">
+     pyaedt.modules.Boundary.BoundaryObject3dLayout
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modules.Boundary.Sources.html">
+     pyaedt.modules.Boundary.Sources
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modules.Boundary.Excitations.html">
+     pyaedt.modules.Boundary.Excitations
+    </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Mesh.html">
    Mesh operations
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../CableModeling.html">
-   Cable modeling
   </a>
  </li>
  <li class="toctree-l1">
@@ -477,6 +426,41 @@ function checkPageExistsAndRedirect(event) {
  <li class="toctree-l1">
   <a class="reference internal" href="../Post.html">
    Postprocessing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../DesktopMessenger.html">
+   Logger
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Optimetrics.html">
+   Optimetrics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Variables.html">
+   Variable
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Constants.html">
+   Constants
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Configuration.html">
+   Configuration files
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../SetupTemplates.html">
+   Setup templates
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../CableModeling.html">
+   Cable modeling
   </a>
  </li>
 </ul>

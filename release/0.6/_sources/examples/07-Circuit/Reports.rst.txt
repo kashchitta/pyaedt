@@ -28,7 +28,7 @@ Perform required imports
 ~~~~~~~~~~~~~~~~~~~~~~~~
 Perform required imports and set the local path to the path for PyAEDT.
 
-.. GENERATED FROM PYTHON SOURCE LINES 11-26
+.. GENERATED FROM PYTHON SOURCE LINES 11-25
 
 .. code-block:: default
 
@@ -36,15 +36,13 @@ Perform required imports and set the local path to the path for PyAEDT.
     # sphinx_gallery_thumbnail_path = 'Resources/spectrum_plot.png'
     import os
 
-    import shutil
-    from pyaedt import examples
-    from pyaedt import generate_unique_folder_name
+    import pyaedt
 
-    import tempfile
+
 
     # Set local path to path for PyAEDT
-    temp_folder = generate_unique_folder_name()
-    project_path = examples.download_custom_reports(temp_folder)
+    temp_folder = pyaedt.generate_unique_folder_name()
+    project_path = pyaedt.downloads.download_custom_reports(temp_folder)
 
 
 
@@ -54,34 +52,14 @@ Perform required imports and set the local path to the path for PyAEDT.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 27-30
 
-Import main classes
-~~~~~~~~~~~~~~~~~~~
-Import the main classes that are needed: :class:`pyaedt.Desktop` and :class:`pyaedt.Circuit`.
-
-.. GENERATED FROM PYTHON SOURCE LINES 30-34
-
-.. code-block:: default
-
-
-    from pyaedt import Circuit
-    from pyaedt.generic.DataHandlers import json_to_dict
-
-
-
-
-
-
-
-
-.. GENERATED FROM PYTHON SOURCE LINES 35-38
+.. GENERATED FROM PYTHON SOURCE LINES 26-29
 
 Launch AEDT
 ~~~~~~~~~~~
 Launch AEDT 2022 R2 in graphical mode. This example uses SI units.
 
-.. GENERATED FROM PYTHON SOURCE LINES 38-41
+.. GENERATED FROM PYTHON SOURCE LINES 29-32
 
 .. code-block:: default
 
@@ -95,7 +73,7 @@ Launch AEDT 2022 R2 in graphical mode. This example uses SI units.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 42-49
+.. GENERATED FROM PYTHON SOURCE LINES 33-40
 
 Set non-graphical mode
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -105,7 +83,7 @@ You can set ``non_graphical`` either to ``True`` or ``False``.
 The Boolean parameter ``new_thread`` defines whether to create a new instance
 of AEDT or try to connect to an existing instance of it.
 
-.. GENERATED FROM PYTHON SOURCE LINES 49-53
+.. GENERATED FROM PYTHON SOURCE LINES 40-44
 
 .. code-block:: default
 
@@ -120,20 +98,22 @@ of AEDT or try to connect to an existing instance of it.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 54-58
+.. GENERATED FROM PYTHON SOURCE LINES 45-49
 
 Launch AEDT with Circuit
 ~~~~~~~~~~~~~~~~~~~~~~~~
 Launch AEDT with Circuit. The :class:`pyaedt.Desktop` class initializes AEDT
 and starts the specified version in the specified mode.
 
-.. GENERATED FROM PYTHON SOURCE LINES 58-62
+.. GENERATED FROM PYTHON SOURCE LINES 49-55
 
 .. code-block:: default
 
 
-    cir = Circuit(projectname=os.path.join(project_path, 'CISPR25_Radiated_Emissions_Example22R1.aedtz'), non_graphical=non_graphical,
-                  specified_version=desktopVersion)
+    cir = pyaedt.Circuit(projectname=os.path.join(project_path, 'CISPR25_Radiated_Emissions_Example22R1.aedtz'),
+                         non_graphical=non_graphical,
+                         specified_version=desktopVersion
+                         )
 
 
 
@@ -142,7 +122,7 @@ and starts the specified version in the specified mode.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 63-70
+.. GENERATED FROM PYTHON SOURCE LINES 56-63
 
 Create spectrum report
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -152,7 +132,7 @@ the JSON file to customize it. In a spectrum report, you can add limitilines and
 notes and edit axes, the grid, and the legend. You can create custom reports
 in non-graphical mode in AEDT 2022 R2 and later.
 
-.. GENERATED FROM PYTHON SOURCE LINES 70-76
+.. GENERATED FROM PYTHON SOURCE LINES 63-69
 
 .. code-block:: default
 
@@ -169,7 +149,7 @@ in non-graphical mode in AEDT 2022 R2 and later.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 77-83
+.. GENERATED FROM PYTHON SOURCE LINES 70-76
 
 Create transient report
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -178,15 +158,15 @@ before running the script. The following code modifies the traces
 before generating the report. You can create custom reports in non-graphical
 mode in AEDT 2022 R2 and later.
 
-.. GENERATED FROM PYTHON SOURCE LINES 83-94
+.. GENERATED FROM PYTHON SOURCE LINES 76-87
 
 .. code-block:: default
 
 
     if non_graphical:
-        props = json_to_dict(os.path.join(project_path, 'Transient_CISPR_Basic.json'))
+        props = pyaedt.data_handler.json_to_dict(os.path.join(project_path, 'Transient_CISPR_Basic.json'))
     else:
-        props = json_to_dict(os.path.join(project_path, 'Transient_CISPR_Custom.json'))
+        props = pyaedt.data_handler.json_to_dict(os.path.join(project_path, 'Transient_CISPR_Custom.json'))
 
     report2 = cir.post.create_report_from_configuration(input_dict=props, solution_name="NexximTransient")
     props["expressions"] = {"V(Battery)": {}, "V(U1_VDD)": {}}
@@ -200,7 +180,7 @@ mode in AEDT 2022 R2 and later.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 95-100
+.. GENERATED FROM PYTHON SOURCE LINES 88-93
 
 Create eye diagram
 ~~~~~~~~~~~~~~~~~~
@@ -208,7 +188,7 @@ Create an eye diagram. If the JSON file contains an eye mask, you can create
 an eye diagram and fully customize it. You can create custom reports in
 non-graphical mode in AEDT 2022 R2 and later.
 
-.. GENERATED FROM PYTHON SOURCE LINES 100-109
+.. GENERATED FROM PYTHON SOURCE LINES 93-102
 
 .. code-block:: default
 
@@ -228,13 +208,13 @@ non-graphical mode in AEDT 2022 R2 and later.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 110-113
+.. GENERATED FROM PYTHON SOURCE LINES 103-106
 
 Save project and close AEDT
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Save the project and close AEDT.
 
-.. GENERATED FROM PYTHON SOURCE LINES 113-117
+.. GENERATED FROM PYTHON SOURCE LINES 106-110
 
 .. code-block:: default
 
@@ -259,7 +239,7 @@ Save the project and close AEDT.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  19.383 seconds)
+   **Total running time of the script:** ( 0 minutes  21.401 seconds)
 
 
 .. _sphx_glr_download_examples_07-Circuit_Reports.py:

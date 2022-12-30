@@ -32,6 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery-binder.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery-dataframe.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery-rendered-html.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/custom.css" />
 
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
@@ -108,7 +109,13 @@
 
 <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="../../../../API/index.html">
-  API reference
+  API AEDT reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../../EDBAPI/index.html">
+  API EDB reference
  </a>
 </li>
 
@@ -200,7 +207,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.40 variable.
+            // this version, rather than using sphinx's 0.6.42 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -334,8 +341,8 @@ function checkPageExistsAndRedirect(event) {
 <span class="kn">from</span> <span class="nn">pyaedt.generic.general_methods</span> <span class="kn">import</span> <span class="n">pyaedt_function_handler</span>
 
 
-<div class="viewcode-block" id="SimulationConfigurationBatch"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationBatch.html#pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationBatch">[docs]</a><span class="k">class</span> <span class="nc">SimulationConfigurationBatch</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Class containing all Cuotut and Batch analysis settings.</span>
+<div class="viewcode-block" id="SimulationConfigurationBatch"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationBatch.html#pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationBatch">[docs]</a><span class="k">class</span> <span class="nc">SimulationConfigurationBatch</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Contains all Cuotut and Batch analysis settings.</span>
 <span class="sd">    The class is part of `SimulationConfiguration` class as a property.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -708,7 +715,7 @@ function checkPageExistsAndRedirect(event) {
             <span class="k">if</span> <span class="nb">len</span><span class="p">([</span><span class="n">src</span> <span class="k">for</span> <span class="n">src</span> <span class="ow">in</span> <span class="n">value</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">Source</span><span class="p">)])</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_sources</span> <span class="o">=</span> <span class="n">value</span>
 
-<div class="viewcode-block" id="SimulationConfigurationBatch.add_source"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationBatch.add_source.html#pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationBatch.add_source">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="SimulationConfigurationBatch.add_source"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationBatch.add_source.html#pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationBatch.add_source">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">add_source</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
         <span class="sd">&quot;&quot;&quot;Add a new source to configuration.</span>
 
@@ -788,8 +795,8 @@ function checkPageExistsAndRedirect(event) {
             <span class="bp">self</span><span class="o">.</span><span class="n">_signal_layers_properties</span> <span class="o">=</span> <span class="n">value</span></div>
 
 
-<div class="viewcode-block" id="SimulationConfigurationDc"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationDc.html#pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationDc">[docs]</a><span class="k">class</span> <span class="nc">SimulationConfigurationDc</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Class containing all DC analysis settings.</span>
+<div class="viewcode-block" id="SimulationConfigurationDc"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationDc.html#pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationDc">[docs]</a><span class="k">class</span> <span class="nc">SimulationConfigurationDc</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Contains all DC analysis settings.</span>
 <span class="sd">    The class is part of `SimulationConfiguration` class as a property.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -1338,8 +1345,8 @@ function checkPageExistsAndRedirect(event) {
                     <span class="bp">self</span><span class="o">.</span><span class="n">_dc_source_terms_to_ground</span> <span class="o">=</span> <span class="n">value</span></div>
 
 
-<div class="viewcode-block" id="SimulationConfigurationAc"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationAc.html#pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationAc">[docs]</a><span class="k">class</span> <span class="nc">SimulationConfigurationAc</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Class containing all AC analysis settings.</span>
+<div class="viewcode-block" id="SimulationConfigurationAc"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationAc.html#pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationAc">[docs]</a><span class="k">class</span> <span class="nc">SimulationConfigurationAc</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Contains all AC analysis settings.</span>
 <span class="sd">    The class is part of `SimulationConfiguration` class as a property.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -2039,7 +2046,7 @@ function checkPageExistsAndRedirect(event) {
                 <span class="bp">self</span><span class="o">.</span><span class="n">_do_lambda_refinement</span> <span class="o">=</span> <span class="kc">False</span></div>
 
 
-<div class="viewcode-block" id="SimulationConfiguration"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfiguration.html#pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfiguration">[docs]</a><span class="k">class</span> <span class="nc">SimulationConfiguration</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="SimulationConfiguration"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfiguration.html#pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfiguration">[docs]</a><span class="k">class</span> <span class="nc">SimulationConfiguration</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Provides an ASCII simulation configuration file parser.</span>
 
 <span class="sd">    This parser supports all types of inputs for setting up and automating any kind</span>
@@ -2100,6 +2107,7 @@ function checkPageExistsAndRedirect(event) {
             <span class="bp">self</span><span class="o">.</span><span class="n">import_json</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_read_cfg</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span> <span class="o">=</span> <span class="n">edb</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">SOLVER_TYPE</span> <span class="o">=</span> <span class="n">SolverType</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">open_edb_after_build</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -2146,7 +2154,7 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_batch_solve_settings</span>
 
-<div class="viewcode-block" id="SimulationConfiguration.build_simulation_project"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfiguration.build_simulation_project.html#pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfiguration.build_simulation_project">[docs]</a>    <span class="k">def</span> <span class="nf">build_simulation_project</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="SimulationConfiguration.build_simulation_project"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfiguration.build_simulation_project.html#pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfiguration.build_simulation_project">[docs]</a>    <span class="k">def</span> <span class="nf">build_simulation_project</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Build active simulation project. This method requires to be run inside Edb Class.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span><span class="o">.</span><span class="n">build_simulation_project</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
@@ -2220,7 +2228,7 @@ function checkPageExistsAndRedirect(event) {
                 <span class="n">prop_values</span> <span class="o">=</span> <span class="p">[</span><span class="n">value</span><span class="o">.</span><span class="n">strip</span><span class="p">()]</span>
             <span class="k">return</span> <span class="n">prop_values</span>
 
-<div class="viewcode-block" id="SimulationConfiguration.add_dc_ground_source_term"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfiguration.add_dc_ground_source_term.html#pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfiguration.add_dc_ground_source_term">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="SimulationConfiguration.add_dc_ground_source_term"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfiguration.add_dc_ground_source_term.html#pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfiguration.add_dc_ground_source_term">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">add_dc_ground_source_term</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">node_to_ground</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Add a dc ground source terminal for Siwave.</span>
 
@@ -2458,7 +2466,7 @@ function checkPageExistsAndRedirect(event) {
             <span class="k">raise</span>
 
     <span class="k">def</span> <span class="nf">_dict_to_json</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dict_out</span><span class="p">,</span> <span class="n">dict_in</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="n">exclude</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;_pedb&quot;</span><span class="p">]</span>
+        <span class="n">exclude</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;_pedb&quot;</span><span class="p">,</span> <span class="s2">&quot;SOLVER_TYPE&quot;</span><span class="p">]</span>
         <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">dict_in</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">exclude</span><span class="p">:</span>
                 <span class="k">continue</span>
@@ -2497,7 +2505,7 @@ function checkPageExistsAndRedirect(event) {
             <span class="k">else</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="fm">__setattr__</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
 
-<div class="viewcode-block" id="SimulationConfiguration.export_json"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfiguration.export_json.html#pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfiguration.export_json">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="SimulationConfiguration.export_json"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfiguration.export_json.html#pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfiguration.export_json">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">export_json</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">output_file</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Export Json file from SimulationConfiguration object.</span>
 
@@ -2527,7 +2535,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">False</span></div>
 
-<div class="viewcode-block" id="SimulationConfiguration.import_json"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfiguration.import_json.html#pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfiguration.import_json">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="SimulationConfiguration.import_json"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfiguration.import_json.html#pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfiguration.import_json">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">import_json</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_file</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Import Json file into SimulationConfiguration object instance.</span>
 
@@ -2556,7 +2564,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">False</span></div>
 
-<div class="viewcode-block" id="SimulationConfiguration.add_voltage_source"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfiguration.add_voltage_source.html#pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfiguration.add_voltage_source">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="SimulationConfiguration.add_voltage_source"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfiguration.add_voltage_source.html#pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfiguration.add_voltage_source">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">add_voltage_source</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">name</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
@@ -2628,7 +2636,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="k">except</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
             <span class="k">return</span> <span class="kc">False</span></div>
 
-<div class="viewcode-block" id="SimulationConfiguration.add_current_source"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfiguration.add_current_source.html#pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfiguration.add_current_source">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="SimulationConfiguration.add_current_source"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfiguration.add_current_source.html#pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfiguration.add_current_source">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">add_current_source</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">name</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
@@ -2700,7 +2708,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="k">except</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
             <span class="k">return</span> <span class="kc">False</span></div>
 
-<div class="viewcode-block" id="SimulationConfiguration.add_rlc"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfiguration.add_rlc.html#pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfiguration.add_rlc">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="SimulationConfiguration.add_rlc"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfiguration.add_rlc.html#pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfiguration.add_rlc">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">add_rlc</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">name</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>

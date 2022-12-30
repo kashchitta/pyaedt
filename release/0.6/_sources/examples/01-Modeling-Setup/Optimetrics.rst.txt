@@ -32,8 +32,8 @@ Perform required imports.
 
 .. code-block:: default
 
+    import pyaedt
 
-    from pyaedt import Hfss
     import os
 
 
@@ -77,7 +77,7 @@ Initialize the ``Hfss`` object and create two needed design variables,
 .. code-block:: default
 
 
-    hfss = Hfss(specified_version="2022.2", new_desktop_session=True, non_graphical=non_graphical)
+    hfss = pyaedt.Hfss(specified_version="2022.2", new_desktop_session=True, non_graphical=non_graphical)
     hfss["w1"] = "1mm"
     hfss["w2"] = "100mm"
 
@@ -155,7 +155,7 @@ Create two wave ports on the sheets.
  .. code-block:: none
 
 
-    <pyaedt.modules.Boundary.BoundaryObject object at 0x0000022BD3C18820>
+    <pyaedt.modules.Boundary.BoundaryObject object at 0x000002817E20F2B0>
 
 
 
@@ -185,7 +185,7 @@ setups.
  .. code-block:: none
 
 
-    <pyaedt.modules.SetupTemplates.SweepHFSS object at 0x0000022BD3C18EB0>
+    <pyaedt.modules.SetupTemplates.SweepHFSS object at 0x000002817E2E4520>
 
 
 
@@ -373,24 +373,29 @@ After the simulaton completes, you can close AEDT or release it using the
 :func:`pyaedt.Desktop.release_desktop` method.
 All methods provide for saving the project before closing.
 
-.. GENERATED FROM PYTHON SOURCE LINES 147-150
+.. GENERATED FROM PYTHON SOURCE LINES 147-149
 
 .. code-block:: default
 
 
-    if os.name != "posix":
-        hfss.release_desktop()
+    hfss.release_desktop()
 
 
 
 
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+
+    True
 
 
 
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  24.113 seconds)
+   **Total running time of the script:** ( 0 minutes  24.172 seconds)
 
 
 .. _sphx_glr_download_examples_01-Modeling-Setup_Optimetrics.py:

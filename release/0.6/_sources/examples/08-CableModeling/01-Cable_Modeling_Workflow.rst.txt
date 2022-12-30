@@ -28,26 +28,19 @@ Perform required imports
 ~~~~~~~~~~~~~~~~~~~~~~~~
 Perform required imports.
 
-.. GENERATED FROM PYTHON SOURCE LINES 11-28
+.. GENERATED FROM PYTHON SOURCE LINES 11-21
 
 .. code-block:: default
 
 
     import os
-    import tempfile
-
-    from pyaedt import Desktop
-    from pyaedt import Hfss
-    from pyaedt.generic.DataHandlers import json_to_dict
+    import pyaedt
     from pyaedt.modules.CableModeling import Cable
 
-    from pyaedt import examples
-    from pyaedt import generate_unique_folder_name
-
     # Set local temporary folder to export the cable library into.
-    temp_folder = generate_unique_folder_name()
-    project_path = examples.download_file("cable_modeling", "cable_modeling.aedt", temp_folder)
-    json_path = examples.download_file("cable_modeling", "set_cable_properties.json", temp_folder)
+    temp_folder = pyaedt.generate_unique_folder_name()
+    project_path = pyaedt.downloads.download_file("cable_modeling", "cable_modeling.aedt", temp_folder)
+    json_path = pyaedt.downloads.download_file("cable_modeling", "set_cable_properties.json", temp_folder)
 
 
 
@@ -56,13 +49,13 @@ Perform required imports.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 29-32
+.. GENERATED FROM PYTHON SOURCE LINES 22-25
 
 Launch AEDT
 ~~~~~~~~~~~
 Launch AEDT 2022 R2 in graphical mode. This example uses SI units.
 
-.. GENERATED FROM PYTHON SOURCE LINES 32-35
+.. GENERATED FROM PYTHON SOURCE LINES 25-28
 
 .. code-block:: default
 
@@ -76,7 +69,7 @@ Launch AEDT 2022 R2 in graphical mode. This example uses SI units.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 36-41
+.. GENERATED FROM PYTHON SOURCE LINES 29-34
 
 Set non-graphical mode
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -84,7 +77,7 @@ Set non-graphical mode. ``"PYAEDT_NON_GRAPHICAL"`` is needed to generate
 documentation only.
 You can set ``non_graphical`` either to ``True`` or ``False``.
 
-.. GENERATED FROM PYTHON SOURCE LINES 41-44
+.. GENERATED FROM PYTHON SOURCE LINES 34-37
 
 .. code-block:: default
 
@@ -98,18 +91,18 @@ You can set ``non_graphical`` either to ``True`` or ``False``.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 45-48
+.. GENERATED FROM PYTHON SOURCE LINES 38-41
 
 Launch AEDT
 ~~~~~~~~~~~
 Launch AEDT 2022 R2 in graphical mode.
 
-.. GENERATED FROM PYTHON SOURCE LINES 48-51
+.. GENERATED FROM PYTHON SOURCE LINES 41-44
 
 .. code-block:: default
 
 
-    d = Desktop(desktopVersion, non_graphical=non_graphical, new_desktop_session=True)
+    d = pyaedt.launch_desktop(desktopVersion, non_graphical=non_graphical, new_desktop_session=True)
 
 
 
@@ -118,18 +111,18 @@ Launch AEDT 2022 R2 in graphical mode.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 52-55
+.. GENERATED FROM PYTHON SOURCE LINES 45-48
 
 Launch HFSS
 ~~~~~~~~~~~
 Launch HFSS 2022 R2 in graphical mode.
 
-.. GENERATED FROM PYTHON SOURCE LINES 55-59
+.. GENERATED FROM PYTHON SOURCE LINES 48-52
 
 .. code-block:: default
 
 
-    hfss = Hfss(projectname=project_path, non_graphical=non_graphical)
+    hfss = pyaedt.Hfss(projectname=project_path, non_graphical=non_graphical)
     hfss.modeler.model_units = "mm"
 
 
@@ -139,14 +132,14 @@ Launch HFSS 2022 R2 in graphical mode.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 60-64
+.. GENERATED FROM PYTHON SOURCE LINES 53-57
 
 New instance of Cable modeling class
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 New instance of Cable modeling class which requires as input
 the aedt app and the json file path containing all the cable properties.
 
-.. GENERATED FROM PYTHON SOURCE LINES 64-67
+.. GENERATED FROM PYTHON SOURCE LINES 57-60
 
 .. code-block:: default
 
@@ -160,7 +153,7 @@ the aedt app and the json file path containing all the cable properties.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 68-73
+.. GENERATED FROM PYTHON SOURCE LINES 61-66
 
 Create cable bundle
 ~~~~~~~~~~~~~~~~~~~
@@ -168,12 +161,12 @@ Properties for cable bundle are updated (user can change them manually
 in json file).
 A cable bundle with insulation jacket type is created.
 
-.. GENERATED FROM PYTHON SOURCE LINES 73-93
+.. GENERATED FROM PYTHON SOURCE LINES 66-86
 
 .. code-block:: default
 
 
-    cable_props = json_to_dict(json_path)
+    cable_props = pyaedt.data_handler.json_to_dict(json_path)
 
     cable_props["Add_Cable"] = "True"
     cable_props["Cable_prop"]["CableType"] = "bundle"
@@ -205,13 +198,13 @@ A cable bundle with insulation jacket type is created.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 94-97
+.. GENERATED FROM PYTHON SOURCE LINES 87-90
 
 Create cable bundle
 ~~~~~~~~~~~~~~~~~~~
 A cable bundle with no jacket type is created.
 
-.. GENERATED FROM PYTHON SOURCE LINES 97-107
+.. GENERATED FROM PYTHON SOURCE LINES 90-100
 
 .. code-block:: default
 
@@ -238,13 +231,13 @@ A cable bundle with no jacket type is created.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 108-111
+.. GENERATED FROM PYTHON SOURCE LINES 101-104
 
 Create cable bundle
 ~~~~~~~~~~~~~~~~~~~
 A cable bundle with shielding jacket type is created.
 
-.. GENERATED FROM PYTHON SOURCE LINES 111-137
+.. GENERATED FROM PYTHON SOURCE LINES 104-130
 
 .. code-block:: default
 
@@ -287,13 +280,13 @@ A cable bundle with shielding jacket type is created.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 138-141
+.. GENERATED FROM PYTHON SOURCE LINES 131-134
 
 Update cable bundle
 ~~~~~~~~~~~~~~~~~~~
 The first cable bundle (insulation jacket type) is updated.
 
-.. GENERATED FROM PYTHON SOURCE LINES 141-160
+.. GENERATED FROM PYTHON SOURCE LINES 134-153
 
 .. code-block:: default
 
@@ -329,13 +322,13 @@ The first cable bundle (insulation jacket type) is updated.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 161-164
+.. GENERATED FROM PYTHON SOURCE LINES 154-157
 
 Create straight wire cable
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 Create straight wire cable.
 
-.. GENERATED FROM PYTHON SOURCE LINES 164-192
+.. GENERATED FROM PYTHON SOURCE LINES 157-185
 
 .. code-block:: default
 
@@ -380,13 +373,13 @@ Create straight wire cable.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 193-196
+.. GENERATED FROM PYTHON SOURCE LINES 186-189
 
 Create twisted pair cable
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 Create twisted pair cable.
 
-.. GENERATED FROM PYTHON SOURCE LINES 196-215
+.. GENERATED FROM PYTHON SOURCE LINES 189-208
 
 .. code-block:: default
 
@@ -422,13 +415,13 @@ Create twisted pair cable.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 216-219
+.. GENERATED FROM PYTHON SOURCE LINES 209-212
 
 Add cables to bundle
 ~~~~~~~~~~~~~~~~~~~~
 Add straight wire cables to bundle.
 
-.. GENERATED FROM PYTHON SOURCE LINES 219-230
+.. GENERATED FROM PYTHON SOURCE LINES 212-223
 
 .. code-block:: default
 
@@ -456,13 +449,13 @@ Add straight wire cables to bundle.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 231-234
+.. GENERATED FROM PYTHON SOURCE LINES 224-227
 
 Remove a cable or a list of cables
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Remove a cable or a list of cables.
 
-.. GENERATED FROM PYTHON SOURCE LINES 234-244
+.. GENERATED FROM PYTHON SOURCE LINES 227-237
 
 .. code-block:: default
 
@@ -489,13 +482,13 @@ Remove a cable or a list of cables.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 245-248
+.. GENERATED FROM PYTHON SOURCE LINES 238-241
 
 Create clock sources
 ~~~~~~~~~~~~~~~~~~~~
 Create and update a clock source.
 
-.. GENERATED FROM PYTHON SOURCE LINES 248-281
+.. GENERATED FROM PYTHON SOURCE LINES 241-274
 
 .. code-block:: default
 
@@ -545,13 +538,13 @@ Create and update a clock source.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 282-285
+.. GENERATED FROM PYTHON SOURCE LINES 275-278
 
 Create pwl sources
 ~~~~~~~~~~~~~~~~~~
 Create a pwl source.
 
-.. GENERATED FROM PYTHON SOURCE LINES 285-379
+.. GENERATED FROM PYTHON SOURCE LINES 278-372
 
 .. code-block:: default
 
@@ -620,7 +613,7 @@ Create a pwl source.
 
     # Create a pwl source from file.
 
-    pwl_path = examples.download_file("cable_modeling", "import_pwl.pwl", temp_folder)
+    pwl_path = pyaedt.downloads.download_file("cable_modeling", "import_pwl.pwl", temp_folder)
 
     cable_props["Add_Source"] = "True"
     cable_props["Update_Source"] = "False"
@@ -662,13 +655,13 @@ Create a pwl source.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 380-383
+.. GENERATED FROM PYTHON SOURCE LINES 373-376
 
 Create cable harness
 ~~~~~~~~~~~~~~~~~~~~
 Create cable harness.
 
-.. GENERATED FROM PYTHON SOURCE LINES 383-408
+.. GENERATED FROM PYTHON SOURCE LINES 376-401
 
 .. code-block:: default
 
@@ -710,13 +703,13 @@ Create cable harness.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 409-412
+.. GENERATED FROM PYTHON SOURCE LINES 402-405
 
 Plot model
 ~~~~~~~~~~
 Plot the model.
 
-.. GENERATED FROM PYTHON SOURCE LINES 412-416
+.. GENERATED FROM PYTHON SOURCE LINES 405-409
 
 .. code-block:: default
 
@@ -738,17 +731,17 @@ Plot the model.
  .. code-block:: none
 
 
-    <pyaedt.generic.plot.ModelPlotter object at 0x0000022B832602B0>
+    <pyaedt.generic.plot.ModelPlotter object at 0x0000028142ABC310>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 417-420
+.. GENERATED FROM PYTHON SOURCE LINES 410-413
 
 Save project and close AEDT
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Save the project and close AEDT.
 
-.. GENERATED FROM PYTHON SOURCE LINES 420-423
+.. GENERATED FROM PYTHON SOURCE LINES 413-416
 
 .. code-block:: default
 
@@ -771,7 +764,7 @@ Save the project and close AEDT.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  24.459 seconds)
+   **Total running time of the script:** ( 0 minutes  24.274 seconds)
 
 
 .. _sphx_glr_download_examples_08-CableModeling_01-Cable_Modeling_Workflow.py:

@@ -33,6 +33,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
 
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
@@ -111,7 +112,13 @@
 
 <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="../../API/index.html">
-  API reference
+  API AEDT reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../EDBAPI/index.html">
+  API EDB reference
  </a>
 </li>
 
@@ -203,7 +210,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.40 variable.
+            // this version, rather than using sphinx's 0.6.42 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -828,27 +835,22 @@ to download the full example code</p>
 interact with a 3D layout.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">tempfile</span>
-<span class="kn">from</span> <span class="nn">pyaedt</span> <span class="kn">import</span> <span class="n">generate_unique_name</span>
+<span class="kn">import</span> <span class="nn">pyaedt</span>
 
 <a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">tmpfold</span></a> <span class="o">=</span> <a href="https://docs.python.org/dev/library/tempfile.html#tempfile.gettempdir" title="tempfile.gettempdir" class="sphx-glr-backref-module-tempfile sphx-glr-backref-type-py-function"><span class="n">tempfile</span><span class="o">.</span><span class="n">gettempdir</span></a><span class="p">()</span>
-<a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">temp_folder</span></a> <span class="o">=</span> <a href="https://docs.python.org/dev/library/os.path.html#os.path.join" title="os.path.join" class="sphx-glr-backref-module-os-path sphx-glr-backref-type-py-function"><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span></a><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">tmpfold</span></a><span class="p">,</span> <span class="n">generate_unique_name</span><span class="p">(</span><span class="s2">&quot;Example&quot;</span><span class="p">))</span>
+<a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">temp_folder</span></a> <span class="o">=</span> <a href="https://docs.python.org/dev/library/os.path.html#os.path.join" title="os.path.join" class="sphx-glr-backref-module-os-path sphx-glr-backref-type-py-function"><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span></a><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">tmpfold</span></a><span class="p">,</span> <span class="n">pyaedt</span><span class="o">.</span><span class="n">generate_unique_name</span><span class="p">(</span><span class="s2">&quot;Example&quot;</span><span class="p">))</span>
 <span class="k">if</span> <span class="ow">not</span> <a href="https://docs.python.org/dev/library/os.path.html#os.path.exists" title="os.path.exists" class="sphx-glr-backref-module-os-path sphx-glr-backref-type-py-function"><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span></a><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">temp_folder</span></a><span class="p">):</span>
     <a href="https://docs.python.org/dev/library/os.html#os.makedirs" title="os.makedirs" class="sphx-glr-backref-module-os sphx-glr-backref-type-py-function"><span class="n">os</span><span class="o">.</span><span class="n">makedirs</span></a><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">temp_folder</span></a><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">temp_folder</span></a><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>D:\Temp\Example_5OP78N
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>D:\Temp\Example_MHIP3V
 </pre></div>
 </div>
 <section id="copy-example-into-temporary-folder">
 <h2>Copy example into temporary folder<a class="headerlink" href="#copy-example-into-temporary-folder" title="Permalink to this heading">#</a></h2>
 <p>Copy an example into the temporary folder.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyaedt</span> <span class="kn">import</span> <span class="n">Desktop</span>
-<span class="kn">from</span> <span class="nn">pyaedt</span> <span class="kn">import</span> <span class="n">Hfss3dLayout</span>
-<span class="kn">from</span> <span class="nn">pyaedt</span> <span class="kn">import</span> <span class="n">examples</span>
-
-
-<a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">targetfile</span></a> <span class="o">=</span> <span class="n">examples</span><span class="o">.</span><span class="n">download_aedb</span><span class="p">()</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">targetfile</span></a> <span class="o">=</span> <span class="n">pyaedt</span><span class="o">.</span><span class="n">downloads</span><span class="o">.</span><span class="n">download_aedb</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">targetfile</span></a><span class="p">)</span>
 <a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">aedt_file</span></a> <span class="o">=</span> <a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">targetfile</span></a><span class="p">[:</span><span class="o">-</span><span class="mi">12</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;aedt&quot;</span>
 </pre></div>
@@ -877,11 +879,11 @@ You can set <code class="docutils literal notranslate"><span class="pre">non_gra
 <section id="initialize-aedt-and-launch-hfss-3d-layout">
 <h2>Initialize AEDT and launch HFSS 3D Layout<a class="headerlink" href="#initialize-aedt-and-launch-hfss-3d-layout" title="Permalink to this heading">#</a></h2>
 <p>Initialize AEDT and launch HFSS 3D Layout.
-The <code class="docutils literal notranslate"><span class="pre">h3d</span></code> object contains the <a class="reference internal" href="../../API/_autosummary/pyaedt.Edb.html#pyaedt.Edb" title="pyaedt.Edb"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyaedt.Edb</span></code></a> class query methods.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="n">Desktop</span><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">desktopVersion</span></a><span class="p">,</span> <a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a><span class="p">,</span> <a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">NewThread</span></a><span class="p">)</span>
+The <code class="docutils literal notranslate"><span class="pre">h3d</span></code> object contains the <code class="xref py py-class docutils literal notranslate"><span class="pre">pyaedt.Edb</span></code> class query methods.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="n">pyaedt</span><span class="o">.</span><span class="n">launch_desktop</span><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">desktopVersion</span></a><span class="p">,</span> <a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a><span class="p">,</span> <a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">NewThread</span></a><span class="p">)</span>
 <span class="k">if</span> <a href="https://docs.python.org/dev/library/os.path.html#os.path.exists" title="os.path.exists" class="sphx-glr-backref-module-os-path sphx-glr-backref-type-py-function"><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span></a><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">aedt_file</span></a><span class="p">):</span>
     <a href="https://docs.python.org/dev/library/os.html#os.remove" title="os.remove" class="sphx-glr-backref-module-os sphx-glr-backref-type-py-function"><span class="n">os</span><span class="o">.</span><span class="n">remove</span></a><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">aedt_file</span></a><span class="p">)</span>
-<span class="n">h3d</span> <span class="o">=</span> <span class="n">Hfss3dLayout</span><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">targetfile</span></a><span class="p">)</span>
+<span class="n">h3d</span> <span class="o">=</span> <span class="n">pyaedt</span><span class="o">.</span><span class="n">Hfss3dLayout</span><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">targetfile</span></a><span class="p">)</span>
 <span class="n">h3d</span><span class="o">.</span><span class="n">save_project</span><span class="p">(</span><a href="https://docs.python.org/dev/library/os.path.html#os.path.join" title="os.path.join" class="sphx-glr-backref-module-os-path sphx-glr-backref-type-py-function"><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span></a><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">temp_folder</span></a><span class="p">,</span> <span class="s2">&quot;edb_demo.aedt&quot;</span><span class="p">))</span>
 </pre></div>
 </div>
@@ -960,12 +962,14 @@ applies modifications to the layout.</p>
 <p>After the simulation completes, you can close AEDT or release it using the
 <code class="xref py py-func docutils literal notranslate"><span class="pre">pyaedt.Desktop.release_desktop()</span></code> method.
 All methods provide for saving the project before closing.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">os</span><span class="o">.</span><span class="n">name</span></a> <span class="o">!=</span> <span class="s2">&quot;posix&quot;</span><span class="p">:</span>
-    <span class="n">h3d</span><span class="o">.</span><span class="n">close_project</span><span class="p">()</span>
-    <span class="n">d</span><span class="o">.</span><span class="n">release_desktop</span><span class="p">()</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">h3d</span><span class="o">.</span><span class="n">close_project</span><span class="p">()</span>
+<span class="n">d</span><span class="o">.</span><span class="n">release_desktop</span><span class="p">()</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  13.969 seconds)</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  13.798 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-02-hfss3dlayout-edb-in-3dlayout-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/c2593398e40b013c3d286e39e517adf7/EDB_in_3DLayout.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">EDB_in_3DLayout.py</span></code></a></p>

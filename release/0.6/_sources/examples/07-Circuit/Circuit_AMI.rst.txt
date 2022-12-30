@@ -28,7 +28,7 @@ Perform required imports
 ~~~~~~~~~~~~~~~~~~~~~~~~
 Perform required imports and set the local path to the path for PyAEDT.
 
-.. GENERATED FROM PYTHON SOURCE LINES 11-25
+.. GENERATED FROM PYTHON SOURCE LINES 11-24
 
 .. code-block:: default
 
@@ -39,12 +39,10 @@ Perform required imports and set the local path to the path for PyAEDT.
     import numpy as np
 
     import pyaedt
-    from pyaedt import examples
-    from pyaedt import generate_unique_folder_name
 
     # Set local path to path for PyAEDT
-    temp_folder = generate_unique_folder_name()
-    project_path = examples.download_file("ami", "ami_usb.aedtz", temp_folder)
+    temp_folder = pyaedt.generate_unique_folder_name()
+    project_path = pyaedt.downloads.download_file("ami", "ami_usb.aedtz", temp_folder)
 
 
 
@@ -53,35 +51,14 @@ Perform required imports and set the local path to the path for PyAEDT.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 26-29
 
-Import main classes
-~~~~~~~~~~~~~~~~~~~
-Import the main classes that are needed: :class:`pyaedt.Desktop` and :class:`pyaedt.Circuit`.
-
-.. GENERATED FROM PYTHON SOURCE LINES 29-34
-
-.. code-block:: default
-
-
-    from pyaedt import Circuit
-    from pyaedt import constants
-    from pyaedt import settings
-
-
-
-
-
-
-
-
-.. GENERATED FROM PYTHON SOURCE LINES 35-38
+.. GENERATED FROM PYTHON SOURCE LINES 25-28
 
 Launch AEDT
 ~~~~~~~~~~~
 Launch AEDT 2022 R2 in graphical mode. This example uses SI units.
 
-.. GENERATED FROM PYTHON SOURCE LINES 38-41
+.. GENERATED FROM PYTHON SOURCE LINES 28-31
 
 .. code-block:: default
 
@@ -95,7 +72,7 @@ Launch AEDT 2022 R2 in graphical mode. This example uses SI units.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 42-49
+.. GENERATED FROM PYTHON SOURCE LINES 32-39
 
 Set non-graphical mode
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -105,7 +82,7 @@ You can set ``non_graphical`` either to ``True`` or ``False``.
 The Boolean parameter ``new_thread`` defines whether to create a new instance
 of AEDT or try to connect to an existing instance of it.
 
-.. GENERATED FROM PYTHON SOURCE LINES 49-53
+.. GENERATED FROM PYTHON SOURCE LINES 39-43
 
 .. code-block:: default
 
@@ -120,7 +97,7 @@ of AEDT or try to connect to an existing instance of it.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 54-59
+.. GENERATED FROM PYTHON SOURCE LINES 44-49
 
 Launch AEDT with Circuit and enable Pandas as the output format
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -128,13 +105,13 @@ All outputs obtained with the `get_solution_data` method will have the Pandas fo
 Launch AEDT with Circuit. The :class:`pyaedt.Desktop` class initializes AEDT
 and starts the specified version in the specified mode.
 
-.. GENERATED FROM PYTHON SOURCE LINES 59-64
+.. GENERATED FROM PYTHON SOURCE LINES 49-54
 
 .. code-block:: default
 
 
-    settings.enable_pandas_output = True
-    cir = Circuit(projectname=os.path.join(project_path), non_graphical=non_graphical,
+    pyaedt.settings.enable_pandas_output = True
+    cir = pyaedt.Circuit(projectname=os.path.join(project_path), non_graphical=non_graphical,
                   specified_version=desktopVersion, new_desktop_session=NewThread)
 
 
@@ -144,13 +121,13 @@ and starts the specified version in the specified mode.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 65-68
+.. GENERATED FROM PYTHON SOURCE LINES 55-58
 
 Solve AMI setup
 ~~~~~~~~~~~~~~~
 Solve the transient setup.
 
-.. GENERATED FROM PYTHON SOURCE LINES 68-71
+.. GENERATED FROM PYTHON SOURCE LINES 58-61
 
 .. code-block:: default
 
@@ -170,13 +147,13 @@ Solve the transient setup.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 72-75
+.. GENERATED FROM PYTHON SOURCE LINES 62-65
 
 Get AMI report
 ~~~~~~~~~~~~~~
 Get AMI report data
 
-.. GENERATED FROM PYTHON SOURCE LINES 75-85
+.. GENERATED FROM PYTHON SOURCE LINES 65-75
 
 .. code-block:: default
 
@@ -216,13 +193,13 @@ Get AMI report data
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 86-89
+.. GENERATED FROM PYTHON SOURCE LINES 76-79
 
 Plot data
 ~~~~~~~~~
 Create a plot based on solution data.
 
-.. GENERATED FROM PYTHON SOURCE LINES 89-91
+.. GENERATED FROM PYTHON SOURCE LINES 79-81
 
 .. code-block:: default
 
@@ -240,13 +217,13 @@ Create a plot based on solution data.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 92-95
+.. GENERATED FROM PYTHON SOURCE LINES 82-85
 
 Sample WaveAfterProbe waveform using receiver clock
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Extract waveform at specific clock time plus half unit interval
 
-.. GENERATED FROM PYTHON SOURCE LINES 95-107
+.. GENERATED FROM PYTHON SOURCE LINES 85-97
 
 .. code-block:: default
 
@@ -269,22 +246,22 @@ Extract waveform at specific clock time plus half unit interval
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 108-111
+.. GENERATED FROM PYTHON SOURCE LINES 98-101
 
 Plot waveform and samples
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 Create the plot from a start time to stop time in seconds
 
-.. GENERATED FROM PYTHON SOURCE LINES 111-153
+.. GENERATED FROM PYTHON SOURCE LINES 101-143
 
 .. code-block:: default
 
 
     tstop = 55e-9
     tstart = 50e-9
-    scale_time = constants.unit_converter(1, unit_system="Time", input_units="s",
+    scale_time = pyaedt.constants.unit_converter(1, unit_system="Time", input_units="s",
                                      output_units=original_data.units_sweeps["Time"])
-    scale_data = constants.unit_converter(1, unit_system="Voltage", input_units="V",
+    scale_data = pyaedt.constants.unit_converter(1, unit_system="Voltage", input_units="V",
                                      output_units=original_data.units_data[plot_name])
 
     tstop_ns = scale_time * tstop
@@ -333,13 +310,13 @@ Create the plot from a start time to stop time in seconds
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 154-157
+.. GENERATED FROM PYTHON SOURCE LINES 144-147
 
 Plot Slicer Scatter
 ~~~~~~~~~~~~~~~~~~~
 Create the plot from a start time to stop time in seconds
 
-.. GENERATED FROM PYTHON SOURCE LINES 157-165
+.. GENERATED FROM PYTHON SOURCE LINES 147-155
 
 .. code-block:: default
 
@@ -363,13 +340,13 @@ Create the plot from a start time to stop time in seconds
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 166-169
+.. GENERATED FROM PYTHON SOURCE LINES 156-159
 
 Plot scatter histogram
 ~~~~~~~~~~~~~~~~~~~~~~
 Create the plot from a start time to stop time in seconds.
 
-.. GENERATED FROM PYTHON SOURCE LINES 169-177
+.. GENERATED FROM PYTHON SOURCE LINES 159-167
 
 .. code-block:: default
 
@@ -393,13 +370,13 @@ Create the plot from a start time to stop time in seconds.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 178-181
+.. GENERATED FROM PYTHON SOURCE LINES 168-171
 
 Get Transient report
 ~~~~~~~~~~~~~~~~~~~~
 Get Transient report data
 
-.. GENERATED FROM PYTHON SOURCE LINES 181-188
+.. GENERATED FROM PYTHON SOURCE LINES 171-178
 
 .. code-block:: default
 
@@ -417,13 +394,13 @@ Get Transient report data
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 189-192
+.. GENERATED FROM PYTHON SOURCE LINES 179-182
 
 Sample waveform using a user-defined clock
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Extract waveform at specific clock time plus half unit interval.
 
-.. GENERATED FROM PYTHON SOURCE LINES 192-210
+.. GENERATED FROM PYTHON SOURCE LINES 182-200
 
 .. code-block:: default
 
@@ -452,22 +429,22 @@ Extract waveform at specific clock time plus half unit interval.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 211-214
+.. GENERATED FROM PYTHON SOURCE LINES 201-204
 
 Plot waveform and samples
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 Create the plot from a start time to stop time in seconds.
 
-.. GENERATED FROM PYTHON SOURCE LINES 214-261
+.. GENERATED FROM PYTHON SOURCE LINES 204-251
 
 .. code-block:: default
 
 
     tstop = 40.0e-9
     tstart = 25.0e-9
-    scale_time = constants.unit_converter(1, unit_system="Time", input_units="s",
+    scale_time = pyaedt.constants.unit_converter(1, unit_system="Time", input_units="s",
                                      output_units=waveform_sweep_unit)
-    scale_data = constants.unit_converter(1, unit_system="Voltage", input_units="V",
+    scale_data = pyaedt.constants.unit_converter(1, unit_system="Voltage", input_units="V",
                                      output_units=waveform_unit)
 
     tstop_ns = scale_time * tstop
@@ -521,13 +498,13 @@ Create the plot from a start time to stop time in seconds.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 262-265
+.. GENERATED FROM PYTHON SOURCE LINES 252-255
 
 Plot slicer scatter
 ~~~~~~~~~~~~~~~~~~~
 Create the plot from a start time to stop time in seconds.
 
-.. GENERATED FROM PYTHON SOURCE LINES 265-274
+.. GENERATED FROM PYTHON SOURCE LINES 255-264
 
 .. code-block:: default
 
@@ -552,13 +529,13 @@ Create the plot from a start time to stop time in seconds.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 275-278
+.. GENERATED FROM PYTHON SOURCE LINES 265-268
 
 Save project and close AEDT
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Save the project and close AEDT.
 
-.. GENERATED FROM PYTHON SOURCE LINES 278-282
+.. GENERATED FROM PYTHON SOURCE LINES 268-272
 
 .. code-block:: default
 
@@ -574,7 +551,7 @@ Save the project and close AEDT.
 
  .. code-block:: none
 
-    Project Saved in D:/Temp/pyaedt_prj_XEV/ami/
+    Project Saved in D:/Temp/pyaedt_prj_S1N/ami/
 
     True
 
@@ -583,7 +560,7 @@ Save the project and close AEDT.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  33.433 seconds)
+   **Total running time of the script:** ( 0 minutes  33.291 seconds)
 
 
 .. _sphx_glr_download_examples_07-Circuit_Circuit_AMI.py:

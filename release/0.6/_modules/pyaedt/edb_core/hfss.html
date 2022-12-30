@@ -32,6 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-binder.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-dataframe.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-rendered-html.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css" />
 
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
@@ -108,7 +109,13 @@
 
 <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="../../../API/index.html">
-  API reference
+  API AEDT reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../EDBAPI/index.html">
+  API EDB reference
  </a>
 </li>
 
@@ -200,7 +207,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.40 variable.
+            // this version, rather than using sphinx's 0.6.42 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -331,10 +338,10 @@ function checkPageExistsAndRedirect(event) {
 <span class="kn">from</span> <span class="nn">pyaedt.generic.general_methods</span> <span class="kn">import</span> <span class="n">generate_unique_name</span>
 <span class="kn">from</span> <span class="nn">pyaedt.generic.general_methods</span> <span class="kn">import</span> <span class="n">is_ironpython</span>
 <span class="kn">from</span> <span class="nn">pyaedt.generic.general_methods</span> <span class="kn">import</span> <span class="n">pyaedt_function_handler</span>
-<span class="kn">from</span> <span class="nn">pyaedt.modeler.GeometryOperators</span> <span class="kn">import</span> <span class="n">GeometryOperators</span>
+<span class="kn">from</span> <span class="nn">pyaedt.modeler.geometry_operators</span> <span class="kn">import</span> <span class="n">GeometryOperators</span>
 
 
-<div class="viewcode-block" id="EdbHfss"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.hfss.EdbHfss.html#pyaedt.edb_core.hfss.EdbHfss">[docs]</a><span class="k">class</span> <span class="nc">EdbHfss</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="EdbHfss"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.hfss.EdbHfss.html#pyaedt.edb_core.hfss.EdbHfss">[docs]</a><span class="k">class</span> <span class="nc">EdbHfss</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Manages EDB method to configure Hfss setup accessible from `Edb.core_hfss` property.</span>
 
 <span class="sd">    Examples</span>
@@ -416,17 +423,17 @@ function checkPageExistsAndRedirect(event) {
             <span class="n">point_on_edge</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Geometry</span><span class="o">.</span><span class="n">PointData</span><span class="p">(</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_get_edb_value</span><span class="p">(</span><span class="n">point_on_edge</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_edb_value</span><span class="p">(</span><span class="n">point_on_edge</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
             <span class="p">)</span>
-        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">prim_id</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>  <span class="c1"># pragma no cover</span>
-            <span class="n">prim</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span><span class="o">.</span><span class="n">core_primitives</span><span class="o">.</span><span class="n">primitives</span> <span class="k">if</span> <span class="n">i</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="n">prim_id</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">primitive_object</span>
-        <span class="k">else</span><span class="p">:</span>  <span class="c1"># pragma no cover</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">prim_id</span><span class="p">,</span> <span class="s2">&quot;GetId&quot;</span><span class="p">):</span>
             <span class="n">prim</span> <span class="o">=</span> <span class="n">prim_id</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">prim</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span><span class="o">.</span><span class="n">core_primitives</span><span class="o">.</span><span class="n">primitives</span> <span class="k">if</span> <span class="n">i</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="n">prim_id</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">primitive_object</span>
         <span class="n">pos_edge</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Cell</span><span class="o">.</span><span class="n">Terminal</span><span class="o">.</span><span class="n">PrimitiveEdge</span><span class="o">.</span><span class="n">Create</span><span class="p">(</span><span class="n">prim</span><span class="p">,</span> <span class="n">point_on_edge</span><span class="p">)</span>
         <span class="n">pos_edge</span> <span class="o">=</span> <span class="n">convert_py_list_to_net_list</span><span class="p">(</span><span class="n">pos_edge</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Cell</span><span class="o">.</span><span class="n">Terminal</span><span class="o">.</span><span class="n">Edge</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Cell</span><span class="o">.</span><span class="n">Terminal</span><span class="o">.</span><span class="n">EdgeTerminal</span><span class="o">.</span><span class="n">Create</span><span class="p">(</span>
             <span class="n">prim</span><span class="o">.</span><span class="n">GetLayout</span><span class="p">(),</span> <span class="n">prim</span><span class="o">.</span><span class="n">GetNet</span><span class="p">(),</span> <span class="n">terminal_name</span><span class="p">,</span> <span class="n">pos_edge</span><span class="p">,</span> <span class="n">isRef</span><span class="o">=</span><span class="n">is_ref</span>
         <span class="p">)</span>
 
-<div class="viewcode-block" id="EdbHfss.get_trace_width_for_traces_with_ports"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.hfss.EdbHfss.get_trace_width_for_traces_with_ports.html#pyaedt.edb_core.hfss.EdbHfss.get_trace_width_for_traces_with_ports">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EdbHfss.get_trace_width_for_traces_with_ports"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.hfss.EdbHfss.get_trace_width_for_traces_with_ports.html#pyaedt.edb_core.hfss.EdbHfss.get_trace_width_for_traces_with_ports">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">get_trace_width_for_traces_with_ports</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Retrieve the trace width for traces with ports.</span>
 
@@ -442,7 +449,7 @@ function checkPageExistsAndRedirect(event) {
                 <span class="n">nets</span><span class="p">[</span><span class="n">net</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span><span class="o">.</span><span class="n">core_nets</span><span class="o">.</span><span class="n">nets</span><span class="p">[</span><span class="n">net</span><span class="p">]</span><span class="o">.</span><span class="n">get_smallest_trace_width</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">nets</span></div>
 
-<div class="viewcode-block" id="EdbHfss.create_circuit_port_on_pin"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.hfss.EdbHfss.create_circuit_port_on_pin.html#pyaedt.edb_core.hfss.EdbHfss.create_circuit_port_on_pin">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EdbHfss.create_circuit_port_on_pin"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.hfss.EdbHfss.create_circuit_port_on_pin.html#pyaedt.edb_core.hfss.EdbHfss.create_circuit_port_on_pin">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">create_circuit_port_on_pin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos_pin</span><span class="p">,</span> <span class="n">neg_pin</span><span class="p">,</span> <span class="n">impedance</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">port_name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Create Circuit Port on Pin.</span>
 
@@ -470,7 +477,7 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span><span class="o">.</span><span class="n">core_siwave</span><span class="o">.</span><span class="n">create_circuit_port_on_pin</span><span class="p">(</span><span class="n">pos_pin</span><span class="p">,</span> <span class="n">neg_pin</span><span class="p">,</span> <span class="n">impedance</span><span class="p">,</span> <span class="n">port_name</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="EdbHfss.create_voltage_source_on_pin"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.hfss.EdbHfss.create_voltage_source_on_pin.html#pyaedt.edb_core.hfss.EdbHfss.create_voltage_source_on_pin">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EdbHfss.create_voltage_source_on_pin"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.hfss.EdbHfss.create_voltage_source_on_pin.html#pyaedt.edb_core.hfss.EdbHfss.create_voltage_source_on_pin">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">create_voltage_source_on_pin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos_pin</span><span class="p">,</span> <span class="n">neg_pin</span><span class="p">,</span> <span class="n">voltage_value</span><span class="o">=</span><span class="mf">3.3</span><span class="p">,</span> <span class="n">phase_value</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">source_name</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Create a voltage source.</span>
 
@@ -504,7 +511,7 @@ function checkPageExistsAndRedirect(event) {
             <span class="n">pos_pin</span><span class="p">,</span> <span class="n">neg_pin</span><span class="p">,</span> <span class="n">voltage_value</span><span class="p">,</span> <span class="n">phase_value</span><span class="p">,</span> <span class="n">source_name</span>
         <span class="p">)</span></div>
 
-<div class="viewcode-block" id="EdbHfss.create_current_source_on_pin"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.hfss.EdbHfss.create_current_source_on_pin.html#pyaedt.edb_core.hfss.EdbHfss.create_current_source_on_pin">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EdbHfss.create_current_source_on_pin"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.hfss.EdbHfss.create_current_source_on_pin.html#pyaedt.edb_core.hfss.EdbHfss.create_current_source_on_pin">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">create_current_source_on_pin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos_pin</span><span class="p">,</span> <span class="n">neg_pin</span><span class="p">,</span> <span class="n">current_value</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">phase_value</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">source_name</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Create a current source.</span>
 
@@ -539,7 +546,7 @@ function checkPageExistsAndRedirect(event) {
             <span class="n">pos_pin</span><span class="p">,</span> <span class="n">neg_pin</span><span class="p">,</span> <span class="n">current_value</span><span class="p">,</span> <span class="n">phase_value</span><span class="p">,</span> <span class="n">source_name</span>
         <span class="p">)</span></div>
 
-<div class="viewcode-block" id="EdbHfss.create_resistor_on_pin"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.hfss.EdbHfss.create_resistor_on_pin.html#pyaedt.edb_core.hfss.EdbHfss.create_resistor_on_pin">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EdbHfss.create_resistor_on_pin"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.hfss.EdbHfss.create_resistor_on_pin.html#pyaedt.edb_core.hfss.EdbHfss.create_resistor_on_pin">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">create_resistor_on_pin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos_pin</span><span class="p">,</span> <span class="n">neg_pin</span><span class="p">,</span> <span class="n">rvalue</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">resistor_name</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Create a Resistor boundary between two given pins.</span>
 
@@ -569,7 +576,7 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span><span class="o">.</span><span class="n">core_siwave</span><span class="o">.</span><span class="n">create_resistor_on_pin</span><span class="p">(</span><span class="n">pos_pin</span><span class="p">,</span> <span class="n">neg_pin</span><span class="p">,</span> <span class="n">rvalue</span><span class="p">,</span> <span class="n">resistor_name</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="EdbHfss.create_circuit_port_on_net"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.hfss.EdbHfss.create_circuit_port_on_net.html#pyaedt.edb_core.hfss.EdbHfss.create_circuit_port_on_net">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EdbHfss.create_circuit_port_on_net"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.hfss.EdbHfss.create_circuit_port_on_net.html#pyaedt.edb_core.hfss.EdbHfss.create_circuit_port_on_net">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">create_circuit_port_on_net</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">positive_component_name</span><span class="p">,</span>
@@ -618,7 +625,7 @@ function checkPageExistsAndRedirect(event) {
             <span class="n">port_name</span><span class="p">,</span>
         <span class="p">)</span></div>
 
-<div class="viewcode-block" id="EdbHfss.create_voltage_source_on_net"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.hfss.EdbHfss.create_voltage_source_on_net.html#pyaedt.edb_core.hfss.EdbHfss.create_voltage_source_on_net">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EdbHfss.create_voltage_source_on_net"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.hfss.EdbHfss.create_voltage_source_on_net.html#pyaedt.edb_core.hfss.EdbHfss.create_voltage_source_on_net">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">create_voltage_source_on_net</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">positive_component_name</span><span class="p">,</span>
@@ -671,7 +678,7 @@ function checkPageExistsAndRedirect(event) {
             <span class="n">source_name</span><span class="p">,</span>
         <span class="p">)</span></div>
 
-<div class="viewcode-block" id="EdbHfss.create_current_source_on_net"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.hfss.EdbHfss.create_current_source_on_net.html#pyaedt.edb_core.hfss.EdbHfss.create_current_source_on_net">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EdbHfss.create_current_source_on_net"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.hfss.EdbHfss.create_current_source_on_net.html#pyaedt.edb_core.hfss.EdbHfss.create_current_source_on_net">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">create_current_source_on_net</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">positive_component_name</span><span class="p">,</span>
@@ -724,7 +731,7 @@ function checkPageExistsAndRedirect(event) {
             <span class="n">source_name</span><span class="p">,</span>
         <span class="p">)</span></div>
 
-<div class="viewcode-block" id="EdbHfss.create_coax_port_on_component"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.hfss.EdbHfss.create_coax_port_on_component.html#pyaedt.edb_core.hfss.EdbHfss.create_coax_port_on_component">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EdbHfss.create_coax_port_on_component"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.hfss.EdbHfss.create_coax_port_on_component.html#pyaedt.edb_core.hfss.EdbHfss.create_coax_port_on_component">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">create_coax_port_on_component</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ref_des_list</span><span class="p">,</span> <span class="n">net_list</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Create a coaxial port on a component or component list on a net or net list.</span>
 
@@ -773,7 +780,7 @@ function checkPageExistsAndRedirect(event) {
                         <span class="n">coax</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">port_name</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">coax</span></div>
 
-<div class="viewcode-block" id="EdbHfss.create_differential_wave_port"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.hfss.EdbHfss.create_differential_wave_port.html#pyaedt.edb_core.hfss.EdbHfss.create_differential_wave_port">[docs]</a>    <span class="nd">@pyaedt_function_handler</span>
+<div class="viewcode-block" id="EdbHfss.create_differential_wave_port"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.hfss.EdbHfss.create_differential_wave_port.html#pyaedt.edb_core.hfss.EdbHfss.create_differential_wave_port">[docs]</a>    <span class="nd">@pyaedt_function_handler</span>
     <span class="k">def</span> <span class="nf">create_differential_wave_port</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">positive_primitive_id</span><span class="p">,</span>
@@ -843,7 +850,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">_edb_boundle_terminal</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Cell</span><span class="o">.</span><span class="n">Terminal</span><span class="o">.</span><span class="n">BundleTerminal</span><span class="o">.</span><span class="n">Create</span><span class="p">(</span><span class="n">edb_list</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">port_name</span><span class="p">,</span> <span class="n">ExcitationDifferential</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span><span class="p">,</span> <span class="n">_edb_boundle_terminal</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="EdbHfss.create_hfss_ports_on_padstack"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.hfss.EdbHfss.create_hfss_ports_on_padstack.html#pyaedt.edb_core.hfss.EdbHfss.create_hfss_ports_on_padstack">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EdbHfss.create_hfss_ports_on_padstack"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.hfss.EdbHfss.create_hfss_ports_on_padstack.html#pyaedt.edb_core.hfss.EdbHfss.create_hfss_ports_on_padstack">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">create_hfss_ports_on_padstack</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pinpos</span><span class="p">,</span> <span class="n">portname</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Create an HFSS port on a padstack.</span>
 
@@ -872,7 +879,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">False</span></div>
 
-<div class="viewcode-block" id="EdbHfss.create_edge_port_on_polygon"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.hfss.EdbHfss.create_edge_port_on_polygon.html#pyaedt.edb_core.hfss.EdbHfss.create_edge_port_on_polygon">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EdbHfss.create_edge_port_on_polygon"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.hfss.EdbHfss.create_edge_port_on_polygon.html#pyaedt.edb_core.hfss.EdbHfss.create_edge_port_on_polygon">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">create_edge_port_on_polygon</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">polygon</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
@@ -976,7 +983,7 @@ function checkPageExistsAndRedirect(event) {
             <span class="n">edge_term</span><span class="o">.</span><span class="n">SetReferenceTerminal</span><span class="p">(</span><span class="n">ref_edge_term</span><span class="p">)</span>
         <span class="k">return</span> <span class="kc">True</span></div>
 
-<div class="viewcode-block" id="EdbHfss.create_wave_port"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.hfss.EdbHfss.create_wave_port.html#pyaedt.edb_core.hfss.EdbHfss.create_wave_port">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EdbHfss.create_wave_port"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.hfss.EdbHfss.create_wave_port.html#pyaedt.edb_core.hfss.EdbHfss.create_wave_port">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">create_wave_port</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">prim_id</span><span class="p">,</span>
@@ -1040,7 +1047,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">False</span></div>
 
-<div class="viewcode-block" id="EdbHfss.create_edge_port_vertical"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.hfss.EdbHfss.create_edge_port_vertical.html#pyaedt.edb_core.hfss.EdbHfss.create_edge_port_vertical">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EdbHfss.create_edge_port_vertical"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.hfss.EdbHfss.create_edge_port_vertical.html#pyaedt.edb_core.hfss.EdbHfss.create_edge_port_vertical">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">create_edge_port_vertical</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">prim_id</span><span class="p">,</span>
@@ -1112,7 +1119,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">False</span></div>
 
-<div class="viewcode-block" id="EdbHfss.create_edge_port_horizontal"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.hfss.EdbHfss.create_edge_port_horizontal.html#pyaedt.edb_core.hfss.EdbHfss.create_edge_port_horizontal">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EdbHfss.create_edge_port_horizontal"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.hfss.EdbHfss.create_edge_port_horizontal.html#pyaedt.edb_core.hfss.EdbHfss.create_edge_port_horizontal">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">create_edge_port_horizontal</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">prim_id</span><span class="p">,</span>
@@ -1167,7 +1174,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">False</span></div>
 
-<div class="viewcode-block" id="EdbHfss.create_lumped_port_on_net"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.hfss.EdbHfss.create_lumped_port_on_net.html#pyaedt.edb_core.hfss.EdbHfss.create_lumped_port_on_net">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EdbHfss.create_lumped_port_on_net"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.hfss.EdbHfss.create_lumped_port_on_net.html#pyaedt.edb_core.hfss.EdbHfss.create_lumped_port_on_net">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">create_lumped_port_on_net</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">nets</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">reference_layer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">return_points_only</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">digit_resolution</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">at_bounding_box</span><span class="o">=</span><span class="kc">True</span>
     <span class="p">):</span>
@@ -1255,7 +1262,7 @@ function checkPageExistsAndRedirect(event) {
                 <span class="k">return</span> <span class="n">edges_pts</span>
         <span class="k">return</span> <span class="kc">True</span></div>
 
-<div class="viewcode-block" id="EdbHfss.get_layout_bounding_box"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.hfss.EdbHfss.get_layout_bounding_box.html#pyaedt.edb_core.hfss.EdbHfss.get_layout_bounding_box">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EdbHfss.get_layout_bounding_box"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.hfss.EdbHfss.get_layout_bounding_box.html#pyaedt.edb_core.hfss.EdbHfss.get_layout_bounding_box">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">get_layout_bounding_box</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">digit_resolution</span><span class="o">=</span><span class="mi">6</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Evaluate the layout bounding box.</span>
 
@@ -1287,7 +1294,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="p">]</span>
         <span class="k">return</span> <span class="n">layout_bbox</span></div>
 
-<div class="viewcode-block" id="EdbHfss.create_circuit_ports_on_components_no_pin_group"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.hfss.EdbHfss.create_circuit_ports_on_components_no_pin_group.html#pyaedt.edb_core.hfss.EdbHfss.create_circuit_ports_on_components_no_pin_group">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EdbHfss.create_circuit_ports_on_components_no_pin_group"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.hfss.EdbHfss.create_circuit_ports_on_components_no_pin_group.html#pyaedt.edb_core.hfss.EdbHfss.create_circuit_ports_on_components_no_pin_group">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">create_circuit_ports_on_components_no_pin_group</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">signal_nets</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
@@ -1395,7 +1402,7 @@ function checkPageExistsAndRedirect(event) {
                 <span class="p">)</span>
         <span class="k">return</span> <span class="kc">True</span></div>
 
-<div class="viewcode-block" id="EdbHfss.configure_hfss_extents"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.hfss.EdbHfss.configure_hfss_extents.html#pyaedt.edb_core.hfss.EdbHfss.configure_hfss_extents">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EdbHfss.configure_hfss_extents"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.hfss.EdbHfss.configure_hfss_extents.html#pyaedt.edb_core.hfss.EdbHfss.configure_hfss_extents">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">configure_hfss_extents</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">simulation_setup</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Configure the HFSS extent box.</span>
 
@@ -1438,7 +1445,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="bp">self</span><span class="o">.</span><span class="n">_active_layout</span><span class="o">.</span><span class="n">GetCell</span><span class="p">()</span><span class="o">.</span><span class="n">SetHFSSExtentInfo</span><span class="p">(</span><span class="n">hfss_extent</span><span class="p">)</span>  <span class="c1"># returns void</span>
         <span class="k">return</span> <span class="kc">True</span></div>
 
-<div class="viewcode-block" id="EdbHfss.configure_hfss_analysis_setup"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.hfss.EdbHfss.configure_hfss_analysis_setup.html#pyaedt.edb_core.hfss.EdbHfss.configure_hfss_analysis_setup">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EdbHfss.configure_hfss_analysis_setup"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.hfss.EdbHfss.configure_hfss_analysis_setup.html#pyaedt.edb_core.hfss.EdbHfss.configure_hfss_analysis_setup">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">configure_hfss_analysis_setup</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">simulation_setup</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Configure HFSS analysis setup.</span>
@@ -1544,7 +1551,7 @@ function checkPageExistsAndRedirect(event) {
             <span class="n">freq</span> <span class="o">=</span> <span class="n">freq</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">decade_cnt</span><span class="p">)</span>
             <span class="n">sweep</span><span class="o">.</span><span class="n">Frequencies</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">freq</span><span class="p">))</span>
 
-<div class="viewcode-block" id="EdbHfss.trim_component_reference_size"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.hfss.EdbHfss.trim_component_reference_size.html#pyaedt.edb_core.hfss.EdbHfss.trim_component_reference_size">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EdbHfss.trim_component_reference_size"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.hfss.EdbHfss.trim_component_reference_size.html#pyaedt.edb_core.hfss.EdbHfss.trim_component_reference_size">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">trim_component_reference_size</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">simulation_setup</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">trim_to_terminals</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Trim the common component reference to the minimally acceptable size.</span>
 
@@ -1614,7 +1621,7 @@ function checkPageExistsAndRedirect(event) {
             <span class="n">comp</span><span class="o">.</span><span class="n">SetComponentProperty</span><span class="p">(</span><span class="n">cmp_prop</span><span class="p">)</span>
             <span class="k">return</span> <span class="kc">True</span></div>
 
-<div class="viewcode-block" id="EdbHfss.set_coax_port_attributes"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.hfss.EdbHfss.set_coax_port_attributes.html#pyaedt.edb_core.hfss.EdbHfss.set_coax_port_attributes">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EdbHfss.set_coax_port_attributes"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.hfss.EdbHfss.set_coax_port_attributes.html#pyaedt.edb_core.hfss.EdbHfss.set_coax_port_attributes">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">set_coax_port_attributes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">simulation_setup</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Set coaxial port attribute with forcing default impedance to 50 Ohms and adjusting the coaxial extent radius.</span>
 
@@ -1720,7 +1727,7 @@ function checkPageExistsAndRedirect(event) {
             <span class="n">terms_bbox</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Geometry</span><span class="o">.</span><span class="n">PolygonData</span><span class="p">(</span><span class="n">ll</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">dim</span><span class="p">,</span> <span class="n">ll</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">dim</span><span class="p">,</span> <span class="n">ur</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">dim</span><span class="p">,</span> <span class="n">ur</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">dim</span><span class="p">))</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Geometry</span><span class="o">.</span><span class="n">PolygonData</span><span class="o">.</span><span class="n">GetBBoxOfPolygons</span><span class="p">(</span><span class="n">convert_py_list_to_net_list</span><span class="p">(</span><span class="n">terms_bbox</span><span class="p">))</span>
 
-<div class="viewcode-block" id="EdbHfss.get_ports_number"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.hfss.EdbHfss.get_ports_number.html#pyaedt.edb_core.hfss.EdbHfss.get_ports_number">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EdbHfss.get_ports_number"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.hfss.EdbHfss.get_ports_number.html#pyaedt.edb_core.hfss.EdbHfss.get_ports_number">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">get_ports_number</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return the total number of excitation ports in a layout.</span>
 
@@ -1737,7 +1744,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">terms</span> <span class="o">=</span> <span class="p">[</span><span class="n">term</span> <span class="k">for</span> <span class="n">term</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_active_layout</span><span class="o">.</span><span class="n">Terminals</span><span class="p">)</span> <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">term</span><span class="o">.</span><span class="n">GetBoundaryType</span><span class="p">())</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span>
         <span class="k">return</span> <span class="nb">len</span><span class="p">([</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">terms</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">i</span><span class="o">.</span><span class="n">IsReferenceTerminal</span><span class="p">()])</span></div>
 
-<div class="viewcode-block" id="EdbHfss.layout_defeaturing"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.hfss.EdbHfss.layout_defeaturing.html#pyaedt.edb_core.hfss.EdbHfss.layout_defeaturing">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EdbHfss.layout_defeaturing"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.hfss.EdbHfss.layout_defeaturing.html#pyaedt.edb_core.hfss.EdbHfss.layout_defeaturing">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">layout_defeaturing</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">simulation_setup</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Defeature the layout by reducing the number of points for polygons based on surface deviation criteria.</span>
 
@@ -1785,7 +1792,7 @@ function checkPageExistsAndRedirect(event) {
 
         <span class="k">return</span> <span class="kc">True</span></div>
 
-<div class="viewcode-block" id="EdbHfss.create_rlc_boundary_on_pins"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.hfss.EdbHfss.create_rlc_boundary_on_pins.html#pyaedt.edb_core.hfss.EdbHfss.create_rlc_boundary_on_pins">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EdbHfss.create_rlc_boundary_on_pins"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.hfss.EdbHfss.create_rlc_boundary_on_pins.html#pyaedt.edb_core.hfss.EdbHfss.create_rlc_boundary_on_pins">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">create_rlc_boundary_on_pins</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">positive_pin</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">negative_pin</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">rvalue</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">lvalue</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">cvalue</span><span class="o">=</span><span class="mf">0.0</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Create hfss rlc boundary on pins.</span>
 

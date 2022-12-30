@@ -28,14 +28,13 @@ Perform required imports
 ~~~~~~~~~~~~~~~~~~~~~~~~
 Perform required imports.
 
-.. GENERATED FROM PYTHON SOURCE LINES 11-17
+.. GENERATED FROM PYTHON SOURCE LINES 11-15
 
 .. code-block:: default
 
 
     import os
-    from pyaedt.maxwell import Maxwell3d
-    from pyaedt.modeler.Primitives import PolylineSegment
+    import pyaedt
 
 
 
@@ -44,8 +43,7 @@ Perform required imports.
 
 
 
-
-.. GENERATED FROM PYTHON SOURCE LINES 18-23
+.. GENERATED FROM PYTHON SOURCE LINES 16-21
 
 Set non-graphical mode
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -53,7 +51,7 @@ Set non-graphical mode. ``"PYAEDT_NON_GRAPHICAL"`` is needed to generate
 documentation only.
 You can set ``non_graphical`` either to ``True`` or ``False``.
 
-.. GENERATED FROM PYTHON SOURCE LINES 23-25
+.. GENERATED FROM PYTHON SOURCE LINES 21-23
 
 .. code-block:: default
 
@@ -66,20 +64,19 @@ You can set ``non_graphical`` either to ``True`` or ``False``.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 26-29
+.. GENERATED FROM PYTHON SOURCE LINES 24-27
 
 Create Maxwell 3D object
 ~~~~~~~~~~~~~~~~~~~~~~~~
-Create a :class:`pyaedt.Maxwell3d` object and set the unit type to ``"mm"``.
+Create a :class:`pyaedt.maxwell.Maxwell3d` object and set the unit type to ``"mm"``.
 
-.. GENERATED FROM PYTHON SOURCE LINES 29-36
+.. GENERATED FROM PYTHON SOURCE LINES 27-34
 
 .. code-block:: default
 
 
-    M3D = Maxwell3d(
-        solution_type="Transient", designname="test_polyline_3D", specified_version="2022.2", new_desktop_session=True, non_graphical=non_graphical,
-    )
+    M3D = pyaedt.Maxwell3d(solution_type="Transient", designname="test_polyline_3D", specified_version="2022.2",
+                           new_desktop_session=True, non_graphical=non_graphical, )
     M3D.modeler.model_units = "mm"
     prim3D = M3D.modeler
 
@@ -90,39 +87,14 @@ Create a :class:`pyaedt.Maxwell3d` object and set the unit type to ``"mm"``.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 37-40
 
-Clear existing objects
-~~~~~~~~~~~~~~~~~~~~~~
-Clear existing objects.
-
-.. GENERATED FROM PYTHON SOURCE LINES 40-43
-
-.. code-block:: default
-
-
-    prim3D.delete()
-
-
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-
-    False
-
-
-
-.. GENERATED FROM PYTHON SOURCE LINES 44-47
+.. GENERATED FROM PYTHON SOURCE LINES 35-38
 
 Define variables
 ~~~~~~~~~~~~~~~~
 Define two design variables as parameters for the polyline objects.
 
-.. GENERATED FROM PYTHON SOURCE LINES 47-51
+.. GENERATED FROM PYTHON SOURCE LINES 38-42
 
 .. code-block:: default
 
@@ -137,7 +109,7 @@ Define two design variables as parameters for the polyline objects.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 52-57
+.. GENERATED FROM PYTHON SOURCE LINES 43-48
 
 Input data
 ~~~~~~~~~~
@@ -145,7 +117,7 @@ Input data. All data for the polyline functions can be entered as either floatin
 values or strings. Floating point values are assumed to be in model units
 (``M3D.modeler.model_units``).
 
-.. GENERATED FROM PYTHON SOURCE LINES 57-60
+.. GENERATED FROM PYTHON SOURCE LINES 48-51
 
 .. code-block:: default
 
@@ -159,13 +131,13 @@ values or strings. Floating point values are assumed to be in model units
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 61-64
+.. GENERATED FROM PYTHON SOURCE LINES 52-55
 
 Polyline primitives
 -------------------
 The following examples are for creating polyline primitives.
 
-.. GENERATED FROM PYTHON SOURCE LINES 64-78
+.. GENERATED FROM PYTHON SOURCE LINES 55-69
 
 .. code-block:: default
 
@@ -198,14 +170,14 @@ The following examples are for creating polyline primitives.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 79-83
+.. GENERATED FROM PYTHON SOURCE LINES 70-74
 
 Create arc primitive
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Create an arc primitive. The parameter ``position_list`` must contain at
 least three position values. The first three position values are used.
 
-.. GENERATED FROM PYTHON SOURCE LINES 83-88
+.. GENERATED FROM PYTHON SOURCE LINES 74-79
 
 .. code-block:: default
 
@@ -227,7 +199,7 @@ least three position values. The first three position values are used.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 89-95
+.. GENERATED FROM PYTHON SOURCE LINES 80-86
 
 Create spline primitive
 ~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -236,13 +208,13 @@ object allows you to provide additional input parameters for the spine, such
 as the number of points (in this case 4). The parameter ``position_list``
 must contain at least four position values.
 
-.. GENERATED FROM PYTHON SOURCE LINES 95-100
+.. GENERATED FROM PYTHON SOURCE LINES 86-91
 
 .. code-block:: default
 
 
     P = prim3D.create_polyline(
-        position_list=test_points, segment_type=PolylineSegment("Spline", num_points=4), name="PL03_spline_4pt"
+        position_list=test_points, segment_type=prim3D.polyline_segment("Spline", num_points=4), name="PL03_spline_4pt"
     )
 
 
@@ -252,7 +224,7 @@ must contain at least four position values.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 101-111
+.. GENERATED FROM PYTHON SOURCE LINES 92-102
 
 Create center-point arc primitive
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -265,7 +237,7 @@ must therefore have one coordinate value (X, Y, or Z) with the same value.
 Here ``start-point`` and ``center-point`` have a common Z coordinate, ``"0mm"``.
 The curve is therefore rotated in the XY plane with Z = ``"0mm"``.
 
-.. GENERATED FROM PYTHON SOURCE LINES 111-120
+.. GENERATED FROM PYTHON SOURCE LINES 102-111
 
 .. code-block:: default
 
@@ -274,7 +246,7 @@ The curve is therefore rotated in the XY plane with Z = ``"0mm"``.
     center_point = [0, 0, 0]
     P = prim3D.create_polyline(
         position_list=[start_point],
-        segment_type=PolylineSegment("AngularArc", arc_center=center_point, arc_angle="30deg"),
+        segment_type=prim3D.polyline_segment("AngularArc", arc_center=center_point, arc_angle="30deg"),
         name="PL04_center_point_arc",
     )
 
@@ -285,14 +257,14 @@ The curve is therefore rotated in the XY plane with Z = ``"0mm"``.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 121-125
+.. GENERATED FROM PYTHON SOURCE LINES 112-116
 
 Here ``start_point`` and ``center_point`` have the same values for the Y and
 Z coordinates, so the plane or rotation could be either XY or ZX.
 For these special cases when the rotation plane is ambiguous, you can specify
 the plane explicitly.
 
-.. GENERATED FROM PYTHON SOURCE LINES 125-139
+.. GENERATED FROM PYTHON SOURCE LINES 116-130
 
 .. code-block:: default
 
@@ -301,12 +273,12 @@ the plane explicitly.
     center_point = [0, 0, 0]
     P = prim3D.create_polyline(
         position_list=[start_point],
-        segment_type=PolylineSegment("AngularArc", arc_center=center_point, arc_angle="30deg", arc_plane="XY"),
+        segment_type=prim3D.polyline_segment("AngularArc", arc_center=center_point, arc_angle="30deg", arc_plane="XY"),
         name="PL04_center_point_arc_rot_XY",
     )
     P = prim3D.create_polyline(
         position_list=[start_point],
-        segment_type=PolylineSegment("AngularArc", arc_center=center_point, arc_angle="30deg", arc_plane="ZX"),
+        segment_type=prim3D.polyline_segment("AngularArc", arc_center=center_point, arc_angle="30deg", arc_plane="ZX"),
         name="PL04_center_point_arc_rot_ZX",
     )
 
@@ -317,7 +289,7 @@ the plane explicitly.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 140-147
+.. GENERATED FROM PYTHON SOURCE LINES 131-138
 
 Compound polylines
 ------------------ 
@@ -327,7 +299,7 @@ polyline.
 By default, if no specification of the type of segments is given, all points
 are connected by line segments.
 
-.. GENERATED FROM PYTHON SOURCE LINES 147-150
+.. GENERATED FROM PYTHON SOURCE LINES 138-141
 
 .. code-block:: default
 
@@ -341,13 +313,13 @@ are connected by line segments.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 151-154
+.. GENERATED FROM PYTHON SOURCE LINES 142-145
 
 You can specify the segment type with the parameter ``segment_type``.
 In this case, you must specify that the four input points in ``position_list``
 are to be connected as a line segment followed by a 3-point arc segment.
 
-.. GENERATED FROM PYTHON SOURCE LINES 154-157
+.. GENERATED FROM PYTHON SOURCE LINES 145-148
 
 .. code-block:: default
 
@@ -361,13 +333,13 @@ are to be connected as a line segment followed by a 3-point arc segment.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 158-161
+.. GENERATED FROM PYTHON SOURCE LINES 149-152
 
 The parameter ``close_surface`` ensures that the polyline starting point and
 ending point are the same. If necessary, you can add an additional line
 segment to achieve this.
 
-.. GENERATED FROM PYTHON SOURCE LINES 161-164
+.. GENERATED FROM PYTHON SOURCE LINES 152-155
 
 .. code-block:: default
 
@@ -381,13 +353,13 @@ segment to achieve this.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 165-168
+.. GENERATED FROM PYTHON SOURCE LINES 156-159
 
 The parameter ``cover_surface=True`` also performs the modeler command
 ``cover_surface``. Note that specifying ``cover_surface=True`` automatically
 results in the polyline being closed.
 
-.. GENERATED FROM PYTHON SOURCE LINES 168-171
+.. GENERATED FROM PYTHON SOURCE LINES 159-162
 
 .. code-block:: default
 
@@ -401,7 +373,7 @@ results in the polyline being closed.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 172-183
+.. GENERATED FROM PYTHON SOURCE LINES 163-174
 
 Compound lines
 --------------
@@ -415,7 +387,7 @@ By numerical comparison of the starting point with the existing vertices of the
 original polyline object, it is determined automatically that the segment is
 inserted after the first segment of the original polyline.
 
-.. GENERATED FROM PYTHON SOURCE LINES 183-192
+.. GENERATED FROM PYTHON SOURCE LINES 174-183
 
 .. code-block:: default
 
@@ -441,7 +413,7 @@ inserted after the first segment of the original polyline.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 193-199
+.. GENERATED FROM PYTHON SOURCE LINES 184-190
 
 Insert compound line with insert curve
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -450,7 +422,7 @@ of an existing polyline and end at some new point ``["90mm", "20mm", "0mm"]``.
 By numerical comparison of the starting point, it is determined automatically
 that the segment is inserted after the first segment of the original polyline.
 
-.. GENERATED FROM PYTHON SOURCE LINES 199-209
+.. GENERATED FROM PYTHON SOURCE LINES 190-200
 
 .. code-block:: default
 
@@ -477,7 +449,7 @@ that the segment is inserted after the first segment of the original polyline.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 210-216
+.. GENERATED FROM PYTHON SOURCE LINES 201-207
 
 Insert compound line at end of a center-point arc
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -486,7 +458,7 @@ This is a special case.
 
 Step 1: Draw a center-point arc.
 
-.. GENERATED FROM PYTHON SOURCE LINES 216-227
+.. GENERATED FROM PYTHON SOURCE LINES 207-218
 
 .. code-block:: default
 
@@ -498,7 +470,7 @@ Step 1: Draw a center-point arc.
     P = prim3D.create_polyline(
         name="First_Arc",
         position_list=[start_point],
-        segment_type=PolylineSegment(type="AngularArc", arc_angle=arc_angle_1, arc_center=arc_center_1),
+        segment_type=prim3D.polyline_segment(type="AngularArc", arc_angle=arc_angle_1, arc_center=arc_center_1),
     )
 
 
@@ -508,11 +480,11 @@ Step 1: Draw a center-point arc.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 228-229
+.. GENERATED FROM PYTHON SOURCE LINES 219-220
 
 Step 2: Insert a line segment at the end of the arc with a specified end point.
 
-.. GENERATED FROM PYTHON SOURCE LINES 229-235
+.. GENERATED FROM PYTHON SOURCE LINES 220-226
 
 .. code-block:: default
 
@@ -531,15 +503,15 @@ Step 2: Insert a line segment at the end of the arc with a specified end point.
  .. code-block:: none
 
 
-    False
+    True
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 236-237
+.. GENERATED FROM PYTHON SOURCE LINES 227-228
 
 Step 3: Append a center-point arc segment to the line object.
 
-.. GENERATED FROM PYTHON SOURCE LINES 237-246
+.. GENERATED FROM PYTHON SOURCE LINES 228-237
 
 .. code-block:: default
 
@@ -549,7 +521,7 @@ Step 3: Append a center-point arc segment to the line object.
 
     P.insert_segment(
         position_list=[end_of_line_segment],
-        segment=PolylineSegment(type="AngularArc", arc_center=arc_center_2, arc_angle=arc_angle_2),
+        segment=prim3D.polyline_segment(type="AngularArc", arc_center=arc_center_2, arc_angle=arc_angle_2),
     )
 
 
@@ -561,16 +533,16 @@ Step 3: Append a center-point arc segment to the line object.
  .. code-block:: none
 
 
-    False
+    True
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 247-249
+.. GENERATED FROM PYTHON SOURCE LINES 238-240
 
 You can use the compound polyline definition to complete all three steps in
 a single step.
 
-.. GENERATED FROM PYTHON SOURCE LINES 249-260
+.. GENERATED FROM PYTHON SOURCE LINES 240-251
 
 .. code-block:: default
 
@@ -578,9 +550,9 @@ a single step.
     prim3D.create_polyline(
         position_list=[start_point, end_of_line_segment],
         segment_type=[
-            PolylineSegment(type="AngularArc", arc_angle="43.47deg", arc_center=arc_center_1),
-            PolylineSegment(type="Line"),
-            PolylineSegment(type="AngularArc", arc_angle=arc_angle_2, arc_center=arc_center_2),
+            prim3D.polyline_segment(type="AngularArc", arc_angle="43.47deg", arc_center=arc_center_1),
+            prim3D.polyline_segment(type="Line"),
+            prim3D.polyline_segment(type="AngularArc", arc_angle=arc_angle_2, arc_center=arc_center_2),
         ],
         name="Compound_Polyline_One_Command",
     )
@@ -594,11 +566,11 @@ a single step.
  .. code-block:: none
 
 
-    <pyaedt.modeler.Primitives.Polyline object at 0x0000022BD03908B0>
+    <pyaedt.modeler.cad.polylines.Polyline object at 0x000002817E2B9730>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 261-266
+.. GENERATED FROM PYTHON SOURCE LINES 252-257
 
 Insert two 3-point arcs forming a circle and covered
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -606,7 +578,7 @@ Insert two 3-point arcs forming a circle and covered.
 Note that the last point of the second arc segment is not defined in
 the position list.
 
-.. GENERATED FROM PYTHON SOURCE LINES 266-276
+.. GENERATED FROM PYTHON SOURCE LINES 257-267
 
 .. code-block:: default
 
@@ -627,7 +599,7 @@ the position list.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 277-282
+.. GENERATED FROM PYTHON SOURCE LINES 268-273
 
 Here is an example of a complex polyline where the number of points is
 insufficient to populate the requested segments. This results in an
@@ -635,7 +607,7 @@ insufficient to populate the requested segments. This results in an
 is ``False``, which can be caught at the app level.  While this example might
 not be so useful in a Jupyter Notebook, it is important for unit tests.
 
-.. GENERATED FROM PYTHON SOURCE LINES 282-299
+.. GENERATED FROM PYTHON SOURCE LINES 273-290
 
 .. code-block:: default
 
@@ -663,12 +635,12 @@ not be so useful in a Jupyter Notebook, it is important for unit tests.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 300-302
+.. GENERATED FROM PYTHON SOURCE LINES 291-293
 
 Here is an example that provides more points than the segment list requires.
 This is valid usage. The remaining points are ignored.
 
-.. GENERATED FROM PYTHON SOURCE LINES 302-307
+.. GENERATED FROM PYTHON SOURCE LINES 293-298
 
 .. code-block:: default
 
@@ -684,13 +656,13 @@ This is valid usage. The remaining points are ignored.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 308-311
+.. GENERATED FROM PYTHON SOURCE LINES 299-302
 
 Save project
 ------------
 Save the project.
 
-.. GENERATED FROM PYTHON SOURCE LINES 311-320
+.. GENERATED FROM PYTHON SOURCE LINES 302-310
 
 .. code-block:: default
 
@@ -701,19 +673,24 @@ Save the project.
 
     M3D.save_project(project_file)
 
-    if os.name != "posix":
-        M3D.release_desktop()
+    M3D.release_desktop()
 
 
 
 
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+
+    True
 
 
 
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  21.644 seconds)
+   **Total running time of the script:** ( 0 minutes  22.010 seconds)
 
 
 .. _sphx_glr_download_examples_01-Modeling-Setup_Polyline_Primitives.py:

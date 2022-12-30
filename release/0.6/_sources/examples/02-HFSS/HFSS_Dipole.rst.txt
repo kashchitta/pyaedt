@@ -28,18 +28,15 @@ Perform required imports
 ~~~~~~~~~~~~~~~~~~~~~~~~
 Perform required imports.
 
-.. GENERATED FROM PYTHON SOURCE LINES 11-21
+.. GENERATED FROM PYTHON SOURCE LINES 11-18
 
 .. code-block:: default
 
 
     import os
-    import tempfile
-    from pyaedt import Hfss
-    from pyaedt import Desktop
-    from pyaedt import generate_unique_project_name
+    import pyaedt
 
-    project_name= generate_unique_project_name(project_name="dipole")
+    project_name = pyaedt.generate_unique_project_name(project_name="dipole")
 
 
 
@@ -49,7 +46,7 @@ Perform required imports.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 22-27
+.. GENERATED FROM PYTHON SOURCE LINES 19-24
 
 Set non-graphical mode
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -57,7 +54,7 @@ Set non-graphical mode. ``PYAEDT_NON_GRAPHICAL`` is needed to generate
 documentation only.
 You can set ``non_graphical`` either to ``True`` or ``False``.
 
-.. GENERATED FROM PYTHON SOURCE LINES 27-30
+.. GENERATED FROM PYTHON SOURCE LINES 24-27
 
 .. code-block:: default
 
@@ -71,18 +68,18 @@ You can set ``non_graphical`` either to ``True`` or ``False``.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 31-34
+.. GENERATED FROM PYTHON SOURCE LINES 28-31
 
 Launch AEDT
 ~~~~~~~~~~~
 Launch AEDT 2022 R2 in graphical mode.
 
-.. GENERATED FROM PYTHON SOURCE LINES 34-37
+.. GENERATED FROM PYTHON SOURCE LINES 31-34
 
 .. code-block:: default
 
 
-    d = Desktop("2022.2", non_graphical=non_graphical, new_desktop_session=True)
+    d = pyaedt.launch_desktop("2022.2", non_graphical=non_graphical, new_desktop_session=True)
 
 
 
@@ -91,18 +88,18 @@ Launch AEDT 2022 R2 in graphical mode.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 38-41
+.. GENERATED FROM PYTHON SOURCE LINES 35-38
 
 Launch HFSS
 ~~~~~~~~~~~
 Launch HFSS 2022 R2 in graphical mode.
 
-.. GENERATED FROM PYTHON SOURCE LINES 41-44
+.. GENERATED FROM PYTHON SOURCE LINES 38-41
 
 .. code-block:: default
 
 
-    hfss = Hfss(projectname=project_name, solution_type="Modal")
+    hfss = pyaedt.Hfss(projectname=project_name, solution_type="Modal")
 
 
 
@@ -111,13 +108,13 @@ Launch HFSS 2022 R2 in graphical mode.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 45-48
+.. GENERATED FROM PYTHON SOURCE LINES 42-45
 
 Define variable
 ~~~~~~~~~~~~~~~
 Define a variable for the dipole length.
 
-.. GENERATED FROM PYTHON SOURCE LINES 48-51
+.. GENERATED FROM PYTHON SOURCE LINES 45-48
 
 .. code-block:: default
 
@@ -131,7 +128,7 @@ Define a variable for the dipole length.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 52-57
+.. GENERATED FROM PYTHON SOURCE LINES 49-54
 
 Get 3D component from system library
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -139,7 +136,7 @@ Get a 3D component from the ``syslib`` directory. For this example to run
 correctly, you must get all geometry parameters of the 3D component or, in
 case of an encrypted 3D component, create a dictionary of the parameters.
 
-.. GENERATED FROM PYTHON SOURCE LINES 57-63
+.. GENERATED FROM PYTHON SOURCE LINES 54-60
 
 .. code-block:: default
 
@@ -158,17 +155,17 @@ case of an encrypted 3D component, create a dictionary of the parameters.
  .. code-block:: none
 
 
-    <pyaedt.modeler.Object3d.UserDefinedComponent object at 0x0000022BCFDA3760>
+    <pyaedt.modeler.cad.components_3d.UserDefinedComponent object at 0x00000281204460D0>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 64-67
+.. GENERATED FROM PYTHON SOURCE LINES 61-64
 
 Create boundaries
 ~~~~~~~~~~~~~~~~~
 Create boundaries. A region with openings is needed to run the analysis.
 
-.. GENERATED FROM PYTHON SOURCE LINES 67-70
+.. GENERATED FROM PYTHON SOURCE LINES 64-67
 
 .. code-block:: default
 
@@ -188,13 +185,13 @@ Create boundaries. A region with openings is needed to run the analysis.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 71-74
+.. GENERATED FROM PYTHON SOURCE LINES 68-71
 
 Plot model
 ~~~~~~~~~~
 Plot the model.
 
-.. GENERATED FROM PYTHON SOURCE LINES 74-83
+.. GENERATED FROM PYTHON SOURCE LINES 71-80
 
 .. code-block:: default
 
@@ -225,13 +222,13 @@ Plot the model.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 84-87
+.. GENERATED FROM PYTHON SOURCE LINES 81-84
 
 Create setup
 ~~~~~~~~~~~~
 Create a setup with a sweep to run the simulation.
 
-.. GENERATED FROM PYTHON SOURCE LINES 87-104
+.. GENERATED FROM PYTHON SOURCE LINES 84-101
 
 .. code-block:: default
 
@@ -261,17 +258,17 @@ Create a setup with a sweep to run the simulation.
  .. code-block:: none
 
 
-    <pyaedt.modules.SetupTemplates.SweepHFSS object at 0x0000022BD37CC6D0>
+    <pyaedt.modules.SetupTemplates.SweepHFSS object at 0x000002817DE18790>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 105-108
+.. GENERATED FROM PYTHON SOURCE LINES 102-105
 
 Save and run simulation
 ~~~~~~~~~~~~~~~~~~~~~~~
 Save and run the simulation.
 
-.. GENERATED FROM PYTHON SOURCE LINES 108-111
+.. GENERATED FROM PYTHON SOURCE LINES 105-108
 
 .. code-block:: default
 
@@ -291,13 +288,13 @@ Save and run the simulation.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 112-115
+.. GENERATED FROM PYTHON SOURCE LINES 109-112
 
 Create scattering plot and far fields report
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Create a scattering plot and a far fields report.
 
-.. GENERATED FROM PYTHON SOURCE LINES 115-130
+.. GENERATED FROM PYTHON SOURCE LINES 112-127
 
 .. code-block:: default
 
@@ -325,18 +322,18 @@ Create a scattering plot and a far fields report.
  .. code-block:: none
 
 
-    <pyaedt.modules.report_templates.FarField object at 0x0000022BCFDA3130>
+    <pyaedt.modules.report_templates.FarField object at 0x000002817DE140D0>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 131-135
+.. GENERATED FROM PYTHON SOURCE LINES 128-132
 
 Create far fields report using report objects
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Create a far fields report using the ``report_by_category.far field`` method,
 which gives you more freedom.
 
-.. GENERATED FROM PYTHON SOURCE LINES 135-141
+.. GENERATED FROM PYTHON SOURCE LINES 132-138
 
 .. code-block:: default
 
@@ -359,14 +356,14 @@ which gives you more freedom.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 142-146
+.. GENERATED FROM PYTHON SOURCE LINES 139-143
 
 Generate multiple plots
 ~~~~~~~~~~~~~~~~~~~~~~~
 Generate multiple plots using the object ``new_report``. This code generates
 2D and 3D polar plots.
 
-.. GENERATED FROM PYTHON SOURCE LINES 146-151
+.. GENERATED FROM PYTHON SOURCE LINES 143-148
 
 .. code-block:: default
 
@@ -388,14 +385,14 @@ Generate multiple plots using the object ``new_report``. This code generates
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 152-156
+.. GENERATED FROM PYTHON SOURCE LINES 149-153
 
 Get solution data
 ~~~~~~~~~~~~~~~~~
 Get solution data using the object ``new_report``` and postprocess or plot the
 data outside of AEDT.
 
-.. GENERATED FROM PYTHON SOURCE LINES 156-160
+.. GENERATED FROM PYTHON SOURCE LINES 153-157
 
 .. code-block:: default
 
@@ -421,7 +418,7 @@ data outside of AEDT.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 161-167
+.. GENERATED FROM PYTHON SOURCE LINES 158-164
 
 Generate far field plot
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -430,7 +427,7 @@ it to a new coordinate system. You can use the ``post`` prefix to create a
 postprocessing variable directly from a setter, or you can use the ``set_variable``
 method with an arbitrary name.
 
-.. GENERATED FROM PYTHON SOURCE LINES 167-173
+.. GENERATED FROM PYTHON SOURCE LINES 164-170
 
 .. code-block:: default
 
@@ -449,18 +446,18 @@ method with an arbitrary name.
  .. code-block:: none
 
 
-    <pyaedt.modules.Boundary.FarFieldSetup object at 0x0000022BCFDA37C0>
+    <pyaedt.modules.Boundary.FarFieldSetup object at 0x0000028120039970>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 174-178
+.. GENERATED FROM PYTHON SOURCE LINES 171-175
 
 Get solution data
 ~~~~~~~~~~~~~~~~~
 Get solution data. You can use this code to generate the same plot outside
 of AEDT.
 
-.. GENERATED FROM PYTHON SOURCE LINES 178-201
+.. GENERATED FROM PYTHON SOURCE LINES 175-198
 
 .. code-block:: default
 
@@ -494,13 +491,13 @@ of AEDT.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 202-205
+.. GENERATED FROM PYTHON SOURCE LINES 199-202
 
 Generate 3D plot using Matplotlib
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Generate a 3D plot using Matplotlib.
 
-.. GENERATED FROM PYTHON SOURCE LINES 205-208
+.. GENERATED FROM PYTHON SOURCE LINES 202-205
 
 .. code-block:: default
 
@@ -525,13 +522,13 @@ Generate a 3D plot using Matplotlib.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 209-212
+.. GENERATED FROM PYTHON SOURCE LINES 206-209
 
 Generate 3D far fields plot using Matplotlib
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Generate a far fields plot using Matplotlib.
 
-.. GENERATED FROM PYTHON SOURCE LINES 212-217
+.. GENERATED FROM PYTHON SOURCE LINES 209-214
 
 .. code-block:: default
 
@@ -558,14 +555,14 @@ Generate a far fields plot using Matplotlib.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 218-222
+.. GENERATED FROM PYTHON SOURCE LINES 215-219
 
 Generate 2D plot using Matplotlib
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Generate a 2D plot using Matplotlib where you specify whether it is a polar
 plot or a rectangular plot.
 
-.. GENERATED FROM PYTHON SOURCE LINES 222-225
+.. GENERATED FROM PYTHON SOURCE LINES 219-222
 
 .. code-block:: default
 
@@ -590,7 +587,7 @@ plot or a rectangular plot.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 226-231
+.. GENERATED FROM PYTHON SOURCE LINES 223-228
 
 Close AEDT
 ~~~~~~~~~~
@@ -598,24 +595,29 @@ After the simulation completes, you can close AEDT or release it using the
 :func:`pyaedt.Desktop.release_desktop` method.
 All methods provide for saving the project before closing.
 
-.. GENERATED FROM PYTHON SOURCE LINES 231-234
+.. GENERATED FROM PYTHON SOURCE LINES 228-230
 
 .. code-block:: default
 
 
-    if os.name != "posix":
-        d.release_desktop()
+    d.release_desktop()
 
 
 
 
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+
+    True
 
 
 
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  58.456 seconds)
+   **Total running time of the script:** ( 1 minutes  1.611 seconds)
 
 
 .. _sphx_glr_download_examples_02-HFSS_HFSS_Dipole.py:

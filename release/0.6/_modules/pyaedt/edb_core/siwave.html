@@ -32,6 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-binder.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-dataframe.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-rendered-html.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css" />
 
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
@@ -108,7 +109,13 @@
 
 <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="../../../API/index.html">
-  API reference
+  API AEDT reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../EDBAPI/index.html">
+  API EDB reference
  </a>
 </li>
 
@@ -200,7 +207,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.40 variable.
+            // this version, rather than using sphinx's 0.6.42 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -340,10 +347,10 @@ function checkPageExistsAndRedirect(event) {
 <span class="kn">from</span> <span class="nn">pyaedt.generic.general_methods</span> <span class="kn">import</span> <span class="n">_retry_ntimes</span>
 <span class="kn">from</span> <span class="nn">pyaedt.generic.general_methods</span> <span class="kn">import</span> <span class="n">generate_unique_name</span>
 <span class="kn">from</span> <span class="nn">pyaedt.generic.general_methods</span> <span class="kn">import</span> <span class="n">pyaedt_function_handler</span>
-<span class="kn">from</span> <span class="nn">pyaedt.modeler.GeometryOperators</span> <span class="kn">import</span> <span class="n">GeometryOperators</span>
+<span class="kn">from</span> <span class="nn">pyaedt.modeler.geometry_operators</span> <span class="kn">import</span> <span class="n">GeometryOperators</span>
 
 
-<div class="viewcode-block" id="EdbSiwave"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.siwave.EdbSiwave.html#pyaedt.edb_core.siwave.EdbSiwave">[docs]</a><span class="k">class</span> <span class="nc">EdbSiwave</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="EdbSiwave"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.siwave.EdbSiwave.html#pyaedt.edb_core.siwave.EdbSiwave">[docs]</a><span class="k">class</span> <span class="nc">EdbSiwave</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Manages EDB methods related to Siwave Setup accessible from `Edb.core_siwave` property.</span>
 
 <span class="sd">    Parameters</span>
@@ -520,7 +527,7 @@ function checkPageExistsAndRedirect(event) {
             <span class="k">pass</span>
         <span class="k">return</span> <span class="n">pos_pingroup_terminal</span><span class="o">.</span><span class="n">GetName</span><span class="p">()</span>
 
-<div class="viewcode-block" id="EdbSiwave.create_circuit_port_on_pin"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.siwave.EdbSiwave.create_circuit_port_on_pin.html#pyaedt.edb_core.siwave.EdbSiwave.create_circuit_port_on_pin">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EdbSiwave.create_circuit_port_on_pin"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.siwave.EdbSiwave.create_circuit_port_on_pin.html#pyaedt.edb_core.siwave.EdbSiwave.create_circuit_port_on_pin">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">create_circuit_port_on_pin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos_pin</span><span class="p">,</span> <span class="n">neg_pin</span><span class="p">,</span> <span class="n">impedance</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">port_name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Create a circuit port on a pin.</span>
 
@@ -565,7 +572,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">circuit_port</span><span class="o">.</span><span class="n">negative_node</span><span class="o">.</span><span class="n">node_pins</span> <span class="o">=</span> <span class="n">neg_pin</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_terminal_on_pins</span><span class="p">(</span><span class="n">circuit_port</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="EdbSiwave.create_voltage_source_on_pin"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.siwave.EdbSiwave.create_voltage_source_on_pin.html#pyaedt.edb_core.siwave.EdbSiwave.create_voltage_source_on_pin">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EdbSiwave.create_voltage_source_on_pin"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.siwave.EdbSiwave.create_voltage_source_on_pin.html#pyaedt.edb_core.siwave.EdbSiwave.create_voltage_source_on_pin">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">create_voltage_source_on_pin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos_pin</span><span class="p">,</span> <span class="n">neg_pin</span><span class="p">,</span> <span class="n">voltage_value</span><span class="o">=</span><span class="mf">3.3</span><span class="p">,</span> <span class="n">phase_value</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">source_name</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Create a voltage source.</span>
 
@@ -615,7 +622,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">voltage_source</span><span class="o">.</span><span class="n">negative_node</span><span class="o">.</span><span class="n">node_pins</span> <span class="o">=</span> <span class="n">pos_pin</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_terminal_on_pins</span><span class="p">(</span><span class="n">voltage_source</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="EdbSiwave.create_current_source_on_pin"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.siwave.EdbSiwave.create_current_source_on_pin.html#pyaedt.edb_core.siwave.EdbSiwave.create_current_source_on_pin">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EdbSiwave.create_current_source_on_pin"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.siwave.EdbSiwave.create_current_source_on_pin.html#pyaedt.edb_core.siwave.EdbSiwave.create_current_source_on_pin">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">create_current_source_on_pin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos_pin</span><span class="p">,</span> <span class="n">neg_pin</span><span class="p">,</span> <span class="n">current_value</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">phase_value</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">source_name</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Create a current source.</span>
 
@@ -664,7 +671,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">current_source</span><span class="o">.</span><span class="n">negative_node</span><span class="o">.</span><span class="n">node_pins</span> <span class="o">=</span> <span class="n">neg_pin</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_terminal_on_pins</span><span class="p">(</span><span class="n">current_source</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="EdbSiwave.create_resistor_on_pin"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.siwave.EdbSiwave.create_resistor_on_pin.html#pyaedt.edb_core.siwave.EdbSiwave.create_resistor_on_pin">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EdbSiwave.create_resistor_on_pin"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.siwave.EdbSiwave.create_resistor_on_pin.html#pyaedt.edb_core.siwave.EdbSiwave.create_resistor_on_pin">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">create_resistor_on_pin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos_pin</span><span class="p">,</span> <span class="n">neg_pin</span><span class="p">,</span> <span class="n">rvalue</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">resistor_name</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Create a Resistor boundary between two given pins..</span>
 
@@ -725,7 +732,7 @@ function checkPageExistsAndRedirect(event) {
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;No GND, PGND, AGND, DGND found. Please setup the negative net name manually.&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">negative_net_name</span>
 
-<div class="viewcode-block" id="EdbSiwave.create_circuit_port_on_net"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.siwave.EdbSiwave.create_circuit_port_on_net.html#pyaedt.edb_core.siwave.EdbSiwave.create_circuit_port_on_net">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EdbSiwave.create_circuit_port_on_net"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.siwave.EdbSiwave.create_circuit_port_on_net.html#pyaedt.edb_core.siwave.EdbSiwave.create_circuit_port_on_net">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">create_circuit_port_on_net</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">positive_component_name</span><span class="p">,</span>
@@ -793,7 +800,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">circuit_port</span><span class="o">.</span><span class="n">negative_node</span><span class="o">.</span><span class="n">node_pins</span> <span class="o">=</span> <span class="n">neg_node_pins</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_pin_group_terminal</span><span class="p">(</span><span class="n">circuit_port</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="EdbSiwave.create_voltage_source_on_net"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.siwave.EdbSiwave.create_voltage_source_on_net.html#pyaedt.edb_core.siwave.EdbSiwave.create_voltage_source_on_net">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EdbSiwave.create_voltage_source_on_net"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.siwave.EdbSiwave.create_voltage_source_on_net.html#pyaedt.edb_core.siwave.EdbSiwave.create_voltage_source_on_net">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">create_voltage_source_on_net</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">positive_component_name</span><span class="p">,</span>
@@ -864,7 +871,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">voltage_source</span><span class="o">.</span><span class="n">negative_node</span><span class="o">.</span><span class="n">node_pins</span> <span class="o">=</span> <span class="n">neg_node_pins</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_pin_group_terminal</span><span class="p">(</span><span class="n">voltage_source</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="EdbSiwave.create_current_source_on_net"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.siwave.EdbSiwave.create_current_source_on_net.html#pyaedt.edb_core.siwave.EdbSiwave.create_current_source_on_net">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EdbSiwave.create_current_source_on_net"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.siwave.EdbSiwave.create_current_source_on_net.html#pyaedt.edb_core.siwave.EdbSiwave.create_current_source_on_net">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">create_current_source_on_net</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">positive_component_name</span><span class="p">,</span>
@@ -935,7 +942,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">current_source</span><span class="o">.</span><span class="n">negative_node</span><span class="o">.</span><span class="n">node_pins</span> <span class="o">=</span> <span class="n">neg_node_pins</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_pin_group_terminal</span><span class="p">(</span><span class="n">current_source</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="EdbSiwave.create_dc_terminal"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.siwave.EdbSiwave.create_dc_terminal.html#pyaedt.edb_core.siwave.EdbSiwave.create_dc_terminal">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EdbSiwave.create_dc_terminal"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.siwave.EdbSiwave.create_dc_terminal.html#pyaedt.edb_core.siwave.EdbSiwave.create_dc_terminal">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">create_dc_terminal</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">component_name</span><span class="p">,</span>
@@ -982,7 +989,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">dc_source</span><span class="o">.</span><span class="n">positive_node</span><span class="o">.</span><span class="n">node_pins</span> <span class="o">=</span> <span class="n">pos_node_pins</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_pin_group_terminal</span><span class="p">(</span><span class="n">dc_source</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="EdbSiwave.create_exec_file"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.siwave.EdbSiwave.create_exec_file.html#pyaedt.edb_core.siwave.EdbSiwave.create_exec_file">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EdbSiwave.create_exec_file"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.siwave.EdbSiwave.create_exec_file.html#pyaedt.edb_core.siwave.EdbSiwave.create_exec_file">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">create_exec_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">add_dc</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">add_ac</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">add_syz</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Create an executable file.&quot;&quot;&quot;</span>
         <span class="n">workdir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span><span class="o">.</span><span class="n">edbpath</span><span class="p">)</span>
@@ -1000,7 +1007,7 @@ function checkPageExistsAndRedirect(event) {
 
         <span class="k">return</span> <span class="kc">True</span> <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span> <span class="k">else</span> <span class="kc">False</span></div>
 
-<div class="viewcode-block" id="EdbSiwave.add_siwave_syz_analysis"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.siwave.EdbSiwave.add_siwave_syz_analysis.html#pyaedt.edb_core.siwave.EdbSiwave.add_siwave_syz_analysis">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EdbSiwave.add_siwave_syz_analysis"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.siwave.EdbSiwave.add_siwave_syz_analysis.html#pyaedt.edb_core.siwave.EdbSiwave.add_siwave_syz_analysis">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">add_siwave_syz_analysis</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">accuracy_level</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
@@ -1064,7 +1071,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="bp">self</span><span class="o">.</span><span class="n">create_exec_file</span><span class="p">(</span><span class="n">add_ac</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">setup</span></div>
 
-<div class="viewcode-block" id="EdbSiwave.add_siwave_dc_analysis"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.siwave.EdbSiwave.add_siwave_dc_analysis.html#pyaedt.edb_core.siwave.EdbSiwave.add_siwave_dc_analysis">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EdbSiwave.add_siwave_dc_analysis"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.siwave.EdbSiwave.add_siwave_dc_analysis.html#pyaedt.edb_core.siwave.EdbSiwave.add_siwave_dc_analysis">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">add_siwave_dc_analysis</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Add a Siwave DC analysis in EDB.</span>
 
@@ -1096,7 +1103,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="bp">self</span><span class="o">.</span><span class="n">create_exec_file</span><span class="p">(</span><span class="n">add_dc</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">setup</span></div>
 
-<div class="viewcode-block" id="EdbSiwave.create_pin_group_terminal"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.siwave.EdbSiwave.create_pin_group_terminal.html#pyaedt.edb_core.siwave.EdbSiwave.create_pin_group_terminal">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EdbSiwave.create_pin_group_terminal"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.siwave.EdbSiwave.create_pin_group_terminal.html#pyaedt.edb_core.siwave.EdbSiwave.create_pin_group_terminal">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">create_pin_group_terminal</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Create a pin group terminal.</span>
 
@@ -1195,7 +1202,7 @@ function checkPageExistsAndRedirect(event) {
             <span class="k">pass</span>
         <span class="k">return</span> <span class="n">pos_pingroup_terminal</span><span class="o">.</span><span class="n">GetName</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="EdbSiwave.configure_siw_analysis_setup"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.siwave.EdbSiwave.configure_siw_analysis_setup.html#pyaedt.edb_core.siwave.EdbSiwave.configure_siw_analysis_setup">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EdbSiwave.configure_siw_analysis_setup"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.siwave.EdbSiwave.configure_siw_analysis_setup.html#pyaedt.edb_core.siwave.EdbSiwave.configure_siw_analysis_setup">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">configure_siw_analysis_setup</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">simulation_setup</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">delete_existing_setup</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Configure Siwave analysis setup.</span>
 
@@ -1352,7 +1359,7 @@ function checkPageExistsAndRedirect(event) {
             <span class="n">freq</span> <span class="o">=</span> <span class="n">freq</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">decade_cnt</span><span class="p">)</span>
             <span class="n">sweep</span><span class="o">.</span><span class="n">Frequencies</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">freq</span><span class="p">))</span>
 
-<div class="viewcode-block" id="EdbSiwave.create_rlc_component"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.siwave.EdbSiwave.create_rlc_component.html#pyaedt.edb_core.siwave.EdbSiwave.create_rlc_component">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EdbSiwave.create_rlc_component"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.siwave.EdbSiwave.create_rlc_component.html#pyaedt.edb_core.siwave.EdbSiwave.create_rlc_component">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">create_rlc_component</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">pins</span><span class="p">,</span>
@@ -1399,7 +1406,7 @@ function checkPageExistsAndRedirect(event) {
             <span class="n">is_parallel</span><span class="o">=</span><span class="n">is_parallel</span><span class="p">,</span>
         <span class="p">)</span>  <span class="c1"># pragma no cover</span></div>
 
-<div class="viewcode-block" id="EdbSiwave.create_pin_group"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.siwave.EdbSiwave.create_pin_group.html#pyaedt.edb_core.siwave.EdbSiwave.create_pin_group">[docs]</a>    <span class="nd">@pyaedt_function_handler</span>
+<div class="viewcode-block" id="EdbSiwave.create_pin_group"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.siwave.EdbSiwave.create_pin_group.html#pyaedt.edb_core.siwave.EdbSiwave.create_pin_group">[docs]</a>    <span class="nd">@pyaedt_function_handler</span>
     <span class="k">def</span> <span class="nf">create_pin_group</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">reference_designator</span><span class="p">,</span> <span class="n">pin_numbers</span><span class="p">,</span> <span class="n">group_name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Create pin group on the component.</span>
 
@@ -1432,7 +1439,7 @@ function checkPageExistsAndRedirect(event) {
             <span class="n">edb_pingroup</span><span class="o">.</span><span class="n">SetNet</span><span class="p">(</span><span class="n">pins</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">GetNet</span><span class="p">())</span>
             <span class="k">return</span> <span class="n">group_name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">pin_groups</span><span class="p">[</span><span class="n">group_name</span><span class="p">]</span></div>
 
-<div class="viewcode-block" id="EdbSiwave.create_pin_group_on_net"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.siwave.EdbSiwave.create_pin_group_on_net.html#pyaedt.edb_core.siwave.EdbSiwave.create_pin_group_on_net">[docs]</a>    <span class="nd">@pyaedt_function_handler</span>
+<div class="viewcode-block" id="EdbSiwave.create_pin_group_on_net"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.siwave.EdbSiwave.create_pin_group_on_net.html#pyaedt.edb_core.siwave.EdbSiwave.create_pin_group_on_net">[docs]</a>    <span class="nd">@pyaedt_function_handler</span>
     <span class="k">def</span> <span class="nf">create_pin_group_on_net</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">reference_designator</span><span class="p">,</span> <span class="n">net_name</span><span class="p">,</span> <span class="n">group_name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Create pin group on component by net name.</span>
 
@@ -1452,7 +1459,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">pin_names</span> <span class="o">=</span> <span class="p">[</span><span class="n">p</span><span class="o">.</span><span class="n">GetName</span><span class="p">()</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">pins</span><span class="p">]</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_pin_group</span><span class="p">(</span><span class="n">reference_designator</span><span class="p">,</span> <span class="n">pin_names</span><span class="p">,</span> <span class="n">group_name</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="EdbSiwave.create_current_source_on_pin_group"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.siwave.EdbSiwave.create_current_source_on_pin_group.html#pyaedt.edb_core.siwave.EdbSiwave.create_current_source_on_pin_group">[docs]</a>    <span class="nd">@pyaedt_function_handler</span>
+<div class="viewcode-block" id="EdbSiwave.create_current_source_on_pin_group"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.siwave.EdbSiwave.create_current_source_on_pin_group.html#pyaedt.edb_core.siwave.EdbSiwave.create_current_source_on_pin_group">[docs]</a>    <span class="nd">@pyaedt_function_handler</span>
     <span class="k">def</span> <span class="nf">create_current_source_on_pin_group</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">pos_pin_group_name</span><span class="p">,</span> <span class="n">neg_pin_group_name</span><span class="p">,</span> <span class="n">magnitude</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">phase</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span>
     <span class="p">):</span>
@@ -1485,7 +1492,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">pos_terminal</span><span class="o">.</span><span class="n">SetReferenceTerminal</span><span class="p">(</span><span class="n">neg_terminal</span><span class="p">)</span>
         <span class="k">return</span> <span class="kc">True</span></div>
 
-<div class="viewcode-block" id="EdbSiwave.create_voltage_source_on_pin_group"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.siwave.EdbSiwave.create_voltage_source_on_pin_group.html#pyaedt.edb_core.siwave.EdbSiwave.create_voltage_source_on_pin_group">[docs]</a>    <span class="nd">@pyaedt_function_handler</span>
+<div class="viewcode-block" id="EdbSiwave.create_voltage_source_on_pin_group"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.siwave.EdbSiwave.create_voltage_source_on_pin_group.html#pyaedt.edb_core.siwave.EdbSiwave.create_voltage_source_on_pin_group">[docs]</a>    <span class="nd">@pyaedt_function_handler</span>
     <span class="k">def</span> <span class="nf">create_voltage_source_on_pin_group</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">pos_pin_group_name</span><span class="p">,</span> <span class="n">neg_pin_group_name</span><span class="p">,</span> <span class="n">magnitude</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">phase</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span>
     <span class="p">):</span>
@@ -1518,7 +1525,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">pos_terminal</span><span class="o">.</span><span class="n">SetReferenceTerminal</span><span class="p">(</span><span class="n">neg_terminal</span><span class="p">)</span>
         <span class="k">return</span> <span class="kc">True</span></div>
 
-<div class="viewcode-block" id="EdbSiwave.create_circuit_port_on_pin_group"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.siwave.EdbSiwave.create_circuit_port_on_pin_group.html#pyaedt.edb_core.siwave.EdbSiwave.create_circuit_port_on_pin_group">[docs]</a>    <span class="nd">@pyaedt_function_handler</span>
+<div class="viewcode-block" id="EdbSiwave.create_circuit_port_on_pin_group"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.siwave.EdbSiwave.create_circuit_port_on_pin_group.html#pyaedt.edb_core.siwave.EdbSiwave.create_circuit_port_on_pin_group">[docs]</a>    <span class="nd">@pyaedt_function_handler</span>
     <span class="k">def</span> <span class="nf">create_circuit_port_on_pin_group</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos_pin_group_name</span><span class="p">,</span> <span class="n">neg_pin_group_name</span><span class="p">,</span> <span class="n">impedance</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Create a port between two pin groups.</span>
 

@@ -33,6 +33,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
 
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
@@ -111,7 +112,13 @@
 
 <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="../../API/index.html">
-  API reference
+  API AEDT reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../EDBAPI/index.html">
+  API EDB reference
  </a>
 </li>
 
@@ -203,7 +210,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.40 variable.
+            // this version, rather than using sphinx's 0.6.42 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -854,9 +861,7 @@ to download the full example code</p>
 <h2>Perform required imports<a class="headerlink" href="#perform-required-imports" title="Permalink to this heading">#</a></h2>
 <p>Perform required imports.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tempfile</span>
-<span class="kn">from</span> <span class="nn">pyaedt</span> <span class="kn">import</span> <span class="n">Edb</span>
-<span class="kn">from</span> <span class="nn">pyaedt.generic.general_methods</span> <span class="kn">import</span> <span class="n">generate_unique_name</span>
-<span class="kn">from</span> <span class="nn">pyaedt</span> <span class="kn">import</span> <span class="n">Hfss3dLayout</span>
+<span class="kn">import</span> <span class="nn">pyaedt</span>
 <span class="kn">import</span> <span class="nn">os</span>
 </pre></div>
 </div>
@@ -916,12 +921,12 @@ to download the full example code</p>
 
 
 <a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">tmpfold</span></a> <span class="o">=</span> <a href="https://docs.python.org/dev/library/tempfile.html#tempfile.gettempdir" title="tempfile.gettempdir" class="sphx-glr-backref-module-tempfile sphx-glr-backref-type-py-function"><span class="n">tempfile</span><span class="o">.</span><span class="n">gettempdir</span></a><span class="p">()</span>
-<a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">aedb_path</span></a> <span class="o">=</span> <a href="https://docs.python.org/dev/library/os.path.html#os.path.join" title="os.path.join" class="sphx-glr-backref-module-os-path sphx-glr-backref-type-py-function"><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span></a><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">tmpfold</span></a><span class="p">,</span> <span class="n">generate_unique_name</span><span class="p">(</span><span class="s2">&quot;pcb&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;.aedb&quot;</span><span class="p">)</span>
+<a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">aedb_path</span></a> <span class="o">=</span> <a href="https://docs.python.org/dev/library/os.path.html#os.path.join" title="os.path.join" class="sphx-glr-backref-module-os-path sphx-glr-backref-type-py-function"><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span></a><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">tmpfold</span></a><span class="p">,</span> <span class="n">pyaedt</span><span class="o">.</span><span class="n">generate_unique_name</span><span class="p">(</span><span class="s2">&quot;pcb&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;.aedb&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">aedb_path</span></a><span class="p">)</span>
-<span class="n">edb</span> <span class="o">=</span> <span class="n">Edb</span><span class="p">(</span><span class="n">edbpath</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">aedb_path</span></a><span class="p">,</span> <span class="n">edbversion</span><span class="o">=</span><span class="s2">&quot;2022.2&quot;</span><span class="p">)</span>
+<span class="n">edb</span> <span class="o">=</span> <span class="n">pyaedt</span><span class="o">.</span><span class="n">Edb</span><span class="p">(</span><span class="n">edbpath</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">aedb_path</span></a><span class="p">,</span> <span class="n">edbversion</span><span class="o">=</span><span class="s2">&quot;2022.2&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>D:\Temp\pcb_IVC39F.aedb
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>D:\Temp\pcb_MFCDFW.aedb
 </pre></div>
 </div>
 </section>
@@ -952,7 +957,7 @@ to download the full example code</p>
 <span class="n">edb</span><span class="o">.</span><span class="n">core_primitives</span><span class="o">.</span><span class="n">create_polygon</span><span class="p">(</span><span class="n">first_line_poly</span><span class="p">,</span> <span class="s2">&quot;TOP&quot;</span><span class="p">,</span> <span class="n">net_name</span><span class="o">=</span><span class="s2">&quot;Array_antenna&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;Ansys.Ansoft.Edb.Cell.Primitive.Polygon object at 0x0000022BD04E3FC0&gt;
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;Ansys.Ansoft.Edb.Cell.Primitive.Polygon object at 0x000002811ACB9880&gt;
 </pre></div>
 </div>
 </section>
@@ -989,7 +994,7 @@ to download the full example code</p>
 <span class="n">edb</span><span class="o">.</span><span class="n">core_primitives</span><span class="o">.</span><span class="n">create_polygon</span><span class="p">(</span><span class="n">gnd_shape</span><span class="p">,</span> <span class="s2">&quot;GND&quot;</span><span class="p">,</span> <span class="n">net_name</span><span class="o">=</span><span class="s2">&quot;GND&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;Ansys.Ansoft.Edb.Cell.Primitive.Polygon object at 0x0000022BD04FA6C0&gt;
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;Ansys.Ansoft.Edb.Cell.Primitive.Polygon object at 0x00000281206AD600&gt;
 </pre></div>
 </div>
 </section>
@@ -1059,7 +1064,7 @@ to download the full example code</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">edb</span><span class="o">.</span><span class="n">core_nets</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_03_5G_antenna_example_001.png" srcset="../../_images/sphx_glr_03_5G_antenna_example_001.png" alt="Cell_YRC0YX" class = "sphx-glr-single-img"/></section>
+<img src="../../_images/sphx_glr_03_5G_antenna_example_001.png" srcset="../../_images/sphx_glr_03_5G_antenna_example_001.png" alt="Cell_I4ECPR" class = "sphx-glr-single-img"/></section>
 <section id="save-edb">
 <h2>Save EDB<a class="headerlink" href="#save-edb" title="Permalink to this heading">#</a></h2>
 <p>Save EDB.</p>
@@ -1070,7 +1075,7 @@ to download the full example code</p>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;EDB saved correctly to </span><span class="si">{}</span><span class="s2">. You can import in AEDT.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">aedb_path</span></a><span class="p">))</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>EDB saved correctly to D:\Temp\pcb_IVC39F.aedb. You can import in AEDT.
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>EDB saved correctly to D:\Temp\pcb_MFCDFW.aedb. You can import in AEDT.
 </pre></div>
 </div>
 </section>
@@ -1078,7 +1083,8 @@ to download the full example code</p>
 <h2>Launch HFSS 3D Layout and open EDB<a class="headerlink" href="#launch-hfss-3d-layout-and-open-edb" title="Permalink to this heading">#</a></h2>
 <p>Launch HFSS 3D Layout and open EDB.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">project</span></a> <span class="o">=</span> <a href="https://docs.python.org/dev/library/os.path.html#os.path.join" title="os.path.join" class="sphx-glr-backref-module-os-path sphx-glr-backref-type-py-function"><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span></a><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">aedb_path</span></a><span class="p">,</span> <span class="s2">&quot;edb.def&quot;</span><span class="p">)</span>
-<span class="n">h3d</span> <span class="o">=</span> <span class="n">Hfss3dLayout</span><span class="p">(</span><span class="n">projectname</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">project</span></a><span class="p">,</span> <span class="n">specified_version</span><span class="o">=</span><span class="s2">&quot;2022.2&quot;</span><span class="p">,</span> <span class="n">new_desktop_session</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a><span class="o">=</span><a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a><span class="p">)</span>
+<span class="n">h3d</span> <span class="o">=</span> <span class="n">pyaedt</span><span class="o">.</span><span class="n">Hfss3dLayout</span><span class="p">(</span><span class="n">projectname</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">project</span></a><span class="p">,</span> <span class="n">specified_version</span><span class="o">=</span><span class="s2">&quot;2022.2&quot;</span><span class="p">,</span> <span class="n">new_desktop_session</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                          <a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a><span class="o">=</span><a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a><span class="p">)</span>
 </pre></div>
 </div>
 </section>
@@ -1088,7 +1094,7 @@ to download the full example code</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">h3d</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">edb</span><span class="o">.</span><span class="n">core_nets</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_03_5G_antenna_example_002.png" srcset="../../_images/sphx_glr_03_5G_antenna_example_002.png" alt="Cell_YRC0YX" class = "sphx-glr-single-img"/></section>
+<img src="../../_images/sphx_glr_03_5G_antenna_example_002.png" srcset="../../_images/sphx_glr_03_5G_antenna_example_002.png" alt="Cell_I4ECPR" class = "sphx-glr-single-img"/></section>
 <section id="create-setup-and-sweeps">
 <h2>Create setup and sweeps<a class="headerlink" href="#create-setup-and-sweeps" title="Permalink to this heading">#</a></h2>
 <p>Getters and setters facilitate the settings on the nested property dictionary.
@@ -1117,7 +1123,7 @@ Previously, you had to use these commands:</p>
 <span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modules.SetupTemplates.SweepHFSS3DLayout object at 0x0000022BD0331CD0&gt;
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modules.SetupTemplates.SweepHFSS3DLayout object at 0x000002811FFB84C0&gt;
 </pre></div>
 </div>
 </section>
@@ -1128,7 +1134,7 @@ Previously, you had to use these commands:</p>
 <span class="n">h3d</span><span class="o">.</span><span class="n">post</span><span class="o">.</span><span class="n">create_report</span><span class="p">([</span><span class="s2">&quot;db(S(</span><span class="si">{0}</span><span class="s2">,</span><span class="si">{1}</span><span class="s2">))&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">port_name</span></a><span class="p">,</span> <a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">port_name</span></a><span class="p">)])</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modules.report_templates.Standard object at 0x0000022BD91375E0&gt;
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modules.report_templates.Standard object at 0x00000281202C9130&gt;
 </pre></div>
 </div>
 </section>
@@ -1155,7 +1161,7 @@ All methods provide for saving the project before closing AEDT.</p>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>True
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 2 minutes  1.106 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 2 minutes  3.435 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-00-edb-03-5g-antenna-example-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/a9574b8f91690cd918e872764cee87e2/03_5G_antenna_example.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">03_5G_antenna_example.py</span></code></a></p>

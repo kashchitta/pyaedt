@@ -32,6 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery-binder.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery-dataframe.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery-rendered-html.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/custom.css" />
 
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
@@ -108,7 +109,13 @@
 
 <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="../../../../API/index.html">
-  API reference
+  API AEDT reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../../EDBAPI/index.html">
+  API EDB reference
  </a>
 </li>
 
@@ -200,7 +207,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.40 variable.
+            // this version, rather than using sphinx's 0.6.42 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -326,7 +333,7 @@ function checkPageExistsAndRedirect(event) {
 <span class="kn">from</span> <span class="nn">pyaedt.generic.clr_module</span> <span class="kn">import</span> <span class="n">List</span>
 
 
-<div class="viewcode-block" id="EDBLayer"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.layer_data.EDBLayer.html#pyaedt.edb_core.edb_data.layer_data.EDBLayer">[docs]</a><span class="k">class</span> <span class="nc">EDBLayer</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="EDBLayer"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.layer_data.EDBLayer.html#pyaedt.edb_core.edb_data.layer_data.EDBLayer">[docs]</a><span class="k">class</span> <span class="nc">EDBLayer</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Manages EDB functionalities for a layer.</span>
 
 <span class="sd">    .. deprecated:: 0.6.5</span>
@@ -553,7 +560,7 @@ function checkPageExistsAndRedirect(event) {
             <span class="bp">self</span><span class="o">.</span><span class="n">_roughness_enabled</span> <span class="o">=</span> <span class="n">value</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">update_layers</span><span class="p">()</span>
 
-<div class="viewcode-block" id="EDBLayer.assign_roughness_model_top"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.layer_data.EDBLayer.assign_roughness_model_top.html#pyaedt.edb_core.edb_data.layer_data.EDBLayer.assign_roughness_model_top">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EDBLayer.assign_roughness_model_top"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.layer_data.EDBLayer.assign_roughness_model_top.html#pyaedt.edb_core.edb_data.layer_data.EDBLayer.assign_roughness_model_top">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">assign_roughness_model_top</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">model_type</span><span class="o">=</span><span class="s2">&quot;huray&quot;</span><span class="p">,</span> <span class="n">huray_radius</span><span class="o">=</span><span class="s2">&quot;0.5um&quot;</span><span class="p">,</span> <span class="n">huray_surface_ratio</span><span class="o">=</span><span class="s2">&quot;2.9&quot;</span><span class="p">,</span> <span class="n">groisse_roughness</span><span class="o">=</span><span class="s2">&quot;1um&quot;</span>
     <span class="p">):</span>
@@ -582,7 +589,7 @@ function checkPageExistsAndRedirect(event) {
             <span class="bp">self</span><span class="o">.</span><span class="n">_roughness_model_top</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">update_layers</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="EDBLayer.assign_roughness_model_bottom"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.layer_data.EDBLayer.assign_roughness_model_bottom.html#pyaedt.edb_core.edb_data.layer_data.EDBLayer.assign_roughness_model_bottom">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EDBLayer.assign_roughness_model_bottom"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.layer_data.EDBLayer.assign_roughness_model_bottom.html#pyaedt.edb_core.edb_data.layer_data.EDBLayer.assign_roughness_model_bottom">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">assign_roughness_model_bottom</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">model_type</span><span class="o">=</span><span class="s2">&quot;huray&quot;</span><span class="p">,</span> <span class="n">huray_radius</span><span class="o">=</span><span class="s2">&quot;0.5um&quot;</span><span class="p">,</span> <span class="n">huray_surface_ratio</span><span class="o">=</span><span class="s2">&quot;2.9&quot;</span><span class="p">,</span> <span class="n">groisse_roughness</span><span class="o">=</span><span class="s2">&quot;1um&quot;</span>
     <span class="p">):</span>
@@ -611,7 +618,7 @@ function checkPageExistsAndRedirect(event) {
             <span class="bp">self</span><span class="o">.</span><span class="n">_roughness_model_bottom</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">update_layers</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="EDBLayer.assign_roughness_model_side"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.layer_data.EDBLayer.assign_roughness_model_side.html#pyaedt.edb_core.edb_data.layer_data.EDBLayer.assign_roughness_model_side">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EDBLayer.assign_roughness_model_side"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.layer_data.EDBLayer.assign_roughness_model_side.html#pyaedt.edb_core.edb_data.layer_data.EDBLayer.assign_roughness_model_side">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">assign_roughness_model_side</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">model_type</span><span class="o">=</span><span class="s2">&quot;huray&quot;</span><span class="p">,</span> <span class="n">huray_radius</span><span class="o">=</span><span class="s2">&quot;0.5um&quot;</span><span class="p">,</span> <span class="n">huray_surface_ratio</span><span class="o">=</span><span class="s2">&quot;2.9&quot;</span><span class="p">,</span> <span class="n">groisse_roughness</span><span class="o">=</span><span class="s2">&quot;1um&quot;</span>
     <span class="p">):</span>
@@ -728,7 +735,7 @@ function checkPageExistsAndRedirect(event) {
             <span class="bp">self</span><span class="o">.</span><span class="n">_etch_factor</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">update_layers</span><span class="p">()</span>
 
-<div class="viewcode-block" id="EDBLayer.plot"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.layer_data.EDBLayer.plot.html#pyaedt.edb_core.edb_data.layer_data.EDBLayer.plot">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EDBLayer.plot"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.layer_data.EDBLayer.plot.html#pyaedt.edb_core.edb_data.layer_data.EDBLayer.plot">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">plot</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">nets</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
@@ -765,7 +772,7 @@ function checkPageExistsAndRedirect(event) {
             <span class="n">size</span><span class="o">=</span><span class="n">size</span><span class="p">,</span>
         <span class="p">)</span></div>
 
-<div class="viewcode-block" id="EDBLayer.init_vals"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.layer_data.EDBLayer.init_vals.html#pyaedt.edb_core.edb_data.layer_data.EDBLayer.init_vals">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EDBLayer.init_vals"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.layer_data.EDBLayer.init_vals.html#pyaedt.edb_core.edb_data.layer_data.EDBLayer.init_vals">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">init_vals</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Initialize values.&quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
@@ -787,7 +794,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="k">except</span><span class="p">:</span>
             <span class="k">pass</span></div>
 
-<div class="viewcode-block" id="EDBLayer.update_layer_vals"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.layer_data.EDBLayer.update_layer_vals.html#pyaedt.edb_core.edb_data.layer_data.EDBLayer.update_layer_vals">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EDBLayer.update_layer_vals"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.layer_data.EDBLayer.update_layer_vals.html#pyaedt.edb_core.edb_data.layer_data.EDBLayer.update_layer_vals">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">update_layer_vals</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">layerName</span><span class="p">,</span>
@@ -873,7 +880,7 @@ function checkPageExistsAndRedirect(event) {
             <span class="n">newLayer</span><span class="o">.</span><span class="n">SetEtchFactorEnabled</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">newLayer</span></div>
 
-<div class="viewcode-block" id="EDBLayer.set_elevation"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.layer_data.EDBLayer.set_elevation.html#pyaedt.edb_core.edb_data.layer_data.EDBLayer.set_elevation">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EDBLayer.set_elevation"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.layer_data.EDBLayer.set_elevation.html#pyaedt.edb_core.edb_data.layer_data.EDBLayer.set_elevation">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">set_elevation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">layer</span><span class="p">,</span> <span class="n">elev</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Update the layer elevation.</span>
 
@@ -894,7 +901,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">layer</span><span class="o">.</span><span class="n">SetLowerElevation</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_get_edb_value</span><span class="p">(</span><span class="n">elev</span><span class="p">))</span>
         <span class="k">return</span> <span class="n">layer</span></div>
 
-<div class="viewcode-block" id="EDBLayer.update_layers"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.layer_data.EDBLayer.update_layers.html#pyaedt.edb_core.edb_data.layer_data.EDBLayer.update_layers">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EDBLayer.update_layers"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.layer_data.EDBLayer.update_layers.html#pyaedt.edb_core.edb_data.layer_data.EDBLayer.update_layers">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">update_layers</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Update all layers.</span>
 
@@ -950,7 +957,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="k">return</span> <span class="kc">True</span></div></div>
 
 
-<div class="viewcode-block" id="EDBLayers"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.layer_data.EDBLayers.html#pyaedt.edb_core.edb_data.layer_data.EDBLayers">[docs]</a><span class="k">class</span> <span class="nc">EDBLayers</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="EDBLayers"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.layer_data.EDBLayers.html#pyaedt.edb_core.edb_data.layer_data.EDBLayers">[docs]</a><span class="k">class</span> <span class="nc">EDBLayers</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Manages EDB functionalities for all primitive layers.</span>
 
 <span class="sd">    .. deprecated:: 0.6.5</span>
@@ -1234,7 +1241,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="bp">self</span><span class="o">.</span><span class="n">_update_edb_objects</span><span class="p">()</span>
         <span class="k">return</span> <span class="kc">True</span>
 
-<div class="viewcode-block" id="EDBLayers.insert_layer_above"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.layer_data.EDBLayers.insert_layer_above.html#pyaedt.edb_core.edb_data.layer_data.EDBLayers.insert_layer_above">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EDBLayers.insert_layer_above"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.layer_data.EDBLayers.insert_layer_above.html#pyaedt.edb_core.edb_data.layer_data.EDBLayers.insert_layer_above">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">insert_layer_above</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">layer_name</span><span class="p">,</span>
@@ -1312,7 +1319,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="bp">self</span><span class="o">.</span><span class="n">_update_stackup</span><span class="p">()</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="n">layer_name</span><span class="p">]</span></div>
 
-<div class="viewcode-block" id="EDBLayers.add_layer"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.layer_data.EDBLayers.add_layer.html#pyaedt.edb_core.edb_data.layer_data.EDBLayers.add_layer">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EDBLayers.add_layer"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.layer_data.EDBLayers.add_layer.html#pyaedt.edb_core.edb_data.layer_data.EDBLayers.add_layer">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">add_layer</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">layerName</span><span class="p">,</span>
@@ -1464,7 +1471,7 @@ function checkPageExistsAndRedirect(event) {
             <span class="k">return</span> <span class="kc">True</span>
         <span class="k">return</span> <span class="kc">False</span></div>
 
-<div class="viewcode-block" id="EDBLayers.add_outline_layer"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.layer_data.EDBLayers.add_outline_layer.html#pyaedt.edb_core.edb_data.layer_data.EDBLayers.add_outline_layer">[docs]</a>    <span class="k">def</span> <span class="nf">add_outline_layer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">outline_name</span><span class="o">=</span><span class="s2">&quot;Outline&quot;</span><span class="p">):</span>
+<div class="viewcode-block" id="EDBLayers.add_outline_layer"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.layer_data.EDBLayers.add_outline_layer.html#pyaedt.edb_core.edb_data.layer_data.EDBLayers.add_outline_layer">[docs]</a>    <span class="k">def</span> <span class="nf">add_outline_layer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">outline_name</span><span class="o">=</span><span class="s2">&quot;Outline&quot;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Add an outline layer named ``&quot;Outline&quot;`` if it is not present.</span>
 
@@ -1484,7 +1491,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">False</span></div>
 
-<div class="viewcode-block" id="EDBLayers.remove_layer"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.layer_data.EDBLayers.remove_layer.html#pyaedt.edb_core.edb_data.layer_data.EDBLayers.remove_layer">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EDBLayers.remove_layer"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.layer_data.EDBLayers.remove_layer.html#pyaedt.edb_core.edb_data.layer_data.EDBLayers.remove_layer">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">remove_layer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">layername</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Remove a layer.</span>
 
@@ -1521,8 +1528,8 @@ function checkPageExistsAndRedirect(event) {
         <span class="k">return</span> <span class="kc">True</span></div></div>
 
 
-<div class="viewcode-block" id="LayerEdbClass"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.layer_data.LayerEdbClass.html#pyaedt.edb_core.edb_data.layer_data.LayerEdbClass">[docs]</a><span class="k">class</span> <span class="nc">LayerEdbClass</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;New Edb Layer management class. Replaces EDBLayer.&quot;&quot;&quot;</span>
+<div class="viewcode-block" id="LayerEdbClass"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.layer_data.LayerEdbClass.html#pyaedt.edb_core.edb_data.layer_data.LayerEdbClass">[docs]</a><span class="k">class</span> <span class="nc">LayerEdbClass</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Manages Edb Layers. Replaces EDBLayer.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pclass</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_pclass</span> <span class="o">=</span> <span class="n">pclass</span>
@@ -1897,7 +1904,7 @@ function checkPageExistsAndRedirect(event) {
     <span class="k">def</span> <span class="nf">side_hallhuray_surface_ratio</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_side_hallhuray_surface_ratio</span> <span class="o">=</span> <span class="n">value</span>
 
-<div class="viewcode-block" id="LayerEdbClass.get_roughness_model"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.layer_data.LayerEdbClass.get_roughness_model.html#pyaedt.edb_core.edb_data.layer_data.LayerEdbClass.get_roughness_model">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="LayerEdbClass.get_roughness_model"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.layer_data.LayerEdbClass.get_roughness_model.html#pyaedt.edb_core.edb_data.layer_data.LayerEdbClass.get_roughness_model">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">get_roughness_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">surface</span><span class="o">=</span><span class="s2">&quot;top&quot;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Get roughness model of the layer.</span>
 
@@ -1920,7 +1927,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="k">elif</span> <span class="n">surface</span> <span class="o">==</span> <span class="s2">&quot;side&quot;</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb_layer</span><span class="o">.</span><span class="n">GetRoughnessModel</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_pclass</span><span class="o">.</span><span class="n">_pedb</span><span class="o">.</span><span class="n">edb</span><span class="o">.</span><span class="n">Cell</span><span class="o">.</span><span class="n">RoughnessModel</span><span class="o">.</span><span class="n">Region</span><span class="o">.</span><span class="n">Side</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="LayerEdbClass.assign_roughness_model"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.layer_data.LayerEdbClass.assign_roughness_model.html#pyaedt.edb_core.edb_data.layer_data.LayerEdbClass.assign_roughness_model">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="LayerEdbClass.assign_roughness_model"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.layer_data.LayerEdbClass.assign_roughness_model.html#pyaedt.edb_core.edb_data.layer_data.LayerEdbClass.assign_roughness_model">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">assign_roughness_model</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">model_type</span><span class="o">=</span><span class="s2">&quot;huray&quot;</span><span class="p">,</span>

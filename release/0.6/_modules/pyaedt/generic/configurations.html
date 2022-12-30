@@ -32,6 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-binder.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-dataframe.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-rendered-html.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css" />
 
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
@@ -108,7 +109,13 @@
 
 <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="../../../API/index.html">
-  API reference
+  API AEDT reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../EDBAPI/index.html">
+  API EDB reference
  </a>
 </li>
 
@@ -200,7 +207,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.40 variable.
+            // this version, rather than using sphinx's 0.6.42 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -328,8 +335,8 @@ function checkPageExistsAndRedirect(event) {
 <span class="kn">from</span> <span class="nn">pyaedt.generic.general_methods</span> <span class="kn">import</span> <span class="n">_create_json_file</span>
 <span class="kn">from</span> <span class="nn">pyaedt.generic.general_methods</span> <span class="kn">import</span> <span class="n">generate_unique_name</span>
 <span class="kn">from</span> <span class="nn">pyaedt.generic.general_methods</span> <span class="kn">import</span> <span class="n">pyaedt_function_handler</span>
-<span class="kn">from</span> <span class="nn">pyaedt.modeler.GeometryOperators</span> <span class="kn">import</span> <span class="n">GeometryOperators</span>
-<span class="kn">from</span> <span class="nn">pyaedt.modeler.Modeler</span> <span class="kn">import</span> <span class="n">CoordinateSystem</span>
+<span class="kn">from</span> <span class="nn">pyaedt.modeler.cad.Modeler</span> <span class="kn">import</span> <span class="n">CoordinateSystem</span>
+<span class="kn">from</span> <span class="nn">pyaedt.modeler.geometry_operators</span> <span class="kn">import</span> <span class="n">GeometryOperators</span>
 <span class="kn">from</span> <span class="nn">pyaedt.modules.Boundary</span> <span class="kn">import</span> <span class="n">BoundaryObject</span>
 <span class="kn">from</span> <span class="nn">pyaedt.modules.Boundary</span> <span class="kn">import</span> <span class="n">BoundaryProps</span>
 <span class="kn">from</span> <span class="nn">pyaedt.modules.DesignXPloration</span> <span class="kn">import</span> <span class="n">SetupOpti</span>
@@ -472,7 +479,7 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        bool</span>
 
 <span class="sd">        Examples</span>
-<span class="sd">        ---------</span>
+<span class="sd">        --------</span>
 <span class="sd">        &gt;&gt;&gt; from pyaedt import Hfss</span>
 <span class="sd">        &gt;&gt;&gt; hfss = Hfss()</span>
 <span class="sd">        &gt;&gt;&gt; hfss.configurations.options.export_parametrics = False  # Disable the parametrics export</span>
@@ -1382,6 +1389,9 @@ function checkPageExistsAndRedirect(event) {
             <span class="k">for</span> <span class="n">setup</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">setups</span><span class="p">:</span>
                 <span class="n">dict_out</span><span class="p">[</span><span class="s2">&quot;setups&quot;</span><span class="p">][</span><span class="n">setup</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">setup</span><span class="o">.</span><span class="n">props</span>
                 <span class="n">dict_out</span><span class="p">[</span><span class="s2">&quot;setups&quot;</span><span class="p">][</span><span class="n">setup</span><span class="o">.</span><span class="n">name</span><span class="p">][</span><span class="s2">&quot;SetupType&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">setup</span><span class="o">.</span><span class="n">setuptype</span>
+                <span class="k">if</span> <span class="n">setup</span><span class="o">.</span><span class="n">sweeps</span><span class="p">:</span>
+                    <span class="k">for</span> <span class="n">sweep</span> <span class="ow">in</span> <span class="n">setup</span><span class="o">.</span><span class="n">sweeps</span><span class="p">:</span>
+                        <span class="n">dict_out</span><span class="p">[</span><span class="s2">&quot;setups&quot;</span><span class="p">][</span><span class="n">setup</span><span class="o">.</span><span class="n">name</span><span class="p">][</span><span class="n">sweep</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">sweep</span><span class="o">.</span><span class="n">props</span>
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">_export_optimizations</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dict_out</span><span class="p">):</span>

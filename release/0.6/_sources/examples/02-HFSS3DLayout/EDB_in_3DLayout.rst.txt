@@ -31,10 +31,10 @@ interact with a 3D layout.
 
     import os
     import tempfile
-    from pyaedt import generate_unique_name
+    import pyaedt
 
     tmpfold = tempfile.gettempdir()
-    temp_folder = os.path.join(tmpfold, generate_unique_name("Example"))
+    temp_folder = os.path.join(tmpfold, pyaedt.generate_unique_name("Example"))
     if not os.path.exists(temp_folder):
         os.makedirs(temp_folder)
     print(temp_folder)
@@ -48,7 +48,7 @@ interact with a 3D layout.
 
  .. code-block:: none
 
-    D:\Temp\Example_5OP78N
+    D:\Temp\Example_MHIP3V
 
 
 
@@ -59,17 +59,13 @@ Copy example into temporary folder
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Copy an example into the temporary folder.
 
-.. GENERATED FROM PYTHON SOURCE LINES 24-35
+.. GENERATED FROM PYTHON SOURCE LINES 24-31
 
 .. code-block:: default
 
 
-    from pyaedt import Desktop
-    from pyaedt import Hfss3dLayout
-    from pyaedt import examples
 
-
-    targetfile = examples.download_aedb()
+    targetfile = pyaedt.downloads.download_aedb()
     print(targetfile)
     aedt_file = targetfile[:-12] + "aedt"
 
@@ -87,7 +83,7 @@ Copy an example into the temporary folder.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 36-41
+.. GENERATED FROM PYTHON SOURCE LINES 32-37
 
 Set non-graphical mode
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -95,7 +91,7 @@ Set non-graphical mode. ``"PYAEDT_NON_GRAPHICAL"``` is needed to generate
 documentation only.
 You can set ``non_graphical`` either to ``True`` or ``False``.
 
-.. GENERATED FROM PYTHON SOURCE LINES 41-45
+.. GENERATED FROM PYTHON SOURCE LINES 37-41
 
 .. code-block:: default
 
@@ -110,13 +106,13 @@ You can set ``non_graphical`` either to ``True`` or ``False``.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 46-49
+.. GENERATED FROM PYTHON SOURCE LINES 42-45
 
 Launch AEDT
 ~~~~~~~~~~~
 Launch AEDT 2022R2 in graphical mode using SI units.
 
-.. GENERATED FROM PYTHON SOURCE LINES 49-53
+.. GENERATED FROM PYTHON SOURCE LINES 45-49
 
 .. code-block:: default
 
@@ -131,22 +127,22 @@ Launch AEDT 2022R2 in graphical mode using SI units.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 54-58
+.. GENERATED FROM PYTHON SOURCE LINES 50-54
 
 Initialize AEDT and launch HFSS 3D Layout
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Initialize AEDT and launch HFSS 3D Layout.
 The ``h3d`` object contains the :class:`pyaedt.Edb` class query methods.
 
-.. GENERATED FROM PYTHON SOURCE LINES 58-66
+.. GENERATED FROM PYTHON SOURCE LINES 54-62
 
 .. code-block:: default
 
 
-    d = Desktop(desktopVersion, non_graphical, NewThread)
+    d = pyaedt.launch_desktop(desktopVersion, non_graphical, NewThread)
     if os.path.exists(aedt_file):
         os.remove(aedt_file)
-    h3d = Hfss3dLayout(targetfile)
+    h3d = pyaedt.Hfss3dLayout(targetfile)
     h3d.save_project(os.path.join(temp_folder, "edb_demo.aedt"))
 
 
@@ -163,13 +159,13 @@ The ``h3d`` object contains the :class:`pyaedt.Edb` class query methods.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 67-70
+.. GENERATED FROM PYTHON SOURCE LINES 63-66
 
 Print boundaries
 ~~~~~~~~~~~~~~~~
 Print boundaries from the ``setups`` object.
 
-.. GENERATED FROM PYTHON SOURCE LINES 70-73
+.. GENERATED FROM PYTHON SOURCE LINES 66-69
 
 .. code-block:: default
 
@@ -189,13 +185,13 @@ Print boundaries from the ``setups`` object.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 74-77
+.. GENERATED FROM PYTHON SOURCE LINES 70-73
 
 Hide all nets
 ~~~~~~~~~~~~~
 Hide all nets.
 
-.. GENERATED FROM PYTHON SOURCE LINES 77-80
+.. GENERATED FROM PYTHON SOURCE LINES 73-76
 
 .. code-block:: default
 
@@ -215,13 +211,13 @@ Hide all nets.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 81-84
+.. GENERATED FROM PYTHON SOURCE LINES 77-80
 
 Show only two nets
 ~~~~~~~~~~~~~~~~~~
 Show only two specified nets.
 
-.. GENERATED FROM PYTHON SOURCE LINES 84-89
+.. GENERATED FROM PYTHON SOURCE LINES 80-85
 
 .. code-block:: default
 
@@ -242,13 +238,13 @@ Show only two specified nets.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 90-93
+.. GENERATED FROM PYTHON SOURCE LINES 86-89
 
 Show all layers
 ~~~~~~~~~~~~~~~
 Show all layers.
 
-.. GENERATED FROM PYTHON SOURCE LINES 93-97
+.. GENERATED FROM PYTHON SOURCE LINES 89-93
 
 .. code-block:: default
 
@@ -263,13 +259,13 @@ Show all layers.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 98-101
+.. GENERATED FROM PYTHON SOURCE LINES 94-97
 
 Change layer color
 ~~~~~~~~~~~~~~~~~~
 Change the layer color.
 
-.. GENERATED FROM PYTHON SOURCE LINES 101-106
+.. GENERATED FROM PYTHON SOURCE LINES 97-102
 
 .. code-block:: default
 
@@ -285,7 +281,7 @@ Change the layer color.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 107-112
+.. GENERATED FROM PYTHON SOURCE LINES 103-108
 
 Disable component visibility
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -293,7 +289,7 @@ Disable component visibility for ``"TOP"`` and ``"BOTTOM"``.
 The :func:`pyaedt.modules.LayerStackup.Layer.update_stackup_layer` method
 applies modifications to the layout.
 
-.. GENERATED FROM PYTHON SOURCE LINES 112-119
+.. GENERATED FROM PYTHON SOURCE LINES 108-115
 
 .. code-block:: default
 
@@ -311,13 +307,13 @@ applies modifications to the layout.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 120-123
+.. GENERATED FROM PYTHON SOURCE LINES 116-119
 
 Fit all
 ~~~~~~~
 Fit all so that you can visualize all.
 
-.. GENERATED FROM PYTHON SOURCE LINES 123-126
+.. GENERATED FROM PYTHON SOURCE LINES 119-122
 
 .. code-block:: default
 
@@ -331,7 +327,7 @@ Fit all so that you can visualize all.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 127-132
+.. GENERATED FROM PYTHON SOURCE LINES 123-128
 
 Close AEDT
 ~~~~~~~~~~
@@ -339,25 +335,30 @@ After the simulation completes, you can close AEDT or release it using the
 :func:`pyaedt.Desktop.release_desktop` method.
 All methods provide for saving the project before closing.
 
-.. GENERATED FROM PYTHON SOURCE LINES 132-136
+.. GENERATED FROM PYTHON SOURCE LINES 128-131
 
 .. code-block:: default
 
 
-    if os.name != "posix":
-        h3d.close_project()
-        d.release_desktop()
+    h3d.close_project()
+    d.release_desktop()
 
 
 
 
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+
+    True
 
 
 
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  13.969 seconds)
+   **Total running time of the script:** ( 0 minutes  13.798 seconds)
 
 
 .. _sphx_glr_download_examples_02-HFSS3DLayout_EDB_in_3DLayout.py:

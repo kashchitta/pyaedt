@@ -32,6 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-binder.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-dataframe.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-rendered-html.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css" />
 
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
@@ -108,7 +109,13 @@
 
 <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="../../../API/index.html">
-  API reference
+  API AEDT reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../EDBAPI/index.html">
+  API EDB reference
  </a>
 </li>
 
@@ -200,7 +207,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.40 variable.
+            // this version, rather than using sphinx's 0.6.42 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -961,11 +968,14 @@ function checkPageExistsAndRedirect(event) {
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">app</span><span class="p">):</span>
         <span class="c1"># Global Desktop Environment</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_app</span> <span class="o">=</span> <span class="n">app</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_variables</span> <span class="o">=</span> <span class="p">{}</span>
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="fm">__delitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Implement del with array name or index.&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">delete_variable</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_variables</span><span class="p">:</span>
+            <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">_variables</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">variable_name</span><span class="p">):</span>
@@ -995,22 +1005,24 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">            Dictionary of the specified variables.</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">var_dict</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="n">all_names</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">object_list</span><span class="p">:</span>
             <span class="n">variables</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_var_list_from_aedt</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
             <span class="k">for</span> <span class="n">variable_name</span> <span class="ow">in</span> <span class="n">variables</span><span class="p">:</span>
-                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_expression</span><span class="p">(</span><span class="n">variable_name</span><span class="p">):</span>
-                    <span class="n">variable_expression</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_expression</span><span class="p">(</span><span class="n">variable_name</span><span class="p">)</span>
-                    <span class="n">all_names</span><span class="p">[</span><span class="n">variable_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">variable_expression</span>
-                    <span class="n">si_value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">get_evaluated_value</span><span class="p">(</span><span class="n">variable_name</span><span class="p">)</span>
-                    <span class="n">value</span> <span class="o">=</span> <span class="n">Variable</span><span class="p">(</span><span class="n">variable_expression</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">si_value</span><span class="p">,</span> <span class="n">all_names</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">variable_name</span><span class="p">,</span> <span class="n">app</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="p">)</span>
-                    <span class="n">is_number_flag</span> <span class="o">=</span> <span class="n">is_number</span><span class="p">(</span><span class="n">value</span><span class="o">.</span><span class="n">_calculated_value</span><span class="p">)</span>
-                    <span class="k">if</span> <span class="n">independent</span> <span class="ow">and</span> <span class="n">is_number_flag</span><span class="p">:</span>
-                        <span class="n">var_dict</span><span class="p">[</span><span class="n">variable_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
-                    <span class="k">elif</span> <span class="n">dependent</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">is_number_flag</span><span class="p">:</span>
-                        <span class="n">var_dict</span><span class="p">[</span><span class="n">variable_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
-        <span class="k">return</span> <span class="n">var_dict</span>
+                <span class="k">if</span> <span class="n">variable_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_variables</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_expression</span><span class="p">(</span><span class="n">variable_name</span><span class="p">):</span>
+                        <span class="n">variable_expression</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_expression</span><span class="p">(</span><span class="n">variable_name</span><span class="p">)</span>
+                        <span class="n">all_names</span><span class="p">[</span><span class="n">variable_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">variable_expression</span>
+                        <span class="n">si_value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">get_evaluated_value</span><span class="p">(</span><span class="n">variable_name</span><span class="p">)</span>
+                        <span class="n">value</span> <span class="o">=</span> <span class="n">Variable</span><span class="p">(</span>
+                            <span class="n">variable_expression</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">si_value</span><span class="p">,</span> <span class="n">all_names</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">variable_name</span><span class="p">,</span> <span class="n">app</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_app</span>
+                        <span class="p">)</span>
+                        <span class="n">is_number_flag</span> <span class="o">=</span> <span class="n">is_number</span><span class="p">(</span><span class="n">value</span><span class="o">.</span><span class="n">_calculated_value</span><span class="p">)</span>
+                        <span class="k">if</span> <span class="n">independent</span> <span class="ow">and</span> <span class="n">is_number_flag</span><span class="p">:</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">_variables</span><span class="p">[</span><span class="n">variable_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+                        <span class="k">elif</span> <span class="n">dependent</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">is_number_flag</span><span class="p">:</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">_variables</span><span class="p">[</span><span class="n">variable_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_variables</span>
 
 <div class="viewcode-block" id="VariableManager.get_expression"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.application.Variables.VariableManager.get_expression.html#pyaedt.application.Variables.VariableManager.get_expression">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">get_expression</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">variable_name</span><span class="p">):</span>
@@ -1022,8 +1034,12 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        &gt;&gt;&gt; oProject.GetVariableValue</span>
 <span class="sd">        &gt;&gt;&gt; oDesign.GetVariableValue</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="n">variable_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;CosimDefinition&quot;</span><span class="p">,</span> <span class="s2">&quot;CoSimulator&quot;</span><span class="p">,</span> <span class="s2">&quot;CoSimulator/Choices&quot;</span><span class="p">,</span> <span class="s2">&quot;InstanceName&quot;</span><span class="p">,</span> <span class="s2">&quot;ModelName&quot;</span><span class="p">]:</span>
-            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">aedt_object</span><span class="p">(</span><span class="n">variable_name</span><span class="p">)</span><span class="o">.</span><span class="n">GetVariableValue</span><span class="p">(</span><span class="n">variable_name</span><span class="p">)</span>
+        <span class="n">invalid_names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;CosimDefinition&quot;</span><span class="p">,</span> <span class="s2">&quot;CoSimulator&quot;</span><span class="p">,</span> <span class="s2">&quot;CoSimulator/Choices&quot;</span><span class="p">,</span> <span class="s2">&quot;InstanceName&quot;</span><span class="p">,</span> <span class="s2">&quot;ModelName&quot;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">variable_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">invalid_names</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">aedt_object</span><span class="p">(</span><span class="n">variable_name</span><span class="p">)</span><span class="o">.</span><span class="n">GetVariableValue</span><span class="p">(</span><span class="n">variable_name</span><span class="p">)</span>
+            <span class="k">except</span><span class="p">:</span>
+                <span class="k">return</span> <span class="kc">False</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">False</span></div>
 
@@ -1120,6 +1136,8 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        &gt;&gt;&gt; aedtapp.variable_manager.set_variable[&quot;$p1&quot;] == &quot;30mm&quot;</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">variable_name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_variables</span><span class="p">:</span>
+            <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">_variables</span><span class="p">[</span><span class="n">variable_name</span><span class="p">]</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">description</span><span class="p">:</span>
             <span class="n">description</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
 
@@ -1463,6 +1481,60 @@ function checkPageExistsAndRedirect(event) {
             <span class="p">)</span>
         <span class="k">return</span> <span class="kc">False</span>
 
+    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">_set_prop_val</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prop</span><span class="p">,</span> <span class="n">val</span><span class="p">,</span> <span class="n">n_times</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">design_type</span> <span class="o">==</span> <span class="s2">&quot;Maxwell Circuit&quot;</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Variables&quot;</span>
+
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">design_type</span> <span class="ow">in</span> <span class="p">[</span>
+                <span class="s2">&quot;Circuit Design&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;Twin Builder&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;HFSS 3D Layout Design&quot;</span><span class="p">,</span>
+            <span class="p">]:</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_variable_name</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">get_oo_object</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">odesign</span><span class="p">,</span> <span class="s2">&quot;DefinitionParameters&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">GetPropNames</span><span class="p">()</span>
+                <span class="p">):</span>
+                    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;DefinitionParameters&quot;</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;LocalVariables&quot;</span>
+            <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n_times</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;DefinitionParameters&quot;</span><span class="p">:</span>
+                    <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">get_oo_object</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_aedt_obj</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span><span class="o">.</span><span class="n">SetPropValue</span><span class="p">(</span><span class="n">prop</span><span class="p">,</span> <span class="n">val</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">get_oo_object</span><span class="p">(</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">_aedt_obj</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">/</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_variable_name</span><span class="p">)</span>
+                    <span class="p">)</span><span class="o">.</span><span class="n">SetPropValue</span><span class="p">(</span><span class="n">prop</span><span class="p">,</span> <span class="n">val</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">result</span><span class="p">:</span>
+                    <span class="k">break</span>
+                <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="k">pass</span>
+
+    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">_get_prop_val</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prop</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">design_type</span> <span class="o">==</span> <span class="s2">&quot;Maxwell Circuit&quot;</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Variables&quot;</span>
+
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">design_type</span> <span class="ow">in</span> <span class="p">[</span>
+                <span class="s2">&quot;Circuit Design&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;Twin Builder&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;HFSS 3D Layout Design&quot;</span><span class="p">,</span>
+            <span class="p">]:</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_variable_name</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">get_oo_object</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">odesign</span><span class="p">,</span> <span class="s2">&quot;DefinitionParameters&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">GetPropNames</span><span class="p">()</span>
+                <span class="p">):</span>
+                    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">get_oo_object</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_aedt_obj</span><span class="p">,</span> <span class="s2">&quot;DefinitionParameters&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">GetPropValue</span><span class="p">(</span><span class="n">prop</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;LocalVariables&quot;</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">get_oo_object</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_aedt_obj</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">/</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_variable_name</span><span class="p">))</span><span class="o">.</span><span class="n">GetPropValue</span><span class="p">(</span><span class="n">prop</span><span class="p">)</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="k">pass</span>
+
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Variable name.&quot;&quot;&quot;</span>
@@ -1480,219 +1552,115 @@ function checkPageExistsAndRedirect(event) {
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">is_optimization_enabled</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; &quot;Check if optimization is enabled.&quot;&quot;&quot;</span>
-
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="p">:</span>
-            <span class="n">oo</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">get_oo_object</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_aedt_obj</span><span class="p">,</span> <span class="s2">&quot;Variables&quot;</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">oo</span><span class="p">:</span>
-                <span class="k">return</span> <span class="n">oo</span><span class="o">.</span><span class="n">GetChildObject</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_variable_name</span><span class="p">)</span><span class="o">.</span><span class="n">GetPropValue</span><span class="p">(</span><span class="s2">&quot;Optimization/Included&quot;</span><span class="p">)</span>
-        <span class="k">return</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_prop_val</span><span class="p">(</span><span class="s2">&quot;Optimization/Included&quot;</span><span class="p">)</span>
 
     <span class="nd">@is_optimization_enabled</span><span class="o">.</span><span class="n">setter</span>
     <span class="k">def</span> <span class="nf">is_optimization_enabled</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="p">:</span>
-            <span class="n">oo</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">get_oo_object</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_aedt_obj</span><span class="p">,</span> <span class="s2">&quot;Variables&quot;</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">oo</span><span class="p">:</span>
-                <span class="n">oo</span><span class="o">.</span><span class="n">GetChildObject</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_variable_name</span><span class="p">)</span><span class="o">.</span><span class="n">SetPropValue</span><span class="p">(</span><span class="s2">&quot;Optimization/Included&quot;</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_set_prop_val</span><span class="p">(</span><span class="s2">&quot;Optimization/Included&quot;</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">optimization_min_value</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; &quot;Optimization min value.&quot;&quot;&quot;</span>
-
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="p">:</span>
-            <span class="n">oo</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">get_oo_object</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_aedt_obj</span><span class="p">,</span> <span class="s2">&quot;Variables&quot;</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">oo</span><span class="p">:</span>
-                <span class="k">return</span> <span class="n">oo</span><span class="o">.</span><span class="n">GetChildObject</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_variable_name</span><span class="p">)</span><span class="o">.</span><span class="n">GetPropValue</span><span class="p">(</span><span class="s2">&quot;Optimization/Min&quot;</span><span class="p">)</span>
-        <span class="k">return</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_prop_val</span><span class="p">(</span><span class="s2">&quot;Optimization/Min&quot;</span><span class="p">)</span>
 
     <span class="nd">@optimization_min_value</span><span class="o">.</span><span class="n">setter</span>
     <span class="k">def</span> <span class="nf">optimization_min_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="p">:</span>
-            <span class="n">oo</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">get_oo_object</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_aedt_obj</span><span class="p">,</span> <span class="s2">&quot;Variables&quot;</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">oo</span><span class="p">:</span>
-                <span class="n">oo</span><span class="o">.</span><span class="n">GetChildObject</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_variable_name</span><span class="p">)</span><span class="o">.</span><span class="n">SetPropValue</span><span class="p">(</span><span class="s2">&quot;Optimization/Min&quot;</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_set_prop_val</span><span class="p">(</span><span class="s2">&quot;Optimization/Min&quot;</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">optimization_max_value</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; &quot;Optimization max value.&quot;&quot;&quot;</span>
-
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="p">:</span>
-            <span class="n">oo</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">get_oo_object</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_aedt_obj</span><span class="p">,</span> <span class="s2">&quot;Variables&quot;</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">oo</span><span class="p">:</span>
-                <span class="k">return</span> <span class="n">oo</span><span class="o">.</span><span class="n">GetChildObject</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_variable_name</span><span class="p">)</span><span class="o">.</span><span class="n">GetPropValue</span><span class="p">(</span><span class="s2">&quot;Optimization/Max&quot;</span><span class="p">)</span>
-        <span class="k">return</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_prop_val</span><span class="p">(</span><span class="s2">&quot;Optimization/Max&quot;</span><span class="p">)</span>
 
     <span class="nd">@optimization_max_value</span><span class="o">.</span><span class="n">setter</span>
     <span class="k">def</span> <span class="nf">optimization_max_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="p">:</span>
-            <span class="n">oo</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">get_oo_object</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_aedt_obj</span><span class="p">,</span> <span class="s2">&quot;Variables&quot;</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">oo</span><span class="p">:</span>
-                <span class="n">oo</span><span class="o">.</span><span class="n">GetChildObject</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_variable_name</span><span class="p">)</span><span class="o">.</span><span class="n">SetPropValue</span><span class="p">(</span><span class="s2">&quot;Optimization/Max&quot;</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_set_prop_val</span><span class="p">(</span><span class="s2">&quot;Optimization/Max&quot;</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">is_sensitivity_enabled</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Check if Sensitivity is enabled.&quot;&quot;&quot;</span>
-
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="p">:</span>
-            <span class="n">oo</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">get_oo_object</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_aedt_obj</span><span class="p">,</span> <span class="s2">&quot;Variables&quot;</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">oo</span><span class="p">:</span>
-                <span class="k">return</span> <span class="n">oo</span><span class="o">.</span><span class="n">GetChildObject</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_variable_name</span><span class="p">)</span><span class="o">.</span><span class="n">GetPropValue</span><span class="p">(</span><span class="s2">&quot;Sensitivity/Included&quot;</span><span class="p">)</span>
-        <span class="k">return</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_prop_val</span><span class="p">(</span><span class="s2">&quot;Sensitivity/Included&quot;</span><span class="p">)</span>
 
     <span class="nd">@is_sensitivity_enabled</span><span class="o">.</span><span class="n">setter</span>
     <span class="k">def</span> <span class="nf">is_sensitivity_enabled</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="p">:</span>
-            <span class="n">oo</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">get_oo_object</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_aedt_obj</span><span class="p">,</span> <span class="s2">&quot;Variables&quot;</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">oo</span><span class="p">:</span>
-                <span class="n">oo</span><span class="o">.</span><span class="n">GetChildObject</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_variable_name</span><span class="p">)</span><span class="o">.</span><span class="n">SetPropValue</span><span class="p">(</span><span class="s2">&quot;Sensitivity/Included&quot;</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_set_prop_val</span><span class="p">(</span><span class="s2">&quot;Sensitivity/Included&quot;</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">sensitivity_min_value</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; &quot;Sensitivity min value.&quot;&quot;&quot;</span>
-
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="p">:</span>
-            <span class="n">oo</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">get_oo_object</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_aedt_obj</span><span class="p">,</span> <span class="s2">&quot;Variables&quot;</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">oo</span><span class="p">:</span>
-                <span class="k">return</span> <span class="n">oo</span><span class="o">.</span><span class="n">GetChildObject</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_variable_name</span><span class="p">)</span><span class="o">.</span><span class="n">GetPropValue</span><span class="p">(</span><span class="s2">&quot;Sensitivity/Min&quot;</span><span class="p">)</span>
-        <span class="k">return</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_prop_val</span><span class="p">(</span><span class="s2">&quot;Sensitivity/Min&quot;</span><span class="p">)</span>
 
     <span class="nd">@sensitivity_min_value</span><span class="o">.</span><span class="n">setter</span>
     <span class="k">def</span> <span class="nf">sensitivity_min_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="p">:</span>
-            <span class="n">oo</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">get_oo_object</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_aedt_obj</span><span class="p">,</span> <span class="s2">&quot;Variables&quot;</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">oo</span><span class="p">:</span>
-                <span class="n">oo</span><span class="o">.</span><span class="n">GetChildObject</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_variable_name</span><span class="p">)</span><span class="o">.</span><span class="n">SetPropValue</span><span class="p">(</span><span class="s2">&quot;Sensitivity/Min&quot;</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_set_prop_val</span><span class="p">(</span><span class="s2">&quot;Sensitivity/Min&quot;</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">sensitivity_max_value</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; &quot;Sensitivity max value.&quot;&quot;&quot;</span>
-
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="p">:</span>
-            <span class="n">oo</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">get_oo_object</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_aedt_obj</span><span class="p">,</span> <span class="s2">&quot;Variables&quot;</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">oo</span><span class="p">:</span>
-                <span class="k">return</span> <span class="n">oo</span><span class="o">.</span><span class="n">GetChildObject</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_variable_name</span><span class="p">)</span><span class="o">.</span><span class="n">GetPropValue</span><span class="p">(</span><span class="s2">&quot;Sensitivity/Max&quot;</span><span class="p">)</span>
-        <span class="k">return</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_prop_val</span><span class="p">(</span><span class="s2">&quot;Sensitivity/Max&quot;</span><span class="p">)</span>
 
     <span class="nd">@sensitivity_max_value</span><span class="o">.</span><span class="n">setter</span>
     <span class="k">def</span> <span class="nf">sensitivity_max_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="p">:</span>
-            <span class="n">oo</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">get_oo_object</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_aedt_obj</span><span class="p">,</span> <span class="s2">&quot;Variables&quot;</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">oo</span><span class="p">:</span>
-                <span class="n">oo</span><span class="o">.</span><span class="n">GetChildObject</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_variable_name</span><span class="p">)</span><span class="o">.</span><span class="n">SetPropValue</span><span class="p">(</span><span class="s2">&quot;Sensitivity/Max&quot;</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_set_prop_val</span><span class="p">(</span><span class="s2">&quot;Sensitivity/Max&quot;</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">sensitivity_initial_disp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; &quot;Sensitivity initial value.&quot;&quot;&quot;</span>
-
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="p">:</span>
-            <span class="n">oo</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">get_oo_object</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_aedt_obj</span><span class="p">,</span> <span class="s2">&quot;Variables&quot;</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">oo</span><span class="p">:</span>
-                <span class="k">return</span> <span class="n">oo</span><span class="o">.</span><span class="n">GetChildObject</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_variable_name</span><span class="p">)</span><span class="o">.</span><span class="n">GetPropValue</span><span class="p">(</span><span class="s2">&quot;Sensitivity/IDisp&quot;</span><span class="p">)</span>
-        <span class="k">return</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_prop_val</span><span class="p">(</span><span class="s2">&quot;Sensitivity/IDisp&quot;</span><span class="p">)</span>
 
     <span class="nd">@sensitivity_initial_disp</span><span class="o">.</span><span class="n">setter</span>
     <span class="k">def</span> <span class="nf">sensitivity_initial_disp</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="p">:</span>
-            <span class="n">oo</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">get_oo_object</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_aedt_obj</span><span class="p">,</span> <span class="s2">&quot;Variables&quot;</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">oo</span><span class="p">:</span>
-                <span class="n">oo</span><span class="o">.</span><span class="n">GetChildObject</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_variable_name</span><span class="p">)</span><span class="o">.</span><span class="n">SetPropValue</span><span class="p">(</span><span class="s2">&quot;Sensitivity/IDisp&quot;</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_set_prop_val</span><span class="p">(</span><span class="s2">&quot;Sensitivity/IDisp&quot;</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">is_tuning_enabled</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Check if tuning is enabled.&quot;&quot;&quot;</span>
-
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="p">:</span>
-            <span class="n">oo</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">get_oo_object</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_aedt_obj</span><span class="p">,</span> <span class="s2">&quot;Variables&quot;</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">oo</span><span class="p">:</span>
-                <span class="k">return</span> <span class="n">oo</span><span class="o">.</span><span class="n">GetChildObject</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_variable_name</span><span class="p">)</span><span class="o">.</span><span class="n">GetPropValue</span><span class="p">(</span><span class="s2">&quot;Tuning/Included&quot;</span><span class="p">)</span>
-        <span class="k">return</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_prop_val</span><span class="p">(</span><span class="s2">&quot;Tuning/Included&quot;</span><span class="p">)</span>
 
     <span class="nd">@is_tuning_enabled</span><span class="o">.</span><span class="n">setter</span>
     <span class="k">def</span> <span class="nf">is_tuning_enabled</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="p">:</span>
-            <span class="n">oo</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">get_oo_object</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_aedt_obj</span><span class="p">,</span> <span class="s2">&quot;Variables&quot;</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">oo</span><span class="p">:</span>
-                <span class="n">oo</span><span class="o">.</span><span class="n">GetChildObject</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_variable_name</span><span class="p">)</span><span class="o">.</span><span class="n">SetPropValue</span><span class="p">(</span><span class="s2">&quot;Tuning/Included&quot;</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_set_prop_val</span><span class="p">(</span><span class="s2">&quot;Tuning/Included&quot;</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">tuning_min_value</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; &quot;Tuning min value.&quot;&quot;&quot;</span>
-
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="p">:</span>
-            <span class="n">oo</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">get_oo_object</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_aedt_obj</span><span class="p">,</span> <span class="s2">&quot;Variables&quot;</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">oo</span><span class="p">:</span>
-                <span class="k">return</span> <span class="n">oo</span><span class="o">.</span><span class="n">GetChildObject</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_variable_name</span><span class="p">)</span><span class="o">.</span><span class="n">GetPropValue</span><span class="p">(</span><span class="s2">&quot;Tuning/Min&quot;</span><span class="p">)</span>
-        <span class="k">return</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_prop_val</span><span class="p">(</span><span class="s2">&quot;Tuning/Min&quot;</span><span class="p">)</span>
 
     <span class="nd">@tuning_min_value</span><span class="o">.</span><span class="n">setter</span>
     <span class="k">def</span> <span class="nf">tuning_min_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="p">:</span>
-            <span class="n">oo</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">get_oo_object</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_aedt_obj</span><span class="p">,</span> <span class="s2">&quot;Variables&quot;</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">oo</span><span class="p">:</span>
-                <span class="n">oo</span><span class="o">.</span><span class="n">GetChildObject</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_variable_name</span><span class="p">)</span><span class="o">.</span><span class="n">SetPropValue</span><span class="p">(</span><span class="s2">&quot;Tuning/Min&quot;</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_set_prop_val</span><span class="p">(</span><span class="s2">&quot;Tuning/Min&quot;</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">tuning_max_value</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; &quot;Tuning max value.&quot;&quot;&quot;</span>
-
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="p">:</span>
-            <span class="n">oo</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">get_oo_object</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_aedt_obj</span><span class="p">,</span> <span class="s2">&quot;Variables&quot;</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">oo</span><span class="p">:</span>
-                <span class="k">return</span> <span class="n">oo</span><span class="o">.</span><span class="n">GetChildObject</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_variable_name</span><span class="p">)</span><span class="o">.</span><span class="n">GetPropValue</span><span class="p">(</span><span class="s2">&quot;Tuning/Max&quot;</span><span class="p">)</span>
-        <span class="k">return</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_prop_val</span><span class="p">(</span><span class="s2">&quot;Tuning/Max&quot;</span><span class="p">)</span>
 
     <span class="nd">@tuning_max_value</span><span class="o">.</span><span class="n">setter</span>
     <span class="k">def</span> <span class="nf">tuning_max_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="p">:</span>
-            <span class="n">oo</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">get_oo_object</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_aedt_obj</span><span class="p">,</span> <span class="s2">&quot;Variables&quot;</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">oo</span><span class="p">:</span>
-                <span class="n">oo</span><span class="o">.</span><span class="n">GetChildObject</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_variable_name</span><span class="p">)</span><span class="o">.</span><span class="n">SetPropValue</span><span class="p">(</span><span class="s2">&quot;Tuning/Max&quot;</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_set_prop_val</span><span class="p">(</span><span class="s2">&quot;Tuning/Max&quot;</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">tuning_step_value</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; &quot;Tuning Step value.&quot;&quot;&quot;</span>
-
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="p">:</span>
-            <span class="n">oo</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">get_oo_object</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_aedt_obj</span><span class="p">,</span> <span class="s2">&quot;Variables&quot;</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">oo</span><span class="p">:</span>
-                <span class="k">return</span> <span class="n">oo</span><span class="o">.</span><span class="n">GetChildObject</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_variable_name</span><span class="p">)</span><span class="o">.</span><span class="n">GetPropValue</span><span class="p">(</span><span class="s2">&quot;Tuning/Step&quot;</span><span class="p">)</span>
-        <span class="k">return</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_prop_val</span><span class="p">(</span><span class="s2">&quot;Tuning/Step&quot;</span><span class="p">)</span>
 
     <span class="nd">@tuning_step_value</span><span class="o">.</span><span class="n">setter</span>
     <span class="k">def</span> <span class="nf">tuning_step_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="p">:</span>
-            <span class="n">oo</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">get_oo_object</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_aedt_obj</span><span class="p">,</span> <span class="s2">&quot;Variables&quot;</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">oo</span><span class="p">:</span>
-                <span class="n">oo</span><span class="o">.</span><span class="n">GetChildObject</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_variable_name</span><span class="p">)</span><span class="o">.</span><span class="n">SetPropValue</span><span class="p">(</span><span class="s2">&quot;Tuning/Step&quot;</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_set_prop_val</span><span class="p">(</span><span class="s2">&quot;Tuning/Step&quot;</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">is_statistical_enabled</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Check if statistical is enabled.&quot;&quot;&quot;</span>
-
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="p">:</span>
-            <span class="n">oo</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">get_oo_object</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_aedt_obj</span><span class="p">,</span> <span class="s2">&quot;Variables&quot;</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">oo</span><span class="p">:</span>
-                <span class="k">return</span> <span class="n">oo</span><span class="o">.</span><span class="n">GetChildObject</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_variable_name</span><span class="p">)</span><span class="o">.</span><span class="n">GetPropValue</span><span class="p">(</span><span class="s2">&quot;Statistical/Included&quot;</span><span class="p">)</span>
-        <span class="k">return</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_prop_val</span><span class="p">(</span><span class="s2">&quot;Statistical/Included&quot;</span><span class="p">)</span>
 
     <span class="nd">@is_statistical_enabled</span><span class="o">.</span><span class="n">setter</span>
     <span class="k">def</span> <span class="nf">is_statistical_enabled</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="p">:</span>
-            <span class="n">oo</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">get_oo_object</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_aedt_obj</span><span class="p">,</span> <span class="s2">&quot;Variables&quot;</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">oo</span><span class="p">:</span>
-                <span class="n">oo</span><span class="o">.</span><span class="n">GetChildObject</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_variable_name</span><span class="p">)</span><span class="o">.</span><span class="n">SetPropValue</span><span class="p">(</span><span class="s2">&quot;Statistical/Included&quot;</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_set_prop_val</span><span class="p">(</span><span class="s2">&quot;Statistical/Included&quot;</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">read_only</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Read-only flag value.&quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="p">:</span>
-            <span class="k">try</span><span class="p">:</span>
-                <span class="k">return</span> <span class="p">(</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">_aedt_obj</span><span class="o">.</span><span class="n">GetChildObject</span><span class="p">(</span><span class="s2">&quot;Variables&quot;</span><span class="p">)</span>
-                    <span class="o">.</span><span class="n">GetChildObject</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_variable_name</span><span class="p">)</span>
-                    <span class="o">.</span><span class="n">GetPropValue</span><span class="p">(</span><span class="s2">&quot;ReadOnly&quot;</span><span class="p">)</span>
-                <span class="p">)</span>
-            <span class="k">except</span><span class="p">:</span>
-                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_readonly</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_readonly</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_prop_val</span><span class="p">(</span><span class="s2">&quot;ReadOnly&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_readonly</span>
 
     <span class="nd">@read_only</span><span class="o">.</span><span class="n">setter</span>
@@ -1707,15 +1675,7 @@ function checkPageExistsAndRedirect(event) {
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">hidden</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Hidden flag value.&quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="p">:</span>
-            <span class="k">try</span><span class="p">:</span>
-                <span class="k">return</span> <span class="p">(</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">_aedt_obj</span><span class="o">.</span><span class="n">GetChildObject</span><span class="p">(</span><span class="s2">&quot;Variables&quot;</span><span class="p">)</span>
-                    <span class="o">.</span><span class="n">GetChildObject</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_variable_name</span><span class="p">)</span>
-                    <span class="o">.</span><span class="n">GetPropValue</span><span class="p">(</span><span class="s2">&quot;Hidden&quot;</span><span class="p">)</span>
-                <span class="p">)</span>
-            <span class="k">except</span><span class="p">:</span>
-                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hidden</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_hidden</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_prop_val</span><span class="p">(</span><span class="s2">&quot;Hidden&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hidden</span>
 
     <span class="nd">@hidden</span><span class="o">.</span><span class="n">setter</span>
@@ -1730,15 +1690,7 @@ function checkPageExistsAndRedirect(event) {
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">description</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Description value.&quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="p">:</span>
-            <span class="k">try</span><span class="p">:</span>
-                <span class="k">return</span> <span class="p">(</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">_aedt_obj</span><span class="o">.</span><span class="n">GetChildObject</span><span class="p">(</span><span class="s2">&quot;Variables&quot;</span><span class="p">)</span>
-                    <span class="o">.</span><span class="n">GetChildObject</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_variable_name</span><span class="p">)</span>
-                    <span class="o">.</span><span class="n">GetPropValue</span><span class="p">(</span><span class="s2">&quot;Description&quot;</span><span class="p">)</span>
-                <span class="p">)</span>
-            <span class="k">except</span><span class="p">:</span>
-                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_description</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_description</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_prop_val</span><span class="p">(</span><span class="s2">&quot;Description&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_description</span>
 
     <span class="nd">@description</span><span class="o">.</span><span class="n">setter</span>
@@ -1827,6 +1779,7 @@ function checkPageExistsAndRedirect(event) {
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">value</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Value.&quot;&quot;&quot;</span>
+
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_value</span>
 
     <span class="nd">@property</span>

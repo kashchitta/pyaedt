@@ -33,6 +33,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
 
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
@@ -111,7 +112,13 @@
 
 <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="../../API/index.html">
-  API reference
+  API AEDT reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../EDBAPI/index.html">
+  API EDB reference
  </a>
 </li>
 
@@ -203,7 +210,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.40 variable.
+            // this version, rather than using sphinx's 0.6.42 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -783,7 +790,7 @@ EDBs (package on board).</p>
 You can customize the JSON file to change the settings.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tempfile</span>
 
-<span class="kn">from</span> <span class="nn">pyaedt.examples.downloads</span> <span class="kn">import</span> <span class="n">download_edb_merge_utility</span>
+<span class="kn">from</span> <span class="nn">pyaedt.downloads</span> <span class="kn">import</span> <span class="n">download_edb_merge_utility</span>
 
 <a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">python_file</span></a> <span class="o">=</span> <span class="n">download_edb_merge_utility</span><span class="p">(</span><span class="n">force_download</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">destination</span><span class="o">=</span><a href="https://docs.python.org/dev/library/tempfile.html#tempfile.gettempdir" title="tempfile.gettempdir" class="sphx-glr-backref-module-tempfile sphx-glr-backref-type-py-function"><span class="n">tempfile</span><span class="o">.</span><span class="n">gettempdir</span></a><span class="p">())</span>
 <a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">desktop_version</span></a> <span class="o">=</span> <span class="s2">&quot;2022.2&quot;</span>
@@ -811,7 +818,7 @@ interpreter:</p>
 <span class="c1"># launch(python_file, specified_version=desktop_version, new_desktop_session=False, autosave=False)</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  1.750 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  1.703 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-00-edb-07-wpf-merge-utility-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/98423223127f4981f620475cf9de2c4d/07_WPF_Merge_Utility.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">07_WPF_Merge_Utility.py</span></code></a></p>

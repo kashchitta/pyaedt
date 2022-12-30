@@ -30,7 +30,7 @@ Perform required imports
 ~~~~~~~~~~~~~~~~~~~~~~~~
 Perform required imports.
 
-.. GENERATED FROM PYTHON SOURCE LINES 12-23
+.. GENERATED FROM PYTHON SOURCE LINES 12-21
 
 .. code-block:: default
 
@@ -38,12 +38,10 @@ Perform required imports.
     import os
     import time
 
-    from pyaedt import examples
-    from pyaedt import Desktop
-    from pyaedt import Hfss
+    import pyaedt
     from pyaedt.generic.general_methods import remove_project_lock
 
-    project_name = examples.download_antenna_array()
+    project_name = pyaedt.downloads.download_antenna_array()
 
 
 
@@ -52,7 +50,7 @@ Perform required imports.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 24-29
+.. GENERATED FROM PYTHON SOURCE LINES 22-27
 
 Set non-graphical mode
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -60,7 +58,7 @@ Set non-graphical mode. ``"PYAEDT_NON_GRAPHICAL"`` is needed to generate
 documentation only.
 You can set ``non_graphical`` either to ``True`` or ``False``.
 
-.. GENERATED FROM PYTHON SOURCE LINES 29-33
+.. GENERATED FROM PYTHON SOURCE LINES 27-31
 
 .. code-block:: default
 
@@ -75,13 +73,13 @@ You can set ``non_graphical`` either to ``True`` or ``False``.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 34-37
+.. GENERATED FROM PYTHON SOURCE LINES 32-35
 
 Import modules for postprocessing
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Import modules for postprocessing.
 
-.. GENERATED FROM PYTHON SOURCE LINES 37-41
+.. GENERATED FROM PYTHON SOURCE LINES 35-39
 
 .. code-block:: default
 
@@ -96,20 +94,23 @@ Import modules for postprocessing.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 42-45
+.. GENERATED FROM PYTHON SOURCE LINES 40-43
 
 Launch AEDT
 ~~~~~~~~~~~
 Launch AEDT 2022 R2 in non-graphical mode.
 
-.. GENERATED FROM PYTHON SOURCE LINES 45-50
+.. GENERATED FROM PYTHON SOURCE LINES 43-51
 
 .. code-block:: default
 
 
     desktopVersion = "2022.2"
-    NewThread = False
-    desktop = Desktop(desktopVersion, non_graphical=non_graphical, new_desktop_session=NewThread)
+    NewThread = True
+    desktop = pyaedt.launch_desktop(specified_version=desktopVersion,
+                                    non_graphical=non_graphical,
+                                    new_desktop_session=NewThread
+                                    )
 
 
 
@@ -118,20 +119,22 @@ Launch AEDT 2022 R2 in non-graphical mode.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 51-54
+.. GENERATED FROM PYTHON SOURCE LINES 52-56
 
 Open HFSS project
 ~~~~~~~~~~~~~~~~~
-Open the HFSS project.
+Open the HFSS project. ``Hfss`` class allows to initialize a new project or
+open an existing project and point to a design name.
 
-.. GENERATED FROM PYTHON SOURCE LINES 54-60
+.. GENERATED FROM PYTHON SOURCE LINES 56-63
 
 .. code-block:: default
 
 
     remove_project_lock(project_name)
 
-    hfss = Hfss(project_name, "4X4_MultiCell_CA-Array")
+    hfss = pyaedt.Hfss(projectname=project_name,
+                       designname="4X4_MultiCell_CA-Array")
 
 
 
@@ -141,23 +144,20 @@ Open the HFSS project.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 61-65
+.. GENERATED FROM PYTHON SOURCE LINES 64-68
 
 Solve HFSS project
 ~~~~~~~~~~~~~~~~~~~
 Solves the HFSS project.
 The solution time is computed.
 
-.. GENERATED FROM PYTHON SOURCE LINES 65-72
+.. GENERATED FROM PYTHON SOURCE LINES 68-72
 
 .. code-block:: default
 
 
-    start = time.time()
     hfss.analyze_setup("Setup1")
     hfss.save_project()
-    end = time.time() - start
-    print("Solution Time", end)
 
 
 
@@ -167,8 +167,8 @@ The solution time is computed.
 
  .. code-block:: none
 
-    Solution Time 21.386967658996582
 
+    True
 
 
 
@@ -196,7 +196,7 @@ Gets efields data from the solution.
 
  .. code-block:: none
 
-    Postprocessing Time 293.178062915802
+    Postprocessing Time 310.0088880062103
 
 
 
@@ -309,7 +309,7 @@ Create plot and interact with it
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Create the plot and interact with it.
 
-.. GENERATED FROM PYTHON SOURCE LINES 175-186
+.. GENERATED FROM PYTHON SOURCE LINES 175-187
 
 .. code-block:: default
 
@@ -320,9 +320,10 @@ Create the plot and interact with it.
     #          y=widgets.FloatSlider(value=0, min=-180, max=180, step=1))
 
 
-    vals = hfss.post.get_far_field_data(
-        setup_sweep_name=hfss.nominal_sweep, expression="RealizedGainTotal", domain="Elevation"
-    )
+    vals = hfss.post.get_far_field_data(setup_sweep_name=hfss.nominal_sweep,
+                                        expression="RealizedGainTotal",
+                                        domain="Elevation"
+                                        )
 
 
 
@@ -342,13 +343,13 @@ Create the plot and interact with it.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 187-190
+.. GENERATED FROM PYTHON SOURCE LINES 188-191
 
 Generate polar plot
 ~~~~~~~~~~~~~~~~~~~
 Generate a polar plot.
 
-.. GENERATED FROM PYTHON SOURCE LINES 190-193
+.. GENERATED FROM PYTHON SOURCE LINES 191-194
 
 .. code-block:: default
 
@@ -373,13 +374,13 @@ Generate a polar plot.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 194-197
+.. GENERATED FROM PYTHON SOURCE LINES 195-198
 
 Generate scalar plot
 ~~~~~~~~~~~~~~~~~~~~
 Generate a scalar plot.
 
-.. GENERATED FROM PYTHON SOURCE LINES 197-201
+.. GENERATED FROM PYTHON SOURCE LINES 198-202
 
 .. code-block:: default
 
@@ -405,20 +406,21 @@ Generate a scalar plot.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 202-205
+.. GENERATED FROM PYTHON SOURCE LINES 203-206
 
 Generate plot using Phi as primary sweep
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Generate the plot using Phi as the primary sweep.
 
-.. GENERATED FROM PYTHON SOURCE LINES 205-213
+.. GENERATED FROM PYTHON SOURCE LINES 206-215
 
 .. code-block:: default
 
 
-    vals3d = hfss.post.get_far_field_data(
-        setup_sweep_name=hfss.nominal_sweep, expression="RealizedGainTotal", domain="Infinite Sphere1"
-    )
+    vals3d = hfss.post.get_far_field_data(setup_sweep_name=hfss.nominal_sweep,
+                                          expression="RealizedGainTotal",
+                                          domain="Infinite Sphere1"
+                                          )
 
     vals3d.plot_3d()
 
@@ -441,13 +443,13 @@ Generate the plot using Phi as the primary sweep.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 214-217
+.. GENERATED FROM PYTHON SOURCE LINES 216-219
 
 Close HFSS project and AEDT
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Close the HFSS project and release AEDT.
 
-.. GENERATED FROM PYTHON SOURCE LINES 217-221
+.. GENERATED FROM PYTHON SOURCE LINES 219-223
 
 .. code-block:: default
 
@@ -471,7 +473,7 @@ Close the HFSS project and release AEDT.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 5 minutes  34.496 seconds)
+   **Total running time of the script:** ( 5 minutes  52.345 seconds)
 
 
 .. _sphx_glr_download_examples_02-HFSS_Advanced_Far_Field.py:

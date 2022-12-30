@@ -28,21 +28,20 @@ Import EDB layout object
 ~~~~~~~~~~~~~~~~~~~~~~~~
 Import the EDB layout object and initialize it on version 2022 R2.
 
-.. GENERATED FROM PYTHON SOURCE LINES 11-23
+.. GENERATED FROM PYTHON SOURCE LINES 11-22
 
 .. code-block:: default
 
 
     import time
     import os
-    from pyaedt import Edb
-    from pyaedt.generic.general_methods import generate_unique_folder_name,generate_unique_name
+    import pyaedt
 
     start = time.time()
 
-    aedb_path = os.path.join(generate_unique_folder_name(), generate_unique_name("pcb") + ".aedb")
+    aedb_path = os.path.join(pyaedt.generate_unique_folder_name(), pyaedt.generate_unique_name("pcb") + ".aedb")
     print(aedb_path)
-    edb = Edb(edbpath=aedb_path, edbversion="2022.2")
+    edb = pyaedt.Edb(edbpath=aedb_path, edbversion="2022.2")
 
 
 
@@ -52,19 +51,19 @@ Import the EDB layout object and initialize it on version 2022 R2.
 
  .. code-block:: none
 
-    D:\Temp\pyaedt_prj_LXT\pcb_AINGC7.aedb
+    D:\Temp\pyaedt_prj_ZV3\pcb_SD3NZF.aedb
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 24-28
+.. GENERATED FROM PYTHON SOURCE LINES 23-27
 
 Add stackup layers
 ~~~~~~~~~~~~~~~~~~
 Add stackup layers.
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 28-33
+.. GENERATED FROM PYTHON SOURCE LINES 27-32
 
 .. code-block:: default
 
@@ -80,13 +79,13 @@ Add stackup layers.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 34-37
+.. GENERATED FROM PYTHON SOURCE LINES 33-36
 
 Create signal net and ground planes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Create a signal net and ground planes.
 
-.. GENERATED FROM PYTHON SOURCE LINES 37-50
+.. GENERATED FROM PYTHON SOURCE LINES 36-49
 
 .. code-block:: default
 
@@ -110,13 +109,13 @@ Create a signal net and ground planes.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 51-54
+.. GENERATED FROM PYTHON SOURCE LINES 50-53
 
 Create vias with parametric positions
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Create vias with parametric positions.
 
-.. GENERATED FROM PYTHON SOURCE LINES 54-68
+.. GENERATED FROM PYTHON SOURCE LINES 53-67
 
 .. code-block:: default
 
@@ -138,7 +137,7 @@ Create vias with parametric positions.
 
 
 .. image-sg:: /examples/00-EDB/images/sphx_glr_00_EDB_Create_VIA_001.png
-   :alt: Cell_IOWISX
+   :alt: Cell_9S31V1
    :srcset: /examples/00-EDB/images/sphx_glr_00_EDB_Create_VIA_001.png
    :class: sphx-glr-single-img
 
@@ -146,13 +145,13 @@ Create vias with parametric positions.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 69-72
+.. GENERATED FROM PYTHON SOURCE LINES 68-71
 
 Save and close EDB
 ~~~~~~~~~~~~~~~~~~
 Save and close EDB.
 
-.. GENERATED FROM PYTHON SOURCE LINES 72-79
+.. GENERATED FROM PYTHON SOURCE LINES 71-78
 
 .. code-block:: default
 
@@ -171,8 +170,8 @@ Save and close EDB.
 
  .. code-block:: none
 
-    EDB saved correctly to D:\Temp\pyaedt_prj_LXT\pcb_AINGC7.aedb. You can import in AEDT.
-    13.626968622207642
+    EDB saved correctly to D:\Temp\pyaedt_prj_ZV3\pcb_SD3NZF.aedb. You can import in AEDT.
+    13.66098403930664
 
 
 
@@ -180,7 +179,7 @@ Save and close EDB.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  13.627 seconds)
+   **Total running time of the script:** ( 0 minutes  13.661 seconds)
 
 
 .. _sphx_glr_download_examples_00-EDB_00_EDB_Create_VIA.py:

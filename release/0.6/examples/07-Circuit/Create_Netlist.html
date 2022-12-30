@@ -33,6 +33,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
 
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
@@ -111,7 +112,13 @@
 
 <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="../../API/index.html">
-  API reference
+  API AEDT reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../EDBAPI/index.html">
+  API EDB reference
  </a>
 </li>
 
@@ -203,7 +210,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.40 variable.
+            // this version, rather than using sphinx's 0.6.42 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -737,11 +744,6 @@ function checkPageExistsAndRedirect(event) {
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#import-main-classes">
-   Import main classes
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#launch-aedt">
    Launch AEDT
   </a>
@@ -811,24 +813,14 @@ HSPICE files are fully supported. Mentor files are partially supported.</p>
 <p>Perform required imports and set paths.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 
-<span class="c1"># Import required modules</span>
-<span class="kn">from</span> <span class="nn">pyaedt</span> <span class="kn">import</span> <span class="n">examples</span>
-<span class="kn">from</span> <span class="nn">pyaedt</span> <span class="kn">import</span> <span class="n">generate_unique_project_name</span>
-<a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">netlist</span></a> <span class="o">=</span> <span class="n">examples</span><span class="o">.</span><span class="n">download_netlist</span><span class="p">()</span>
+<span class="kn">import</span> <span class="nn">pyaedt</span>
+<a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">netlist</span></a> <span class="o">=</span> <span class="n">pyaedt</span><span class="o">.</span><span class="n">downloads</span><span class="o">.</span><span class="n">download_netlist</span><span class="p">()</span>
 
-<a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">project_name</span></a> <span class="o">=</span> <span class="n">generate_unique_project_name</span><span class="p">()</span>
+<a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">project_name</span></a> <span class="o">=</span> <span class="n">pyaedt</span><span class="o">.</span><span class="n">generate_unique_project_name</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">project_name</span></a><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>D:\Temp\pyaedt_prj_J0K\Project_1S5.aedt
-</pre></div>
-</div>
-</section>
-<section id="import-main-classes">
-<h2>Import main classes<a class="headerlink" href="#import-main-classes" title="Permalink to this heading">#</a></h2>
-<p>Import the main classes that are needed: <a class="reference internal" href="../../API/_autosummary/pyaedt.Desktop.html#pyaedt.Desktop" title="pyaedt.Desktop"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyaedt.Desktop</span></code></a> and <code class="xref py py-class docutils literal notranslate"><span class="pre">pyaedt.Circuit</span></code>.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyaedt</span> <span class="kn">import</span> <span class="n">Circuit</span>
-<span class="kn">from</span> <span class="nn">pyaedt</span> <span class="kn">import</span> <span class="n">Desktop</span>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>D:\Temp\pyaedt_prj_BLJ\Project_5J1.aedt
 </pre></div>
 </div>
 </section>
@@ -853,10 +845,10 @@ of AEDT or try to connect to an existing instance of it.</p>
 </section>
 <section id="launch-aedt-with-circuit">
 <h2>Launch AEDT with Circuit<a class="headerlink" href="#launch-aedt-with-circuit" title="Permalink to this heading">#</a></h2>
-<p>Launch AEDT with Circuit. The <a class="reference internal" href="../../API/_autosummary/pyaedt.Desktop.html#pyaedt.Desktop" title="pyaedt.Desktop"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyaedt.Desktop</span></code></a> class initializes AEDT
+<p>Launch AEDT with Circuit. The <code class="xref py py-class docutils literal notranslate"><span class="pre">pyaedt.Desktop</span></code> class initializes AEDT
 and starts it on the specified version in the specified graphical mode.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">desktop</span> <span class="o">=</span> <span class="n">Desktop</span><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">desktopVersion</span></a><span class="p">,</span> <a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a><span class="p">,</span> <a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">NewThread</span></a><span class="p">)</span>
-<span class="n">aedtapp</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="n">projectname</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">project_name</span></a><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">desktop</span> <span class="o">=</span> <span class="n">pyaedt</span><span class="o">.</span><span class="n">launch_desktop</span><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">desktopVersion</span></a><span class="p">,</span> <a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a><span class="p">,</span> <a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">NewThread</span></a><span class="p">)</span>
+<span class="n">aedtapp</span> <span class="o">=</span> <span class="n">pyaedt</span><span class="o">.</span><span class="n">Circuit</span><span class="p">(</span><span class="n">projectname</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">project_name</span></a><span class="p">)</span>
 </pre></div>
 </div>
 </section>
@@ -888,11 +880,13 @@ True
 <h2>Close project and release AEDT<a class="headerlink" href="#close-project-and-release-aedt" title="Permalink to this heading">#</a></h2>
 <p>After adding any other desired functionalities, close the project and release
 AEDT.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">os</span><span class="o">.</span><span class="n">name</span></a> <span class="o">!=</span> <span class="s2">&quot;posix&quot;</span><span class="p">:</span>
-    <span class="n">desktop</span><span class="o">.</span><span class="n">release_desktop</span><span class="p">()</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">desktop</span><span class="o">.</span><span class="n">release_desktop</span><span class="p">()</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  9.185 seconds)</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  9.312 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-07-circuit-create-netlist-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/00665616d90c2f5cf3d64900ef168469/Create_Netlist.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">Create_Netlist.py</span></code></a></p>

@@ -28,14 +28,13 @@ Perform required imports
 ~~~~~~~~~~~~~~~~~~~~~~~~
 Perform required imports, which includes importing a section.
 
-.. GENERATED FROM PYTHON SOURCE LINES 11-16
+.. GENERATED FROM PYTHON SOURCE LINES 11-15
 
 .. code-block:: default
 
 
-    import shutil
     import os
-    from pyaedt import generate_unique_name, examples, Edb, generate_unique_folder_name
+    import pyaedt
 
 
 
@@ -44,21 +43,21 @@ Perform required imports, which includes importing a section.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 17-20
+.. GENERATED FROM PYTHON SOURCE LINES 16-19
 
 Download file
 ~~~~~~~~~~~~~
 Download the AEDB file and copy it in the temporary folder.
 
-.. GENERATED FROM PYTHON SOURCE LINES 20-31
+.. GENERATED FROM PYTHON SOURCE LINES 19-30
 
 .. code-block:: default
 
 
 
-    temp_folder = generate_unique_folder_name()
+    temp_folder = pyaedt.generate_unique_folder_name()
 
-    targetfile = os.path.dirname(examples.download_aedb(temp_folder))
+    targetfile = os.path.dirname(pyaedt.downloads.download_aedb(temp_folder))
 
     ipc2581_file = os.path.join(temp_folder, "Galileo.xml")
 
@@ -73,23 +72,23 @@ Download the AEDB file and copy it in the temporary folder.
 
  .. code-block:: none
 
-    D:\Temp\pyaedt_prj_PLA\edb/Galileo.aedb
+    D:\Temp\pyaedt_prj_KA3\edb/Galileo.aedb
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 32-35
+.. GENERATED FROM PYTHON SOURCE LINES 31-34
 
 Launch EDB
 ~~~~~~~~~~
 Launch the :class:`pyaedt.Edb` class, using EDB 2022 R2 and SI units.
 
-.. GENERATED FROM PYTHON SOURCE LINES 35-39
+.. GENERATED FROM PYTHON SOURCE LINES 34-38
 
 .. code-block:: default
 
 
-    edb = Edb(edbpath=targetfile, edbversion="2022.2")
+    edb = pyaedt.Edb(edbpath=targetfile, edbversion="2022.2")
 
 
 
@@ -99,19 +98,19 @@ Launch the :class:`pyaedt.Edb` class, using EDB 2022 R2 and SI units.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 40-43
+.. GENERATED FROM PYTHON SOURCE LINES 39-42
 
 Parametrize net
 ~~~~~~~~~~~~~~~
 Parametrize a net.
 
-.. GENERATED FROM PYTHON SOURCE LINES 43-48
+.. GENERATED FROM PYTHON SOURCE LINES 42-47
 
 .. code-block:: default
 
 
     edb.core_primitives.parametrize_trace_width(
-        "A0_N", parameter_name=generate_unique_name("Par"), variable_value="0.4321mm"
+        "A0_N", parameter_name=pyaedt.generate_unique_name("Par"), variable_value="0.4321mm"
     )
 
 
@@ -127,13 +126,13 @@ Parametrize a net.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 49-52
+.. GENERATED FROM PYTHON SOURCE LINES 48-51
 
 Cutout
 ~~~~~~
 Create a cutout.
 
-.. GENERATED FROM PYTHON SOURCE LINES 52-66
+.. GENERATED FROM PYTHON SOURCE LINES 51-65
 
 .. code-block:: default
 
@@ -164,13 +163,13 @@ Create a cutout.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 67-70
+.. GENERATED FROM PYTHON SOURCE LINES 66-69
 
 Plot cutout
 ~~~~~~~~~~~
 Plot cutout before exporting to IPC2581 file.
 
-.. GENERATED FROM PYTHON SOURCE LINES 70-73
+.. GENERATED FROM PYTHON SOURCE LINES 69-72
 
 .. code-block:: default
 
@@ -189,13 +188,13 @@ Plot cutout before exporting to IPC2581 file.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 74-77
+.. GENERATED FROM PYTHON SOURCE LINES 73-76
 
 Create IPC2581 file
 ~~~~~~~~~~~~~~~~~~~
 Create the IPC2581 file.
 
-.. GENERATED FROM PYTHON SOURCE LINES 77-81
+.. GENERATED FROM PYTHON SOURCE LINES 76-80
 
 .. code-block:: default
 
@@ -211,18 +210,18 @@ Create the IPC2581 file.
 
  .. code-block:: none
 
-    IPC2581 File has been saved to D:\Temp\pyaedt_prj_PLA\Galileo.xml
+    IPC2581 File has been saved to D:\Temp\pyaedt_prj_KA3\Galileo.xml
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 82-85
+.. GENERATED FROM PYTHON SOURCE LINES 81-84
 
 Close EDB
 ~~~~~~~~~
 Close EDB.
 
-.. GENERATED FROM PYTHON SOURCE LINES 85-87
+.. GENERATED FROM PYTHON SOURCE LINES 84-86
 
 .. code-block:: default
 
@@ -244,7 +243,7 @@ Close EDB.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  11.751 seconds)
+   **Total running time of the script:** ( 0 minutes  12.206 seconds)
 
 
 .. _sphx_glr_download_examples_00-EDB_02_edb_to_ipc2581.py:

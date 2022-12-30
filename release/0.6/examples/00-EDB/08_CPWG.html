@@ -33,6 +33,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
 
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
@@ -111,7 +112,13 @@
 
 <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="../../API/index.html">
-  API reference
+  API AEDT reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../EDBAPI/index.html">
+  API EDB reference
  </a>
 </li>
 
@@ -203,7 +210,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.40 variable.
+            // this version, rather than using sphinx's 0.6.42 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -850,9 +857,7 @@ for a CPWG (coplanar waveguide with ground).</p>
 <h2>Perform required imports<a class="headerlink" href="#perform-required-imports" title="Permalink to this heading">#</a></h2>
 <p>Peform required imports. Importing the <code class="docutils literal notranslate"><span class="pre">Hfss3dlayout</span></code> object initializes it
 on version 2022 R2.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyaedt</span> <span class="kn">import</span> <span class="n">Edb</span>
-<span class="kn">from</span> <span class="nn">pyaedt.generic.general_methods</span> <span class="kn">import</span> <span class="n">generate_unique_name</span><span class="p">,</span> <span class="n">generate_unique_folder_name</span>
-<span class="kn">from</span> <span class="nn">pyaedt</span> <span class="kn">import</span> <span class="n">Hfss3dLayout</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pyaedt</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 </pre></div>
@@ -868,12 +873,12 @@ on version 2022 R2.</p>
 <section id="launch-edb">
 <h2>Launch EDB<a class="headerlink" href="#launch-edb" title="Permalink to this heading">#</a></h2>
 <p>Launch EDB.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">aedb_path</span></a> <span class="o">=</span> <a href="https://docs.python.org/dev/library/os.path.html#os.path.join" title="os.path.join" class="sphx-glr-backref-module-os-path sphx-glr-backref-type-py-function"><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span></a><span class="p">(</span><span class="n">generate_unique_folder_name</span><span class="p">(),</span> <span class="n">generate_unique_name</span><span class="p">(</span><span class="s2">&quot;pcb&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;.aedb&quot;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">aedb_path</span></a> <span class="o">=</span> <a href="https://docs.python.org/dev/library/os.path.html#os.path.join" title="os.path.join" class="sphx-glr-backref-module-os-path sphx-glr-backref-type-py-function"><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span></a><span class="p">(</span><span class="n">pyaedt</span><span class="o">.</span><span class="n">generate_unique_folder_name</span><span class="p">(),</span> <span class="n">pyaedt</span><span class="o">.</span><span class="n">generate_unique_name</span><span class="p">(</span><span class="s2">&quot;pcb&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;.aedb&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">aedb_path</span></a><span class="p">)</span>
-<span class="n">edbapp</span> <span class="o">=</span> <span class="n">Edb</span><span class="p">(</span><span class="n">edbpath</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">aedb_path</span></a><span class="p">,</span> <span class="n">edbversion</span><span class="o">=</span><span class="s2">&quot;2022.2&quot;</span><span class="p">)</span>
+<span class="n">edbapp</span> <span class="o">=</span> <span class="n">pyaedt</span><span class="o">.</span><span class="n">Edb</span><span class="p">(</span><span class="n">edbpath</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">aedb_path</span></a><span class="p">,</span> <span class="n">edbversion</span><span class="o">=</span><span class="s2">&quot;2022.2&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>D:\Temp\pyaedt_prj_1OG\pcb_2VQRTX.aedb
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>D:\Temp\pyaedt_prj_QJ8\pcb_LDI7KX.aedb
 </pre></div>
 </div>
 </section>
@@ -929,7 +934,7 @@ on version 2022 R2.</p>
                                     <span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives object at 0x0000022BD8E45850&gt;
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives object at 0x000002817E2C1BE0&gt;
 </pre></div>
 </div>
 </section>
@@ -978,8 +983,8 @@ on version 2022 R2.</p>
 <section id="open-edb-in-aedt">
 <h2>Open EDB in AEDT<a class="headerlink" href="#open-edb-in-aedt" title="Permalink to this heading">#</a></h2>
 <p>Open EDB in AEDT.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">h3d</span> <span class="o">=</span> <span class="n">Hfss3dLayout</span><span class="p">(</span><span class="n">projectname</span><span class="o">=</span><a href="https://docs.python.org/dev/library/os.path.html#os.path.join" title="os.path.join" class="sphx-glr-backref-module-os-path sphx-glr-backref-type-py-function"><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span></a><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">aedb_path</span></a><span class="p">,</span> <span class="s2">&quot;edb.def&quot;</span><span class="p">),</span> <span class="n">specified_version</span><span class="o">=</span><span class="s2">&quot;2022.2&quot;</span><span class="p">,</span>
-                   <a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a><span class="o">=</span><a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">h3d</span> <span class="o">=</span> <span class="n">pyaedt</span><span class="o">.</span><span class="n">Hfss3dLayout</span><span class="p">(</span><span class="n">projectname</span><span class="o">=</span><a href="https://docs.python.org/dev/library/os.path.html#os.path.join" title="os.path.join" class="sphx-glr-backref-module-os-path sphx-glr-backref-type-py-function"><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span></a><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">aedb_path</span></a><span class="p">,</span> <span class="s2">&quot;edb.def&quot;</span><span class="p">),</span> <span class="n">specified_version</span><span class="o">=</span><span class="s2">&quot;2022.2&quot;</span><span class="p">,</span>
+                          <a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a><span class="o">=</span><a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a><span class="p">)</span>
 </pre></div>
 </div>
 </section>
@@ -990,7 +995,7 @@ on version 2022 R2.</p>
 <span class="n">h3d</span><span class="o">.</span><span class="n">create_edge_port</span><span class="p">(</span><span class="s2">&quot;line_3&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">iswave</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">wave_vertical_extension</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">wave_horizontal_extension</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modules.Boundary.BoundaryObject3dLayout object at 0x0000022BD00D11F0&gt;
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modules.Boundary.BoundaryObject3dLayout object at 0x0000028120446460&gt;
 </pre></div>
 </div>
 </section>
@@ -1024,7 +1029,7 @@ on version 2022 R2.</p>
 <span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modules.SetupTemplates.SweepHFSS3DLayout object at 0x0000022BD00D1BB0&gt;
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modules.SetupTemplates.SweepHFSS3DLayout object at 0x000002817E2C1C40&gt;
 </pre></div>
 </div>
 </section>
@@ -1034,7 +1039,7 @@ on version 2022 R2.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">h3d</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">edb</span><span class="o">.</span><span class="n">core_nets</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">color_by_net</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_08_CPWG_001.png" srcset="../../_images/sphx_glr_08_CPWG_001.png" alt="Cell_ZFAWU1" class = "sphx-glr-single-img"/></section>
+<img src="../../_images/sphx_glr_08_CPWG_001.png" srcset="../../_images/sphx_glr_08_CPWG_001.png" alt="Cell_5272NJ" class = "sphx-glr-single-img"/></section>
 <section id="start-hfss-solver">
 <h2>Start HFSS solver<a class="headerlink" href="#start-hfss-solver" title="Permalink to this heading">#</a></h2>
 <p>Start the HFSS solver by uncommenting the <code class="docutils literal notranslate"><span class="pre">h3d.analyze_nominal()</span></code> command.</p>
@@ -1054,11 +1059,11 @@ on version 2022 R2.</p>
 </pre></div>
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>****************************************
-***Your AEDT project is save to D:\Temp\pyaedt_prj_1OG\pcb_2VQRTX.aedt
+***Your AEDT project is save to D:\Temp\pyaedt_prj_QJ8\pcb_LDI7KX.aedt
 ****************************************
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  28.726 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  28.829 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-00-edb-08-cpwg-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/4540bcaff5cc8af6bb0e6fa8a528c2d4/08_CPWG.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">08_CPWG.py</span></code></a></p>

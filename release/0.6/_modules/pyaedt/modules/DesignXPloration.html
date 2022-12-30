@@ -32,6 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-binder.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-dataframe.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-rendered-html.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css" />
 
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
@@ -108,7 +109,13 @@
 
 <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="../../../API/index.html">
-  API reference
+  API AEDT reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../EDBAPI/index.html">
+  API EDB reference
  </a>
 </li>
 
@@ -200,7 +207,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.40 variable.
+            // this version, rather than using sphinx's 0.6.42 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -1308,7 +1315,6 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">parametricname</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Add a basic sensitivity analysis.</span>
-
 <span class="sd">        You can customize all options after the analysis is added.</span>
 
 <span class="sd">        Parameters</span>
@@ -1539,7 +1545,6 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">report_type</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Add a basic optimization analysis.</span>
-
 <span class="sd">        You can customize all options after the analysis is added.</span>
 
 <span class="sd">        Parameters</span>
@@ -1555,7 +1560,7 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        optim_type : strm optional</span>
 <span class="sd">            Optimization Type.</span>
 <span class="sd">            Possible values are `&quot;Optimization&quot;`, `&quot;DXDOE&quot;`,`&quot;DesignExplorer&quot;`,`&quot;Sensitivity&quot;`,`&quot;Statistical&quot;`</span>
-<span class="sd">            and `&quot;optiSLang&quot;&#39;.</span>
+<span class="sd">            and `&quot;optiSLang&quot;`.</span>
 <span class="sd">        condition : string, optional</span>
 <span class="sd">            The default is ``&quot;&lt;=&quot;``.</span>
 <span class="sd">        goal_value : optional</span>

@@ -33,6 +33,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
 
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
@@ -111,7 +112,13 @@
 
 <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="../../API/index.html">
-  API reference
+  API AEDT reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../EDBAPI/index.html">
+  API EDB reference
  </a>
 </li>
 
@@ -203,7 +210,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.40 variable.
+            // this version, rather than using sphinx's 0.6.42 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -747,11 +754,6 @@ function checkPageExistsAndRedirect(event) {
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#import-icepak-and-aedt">
-   Import Icepak and AEDT
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#launch-aedt">
    Launch AEDT
   </a>
@@ -881,14 +883,12 @@ files (STEP and CSV) and an AEDB board.</p>
 <p>Perform required imports and set paths.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
 <span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">tempfile</span>
+<span class="kn">import</span> <span class="nn">pyaedt</span>
 <span class="kn">import</span> <span class="nn">datetime</span>
 
-<span class="kn">from</span> <span class="nn">pyaedt</span> <span class="kn">import</span> <span class="n">examples</span><span class="p">,</span> <span class="n">generate_unique_folder_name</span>
-
 <span class="c1"># Set paths</span>
-<a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">project_folder</span></a> <span class="o">=</span> <span class="n">generate_unique_folder_name</span><span class="p">()</span>
-<a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">input_dir</span></a> <span class="o">=</span> <span class="n">examples</span><span class="o">.</span><span class="n">download_sherlock</span><span class="p">()</span>
+<a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">project_folder</span></a> <span class="o">=</span> <span class="n">pyaedt</span><span class="o">.</span><span class="n">generate_unique_folder_name</span><span class="p">()</span>
+<a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">input_dir</span></a> <span class="o">=</span> <span class="n">pyaedt</span><span class="o">.</span><span class="n">downloads</span><span class="o">.</span><span class="n">download_sherlock</span><span class="p">()</span>
 </pre></div>
 </div>
 </section>
@@ -915,18 +915,10 @@ to run this example.</p>
 </pre></div>
 </div>
 </section>
-<section id="import-icepak-and-aedt">
-<h2>Import Icepak and AEDT<a class="headerlink" href="#import-icepak-and-aedt" title="Permalink to this heading">#</a></h2>
-<p>Import Icepak and AEDT.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyaedt</span> <span class="kn">import</span> <span class="n">Icepak</span>
-<span class="kn">from</span> <span class="nn">pyaedt</span> <span class="kn">import</span> <span class="n">Desktop</span>
-</pre></div>
-</div>
-</section>
 <section id="launch-aedt">
 <h2>Launch AEDT<a class="headerlink" href="#launch-aedt" title="Permalink to this heading">#</a></h2>
 <p>Launch AEDT 2022 R2 in graphical mode.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="n">Desktop</span><span class="p">(</span><span class="s2">&quot;2022.2&quot;</span><span class="p">,</span> <a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a><span class="o">=</span><a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a><span class="p">,</span> <span class="n">new_desktop_session</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="n">pyaedt</span><span class="o">.</span><span class="n">launch_desktop</span><span class="p">(</span><span class="s2">&quot;2022.2&quot;</span><span class="p">,</span> <a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a><span class="o">=</span><a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a><span class="p">,</span> <span class="n">new_desktop_session</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <a href="https://docs.python.org/dev/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">start</span></a> <span class="o">=</span> <a href="https://docs.python.org/dev/library/time.html#time.time" title="time.time" class="sphx-glr-backref-module-time sphx-glr-backref-type-py-function"><span class="n">time</span><span class="o">.</span><span class="n">time</span></a><span class="p">()</span>
 <a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">material_list</span></a> <span class="o">=</span> <a href="https://docs.python.org/dev/library/os.path.html#os.path.join" title="os.path.join" class="sphx-glr-backref-module-os-path sphx-glr-backref-type-py-function"><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span></a><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">input_dir</span></a><span class="p">,</span> <a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">material_name</span></a><span class="p">)</span>
@@ -940,7 +932,7 @@ to run this example.</p>
 <section id="create-icepak-project">
 <h2>Create Icepak project<a class="headerlink" href="#create-icepak-project" title="Permalink to this heading">#</a></h2>
 <p>Create an Icepak project.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ipk</span> <span class="o">=</span> <span class="n">Icepak</span><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">project_name</span></a><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ipk</span> <span class="o">=</span> <span class="n">pyaedt</span><span class="o">.</span><span class="n">Icepak</span><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">project_name</span></a><span class="p">)</span>
 </pre></div>
 </div>
 </section>
@@ -962,7 +954,7 @@ to run this example.</p>
 <span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modules.Boundary.NativeComponentObject object at 0x0000022BE58C8070&gt;
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modules.Boundary.NativeComponentObject object at 0x000002812C4A01C0&gt;
 </pre></div>
 </div>
 </section>
@@ -973,7 +965,7 @@ Sherlock STEP file.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ipk</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">create_coordinate_system</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <a href="https://docs.python.org/dev/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">stackup_thickness</span></a> <span class="o">/</span> <span class="mi">2</span><span class="p">],</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;view&quot;</span><span class="p">,</span> <span class="n">view</span><span class="o">=</span><span class="s2">&quot;XY&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modeler.Modeler.CoordinateSystem object at 0x0000022BB420D610&gt;
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modeler.cad.Modeler.CoordinateSystem object at 0x000002812C4B1AC0&gt;
 </pre></div>
 </div>
 </section>
@@ -1003,7 +995,7 @@ Sherlock STEP file.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ipk</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">export_path</span><span class="o">=</span><a href="https://docs.python.org/dev/library/os.path.html#os.path.join" title="os.path.join" class="sphx-glr-backref-module-os-path sphx-glr-backref-type-py-function"><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span></a><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">project_folder</span></a><span class="p">,</span> <span class="s2">&quot;Sherlock_Example.jpg&quot;</span><span class="p">),</span> <span class="n">plot_air_objects</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_Sherlock_Example_001.png" srcset="../../_images/sphx_glr_Sherlock_Example_001.png" alt="Sherlock Example" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.generic.plot.ModelPlotter object at 0x0000022BD8DA4B80&gt;
+<img src="../../_images/sphx_glr_Sherlock_Example_001.png" srcset="../../_images/sphx_glr_Sherlock_Example_001.png" alt="Sherlock Example" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.generic.plot.ModelPlotter object at 0x000002812D229070&gt;
 </pre></div>
 </div>
 </section>
@@ -1023,7 +1015,7 @@ Sherlock STEP file.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ipk</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">create_air_region</span><span class="p">(</span><span class="o">*</span><span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">300</span><span class="p">])</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modeler.Object3d.Object3d object at 0x0000022BE59F9070&gt;
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modeler.cad.object3d.Object3d object at 0x000002811FF2ACD0&gt;
 </pre></div>
 </div>
 </section>
@@ -1069,7 +1061,7 @@ Sherlock STEP file.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ipk</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">export_path</span><span class="o">=</span><a href="https://docs.python.org/dev/library/os.path.html#os.path.join" title="os.path.join" class="sphx-glr-backref-module-os-path sphx-glr-backref-type-py-function"><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span></a><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">project_folder</span></a><span class="p">,</span> <span class="s2">&quot;Sherlock_Example.jpg&quot;</span><span class="p">),</span> <span class="n">plot_air_objects</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_Sherlock_Example_002.png" srcset="../../_images/sphx_glr_Sherlock_Example_002.png" alt="Sherlock Example" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.generic.plot.ModelPlotter object at 0x0000022BE55E2E20&gt;
+<img src="../../_images/sphx_glr_Sherlock_Example_002.png" srcset="../../_images/sphx_glr_Sherlock_Example_002.png" alt="Sherlock Example" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.generic.plot.ModelPlotter object at 0x000002811FF2AAF0&gt;
 </pre></div>
 </div>
 </section>
@@ -1086,7 +1078,7 @@ Sherlock STEP file.</p>
 <span class="n">ipk</span><span class="o">.</span><span class="n">assign_openings</span><span class="p">(</span><span class="n">ipk</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">get_object_faces</span><span class="p">(</span><span class="s2">&quot;Region&quot;</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modules.Boundary.BoundaryObject object at 0x0000022B81A71520&gt;
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modules.Boundary.BoundaryObject object at 0x000002812D523970&gt;
 </pre></div>
 </div>
 </section>
@@ -1109,15 +1101,16 @@ assigning priorities.</p>
 <a href="https://docs.python.org/dev/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">end</span></a> <span class="o">=</span> <a href="https://docs.python.org/dev/library/time.html#time.time" title="time.time" class="sphx-glr-backref-module-time sphx-glr-backref-type-py-function"><span class="n">time</span><span class="o">.</span><span class="n">time</span></a><span class="p">()</span> <span class="o">-</span> <a href="https://docs.python.org/dev/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">start</span></a>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Elapsed time: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><a href="https://docs.python.org/dev/library/datetime.html#datetime.timedelta" title="datetime.timedelta" class="sphx-glr-backref-module-datetime sphx-glr-backref-type-py-class"><span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span></a><span class="p">(</span><span class="n">seconds</span><span class="o">=</span><a href="https://docs.python.org/dev/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">end</span></a><span class="p">)))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Project Saved in </span><span class="si">{}</span><span class="s2"> &quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ipk</span><span class="o">.</span><span class="n">project_file</span><span class="p">))</span>
-<span class="k">if</span> <a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">os</span><span class="o">.</span><span class="n">name</span></a> <span class="o">!=</span> <span class="s2">&quot;posix&quot;</span><span class="p">:</span>
-    <span class="n">ipk</span><span class="o">.</span><span class="n">release_desktop</span><span class="p">()</span>
+<span class="n">ipk</span><span class="o">.</span><span class="n">release_desktop</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Elapsed time: 0:00:43.114340
-Project Saved in D:/Temp/pyaedt_prj_XCH/TutorialBoard.aedt
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Elapsed time: 0:00:45.084888
+Project Saved in D:/Temp/pyaedt_prj_V6Q/TutorialBoard.aedt
+
+True
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  49.828 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  51.824 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-04-icepak-sherlock-example-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/8af00971fe79213d542ee7068c49e605/Sherlock_Example.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">Sherlock_Example.py</span></code></a></p>

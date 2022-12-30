@@ -33,6 +33,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
 
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
@@ -111,7 +112,13 @@
 
 <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="../../API/index.html">
-  API reference
+  API AEDT reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../EDBAPI/index.html">
+  API EDB reference
  </a>
 </li>
 
@@ -203,7 +210,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.40 variable.
+            // this version, rather than using sphinx's 0.6.42 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -737,11 +744,6 @@ function checkPageExistsAndRedirect(event) {
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#import-main-classes">
-   Import main classes
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#launch-aedt">
    Launch AEDT
   </a>
@@ -859,21 +861,10 @@ to download the full example code</p>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <span class="kn">import</span> <span class="nn">pyaedt</span>
-<span class="kn">from</span> <span class="nn">pyaedt</span> <span class="kn">import</span> <span class="n">examples</span>
-<span class="kn">from</span> <span class="nn">pyaedt</span> <span class="kn">import</span> <span class="n">generate_unique_folder_name</span>
 
 <span class="c1"># Set local path to path for PyAEDT</span>
-<a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">temp_folder</span></a> <span class="o">=</span> <span class="n">generate_unique_folder_name</span><span class="p">()</span>
-<a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">project_path</span></a> <span class="o">=</span> <span class="n">examples</span><span class="o">.</span><span class="n">download_file</span><span class="p">(</span><span class="s2">&quot;ami&quot;</span><span class="p">,</span> <span class="s2">&quot;ami_usb.aedtz&quot;</span><span class="p">,</span> <a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">temp_folder</span></a><span class="p">)</span>
-</pre></div>
-</div>
-</section>
-<section id="import-main-classes">
-<h2>Import main classes<a class="headerlink" href="#import-main-classes" title="Permalink to this heading">#</a></h2>
-<p>Import the main classes that are needed: <a class="reference internal" href="../../API/_autosummary/pyaedt.Desktop.html#pyaedt.Desktop" title="pyaedt.Desktop"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyaedt.Desktop</span></code></a> and <code class="xref py py-class docutils literal notranslate"><span class="pre">pyaedt.Circuit</span></code>.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyaedt</span> <span class="kn">import</span> <span class="n">Circuit</span>
-<span class="kn">from</span> <span class="nn">pyaedt</span> <span class="kn">import</span> <span class="n">constants</span>
-<span class="kn">from</span> <span class="nn">pyaedt</span> <span class="kn">import</span> <span class="n">settings</span>
+<a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">temp_folder</span></a> <span class="o">=</span> <span class="n">pyaedt</span><span class="o">.</span><span class="n">generate_unique_folder_name</span><span class="p">()</span>
+<a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">project_path</span></a> <span class="o">=</span> <span class="n">pyaedt</span><span class="o">.</span><span class="n">downloads</span><span class="o">.</span><span class="n">download_file</span><span class="p">(</span><span class="s2">&quot;ami&quot;</span><span class="p">,</span> <span class="s2">&quot;ami_usb.aedtz&quot;</span><span class="p">,</span> <a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">temp_folder</span></a><span class="p">)</span>
 </pre></div>
 </div>
 </section>
@@ -899,10 +890,10 @@ of AEDT or try to connect to an existing instance of it.</p>
 <section id="launch-aedt-with-circuit-and-enable-pandas-as-the-output-format">
 <h2>Launch AEDT with Circuit and enable Pandas as the output format<a class="headerlink" href="#launch-aedt-with-circuit-and-enable-pandas-as-the-output-format" title="Permalink to this heading">#</a></h2>
 <p>All outputs obtained with the <cite>get_solution_data</cite> method will have the Pandas format.
-Launch AEDT with Circuit. The <a class="reference internal" href="../../API/_autosummary/pyaedt.Desktop.html#pyaedt.Desktop" title="pyaedt.Desktop"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyaedt.Desktop</span></code></a> class initializes AEDT
+Launch AEDT with Circuit. The <code class="xref py py-class docutils literal notranslate"><span class="pre">pyaedt.Desktop</span></code> class initializes AEDT
 and starts the specified version in the specified mode.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">settings</span><span class="o">.</span><span class="n">enable_pandas_output</span> <span class="o">=</span> <span class="kc">True</span>
-<span class="n">cir</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="n">projectname</span><span class="o">=</span><a href="https://docs.python.org/dev/library/os.path.html#os.path.join" title="os.path.join" class="sphx-glr-backref-module-os-path sphx-glr-backref-type-py-function"><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span></a><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">project_path</span></a><span class="p">),</span> <a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a><span class="o">=</span><a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pyaedt</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">enable_pandas_output</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">cir</span> <span class="o">=</span> <span class="n">pyaedt</span><span class="o">.</span><span class="n">Circuit</span><span class="p">(</span><span class="n">projectname</span><span class="o">=</span><a href="https://docs.python.org/dev/library/os.path.html#os.path.join" title="os.path.join" class="sphx-glr-backref-module-os-path sphx-glr-backref-type-py-function"><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span></a><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">project_path</span></a><span class="p">),</span> <a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a><span class="o">=</span><a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a><span class="p">,</span>
               <span class="n">specified_version</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">desktopVersion</span></a><span class="p">,</span> <span class="n">new_desktop_session</span><span class="o">=</span><a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">NewThread</span></a><span class="p">)</span>
 </pre></div>
 </div>
@@ -975,9 +966,9 @@ and starts the specified version in the specified mode.</p>
 <p>Create the plot from a start time to stop time in seconds</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/dev/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">tstop</span></a> <span class="o">=</span> <span class="mf">55e-9</span>
 <a href="https://docs.python.org/dev/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">tstart</span></a> <span class="o">=</span> <span class="mf">50e-9</span>
-<a href="https://docs.python.org/dev/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">scale_time</span></a> <span class="o">=</span> <span class="n">constants</span><span class="o">.</span><span class="n">unit_converter</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">unit_system</span><span class="o">=</span><span class="s2">&quot;Time&quot;</span><span class="p">,</span> <span class="n">input_units</span><span class="o">=</span><span class="s2">&quot;s&quot;</span><span class="p">,</span>
+<a href="https://docs.python.org/dev/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">scale_time</span></a> <span class="o">=</span> <span class="n">pyaedt</span><span class="o">.</span><span class="n">constants</span><span class="o">.</span><span class="n">unit_converter</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">unit_system</span><span class="o">=</span><span class="s2">&quot;Time&quot;</span><span class="p">,</span> <span class="n">input_units</span><span class="o">=</span><span class="s2">&quot;s&quot;</span><span class="p">,</span>
                                  <span class="n">output_units</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#dict" title="builtins.dict" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">original_data</span><span class="o">.</span><span class="n">units_sweeps</span></a><span class="p">[</span><span class="s2">&quot;Time&quot;</span><span class="p">])</span>
-<a href="https://docs.python.org/dev/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">scale_data</span></a> <span class="o">=</span> <span class="n">constants</span><span class="o">.</span><span class="n">unit_converter</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">unit_system</span><span class="o">=</span><span class="s2">&quot;Voltage&quot;</span><span class="p">,</span> <span class="n">input_units</span><span class="o">=</span><span class="s2">&quot;V&quot;</span><span class="p">,</span>
+<a href="https://docs.python.org/dev/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">scale_data</span></a> <span class="o">=</span> <span class="n">pyaedt</span><span class="o">.</span><span class="n">constants</span><span class="o">.</span><span class="n">unit_converter</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">unit_system</span><span class="o">=</span><span class="s2">&quot;Voltage&quot;</span><span class="p">,</span> <span class="n">input_units</span><span class="o">=</span><span class="s2">&quot;V&quot;</span><span class="p">,</span>
                                  <span class="n">output_units</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#dict" title="builtins.dict" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">original_data</span><span class="o">.</span><span class="n">units_data</span></a><span class="p">[</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">plot_name</span></a><span class="p">])</span>
 
 <a href="https://docs.python.org/dev/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">tstop_ns</span></a> <span class="o">=</span> <a href="https://docs.python.org/dev/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">scale_time</span></a> <span class="o">*</span> <a href="https://docs.python.org/dev/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">tstop</span></a>
@@ -1078,9 +1069,9 @@ and starts the specified version in the specified mode.</p>
 <p>Create the plot from a start time to stop time in seconds.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/dev/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">tstop</span></a> <span class="o">=</span> <span class="mf">40.0e-9</span>
 <a href="https://docs.python.org/dev/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">tstart</span></a> <span class="o">=</span> <span class="mf">25.0e-9</span>
-<a href="https://docs.python.org/dev/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">scale_time</span></a> <span class="o">=</span> <span class="n">constants</span><span class="o">.</span><span class="n">unit_converter</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">unit_system</span><span class="o">=</span><span class="s2">&quot;Time&quot;</span><span class="p">,</span> <span class="n">input_units</span><span class="o">=</span><span class="s2">&quot;s&quot;</span><span class="p">,</span>
+<a href="https://docs.python.org/dev/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">scale_time</span></a> <span class="o">=</span> <span class="n">pyaedt</span><span class="o">.</span><span class="n">constants</span><span class="o">.</span><span class="n">unit_converter</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">unit_system</span><span class="o">=</span><span class="s2">&quot;Time&quot;</span><span class="p">,</span> <span class="n">input_units</span><span class="o">=</span><span class="s2">&quot;s&quot;</span><span class="p">,</span>
                                  <span class="n">output_units</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">waveform_sweep_unit</span></a><span class="p">)</span>
-<a href="https://docs.python.org/dev/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">scale_data</span></a> <span class="o">=</span> <span class="n">constants</span><span class="o">.</span><span class="n">unit_converter</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">unit_system</span><span class="o">=</span><span class="s2">&quot;Voltage&quot;</span><span class="p">,</span> <span class="n">input_units</span><span class="o">=</span><span class="s2">&quot;V&quot;</span><span class="p">,</span>
+<a href="https://docs.python.org/dev/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">scale_data</span></a> <span class="o">=</span> <span class="n">pyaedt</span><span class="o">.</span><span class="n">constants</span><span class="o">.</span><span class="n">unit_converter</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">unit_system</span><span class="o">=</span><span class="s2">&quot;Voltage&quot;</span><span class="p">,</span> <span class="n">input_units</span><span class="o">=</span><span class="s2">&quot;V&quot;</span><span class="p">,</span>
                                  <span class="n">output_units</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">waveform_unit</span></a><span class="p">)</span>
 
 <a href="https://docs.python.org/dev/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">tstop_ns</span></a> <span class="o">=</span> <a href="https://docs.python.org/dev/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">scale_time</span></a> <span class="o">*</span> <a href="https://docs.python.org/dev/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">tstop</span></a>
@@ -1145,12 +1136,12 @@ and starts the specified version in the specified mode.</p>
 <span class="n">cir</span><span class="o">.</span><span class="n">release_desktop</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Project Saved in D:/Temp/pyaedt_prj_XEV/ami/
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Project Saved in D:/Temp/pyaedt_prj_S1N/ami/
 
 True
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  33.433 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  33.291 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-07-circuit-circuit-ami-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/2a17da0bc87aa543085d94ca8072e823/Circuit_AMI.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">Circuit_AMI.py</span></code></a></p>

@@ -32,6 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
 
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
@@ -108,7 +109,13 @@
 
 <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="../../API/index.html">
-  API reference
+  API AEDT reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../EDBAPI/index.html">
+  API EDB reference
  </a>
 </li>
 
@@ -200,7 +207,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.40 variable.
+            // this version, rather than using sphinx's 0.6.42 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -333,7 +340,7 @@ function checkPageExistsAndRedirect(event) {
 <span class="kn">from</span> <span class="nn">pyaedt.generic.general_methods</span> <span class="kn">import</span> <span class="n">generate_unique_name</span>
 <span class="kn">from</span> <span class="nn">pyaedt.generic.general_methods</span> <span class="kn">import</span> <span class="n">open_file</span>
 <span class="kn">from</span> <span class="nn">pyaedt.generic.general_methods</span> <span class="kn">import</span> <span class="n">pyaedt_function_handler</span>
-<span class="kn">from</span> <span class="nn">pyaedt.modeler.GeometryOperators</span> <span class="kn">import</span> <span class="n">GeometryOperators</span>
+<span class="kn">from</span> <span class="nn">pyaedt.modeler.geometry_operators</span> <span class="kn">import</span> <span class="n">GeometryOperators</span>
 <span class="kn">from</span> <span class="nn">pyaedt.modules.Boundary</span> <span class="kn">import</span> <span class="n">BoundaryObject</span>
 <span class="kn">from</span> <span class="nn">pyaedt.modules.Boundary</span> <span class="kn">import</span> <span class="n">MaxwellParameters</span>
 
@@ -1871,6 +1878,312 @@ function checkPageExistsAndRedirect(event) {
         <span class="bp">self</span><span class="o">.</span><span class="n">odesign</span><span class="o">.</span><span class="n">ExportElementBasedHarmonicForce</span><span class="p">(</span><span class="n">output_directory</span><span class="p">,</span> <span class="n">setup_name</span><span class="p">,</span> <span class="n">freq_option</span><span class="p">,</span> <span class="n">f1</span><span class="p">,</span> <span class="n">f2</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">output_directory</span>
 
+    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">heal_objects</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">input_objects_list</span><span class="p">,</span>
+        <span class="n">auto_heal</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">tolerant_stitch</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">simplify_geometry</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">tighten_gaps</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">heal_to_solid</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">stop_after_first_stitch_error</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">max_stitch_tolerance</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span>
+        <span class="n">explode_and_stitch</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">geometry_simplification_tolerance</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">maximum_generated_radius</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">simplify_type</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">tighten_gaps_width</span><span class="o">=</span><span class="mf">0.00001</span><span class="p">,</span>
+        <span class="n">remove_silver_faces</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">remove_small_edges</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">remove_small_faces</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">silver_face_tolerance</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">small_edge_tolerance</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">small_face_area_tolerance</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">bounding_box_scale_factor</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">remove_holes</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">remove_chamfers</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">remove_blends</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">hole_radius_tolerance</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">chamfer_width_tolerance</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">blend_radius_tolerance</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">allowable_surface_area_change</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+        <span class="n">allowable_volume_change</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Analyze healing objects options.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        input_objects_list : str</span>
+<span class="sd">            List of object names to analyze.</span>
+<span class="sd">        auto_heal : bool, optional</span>
+<span class="sd">            Auto heal option. Default value is ``True``.</span>
+<span class="sd">        tolerant_stitch : bool, optional</span>
+<span class="sd">            Tolerant stitch for manual healing. Default value is ``True``.</span>
+<span class="sd">        simplify_geometry : bool, optional</span>
+<span class="sd">            Simplify geometry for manual healing. Default value is ``True``.</span>
+<span class="sd">        tighten_gaps : bool, optional</span>
+<span class="sd">            Tighten gaps for manual healing. Default value is ``True``.</span>
+<span class="sd">        heal_to_solid : bool, optional</span>
+<span class="sd">            Heal to solid for manual healing. Default value is ``False``.</span>
+<span class="sd">        stop_after_first_stitch_error : bool, optional</span>
+<span class="sd">            Stop after first stitch error for manual healing. Default value is ``False``.</span>
+<span class="sd">        max_stitch_tolerance : float, str, optional</span>
+<span class="sd">            Max stitch tolerance for manual healing. Default value is ``0.001``.</span>
+<span class="sd">        explode_and_stitch : bool, optional</span>
+<span class="sd">            Explode and stitch for manual healing. Default value is ``True``.</span>
+<span class="sd">        geometry_simplification_tolerance : float, str, optional</span>
+<span class="sd">            Geometry simplification tolerance for manual healing in mm. Default value is ``1``.</span>
+<span class="sd">        maximum_generated_radius : float, str, optional</span>
+<span class="sd">            Maximum generated radius for manual healing in mm. Default value is ``1``.</span>
+<span class="sd">        simplify_type : int, optional</span>
+<span class="sd">            Simplify type for manual healing. Default value is ``0`` which refers to ``Curves``.</span>
+<span class="sd">            Other available values are ``1`` for ``Surfaces`` and ``2`` for ``Both``.</span>
+<span class="sd">        tighten_gaps_width : float, str, optional</span>
+<span class="sd">            Tighten gaps width for manual healing in mm. Default value is ``0.00001``.</span>
+<span class="sd">        remove_silver_faces : bool, optional</span>
+<span class="sd">            Remove silver faces for manual healing. Default value is ``True``.</span>
+<span class="sd">        remove_small_edges : bool, optional</span>
+<span class="sd">            Remove small edges faces for manual healing. Default value is ``True``.</span>
+<span class="sd">        remove_small_faces : bool, optional</span>
+<span class="sd">            Remove small faces for manual healing. Default value is ``True``.</span>
+<span class="sd">        silver_face_tolerance : float, str, optional</span>
+<span class="sd">            Silver face tolerance for manual healing in mm. Default value is ``1``.</span>
+<span class="sd">        small_edge_tolerance : float, str, optional</span>
+<span class="sd">            Silver face tolerance for manual healing in mm. Default value is ``1``.</span>
+<span class="sd">        small_face_area_tolerance : float, str, optional</span>
+<span class="sd">            Silver face tolerance for manual healing in mm^2. Default value is ``1``.</span>
+<span class="sd">        bounding_box_scale_factor : int, optional</span>
+<span class="sd">            Bounding box scaling factor for manual healing. Default value is ``0``.</span>
+<span class="sd">        remove_holes : bool, optional</span>
+<span class="sd">            Remove holes for manual healing. Default value is ``True``.</span>
+<span class="sd">        remove_chamfers : bool, optional</span>
+<span class="sd">            Remove chamfers for manual healing. Default value is ``True``.</span>
+<span class="sd">        remove_blends : bool, optional</span>
+<span class="sd">            Remove blends for manual healing. Default value is ``True``.</span>
+<span class="sd">        hole_radius_tolerance : float, str, optional</span>
+<span class="sd">            Hole radius tolerance for manual healing in mm. Default value is ``1``.</span>
+<span class="sd">        chamfer_width_tolerance : float, str, optional</span>
+<span class="sd">            Chamfer width tolerance for manual healing in mm. Default value is ``1``.</span>
+<span class="sd">        blend_radius_tolerance : float, str, optional</span>
+<span class="sd">            Blend radius tolerance for manual healing in mm. Default value is ``1``.</span>
+<span class="sd">        allowable_surface_area_change : float, str, optional</span>
+<span class="sd">            Allowable surface area for manual healing in mm. Default value is ``1``.</span>
+<span class="sd">        allowable_volume_change : float, str, optional</span>
+<span class="sd">            Allowable volume change for manual healing in mm. Default value is ``1``.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        bool</span>
+<span class="sd">            ``True`` when successful, ``False`` when failed.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">input_objects_list</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Provide an object name or a list of object names as a string.&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">elif</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">input_objects_list</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Provide an object name or a list of object names as a string.&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">elif</span> <span class="s2">&quot;,&quot;</span> <span class="ow">in</span> <span class="n">input_objects_list</span><span class="p">:</span>
+            <span class="n">input_objects_list</span> <span class="o">=</span> <span class="n">input_objects_list</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+            <span class="k">if</span> <span class="s2">&quot;, &quot;</span> <span class="ow">in</span> <span class="n">input_objects_list</span><span class="p">:</span>
+                <span class="n">input_objects_list_split</span> <span class="o">=</span> <span class="n">input_objects_list</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;, &quot;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">input_objects_list_split</span> <span class="o">=</span> <span class="n">input_objects_list</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">input_objects_list_split</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">obj</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">object_names</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Provide an object name or a list of object names that exists in current design.&quot;</span><span class="p">)</span>
+                    <span class="k">return</span> <span class="kc">False</span>
+            <span class="n">objects_selection</span> <span class="o">=</span> <span class="s2">&quot;,&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">input_objects_list_split</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">objects_selection</span> <span class="o">=</span> <span class="n">input_objects_list</span>
+
+        <span class="k">if</span> <span class="n">simplify_type</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Invalid simplify type.&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">False</span>
+
+        <span class="n">selections_args</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;NAME:Selections&quot;</span><span class="p">,</span> <span class="s2">&quot;Selections:=&quot;</span><span class="p">,</span> <span class="n">objects_selection</span><span class="p">,</span> <span class="s2">&quot;NewPartsModelFlag:=&quot;</span><span class="p">,</span> <span class="s2">&quot;Model&quot;</span><span class="p">]</span>
+        <span class="n">healing_parameters</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="s2">&quot;NAME:ObjectHealingParameters&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Version:=&quot;</span><span class="p">,</span>
+            <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;AutoHeal:=&quot;</span><span class="p">,</span>
+            <span class="n">auto_heal</span><span class="p">,</span>
+            <span class="s2">&quot;TolerantStitch:=&quot;</span><span class="p">,</span>
+            <span class="n">tolerant_stitch</span><span class="p">,</span>
+            <span class="s2">&quot;SimplifyGeom:=&quot;</span><span class="p">,</span>
+            <span class="n">simplify_geometry</span><span class="p">,</span>
+            <span class="s2">&quot;TightenGaps:=&quot;</span><span class="p">,</span>
+            <span class="n">tighten_gaps</span><span class="p">,</span>
+            <span class="s2">&quot;HealToSolid:=&quot;</span><span class="p">,</span>
+            <span class="n">heal_to_solid</span><span class="p">,</span>
+            <span class="s2">&quot;StopAfterFirstStitchError:=&quot;</span><span class="p">,</span>
+            <span class="n">stop_after_first_stitch_error</span><span class="p">,</span>
+            <span class="s2">&quot;MaxStitchTol:=&quot;</span><span class="p">,</span>
+            <span class="n">max_stitch_tolerance</span><span class="p">,</span>
+            <span class="s2">&quot;ExplodeAndStitch:=&quot;</span><span class="p">,</span>
+            <span class="n">explode_and_stitch</span><span class="p">,</span>
+            <span class="s2">&quot;GeomSimplificationTol:=&quot;</span><span class="p">,</span>
+            <span class="n">geometry_simplification_tolerance</span><span class="p">,</span>
+            <span class="s2">&quot;MaximumGeneratedRadiusForSimplification:=&quot;</span><span class="p">,</span>
+            <span class="n">maximum_generated_radius</span><span class="p">,</span>
+            <span class="s2">&quot;SimplifyType:=&quot;</span><span class="p">,</span>
+            <span class="n">simplify_type</span><span class="p">,</span>
+            <span class="s2">&quot;TightenGapsWidth:=&quot;</span><span class="p">,</span>
+            <span class="n">tighten_gaps_width</span><span class="p">,</span>
+            <span class="s2">&quot;RemoveSliverFaces:=&quot;</span><span class="p">,</span>
+            <span class="n">remove_silver_faces</span><span class="p">,</span>
+            <span class="s2">&quot;RemoveSmallEdges:=&quot;</span><span class="p">,</span>
+            <span class="n">remove_small_edges</span><span class="p">,</span>
+            <span class="s2">&quot;RemoveSmallFaces:=&quot;</span><span class="p">,</span>
+            <span class="n">remove_small_faces</span><span class="p">,</span>
+            <span class="s2">&quot;SliverFaceTol:=&quot;</span><span class="p">,</span>
+            <span class="n">silver_face_tolerance</span><span class="p">,</span>
+            <span class="s2">&quot;SmallEdgeTol:=&quot;</span><span class="p">,</span>
+            <span class="n">small_edge_tolerance</span><span class="p">,</span>
+            <span class="s2">&quot;SmallFaceAreaTol:=&quot;</span><span class="p">,</span>
+            <span class="n">small_face_area_tolerance</span><span class="p">,</span>
+            <span class="s2">&quot;SpikeTol:=&quot;</span><span class="p">,</span>
+            <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;GashWidthBound:=&quot;</span><span class="p">,</span>
+            <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;GashAspectBound:=&quot;</span><span class="p">,</span>
+            <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;BoundingBoxScaleFactor:=&quot;</span><span class="p">,</span>
+            <span class="n">bounding_box_scale_factor</span><span class="p">,</span>
+            <span class="s2">&quot;RemoveHoles:=&quot;</span><span class="p">,</span>
+            <span class="n">remove_holes</span><span class="p">,</span>
+            <span class="s2">&quot;RemoveChamfers:=&quot;</span><span class="p">,</span>
+            <span class="n">remove_chamfers</span><span class="p">,</span>
+            <span class="s2">&quot;RemoveBlends:=&quot;</span><span class="p">,</span>
+            <span class="n">remove_blends</span><span class="p">,</span>
+            <span class="s2">&quot;HoleRadiusTol:=&quot;</span><span class="p">,</span>
+            <span class="n">hole_radius_tolerance</span><span class="p">,</span>
+            <span class="s2">&quot;ChamferWidthTol:=&quot;</span><span class="p">,</span>
+            <span class="n">chamfer_width_tolerance</span><span class="p">,</span>
+            <span class="s2">&quot;BlendRadiusTol:=&quot;</span><span class="p">,</span>
+            <span class="n">blend_radius_tolerance</span><span class="p">,</span>
+            <span class="s2">&quot;AllowableSurfaceAreaChange:=&quot;</span><span class="p">,</span>
+            <span class="n">allowable_surface_area_change</span><span class="p">,</span>
+            <span class="s2">&quot;AllowableVolumeChange:=&quot;</span><span class="p">,</span>
+            <span class="n">allowable_volume_change</span><span class="p">,</span>
+        <span class="p">]</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">oeditor</span><span class="o">.</span><span class="n">HealObject</span><span class="p">(</span><span class="n">selections_args</span><span class="p">,</span> <span class="n">healing_parameters</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Heal objects failed.&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">simplify_objects</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">input_objects_list</span><span class="p">,</span>
+        <span class="n">simplify_type</span><span class="o">=</span><span class="s2">&quot;Polygon Fit&quot;</span><span class="p">,</span>
+        <span class="n">extrusion_axis</span><span class="o">=</span><span class="s2">&quot;Auto&quot;</span><span class="p">,</span>
+        <span class="n">clean_up</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">allow_splitting</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">separate_bodies</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">clone_body</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">generate_primitive_history</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">interior_points_on_arc</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+        <span class="n">length_threshold_percentage</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span>
+        <span class="n">create_group_for_new_objects</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Analyze healing objects options.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        input_objects_list : str</span>
+<span class="sd">            List of object names to simplify.</span>
+<span class="sd">        simplify_type : str, optional</span>
+<span class="sd">            Simplify type. Default value is ``Polygon Fit``.</span>
+<span class="sd">            Available values are ``Polygon Fit`` ``Primitive Fit`` or ``Bounding Box``.</span>
+<span class="sd">        extrusion_axis : str, optional</span>
+<span class="sd">            Extrusion axis. Default value is ``Auto``.</span>
+<span class="sd">            Available values are ``Auto`` ``X``, ``Y`` or ``Z``.</span>
+<span class="sd">        clean_up : bool, optional</span>
+<span class="sd">            Clean up. Default value is ``True``.</span>
+<span class="sd">        allow_splitting : bool, optional</span>
+<span class="sd">            Allow splitting. Default value is ``True``.</span>
+<span class="sd">        separate_bodies : bool, optional</span>
+<span class="sd">            Separate bodies. Default value is ``True``.</span>
+<span class="sd">        clone_body : bool, optional</span>
+<span class="sd">            Clone body. Default value is ``True``.</span>
+<span class="sd">        generate_primitive_history : bool, optional</span>
+<span class="sd">            Generate primitive history.</span>
+<span class="sd">            This option will purge the history for selected objects.</span>
+<span class="sd">            Default value is ``False``.</span>
+<span class="sd">        interior_points_on_arc : float, optional</span>
+<span class="sd">            Number points on curve. Default value is ``5``.</span>
+<span class="sd">        length_threshold_percentage : float, optional</span>
+<span class="sd">            Number points on curve. Default value is ``25``.</span>
+<span class="sd">        create_group_for_new_objects : bool, optional</span>
+<span class="sd">            Create group for new objects. Default value is ``False``.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        bool</span>
+<span class="sd">            ``True`` when successful, ``False`` when failed.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">input_objects_list</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Provide an object name or a list of object names as a string.&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">elif</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">input_objects_list</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Provide an object name or a list of object names as a string.&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">elif</span> <span class="s2">&quot;,&quot;</span> <span class="ow">in</span> <span class="n">input_objects_list</span><span class="p">:</span>
+            <span class="n">input_objects_list</span> <span class="o">=</span> <span class="n">input_objects_list</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+            <span class="k">if</span> <span class="s2">&quot;, &quot;</span> <span class="ow">in</span> <span class="n">input_objects_list</span><span class="p">:</span>
+                <span class="n">input_objects_list_split</span> <span class="o">=</span> <span class="n">input_objects_list</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;, &quot;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">input_objects_list_split</span> <span class="o">=</span> <span class="n">input_objects_list</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">input_objects_list_split</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">obj</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">object_names</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Provide an object name or a list of object names that exists in current design.&quot;</span><span class="p">)</span>
+                    <span class="k">return</span> <span class="kc">False</span>
+            <span class="n">objects_selection</span> <span class="o">=</span> <span class="s2">&quot;,&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">input_objects_list_split</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">objects_selection</span> <span class="o">=</span> <span class="n">input_objects_list</span>
+
+        <span class="k">if</span> <span class="n">simplify_type</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;Polygon Fit&quot;</span><span class="p">,</span> <span class="s2">&quot;Primitive Fit&quot;</span><span class="p">,</span> <span class="s2">&quot;Bounding Box&quot;</span><span class="p">]:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Invalid simplify type.&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">False</span>
+
+        <span class="k">if</span> <span class="n">extrusion_axis</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;Auto&quot;</span><span class="p">,</span> <span class="s2">&quot;X&quot;</span><span class="p">,</span> <span class="s2">&quot;Y&quot;</span><span class="p">,</span> <span class="s2">&quot;Z&quot;</span><span class="p">]:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Invalid extrusion axis.&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">False</span>
+
+        <span class="n">selections_args</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;NAME:Selections&quot;</span><span class="p">,</span> <span class="s2">&quot;Selections:=&quot;</span><span class="p">,</span> <span class="n">objects_selection</span><span class="p">,</span> <span class="s2">&quot;NewPartsModelFlag:=&quot;</span><span class="p">,</span> <span class="s2">&quot;Model&quot;</span><span class="p">]</span>
+        <span class="n">simplify_parameters</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="s2">&quot;NAME:SimplifyParameters&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Type:=&quot;</span><span class="p">,</span>
+            <span class="n">simplify_type</span><span class="p">,</span>
+            <span class="s2">&quot;ExtrusionAxis:=&quot;</span><span class="p">,</span>
+            <span class="n">extrusion_axis</span><span class="p">,</span>
+            <span class="s2">&quot;Cleanup:=&quot;</span><span class="p">,</span>
+            <span class="n">clean_up</span><span class="p">,</span>
+            <span class="s2">&quot;Splitting:=&quot;</span><span class="p">,</span>
+            <span class="n">allow_splitting</span><span class="p">,</span>
+            <span class="s2">&quot;SeparateBodies:=&quot;</span><span class="p">,</span>
+            <span class="n">separate_bodies</span><span class="p">,</span>
+            <span class="s2">&quot;CloneBody:=&quot;</span><span class="p">,</span>
+            <span class="n">clone_body</span><span class="p">,</span>
+            <span class="s2">&quot;Generate Primitive History:=&quot;</span><span class="p">,</span>
+            <span class="n">generate_primitive_history</span><span class="p">,</span>
+            <span class="s2">&quot;NumberPointsCurve:=&quot;</span><span class="p">,</span>
+            <span class="n">interior_points_on_arc</span><span class="p">,</span>
+            <span class="s2">&quot;LengthThresholdCurve:=&quot;</span><span class="p">,</span>
+            <span class="n">length_threshold_percentage</span><span class="p">,</span>
+        <span class="p">]</span>
+        <span class="n">groups_for_new_object</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;CreateGroupsForNewObjects:=&quot;</span><span class="p">,</span> <span class="n">create_group_for_new_objects</span><span class="p">]</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">oeditor</span><span class="o">.</span><span class="n">Simplify</span><span class="p">(</span><span class="n">selections_args</span><span class="p">,</span> <span class="n">simplify_parameters</span><span class="p">,</span> <span class="n">groups_for_new_object</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Simplify objects failed.&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">False</span>
+
 
 <div class="viewcode-block" id="Maxwell3d"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.maxwell.Maxwell3d.html#pyaedt.maxwell.Maxwell3d">[docs]</a><span class="k">class</span> <span class="nc">Maxwell3d</span><span class="p">(</span><span class="n">Maxwell</span><span class="p">,</span> <span class="n">FieldAnalysis3D</span><span class="p">,</span> <span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Provides the Maxwell 3D application interface.</span>
@@ -2710,7 +3023,7 @@ function checkPageExistsAndRedirect(event) {
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        objects : list of int or str or :class:`pyaedt.modeler.Object3d.Object3d`</span>
+<span class="sd">        objects : list of int or str or :class:`pyaedt.modeler.object3d.Object3d`</span>
 <span class="sd">            List of objects to assign an end connection to.</span>
 <span class="sd">        resistance : float or str, optional</span>
 <span class="sd">            Resistance value. If float is provided, the units are assumed to be ohms.</span>

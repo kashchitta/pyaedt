@@ -1,0 +1,4910 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>via_layers &#8212; PyAEDT</title>
+    
+<script>
+  document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+  document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"
+</script>
+
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+
+
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css\ansys_sphinx_theme.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
+
+    
+        <link href="../../_static/css/breadcrumbs.css" rel="stylesheet">
+    
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <link rel="shortcut icon" href="../../_static/ansys-favicon.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="via_start_layer" href="pyaedt.edb_core.edb_data.padstacks_data.EDBPadstack.via_start_layer.html" />
+    <link rel="prev" title="padstack_instances" href="pyaedt.edb_core.edb_data.padstacks_data.EDBPadstack.padstack_instances.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="docsearch:language" content="en">
+  </head>
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
+    <div class="bd-header-announcement container-fluid" id="banner">
+      
+
+    </div>
+
+    
+    
+    <nav class="bd-header navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="bd-header__inner container-xl">
+
+  <div id="navbar-start">
+    
+    
+  
+
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+    <img src="../../_static/pyansys-logo-black-cropped.png" class="logo__image only-light" alt="Logo image">
+    <img src="../../_static/pyansys-logo-black-cropped.png" class="logo__image only-dark" alt="Logo image">
+  
+  
+</a>
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="fas fa-bars"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../Getting_started/index.html">
+  Getting started
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../User_guide/index.html">
+  User guide
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../API/index.html">
+  API AEDT reference
+ </a>
+</li>
+
+<li class="toctree-l1 current active nav-item">
+ <a class="reference internal nav-link" href="../index.html">
+  API EDB reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../examples/index.html">
+  Examples
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../Contributing.html">
+  Contribute
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <div class="dropdown" id="version_switcher">
+    <button type="button" class="btn btn-sm navbar-btn dropdown-toggle" id="version_switcher_button" data-toggle="dropdown">
+        0.6  <!-- this text may get changed later by javascript -->
+        <span class="caret"></span>
+    </button>
+    <div id="version_switcher_menu" class="dropdown-menu list-group-flush py-0" aria-labelledby="version_switcher_button">
+    <!-- dropdown will be populated by javascript on page load -->
+    </div>
+</div>
+
+<!-- NOTE: this JS must live here (not in our global JS file) because it relies
+     on being processed by Jinja before it is run (specifically for replacing
+     variables EDBAPI/_autosummary/pyaedt.edb_core.edb_data.padstacks_data.EDBPadstack.via_layers and {'json_url': 'https://aedt.docs.pyansys.com/release/versions.json', 'version_match': '0.6'}.
+-->
+
+<script type="text/javascript">
+// Check if corresponding page path exists in other version of docs
+// and, if so, go there instead of the homepage of the other docs version
+function checkPageExistsAndRedirect(event) {
+    const currentFilePath = "EDBAPI/_autosummary/pyaedt.edb_core.edb_data.padstacks_data.EDBPadstack.via_layers.html",
+          tryUrl = event.target.getAttribute("href");
+    let otherDocsHomepage = tryUrl.replace(currentFilePath, "");
+    $.ajax({
+        type: 'HEAD',
+        url: tryUrl,
+        // if the page exists, go there
+        success: function() {
+            location.href = tryUrl;
+        }
+    }).fail(function() {
+        location.href = otherDocsHomepage;
+    });
+    // this prevents the browser from following the href of the clicked node
+    // (which is fine because this function takes care of redirecting)
+    return false;
+}
+
+// Populate the version switcher from the JSON config file
+(function () {
+    $.getJSON("https://aedt.docs.pyansys.com/release/versions.json", function(data, textStatus, jqXHR) {
+        const currentFilePath = "EDBAPI/_autosummary/pyaedt.edb_core.edb_data.padstacks_data.EDBPadstack.via_layers.html";
+        let btn = document.getElementById("version_switcher_button");
+        // Set empty strings by default so that these attributes exist and can be used in CSS selectors
+        btn.dataset["activeVersionName"] = "";
+        btn.dataset["activeVersion"] = "";
+        // create links to the corresponding page in the other docs versions
+        $.each(data, function(index, entry) {
+            // if no custom name specified (e.g., "latest"), use version string
+            if (!("name" in entry)) {
+                entry.name = entry.version;
+            }
+            // create the node
+            const node = document.createElement("a");
+            node.setAttribute("class", "list-group-item list-group-item-action py-1");
+            node.textContent = `${entry.name}`;
+            node.setAttribute("href", `${entry.url}${currentFilePath}`);
+            // on click, AJAX calls will check if the linked page exists before
+            // trying to redirect, and if not, will redirect to the homepage
+            // for that version of the docs.
+            node.onclick = checkPageExistsAndRedirect;
+            // Add dataset values for the version and name in case people want
+            // to apply CSS styling based on this information.
+            node.dataset["versionName"] = entry.name;
+            node.dataset["version"] = entry.version;
+
+            $("#version_switcher_menu").append(node);
+            // replace dropdown button text with the preferred display name of
+            // this version, rather than using sphinx's 0.6.42 variable.
+            // also highlight the dropdown entry for the currently-viewed
+            // version's entry
+            if (entry.version == "0.6") {
+                node.classList.add("active");
+                btn.innerText = btn.dataset["activeVersionName"] = entry.name;
+                btn.dataset["activeVersion"] = entry.version;
+            }
+        });
+    });
+})();
+</script>
+      </div>
+      
+      <div class="navbar-end-item">
+        <span id="theme-switch" class="btn btn-sm btn-outline-primary navbar-btn rounded-circle">
+    <a class="theme-switch" data-mode="light"><i class="fas fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="far fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fas fa-adjust"></i></a>
+</span>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/pyansys/pyaedt" rel="noopener" target="_blank" title="GitHub"><span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/pyansys/pyaedt/discussions" rel="noopener" target="_blank" title="Support"><span><i class="fa fa-comment fa-fw"></i></span>
+            <label class="sr-only">Support</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+     
+<div id="announcement_msg"></div>
+<script>
+  fetch("announcement.html")
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error: ${response.status}`);
+      }
+      return response.text();
+    })
+    .then(text => document.getElementById("announcement_msg").innerHTML = text)
+    .catch((error) => console.error(`Fetch problem: ${error.message}`));
+</script>
+
+    
+        <div class="container-xl">
+    <div class="row">
+        <div class="col-12 col-md-3" id="breadcrumbs-spacer"></div>
+        <div class="col-12 col-md-11 col-xl-9" id="breadcrumbs">
+          
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+    
+        <li class="nav-item nav-item-additional-breadcrumb"><a href="https://docs.pyansys.com/">PyAnsys</a> » </li>
+    
+    
+        <li class="nav-item nav-item-0"><a href="../../index.html">PyAEDT</a> » </li>
+    
+
+          <li class="nav-item nav-item-1"><a href="../index.html" >API EDB reference</a> » </li>
+          <li class="nav-item nav-item-2"><a href="../PadstackEdb.html" >EDB padstack</a> » </li>
+          <li class="nav-item nav-item-3"><a href="pyaedt.edb_core.edb_data.padstacks_data.EDBPadstack.html" accesskey="U">pyaedt.edb_core.edb_data.padstacks_data.EDBPadstack</a> » </li>
+        <li class="nav-item nav-item-this"><a href="">via_layers</a></li> 
+      </ul>
+    </div>
+        </div>
+  </div>
+</div>
+    
+
+
+    <div class="bd-container container-xl">
+      <div class="bd-container__inner row">
+          
+
+<!-- Only show if we have sidebars configured, else just a small margin  -->
+<div class="bd-sidebar-primary col-12 col-md-3 bd-sidebar">
+  <div class="sidebar-start-items"><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    
+    <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../CoreEdb.html">
+   EDB manager
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="pyaedt.edb.Edb.html">
+     pyaedt.edb.Edb
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+    <label for="toctree-checkbox-2">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb.Edb.add_design_variable.html">
+       add_design_variable
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb.Edb.are_port_reference_terminals_connected.html">
+       are_port_reference_terminals_connected
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb.Edb.arg_with_dim.html">
+       arg_with_dim
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb.Edb.build_simulation_project.html">
+       build_simulation_project
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb.Edb.change_design_variable_value.html">
+       change_design_variable_value
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb.Edb.close_edb.html">
+       close_edb
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb.Edb.create_cutout.html">
+       create_cutout
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb.Edb.create_cutout_multithread.html">
+       create_cutout_multithread
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb.Edb.create_cutout_on_point_list.html">
+       create_cutout_on_point_list
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb.Edb.create_edb.html">
+       create_edb
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb.Edb.create_hfss_setup.html">
+       create_hfss_setup
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb.Edb.create_siwave_dc_setup.html">
+       create_siwave_dc_setup
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb.Edb.create_siwave_syz_setup.html">
+       create_siwave_syz_setup
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb.Edb.edb_exception.html">
+       edb_exception
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb.Edb.edb_value.html">
+       edb_value
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb.Edb.execute.html">
+       execute
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb.Edb.export_hfss.html">
+       export_hfss
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb.Edb.export_maxwell.html">
+       export_maxwell
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb.Edb.export_q3d.html">
+       export_q3d
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb.Edb.export_siwave_dc_results.html">
+       export_siwave_dc_results
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb.Edb.export_to_ipc2581.html">
+       export_to_ipc2581
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb.Edb.get_bounding_box.html">
+       get_bounding_box
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb.Edb.get_conformal_polygon_from_netlist.html">
+       get_conformal_polygon_from_netlist
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb.Edb.get_statistics.html">
+       get_statistics
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb.Edb.import_cadence_file.html">
+       import_cadence_file
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb.Edb.import_gds_file.html">
+       import_gds_file
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb.Edb.import_layout_pcb.html">
+       import_layout_pcb
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb.Edb.new_simulation_configuration.html">
+       new_simulation_configuration
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb.Edb.open_edb.html">
+       open_edb
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb.Edb.open_edb_inside_aedt.html">
+       open_edb_inside_aedt
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb.Edb.save_edb.html">
+       save_edb
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb.Edb.save_edb_as.html">
+       save_edb_as
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb.Edb.solve_siwave.html">
+       solve_siwave
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb.Edb.write_export3d_option_config_file.html">
+       write_export3d_option_config_file
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb.Edb.active_cell.html">
+       active_cell
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb.Edb.active_layout.html">
+       active_layout
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb.Edb.cell_names.html">
+       cell_names
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb.Edb.core_components.html">
+       core_components
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb.Edb.core_hfss.html">
+       core_hfss
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb.Edb.core_nets.html">
+       core_nets
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb.Edb.core_padstack.html">
+       core_padstack
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb.Edb.core_primitives.html">
+       core_primitives
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb.Edb.core_siwave.html">
+       core_siwave
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb.Edb.core_stackup.html">
+       core_stackup
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb.Edb.db.html">
+       db
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb.Edb.excitations.html">
+       excitations
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb.Edb.excitations_nets.html">
+       excitations_nets
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb.Edb.hfss_setups.html">
+       hfss_setups
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb.Edb.layout_instance.html">
+       layout_instance
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb.Edb.logger.html">
+       logger
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb.Edb.materials.html">
+       materials
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb.Edb.pins.html">
+       pins
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb.Edb.probes.html">
+       probes
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb.Edb.setups.html">
+       setups
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb.Edb.siwave_ac_setups.html">
+       siwave_ac_setups
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb.Edb.siwave_dc_setups.html">
+       siwave_dc_setups
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb.Edb.sources.html">
+       sources
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb.Edb.stackup.html">
+       stackup
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="pyaedt.edb_core.components.Components.html">
+     pyaedt.edb_core.components.Components
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+    <label for="toctree-checkbox-3">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.components.Components.add_port_on_rlc_component.html">
+       add_port_on_rlc_component
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.components.Components.create_component_from_pins.html">
+       create_component_from_pins
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.components.Components.create_pingroup_from_pins.html">
+       create_pingroup_from_pins
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.components.Components.create_port_on_component.html">
+       create_port_on_component
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.components.Components.create_rlc_component.html">
+       create_rlc_component
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.components.Components.create_source_on_component.html">
+       create_source_on_component
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.components.Components.deactivate_rlc_component.html">
+       deactivate_rlc_component
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.components.Components.delete_component.html">
+       delete_component
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.components.Components.delete_single_pin_rlc.html">
+       delete_single_pin_rlc
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.components.Components.disable_rlc_component.html">
+       disable_rlc_component
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.components.Components.export_bom.html">
+       export_bom
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.components.Components.export_definition.html">
+       export_definition
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.components.Components.get_aedt_pin_name.html">
+       get_aedt_pin_name
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.components.Components.get_component_by_name.html">
+       get_component_by_name
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.components.Components.get_component_list.html">
+       get_component_list
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.components.Components.get_component_net_connection_info.html">
+       get_component_net_connection_info
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.components.Components.get_component_placement_vector.html">
+       get_component_placement_vector
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.components.Components.get_components_from_nets.html">
+       get_components_from_nets
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.components.Components.get_nets_from_pin_list.html">
+       get_nets_from_pin_list
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.components.Components.get_pin_from_component.html">
+       get_pin_from_component
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.components.Components.get_pin_position.html">
+       get_pin_position
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.components.Components.get_pins_name_from_net.html">
+       get_pins_name_from_net
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.components.Components.get_rats.html">
+       get_rats
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.components.Components.get_solder_ball_height.html">
+       get_solder_ball_height
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.components.Components.get_through_resistor_list.html">
+       get_through_resistor_list
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.components.Components.import_bom.html">
+       import_bom
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.components.Components.import_definition.html">
+       import_definition
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.components.Components.refresh_components.html">
+       refresh_components
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.components.Components.set_component_model.html">
+       set_component_model
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.components.Components.set_component_rlc.html">
+       set_component_rlc
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.components.Components.set_solder_ball.html">
+       set_solder_ball
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.components.Components.short_component_pins.html">
+       short_component_pins
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.components.Components.update_rlc_from_bom.html">
+       update_rlc_from_bom
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.components.Components.capacitors.html">
+       capacitors
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.components.Components.components.html">
+       components
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.components.Components.components_by_partname.html">
+       components_by_partname
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.components.Components.definitions.html">
+       definitions
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.components.Components.inductors.html">
+       inductors
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.components.Components.nport_comp_definition.html">
+       nport_comp_definition
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.components.Components.resistors.html">
+       resistors
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="pyaedt.edb_core.hfss.EdbHfss.html">
+     pyaedt.edb_core.hfss.EdbHfss
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+    <label for="toctree-checkbox-4">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.hfss.EdbHfss.configure_hfss_analysis_setup.html">
+       configure_hfss_analysis_setup
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.hfss.EdbHfss.configure_hfss_extents.html">
+       configure_hfss_extents
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.hfss.EdbHfss.create_circuit_port_on_net.html">
+       create_circuit_port_on_net
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.hfss.EdbHfss.create_circuit_port_on_pin.html">
+       create_circuit_port_on_pin
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.hfss.EdbHfss.create_circuit_ports_on_components_no_pin_group.html">
+       create_circuit_ports_on_components_no_pin_group
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.hfss.EdbHfss.create_coax_port_on_component.html">
+       create_coax_port_on_component
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.hfss.EdbHfss.create_current_source_on_net.html">
+       create_current_source_on_net
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.hfss.EdbHfss.create_current_source_on_pin.html">
+       create_current_source_on_pin
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.hfss.EdbHfss.create_differential_wave_port.html">
+       create_differential_wave_port
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.hfss.EdbHfss.create_edge_port_horizontal.html">
+       create_edge_port_horizontal
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.hfss.EdbHfss.create_edge_port_on_polygon.html">
+       create_edge_port_on_polygon
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.hfss.EdbHfss.create_edge_port_vertical.html">
+       create_edge_port_vertical
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.hfss.EdbHfss.create_hfss_ports_on_padstack.html">
+       create_hfss_ports_on_padstack
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.hfss.EdbHfss.create_lumped_port_on_net.html">
+       create_lumped_port_on_net
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.hfss.EdbHfss.create_resistor_on_pin.html">
+       create_resistor_on_pin
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.hfss.EdbHfss.create_rlc_boundary_on_pins.html">
+       create_rlc_boundary_on_pins
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.hfss.EdbHfss.create_voltage_source_on_net.html">
+       create_voltage_source_on_net
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.hfss.EdbHfss.create_voltage_source_on_pin.html">
+       create_voltage_source_on_pin
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.hfss.EdbHfss.create_wave_port.html">
+       create_wave_port
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.hfss.EdbHfss.get_layout_bounding_box.html">
+       get_layout_bounding_box
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.hfss.EdbHfss.get_ports_number.html">
+       get_ports_number
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.hfss.EdbHfss.get_trace_width_for_traces_with_ports.html">
+       get_trace_width_for_traces_with_ports
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.hfss.EdbHfss.layout_defeaturing.html">
+       layout_defeaturing
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.hfss.EdbHfss.set_coax_port_attributes.html">
+       set_coax_port_attributes
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.hfss.EdbHfss.trim_component_reference_size.html">
+       trim_component_reference_size
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.hfss.EdbHfss.excitations.html">
+       excitations
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.hfss.EdbHfss.probes.html">
+       probes
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.hfss.EdbHfss.sources.html">
+       sources
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="pyaedt.edb_core.siwave.EdbSiwave.html">
+     pyaedt.edb_core.siwave.EdbSiwave
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+    <label for="toctree-checkbox-5">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.siwave.EdbSiwave.add_siwave_dc_analysis.html">
+       add_siwave_dc_analysis
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.siwave.EdbSiwave.add_siwave_syz_analysis.html">
+       add_siwave_syz_analysis
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.siwave.EdbSiwave.configure_siw_analysis_setup.html">
+       configure_siw_analysis_setup
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.siwave.EdbSiwave.create_circuit_port_on_net.html">
+       create_circuit_port_on_net
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.siwave.EdbSiwave.create_circuit_port_on_pin.html">
+       create_circuit_port_on_pin
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.siwave.EdbSiwave.create_circuit_port_on_pin_group.html">
+       create_circuit_port_on_pin_group
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.siwave.EdbSiwave.create_current_source_on_net.html">
+       create_current_source_on_net
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.siwave.EdbSiwave.create_current_source_on_pin.html">
+       create_current_source_on_pin
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.siwave.EdbSiwave.create_current_source_on_pin_group.html">
+       create_current_source_on_pin_group
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.siwave.EdbSiwave.create_dc_terminal.html">
+       create_dc_terminal
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.siwave.EdbSiwave.create_exec_file.html">
+       create_exec_file
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.siwave.EdbSiwave.create_pin_group.html">
+       create_pin_group
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.siwave.EdbSiwave.create_pin_group_on_net.html">
+       create_pin_group_on_net
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.siwave.EdbSiwave.create_pin_group_terminal.html">
+       create_pin_group_terminal
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.siwave.EdbSiwave.create_resistor_on_pin.html">
+       create_resistor_on_pin
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.siwave.EdbSiwave.create_rlc_component.html">
+       create_rlc_component
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.siwave.EdbSiwave.create_voltage_source_on_net.html">
+       create_voltage_source_on_net
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.siwave.EdbSiwave.create_voltage_source_on_pin.html">
+       create_voltage_source_on_pin
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.siwave.EdbSiwave.create_voltage_source_on_pin_group.html">
+       create_voltage_source_on_pin_group
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.siwave.EdbSiwave.excitations.html">
+       excitations
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.siwave.EdbSiwave.pin_groups.html">
+       pin_groups
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.siwave.EdbSiwave.probes.html">
+       probes
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.siwave.EdbSiwave.sources.html">
+       sources
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="pyaedt.edb_core.nets.EdbNets.html">
+     pyaedt.edb_core.nets.EdbNets
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+    <label for="toctree-checkbox-6">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.nets.EdbNets.classify_nets.html">
+       classify_nets
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.nets.EdbNets.delete_nets.html">
+       delete_nets
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.nets.EdbNets.find_and_fix_disjoint_nets.html">
+       find_and_fix_disjoint_nets
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.nets.EdbNets.find_or_create_net.html">
+       find_or_create_net
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.nets.EdbNets.get_dcconnected_net_list.html">
+       get_dcconnected_net_list
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.nets.EdbNets.get_net_by_name.html">
+       get_net_by_name
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.nets.EdbNets.get_plot_data.html">
+       get_plot_data
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.nets.EdbNets.get_powertree.html">
+       get_powertree
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.nets.EdbNets.is_net_in_component.html">
+       is_net_in_component
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.nets.EdbNets.is_power_gound_net.html">
+       is_power_gound_net
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.nets.EdbNets.merge_nets_polygons.html">
+       merge_nets_polygons
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.nets.EdbNets.plot.html">
+       plot
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.nets.EdbNets.db.html">
+       db
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.nets.EdbNets.eligible_power_nets.html">
+       eligible_power_nets
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.nets.EdbNets.nets.html">
+       nets
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.nets.EdbNets.power_nets.html">
+       power_nets
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.nets.EdbNets.signal_nets.html">
+       signal_nets
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="pyaedt.edb_core.padstack.EdbPadstacks.html">
+     pyaedt.edb_core.padstack.EdbPadstacks
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+    <label for="toctree-checkbox-7">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.padstack.EdbPadstacks.create_circular_padstack.html">
+       create_circular_padstack
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.padstack.EdbPadstacks.create_coax_port.html">
+       create_coax_port
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.padstack.EdbPadstacks.create_padstack.html">
+       create_padstack
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.padstack.EdbPadstacks.delete_padstack_instances.html">
+       delete_padstack_instances
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.padstack.EdbPadstacks.duplicate_padstack.html">
+       duplicate_padstack
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.padstack.EdbPadstacks.get_pad_parameters.html">
+       get_pad_parameters
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.padstack.EdbPadstacks.get_padstack_instance_by_net_name.html">
+       get_padstack_instance_by_net_name
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.padstack.EdbPadstacks.get_pinlist_from_component_and_net.html">
+       get_pinlist_from_component_and_net
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.padstack.EdbPadstacks.get_via_instance_from_net.html">
+       get_via_instance_from_net
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.padstack.EdbPadstacks.int_to_geometry_type.html">
+       int_to_geometry_type
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.padstack.EdbPadstacks.int_to_pad_type.html">
+       int_to_pad_type
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.padstack.EdbPadstacks.place_padstack.html">
+       place_padstack
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.padstack.EdbPadstacks.remove_pads_from_padstack.html">
+       remove_pads_from_padstack
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.padstack.EdbPadstacks.set_all_antipad_value.html">
+       set_all_antipad_value
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.padstack.EdbPadstacks.set_pad_property.html">
+       set_pad_property
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.padstack.EdbPadstacks.set_solderball.html">
+       set_solderball
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.padstack.EdbPadstacks.db.html">
+       db
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.padstack.EdbPadstacks.pad_type.html">
+       pad_type
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.padstack.EdbPadstacks.padstack_instances.html">
+       padstack_instances
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.padstack.EdbPadstacks.padstacks.html">
+       padstacks
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.padstack.EdbPadstacks.pingroups.html">
+       pingroups
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="pyaedt.edb_core.layout.EdbLayout.html">
+     pyaedt.edb_core.layout.EdbLayout
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+    <label for="toctree-checkbox-8">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.layout.EdbLayout.add_void.html">
+       add_void
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.layout.EdbLayout.create_circle.html">
+       create_circle
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.layout.EdbLayout.create_polygon.html">
+       create_polygon
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.layout.EdbLayout.create_polygon_from_points.html">
+       create_polygon_from_points
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.layout.EdbLayout.create_rectangle.html">
+       create_rectangle
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.layout.EdbLayout.create_trace.html">
+       create_trace
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.layout.EdbLayout.defeature_polygon.html">
+       defeature_polygon
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.layout.EdbLayout.delete_primitives.html">
+       delete_primitives
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.layout.EdbLayout.fix_circle_void_for_clipping.html">
+       fix_circle_void_for_clipping
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.layout.EdbLayout.get_layout_statistics.html">
+       get_layout_statistics
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.layout.EdbLayout.get_polygon_bounding_box.html">
+       get_polygon_bounding_box
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.layout.EdbLayout.get_polygon_points.html">
+       get_polygon_points
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.layout.EdbLayout.get_polygons_by_layer.html">
+       get_polygons_by_layer
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.layout.EdbLayout.get_primitives.html">
+       get_primitives
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.layout.EdbLayout.parametrize_polygon.html">
+       parametrize_polygon
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.layout.EdbLayout.parametrize_trace_width.html">
+       parametrize_trace_width
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.layout.EdbLayout.shape_to_polygon_data.html">
+       shape_to_polygon_data
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.layout.EdbLayout.unite_polygons_on_layer.html">
+       unite_polygons_on_layer
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.layout.EdbLayout.bondwires.html">
+       bondwires
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.layout.EdbLayout.circles.html">
+       circles
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.layout.EdbLayout.db.html">
+       db
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.layout.EdbLayout.layers.html">
+       layers
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.layout.EdbLayout.paths.html">
+       paths
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.layout.EdbLayout.polygons.html">
+       polygons
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.layout.EdbLayout.polygons_by_layer.html">
+       polygons_by_layer
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.layout.EdbLayout.primitives.html">
+       primitives
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.layout.EdbLayout.primitives_by_layer.html">
+       primitives_by_layer
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.layout.EdbLayout.primitives_by_net.html">
+       primitives_by_net
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.layout.EdbLayout.rectangles.html">
+       rectangles
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="pyaedt.edb_core.stackup.EdbStackup.html">
+     pyaedt.edb_core.stackup.EdbStackup
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+    <label for="toctree-checkbox-9">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.stackup.EdbStackup.adjust_solder_dielectrics.html">
+       adjust_solder_dielectrics
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.stackup.EdbStackup.create_conductor.html">
+       create_conductor
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.stackup.EdbStackup.create_debye_material.html">
+       create_debye_material
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.stackup.EdbStackup.create_dielectric.html">
+       create_dielectric
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.stackup.EdbStackup.create_djordjevicsarkar_material.html">
+       create_djordjevicsarkar_material
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.stackup.EdbStackup.create_multipole_debye_material.html">
+       create_multipole_debye_material
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.stackup.EdbStackup.create_symmetric_stackup.html">
+       create_symmetric_stackup
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.stackup.EdbStackup.duplicate_material.html">
+       duplicate_material
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.stackup.EdbStackup.flip_design.html">
+       flip_design
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.stackup.EdbStackup.get_layout_thickness.html">
+       get_layout_thickness
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.stackup.EdbStackup.get_property_by_material_name.html">
+       get_property_by_material_name
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.stackup.EdbStackup.material_name_to_id.html">
+       material_name_to_id
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.stackup.EdbStackup.place_a3dcomp_3d_placement.html">
+       place_a3dcomp_3d_placement
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.stackup.EdbStackup.place_in_layout.html">
+       place_in_layout
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.stackup.EdbStackup.place_in_layout_3d_placement.html">
+       place_in_layout_3d_placement
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.stackup.EdbStackup.stackup_limits.html">
+       stackup_limits
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.stackup.EdbStackup.layer_types.html">
+       layer_types
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.stackup.EdbStackup.materials.html">
+       materials
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.stackup.EdbStackup.signal_layers.html">
+       signal_layers
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.stackup.EdbStackup.stackup_layers.html">
+       stackup_layers
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="pyaedt.edb_core.stackup.Stackup.html">
+     pyaedt.edb_core.stackup.Stackup
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+    <label for="toctree-checkbox-10">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.stackup.Stackup.add_layer.html">
+       add_layer
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.stackup.Stackup.adjust_solder_dielectrics.html">
+       adjust_solder_dielectrics
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.stackup.Stackup.create_symmetric_stackup.html">
+       create_symmetric_stackup
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.stackup.Stackup.export_stackup.html">
+       export_stackup
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.stackup.Stackup.flip_design.html">
+       flip_design
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.stackup.Stackup.get_layout_thickness.html">
+       get_layout_thickness
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.stackup.Stackup.import_stackup.html">
+       import_stackup
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.stackup.Stackup.place_a3dcomp_3d_placement.html">
+       place_a3dcomp_3d_placement
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.stackup.Stackup.place_in_layout.html">
+       place_in_layout
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.stackup.Stackup.place_in_layout_3d_placement.html">
+       place_in_layout_3d_placement
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.stackup.Stackup.remove_layer.html">
+       remove_layer
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.stackup.Stackup.stackup_limits.html">
+       stackup_limits
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.stackup.Stackup.layer_types.html">
+       layer_types
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.stackup.Stackup.layers.html">
+       layers
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.stackup.Stackup.non_stackup_layers.html">
+       non_stackup_layers
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.stackup.Stackup.signal_layers.html">
+       signal_layers
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.stackup.Stackup.stackup_layers.html">
+       stackup_layers
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../DataEdb.html">
+   Components, primitives, and nets
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="pyaedt.edb_core.edb_data.components_data.EDBComponent.html">
+     pyaedt.edb_core.edb_data.components_data.EDBComponent
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+    <label for="toctree-checkbox-12">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.components_data.EDBComponent.assign_rlc_model.html">
+       assign_rlc_model
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.components_data.EDBComponent.assign_s_param_model.html">
+       assign_s_param_model
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.components_data.EDBComponent.assign_spice_model.html">
+       assign_spice_model
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.components_data.EDBComponent.bounding_box.html">
+       bounding_box
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.components_data.EDBComponent.cap_value.html">
+       cap_value
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.components_data.EDBComponent.center.html">
+       center
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.components_data.EDBComponent.component_instance.html">
+       component_instance
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.components_data.EDBComponent.component_property.html">
+       component_property
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.components_data.EDBComponent.ind_value.html">
+       ind_value
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.components_data.EDBComponent.is_enabled.html">
+       is_enabled
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.components_data.EDBComponent.is_parallel_rlc.html">
+       is_parallel_rlc
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.components_data.EDBComponent.layout_instance.html">
+       layout_instance
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.components_data.EDBComponent.lower_elevation.html">
+       lower_elevation
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.components_data.EDBComponent.model_type.html">
+       model_type
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.components_data.EDBComponent.netlist_model.html">
+       netlist_model
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.components_data.EDBComponent.nets.html">
+       nets
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.components_data.EDBComponent.numpins.html">
+       numpins
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.components_data.EDBComponent.part_name.html">
+       part_name
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.components_data.EDBComponent.partname.html">
+       partname
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.components_data.EDBComponent.pinlist.html">
+       pinlist
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.components_data.EDBComponent.pins.html">
+       pins
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.components_data.EDBComponent.placement_layer.html">
+       placement_layer
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.components_data.EDBComponent.refdes.html">
+       refdes
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.components_data.EDBComponent.res_value.html">
+       res_value
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.components_data.EDBComponent.rlc_values.html">
+       rlc_values
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.components_data.EDBComponent.rotation.html">
+       rotation
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.components_data.EDBComponent.s_param_model.html">
+       s_param_model
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.components_data.EDBComponent.solder_ball_height.html">
+       solder_ball_height
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.components_data.EDBComponent.solder_ball_placement.html">
+       solder_ball_placement
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.components_data.EDBComponent.spice_model.html">
+       spice_model
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.components_data.EDBComponent.top_bottom_association.html">
+       top_bottom_association
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.components_data.EDBComponent.type.html">
+       type
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.components_data.EDBComponent.upper_elevation.html">
+       upper_elevation
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.components_data.EDBComponent.value.html">
+       value
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="pyaedt.edb_core.edb_data.components_data.EDBComponentDef.html">
+     pyaedt.edb_core.edb_data.components_data.EDBComponentDef
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
+    <label for="toctree-checkbox-13">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.components_data.EDBComponentDef.assign_rlc_model.html">
+       assign_rlc_model
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.components_data.EDBComponentDef.assign_s_param_model.html">
+       assign_s_param_model
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.components_data.EDBComponentDef.assign_spice_model.html">
+       assign_spice_model
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.components_data.EDBComponentDef.components.html">
+       components
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.components_data.EDBComponentDef.part_name.html">
+       part_name
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.components_data.EDBComponentDef.type.html">
+       type
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="pyaedt.edb_core.edb_data.nets_data.EDBNetsData.html">
+     pyaedt.edb_core.edb_data.nets_data.EDBNetsData
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
+    <label for="toctree-checkbox-14">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.nets_data.EDBNetsData.delete.html">
+       delete
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.nets_data.EDBNetsData.get_smallest_trace_width.html">
+       get_smallest_trace_width
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.nets_data.EDBNetsData.plot.html">
+       plot
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.nets_data.EDBNetsData.components.html">
+       components
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.nets_data.EDBNetsData.is_power_ground.html">
+       is_power_ground
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.nets_data.EDBNetsData.name.html">
+       name
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.nets_data.EDBNetsData.padstack_instances.html">
+       padstack_instances
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.nets_data.EDBNetsData.primitives.html">
+       primitives
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.html">
+     pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/>
+    <label for="toctree-checkbox-15">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.add_void.html">
+       add_void
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.area.html">
+       area
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.convert_to_polygon.html">
+       convert_to_polygon
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.delete.html">
+       delete
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.get_connected_object_id_set.html">
+       get_connected_object_id_set
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.intersect.html">
+       intersect
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.is_arc.html">
+       is_arc
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.points.html">
+       points
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.points_raw.html">
+       points_raw
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.subtract.html">
+       subtract
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.unite.html">
+       unite
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.id.html">
+       id
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.is_void.html">
+       is_void
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.layer.html">
+       layer
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.layer_name.html">
+       layer_name
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.net.html">
+       net
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.net_name.html">
+       net_name
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.type.html">
+       type
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.voids.html">
+       voids
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../LayerData.html">
+   EDB layer classes
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/>
+  <label for="toctree-checkbox-16">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="pyaedt.edb_core.edb_data.layer_data.LayerEdbClass.html">
+     pyaedt.edb_core.edb_data.layer_data.LayerEdbClass
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/>
+    <label for="toctree-checkbox-17">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.layer_data.LayerEdbClass.assign_roughness_model.html">
+       assign_roughness_model
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.layer_data.LayerEdbClass.get_roughness_model.html">
+       get_roughness_model
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.layer_data.LayerEdbClass.bottom_hallhuray_nodule_radius.html">
+       bottom_hallhuray_nodule_radius
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.layer_data.LayerEdbClass.bottom_hallhuray_surface_ratio.html">
+       bottom_hallhuray_surface_ratio
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.layer_data.LayerEdbClass.color.html">
+       color
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.layer_data.LayerEdbClass.conductivity.html">
+       conductivity
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.layer_data.LayerEdbClass.dielectric_fill.html">
+       dielectric_fill
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.layer_data.LayerEdbClass.etch_factor.html">
+       etch_factor
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.layer_data.LayerEdbClass.is_stackup_layer.html">
+       is_stackup_layer
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.layer_data.LayerEdbClass.loss_tangent.html">
+       loss_tangent
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.layer_data.LayerEdbClass.lower_elevation.html">
+       lower_elevation
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.layer_data.LayerEdbClass.material.html">
+       material
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.layer_data.LayerEdbClass.name.html">
+       name
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.layer_data.LayerEdbClass.permittivity.html">
+       permittivity
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.layer_data.LayerEdbClass.roughness_enabled.html">
+       roughness_enabled
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.layer_data.LayerEdbClass.side_hallhuray_nodule_radius.html">
+       side_hallhuray_nodule_radius
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.layer_data.LayerEdbClass.side_hallhuray_surface_ratio.html">
+       side_hallhuray_surface_ratio
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.layer_data.LayerEdbClass.thickness.html">
+       thickness
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.layer_data.LayerEdbClass.top_hallhuray_nodule_radius.html">
+       top_hallhuray_nodule_radius
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.layer_data.LayerEdbClass.top_hallhuray_surface_ratio.html">
+       top_hallhuray_surface_ratio
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.layer_data.LayerEdbClass.transparency.html">
+       transparency
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.layer_data.LayerEdbClass.type.html">
+       type
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.layer_data.LayerEdbClass.upper_elevation.html">
+       upper_elevation
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="pyaedt.edb_core.edb_data.layer_data.EDBLayer.html">
+     pyaedt.edb_core.edb_data.layer_data.EDBLayer
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/>
+    <label for="toctree-checkbox-18">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.layer_data.EDBLayer.assign_roughness_model_bottom.html">
+       assign_roughness_model_bottom
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.layer_data.EDBLayer.assign_roughness_model_side.html">
+       assign_roughness_model_side
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.layer_data.EDBLayer.assign_roughness_model_top.html">
+       assign_roughness_model_top
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.layer_data.EDBLayer.init_vals.html">
+       init_vals
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.layer_data.EDBLayer.plot.html">
+       plot
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.layer_data.EDBLayer.set_elevation.html">
+       set_elevation
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.layer_data.EDBLayer.update_layer_vals.html">
+       update_layer_vals
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.layer_data.EDBLayer.update_layers.html">
+       update_layers
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.layer_data.EDBLayer.etch_factor.html">
+       etch_factor
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.layer_data.EDBLayer.filling_material_name.html">
+       filling_material_name
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.layer_data.EDBLayer.id.html">
+       id
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.layer_data.EDBLayer.layer_type.html">
+       layer_type
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.layer_data.EDBLayer.lower_elevation.html">
+       lower_elevation
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.layer_data.EDBLayer.material_name.html">
+       material_name
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.layer_data.EDBLayer.name.html">
+       name
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.layer_data.EDBLayer.negative_layer.html">
+       negative_layer
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.layer_data.EDBLayer.roughness_enabled.html">
+       roughness_enabled
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.layer_data.EDBLayer.thickness_value.html">
+       thickness_value
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.layer_data.EDBLayer.top_bottom_association.html">
+       top_bottom_association
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.layer_data.EDBLayer.upper_elevation.html">
+       upper_elevation
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="pyaedt.edb_core.edb_data.layer_data.EDBLayers.html">
+     pyaedt.edb_core.edb_data.layer_data.EDBLayers
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/>
+    <label for="toctree-checkbox-19">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.layer_data.EDBLayers.add_layer.html">
+       add_layer
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.layer_data.EDBLayers.add_outline_layer.html">
+       add_outline_layer
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.layer_data.EDBLayers.insert_layer_above.html">
+       insert_layer_above
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.layer_data.EDBLayers.remove_layer.html">
+       remove_layer
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.layer_data.EDBLayers.edb_layer_collection.html">
+       edb_layer_collection
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.layer_data.EDBLayers.edb_layers.html">
+       edb_layers
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.layer_data.EDBLayers.layer_collection.html">
+       layer_collection
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.layer_data.EDBLayers.layer_collection_mode.html">
+       layer_collection_mode
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.layer_data.EDBLayers.layer_types.html">
+       layer_types
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.layer_data.EDBLayers.layers.html">
+       layers
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.layer_data.EDBLayers.signal_layers.html">
+       signal_layers
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.layer_data.EDBLayers.stackup_mode.html">
+       stackup_mode
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../SourcesEdb.html">
+   EDB sources
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/>
+  <label for="toctree-checkbox-20">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="pyaedt.edb_core.edb_data.sources.ExcitationPorts.html">
+     pyaedt.edb_core.edb_data.sources.ExcitationPorts
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/>
+    <label for="toctree-checkbox-21">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.sources.ExcitationPorts.get_edge_terminal_reference_primitive.html">
+       get_edge_terminal_reference_primitive
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.sources.ExcitationPorts.get_pad_edge_terminal_reference_pin.html">
+       get_pad_edge_terminal_reference_pin
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.sources.ExcitationPorts.get_padstack_terminal_reference_pin.html">
+       get_padstack_terminal_reference_pin
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.sources.ExcitationPorts.get_pin_group_terminal_reference_pin.html">
+       get_pin_group_terminal_reference_pin
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.sources.ExcitationPorts.get_point_terminal_reference_primitive.html">
+       get_point_terminal_reference_primitive
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.sources.ExcitationPorts.boundary_type.html">
+       boundary_type
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.sources.ExcitationPorts.deembed.html">
+       deembed
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.sources.ExcitationPorts.deembed_gapport_inductance.html">
+       deembed_gapport_inductance
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.sources.ExcitationPorts.deembed_length.html">
+       deembed_length
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.sources.ExcitationPorts.hfss_type.html">
+       hfss_type
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.sources.ExcitationPorts.horizontal_extent_factor.html">
+       horizontal_extent_factor
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.sources.ExcitationPorts.impedance.html">
+       impedance
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.sources.ExcitationPorts.is_circuit.html">
+       is_circuit
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.sources.ExcitationPorts.magnitude.html">
+       magnitude
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.sources.ExcitationPorts.name.html">
+       name
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.sources.ExcitationPorts.net.html">
+       net
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.sources.ExcitationPorts.net_name.html">
+       net_name
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.sources.ExcitationPorts.pec_launch_width.html">
+       pec_launch_width
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.sources.ExcitationPorts.phase.html">
+       phase
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.sources.ExcitationPorts.radial_extent_factor.html">
+       radial_extent_factor
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.sources.ExcitationPorts.reference_net_name.html">
+       reference_net_name
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.sources.ExcitationPorts.reference_object.html">
+       reference_object
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.sources.ExcitationPorts.renormalize.html">
+       renormalize
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.sources.ExcitationPorts.renormalize_z0.html">
+       renormalize_z0
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.sources.ExcitationPorts.terminal_type.html">
+       terminal_type
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.sources.ExcitationPorts.vertical_extent_factor.html">
+       vertical_extent_factor
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="pyaedt.edb_core.edb_data.sources.ExcitationProbes.html">
+     pyaedt.edb_core.edb_data.sources.ExcitationProbes
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/>
+    <label for="toctree-checkbox-22">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.sources.ExcitationProbes.boundary_type.html">
+       boundary_type
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.sources.ExcitationProbes.name.html">
+       name
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.sources.ExcitationProbes.net.html">
+       net
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.sources.ExcitationProbes.net_name.html">
+       net_name
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.sources.ExcitationProbes.terminal_type.html">
+       terminal_type
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="pyaedt.edb_core.edb_data.sources.ExcitationSources.html">
+     pyaedt.edb_core.edb_data.sources.ExcitationSources
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" type="checkbox"/>
+    <label for="toctree-checkbox-23">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.sources.ExcitationSources.boundary_type.html">
+       boundary_type
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.sources.ExcitationSources.magnitude.html">
+       magnitude
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.sources.ExcitationSources.name.html">
+       name
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.sources.ExcitationSources.net.html">
+       net
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.sources.ExcitationSources.net_name.html">
+       net_name
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.sources.ExcitationSources.phase.html">
+       phase
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.sources.ExcitationSources.terminal_type.html">
+       terminal_type
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="pyaedt.edb_core.edb_data.sources.ExcitationDifferential.html">
+     pyaedt.edb_core.edb_data.sources.ExcitationDifferential
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" type="checkbox"/>
+    <label for="toctree-checkbox-24">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.sources.ExcitationDifferential.edb.html">
+       edb
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.sources.ExcitationDifferential.name.html">
+       name
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.sources.ExcitationDifferential.reference_net_name.html">
+       reference_net_name
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.sources.ExcitationDifferential.terminals.html">
+       terminals
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../PadstackEdb.html">
+   EDB padstack
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/>
+  <label for="toctree-checkbox-25">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="pyaedt.edb_core.edb_data.padstacks_data.EDBPadProperties.html">
+     pyaedt.edb_core.edb_data.padstacks_data.EDBPadProperties
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/>
+    <label for="toctree-checkbox-26">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.padstacks_data.EDBPadProperties.int_to_geometry_type.html">
+       int_to_geometry_type
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.padstacks_data.EDBPadProperties.int_to_pad_type.html">
+       int_to_pad_type
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.padstacks_data.EDBPadProperties.geometry_type.html">
+       geometry_type
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.padstacks_data.EDBPadProperties.offset_x.html">
+       offset_x
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.padstacks_data.EDBPadProperties.offset_y.html">
+       offset_y
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.padstacks_data.EDBPadProperties.parameters.html">
+       parameters
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.padstacks_data.EDBPadProperties.parameters_values.html">
+       parameters_values
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.padstacks_data.EDBPadProperties.polygon_data.html">
+       polygon_data
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.padstacks_data.EDBPadProperties.rotation.html">
+       rotation
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 current active has-children">
+    <a class="reference internal" href="pyaedt.edb_core.edb_data.padstacks_data.EDBPadstack.html">
+     pyaedt.edb_core.edb_data.padstacks_data.EDBPadstack
+    </a>
+    <input checked="" class="toctree-checkbox" id="toctree-checkbox-27" name="toctree-checkbox-27" type="checkbox"/>
+    <label for="toctree-checkbox-27">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul class="current">
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.padstacks_data.EDBPadstack.convert_to_3d_microvias.html">
+       convert_to_3d_microvias
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.padstacks_data.EDBPadstack.split_to_microvias.html">
+       split_to_microvias
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.padstacks_data.EDBPadstack.hole_finished_size.html">
+       hole_finished_size
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.padstacks_data.EDBPadstack.hole_offset_x.html">
+       hole_offset_x
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.padstacks_data.EDBPadstack.hole_offset_y.html">
+       hole_offset_y
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.padstacks_data.EDBPadstack.hole_parameters.html">
+       hole_parameters
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.padstacks_data.EDBPadstack.hole_params.html">
+       hole_params
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.padstacks_data.EDBPadstack.hole_plating_ratio.html">
+       hole_plating_ratio
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.padstacks_data.EDBPadstack.hole_plating_thickness.html">
+       hole_plating_thickness
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.padstacks_data.EDBPadstack.hole_properties.html">
+       hole_properties
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.padstacks_data.EDBPadstack.hole_rotation.html">
+       hole_rotation
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.padstacks_data.EDBPadstack.hole_type.html">
+       hole_type
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.padstacks_data.EDBPadstack.material.html">
+       material
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.padstacks_data.EDBPadstack.name.html">
+       name
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.padstacks_data.EDBPadstack.padstack_instances.html">
+       padstack_instances
+      </a>
+     </li>
+     <li class="toctree-l3 current active">
+      <a class="current reference internal" href="#">
+       via_layers
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.padstacks_data.EDBPadstack.via_start_layer.html">
+       via_start_layer
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.padstacks_data.EDBPadstack.via_stop_layer.html">
+       via_stop_layer
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="pyaedt.edb_core.edb_data.padstacks_data.EDBPadstackInstance.html">
+     pyaedt.edb_core.edb_data.padstacks_data.EDBPadstackInstance
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-28" name="toctree-checkbox-28" type="checkbox"/>
+    <label for="toctree-checkbox-28">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.padstacks_data.EDBPadstackInstance.create_rectangle_in_pad.html">
+       create_rectangle_in_pad
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.padstacks_data.EDBPadstackInstance.delete.html">
+       delete
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.padstacks_data.EDBPadstackInstance.delete_padstack_instance.html">
+       delete_padstack_instance
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.padstacks_data.EDBPadstackInstance.get_connected_object_id_set.html">
+       get_connected_object_id_set
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.padstacks_data.EDBPadstackInstance.in_polygon.html">
+       in_polygon
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.padstacks_data.EDBPadstackInstance.in_voids.html">
+       in_voids
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.padstacks_data.EDBPadstackInstance.parametrize_position.html">
+       parametrize_position
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.padstacks_data.EDBPadstackInstance.set_backdrill_bottom.html">
+       set_backdrill_bottom
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.padstacks_data.EDBPadstackInstance.set_backdrill_top.html">
+       set_backdrill_top
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.padstacks_data.EDBPadstackInstance.aedt_name.html">
+       aedt_name
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.padstacks_data.EDBPadstackInstance.backdrill_bottom.html">
+       backdrill_bottom
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.padstacks_data.EDBPadstackInstance.backdrill_top.html">
+       backdrill_top
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.padstacks_data.EDBPadstackInstance.bounding_box.html">
+       bounding_box
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.padstacks_data.EDBPadstackInstance.component.html">
+       component
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.padstacks_data.EDBPadstackInstance.id.html">
+       id
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.padstacks_data.EDBPadstackInstance.is_pin.html">
+       is_pin
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.padstacks_data.EDBPadstackInstance.layer_range_names.html">
+       layer_range_names
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.padstacks_data.EDBPadstackInstance.lower_elevation.html">
+       lower_elevation
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.padstacks_data.EDBPadstackInstance.name.html">
+       name
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.padstacks_data.EDBPadstackInstance.net_name.html">
+       net_name
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.padstacks_data.EDBPadstackInstance.object_instance.html">
+       object_instance
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.padstacks_data.EDBPadstackInstance.padstack_definition.html">
+       padstack_definition
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.padstacks_data.EDBPadstackInstance.pin.html">
+       pin
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.padstacks_data.EDBPadstackInstance.pin_number.html">
+       pin_number
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.padstacks_data.EDBPadstackInstance.pingroups.html">
+       pingroups
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.padstacks_data.EDBPadstackInstance.placement_layer.html">
+       placement_layer
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.padstacks_data.EDBPadstackInstance.position.html">
+       position
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.padstacks_data.EDBPadstackInstance.rotation.html">
+       rotation
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.padstacks_data.EDBPadstackInstance.start_layer.html">
+       start_layer
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.padstacks_data.EDBPadstackInstance.stop_layer.html">
+       stop_layer
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.padstacks_data.EDBPadstackInstance.top_bottom_association.html">
+       top_bottom_association
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.padstacks_data.EDBPadstackInstance.upper_elevation.html">
+       upper_elevation
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../SimulationEdb.html">
+   EDB setup
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-29" name="toctree-checkbox-29" type="checkbox"/>
+  <label for="toctree-checkbox-29">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.HfssSimulationSetup.html">
+     pyaedt.edb_core.edb_data.hfss_simulation_setup_data.HfssSimulationSetup
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-30" name="toctree-checkbox-30" type="checkbox"/>
+    <label for="toctree-checkbox-30">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.HfssSimulationSetup.add_frequency_sweep.html">
+       add_frequency_sweep
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.HfssSimulationSetup.add_length_mesh_operation.html">
+       add_length_mesh_operation
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.HfssSimulationSetup.add_skin_depth_mesh_operation.html">
+       add_skin_depth_mesh_operation
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.HfssSimulationSetup.set_solution_broadband.html">
+       set_solution_broadband
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.HfssSimulationSetup.set_solution_multi_frequencies.html">
+       set_solution_multi_frequencies
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.HfssSimulationSetup.set_solution_single_frequency.html">
+       set_solution_single_frequency
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.HfssSimulationSetup.adaptive_settings.html">
+       adaptive_settings
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.HfssSimulationSetup.advanced_mesh_settings.html">
+       advanced_mesh_settings
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.HfssSimulationSetup.curve_approx_settings.html">
+       curve_approx_settings
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.HfssSimulationSetup.dcr_settings.html">
+       dcr_settings
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.HfssSimulationSetup.defeature_settings.html">
+       defeature_settings
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.HfssSimulationSetup.edb_sim_setup_info.html">
+       edb_sim_setup_info
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.HfssSimulationSetup.frequency_sweeps.html">
+       frequency_sweeps
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.HfssSimulationSetup.hfss_port_settings.html">
+       hfss_port_settings
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.HfssSimulationSetup.hfss_solver_settings.html">
+       hfss_solver_settings
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.HfssSimulationSetup.is_auto_setup.html">
+       is_auto_setup
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.HfssSimulationSetup.mesh_operations.html">
+       mesh_operations
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.HfssSimulationSetup.name.html">
+       name
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.HfssSimulationSetup.setup_type.html">
+       setup_type
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.HfssSimulationSetup.solver_slider_type.html">
+       solver_slider_type
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.HfssSimulationSetup.via_settings.html">
+       via_settings
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.EdbFrequencySweep.html">
+     pyaedt.edb_core.edb_data.hfss_simulation_setup_data.EdbFrequencySweep
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-31" name="toctree-checkbox-31" type="checkbox"/>
+    <label for="toctree-checkbox-31">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.EdbFrequencySweep.set_frequencies.html">
+       set_frequencies
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.EdbFrequencySweep.set_frequencies_linear_count.html">
+       set_frequencies_linear_count
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.EdbFrequencySweep.set_frequencies_linear_scale.html">
+       set_frequencies_linear_scale
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.EdbFrequencySweep.set_frequencies_log_scale.html">
+       set_frequencies_log_scale
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.EdbFrequencySweep.adaptive_sampling.html">
+       adaptive_sampling
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.EdbFrequencySweep.adv_dc_extrapolation.html">
+       adv_dc_extrapolation
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.EdbFrequencySweep.auto_s_mat_only_solve.html">
+       auto_s_mat_only_solve
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.EdbFrequencySweep.enforce_causality.html">
+       enforce_causality
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.EdbFrequencySweep.enforce_dc_and_causality.html">
+       enforce_dc_and_causality
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.EdbFrequencySweep.enforce_passivity.html">
+       enforce_passivity
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.EdbFrequencySweep.freq_sweep_type.html">
+       freq_sweep_type
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.EdbFrequencySweep.frequencies.html">
+       frequencies
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.EdbFrequencySweep.interp_use_full_basis.html">
+       interp_use_full_basis
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.EdbFrequencySweep.interp_use_port_impedance.html">
+       interp_use_port_impedance
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.EdbFrequencySweep.interp_use_prop_const.html">
+       interp_use_prop_const
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.EdbFrequencySweep.interp_use_s_matrix.html">
+       interp_use_s_matrix
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.EdbFrequencySweep.max_solutions.html">
+       max_solutions
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.EdbFrequencySweep.min_freq_s_mat_only_solve.html">
+       min_freq_s_mat_only_solve
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.EdbFrequencySweep.min_solved_freq.html">
+       min_solved_freq
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.EdbFrequencySweep.name.html">
+       name
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.EdbFrequencySweep.passivity_tolerance.html">
+       passivity_tolerance
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.EdbFrequencySweep.relative_s_error.html">
+       relative_s_error
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.EdbFrequencySweep.save_fields.html">
+       save_fields
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.EdbFrequencySweep.save_rad_fields_only.html">
+       save_rad_fields_only
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.EdbFrequencySweep.sweep_type.html">
+       sweep_type
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.EdbFrequencySweep.use_q3d_for_dc.html">
+       use_q3d_for_dc
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.DcrSettings.html">
+     pyaedt.edb_core.edb_data.hfss_simulation_setup_data.DcrSettings
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-32" name="toctree-checkbox-32" type="checkbox"/>
+    <label for="toctree-checkbox-32">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.DcrSettings.conduction_max_passes.html">
+       conduction_max_passes
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.DcrSettings.conduction_min_converged_passes.html">
+       conduction_min_converged_passes
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.DcrSettings.conduction_min_passes.html">
+       conduction_min_passes
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.DcrSettings.conduction_per_error.html">
+       conduction_per_error
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.DcrSettings.conduction_per_refine.html">
+       conduction_per_refine
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.CurveApproxSettings.html">
+     pyaedt.edb_core.edb_data.hfss_simulation_setup_data.CurveApproxSettings
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-33" name="toctree-checkbox-33" type="checkbox"/>
+    <label for="toctree-checkbox-33">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.CurveApproxSettings.arc_angle.html">
+       arc_angle
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.CurveApproxSettings.arc_to_chord_error.html">
+       arc_to_chord_error
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.CurveApproxSettings.max_arc_points.html">
+       max_arc_points
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.CurveApproxSettings.start_azimuth.html">
+       start_azimuth
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.CurveApproxSettings.use_arc_to_chord_error.html">
+       use_arc_to_chord_error
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.AdvancedMeshSettings.html">
+     pyaedt.edb_core.edb_data.hfss_simulation_setup_data.AdvancedMeshSettings
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-34" name="toctree-checkbox-34" type="checkbox"/>
+    <label for="toctree-checkbox-34">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.AdvancedMeshSettings.layer_snap_tol.html">
+       layer_snap_tol
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.AdvancedMeshSettings.mesh_display_attributes.html">
+       mesh_display_attributes
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.AdvancedMeshSettings.replace_3d_triangles.html">
+       replace_3d_triangles
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.ViaSettings.html">
+     pyaedt.edb_core.edb_data.hfss_simulation_setup_data.ViaSettings
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-35" name="toctree-checkbox-35" type="checkbox"/>
+    <label for="toctree-checkbox-35">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.ViaSettings.via_density.html">
+       via_density
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.ViaSettings.via_material.html">
+       via_material
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.ViaSettings.via_num_sides.html">
+       via_num_sides
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.ViaSettings.via_style.html">
+       via_style
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.DefeatureSettings.html">
+     pyaedt.edb_core.edb_data.hfss_simulation_setup_data.DefeatureSettings
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-36" name="toctree-checkbox-36" type="checkbox"/>
+    <label for="toctree-checkbox-36">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.DefeatureSettings.defeature_abs_length.html">
+       defeature_abs_length
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.DefeatureSettings.defeature_ratio.html">
+       defeature_ratio
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.DefeatureSettings.healing_option.html">
+       healing_option
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.DefeatureSettings.model_type.html">
+       model_type
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.DefeatureSettings.remove_floating_geometry.html">
+       remove_floating_geometry
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.DefeatureSettings.small_void_area.html">
+       small_void_area
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.DefeatureSettings.union_polygons.html">
+       union_polygons
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.DefeatureSettings.use_defeature.html">
+       use_defeature
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.DefeatureSettings.use_defeature_abs_length.html">
+       use_defeature_abs_length
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.AdaptiveSettings.html">
+     pyaedt.edb_core.edb_data.hfss_simulation_setup_data.AdaptiveSettings
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-37" name="toctree-checkbox-37" type="checkbox"/>
+    <label for="toctree-checkbox-37">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.AdaptiveSettings.add_adaptive_frequency_data.html">
+       add_adaptive_frequency_data
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.AdaptiveSettings.adapt_type.html">
+       adapt_type
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.AdaptiveSettings.adaptive_frequency_data_list.html">
+       adaptive_frequency_data_list
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.AdaptiveSettings.adaptive_settings.html">
+       adaptive_settings
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.AdaptiveSettings.basic.html">
+       basic
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.AdaptiveSettings.do_adaptive.html">
+       do_adaptive
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.AdaptiveSettings.max_refine_per_pass.html">
+       max_refine_per_pass
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.AdaptiveSettings.max_refinement.html">
+       max_refinement
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.AdaptiveSettings.min_passes.html">
+       min_passes
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.AdaptiveSettings.save_fields.html">
+       save_fields
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.AdaptiveSettings.save_rad_field_only.html">
+       save_rad_field_only
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.AdaptiveSettings.use_convergence_matrix.html">
+       use_convergence_matrix
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.AdaptiveSettings.use_max_refinement.html">
+       use_max_refinement
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.AdaptiveFrequencyData.html">
+     pyaedt.edb_core.edb_data.hfss_simulation_setup_data.AdaptiveFrequencyData
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-38" name="toctree-checkbox-38" type="checkbox"/>
+    <label for="toctree-checkbox-38">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.AdaptiveFrequencyData.adaptive_frequency.html">
+       adaptive_frequency
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.AdaptiveFrequencyData.max_delta.html">
+       max_delta
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.AdaptiveFrequencyData.max_passes.html">
+       max_passes
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.HfssSolverSettings.html">
+     pyaedt.edb_core.edb_data.hfss_simulation_setup_data.HfssSolverSettings
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-39" name="toctree-checkbox-39" type="checkbox"/>
+    <label for="toctree-checkbox-39">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.HfssSolverSettings.enhanced_low_freq_accuracy.html">
+       enhanced_low_freq_accuracy
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.HfssSolverSettings.order_basis.html">
+       order_basis
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.HfssSolverSettings.relative_residual.html">
+       relative_residual
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.HfssSolverSettings.solver_type.html">
+       solver_type
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.HfssSolverSettings.use_shell_elements.html">
+       use_shell_elements
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.HfssPortSettings.html">
+     pyaedt.edb_core.edb_data.hfss_simulation_setup_data.HfssPortSettings
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-40" name="toctree-checkbox-40" type="checkbox"/>
+    <label for="toctree-checkbox-40">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.HfssPortSettings.enable_set_triangles_wave_port.html">
+       enable_set_triangles_wave_port
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.HfssPortSettings.max_delta_z0.html">
+       max_delta_z0
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.HfssPortSettings.max_triangles_wave_port.html">
+       max_triangles_wave_port
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.HfssPortSettings.min_triangles_wave_port.html">
+       min_triangles_wave_port
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.MeshOperationLength.html">
+     pyaedt.edb_core.edb_data.hfss_simulation_setup_data.MeshOperationLength
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-41" name="toctree-checkbox-41" type="checkbox"/>
+    <label for="toctree-checkbox-41">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.MeshOperationLength.enabled.html">
+       enabled
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.MeshOperationLength.max_elements.html">
+       max_elements
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.MeshOperationLength.max_length.html">
+       max_length
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.MeshOperationLength.mesh_operation_type.html">
+       mesh_operation_type
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.MeshOperationLength.mesh_region.html">
+       mesh_region
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.MeshOperationLength.name.html">
+       name
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.MeshOperationLength.nets_layers_list.html">
+       nets_layers_list
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.MeshOperationLength.refine_inside.html">
+       refine_inside
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.MeshOperationLength.restrict_length.html">
+       restrict_length
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.MeshOperationLength.restrict_max_elements.html">
+       restrict_max_elements
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.MeshOperationSkinDepth.html">
+     pyaedt.edb_core.edb_data.hfss_simulation_setup_data.MeshOperationSkinDepth
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-42" name="toctree-checkbox-42" type="checkbox"/>
+    <label for="toctree-checkbox-42">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.MeshOperationSkinDepth.enabled.html">
+       enabled
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.MeshOperationSkinDepth.max_elements.html">
+       max_elements
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.MeshOperationSkinDepth.mesh_operation_type.html">
+       mesh_operation_type
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.MeshOperationSkinDepth.mesh_region.html">
+       mesh_region
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.MeshOperationSkinDepth.name.html">
+       name
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.MeshOperationSkinDepth.nets_layers_list.html">
+       nets_layers_list
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.MeshOperationSkinDepth.number_of_layer_elements.html">
+       number_of_layer_elements
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.MeshOperationSkinDepth.refine_inside.html">
+       refine_inside
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.MeshOperationSkinDepth.restrict_max_elements.html">
+       restrict_max_elements
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.MeshOperationSkinDepth.skin_depth.html">
+       skin_depth
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.hfss_simulation_setup_data.MeshOperationSkinDepth.surface_triangle_length.html">
+       surface_triangle_length
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="pyaedt.edb_core.edb_data.siwave_simulation_setup_data.SiwaveSYZSimulationSetup.html">
+     pyaedt.edb_core.edb_data.siwave_simulation_setup_data.SiwaveSYZSimulationSetup
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-43" name="toctree-checkbox-43" type="checkbox"/>
+    <label for="toctree-checkbox-43">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.siwave_simulation_setup_data.SiwaveSYZSimulationSetup.add_frequency_sweep.html">
+       add_frequency_sweep
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.siwave_simulation_setup_data.SiwaveSYZSimulationSetup.automatic_mesh.html">
+       automatic_mesh
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.siwave_simulation_setup_data.SiwaveSYZSimulationSetup.dc_settings.html">
+       dc_settings
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.siwave_simulation_setup_data.SiwaveSYZSimulationSetup.edb_sim_setup_info.html">
+       edb_sim_setup_info
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.siwave_simulation_setup_data.SiwaveSYZSimulationSetup.enabled.html">
+       enabled
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.siwave_simulation_setup_data.SiwaveSYZSimulationSetup.frequency_sweeps.html">
+       frequency_sweeps
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.siwave_simulation_setup_data.SiwaveSYZSimulationSetup.ignore_non_functional_pads.html">
+       ignore_non_functional_pads
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.siwave_simulation_setup_data.SiwaveSYZSimulationSetup.include_coplane_coupling.html">
+       include_coplane_coupling
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.siwave_simulation_setup_data.SiwaveSYZSimulationSetup.include_fringe_coupling.html">
+       include_fringe_coupling
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.siwave_simulation_setup_data.SiwaveSYZSimulationSetup.include_infinite_ground.html">
+       include_infinite_ground
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.siwave_simulation_setup_data.SiwaveSYZSimulationSetup.include_inter_plane_coupling.html">
+       include_inter_plane_coupling
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.siwave_simulation_setup_data.SiwaveSYZSimulationSetup.include_split_plane_coupling.html">
+       include_split_plane_coupling
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.siwave_simulation_setup_data.SiwaveSYZSimulationSetup.include_trace_coupling.html">
+       include_trace_coupling
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.siwave_simulation_setup_data.SiwaveSYZSimulationSetup.include_vi_sources.html">
+       include_vi_sources
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.siwave_simulation_setup_data.SiwaveSYZSimulationSetup.infinite_ground_location.html">
+       infinite_ground_location
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.siwave_simulation_setup_data.SiwaveSYZSimulationSetup.max_coupled_lines.html">
+       max_coupled_lines
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.siwave_simulation_setup_data.SiwaveSYZSimulationSetup.mesh_frequency.html">
+       mesh_frequency
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.siwave_simulation_setup_data.SiwaveSYZSimulationSetup.min_pad_area_to_mesh.html">
+       min_pad_area_to_mesh
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.siwave_simulation_setup_data.SiwaveSYZSimulationSetup.min_plane_area_to_mesh.html">
+       min_plane_area_to_mesh
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.siwave_simulation_setup_data.SiwaveSYZSimulationSetup.min_void_area.html">
+       min_void_area
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.siwave_simulation_setup_data.SiwaveSYZSimulationSetup.name.html">
+       name
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.siwave_simulation_setup_data.SiwaveSYZSimulationSetup.perform_erc.html">
+       perform_erc
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.siwave_simulation_setup_data.SiwaveSYZSimulationSetup.pi_slider_postion.html">
+       pi_slider_postion
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.siwave_simulation_setup_data.SiwaveSYZSimulationSetup.return_current_distribution.html">
+       return_current_distribution
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.siwave_simulation_setup_data.SiwaveSYZSimulationSetup.si_slider_postion.html">
+       si_slider_postion
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.siwave_simulation_setup_data.SiwaveSYZSimulationSetup.sim_setup_info.html">
+       sim_setup_info
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.siwave_simulation_setup_data.SiwaveSYZSimulationSetup.snap_length_threshold.html">
+       snap_length_threshold
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.siwave_simulation_setup_data.SiwaveSYZSimulationSetup.use_custom_settings.html">
+       use_custom_settings
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.siwave_simulation_setup_data.SiwaveSYZSimulationSetup.use_si_settings.html">
+       use_si_settings
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.siwave_simulation_setup_data.SiwaveSYZSimulationSetup.xtalk_threshold.html">
+       xtalk_threshold
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="pyaedt.edb_core.edb_data.siwave_simulation_setup_data.SiwaveDCSimulationSetup.html">
+     pyaedt.edb_core.edb_data.siwave_simulation_setup_data.SiwaveDCSimulationSetup
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-44" name="toctree-checkbox-44" type="checkbox"/>
+    <label for="toctree-checkbox-44">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.siwave_simulation_setup_data.SiwaveDCSimulationSetup.add_source_terminal_to_ground.html">
+       add_source_terminal_to_ground
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.siwave_simulation_setup_data.SiwaveDCSimulationSetup.compute_inductance.html">
+       compute_inductance
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.siwave_simulation_setup_data.SiwaveDCSimulationSetup.contact_radius.html">
+       contact_radius
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.siwave_simulation_setup_data.SiwaveDCSimulationSetup.dc_slider_position.html">
+       dc_slider_position
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.siwave_simulation_setup_data.SiwaveDCSimulationSetup.edb_sim_setup_info.html">
+       edb_sim_setup_info
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.siwave_simulation_setup_data.SiwaveDCSimulationSetup.enabled.html">
+       enabled
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.siwave_simulation_setup_data.SiwaveDCSimulationSetup.energy_error.html">
+       energy_error
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.siwave_simulation_setup_data.SiwaveDCSimulationSetup.max_init_mesh_edge_length.html">
+       max_init_mesh_edge_length
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.siwave_simulation_setup_data.SiwaveDCSimulationSetup.max_num_pass.html">
+       max_num_pass
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.siwave_simulation_setup_data.SiwaveDCSimulationSetup.mesh_bondwires.html">
+       mesh_bondwires
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.siwave_simulation_setup_data.SiwaveDCSimulationSetup.mesh_vias.html">
+       mesh_vias
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.siwave_simulation_setup_data.SiwaveDCSimulationSetup.min_num_pass.html">
+       min_num_pass
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.siwave_simulation_setup_data.SiwaveDCSimulationSetup.min_plane_area.html">
+       min_plane_area
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.siwave_simulation_setup_data.SiwaveDCSimulationSetup.min_void_area.html">
+       min_void_area
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.siwave_simulation_setup_data.SiwaveDCSimulationSetup.name.html">
+       name
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.siwave_simulation_setup_data.SiwaveDCSimulationSetup.num_bondwire_sides.html">
+       num_bondwire_sides
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.siwave_simulation_setup_data.SiwaveDCSimulationSetup.num_via_sides.html">
+       num_via_sides
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.siwave_simulation_setup_data.SiwaveDCSimulationSetup.percent_local_refinement.html">
+       percent_local_refinement
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.siwave_simulation_setup_data.SiwaveDCSimulationSetup.perform_adaptive_refinement.html">
+       perform_adaptive_refinement
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.siwave_simulation_setup_data.SiwaveDCSimulationSetup.plot_jv.html">
+       plot_jv
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.siwave_simulation_setup_data.SiwaveDCSimulationSetup.refine_bondwires.html">
+       refine_bondwires
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.siwave_simulation_setup_data.SiwaveDCSimulationSetup.refine_vias.html">
+       refine_vias
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.siwave_simulation_setup_data.SiwaveDCSimulationSetup.sim_setup_info.html">
+       sim_setup_info
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.siwave_simulation_setup_data.SiwaveDCSimulationSetup.source_terms_to_ground.html">
+       source_terms_to_ground
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.siwave_simulation_setup_data.SiwaveDCSimulationSetup.use_dc_custom_settings.html">
+       use_dc_custom_settings
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../SimulationConfigurationEdb.html">
+   Simulation configuration
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-45" name="toctree-checkbox-45" type="checkbox"/>
+  <label for="toctree-checkbox-45">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfiguration.html">
+     pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfiguration
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-46" name="toctree-checkbox-46" type="checkbox"/>
+    <label for="toctree-checkbox-46">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfiguration.add_current_source.html">
+       add_current_source
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfiguration.add_dc_ground_source_term.html">
+       add_dc_ground_source_term
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfiguration.add_rlc.html">
+       add_rlc
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfiguration.add_voltage_source.html">
+       add_voltage_source
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfiguration.build_simulation_project.html">
+       build_simulation_project
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfiguration.export_json.html">
+       export_json
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfiguration.import_json.html">
+       import_json
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfiguration.ac_settings.html">
+       ac_settings
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfiguration.batch_solve_settings.html">
+       batch_solve_settings
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfiguration.dc_settings.html">
+       dc_settings
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfiguration.filename.html">
+       filename
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfiguration.open_edb_after_build.html">
+       open_edb_after_build
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfiguration.setup_name.html">
+       setup_name
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfiguration.solver_type.html">
+       solver_type
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationDc.html">
+     pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationDc
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-47" name="toctree-checkbox-47" type="checkbox"/>
+    <label for="toctree-checkbox-47">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationDc.dc_compute_inductance.html">
+       dc_compute_inductance
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationDc.dc_contact_radius.html">
+       dc_contact_radius
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationDc.dc_error_energy.html">
+       dc_error_energy
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationDc.dc_export_thermal_data.html">
+       dc_export_thermal_data
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationDc.dc_full_report_path.html">
+       dc_full_report_path
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationDc.dc_icepak_temp_file.html">
+       dc_icepak_temp_file
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationDc.dc_import_thermal_data.html">
+       dc_import_thermal_data
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationDc.dc_max_init_mesh_edge_length.html">
+       dc_max_init_mesh_edge_length
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationDc.dc_max_num_pass.html">
+       dc_max_num_pass
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationDc.dc_mesh_bondwires.html">
+       dc_mesh_bondwires
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationDc.dc_mesh_vias.html">
+       dc_mesh_vias
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationDc.dc_min_num_pass.html">
+       dc_min_num_pass
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationDc.dc_min_plane_area_to_mesh.html">
+       dc_min_plane_area_to_mesh
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationDc.dc_min_void_area_to_mesh.html">
+       dc_min_void_area_to_mesh
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationDc.dc_num_bondwire_sides.html">
+       dc_num_bondwire_sides
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationDc.dc_num_via_sides.html">
+       dc_num_via_sides
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationDc.dc_per_pin_res_path.html">
+       dc_per_pin_res_path
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationDc.dc_per_pin_use_pin_format.html">
+       dc_per_pin_use_pin_format
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationDc.dc_percent_local_refinement.html">
+       dc_percent_local_refinement
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationDc.dc_perform_adaptive_refinement.html">
+       dc_perform_adaptive_refinement
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationDc.dc_plot_jv.html">
+       dc_plot_jv
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationDc.dc_refine_bondwires.html">
+       dc_refine_bondwires
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationDc.dc_refine_vias.html">
+       dc_refine_vias
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationDc.dc_report_config_file.html">
+       dc_report_config_file
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationDc.dc_report_show_Active_devices.html">
+       dc_report_show_Active_devices
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationDc.dc_slide_position.html">
+       dc_slide_position
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationDc.dc_source_terms_to_ground.html">
+       dc_source_terms_to_ground
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationDc.dc_use_dc_custom_settings.html">
+       dc_use_dc_custom_settings
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationDc.dc_use_loop_res_for_per_pin.html">
+       dc_use_loop_res_for_per_pin
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationDc.dc_via_report_path.html">
+       dc_via_report_path
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationAc.html">
+     pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationAc
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-48" name="toctree-checkbox-48" type="checkbox"/>
+    <label for="toctree-checkbox-48">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationAc.arc_angle.html">
+       arc_angle
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationAc.arc_to_chord_error.html">
+       arc_to_chord_error
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationAc.basis_order.html">
+       basis_order
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationAc.decade_count.html">
+       decade_count
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationAc.defeature_abs_length.html">
+       defeature_abs_length
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationAc.defeature_layout.html">
+       defeature_layout
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationAc.do_lambda_refinement.html">
+       do_lambda_refinement
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationAc.enforce_causality.html">
+       enforce_causality
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationAc.enforce_passivity.html">
+       enforce_passivity
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationAc.ignore_non_functional_pads.html">
+       ignore_non_functional_pads
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationAc.include_inter_plane_coupling.html">
+       include_inter_plane_coupling
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationAc.max_arc_points.html">
+       max_arc_points
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationAc.max_mag_delta_s.html">
+       max_mag_delta_s
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationAc.max_num_passes.html">
+       max_num_passes
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationAc.max_suf_dev.html">
+       max_suf_dev
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationAc.mesh_freq.html">
+       mesh_freq
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationAc.mesh_sizefactor.html">
+       mesh_sizefactor
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationAc.min_num_passes.html">
+       min_num_passes
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationAc.min_pad_area_to_mesh.html">
+       min_pad_area_to_mesh
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationAc.min_plane_area_to_mesh.html">
+       min_plane_area_to_mesh
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationAc.min_void_area.html">
+       min_void_area
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationAc.minimum_void_surface.html">
+       minimum_void_surface
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationAc.passivity_tolerance.html">
+       passivity_tolerance
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationAc.percentage_error_z0.html">
+       percentage_error_z0
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationAc.process_padstack_definitions.html">
+       process_padstack_definitions
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationAc.radiation_box.html">
+       radiation_box
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationAc.relative_error.html">
+       relative_error
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationAc.return_current_distribution.html">
+       return_current_distribution
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationAc.snap_length_threshold.html">
+       snap_length_threshold
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationAc.start_azimuth.html">
+       start_azimuth
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationAc.start_freq.html">
+       start_freq
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationAc.step_freq.html">
+       step_freq
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationAc.stop_freq.html">
+       stop_freq
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationAc.sweep_interpolating.html">
+       sweep_interpolating
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationAc.sweep_name.html">
+       sweep_name
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationAc.sweep_type.html">
+       sweep_type
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationAc.use_arc_to_chord_error.html">
+       use_arc_to_chord_error
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationAc.use_error_z0.html">
+       use_error_z0
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationAc.use_q3d_for_dc.html">
+       use_q3d_for_dc
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationAc.xtalk_threshold.html">
+       xtalk_threshold
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationBatch.html">
+     pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationBatch
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-49" name="toctree-checkbox-49" type="checkbox"/>
+    <label for="toctree-checkbox-49">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationBatch.add_source.html">
+       add_source
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationBatch.airbox_horizontal_extent.html">
+       airbox_horizontal_extent
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationBatch.airbox_negative_vertical_extent.html">
+       airbox_negative_vertical_extent
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationBatch.airbox_positive_vertical_extent.html">
+       airbox_positive_vertical_extent
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationBatch.coax_solder_ball_diameter.html">
+       coax_solder_ball_diameter
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationBatch.components.html">
+       components
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationBatch.coplanar_instances.html">
+       coplanar_instances
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationBatch.cutout_subdesign_expansion.html">
+       cutout_subdesign_expansion
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationBatch.cutout_subdesign_round_corner.html">
+       cutout_subdesign_round_corner
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationBatch.cutout_subdesign_type.html">
+       cutout_subdesign_type
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationBatch.dielectric_extent.html">
+       dielectric_extent
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationBatch.do_cutout_subdesign.html">
+       do_cutout_subdesign
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationBatch.etching_factor_instances.html">
+       etching_factor_instances
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationBatch.generate_solder_balls.html">
+       generate_solder_balls
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationBatch.honor_user_dielectric.html">
+       honor_user_dielectric
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationBatch.output_aedb.html">
+       output_aedb
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationBatch.power_nets.html">
+       power_nets
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationBatch.signal_layer_etching_instances.html">
+       signal_layer_etching_instances
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationBatch.signal_layers_properties.html">
+       signal_layers_properties
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationBatch.signal_nets.html">
+       signal_nets
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationBatch.sources.html">
+       sources
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationBatch.trim_reference_size.html">
+       trim_reference_size
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationBatch.truncate_airbox_at_ground.html">
+       truncate_airbox_at_ground
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationBatch.use_default_coax_port_radial_extension.html">
+       use_default_coax_port_radial_extension
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationBatch.use_default_cutout.html">
+       use_default_cutout
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationBatch.use_radiation_boundary.html">
+       use_radiation_boundary
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../SiWave.html">
+   Siwave manager
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-50" name="toctree-checkbox-50" type="checkbox"/>
+  <label for="toctree-checkbox-50">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="pyaedt.siwave.Siwave.html">
+     pyaedt.siwave.Siwave
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-51" name="toctree-checkbox-51" type="checkbox"/>
+    <label for="toctree-checkbox-51">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.siwave.Siwave.close_project.html">
+       close_project
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.siwave.Siwave.export_element_data.html">
+       export_element_data
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.siwave.Siwave.export_siwave_report.html">
+       export_siwave_report
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.siwave.Siwave.open_project.html">
+       open_project
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.siwave.Siwave.quit_application.html">
+       quit_application
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.siwave.Siwave.save_project.html">
+       save_project
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.siwave.Siwave.current_version.html">
+       current_version
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.siwave.Siwave.lock_file.html">
+       lock_file
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.siwave.Siwave.oproject.html">
+       oproject
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.siwave.Siwave.project_file.html">
+       project_file
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.siwave.Siwave.project_name.html">
+       project_name
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.siwave.Siwave.project_path.html">
+       project_path
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.siwave.Siwave.pyaedt_dir.html">
+       pyaedt_dir
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.siwave.Siwave.results_directory.html">
+       results_directory
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.siwave.Siwave.src_dir.html">
+       src_dir
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.siwave.Siwave.version_keys.html">
+       version_keys
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    
+  </div>
+</nav>
+  </div>
+  <div class="sidebar-end-items">
+  </div>
+</div>
+
+
+          
+
+
+<div class="bd-sidebar-secondary d-none d-xl-block col-xl-2 bd-toc">
+  
+    
+    <div class="toc-item">
+      
+<div class="tocsection onthispage mt-5 pt-1 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pyaedt.edb_core.edb_data.padstacks_data.EDBPadstack.via_layers">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     via_layers
+    </span>
+   </code>
+  </a>
+ </li>
+</ul>
+
+</nav>
+    </div>
+    
+    <div class="toc-item">
+      
+
+<div class="tocsection editthispage">
+    <a href="https://github.com/pyansys/pyaedt/edit/main/doc/source/EDBAPI/_autosummary/pyaedt.edb_core.edb_data.padstacks_data.EDBPadstack.via_layers.rst">
+        <i class="fas fa-pencil-alt"></i> Edit this page
+    </a>
+</div>
+
+    </div>
+    
+  
+</div>
+
+
+          
+          
+          <div class="bd-content col-12 col-md-9 col-xl-7">
+              
+              <article class="bd-article" role="main">
+                
+  <section id="via-layers">
+<h1>via_layers<a class="headerlink" href="#via-layers" title="Permalink to this heading">#</a></h1>
+<dl class="py property">
+<dt class="sig sig-object py" id="pyaedt.edb_core.edb_data.padstacks_data.EDBPadstack.via_layers">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">EDBPadstack.</span></span><span class="sig-name descname"><span class="pre">via_layers</span></span><a class="headerlink" href="#pyaedt.edb_core.edb_data.padstacks_data.EDBPadstack.via_layers" title="Permalink to this definition">#</a></dt>
+<dd><p>Layers.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#list" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">list</span></code></a></dt><dd><p>List of layers.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+              </article>
+              
+
+              
+          </div>
+          
+      </div>
+    </div>
+
+  
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695"></script>
+
+<footer class="bd-footer"><div class="bd-footer__inner container">
+  
+  <div class="footer-item">
+    <p class="copyright">
+    &copy; Copyright (c) 2022 ANSYS, Inc. All rights reserved.<br>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.<br>
+</p>
+  </div>
+  
+</div>
+</footer>
+  </body>
+</html>

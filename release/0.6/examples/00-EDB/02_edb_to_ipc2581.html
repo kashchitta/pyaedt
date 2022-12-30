@@ -33,6 +33,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
 
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
@@ -111,7 +112,13 @@
 
 <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="../../API/index.html">
-  API reference
+  API AEDT reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../EDBAPI/index.html">
+  API EDB reference
  </a>
 </li>
 
@@ -203,7 +210,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.40 variable.
+            // this version, rather than using sphinx's 0.6.42 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -808,32 +815,31 @@ to download the full example code</p>
 <section id="perform-required-imports">
 <h2>Perform required imports<a class="headerlink" href="#perform-required-imports" title="Permalink to this heading">#</a></h2>
 <p>Perform required imports, which includes importing a section.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">shutil</span>
-<span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">from</span> <span class="nn">pyaedt</span> <span class="kn">import</span> <span class="n">generate_unique_name</span><span class="p">,</span> <span class="n">examples</span><span class="p">,</span> <span class="n">Edb</span><span class="p">,</span> <span class="n">generate_unique_folder_name</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">pyaedt</span>
 </pre></div>
 </div>
 </section>
 <section id="download-file">
 <h2>Download file<a class="headerlink" href="#download-file" title="Permalink to this heading">#</a></h2>
 <p>Download the AEDB file and copy it in the temporary folder.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">temp_folder</span></a> <span class="o">=</span> <span class="n">generate_unique_folder_name</span><span class="p">()</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">temp_folder</span></a> <span class="o">=</span> <span class="n">pyaedt</span><span class="o">.</span><span class="n">generate_unique_folder_name</span><span class="p">()</span>
 
-<a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">targetfile</span></a> <span class="o">=</span> <a href="https://docs.python.org/dev/library/os.path.html#os.path.dirname" title="os.path.dirname" class="sphx-glr-backref-module-os-path sphx-glr-backref-type-py-function"><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span></a><span class="p">(</span><span class="n">examples</span><span class="o">.</span><span class="n">download_aedb</span><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">temp_folder</span></a><span class="p">))</span>
+<a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">targetfile</span></a> <span class="o">=</span> <a href="https://docs.python.org/dev/library/os.path.html#os.path.dirname" title="os.path.dirname" class="sphx-glr-backref-module-os-path sphx-glr-backref-type-py-function"><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span></a><span class="p">(</span><span class="n">pyaedt</span><span class="o">.</span><span class="n">downloads</span><span class="o">.</span><span class="n">download_aedb</span><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">temp_folder</span></a><span class="p">))</span>
 
 <a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ipc2581_file</span></a> <span class="o">=</span> <a href="https://docs.python.org/dev/library/os.path.html#os.path.join" title="os.path.join" class="sphx-glr-backref-module-os-path sphx-glr-backref-type-py-function"><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span></a><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">temp_folder</span></a><span class="p">,</span> <span class="s2">&quot;Galileo.xml&quot;</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">targetfile</span></a><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>D:\Temp\pyaedt_prj_PLA\edb/Galileo.aedb
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>D:\Temp\pyaedt_prj_KA3\edb/Galileo.aedb
 </pre></div>
 </div>
 </section>
 <section id="launch-edb">
 <h2>Launch EDB<a class="headerlink" href="#launch-edb" title="Permalink to this heading">#</a></h2>
-<p>Launch the <a class="reference internal" href="../../API/_autosummary/pyaedt.Edb.html#pyaedt.Edb" title="pyaedt.Edb"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyaedt.Edb</span></code></a> class, using EDB 2022 R2 and SI units.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">edb</span> <span class="o">=</span> <span class="n">Edb</span><span class="p">(</span><span class="n">edbpath</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">targetfile</span></a><span class="p">,</span> <span class="n">edbversion</span><span class="o">=</span><span class="s2">&quot;2022.2&quot;</span><span class="p">)</span>
+<p>Launch the <code class="xref py py-class docutils literal notranslate"><span class="pre">pyaedt.Edb</span></code> class, using EDB 2022 R2 and SI units.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">edb</span> <span class="o">=</span> <span class="n">pyaedt</span><span class="o">.</span><span class="n">Edb</span><span class="p">(</span><span class="n">edbpath</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">targetfile</span></a><span class="p">,</span> <span class="n">edbversion</span><span class="o">=</span><span class="s2">&quot;2022.2&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
@@ -841,7 +847,7 @@ to download the full example code</p>
 <h2>Parametrize net<a class="headerlink" href="#parametrize-net" title="Permalink to this heading">#</a></h2>
 <p>Parametrize a net.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">edb</span><span class="o">.</span><span class="n">core_primitives</span><span class="o">.</span><span class="n">parametrize_trace_width</span><span class="p">(</span>
-    <span class="s2">&quot;A0_N&quot;</span><span class="p">,</span> <span class="n">parameter_name</span><span class="o">=</span><span class="n">generate_unique_name</span><span class="p">(</span><span class="s2">&quot;Par&quot;</span><span class="p">),</span> <span class="n">variable_value</span><span class="o">=</span><span class="s2">&quot;0.4321mm&quot;</span>
+    <span class="s2">&quot;A0_N&quot;</span><span class="p">,</span> <span class="n">parameter_name</span><span class="o">=</span><span class="n">pyaedt</span><span class="o">.</span><span class="n">generate_unique_name</span><span class="p">(</span><span class="s2">&quot;Par&quot;</span><span class="p">),</span> <span class="n">variable_value</span><span class="o">=</span><span class="s2">&quot;0.4321mm&quot;</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -885,7 +891,7 @@ to download the full example code</p>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;IPC2581 File has been saved to </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ipc2581_file</span></a><span class="p">))</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>IPC2581 File has been saved to D:\Temp\pyaedt_prj_PLA\Galileo.xml
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>IPC2581 File has been saved to D:\Temp\pyaedt_prj_KA3\Galileo.xml
 </pre></div>
 </div>
 </section>
@@ -898,7 +904,7 @@ to download the full example code</p>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>True
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  11.751 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  12.206 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-00-edb-02-edb-to-ipc2581-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/208310df13709927b05f23fd7397583d/02_edb_to_ipc2581.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">02_edb_to_ipc2581.py</span></code></a></p>

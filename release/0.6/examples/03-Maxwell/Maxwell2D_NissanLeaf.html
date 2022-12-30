@@ -33,6 +33,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
 
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
@@ -111,7 +112,13 @@
 
 <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="../../API/index.html">
-  API reference
+  API AEDT reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../EDBAPI/index.html">
+  API EDB reference
  </a>
 </li>
 
@@ -203,7 +210,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.40 variable.
+            // this version, rather than using sphinx's 0.6.42 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -1037,10 +1044,7 @@ an interior permanent magnet electric motor.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span> <span class="k">as</span> <a href="https://docs.python.org/dev/library/math.html#math.sqrt" title="math.sqrt" class="sphx-glr-backref-module-math sphx-glr-backref-type-py-function"><span class="n">mysqrt</span></a>
 <span class="kn">import</span> <span class="nn">csv</span>
 <span class="kn">import</span> <span class="nn">os</span>
-
-<span class="kn">from</span> <span class="nn">pyaedt</span> <span class="kn">import</span> <span class="n">Maxwell2d</span>
-<span class="kn">from</span> <span class="nn">pyaedt</span> <span class="kn">import</span> <span class="n">examples</span>
-<span class="kn">from</span> <span class="nn">pyaedt</span> <span class="kn">import</span> <span class="n">generate_unique_project_name</span>
+<span class="kn">import</span> <span class="nn">pyaedt</span>
 </pre></div>
 </div>
 </section>
@@ -1053,7 +1057,7 @@ name and type.</p>
 <a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">sName</span></a> <span class="o">=</span> <span class="s2">&quot;MySetupAuto&quot;</span>
 <a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">sType</span></a> <span class="o">=</span> <span class="s2">&quot;TransientXY&quot;</span>
 
-<a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">pName</span></a> <span class="o">=</span> <span class="n">generate_unique_project_name</span><span class="p">()</span>
+<a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">pName</span></a> <span class="o">=</span> <span class="n">pyaedt</span><span class="o">.</span><span class="n">generate_unique_project_name</span><span class="p">()</span>
 <a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">dName</span></a> <span class="o">=</span> <span class="s2">&quot;Sinusoidal&quot;</span>
 </pre></div>
 </div>
@@ -1149,9 +1153,13 @@ You can set <code class="docutils literal notranslate"><span class="pre">non_gra
 <section id="launch-maxwell-2d">
 <h2>Launch Maxwell 2D<a class="headerlink" href="#launch-maxwell-2d" title="Permalink to this heading">#</a></h2>
 <p>Launch Maxwell 2D and save the project.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">M2D</span> <span class="o">=</span> <span class="n">Maxwell2d</span><span class="p">(</span><span class="n">projectname</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">pName</span></a><span class="p">,</span> <span class="n">specified_version</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">desktopVersion</span></a><span class="p">,</span> <span class="n">designname</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">dName</span></a><span class="p">,</span>
-                <span class="n">solution_type</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">sType</span></a><span class="p">,</span> <span class="n">new_desktop_session</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-                <a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a><span class="o">=</span><a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">M2D</span> <span class="o">=</span> <span class="n">pyaedt</span><span class="o">.</span><span class="n">Maxwell2d</span><span class="p">(</span><span class="n">projectname</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">pName</span></a><span class="p">,</span>
+                       <span class="n">specified_version</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">desktopVersion</span></a><span class="p">,</span>
+                       <span class="n">designname</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">dName</span></a><span class="p">,</span>
+                       <span class="n">solution_type</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">sType</span></a><span class="p">,</span>
+                       <span class="n">new_desktop_session</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                       <a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a><span class="o">=</span><a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a>
+                       <span class="p">)</span>
 </pre></div>
 </div>
 </section>
@@ -1182,7 +1190,7 @@ You can set <code class="docutils literal notranslate"><span class="pre">non_gra
 <h2>Define path for non-linear material properties<a class="headerlink" href="#define-path-for-non-linear-material-properties" title="Permalink to this heading">#</a></h2>
 <p>Define the path for non-linear material properties.
 Materials are stored in text files.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">filename_lam</span></a><span class="p">,</span> <a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">filename_PM</span></a> <span class="o">=</span> <span class="n">examples</span><span class="o">.</span><span class="n">download_leaf</span><span class="p">()</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">filename_lam</span></a><span class="p">,</span> <a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">filename_PM</span></a> <span class="o">=</span> <span class="n">pyaedt</span><span class="o">.</span><span class="n">downloads</span><span class="o">.</span><span class="n">download_leaf</span><span class="p">()</span>
 </pre></div>
 </div>
 </section>
@@ -1416,7 +1424,7 @@ coordinate systems in case of outer magnetization.</p>
                          <span class="n">start_position</span><span class="o">=</span><span class="s2">&quot;InitialPositionMD&quot;</span><span class="p">,</span> <span class="n">angular_velocity</span><span class="o">=</span><span class="s2">&quot;MachineRPM&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modules.Boundary.BoundaryObject object at 0x0000022B83DB81F0&gt;
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modules.Boundary.BoundaryObject object at 0x000002812C261550&gt;
 </pre></div>
 </div>
 </section>
@@ -1505,7 +1513,7 @@ The points for edge picking are in the airgap.</p>
                         <span class="n">bound_name</span><span class="o">=</span><span class="s2">&quot;Matching&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>(&lt;pyaedt.modules.Boundary.BoundaryObject object at 0x0000022BE541C2B0&gt;, &lt;pyaedt.modules.Boundary.BoundaryObject object at 0x0000022BE543E4C0&gt;)
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>(&lt;pyaedt.modules.Boundary.BoundaryObject object at 0x000002812CDD60D0&gt;, &lt;pyaedt.modules.Boundary.BoundaryObject object at 0x000002812C650D30&gt;)
 </pre></div>
 </div>
 </section>
@@ -1519,7 +1527,7 @@ The points for edge picking are in the airgap.</p>
 <span class="n">M2D</span><span class="o">.</span><span class="n">assign_vector_potential</span><span class="p">(</span><a href="https://docs.python.org/dev/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">id_bc_az</span></a><span class="p">,</span> <span class="n">vectorvalue</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">bound_name</span><span class="o">=</span><span class="s2">&quot;VectorPotentialZero&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modules.Boundary.BoundaryObject object at 0x0000022BE540E2E0&gt;
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modules.Boundary.BoundaryObject object at 0x000002812CDF3B50&gt;
 </pre></div>
 </div>
 </section>
@@ -1593,7 +1601,7 @@ The points for edge picking are in the airgap.</p>
 <span class="n">M2D</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">assign_length_mesh</span><span class="p">(</span><span class="n">rotor_id</span><span class="p">,</span> <span class="n">isinside</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">maxlength</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">maxel</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">meshop_name</span><span class="o">=</span><span class="s2">&quot;rotor&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modules.Mesh.MeshOperation object at 0x0000022BB40B5CD0&gt;
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modules.Mesh.MeshOperation object at 0x000002812C6650D0&gt;
 </pre></div>
 </div>
 </section>
@@ -1783,7 +1791,7 @@ formerly created when the section is applied.</p>
 <span class="n">M2D</span><span class="o">.</span><span class="n">post</span><span class="o">.</span><span class="n">create_fieldplot_surface</span><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">faces_reg</span></a><span class="p">,</span> <span class="s1">&#39;Flux_Lines&#39;</span><span class="p">,</span> <span class="n">intrinsincDict</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Time&quot;</span><span class="p">:</span> <span class="s2">&quot;0.000&quot;</span><span class="p">},</span> <span class="n">plot_name</span><span class="o">=</span><span class="s2">&quot;Flux_Lines&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modules.solutions.FieldPlot object at 0x0000022BE541C7F0&gt;
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modules.solutions.FieldPlot object at 0x000002812CAA14C0&gt;
 </pre></div>
 </div>
 </section>
@@ -1807,7 +1815,7 @@ formerly created when the section is applied.</p>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>True
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 2 minutes  44.602 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 2 minutes  45.502 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-03-maxwell-maxwell2d-nissanleaf-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/f19681ed04b8eb18fe205d53191d34a9/Maxwell2D_NissanLeaf.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">Maxwell2D_NissanLeaf.py</span></code></a></p>

@@ -32,6 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-binder.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-dataframe.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-rendered-html.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css" />
 
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
@@ -108,7 +109,13 @@
 
 <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="../../../API/index.html">
-  API reference
+  API AEDT reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../EDBAPI/index.html">
+  API EDB reference
  </a>
 </li>
 
@@ -200,7 +207,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.40 variable.
+            // this version, rather than using sphinx's 0.6.42 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -330,7 +337,7 @@ function checkPageExistsAndRedirect(event) {
 <span class="kn">from</span> <span class="nn">pyaedt.generic.general_methods</span> <span class="kn">import</span> <span class="n">pyaedt_function_handler</span>
 
 
-<div class="viewcode-block" id="EdbPadstacks"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.padstack.EdbPadstacks.html#pyaedt.edb_core.padstack.EdbPadstacks">[docs]</a><span class="k">class</span> <span class="nc">EdbPadstacks</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="EdbPadstacks"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.padstack.EdbPadstacks.html#pyaedt.edb_core.padstack.EdbPadstacks">[docs]</a><span class="k">class</span> <span class="nc">EdbPadstacks</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Manages EDB methods for nets management accessible from `Edb.core_padstack` property.</span>
 
 <span class="sd">    Examples</span>
@@ -376,7 +383,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="sd">&quot;&quot;&quot; &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span><span class="o">.</span><span class="n">stackup</span><span class="o">.</span><span class="n">stackup_layers</span>
 
-<div class="viewcode-block" id="EdbPadstacks.int_to_pad_type"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.padstack.EdbPadstacks.int_to_pad_type.html#pyaedt.edb_core.padstack.EdbPadstacks.int_to_pad_type">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EdbPadstacks.int_to_pad_type"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.padstack.EdbPadstacks.int_to_pad_type.html#pyaedt.edb_core.padstack.EdbPadstacks.int_to_pad_type">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">int_to_pad_type</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Convert an integer to an EDB.PadGeometryType.</span>
 
@@ -403,7 +410,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">val</span></div>
 
-<div class="viewcode-block" id="EdbPadstacks.int_to_geometry_type"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.padstack.EdbPadstacks.int_to_geometry_type.html#pyaedt.edb_core.padstack.EdbPadstacks.int_to_geometry_type">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EdbPadstacks.int_to_geometry_type"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.padstack.EdbPadstacks.int_to_geometry_type.html#pyaedt.edb_core.padstack.EdbPadstacks.int_to_geometry_type">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">int_to_geometry_type</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Convert an integer to an EDB.PadGeometryType.</span>
 
@@ -507,7 +514,7 @@ function checkPageExistsAndRedirect(event) {
 
         <span class="k">return</span> <span class="n">PadType</span>
 
-<div class="viewcode-block" id="EdbPadstacks.create_circular_padstack"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.padstack.EdbPadstacks.create_circular_padstack.html#pyaedt.edb_core.padstack.EdbPadstacks.create_circular_padstack">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EdbPadstacks.create_circular_padstack"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.padstack.EdbPadstacks.create_circular_padstack.html#pyaedt.edb_core.padstack.EdbPadstacks.create_circular_padstack">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">create_circular_padstack</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">padstackname</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
@@ -609,7 +616,7 @@ function checkPageExistsAndRedirect(event) {
                 <span class="p">)</span>
         <span class="n">PadStack</span><span class="o">.</span><span class="n">SetData</span><span class="p">(</span><span class="n">new_PadStackData</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="EdbPadstacks.delete_padstack_instances"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.padstack.EdbPadstacks.delete_padstack_instances.html#pyaedt.edb_core.padstack.EdbPadstacks.delete_padstack_instances">[docs]</a>    <span class="nd">@pyaedt_function_handler</span>
+<div class="viewcode-block" id="EdbPadstacks.delete_padstack_instances"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.padstack.EdbPadstacks.delete_padstack_instances.html#pyaedt.edb_core.padstack.EdbPadstacks.delete_padstack_instances">[docs]</a>    <span class="nd">@pyaedt_function_handler</span>
     <span class="k">def</span> <span class="nf">delete_padstack_instances</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">net_names</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
         <span class="sd">&quot;&quot;&quot;Delete padstack instances by net names.</span>
 
@@ -637,7 +644,7 @@ function checkPageExistsAndRedirect(event) {
                     <span class="k">return</span> <span class="kc">False</span>
         <span class="k">return</span> <span class="kc">True</span></div>
 
-<div class="viewcode-block" id="EdbPadstacks.set_solderball"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.padstack.EdbPadstacks.set_solderball.html#pyaedt.edb_core.padstack.EdbPadstacks.set_solderball">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EdbPadstacks.set_solderball"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.padstack.EdbPadstacks.set_solderball.html#pyaedt.edb_core.padstack.EdbPadstacks.set_solderball">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">set_solderball</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">padstackInst</span><span class="p">,</span> <span class="n">sballLayer_name</span><span class="p">,</span> <span class="n">isTopPlaced</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ballDiam</span><span class="o">=</span><span class="mf">100e-6</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Set solderball for the given PadstackInstance.</span>
 
@@ -680,7 +687,7 @@ function checkPageExistsAndRedirect(event) {
 
         <span class="k">return</span> <span class="kc">False</span></div>
 
-<div class="viewcode-block" id="EdbPadstacks.create_coax_port"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.padstack.EdbPadstacks.create_coax_port.html#pyaedt.edb_core.padstack.EdbPadstacks.create_coax_port">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EdbPadstacks.create_coax_port"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.padstack.EdbPadstacks.create_coax_port.html#pyaedt.edb_core.padstack.EdbPadstacks.create_coax_port">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">create_coax_port</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">padstackinstance</span><span class="p">,</span> <span class="n">use_dot_separator</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Create HFSS 3Dlayout coaxial lumped port on a pastack</span>
 <span class="sd">        Requires to have solder ball defined before calling this method.</span>
@@ -730,7 +737,7 @@ function checkPageExistsAndRedirect(event) {
             <span class="k">return</span> <span class="n">port_name</span>
         <span class="k">return</span> <span class="s2">&quot;&quot;</span></div>
 
-<div class="viewcode-block" id="EdbPadstacks.get_pinlist_from_component_and_net"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.padstack.EdbPadstacks.get_pinlist_from_component_and_net.html#pyaedt.edb_core.padstack.EdbPadstacks.get_pinlist_from_component_and_net">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EdbPadstacks.get_pinlist_from_component_and_net"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.padstack.EdbPadstacks.get_pinlist_from_component_and_net.html#pyaedt.edb_core.padstack.EdbPadstacks.get_pinlist_from_component_and_net">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">get_pinlist_from_component_and_net</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">refdes</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">netname</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Retrieve pins given a component&#39;s reference designator and net name.</span>
 
@@ -767,7 +774,7 @@ function checkPageExistsAndRedirect(event) {
 
         <span class="k">return</span> <span class="n">pinlist</span></div>
 
-<div class="viewcode-block" id="EdbPadstacks.get_pad_parameters"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.padstack.EdbPadstacks.get_pad_parameters.html#pyaedt.edb_core.padstack.EdbPadstacks.get_pad_parameters">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EdbPadstacks.get_pad_parameters"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.padstack.EdbPadstacks.get_pad_parameters.html#pyaedt.edb_core.padstack.EdbPadstacks.get_pad_parameters">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">get_pad_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pin</span><span class="p">,</span> <span class="n">layername</span><span class="p">,</span> <span class="n">pad_type</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Get Padstack Parameters from Pin or Padstack Definition.</span>
 
@@ -799,19 +806,19 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">rot</span> <span class="o">=</span> <span class="n">padparams</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="o">.</span><span class="n">ToDouble</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">geom_type</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">offset_x</span><span class="p">,</span> <span class="n">offset_y</span><span class="p">,</span> <span class="n">rot</span></div>
 
-<div class="viewcode-block" id="EdbPadstacks.set_all_antipad_value"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.padstack.EdbPadstacks.set_all_antipad_value.html#pyaedt.edb_core.padstack.EdbPadstacks.set_all_antipad_value">[docs]</a>    <span class="nd">@pyaedt_function_handler</span>
+<div class="viewcode-block" id="EdbPadstacks.set_all_antipad_value"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.padstack.EdbPadstacks.set_all_antipad_value.html#pyaedt.edb_core.padstack.EdbPadstacks.set_all_antipad_value">[docs]</a>    <span class="nd">@pyaedt_function_handler</span>
     <span class="k">def</span> <span class="nf">set_all_antipad_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Set all anti-pads from all pad-stack definition to the given value.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        value : float, str</span>
-<span class="sd">            anti-pad value</span>
+<span class="sd">            Anti-pad value.</span>
 
 <span class="sd">        Returns</span>
-<span class="sd">        --------</span>
+<span class="sd">        -------</span>
 <span class="sd">        bool</span>
-<span class="sd">            ``True`` when all succeed. ``False`` if one of anti-pads value failed to be assigned.</span>
+<span class="sd">            ``True`` when successful, ``False`` if an anti-pad value fails to be assigned.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">padstacks</span><span class="p">:</span>
             <span class="k">for</span> <span class="n">padstack</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">padstacks</span><span class="o">.</span><span class="n">values</span><span class="p">()):</span>
@@ -848,7 +855,7 @@ function checkPageExistsAndRedirect(event) {
                 <span class="n">padstack</span><span class="o">.</span><span class="n">edb_padstack</span><span class="o">.</span><span class="n">SetData</span><span class="p">(</span><span class="n">cloned_padstack_data</span><span class="p">)</span>
             <span class="k">return</span> <span class="n">all_succeed</span></div>
 
-<div class="viewcode-block" id="EdbPadstacks.get_via_instance_from_net"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.padstack.EdbPadstacks.get_via_instance_from_net.html#pyaedt.edb_core.padstack.EdbPadstacks.get_via_instance_from_net">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EdbPadstacks.get_via_instance_from_net"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.padstack.EdbPadstacks.get_via_instance_from_net.html#pyaedt.edb_core.padstack.EdbPadstacks.get_via_instance_from_net">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">get_via_instance_from_net</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">net_list</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Get the list for Edb vias from net name list.</span>
 
@@ -879,7 +886,7 @@ function checkPageExistsAndRedirect(event) {
                     <span class="n">via_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">lobj</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">via_list</span></div>
 
-<div class="viewcode-block" id="EdbPadstacks.create_padstack"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.padstack.EdbPadstacks.create_padstack.html#pyaedt.edb_core.padstack.EdbPadstacks.create_padstack">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EdbPadstacks.create_padstack"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.padstack.EdbPadstacks.create_padstack.html#pyaedt.edb_core.padstack.EdbPadstacks.create_padstack">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">create_padstack</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">padstackname</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
@@ -1025,7 +1032,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">False</span>
 
-<div class="viewcode-block" id="EdbPadstacks.duplicate_padstack"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.padstack.EdbPadstacks.duplicate_padstack.html#pyaedt.edb_core.padstack.EdbPadstacks.duplicate_padstack">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EdbPadstacks.duplicate_padstack"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.padstack.EdbPadstacks.duplicate_padstack.html#pyaedt.edb_core.padstack.EdbPadstacks.duplicate_padstack">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">duplicate_padstack</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target_padstack_name</span><span class="p">,</span> <span class="n">new_padstack_name</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Duplicate a padstack.</span>
 
@@ -1051,7 +1058,7 @@ function checkPageExistsAndRedirect(event) {
 
         <span class="k">return</span> <span class="n">new_padstack_name</span></div>
 
-<div class="viewcode-block" id="EdbPadstacks.place_padstack"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.padstack.EdbPadstacks.place_padstack.html#pyaedt.edb_core.padstack.EdbPadstacks.place_padstack">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EdbPadstacks.place_padstack"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.padstack.EdbPadstacks.place_padstack.html#pyaedt.edb_core.padstack.EdbPadstacks.place_padstack">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">place_padstack</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">position</span><span class="p">,</span>
@@ -1129,7 +1136,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">False</span></div>
 
-<div class="viewcode-block" id="EdbPadstacks.remove_pads_from_padstack"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.padstack.EdbPadstacks.remove_pads_from_padstack.html#pyaedt.edb_core.padstack.EdbPadstacks.remove_pads_from_padstack">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EdbPadstacks.remove_pads_from_padstack"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.padstack.EdbPadstacks.remove_pads_from_padstack.html#pyaedt.edb_core.padstack.EdbPadstacks.remove_pads_from_padstack">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">remove_pads_from_padstack</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">padstack_name</span><span class="p">,</span> <span class="n">layer_name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Remove the Pad from a padstack on a specific layer by setting it as a 0 thickness circle.</span>
 
@@ -1162,7 +1169,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="bp">self</span><span class="o">.</span><span class="n">padstacks</span><span class="p">[</span><span class="n">padstack_name</span><span class="p">]</span><span class="o">.</span><span class="n">edb_padstack</span><span class="o">.</span><span class="n">SetData</span><span class="p">(</span><span class="n">newPadstackDefinitionData</span><span class="p">)</span>
         <span class="k">return</span> <span class="kc">True</span></div>
 
-<div class="viewcode-block" id="EdbPadstacks.set_pad_property"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.padstack.EdbPadstacks.set_pad_property.html#pyaedt.edb_core.padstack.EdbPadstacks.set_pad_property">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EdbPadstacks.set_pad_property"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.padstack.EdbPadstacks.set_pad_property.html#pyaedt.edb_core.padstack.EdbPadstacks.set_pad_property">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">set_pad_property</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">padstack_name</span><span class="p">,</span>
@@ -1264,7 +1271,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="bp">self</span><span class="o">.</span><span class="n">padstacks</span><span class="p">[</span><span class="n">padstack_name</span><span class="p">]</span><span class="o">.</span><span class="n">edb_padstack</span><span class="o">.</span><span class="n">SetData</span><span class="p">(</span><span class="n">new_padstack_def</span><span class="p">)</span>
         <span class="k">return</span> <span class="kc">True</span></div>
 
-<div class="viewcode-block" id="EdbPadstacks.get_padstack_instance_by_net_name"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.padstack.EdbPadstacks.get_padstack_instance_by_net_name.html#pyaedt.edb_core.padstack.EdbPadstacks.get_padstack_instance_by_net_name">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EdbPadstacks.get_padstack_instance_by_net_name"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.padstack.EdbPadstacks.get_padstack_instance_by_net_name.html#pyaedt.edb_core.padstack.EdbPadstacks.get_padstack_instance_by_net_name">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">get_padstack_instance_by_net_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">net_name</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Get a list of padstack instances by net name.</span>
 

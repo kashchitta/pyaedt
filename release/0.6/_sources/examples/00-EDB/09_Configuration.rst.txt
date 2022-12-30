@@ -30,16 +30,13 @@ Perform required imports
 Peform required imports. Importing the ``Hfss3dlayout`` object initializes it
 on version 2022 R2.
 
-.. GENERATED FROM PYTHON SOURCE LINES 14-21
+.. GENERATED FROM PYTHON SOURCE LINES 14-18
 
 .. code-block:: default
 
 
     import os
-
-    from pyaedt import generate_unique_folder_name,examples, Edb, Hfss3dLayout
-    from pyaedt.generic.constants import SolverType
-    from pyaedt.edb_core.edb_data.simulation_configuration import SimulationConfiguration
+    import pyaedt
 
 
 
@@ -48,13 +45,13 @@ on version 2022 R2.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 22-25
+.. GENERATED FROM PYTHON SOURCE LINES 19-22
 
 Set non-graphical mode
 ~~~~~~~~~~~~~~~~~~~~~~
 Set non-graphical mode. The default is ``True``.
 
-.. GENERATED FROM PYTHON SOURCE LINES 25-28
+.. GENERATED FROM PYTHON SOURCE LINES 22-25
 
 .. code-block:: default
 
@@ -68,20 +65,20 @@ Set non-graphical mode. The default is ``True``.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 29-32
+.. GENERATED FROM PYTHON SOURCE LINES 26-29
 
 Download file
 ~~~~~~~~~~~~~
 Download the AEDB file and copy it in the temporary folder.
 
-.. GENERATED FROM PYTHON SOURCE LINES 32-38
+.. GENERATED FROM PYTHON SOURCE LINES 29-35
 
 .. code-block:: default
 
 
 
-    project_path = generate_unique_folder_name()
-    target_aedb = examples.download_file('edb/Galileo.aedb',destination=project_path)
+    project_path = pyaedt.generate_unique_folder_name()
+    target_aedb = pyaedt.downloads.download_file('edb/Galileo.aedb',destination=project_path)
     print("Project folder will be", target_aedb)
 
 
@@ -92,23 +89,23 @@ Download the AEDB file and copy it in the temporary folder.
 
  .. code-block:: none
 
-    Project folder will be D:\Temp\pyaedt_prj_UBW\edb/Galileo.aedb
+    Project folder will be D:\Temp\pyaedt_prj_G17\edb/Galileo.aedb
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 39-42
+.. GENERATED FROM PYTHON SOURCE LINES 36-39
 
 Launch EDB
 ~~~~~~~~~~
 Launch the :class:`pyaedt.Edb` class, using EDB 2022 R2 and SI units.
 
-.. GENERATED FROM PYTHON SOURCE LINES 42-44
+.. GENERATED FROM PYTHON SOURCE LINES 39-41
 
 .. code-block:: default
 
 
-    edbapp = Edb(target_aedb, edbversion="2022.2")
+    edbapp = pyaedt.Edb(target_aedb, edbversion="2022.2")
 
 
 
@@ -116,7 +113,7 @@ Launch the :class:`pyaedt.Edb` class, using EDB 2022 R2 and SI units.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 45-51
+.. GENERATED FROM PYTHON SOURCE LINES 42-48
 
 Import Definitions
 ~~~~~~~~~~~~~~~~~~
@@ -125,7 +122,7 @@ Model can be RLC, Sparameter or Spice.
 Once imported the definition is applied to the board.
 Json file is stored for convenience in aedb folder.
 
-.. GENERATED FROM PYTHON SOURCE LINES 51-54
+.. GENERATED FROM PYTHON SOURCE LINES 48-51
 
 .. code-block:: default
 
@@ -145,7 +142,7 @@ Json file is stored for convenience in aedb folder.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 55-61
+.. GENERATED FROM PYTHON SOURCE LINES 52-58
 
 Import BOM
 ~~~~~~~~~~
@@ -154,7 +151,7 @@ reference designator, part name, component type, and default value.
 Components not in the BOM are deactivated.
 Csv file is store for convenience in aedb folder.
 
-.. GENERATED FROM PYTHON SOURCE LINES 61-70
+.. GENERATED FROM PYTHON SOURCE LINES 58-67
 
 .. code-block:: default
 
@@ -180,12 +177,12 @@ Csv file is store for convenience in aedb folder.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 71-73
+.. GENERATED FROM PYTHON SOURCE LINES 68-70
 
 Check Component Values
 ~~~~~~~~~~~~~~~~~~~~~~
 
-.. GENERATED FROM PYTHON SOURCE LINES 73-77
+.. GENERATED FROM PYTHON SOURCE LINES 70-74
 
 .. code-block:: default
 
@@ -206,12 +203,12 @@ Check Component Values
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 78-80
+.. GENERATED FROM PYTHON SOURCE LINES 75-77
 
 Check Component Values
 ~~~~~~~~~~~~~~~~~~~~~~
 
-.. GENERATED FROM PYTHON SOURCE LINES 80-83
+.. GENERATED FROM PYTHON SOURCE LINES 77-80
 
 .. code-block:: default
 
@@ -231,12 +228,12 @@ Check Component Values
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 84-86
+.. GENERATED FROM PYTHON SOURCE LINES 81-83
 
 Check Component Definition
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. GENERATED FROM PYTHON SOURCE LINES 86-89
+.. GENERATED FROM PYTHON SOURCE LINES 83-86
 
 .. code-block:: default
 
@@ -252,16 +249,16 @@ Check Component Definition
  .. code-block:: none
 
 
-    {'602433-026': <pyaedt.edb_core.edb_data.components_data.EDBComponentDef object at 0x0000022BD02518E0>}
+    {'602433-026': <pyaedt.edb_core.edb_data.components_data.EDBComponentDef object at 0x000002811AE58190>}
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 90-92
+.. GENERATED FROM PYTHON SOURCE LINES 87-89
 
 Save Edb
 ~~~~~~~~
 
-.. GENERATED FROM PYTHON SOURCE LINES 92-94
+.. GENERATED FROM PYTHON SOURCE LINES 89-91
 
 .. code-block:: default
 
@@ -280,7 +277,7 @@ Save Edb
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 95-102
+.. GENERATED FROM PYTHON SOURCE LINES 92-99
 
 Configure Setup
 ~~~~~~~~~~~~~~~
@@ -290,13 +287,13 @@ This step allows to define the project. It includes:
  - Components on which to create the ports
  - Simulation settings
 
-.. GENERATED FROM PYTHON SOURCE LINES 102-116
+.. GENERATED FROM PYTHON SOURCE LINES 99-113
 
 .. code-block:: default
 
 
     sim_setup = edbapp.new_simulation_configuration()
-    sim_setup.solver_type = SolverType.SiwaveSYZ
+    sim_setup.solver_type = sim_setup.SOLVER_TYPE.SiwaveSYZ
     sim_setup.batch_solve_settings.cutout_subdesign_expansion = 0.01
     sim_setup.batch_solve_settings.do_cutout_subdesign = True
     sim_setup.use_default_cutout = False
@@ -315,13 +312,13 @@ This step allows to define the project. It includes:
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 117-120
+.. GENERATED FROM PYTHON SOURCE LINES 114-117
 
 Run Setup
 ~~~~~~~~~
 This step allows to create the cutout and apply all settings.
 
-.. GENERATED FROM PYTHON SOURCE LINES 120-124
+.. GENERATED FROM PYTHON SOURCE LINES 117-121
 
 .. code-block:: default
 
@@ -342,13 +339,13 @@ This step allows to create the cutout and apply all settings.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 125-128
+.. GENERATED FROM PYTHON SOURCE LINES 122-125
 
 Plot Cutout
 ~~~~~~~~~~~
 Plot cutout once finished.
 
-.. GENERATED FROM PYTHON SOURCE LINES 128-131
+.. GENERATED FROM PYTHON SOURCE LINES 125-128
 
 .. code-block:: default
 
@@ -367,13 +364,13 @@ Plot cutout once finished.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 132-135
+.. GENERATED FROM PYTHON SOURCE LINES 129-132
 
 Save and Close EDB
 ~~~~~~~~~~~~~~~~~~
 Edb will be saved and closed in order to be opened by Hfss 3D Layout and solved.
 
-.. GENERATED FROM PYTHON SOURCE LINES 135-139
+.. GENERATED FROM PYTHON SOURCE LINES 132-136
 
 .. code-block:: default
 
@@ -394,17 +391,17 @@ Edb will be saved and closed in order to be opened by Hfss 3D Layout and solved.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 140-143
+.. GENERATED FROM PYTHON SOURCE LINES 137-140
 
 Open Aedt
 ~~~~~~~~~
 Project folder aedb will be opened in AEDT Hfss3DLayout and loaded.
 
-.. GENERATED FROM PYTHON SOURCE LINES 143-145
+.. GENERATED FROM PYTHON SOURCE LINES 140-142
 
 .. code-block:: default
 
-    h3d = Hfss3dLayout(specified_version="2022.2", projectname=target_aedb, non_graphical=non_graphical)
+    h3d = pyaedt.Hfss3dLayout(specified_version="2022.2", projectname=target_aedb, non_graphical=non_graphical)
 
 
 
@@ -413,13 +410,13 @@ Project folder aedb will be opened in AEDT Hfss3DLayout and loaded.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 146-149
+.. GENERATED FROM PYTHON SOURCE LINES 143-146
 
 Analyze
 ~~~~~~~
 Project will be solved.
 
-.. GENERATED FROM PYTHON SOURCE LINES 149-151
+.. GENERATED FROM PYTHON SOURCE LINES 146-148
 
 .. code-block:: default
 
@@ -438,13 +435,13 @@ Project will be solved.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 152-155
+.. GENERATED FROM PYTHON SOURCE LINES 149-152
 
 Get Results
 ~~~~~~~~~~~
 S Parameter data will be loaded at the end of simulation.
 
-.. GENERATED FROM PYTHON SOURCE LINES 155-157
+.. GENERATED FROM PYTHON SOURCE LINES 152-154
 
 .. code-block:: default
 
@@ -457,13 +454,13 @@ S Parameter data will be loaded at the end of simulation.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 158-161
+.. GENERATED FROM PYTHON SOURCE LINES 155-158
 
 Plot Results
 ~~~~~~~~~~~~
 Plot S Parameter data.
 
-.. GENERATED FROM PYTHON SOURCE LINES 161-163
+.. GENERATED FROM PYTHON SOURCE LINES 158-160
 
 .. code-block:: default
 
@@ -487,13 +484,13 @@ Plot S Parameter data.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 164-167
+.. GENERATED FROM PYTHON SOURCE LINES 161-164
 
 Save and Close AEDT
 ~~~~~~~~~~~~~~~~~~~
 Hfss3dLayout is saved and closed.
 
-.. GENERATED FROM PYTHON SOURCE LINES 167-169
+.. GENERATED FROM PYTHON SOURCE LINES 164-166
 
 .. code-block:: default
 
@@ -515,7 +512,7 @@ Hfss3dLayout is saved and closed.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 1 minutes  56.649 seconds)
+   **Total running time of the script:** ( 1 minutes  54.357 seconds)
 
 
 .. _sphx_glr_download_examples_00-EDB_09_Configuration.py:

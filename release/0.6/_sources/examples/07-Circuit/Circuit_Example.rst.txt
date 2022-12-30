@@ -29,16 +29,14 @@ Perform required imports
 ~~~~~~~~~~~~~~~~~~~~~~~~
 Perform required imports.
 
-.. GENERATED FROM PYTHON SOURCE LINES 11-19
+.. GENERATED FROM PYTHON SOURCE LINES 11-17
 
 .. code-block:: default
 
 
     # sphinx_gallery_thumbnail_path = 'Resources/circuit.png'
 
-    from pyaedt import Circuit
-    from pyaedt import Desktop
-    from pyaedt import generate_unique_project_name
+    import pyaedt
     import os
 
 
@@ -48,13 +46,13 @@ Perform required imports.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 20-23
+.. GENERATED FROM PYTHON SOURCE LINES 18-21
 
 Launch AEDT
 ~~~~~~~~~~~
 Launch AEDT 2022 R2 in graphical mode. This example uses SI units.
 
-.. GENERATED FROM PYTHON SOURCE LINES 23-27
+.. GENERATED FROM PYTHON SOURCE LINES 21-25
 
 .. code-block:: default
 
@@ -69,7 +67,7 @@ Launch AEDT 2022 R2 in graphical mode. This example uses SI units.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 28-35
+.. GENERATED FROM PYTHON SOURCE LINES 26-33
 
 Set non-graphical mode
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -79,7 +77,7 @@ You can set ``non_graphical`` either to ``True`` or ``False``.
 The Boolean parameter ``new_thread`` defines whether to create a new instance
 of AEDT or try to connect to an existing instance of it.
 
-.. GENERATED FROM PYTHON SOURCE LINES 35-39
+.. GENERATED FROM PYTHON SOURCE LINES 33-37
 
 .. code-block:: default
 
@@ -94,20 +92,20 @@ of AEDT or try to connect to an existing instance of it.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 40-44
+.. GENERATED FROM PYTHON SOURCE LINES 38-42
 
 Launch AEDT and Circuit
 ~~~~~~~~~~~~~~~~~~~~~~~
 Launch AEDT and Circuit. The :class:`pyaedt.Desktop` class initializes AEDT and
 starts the specified version in the specified mode.
 
-.. GENERATED FROM PYTHON SOURCE LINES 44-48
+.. GENERATED FROM PYTHON SOURCE LINES 42-46
 
 .. code-block:: default
 
 
-    desktop = Desktop(desktop_version, non_graphical, new_thread)
-    aedt_app = Circuit(projectname=generate_unique_project_name())
+    desktop = pyaedt.launch_desktop(desktop_version, non_graphical, new_thread)
+    aedt_app = pyaedt.Circuit(projectname=pyaedt.generate_unique_project_name())
 
 
 
@@ -116,13 +114,13 @@ starts the specified version in the specified mode.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 49-52
+.. GENERATED FROM PYTHON SOURCE LINES 47-50
 
 Create circuit setup
 ~~~~~~~~~~~~~~~~~~~~
 Create and customize an LNA (linear network analysis) setup.
 
-.. GENERATED FROM PYTHON SOURCE LINES 52-56
+.. GENERATED FROM PYTHON SOURCE LINES 50-54
 
 .. code-block:: default
 
@@ -137,13 +135,13 @@ Create and customize an LNA (linear network analysis) setup.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 57-60
+.. GENERATED FROM PYTHON SOURCE LINES 55-58
 
 Create components
 ~~~~~~~~~~~~~~~~~
 Create components, such as an inductor, resistor, and capacitor.
 
-.. GENERATED FROM PYTHON SOURCE LINES 60-65
+.. GENERATED FROM PYTHON SOURCE LINES 58-63
 
 .. code-block:: default
 
@@ -159,13 +157,13 @@ Create components, such as an inductor, resistor, and capacitor.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 66-69
+.. GENERATED FROM PYTHON SOURCE LINES 64-67
 
 Get all pins
 ~~~~~~~~~~~~
 Get all pins of a specified component.
 
-.. GENERATED FROM PYTHON SOURCE LINES 69-73
+.. GENERATED FROM PYTHON SOURCE LINES 67-71
 
 .. code-block:: default
 
@@ -180,13 +178,13 @@ Get all pins of a specified component.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 74-77
+.. GENERATED FROM PYTHON SOURCE LINES 72-75
 
 Create port and ground
 ~~~~~~~~~~~~~~~~~~~~~~
 Create a port and a ground, which are needed for the circuit analysis.
 
-.. GENERATED FROM PYTHON SOURCE LINES 77-81
+.. GENERATED FROM PYTHON SOURCE LINES 75-79
 
 .. code-block:: default
 
@@ -201,13 +199,13 @@ Create a port and a ground, which are needed for the circuit analysis.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 82-85
+.. GENERATED FROM PYTHON SOURCE LINES 80-83
 
 Connect components
 ~~~~~~~~~~~~~~~~~~
 Connect components with wires.
 
-.. GENERATED FROM PYTHON SOURCE LINES 85-91
+.. GENERATED FROM PYTHON SOURCE LINES 83-89
 
 .. code-block:: default
 
@@ -230,13 +228,13 @@ Connect components with wires.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 92-95
+.. GENERATED FROM PYTHON SOURCE LINES 90-93
 
 Create transient setup
 ~~~~~~~~~~~~~~~~~~~~~~
 Create a transient setup.
 
-.. GENERATED FROM PYTHON SOURCE LINES 95-100
+.. GENERATED FROM PYTHON SOURCE LINES 93-98
 
 .. code-block:: default
 
@@ -252,13 +250,13 @@ Create a transient setup.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 101-104
+.. GENERATED FROM PYTHON SOURCE LINES 99-102
 
 Solve transient setup
 ~~~~~~~~~~~~~~~~~~~~~
 Solve the transient setup.
 
-.. GENERATED FROM PYTHON SOURCE LINES 104-110
+.. GENERATED FROM PYTHON SOURCE LINES 102-108
 
 .. code-block:: default
 
@@ -277,17 +275,17 @@ Solve the transient setup.
  .. code-block:: none
 
 
-    'D:/Temp/pyaedt_prj_4AT/Project_WKC.pyaedt\\Circuit Design_NPD\\Circuit Design_NPD.sp'
+    'D:/Temp/pyaedt_prj_52V/Project_QVU.pyaedt\\Circuit Design_HOJ\\Circuit Design_HOJ.sp'
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 111-114
+.. GENERATED FROM PYTHON SOURCE LINES 109-112
 
 Create report
 ~~~~~~~~~~~~~
 Create a report that plots solution data.
 
-.. GENERATED FROM PYTHON SOURCE LINES 114-122
+.. GENERATED FROM PYTHON SOURCE LINES 112-120
 
 .. code-block:: default
 
@@ -325,13 +323,13 @@ Create a report that plots solution data.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 123-126
+.. GENERATED FROM PYTHON SOURCE LINES 121-124
 
 Plot data
 ~~~~~~~~~
 Create a plot based on solution data.
 
-.. GENERATED FROM PYTHON SOURCE LINES 126-130
+.. GENERATED FROM PYTHON SOURCE LINES 124-128
 
 .. code-block:: default
 
@@ -351,7 +349,7 @@ Create a plot based on solution data.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 131-136
+.. GENERATED FROM PYTHON SOURCE LINES 129-134
 
 Close AEDT
 ~~~~~~~~~~
@@ -359,24 +357,29 @@ After the simulation completes, you can close AEDT or release it using the
 :func:`pyaedt.Desktop.force_close_desktop` method.
 All methods provide for saving the project before closing.
 
-.. GENERATED FROM PYTHON SOURCE LINES 136-139
+.. GENERATED FROM PYTHON SOURCE LINES 134-136
 
 .. code-block:: default
 
 
-    if os.name != "posix":
-        desktop.release_desktop()
+    desktop.release_desktop()
 
 
 
 
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+
+    True
 
 
 
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  35.560 seconds)
+   **Total running time of the script:** ( 0 minutes  35.901 seconds)
 
 
 .. _sphx_glr_download_examples_07-Circuit_Circuit_Example.py:

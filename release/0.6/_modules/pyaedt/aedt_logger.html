@@ -32,6 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
 
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
@@ -108,7 +109,13 @@
 
 <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="../../API/index.html">
-  API reference
+  API AEDT reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../EDBAPI/index.html">
+  API EDB reference
  </a>
 </li>
 
@@ -200,7 +207,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.40 variable.
+            // this version, rather than using sphinx's 0.6.42 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -454,8 +461,6 @@ function checkPageExistsAndRedirect(event) {
         <span class="bp">self</span><span class="o">.</span><span class="n">_files_handlers</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_projects</span> <span class="o">=</span> <span class="p">{}</span>
 
-        <span class="c1"># if not self._global.handlers:</span>
-        <span class="c1">#     self._global.addHandler(log_handler.LogHandler(self, &quot;Global&quot;, logging.DEBUG))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_global</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">level</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_global</span><span class="o">.</span><span class="n">addFilter</span><span class="p">(</span><span class="n">AppFilter</span><span class="p">())</span>
 
@@ -500,7 +505,6 @@ function checkPageExistsAndRedirect(event) {
 <div class="viewcode-block" id="AedtLogger.add_file_logger"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.aedt_logger.AedtLogger.add_file_logger.html#pyaedt.aedt_logger.AedtLogger.add_file_logger">[docs]</a>    <span class="k">def</span> <span class="nf">add_file_logger</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">project_name</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Add a new file to the logger handlers list.&quot;&quot;&quot;</span>
         <span class="n">_project</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="n">project_name</span><span class="p">)</span>
-        <span class="c1"># _project.addHandler(log_handler.LogHandler(self, &quot;Project&quot;, level if level else self.level))</span>
         <span class="n">_project</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">level</span> <span class="k">if</span> <span class="n">level</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">level</span><span class="p">)</span>
         <span class="n">_project</span><span class="o">.</span><span class="n">addFilter</span><span class="p">(</span><span class="n">AppFilter</span><span class="p">(</span><span class="s2">&quot;Project&quot;</span><span class="p">,</span> <span class="n">project_name</span><span class="p">))</span>
         <span class="n">_file_handler</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">FileHandler</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
@@ -878,7 +882,6 @@ function checkPageExistsAndRedirect(event) {
         <span class="k">if</span> <span class="n">destination</span> <span class="o">==</span> <span class="s2">&quot;Project&quot;</span><span class="p">:</span>
             <span class="n">project_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_project_name</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_project</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="n">project_name</span><span class="p">)</span>
-            <span class="c1"># self._project.addHandler(log_handler.LogHandler(self, &quot;Project&quot;, level))</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_project</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">level</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_project</span><span class="o">.</span><span class="n">addFilter</span><span class="p">(</span><span class="n">AppFilter</span><span class="p">(</span><span class="s2">&quot;Project&quot;</span><span class="p">,</span> <span class="n">project_name</span><span class="p">))</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_files_handlers</span><span class="p">:</span>
@@ -891,7 +894,6 @@ function checkPageExistsAndRedirect(event) {
             <span class="n">project_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_project_name</span>
             <span class="n">design_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_design_name</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_design</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="n">project_name</span> <span class="o">+</span> <span class="s2">&quot;:&quot;</span> <span class="o">+</span> <span class="n">design_name</span><span class="p">)</span>
-            <span class="c1"># self._design.addHandler(log_handler.LogHandler(self, &quot;Design&quot;, level))</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_design</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">level</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_design</span><span class="o">.</span><span class="n">addFilter</span><span class="p">(</span><span class="n">AppFilter</span><span class="p">(</span><span class="s2">&quot;Design&quot;</span><span class="p">,</span> <span class="n">design_name</span><span class="p">))</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_files_handlers</span><span class="p">:</span>

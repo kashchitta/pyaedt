@@ -33,6 +33,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
 
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
@@ -111,7 +112,13 @@
 
 <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="../../API/index.html">
-  API reference
+  API AEDT reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../EDBAPI/index.html">
+  API EDB reference
  </a>
 </li>
 
@@ -203,7 +210,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.40 variable.
+            // this version, rather than using sphinx's 0.6.42 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -829,7 +836,7 @@ parametric via analysis.</p>
 <section id="perform-required-imports">
 <h2>Perform required imports<a class="headerlink" href="#perform-required-imports" title="Permalink to this heading">#</a></h2>
 <p>Perform required inports.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyaedt</span> <span class="kn">import</span> <span class="n">Hfss3dLayout</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pyaedt</span>
 <span class="kn">import</span> <span class="nn">os</span>
 </pre></div>
 </div>
@@ -846,7 +853,7 @@ You can set <code class="docutils literal notranslate"><span class="pre">non_gra
 <section id="launch-aedt">
 <h2>Launch AEDT<a class="headerlink" href="#launch-aedt" title="Permalink to this heading">#</a></h2>
 <p>Launch AEDT 2022 R2 in graphical mode.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">h3d</span> <span class="o">=</span> <span class="n">Hfss3dLayout</span><span class="p">(</span><span class="n">specified_version</span><span class="o">=</span><span class="s2">&quot;2022.2&quot;</span><span class="p">,</span> <span class="n">new_desktop_session</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a><span class="o">=</span><a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">h3d</span> <span class="o">=</span> <span class="n">pyaedt</span><span class="o">.</span><span class="n">Hfss3dLayout</span><span class="p">(</span><span class="n">specified_version</span><span class="o">=</span><span class="s2">&quot;2022.2&quot;</span><span class="p">,</span> <span class="n">new_desktop_session</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a><span class="o">=</span><a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a><span class="p">)</span>
 </pre></div>
 </div>
 </section>
@@ -869,7 +876,7 @@ You can set <code class="docutils literal notranslate"><span class="pre">non_gra
 <span class="n">h3d</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">add_layer</span><span class="p">(</span><span class="s2">&quot;TOP&quot;</span><span class="p">,</span> <span class="s2">&quot;signal&quot;</span><span class="p">,</span> <span class="n">thickness</span><span class="o">=</span><span class="s2">&quot;0.035mm&quot;</span><span class="p">,</span> <span class="n">elevation</span><span class="o">=</span><span class="s2">&quot;0.2mm&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modules.LayerStackup.Layer object at 0x0000022BB45E8430&gt;
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modules.LayerStackup.Layer object at 0x000002817DF30C40&gt;
 </pre></div>
 </div>
 </section>
@@ -881,7 +888,7 @@ You can set <code class="docutils literal notranslate"><span class="pre">non_gra
 <span class="n">h3d</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">create_rectangle</span><span class="p">(</span><span class="s2">&quot;TOP&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;w1/2+sp&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;len&quot;</span><span class="p">,</span> <span class="s2">&quot;w1/2+sp+20mm&quot;</span><span class="p">])</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modeler.object3dlayout.Rect3dLayout object at 0x0000022BD03615E0&gt;
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modeler.pcb.object3dlayout.Rect3dLayout object at 0x000002817E12EE80&gt;
 </pre></div>
 </div>
 </section>
@@ -896,7 +903,7 @@ You can set <code class="docutils literal notranslate"><span class="pre">non_gra
 <span class="n">h3d</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">create_via</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;3*viatovia&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;viatotrace&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modeler.object3dlayout.Pins3DLayout object at 0x0000022BD94E9E20&gt;
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modeler.pcb.object3dlayout.Pins3DLayout object at 0x000002817E2818E0&gt;
 </pre></div>
 </div>
 </section>
@@ -907,7 +914,7 @@ You can set <code class="docutils literal notranslate"><span class="pre">non_gra
 <span class="n">h3d</span><span class="o">.</span><span class="n">create_edge_port</span><span class="p">(</span><span class="s2">&quot;microstrip&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modules.Boundary.BoundaryObject3dLayout object at 0x0000022BD0135250&gt;
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modules.Boundary.BoundaryObject3dLayout object at 0x0000028120DC5700&gt;
 </pre></div>
 </div>
 </section>
@@ -930,7 +937,7 @@ You can set <code class="docutils literal notranslate"><span class="pre">non_gra
 <span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modules.SetupTemplates.SweepHFSS3DLayout object at 0x0000022BDE77CD30&gt;
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modules.SetupTemplates.SweepHFSS3DLayout object at 0x000002817E281FD0&gt;
 </pre></div>
 </div>
 </section>
@@ -942,7 +949,7 @@ You can set <code class="docutils literal notranslate"><span class="pre">non_gra
 <span class="n">h3d</span><span class="o">.</span><span class="n">post</span><span class="o">.</span><span class="n">create_report</span><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">traces</span></a><span class="p">,</span> <span class="n">variations</span><span class="o">=</span><span class="n">h3d</span><span class="o">.</span><span class="n">available_variations</span><span class="o">.</span><span class="n">nominal_w_values_dict</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modules.report_templates.Standard object at 0x0000022BD0149580&gt;
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modules.report_templates.Standard object at 0x000002817E2C1220&gt;
 </pre></div>
 </div>
 </section>
@@ -964,11 +971,13 @@ You can set <code class="docutils literal notranslate"><span class="pre">non_gra
 <p>After the simulation completes, you can close AEDT or release it using the
 <code class="xref py py-func docutils literal notranslate"><span class="pre">pyaedt.Desktop.release_desktop()</span></code> method.
 All methods provide for saving the project before closing.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">os</span><span class="o">.</span><span class="n">name</span></a> <span class="o">!=</span> <span class="s2">&quot;posix&quot;</span><span class="p">:</span>
-    <span class="n">h3d</span><span class="o">.</span><span class="n">release_desktop</span><span class="p">()</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">h3d</span><span class="o">.</span><span class="n">release_desktop</span><span class="p">()</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 2 minutes  14.383 seconds)</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 2 minutes  16.349 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-02-hfss3dlayout-hfss3dlayout-via-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/05ba9252d315ccc286e4c2ff0cf77196/HFSS3DLayout_Via.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">HFSS3DLayout_Via.py</span></code></a></p>

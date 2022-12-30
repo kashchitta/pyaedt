@@ -33,6 +33,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
 
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
@@ -111,7 +112,13 @@
 
 <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="../../API/index.html">
-  API reference
+  API AEDT reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../EDBAPI/index.html">
+  API EDB reference
  </a>
 </li>
 
@@ -203,7 +210,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.40 variable.
+            // this version, rather than using sphinx's 0.6.42 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -885,9 +892,7 @@ to download the full example code</p>
 <p>Perform required imports</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 
-<span class="kn">from</span> <span class="nn">pyaedt</span> <span class="kn">import</span> <span class="n">Hfss</span>
-<span class="kn">from</span> <span class="nn">pyaedt</span> <span class="kn">import</span> <span class="n">Desktop</span>
-<span class="kn">from</span> <span class="nn">pyaedt</span> <span class="kn">import</span> <span class="n">generate_unique_project_name</span>
+<span class="kn">import</span> <span class="nn">pyaedt</span>
 </pre></div>
 </div>
 </section>
@@ -903,14 +908,14 @@ You can set <code class="docutils literal notranslate"><span class="pre">non_gra
 <section id="launch-aedt-in-graphical-mode">
 <h2>Launch AEDT in graphical mode<a class="headerlink" href="#launch-aedt-in-graphical-mode" title="Permalink to this heading">#</a></h2>
 <p>Launch AEDT 2022 R2 in graphical mode.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="n">Desktop</span><span class="p">(</span><span class="s2">&quot;2022.2&quot;</span><span class="p">,</span> <a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a><span class="o">=</span><a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a><span class="p">,</span> <span class="n">new_desktop_session</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="n">pyaedt</span><span class="o">.</span><span class="n">launch_desktop</span><span class="p">(</span><span class="s2">&quot;2022.2&quot;</span><span class="p">,</span> <a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a><span class="o">=</span><a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a><span class="p">,</span> <span class="n">new_desktop_session</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
 <section id="insert-hfss-design">
 <h2>Insert HFSS design<a class="headerlink" href="#insert-hfss-design" title="Permalink to this heading">#</a></h2>
 <p>Insert an HFSS design with the default name.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">hfss</span> <span class="o">=</span> <span class="n">Hfss</span><span class="p">(</span><span class="n">projectname</span><span class="o">=</span><span class="n">generate_unique_project_name</span><span class="p">(</span><span class="n">folder_name</span><span class="o">=</span><span class="s2">&quot;CoordSysDemo&quot;</span><span class="p">))</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">hfss</span> <span class="o">=</span> <span class="n">pyaedt</span><span class="o">.</span><span class="n">Hfss</span><span class="p">(</span><span class="n">projectname</span><span class="o">=</span><span class="n">pyaedt</span><span class="o">.</span><span class="n">generate_unique_project_name</span><span class="p">(</span><span class="n">folder_name</span><span class="o">=</span><span class="s2">&quot;CoordSysDemo&quot;</span><span class="p">))</span>
 </pre></div>
 </div>
 </section>
@@ -1090,7 +1095,7 @@ systems and face coordinate systems interact with each other.</p>
 <span class="nb">print</span><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">names</span></a><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[&#39;CS_FCS&#39;, &#39;Face_CS_4QAHNH&#39;, &#39;Face_CS_O6S13S&#39;, &#39;Face_CS_FXUFQJ&#39;, &#39;Face_CS_EN5NXS&#39;, &#39;FCS2&#39;, &#39;FCS1&#39;, &#39;CS5&#39;, &#39;CS4&#39;, &#39;CS3&#39;, &#39;CS2&#39;]
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[&#39;CS_FCS&#39;, &#39;Face_CS_ZC4IRB&#39;, &#39;Face_CS_KQ1IRY&#39;, &#39;Face_CS_I4EDI4&#39;, &#39;Face_CS_MPQF56&#39;, &#39;FCS2&#39;, &#39;FCS1&#39;, &#39;CS5&#39;, &#39;CS4&#39;, &#39;CS3&#39;, &#39;CS2&#39;]
 </pre></div>
 </div>
 </section>
@@ -1127,11 +1132,13 @@ CS5 : [9.999999999999998, 13.833096029604514, 2.940315329303967]
 <p>After the simulaton completes, you can close AEDT or release it using the
 <code class="xref py py-func docutils literal notranslate"><span class="pre">pyaedt.Desktop.release_desktop()</span></code> method.
 All methods provide for saving the project before closing.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">os</span><span class="o">.</span><span class="n">name</span></a> <span class="o">!=</span> <span class="s2">&quot;posix&quot;</span><span class="p">:</span>
-    <span class="n">d</span><span class="o">.</span><span class="n">release_desktop</span><span class="p">()</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">d</span><span class="o">.</span><span class="n">release_desktop</span><span class="p">()</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  21.195 seconds)</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  21.666 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-01-modeling-setup-hfss-coordinatesystem-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/931c6cabb64ed6b3b63808a73c05bd08/HFSS_CoordinateSystem.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">HFSS_CoordinateSystem.py</span></code></a></p>

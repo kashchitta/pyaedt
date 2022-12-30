@@ -33,6 +33,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
 
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
@@ -111,7 +112,13 @@
 
 <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="../API/index.html">
-  API reference
+  API AEDT reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../EDBAPI/index.html">
+  API EDB reference
  </a>
 </li>
 
@@ -203,7 +210,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.40 variable.
+            // this version, rather than using sphinx's 0.6.42 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -337,8 +344,8 @@ function checkPageExistsAndRedirect(event) {
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#remote-application-call">
-   Remote application call
+  <a class="reference internal nav-link" href="#pyaedt-remote-service-manager">
+   PyAEDT remote service manager
   </a>
  </li>
 </ul>
@@ -387,40 +394,47 @@ IronPython is embedded in the AEDT installation.)</p></li>
 </pre></div>
 </div>
 <p>If the <code class="docutils literal notranslate"><span class="pre">machine</span></code> argument is provided and the machine is a remote machine, AEDT
-must be up and running on the remote server listening on the specified port.</p>
+must be up and running on the remote server listening on the specified port <code class="docutils literal notranslate"><span class="pre">portnumber</span></code>.</p>
 <p>To start AEDT in listening mode on the remote machine:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">aedt</span><span class="o">/</span><span class="n">ansysedt</span><span class="o">.</span><span class="n">exe</span> <span class="o">-</span><span class="n">grpcsrv</span> <span class="n">portnumber</span>  <span class="c1">#windows</span>
-<span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">aedt</span><span class="o">/</span><span class="n">ansysedt</span> <span class="o">-</span><span class="n">grpcsrv</span> <span class="n">portnumber</span>   <span class="c1">#linux</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">ANSYSEM</span><span class="o">/</span><span class="n">v222</span><span class="o">/</span><span class="n">Win64</span><span class="o">/</span><span class="n">ansysedt</span><span class="o">.</span><span class="n">exe</span> <span class="o">-</span><span class="n">grpcsrv</span> <span class="n">portnumber</span>  <span class="c1">#windows</span>
+<span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">ANSYSEM</span><span class="o">/</span><span class="n">v222</span><span class="o">/</span><span class="n">Lin64</span><span class="o">/</span><span class="n">ansysedt</span> <span class="o">-</span><span class="n">grpcsrv</span> <span class="n">portnumber</span>   <span class="c1">#linux</span>
 </pre></div>
 </div>
-<p>If the connection is local, the <code class="docutils literal notranslate"><span class="pre">machine</span></code> argument can remain empty. PyAEDT then
+<p>If the connection is local, the <code class="docutils literal notranslate"><span class="pre">machine</span></code> argument must be left empty. PyAEDT then
 starts the AEDT session automatically. Machine and port arguments are available to
 all applications except EDB.</p>
 </section>
-<section id="remote-application-call">
-<h2>Remote application call<a class="headerlink" href="#remote-application-call" title="Permalink to this heading">#</a></h2>
-<p>You can make a remote application call on a CPython server
-or any Windows client machine starting from AEDT 2022.2.</p>
-<p>On a CPython Server run the service pyaedt_service_manager that will listen on port 17878
-for incoming requests of connection from clients. Port is configurable.
+<section id="pyaedt-remote-service-manager">
+<h2>PyAEDT remote service manager<a class="headerlink" href="#pyaedt-remote-service-manager" title="Permalink to this heading">#</a></h2>
+<p>PyAEDT includes a service manager that can be run on the server machine and can be
+launched on-demand in AEDT sessions and act as a file manager.
+You can make a remote application call on a CPython server
+or any Windows client machine in AEDT 2022 R2 and later.</p>
+<p>On a CPython Server run the <code class="docutils literal notranslate"><span class="pre">pyaedt_service_manager</span></code> service that listens on port 17878
+for incoming requests of connections from clients. The port is configurable.
 Requirements:</p>
 <ul class="simple">
-<li><p>Python 3.7+ Virtual Environment. You could use the CPython in AEDT installation folder but you need to add the
-Python lib folder to the LD_LIBRARY_PATH.</p></li>
+<li><p>Python 3.7+ Virtual Environment.</p></li>
 <li><p>pyaedt &gt; 0.6.0</p></li>
-<li><p>export ANSYSEM_ROOT222=/path/to/AnsysEM/v222/Linux64 #Win64 in case of Windows Server</p></li>
-<li><p>export LD_LIBRARY_PATH=$ANSYSEM_ROOT222/common/mono/Linux64/lib:$ANSYSEM_ROOT222/Delcross:$LD_LIBRARY_PATH</p></li>
 </ul>
+<p>On Linux, in addition to the preceding requirements, these environments are needed:
+- You can use the CPython version in the AEDT installation folder if you first
+add the Python library folder to the <code class="docutils literal notranslate"><span class="pre">LD_LIBRARY_PATH</span></code> environment variable.
+- You can use the Python 3.7 or later version that is installed.
+- You can export <code class="docutils literal notranslate"><span class="pre">ANSYSEM_ROOT222=/path/to/AnsysEM/v222/Linux64</span></code>.
+- You can export <code class="docutils literal notranslate"><span class="pre">LD_LIBRARY_PATH=$ANSYSEM_ROOT222/common/mono/Linux64/lib:$ANSYSEM_ROOT222/Delcross:$LD_LIBRARY_PATH</span></code>.</p>
+<p>On the server, the <code class="docutils literal notranslate"><span class="pre">pyaedt_service_manager</span></code> service listen for incoming connections:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Launch PyAEDT remote server on CPython</span>
 <span class="kn">from</span> <span class="nn">pyaedt.common_rpc</span> <span class="kn">import</span> <span class="n">pyaedt_service_manager</span>
 <span class="n">pyaedt_service_manager</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>On any Windows client machine user needs to establish the connection as shown in example below.
+<p>On any client machine, the user must establish the connection as shown in following example.
 AEDT can be launched directly while creating the session or after the connection is established.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyaedt.common_rpc</span> <span class="kn">import</span> <span class="n">create_session</span>
-<span class="c1"># User can establish the connection and start a new AEDT session.</span>
+<span class="c1"># User can establish the connection and start a new AEDT session</span>
 <span class="n">cl1</span> <span class="o">=</span> <span class="n">create_session</span><span class="p">(</span><span class="s2">&quot;server_name&quot;</span><span class="p">,</span> <span class="n">launch_aedt_on_server</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">aedt_port</span><span class="o">=</span><span class="mi">17880</span><span class="p">,</span> <span class="n">non_graphical</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
 <span class="c1"># Optionally AEDT can be launched after the connection is established</span>
 <span class="n">cl2</span> <span class="o">=</span> <span class="n">create_session</span><span class="p">(</span><span class="s2">&quot;server_name&quot;</span><span class="p">,</span> <span class="n">launch_aedt_on_server</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">cl2</span><span class="o">.</span><span class="n">aedt</span><span class="p">(</span><span class="n">port</span><span class="o">=</span><span class="mi">17880</span><span class="p">,</span> <span class="n">non_graphical</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>

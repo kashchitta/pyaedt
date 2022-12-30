@@ -33,6 +33,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
 
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
@@ -111,7 +112,13 @@
 
 <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="../../API/index.html">
-  API reference
+  API AEDT reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../EDBAPI/index.html">
+  API EDB reference
  </a>
 </li>
 
@@ -203,7 +210,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.40 variable.
+            // this version, rather than using sphinx's 0.6.42 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -866,10 +873,7 @@ run anlasyis and get results.</p>
 <p>Peform required imports. Importing the <code class="docutils literal notranslate"><span class="pre">Hfss3dlayout</span></code> object initializes it
 on version 2022 R2.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
-
-<span class="kn">from</span> <span class="nn">pyaedt</span> <span class="kn">import</span> <span class="n">generate_unique_folder_name</span><span class="p">,</span><span class="n">examples</span><span class="p">,</span> <span class="n">Edb</span><span class="p">,</span> <span class="n">Hfss3dLayout</span>
-<span class="kn">from</span> <span class="nn">pyaedt.generic.constants</span> <span class="kn">import</span> <span class="n">SolverType</span>
-<span class="kn">from</span> <span class="nn">pyaedt.edb_core.edb_data.simulation_configuration</span> <span class="kn">import</span> <span class="n">SimulationConfiguration</span>
+<span class="kn">import</span> <span class="nn">pyaedt</span>
 </pre></div>
 </div>
 </section>
@@ -883,19 +887,19 @@ on version 2022 R2.</p>
 <section id="download-file">
 <h2>Download file<a class="headerlink" href="#download-file" title="Permalink to this heading">#</a></h2>
 <p>Download the AEDB file and copy it in the temporary folder.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">project_path</span></a> <span class="o">=</span> <span class="n">generate_unique_folder_name</span><span class="p">()</span>
-<a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">target_aedb</span></a> <span class="o">=</span> <span class="n">examples</span><span class="o">.</span><span class="n">download_file</span><span class="p">(</span><span class="s1">&#39;edb/Galileo.aedb&#39;</span><span class="p">,</span><span class="n">destination</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">project_path</span></a><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">project_path</span></a> <span class="o">=</span> <span class="n">pyaedt</span><span class="o">.</span><span class="n">generate_unique_folder_name</span><span class="p">()</span>
+<a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">target_aedb</span></a> <span class="o">=</span> <span class="n">pyaedt</span><span class="o">.</span><span class="n">downloads</span><span class="o">.</span><span class="n">download_file</span><span class="p">(</span><span class="s1">&#39;edb/Galileo.aedb&#39;</span><span class="p">,</span><span class="n">destination</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">project_path</span></a><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Project folder will be&quot;</span><span class="p">,</span> <a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">target_aedb</span></a><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Project folder will be D:\Temp\pyaedt_prj_UBW\edb/Galileo.aedb
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Project folder will be D:\Temp\pyaedt_prj_G17\edb/Galileo.aedb
 </pre></div>
 </div>
 </section>
 <section id="launch-edb">
 <h2>Launch EDB<a class="headerlink" href="#launch-edb" title="Permalink to this heading">#</a></h2>
-<p>Launch the <a class="reference internal" href="../../API/_autosummary/pyaedt.Edb.html#pyaedt.Edb" title="pyaedt.Edb"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyaedt.Edb</span></code></a> class, using EDB 2022 R2 and SI units.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">edbapp</span> <span class="o">=</span> <span class="n">Edb</span><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">target_aedb</span></a><span class="p">,</span> <span class="n">edbversion</span><span class="o">=</span><span class="s2">&quot;2022.2&quot;</span><span class="p">)</span>
+<p>Launch the <code class="xref py py-class docutils literal notranslate"><span class="pre">pyaedt.Edb</span></code> class, using EDB 2022 R2 and SI units.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">edbapp</span> <span class="o">=</span> <span class="n">pyaedt</span><span class="o">.</span><span class="n">Edb</span><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">target_aedb</span></a><span class="p">,</span> <span class="n">edbversion</span><span class="o">=</span><span class="s2">&quot;2022.2&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
@@ -954,7 +958,7 @@ Csv file is store for convenience in aedb folder.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">edbapp</span><span class="o">.</span><span class="n">core_components</span><span class="o">.</span><span class="n">nport_comp_definition</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>{&#39;602433-026&#39;: &lt;pyaedt.edb_core.edb_data.components_data.EDBComponentDef object at 0x0000022BD02518E0&gt;}
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>{&#39;602433-026&#39;: &lt;pyaedt.edb_core.edb_data.components_data.EDBComponentDef object at 0x000002811AE58190&gt;}
 </pre></div>
 </div>
 </section>
@@ -979,7 +983,7 @@ Csv file is store for convenience in aedb folder.</p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sim_setup</span> <span class="o">=</span> <span class="n">edbapp</span><span class="o">.</span><span class="n">new_simulation_configuration</span><span class="p">()</span>
-<span class="n">sim_setup</span><span class="o">.</span><span class="n">solver_type</span> <span class="o">=</span> <a href="https://docs.python.org/dev/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">SolverType</span><span class="o">.</span><span class="n">SiwaveSYZ</span></a>
+<span class="n">sim_setup</span><span class="o">.</span><span class="n">solver_type</span> <span class="o">=</span> <a href="https://docs.python.org/dev/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">sim_setup</span><span class="o">.</span><span class="n">SOLVER_TYPE</span><span class="o">.</span><span class="n">SiwaveSYZ</span></a>
 <span class="n">sim_setup</span><span class="o">.</span><span class="n">batch_solve_settings</span><span class="o">.</span><span class="n">cutout_subdesign_expansion</span> <span class="o">=</span> <span class="mf">0.01</span>
 <span class="n">sim_setup</span><span class="o">.</span><span class="n">batch_solve_settings</span><span class="o">.</span><span class="n">do_cutout_subdesign</span> <span class="o">=</span> <span class="kc">True</span>
 <a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">sim_setup</span><span class="o">.</span><span class="n">use_default_cutout</span></a> <span class="o">=</span> <span class="kc">False</span>
@@ -1025,7 +1029,7 @@ Csv file is store for convenience in aedb folder.</p>
 <section id="open-aedt">
 <h2>Open Aedt<a class="headerlink" href="#open-aedt" title="Permalink to this heading">#</a></h2>
 <p>Project folder aedb will be opened in AEDT Hfss3DLayout and loaded.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">h3d</span> <span class="o">=</span> <span class="n">Hfss3dLayout</span><span class="p">(</span><span class="n">specified_version</span><span class="o">=</span><span class="s2">&quot;2022.2&quot;</span><span class="p">,</span> <span class="n">projectname</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">target_aedb</span></a><span class="p">,</span> <a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a><span class="o">=</span><a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">h3d</span> <span class="o">=</span> <span class="n">pyaedt</span><span class="o">.</span><span class="n">Hfss3dLayout</span><span class="p">(</span><span class="n">specified_version</span><span class="o">=</span><span class="s2">&quot;2022.2&quot;</span><span class="p">,</span> <span class="n">projectname</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">target_aedb</span></a><span class="p">,</span> <a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a><span class="o">=</span><a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a><span class="p">)</span>
 </pre></div>
 </div>
 </section>
@@ -1066,7 +1070,7 @@ Csv file is store for convenience in aedb folder.</p>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>True
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 1 minutes  56.649 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 1 minutes  54.357 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-00-edb-09-configuration-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/fe25df7f244aa60366e13f41e866293d/09_Configuration.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">09_Configuration.py</span></code></a></p>

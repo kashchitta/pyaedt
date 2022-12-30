@@ -28,26 +28,25 @@ Perform required imports
 ~~~~~~~~~~~~~~~~~~~~~~~~
 Perform required imports.
 
-.. GENERATED FROM PYTHON SOURCE LINES 11-19
+.. GENERATED FROM PYTHON SOURCE LINES 11-18
 
 .. code-block:: default
 
 
     import os
-    from pyaedt import Hfss, constants
-    from pyaedt import generate_unique_project_name
+    import pyaedt
 
 
-    project_name = generate_unique_project_name(project_name="spiral")
-
-
+    project_name = pyaedt.generate_unique_project_name(project_name="spiral")
 
 
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 20-25
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 19-24
 
 Set non-graphical mode
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -55,7 +54,7 @@ Set non-graphical model. ``"PYAEDT_NON_GRAPHICAL"``` is needed to
 generate documentation only.
 You can set ``non_graphical`` either to ``True`` or ``False``.
 
-.. GENERATED FROM PYTHON SOURCE LINES 25-28
+.. GENERATED FROM PYTHON SOURCE LINES 24-27
 
 .. code-block:: default
 
@@ -69,19 +68,19 @@ You can set ``non_graphical`` either to ``True`` or ``False``.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 29-33
+.. GENERATED FROM PYTHON SOURCE LINES 28-32
 
 Launch HFSS
 ~~~~~~~~~~~
 Launch HFSS 2022 R2 in non-graphical mode and change the
 units to microns.
 
-.. GENERATED FROM PYTHON SOURCE LINES 33-38
+.. GENERATED FROM PYTHON SOURCE LINES 32-37
 
 .. code-block:: default
 
 
-    hfss = Hfss(specified_version="2022.2", non_graphical=non_graphical, designname="A1")
+    hfss = pyaedt.Hfss(specified_version="2022.2", non_graphical=non_graphical, designname="A1")
     hfss.modeler.model_units = "um"
     p = hfss.modeler
 
@@ -92,14 +91,14 @@ units to microns.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 39-43
+.. GENERATED FROM PYTHON SOURCE LINES 38-42
 
 Define variables
 ~~~~~~~~~~~~~~~~
 Define input variables. You can use the values that follow or edit
 them.
 
-.. GENERATED FROM PYTHON SOURCE LINES 43-54
+.. GENERATED FROM PYTHON SOURCE LINES 42-53
 
 .. code-block:: default
 
@@ -121,14 +120,14 @@ them.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 55-59
+.. GENERATED FROM PYTHON SOURCE LINES 54-58
 
 Standardize polyline
 ~~~~~~~~~~~~~~~~~~~~
 Standardize the polyline using the ``create_line`` method to fix
 the width, thickness, and material.
 
-.. GENERATED FROM PYTHON SOURCE LINES 59-64
+.. GENERATED FROM PYTHON SOURCE LINES 58-63
 
 .. code-block:: default
 
@@ -144,14 +143,14 @@ the width, thickness, and material.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 65-69
+.. GENERATED FROM PYTHON SOURCE LINES 64-68
 
 Create spiral inductor
 ~~~~~~~~~~~~~~~~~~~~~~
 Create the spiral inductor. This spiral inductor is not
 parametric, but you could parametrize it later.
 
-.. GENERATED FROM PYTHON SOURCE LINES 69-82
+.. GENERATED FROM PYTHON SOURCE LINES 68-81
 
 .. code-block:: default
 
@@ -175,13 +174,13 @@ parametric, but you could parametrize it later.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 83-86
+.. GENERATED FROM PYTHON SOURCE LINES 82-85
 
 Center return path
 ~~~~~~~~~~~~~~~~~~
 Center the return path.
 
-.. GENERATED FROM PYTHON SOURCE LINES 86-92
+.. GENERATED FROM PYTHON SOURCE LINES 85-91
 
 .. code-block:: default
 
@@ -200,25 +199,27 @@ Center the return path.
  .. code-block:: none
 
 
-    <pyaedt.modeler.Object3d.Object3d object at 0x0000022BE2F3DB20>
+    <pyaedt.modeler.cad.object3d.Object3d object at 0x000002817E1A1C10>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 93-96
+.. GENERATED FROM PYTHON SOURCE LINES 92-95
 
 Create port 1
 ~~~~~~~~~~~~~
 Create port 1.
 
-.. GENERATED FROM PYTHON SOURCE LINES 96-103
+.. GENERATED FROM PYTHON SOURCE LINES 95-104
 
 .. code-block:: default
 
 
-    p.create_rectangle(
-        constants.PLANE.YZ, (abs(x1) + 5, y0 - width / 2, -gap - thickness / 2), (width, -Tsub + gap), name="port1"
-    )
-    hfss.create_lumped_port_to_sheet(sheet_name="port1", axisdir=constants.AXIS.Z)
+    p.create_rectangle(csPlane=pyaedt.constants.PLANE.YZ,
+                       position=(abs(x1) + 5, y0 - width / 2, -gap - thickness / 2),
+                       dimension_list=(width, -Tsub + gap),
+                       name="port1"
+                       )
+    hfss.create_lumped_port_to_sheet(sheet_name="port1", axisdir=pyaedt.constants.AXIS.Z)
 
 
 
@@ -230,24 +231,24 @@ Create port 1.
  .. code-block:: none
 
 
-    <pyaedt.modules.Boundary.BoundaryObject object at 0x0000022BD0225130>
+    <pyaedt.modules.Boundary.BoundaryObject object at 0x0000028123318A30>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 104-107
+.. GENERATED FROM PYTHON SOURCE LINES 105-108
 
 Create port 2
 ~~~~~~~~~~~~~
 Create port 2.
 
-.. GENERATED FROM PYTHON SOURCE LINES 107-113
+.. GENERATED FROM PYTHON SOURCE LINES 108-114
 
 .. code-block:: default
 
 
     create_line([(x1 + width / 2, y1, 0), (x1 - 5, y1, 0)])
-    p.create_rectangle(constants.PLANE.YZ, (x1 - 5, y1 - width / 2, -thickness / 2), (width, -Tsub), name="port2")
-    hfss.create_lumped_port_to_sheet(sheet_name="port2", axisdir=constants.AXIS.Z)
+    p.create_rectangle(pyaedt.constants.PLANE.YZ, (x1 - 5, y1 - width / 2, -thickness / 2), (width, -Tsub), name="port2")
+    hfss.create_lumped_port_to_sheet(sheet_name="port2", axisdir=pyaedt.constants.AXIS.Z)
 
 
 
@@ -259,17 +260,17 @@ Create port 2.
  .. code-block:: none
 
 
-    <pyaedt.modules.Boundary.BoundaryObject object at 0x0000022BB45E84C0>
+    <pyaedt.modules.Boundary.BoundaryObject object at 0x000002817E2B95E0>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 114-117
+.. GENERATED FROM PYTHON SOURCE LINES 115-118
 
 Create silicon substrate and ground plane
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Create the silicon substrate and the ground plane.
 
-.. GENERATED FROM PYTHON SOURCE LINES 117-122
+.. GENERATED FROM PYTHON SOURCE LINES 118-123
 
 .. code-block:: default
 
@@ -287,17 +288,17 @@ Create the silicon substrate and the ground plane.
  .. code-block:: none
 
 
-    <pyaedt.modeler.Object3d.Object3d object at 0x0000022BD3D99A30>
+    <pyaedt.modeler.cad.object3d.Object3d object at 0x00000281202C9BE0>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 123-126
+.. GENERATED FROM PYTHON SOURCE LINES 124-127
 
 Assign airbox and radiation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Assign the airbox and the radiation.
 
-.. GENERATED FROM PYTHON SOURCE LINES 126-133
+.. GENERATED FROM PYTHON SOURCE LINES 127-134
 
 .. code-block:: default
 
@@ -317,18 +318,18 @@ Assign the airbox and the radiation.
  .. code-block:: none
 
 
-    <pyaedt.modules.Boundary.BoundaryObject object at 0x0000022BB45E8340>
+    <pyaedt.modules.Boundary.BoundaryObject object at 0x000002817E098040>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 134-138
+.. GENERATED FROM PYTHON SOURCE LINES 135-139
 
 Assign material override
 ~~~~~~~~~~~~~~~~~~~~~~~~
 Assign a material override so that the validation check does
 not fail.
 
-.. GENERATED FROM PYTHON SOURCE LINES 138-142
+.. GENERATED FROM PYTHON SOURCE LINES 139-143
 
 .. code-block:: default
 
@@ -349,13 +350,13 @@ not fail.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 143-146
+.. GENERATED FROM PYTHON SOURCE LINES 144-147
 
 Plot model
 ~~~~~~~~~~
 Plot the model.
 
-.. GENERATED FROM PYTHON SOURCE LINES 146-150
+.. GENERATED FROM PYTHON SOURCE LINES 147-151
 
 .. code-block:: default
 
@@ -377,17 +378,17 @@ Plot the model.
  .. code-block:: none
 
 
-    <pyaedt.generic.plot.ModelPlotter object at 0x0000022BD3D99FA0>
+    <pyaedt.generic.plot.ModelPlotter object at 0x000002817DC97A90>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 151-154
+.. GENERATED FROM PYTHON SOURCE LINES 152-155
 
 Create setup
 ~~~~~~~~~~~~
 Create the setup and define a frequency sweep to solve the project.
 
-.. GENERATED FROM PYTHON SOURCE LINES 154-161
+.. GENERATED FROM PYTHON SOURCE LINES 155-162
 
 .. code-block:: default
 
@@ -411,14 +412,14 @@ Create the setup and define a frequency sweep to solve the project.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 162-166
+.. GENERATED FROM PYTHON SOURCE LINES 163-167
 
 Get report data
 ~~~~~~~~~~~~~~~
 Get report data and use the following formulas to calculate
 the inductance and quality factor.
 
-.. GENERATED FROM PYTHON SOURCE LINES 166-170
+.. GENERATED FROM PYTHON SOURCE LINES 167-171
 
 .. code-block:: default
 
@@ -433,13 +434,13 @@ the inductance and quality factor.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 171-174
+.. GENERATED FROM PYTHON SOURCE LINES 172-175
 
 Plot calculated values in Matplotlib
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Plot the calculated values in Matplotlib.
 
-.. GENERATED FROM PYTHON SOURCE LINES 174-179
+.. GENERATED FROM PYTHON SOURCE LINES 175-180
 
 .. code-block:: default
 
@@ -466,31 +467,36 @@ Plot the calculated values in Matplotlib.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 180-183
+.. GENERATED FROM PYTHON SOURCE LINES 181-184
 
 Save project and close AEDT
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Save the project and close AEDT.
 
-.. GENERATED FROM PYTHON SOURCE LINES 183-187
+.. GENERATED FROM PYTHON SOURCE LINES 184-187
 
 .. code-block:: default
 
 
     hfss.save_project(project_name)
-    if os.name != "posix":
-        hfss.release_desktop()
+    hfss.release_desktop()
 
 
 
 
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+
+    True
 
 
 
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 1 minutes  39.774 seconds)
+   **Total running time of the script:** ( 1 minutes  42.609 seconds)
 
 
 .. _sphx_glr_download_examples_02-HFSS_HFSS_Spiral.py:

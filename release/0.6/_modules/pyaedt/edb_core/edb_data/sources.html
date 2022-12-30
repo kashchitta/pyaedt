@@ -32,6 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery-binder.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery-dataframe.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery-rendered-html.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/custom.css" />
 
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
@@ -108,7 +109,13 @@
 
 <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="../../../../API/index.html">
-  API reference
+  API AEDT reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../../EDBAPI/index.html">
+  API EDB reference
  </a>
 </li>
 
@@ -200,7 +207,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.40 variable.
+            // this version, rather than using sphinx's 0.6.42 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -839,7 +846,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb_terminal</span><span class="o">.</span><span class="n">GetBoundaryType</span><span class="p">()</span>
 
 
-<div class="viewcode-block" id="ExcitationPorts"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.sources.ExcitationPorts.html#pyaedt.edb_core.edb_data.sources.ExcitationPorts">[docs]</a><span class="k">class</span> <span class="nc">ExcitationPorts</span><span class="p">(</span><span class="n">CommonExcitation</span><span class="p">):</span>
+<div class="viewcode-block" id="ExcitationPorts"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.sources.ExcitationPorts.html#pyaedt.edb_core.edb_data.sources.ExcitationPorts">[docs]</a><span class="k">class</span> <span class="nc">ExcitationPorts</span><span class="p">(</span><span class="n">CommonExcitation</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Manages excitation properties.</span>
 
 <span class="sd">    Parameters</span>
@@ -983,7 +990,7 @@ function checkPageExistsAndRedirect(event) {
             <span class="k">return</span> <span class="n">ref_obj</span><span class="o">.</span><span class="n">net_name</span>
         <span class="k">return</span>  <span class="c1"># pragma: no cover</span>
 
-<div class="viewcode-block" id="ExcitationPorts.get_padstack_terminal_reference_pin"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.sources.ExcitationPorts.get_padstack_terminal_reference_pin.html#pyaedt.edb_core.edb_data.sources.ExcitationPorts.get_padstack_terminal_reference_pin">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="ExcitationPorts.get_padstack_terminal_reference_pin"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.sources.ExcitationPorts.get_padstack_terminal_reference_pin.html#pyaedt.edb_core.edb_data.sources.ExcitationPorts.get_padstack_terminal_reference_pin">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">get_padstack_terminal_reference_pin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gnd_net_name_preference</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Get a list of pad stacks instances and serves Coax wave ports,</span>
 <span class="sd">        pingroup terminals, PadEdge terminals.</span>
@@ -1007,7 +1014,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">pins</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span><span class="o">.</span><span class="n">core_components</span><span class="o">.</span><span class="n">get_pin_from_component</span><span class="p">(</span><span class="n">compInst</span><span class="o">.</span><span class="n">GetName</span><span class="p">())</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_closest_pin</span><span class="p">(</span><span class="n">padStackInstance</span><span class="p">,</span> <span class="n">pins</span><span class="p">,</span> <span class="n">gnd_net_name_preference</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="ExcitationPorts.get_pin_group_terminal_reference_pin"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.sources.ExcitationPorts.get_pin_group_terminal_reference_pin.html#pyaedt.edb_core.edb_data.sources.ExcitationPorts.get_pin_group_terminal_reference_pin">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="ExcitationPorts.get_pin_group_terminal_reference_pin"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.sources.ExcitationPorts.get_pin_group_terminal_reference_pin.html#pyaedt.edb_core.edb_data.sources.ExcitationPorts.get_pin_group_terminal_reference_pin">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">get_pin_group_terminal_reference_pin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gnd_net_name_preference</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return a list of pins and serves terminals connected to pingroups.</span>
 
@@ -1041,7 +1048,7 @@ function checkPageExistsAndRedirect(event) {
                     <span class="k">return</span> <span class="kc">None</span>
         <span class="k">return</span> <span class="kc">None</span>  <span class="c1"># pragma: no cover</span></div>
 
-<div class="viewcode-block" id="ExcitationPorts.get_edge_terminal_reference_primitive"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.sources.ExcitationPorts.get_edge_terminal_reference_primitive.html#pyaedt.edb_core.edb_data.sources.ExcitationPorts.get_edge_terminal_reference_primitive">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="ExcitationPorts.get_edge_terminal_reference_primitive"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.sources.ExcitationPorts.get_edge_terminal_reference_primitive.html#pyaedt.edb_core.edb_data.sources.ExcitationPorts.get_edge_terminal_reference_primitive">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">get_edge_terminal_reference_primitive</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Check and  return a primitive instance that serves Edge ports,</span>
 <span class="sd">        wave ports and coupled edge ports that are directly connedted to primitives.</span>
@@ -1065,7 +1072,7 @@ function checkPageExistsAndRedirect(event) {
                     <span class="k">return</span> <span class="n">EDBPrimitives</span><span class="p">(</span><span class="n">primitive</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span><span class="p">)</span>
         <span class="k">return</span> <span class="kc">None</span>  <span class="c1"># pragma: no cover</span></div>
 
-<div class="viewcode-block" id="ExcitationPorts.get_point_terminal_reference_primitive"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.sources.ExcitationPorts.get_point_terminal_reference_primitive.html#pyaedt.edb_core.edb_data.sources.ExcitationPorts.get_point_terminal_reference_primitive">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="ExcitationPorts.get_point_terminal_reference_primitive"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.sources.ExcitationPorts.get_point_terminal_reference_primitive.html#pyaedt.edb_core.edb_data.sources.ExcitationPorts.get_point_terminal_reference_primitive">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">get_point_terminal_reference_primitive</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Find and return the primitive reference for the point terminal or the padstack instance.</span>
 
@@ -1096,7 +1103,7 @@ function checkPageExistsAndRedirect(event) {
                     <span class="k">return</span> <span class="n">vias</span>
         <span class="k">return</span> <span class="kc">None</span></div>
 
-<div class="viewcode-block" id="ExcitationPorts.get_pad_edge_terminal_reference_pin"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.sources.ExcitationPorts.get_pad_edge_terminal_reference_pin.html#pyaedt.edb_core.edb_data.sources.ExcitationPorts.get_pad_edge_terminal_reference_pin">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="ExcitationPorts.get_pad_edge_terminal_reference_pin"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.sources.ExcitationPorts.get_pad_edge_terminal_reference_pin.html#pyaedt.edb_core.edb_data.sources.ExcitationPorts.get_pad_edge_terminal_reference_pin">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">get_pad_edge_terminal_reference_pin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gnd_net_name_preference</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Get the closest pin padstack instances and serves any edge terminal connected to a pad.</span>
 
@@ -1150,7 +1157,7 @@ function checkPageExistsAndRedirect(event) {
             <span class="k">return</span> <span class="n">EDBPadstackInstance</span><span class="p">(</span><span class="n">pin_obj</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="ExcitationSources"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.sources.ExcitationSources.html#pyaedt.edb_core.edb_data.sources.ExcitationSources">[docs]</a><span class="k">class</span> <span class="nc">ExcitationSources</span><span class="p">(</span><span class="n">CommonExcitation</span><span class="p">):</span>
+<div class="viewcode-block" id="ExcitationSources"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.sources.ExcitationSources.html#pyaedt.edb_core.edb_data.sources.ExcitationSources">[docs]</a><span class="k">class</span> <span class="nc">ExcitationSources</span><span class="p">(</span><span class="n">CommonExcitation</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Manage sources properties.</span>
 
 <span class="sd">    Parameters</span>
@@ -1186,7 +1193,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb_terminal</span><span class="o">.</span><span class="n">GetSourcePhase</span><span class="p">()</span><span class="o">.</span><span class="n">ToDouble</span><span class="p">()</span></div>
 
 
-<div class="viewcode-block" id="ExcitationProbes"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.sources.ExcitationProbes.html#pyaedt.edb_core.edb_data.sources.ExcitationProbes">[docs]</a><span class="k">class</span> <span class="nc">ExcitationProbes</span><span class="p">(</span><span class="n">CommonExcitation</span><span class="p">):</span>
+<div class="viewcode-block" id="ExcitationProbes"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.sources.ExcitationProbes.html#pyaedt.edb_core.edb_data.sources.ExcitationProbes">[docs]</a><span class="k">class</span> <span class="nc">ExcitationProbes</span><span class="p">(</span><span class="n">CommonExcitation</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Manage probes properties.</span>
 
 <span class="sd">    Parameters</span>
@@ -1210,8 +1217,8 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">CommonExcitation</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pedb</span><span class="p">,</span> <span class="n">edb_terminal</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="ExcitationDifferential"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.sources.ExcitationDifferential.html#pyaedt.edb_core.edb_data.sources.ExcitationDifferential">[docs]</a><span class="k">class</span> <span class="nc">ExcitationDifferential</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Manage differential excitation properties.&quot;&quot;&quot;</span>
+<div class="viewcode-block" id="ExcitationDifferential"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.sources.ExcitationDifferential.html#pyaedt.edb_core.edb_data.sources.ExcitationDifferential">[docs]</a><span class="k">class</span> <span class="nc">ExcitationDifferential</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Manages differential excitation properties.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pedb</span><span class="p">,</span> <span class="n">edb_boundle_terminal</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span> <span class="o">=</span> <span class="n">pedb</span>

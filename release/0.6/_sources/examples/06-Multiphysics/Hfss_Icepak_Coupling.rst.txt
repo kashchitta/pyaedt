@@ -34,18 +34,13 @@ Perform required imports
 ~~~~~~~~~~~~~~~~~~~~~~~~
 Perform required imports.
 
-.. GENERATED FROM PYTHON SOURCE LINES 16-25
+.. GENERATED FROM PYTHON SOURCE LINES 16-21
 
 .. code-block:: default
 
 
     import os
-    import sys
-    from pyaedt import generate_unique_project_name
-
-    from pyaedt.generic.constants import GLOBALCS
-    from pyaedt import Hfss
-    from pyaedt import Icepak
+    import pyaedt
 
 
 
@@ -54,7 +49,8 @@ Perform required imports.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 26-31
+
+.. GENERATED FROM PYTHON SOURCE LINES 22-27
 
 Set non-graphical mode
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -62,7 +58,7 @@ Set non-graphical mode. ``"PYAEDT_NON_GRAPHICAL"`` is needed to generate
 documentation only.
 You can set ``non_graphical`` either to ``True`` or ``False``.
 
-.. GENERATED FROM PYTHON SOURCE LINES 31-35
+.. GENERATED FROM PYTHON SOURCE LINES 27-31
 
 .. code-block:: default
 
@@ -77,20 +73,20 @@ You can set ``non_graphical`` either to ``True`` or ``False``.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 36-39
+.. GENERATED FROM PYTHON SOURCE LINES 32-35
 
 Open project
 ~~~~~~~~~~~~
 Open the project.
 
-.. GENERATED FROM PYTHON SOURCE LINES 39-44
+.. GENERATED FROM PYTHON SOURCE LINES 35-40
 
 .. code-block:: default
 
 
     NewThread = True
 
-    project_file = generate_unique_project_name()
+    project_file = pyaedt.generate_unique_project_name()
 
 
 
@@ -99,19 +95,23 @@ Open the project.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 45-49
+.. GENERATED FROM PYTHON SOURCE LINES 41-45
 
 Launch AEDT and initialize HFSS
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Launch AEDT and initialize HFSS. If there is an active HFSS design, the ``aedtapp``
 object is linked to it. Otherwise, a new design is created.
 
-.. GENERATED FROM PYTHON SOURCE LINES 49-52
+.. GENERATED FROM PYTHON SOURCE LINES 45-52
 
 .. code-block:: default
 
 
-    aedtapp = Hfss(projectname=project_file, specified_version=desktopVersion, non_graphical=non_graphical, new_desktop_session=NewThread)
+    aedtapp = pyaedt.Hfss(projectname=project_file,
+                          specified_version=desktopVersion,
+                          non_graphical=non_graphical,
+                          new_desktop_session=NewThread
+                          )
 
 
 
@@ -270,7 +270,7 @@ edit or review parameter values.
  .. code-block:: none
 
 
-    <pyaedt.modules.Mesh.MeshOperation object at 0x0000022BE5889C40>
+    <pyaedt.modules.Mesh.MeshOperation object at 0x000002812A067130>
 
 
 
@@ -361,7 +361,7 @@ method imports a model from HFSS with all material settings.
 .. code-block:: default
 
 
-    ipkapp = Icepak()
+    ipkapp = pyaedt.Icepak()
     ipkapp.copy_solid_bodies_from(aedtapp)
 
 
@@ -402,7 +402,7 @@ Link sources to the EM losses.
  .. code-block:: none
 
 
-    <pyaedt.modules.Boundary.BoundaryObject object at 0x0000022BD8D9AD00>
+    <pyaedt.modules.Boundary.BoundaryObject object at 0x000002812C4B2D90>
 
 
 
@@ -483,7 +483,7 @@ a mesh operation to edit or review parameter values.
  .. code-block:: none
 
 
-    <pyaedt.modules.Boundary.BoundaryObject object at 0x0000022BE54F4250>
+    <pyaedt.modules.Boundary.BoundaryObject object at 0x000002812CA5FFD0>
 
 
 
@@ -502,8 +502,8 @@ can be helpful when performing operations on multiple projects.
 
     aedtapp.save_project()
     aedtapp.close_project(aedtapp.project_name)
-    aedtapp = Hfss(project_file)
-    ipkapp = Icepak()
+    aedtapp = pyaedt.Hfss(project_file)
+    ipkapp = pyaedt.Icepak()
     ipkapp.solution_type = ipkapp.SOLUTIONS.Icepak.SteadyTemperatureAndFlow
     ipkapp.modeler.fit_all()
 
@@ -554,7 +554,7 @@ Generate field plots on the HFSS project and export them as images.
 .. code-block:: default
 
 
-    cutlist = [GLOBALCS.XY, GLOBALCS.ZX, GLOBALCS.YZ]
+    cutlist = [pyaedt.constants.GLOBALCS.XY, pyaedt.constants.GLOBALCS.ZX, pyaedt.constants.GLOBALCS.YZ]
     vollist = [o2.name]
     setup_name = "MySetup : LastAdaptive"
     quantity_name = "ComplexMag_E"
@@ -592,7 +592,7 @@ Generate field plots on the HFSS project and export them as images.
  .. code-block:: none
 
 
-    <pyaedt.generic.plot.ModelPlotter object at 0x0000022BE5B6E1C0>
+    <pyaedt.generic.plot.ModelPlotter object at 0x000002812DA06A30>
 
 
 
@@ -649,7 +649,7 @@ Generate an animation from field plots using PyVista.
 
  .. code-block:: none
 
-    Total Time 10.629307508468628
+    Total Time 10.70767855644226
 
 
 
@@ -765,7 +765,7 @@ Close the project and release AEDT.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 2 minutes  32.268 seconds)
+   **Total running time of the script:** ( 2 minutes  36.202 seconds)
 
 
 .. _sphx_glr_download_examples_06-Multiphysics_Hfss_Icepak_Coupling.py:

@@ -29,12 +29,11 @@ Perform required imports
 ~~~~~~~~~~~~~~~~~~~~~~~~
 Perform required inports.
 
-.. GENERATED FROM PYTHON SOURCE LINES 12-16
+.. GENERATED FROM PYTHON SOURCE LINES 12-15
 
 .. code-block:: default
 
-
-    from pyaedt import Hfss3dLayout
+    import pyaedt
     import os
 
 
@@ -44,7 +43,7 @@ Perform required inports.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 17-22
+.. GENERATED FROM PYTHON SOURCE LINES 16-21
 
 Set non-graphical mode
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -52,7 +51,7 @@ Set non-graphical mode. ``"PYAEDT_NON_GRAPHICAL"`` is needed to generate
 documentation only.
 You can set ``non_graphical`` either to ``True`` or ``False``.
 
-.. GENERATED FROM PYTHON SOURCE LINES 22-25
+.. GENERATED FROM PYTHON SOURCE LINES 21-24
 
 .. code-block:: default
 
@@ -66,18 +65,18 @@ You can set ``non_graphical`` either to ``True`` or ``False``.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 26-29
+.. GENERATED FROM PYTHON SOURCE LINES 25-28
 
 Launch AEDT
 ~~~~~~~~~~~
 Launch AEDT 2022 R2 in graphical mode.
 
-.. GENERATED FROM PYTHON SOURCE LINES 29-32
+.. GENERATED FROM PYTHON SOURCE LINES 28-31
 
 .. code-block:: default
 
 
-    h3d = Hfss3dLayout(specified_version="2022.2", new_desktop_session=True, non_graphical=non_graphical)
+    h3d = pyaedt.Hfss3dLayout(specified_version="2022.2", new_desktop_session=True, non_graphical=non_graphical)
 
 
 
@@ -86,13 +85,13 @@ Launch AEDT 2022 R2 in graphical mode.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 33-36
+.. GENERATED FROM PYTHON SOURCE LINES 32-35
 
 Set up variables
 ~~~~~~~~~~~~~~~~
 Set up all parametric variables to use in the layout.
 
-.. GENERATED FROM PYTHON SOURCE LINES 36-43
+.. GENERATED FROM PYTHON SOURCE LINES 35-42
 
 .. code-block:: default
 
@@ -110,13 +109,13 @@ Set up all parametric variables to use in the layout.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 44-47
+.. GENERATED FROM PYTHON SOURCE LINES 43-46
 
 Add stackup layers
 ~~~~~~~~~~~~~~~~~~
 Add stackup layers.
 
-.. GENERATED FROM PYTHON SOURCE LINES 47-52
+.. GENERATED FROM PYTHON SOURCE LINES 46-51
 
 .. code-block:: default
 
@@ -134,17 +133,17 @@ Add stackup layers.
  .. code-block:: none
 
 
-    <pyaedt.modules.LayerStackup.Layer object at 0x0000022BB45E8430>
+    <pyaedt.modules.LayerStackup.Layer object at 0x000002817DF30C40>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 53-56
+.. GENERATED FROM PYTHON SOURCE LINES 52-55
 
 Create signal net and ground planes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Create a signal net and ground planes.
 
-.. GENERATED FROM PYTHON SOURCE LINES 56-61
+.. GENERATED FROM PYTHON SOURCE LINES 55-60
 
 .. code-block:: default
 
@@ -162,17 +161,17 @@ Create a signal net and ground planes.
  .. code-block:: none
 
 
-    <pyaedt.modeler.object3dlayout.Rect3dLayout object at 0x0000022BD03615E0>
+    <pyaedt.modeler.pcb.object3dlayout.Rect3dLayout object at 0x000002817E12EE80>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 62-65
+.. GENERATED FROM PYTHON SOURCE LINES 61-64
 
 Create vias
 ~~~~~~~~~~~
 Create vias with parametric positions.
 
-.. GENERATED FROM PYTHON SOURCE LINES 65-73
+.. GENERATED FROM PYTHON SOURCE LINES 64-72
 
 .. code-block:: default
 
@@ -193,17 +192,17 @@ Create vias with parametric positions.
  .. code-block:: none
 
 
-    <pyaedt.modeler.object3dlayout.Pins3DLayout object at 0x0000022BD94E9E20>
+    <pyaedt.modeler.pcb.object3dlayout.Pins3DLayout object at 0x000002817E2818E0>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 74-77
+.. GENERATED FROM PYTHON SOURCE LINES 73-76
 
 Create circuit ports
 ~~~~~~~~~~~~~~~~~~~~
 Create circuit ports.
 
-.. GENERATED FROM PYTHON SOURCE LINES 77-81
+.. GENERATED FROM PYTHON SOURCE LINES 76-80
 
 .. code-block:: default
 
@@ -220,17 +219,17 @@ Create circuit ports.
  .. code-block:: none
 
 
-    <pyaedt.modules.Boundary.BoundaryObject3dLayout object at 0x0000022BD0135250>
+    <pyaedt.modules.Boundary.BoundaryObject3dLayout object at 0x0000028120DC5700>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 82-85
+.. GENERATED FROM PYTHON SOURCE LINES 81-84
 
 Create setup and sweep
 ~~~~~~~~~~~~~~~~~~~~~~
 Create a setup and a sweep.
 
-.. GENERATED FROM PYTHON SOURCE LINES 85-101
+.. GENERATED FROM PYTHON SOURCE LINES 84-100
 
 .. code-block:: default
 
@@ -259,17 +258,17 @@ Create a setup and a sweep.
  .. code-block:: none
 
 
-    <pyaedt.modules.SetupTemplates.SweepHFSS3DLayout object at 0x0000022BDE77CD30>
+    <pyaedt.modules.SetupTemplates.SweepHFSS3DLayout object at 0x000002817E281FD0>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 102-105
+.. GENERATED FROM PYTHON SOURCE LINES 101-104
 
 Solve and plot results
 ~~~~~~~~~~~~~~~~~~~~~~
 Solve and plot the results.
 
-.. GENERATED FROM PYTHON SOURCE LINES 105-110
+.. GENERATED FROM PYTHON SOURCE LINES 104-109
 
 .. code-block:: default
 
@@ -287,17 +286,17 @@ Solve and plot the results.
  .. code-block:: none
 
 
-    <pyaedt.modules.report_templates.Standard object at 0x0000022BD0149580>
+    <pyaedt.modules.report_templates.Standard object at 0x000002817E2C1220>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 111-114
+.. GENERATED FROM PYTHON SOURCE LINES 110-113
 
 Create report outside AEDT
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 Create a report using Matplotlib.
 
-.. GENERATED FROM PYTHON SOURCE LINES 114-121
+.. GENERATED FROM PYTHON SOURCE LINES 113-120
 
 .. code-block:: default
 
@@ -326,7 +325,7 @@ Create a report using Matplotlib.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 122-127
+.. GENERATED FROM PYTHON SOURCE LINES 121-126
 
 Close AEDT
 ~~~~~~~~~~
@@ -334,24 +333,29 @@ After the simulation completes, you can close AEDT or release it using the
 :func:`pyaedt.Desktop.release_desktop` method.
 All methods provide for saving the project before closing.
 
-.. GENERATED FROM PYTHON SOURCE LINES 127-130
+.. GENERATED FROM PYTHON SOURCE LINES 126-128
 
 .. code-block:: default
 
 
-    if os.name != "posix":
-        h3d.release_desktop()
+    h3d.release_desktop()
 
 
 
 
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+
+    True
 
 
 
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 2 minutes  14.383 seconds)
+   **Total running time of the script:** ( 2 minutes  16.349 seconds)
 
 
 .. _sphx_glr_download_examples_02-HFSS3DLayout_HFSS3DLayout_Via.py:

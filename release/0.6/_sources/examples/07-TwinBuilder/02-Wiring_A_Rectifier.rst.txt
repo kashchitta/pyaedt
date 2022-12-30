@@ -29,7 +29,7 @@ Perform required imputs
 ~~~~~~~~~~~~~~~~~~~~~~~
 Perform required imports.
 
-.. GENERATED FROM PYTHON SOURCE LINES 12-19
+.. GENERATED FROM PYTHON SOURCE LINES 12-18
 
 .. code-block:: default
 
@@ -37,8 +37,7 @@ Perform required imports.
     import os
     import math
     import matplotlib.pyplot as plt
-    from pyaedt import TwinBuilder
-    from pyaedt import generate_unique_project_name
+    import pyaedt
 
 
 
@@ -47,7 +46,7 @@ Perform required imports.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 20-29
+.. GENERATED FROM PYTHON SOURCE LINES 19-28
 
 Select version and set launch options
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -59,7 +58,7 @@ Twin Builder in non-graphical mode. You can also change the Boolean parameter
 ``new_thread`` to ``False`` to launch Twin Builder in an existing AEDT session
 if one is running.
 
-.. GENERATED FROM PYTHON SOURCE LINES 29-34
+.. GENERATED FROM PYTHON SOURCE LINES 28-33
 
 .. code-block:: default
 
@@ -75,19 +74,23 @@ if one is running.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 35-39
+.. GENERATED FROM PYTHON SOURCE LINES 34-38
 
 Launch Twin Builder
 ~~~~~~~~~~~~~~~~~~~
 Launch Twin Builder using an implicit declaration and add a new design with
 a default setup.
 
-.. GENERATED FROM PYTHON SOURCE LINES 39-42
+.. GENERATED FROM PYTHON SOURCE LINES 38-45
 
 .. code-block:: default
 
 
-    tb = TwinBuilder(projectname=generate_unique_project_name(),specified_version=desktop_version, non_graphical=non_graphical, new_desktop_session=new_thread)
+    tb = pyaedt.TwinBuilder(projectname=pyaedt.generate_unique_project_name(),
+                            specified_version=desktop_version,
+                            non_graphical=non_graphical,
+                            new_desktop_session=new_thread
+                            )
 
 
 
@@ -96,13 +99,13 @@ a default setup.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 43-46
+.. GENERATED FROM PYTHON SOURCE LINES 46-49
 
 Create components for bridge rectifier
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Create components for a bridge rectifier with a capacitor filter.
 
-.. GENERATED FROM PYTHON SOURCE LINES 46-74
+.. GENERATED FROM PYTHON SOURCE LINES 49-77
 
 .. code-block:: default
 
@@ -141,13 +144,13 @@ Create components for a bridge rectifier with a capacitor filter.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 75-78
+.. GENERATED FROM PYTHON SOURCE LINES 78-81
 
 Connect components
 ~~~~~~~~~~~~~~~~~~
 Connect components with wires.
 
-.. GENERATED FROM PYTHON SOURCE LINES 78-105
+.. GENERATED FROM PYTHON SOURCE LINES 81-108
 
 .. code-block:: default
 
@@ -185,13 +188,13 @@ Connect components with wires.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 106-109
+.. GENERATED FROM PYTHON SOURCE LINES 109-112
 
 Parametrize transient setup
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Parametrize the default transient setup by setting the end time.
 
-.. GENERATED FROM PYTHON SOURCE LINES 109-112
+.. GENERATED FROM PYTHON SOURCE LINES 112-115
 
 .. code-block:: default
 
@@ -211,13 +214,13 @@ Parametrize the default transient setup by setting the end time.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 113-116
+.. GENERATED FROM PYTHON SOURCE LINES 116-119
 
 Solve transient setup
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 Solve the transient setup.
 
-.. GENERATED FROM PYTHON SOURCE LINES 116-120
+.. GENERATED FROM PYTHON SOURCE LINES 119-123
 
 .. code-block:: default
 
@@ -238,7 +241,7 @@ Solve the transient setup.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 121-126
+.. GENERATED FROM PYTHON SOURCE LINES 124-129
 
 Get report data and plot using Matplotlib
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -246,7 +249,7 @@ Get report data and plot it using Matplotlib. The following code gets and plots
 the values for the voltage on the pulse voltage source and the values for the
 voltage on the capacitor in the RC circuit.
 
-.. GENERATED FROM PYTHON SOURCE LINES 126-140
+.. GENERATED FROM PYTHON SOURCE LINES 129-143
 
 .. code-block:: default
 
@@ -276,31 +279,36 @@ voltage on the capacitor in the RC circuit.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 141-145
+.. GENERATED FROM PYTHON SOURCE LINES 144-148
 
 Close Twin Builder
 ~~~~~~~~~~~~~~~~~~
 After the simulation is completed, you can close Twin Builder or release it.
 All methods provide for saving the project before closing.
 
-.. GENERATED FROM PYTHON SOURCE LINES 145-148
+.. GENERATED FROM PYTHON SOURCE LINES 148-150
 
 .. code-block:: default
 
 
-    if os.name != "posix":
-        tb.release_desktop()
+    tb.release_desktop()
 
 
 
 
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+
+    True
 
 
 
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  15.999 seconds)
+   **Total running time of the script:** ( 0 minutes  16.257 seconds)
 
 
 .. _sphx_glr_download_examples_07-TwinBuilder_02-Wiring_A_Rectifier.py:

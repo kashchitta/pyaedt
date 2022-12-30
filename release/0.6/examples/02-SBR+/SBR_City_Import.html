@@ -33,6 +33,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
 
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
@@ -111,7 +112,13 @@
 
 <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="../../API/index.html">
-  API reference
+  API AEDT reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../EDBAPI/index.html">
+  API EDB reference
  </a>
 </li>
 
@@ -203,7 +210,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.40 variable.
+            // this version, rather than using sphinx's 0.6.42 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -877,7 +884,7 @@ INFO:Global:
 Percent Complete:####################################.... 90%
 INFO:Global:100% - Done
 INFO:Global:Processing Geometry
-INFO:Global:saving STL as D:/Project/Project1083.pyaedt\Ansys/terrain.stl
+INFO:Global:saving STL as D:/Project/Project1169.pyaedt\Ansys/terrain.stl
 INFO:Global:Generating Building Geometry
 DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): overpass-api.de:443
 DEBUG:urllib3.connectionpool:https://overpass-api.de:443 &quot;GET /api/status HTTP/1.1&quot; 200 179
@@ -891,7 +898,7 @@ INFO:Global:
 Percent Complete:######################################## 100.0%
 INFO:Global:Generating Road Geometry
 DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): overpass-api.de:443
-DEBUG:urllib3.connectionpool:https://overpass-api.de:443 &quot;GET /api/status HTTP/1.1&quot; 200 207
+DEBUG:urllib3.connectionpool:https://overpass-api.de:443 &quot;GET /api/status HTTP/1.1&quot; 200 205
 DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): overpass-api.de:443
 DEBUG:urllib3.connectionpool:https://overpass-api.de:443 &quot;POST /api/interpreter HTTP/1.1&quot; 200 29457
 INFO:Global:
@@ -907,11 +914,11 @@ Percent Complete:################################........ 80.0%
 INFO:Global:
 Percent Complete:######################################## 100.0%
 INFO:Global:Done...
-INFO:Global:Step file D:/Project/Project1083.pyaedt\Ansys/terrain.stl imported
-INFO:Global:Step file D:/Project/Project1083.pyaedt\Ansys\buildings.stl imported
-INFO:Global:Step file D:/Project/Project1083.pyaedt\Ansys\roads.stl imported
+INFO:Global:Step file D:/Project/Project1169.pyaedt\Ansys/terrain.stl imported
+INFO:Global:Step file D:/Project/Project1169.pyaedt\Ansys\buildings.stl imported
+INFO:Global:Step file D:/Project/Project1169.pyaedt\Ansys\roads.stl imported
 
-{&#39;name&#39;: &#39;default&#39;, &#39;version&#39;: 1, &#39;type&#39;: &#39;environment&#39;, &#39;center_lat_lon&#39;: [40.273726, -80.168269], &#39;radius&#39;: 250, &#39;include_buildings&#39;: True, &#39;include_roads&#39;: True, &#39;parts&#39;: {&#39;terrain&#39;: {&#39;file_name&#39;: &#39;D:/Project/Project1083.pyaedt\\Ansys/terrain.stl&#39;, &#39;color&#39;: &#39;brown&#39;, &#39;material&#39;: &#39;earth&#39;}, &#39;buildings&#39;: {&#39;file_name&#39;: &#39;D:/Project/Project1083.pyaedt\\Ansys\\buildings.stl&#39;, &#39;color&#39;: &#39;grey&#39;, &#39;material&#39;: &#39;concrete&#39;}, &#39;roads&#39;: {&#39;file_name&#39;: &#39;D:/Project/Project1083.pyaedt\\Ansys\\roads.stl&#39;, &#39;color&#39;: &#39;black&#39;, &#39;material&#39;: &#39;asphalt&#39;}}}
+{&#39;name&#39;: &#39;default&#39;, &#39;version&#39;: 1, &#39;type&#39;: &#39;environment&#39;, &#39;center_lat_lon&#39;: [40.273726, -80.168269], &#39;radius&#39;: 250, &#39;include_buildings&#39;: True, &#39;include_roads&#39;: True, &#39;parts&#39;: {&#39;terrain&#39;: {&#39;file_name&#39;: &#39;D:/Project/Project1169.pyaedt\\Ansys/terrain.stl&#39;, &#39;color&#39;: &#39;brown&#39;, &#39;material&#39;: &#39;earth&#39;}, &#39;buildings&#39;: {&#39;file_name&#39;: &#39;D:/Project/Project1169.pyaedt\\Ansys\\buildings.stl&#39;, &#39;color&#39;: &#39;grey&#39;, &#39;material&#39;: &#39;concrete&#39;}, &#39;roads&#39;: {&#39;file_name&#39;: &#39;D:/Project/Project1169.pyaedt\\Ansys\\roads.stl&#39;, &#39;color&#39;: &#39;black&#39;, &#39;material&#39;: &#39;asphalt&#39;}}}
 </pre></div>
 </div>
 </section>
@@ -934,15 +941,15 @@ INFO:Global:Step file D:/Project/Project1083.pyaedt\Ansys\roads.stl imported
 <section id="release-aedt">
 <h2>Release AEDT<a class="headerlink" href="#release-aedt" title="Permalink to this heading">#</a></h2>
 <p>Release AEDT and close the example.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">os</span><span class="o">.</span><span class="n">name</span></a> <span class="o">!=</span> <span class="s2">&quot;posix&quot;</span><span class="p">:</span>
-    <span class="n">app</span><span class="o">.</span><span class="n">release_desktop</span><span class="p">()</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">app</span><span class="o">.</span><span class="n">release_desktop</span><span class="p">()</span>
 </pre></div>
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>INFO:Global:Project files removed from handlers.
-INFO:Global:Project files removed from handlers.
+
+True
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  47.812 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  47.707 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-02-sbr-sbr-city-import-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/34f36d0c0d4b96f1f1dad769b92ae654/SBR_City_Import.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">SBR_City_Import.py</span></code></a></p>

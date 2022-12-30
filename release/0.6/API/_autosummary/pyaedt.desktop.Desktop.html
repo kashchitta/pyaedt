@@ -33,6 +33,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
 
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
@@ -111,7 +112,13 @@
 
 <li class="toctree-l1 current active nav-item">
  <a class="reference internal nav-link" href="../index.html">
-  API reference
+  API AEDT reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../EDBAPI/index.html">
+  API EDB reference
  </a>
 </li>
 
@@ -203,7 +210,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.40 variable.
+            // this version, rather than using sphinx's 0.6.42 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -273,7 +280,7 @@ function checkPageExistsAndRedirect(event) {
         <li class="nav-item nav-item-0"><a href="../../index.html">PyAEDT</a> » </li>
     
 
-          <li class="nav-item nav-item-1"><a href="../index.html" >API reference</a> » </li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >API AEDT reference</a> » </li>
           <li class="nav-item nav-item-2"><a href="../Application.html" accesskey="U">AEDT apps</a> » </li>
         <li class="nav-item nav-item-this"><a href="">pyaedt.desktop.Desktop</a></li> 
       </ul>
@@ -297,16 +304,6 @@ function checkPageExistsAndRedirect(event) {
   <div class="bd-toc-item active">
     
     <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../Common.html">
-   Desktop and common classes
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../CoreEdb.html">
-   EDB editor
-  </a>
- </li>
  <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="../Application.html">
    AEDT apps
@@ -525,6 +522,11 @@ function checkPageExistsAndRedirect(event) {
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.maxwellcircuit.MaxwellCircuit.html">
+     pyaedt.maxwellcircuit.MaxwellCircuit
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="pyaedt.emit.Emit.html">
      pyaedt.emit.Emit
     </a>
@@ -542,23 +544,28 @@ function checkPageExistsAndRedirect(event) {
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../Primitives.html">
-   Modeler and  primitives
+  <a class="reference internal" href="../Primitives3D.html">
+   Modeler in 2D and 3D
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../CoreModules.html">
-   AEDT modules
+  <a class="reference internal" href="../Primitives3DLayout.html">
+   Modeler in  HFSS 3D Layout
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../PrimitivesCircuit.html">
+   Modeler and components Circuit
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Boundaries.html">
+   Boundary objects
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Mesh.html">
    Mesh operations
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../CableModeling.html">
-   Cable modeling
   </a>
  </li>
  <li class="toctree-l1">
@@ -569,6 +576,41 @@ function checkPageExistsAndRedirect(event) {
  <li class="toctree-l1">
   <a class="reference internal" href="../Post.html">
    Postprocessing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../DesktopMessenger.html">
+   Logger
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Optimetrics.html">
+   Optimetrics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Variables.html">
+   Variable
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Constants.html">
+   Constants
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Configuration.html">
+   Configuration files
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../SetupTemplates.html">
+   Setup templates
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../CableModeling.html">
+   Cable modeling
   </a>
  </li>
 </ul>
@@ -636,12 +678,7 @@ function checkPageExistsAndRedirect(event) {
 <dl class="py class">
 <dt class="sig sig-object py" id="pyaedt.desktop.Desktop">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyaedt.desktop.</span></span><span class="sig-name descname"><span class="pre">Desktop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">specified_version</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">non_graphical</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_desktop_session</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">close_on_exit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">student_version</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">machine</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">port</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aedt_process_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pyaedt/desktop.html#Desktop"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyaedt.desktop.Desktop" title="Permalink to this definition">#</a></dt>
-<dd><p>Initializes AEDT based on the inputs provided.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>On Windows, this class works without limitations in IronPython and CPython.
-On Linux, this class works only in embedded IronPython in AEDT.</p>
-</div>
+<dd><p>Provides the Ansys Electronics Desktop (AEDT) interface.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>

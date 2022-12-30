@@ -33,6 +33,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
 
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
@@ -111,7 +112,13 @@
 
 <li class="toctree-l1 current active nav-item">
  <a class="reference internal nav-link" href="../index.html">
-  API reference
+  API AEDT reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../EDBAPI/index.html">
+  API EDB reference
  </a>
 </li>
 
@@ -203,7 +210,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.40 variable.
+            // this version, rather than using sphinx's 0.6.42 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -273,7 +280,7 @@ function checkPageExistsAndRedirect(event) {
         <li class="nav-item nav-item-0"><a href="../../index.html">PyAEDT</a> » </li>
     
 
-          <li class="nav-item nav-item-1"><a href="../index.html" >API reference</a> » </li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >API AEDT reference</a> » </li>
           <li class="nav-item nav-item-2"><a href="../Post.html" >Postprocessing</a> » </li>
           <li class="nav-item nav-item-3"><a href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.html" accesskey="U">pyaedt.modules.AdvancedPostProcessing.PostProcessor</a> » </li>
         <li class="nav-item nav-item-this"><a href="">get_solution_data</a></li> 
@@ -299,16 +306,6 @@ function checkPageExistsAndRedirect(event) {
     
     <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../Common.html">
-   Desktop and common classes
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../CoreEdb.html">
-   EDB editor
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="../Application.html">
    AEDT apps
   </a>
@@ -319,23 +316,28 @@ function checkPageExistsAndRedirect(event) {
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../Primitives.html">
-   Modeler and  primitives
+  <a class="reference internal" href="../Primitives3D.html">
+   Modeler in 2D and 3D
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../CoreModules.html">
-   AEDT modules
+  <a class="reference internal" href="../Primitives3DLayout.html">
+   Modeler in  HFSS 3D Layout
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../PrimitivesCircuit.html">
+   Modeler and components Circuit
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Boundaries.html">
+   Boundary objects
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Mesh.html">
    Mesh operations
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../CableModeling.html">
-   Cable modeling
   </a>
  </li>
  <li class="toctree-l1">
@@ -353,11 +355,6 @@ function checkPageExistsAndRedirect(event) {
    </i>
   </label>
   <ul class="current">
-   <li class="toctree-l2">
-    <a class="reference internal" href="pyaedt.modules.PostProcessor.CircuitPostProcessor.html">
-     pyaedt.modules.PostProcessor.CircuitPostProcessor
-    </a>
-   </li>
    <li class="toctree-l2 current active has-children">
     <a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.html">
      pyaedt.modules.AdvancedPostProcessing.PostProcessor
@@ -656,11 +653,6 @@ function checkPageExistsAndRedirect(event) {
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.ModelPlotter.html">
-     pyaedt.modules.AdvancedPostProcessing.ModelPlotter
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="pyaedt.modules.report_templates.Trace.html">
      pyaedt.modules.report_templates.Trace
     </a>
@@ -705,7 +697,62 @@ function checkPageExistsAndRedirect(event) {
      pyaedt.modules.report_templates.Spectral
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modules.solutions.SolutionData.html">
+     pyaedt.modules.solutions.SolutionData
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modules.solutions.FieldPlot.html">
+     pyaedt.modules.solutions.FieldPlot
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modules.solutions.FfdSolutionData.html">
+     pyaedt.modules.solutions.FfdSolutionData
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.ModelPlotter.html">
+     pyaedt.modules.AdvancedPostProcessing.ModelPlotter
+    </a>
+   </li>
   </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../DesktopMessenger.html">
+   Logger
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Optimetrics.html">
+   Optimetrics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Variables.html">
+   Variable
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Constants.html">
+   Constants
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Configuration.html">
+   Configuration files
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../SetupTemplates.html">
+   Setup templates
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../CableModeling.html">
+   Cable modeling
+  </a>
  </li>
 </ul>
 
@@ -736,7 +783,7 @@ function checkPageExistsAndRedirect(event) {
   <a class="reference internal nav-link" href="#pyaedt.modules.AdvancedPostProcessing.PostProcessor.get_solution_data">
    <code class="docutils literal notranslate">
     <span class="pre">
-     PostProcessor.get_solution_data()
+     get_solution_data()
     </span>
    </code>
   </a>
@@ -776,7 +823,7 @@ function checkPageExistsAndRedirect(event) {
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
-<dt><strong>expressions</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#str" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a> or <a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#list" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">list</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>One or more formulas to add to the report. Example is value = <code class="docutils literal notranslate"><span class="pre">&quot;dB(S(1,1))&quot;</span></code>.
+<dt><strong>expressions</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#str" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a> or <a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#list" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">list</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>One or more formulas to add to the report. Example is value <code class="docutils literal notranslate"><span class="pre">&quot;dB(S(1,1))&quot;</span></code>.
 Default is <cite>None</cite> which will return all traces.</p>
 </dd>
 <dt><strong>setup_sweep_name</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#str" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Setup name with the sweep. The default is <code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code>.</p>
@@ -794,22 +841,23 @@ The report category will be in this case “Far Fields”.
 Depending on the setup different categories are available.
 If <cite>None</cite> default category will be used (the first item in the Results drop down menu in AEDT).</p>
 </dd>
-<dt><strong>context</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#str" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#dict" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">dict</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>The default is <code class="docutils literal notranslate"><span class="pre">None</span></code>. It can be <cite>None</cite>, <cite>“Differential Pairs”</cite> or
+<dt><strong>context</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#str" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#dict" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">dict</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>The default is <code class="docutils literal notranslate"><span class="pre">None</span></code>. It can be <cite>None</cite>, <code class="docutils literal notranslate"><span class="pre">&quot;Differential</span> <span class="pre">Pairs&quot;</span></code> or
 Reduce Matrix Name for Q2d/Q3d solution or Infinite Sphere name for Far Fields Plot.
 If dictionary is passed, key is the report property name and value is property value.</p>
 </dd>
-<dt><strong>subdesign_id</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/functions.html#int" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">int</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Specify a subdesign ID to export a Touchstone file of this subdesign. Valid for Circuit Only.
+<dt><strong>subdesign_id</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/functions.html#int" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">int</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Subdesign ID for exporting a Touchstone file of this subdesign. This parameter
+is valid for Circuit only.
 The default value is <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
 </dd>
-<dt><strong>polyline_points</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/functions.html#int" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">int</span></code></a>, optional,</span></dt><dd><p>Number of points on which create the report for plots on polylines.</p>
+<dt><strong>polyline_points</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/functions.html#int" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">int</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Number of points on which to create the report for plots on polylines.</p>
 </dd>
-<dt><strong>math_formula</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#str" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>It is one of the available AEDT mathematical formulas. Example abs, dB.</p>
+<dt><strong>math_formula</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#str" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>One of the available AEDT mathematical formulas. For example, <code class="docutils literal notranslate"><span class="pre">abs,</span> <span class="pre">dB</span></code>.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt><a class="reference internal" href="pyaedt.modules.solutions.SolutionData.html#pyaedt.modules.solutions.SolutionData" title="pyaedt.modules.solutions.SolutionData"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyaedt.modules.solutions.SolutionData</span></code></a></dt><dd><p><a href="#id1"><span class="problematic" id="id2">`</span></a>Solution Data object.</p>
+<dt><a class="reference internal" href="pyaedt.modules.solutions.SolutionData.html#pyaedt.modules.solutions.SolutionData" title="pyaedt.modules.solutions.SolutionData"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyaedt.modules.solutions.SolutionData</span></code></a></dt><dd><p>Solution Data object.</p>
 </dd>
 </dl>
 </dd>

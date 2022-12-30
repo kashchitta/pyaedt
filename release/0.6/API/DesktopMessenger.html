@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>AEDT logger &#8212; PyAEDT</title>
+    <title>Logger &#8212; PyAEDT</title>
     
 <script>
   document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
@@ -33,6 +33,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
 
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
@@ -52,7 +53,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="pyaedt.aedt_logger.AedtLogger" href="_autosummary/pyaedt.aedt_logger.AedtLogger.html" />
-    <link rel="prev" title="value" href="_autosummary/pyaedt.modeler.stackup_3d.NamedVariable.value.html" />
+    <link rel="prev" title="zoom" href="_autosummary/pyaedt.modules.AdvancedPostProcessing.ModelPlotter.zoom.html" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="docsearch:language" content="en">
   </head>
@@ -111,7 +112,13 @@
 
 <li class="toctree-l1 current active nav-item">
  <a class="reference internal nav-link" href="index.html">
-  API reference
+  API AEDT reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../EDBAPI/index.html">
+  API EDB reference
  </a>
 </li>
 
@@ -203,7 +210,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.40 variable.
+            // this version, rather than using sphinx's 0.6.42 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -273,9 +280,8 @@ function checkPageExistsAndRedirect(event) {
         <li class="nav-item nav-item-0"><a href="../index.html">PyAEDT</a> » </li>
     
 
-          <li class="nav-item nav-item-1"><a href="index.html" >API reference</a> » </li>
-          <li class="nav-item nav-item-2"><a href="Common.html" accesskey="U">Desktop and common classes</a> » </li>
-        <li class="nav-item nav-item-this"><a href="">AEDT logger</a></li> 
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">API AEDT reference</a> » </li>
+        <li class="nav-item nav-item-this"><a href="">Logger</a></li> 
       </ul>
     </div>
         </div>
@@ -297,80 +303,6 @@ function checkPageExistsAndRedirect(event) {
   <div class="bd-toc-item active">
     
     <ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="Common.html">
-   Desktop and common classes
-  </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul class="current">
-   <li class="toctree-l2">
-    <a class="reference internal" href="_autosummary/pyaedt.Desktop.html">
-     Desktop
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="ClientServer.html">
-     Initial setup and launching AEDT
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="Constants.html">
-     Constants
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="Configuration.html">
-     Configuration files
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="SetupTemplates.html">
-     Setup templates
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="MultiPartComponent.html">
-     Multi-part components
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="Stackup3D.html">
-     Stackup 3D components
-    </a>
-   </li>
-   <li class="toctree-l2 current active has-children">
-    <a class="current reference internal" href="#">
-     AEDT logger
-    </a>
-    <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-    <label for="toctree-checkbox-2">
-     <i class="fas fa-chevron-down">
-     </i>
-    </label>
-    <ul>
-     <li class="toctree-l3">
-      <a class="reference internal" href="_autosummary/pyaedt.aedt_logger.AedtLogger.html">
-       pyaedt.aedt_logger.AedtLogger
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="_autosummary/pyaedt.aedt_logger.AppFilter.html">
-       pyaedt.aedt_logger.AppFilter
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="CoreEdb.html">
-   EDB editor
-  </a>
- </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Application.html">
    AEDT apps
@@ -382,23 +314,28 @@ function checkPageExistsAndRedirect(event) {
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="Primitives.html">
-   Modeler and  primitives
+  <a class="reference internal" href="Primitives3D.html">
+   Modeler in 2D and 3D
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="CoreModules.html">
-   AEDT modules
+  <a class="reference internal" href="Primitives3DLayout.html">
+   Modeler in  HFSS 3D Layout
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="PrimitivesCircuit.html">
+   Modeler and components Circuit
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Boundaries.html">
+   Boundary objects
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Mesh.html">
    Mesh operations
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="CableModeling.html">
-   Cable modeling
   </a>
  </li>
  <li class="toctree-l1">
@@ -409,6 +346,58 @@ function checkPageExistsAndRedirect(event) {
  <li class="toctree-l1">
   <a class="reference internal" href="Post.html">
    Postprocessing
+  </a>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="current reference internal" href="#">
+   Logger
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="_autosummary/pyaedt.aedt_logger.AedtLogger.html">
+     pyaedt.aedt_logger.AedtLogger
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="_autosummary/pyaedt.aedt_logger.AppFilter.html">
+     pyaedt.aedt_logger.AppFilter
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Optimetrics.html">
+   Optimetrics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Variables.html">
+   Variable
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Constants.html">
+   Constants
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Configuration.html">
+   Configuration files
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="SetupTemplates.html">
+   Setup templates
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="CableModeling.html">
+   Cable modeling
   </a>
  </li>
 </ul>
@@ -457,8 +446,8 @@ function checkPageExistsAndRedirect(event) {
               
               <article class="bd-article" role="main">
                 
-  <section id="aedt-logger">
-<h1>AEDT logger<a class="headerlink" href="#aedt-logger" title="Permalink to this heading">#</a></h1>
+  <section id="logger">
+<h1>Logger<a class="headerlink" href="#logger" title="Permalink to this heading">#</a></h1>
 <p>This section lists modules for creating and editing
 PyAEDT log files.</p>
 <table class="autosummary longtable table autosummary">

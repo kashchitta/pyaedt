@@ -32,6 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
 
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
@@ -108,7 +109,13 @@
 
 <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="../../API/index.html">
-  API reference
+  API AEDT reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../EDBAPI/index.html">
+  API EDB reference
  </a>
 </li>
 
@@ -200,7 +207,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.40 variable.
+            // this version, rather than using sphinx's 0.6.42 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -481,23 +488,21 @@ function checkPageExistsAndRedirect(event) {
                 <span class="n">desktop</span><span class="o">.</span><span class="n">CloseProject</span><span class="p">(</span><span class="n">project</span><span class="p">)</span>
         <span class="n">pid</span> <span class="o">=</span> <span class="n">_main</span><span class="o">.</span><span class="n">oDesktop</span><span class="o">.</span><span class="n">GetProcessID</span><span class="p">()</span>
         <span class="k">if</span> <span class="n">settings</span><span class="o">.</span><span class="n">aedt_version</span> <span class="o">&gt;=</span> <span class="s2">&quot;2022.2&quot;</span> <span class="ow">and</span> <span class="n">settings</span><span class="o">.</span><span class="n">use_grpc_api</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">is_ironpython</span><span class="p">:</span>
-            <span class="kn">import</span> <span class="nn">ScriptEnv</span>
+            <span class="k">if</span> <span class="n">_check_grpc_port</span><span class="p">(</span><span class="n">settings</span><span class="o">.</span><span class="n">port</span><span class="p">,</span> <span class="n">settings</span><span class="o">.</span><span class="n">machine</span><span class="p">):</span>
+                <span class="kn">import</span> <span class="nn">ScriptEnv</span>
 
-            <span class="k">if</span> <span class="n">close_desktop</span><span class="p">:</span>
-                <span class="n">ScriptEnv</span><span class="o">.</span><span class="n">Shutdown</span><span class="p">()</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">ScriptEnv</span><span class="o">.</span><span class="n">Release</span><span class="p">()</span>
+                <span class="k">if</span> <span class="n">close_desktop</span><span class="p">:</span>
+                    <span class="n">ScriptEnv</span><span class="o">.</span><span class="n">Shutdown</span><span class="p">()</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">ScriptEnv</span><span class="o">.</span><span class="n">Release</span><span class="p">()</span>
             <span class="n">_delete_objects</span><span class="p">()</span>
-            <span class="k">if</span> <span class="n">settings</span><span class="o">.</span><span class="n">remote_api</span><span class="p">:</span>
-                <span class="k">return</span> <span class="kc">True</span>
+            <span class="k">return</span> <span class="kc">True</span>
         <span class="k">elif</span> <span class="ow">not</span> <span class="n">inside_desktop</span><span class="p">:</span>
             <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
             <span class="n">scopeID</span> <span class="o">=</span> <span class="mi">5</span>
             <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">scopeID</span><span class="p">:</span>
                 <span class="n">_main</span><span class="o">.</span><span class="n">COMUtil</span><span class="o">.</span><span class="n">ReleaseCOMObjectScope</span><span class="p">(</span><span class="n">_main</span><span class="o">.</span><span class="n">COMUtil</span><span class="o">.</span><span class="n">PInvokeProxyAPI</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
                 <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
-        <span class="n">_delete_objects</span><span class="p">()</span>
-
         <span class="k">if</span> <span class="n">close_desktop</span><span class="p">:</span>
             <span class="k">try</span><span class="p">:</span>
                 <span class="n">os</span><span class="o">.</span><span class="n">kill</span><span class="p">(</span><span class="n">pid</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span>
@@ -506,6 +511,7 @@ function checkPageExistsAndRedirect(event) {
             <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
                 <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;Something went wrong in closing AEDT.&quot;</span><span class="p">)</span>
                 <span class="k">return</span> <span class="kc">False</span>
+        <span class="n">_delete_objects</span><span class="p">()</span>
         <span class="k">return</span> <span class="kc">True</span>
     <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
         <span class="n">_delete_objects</span><span class="p">()</span>
@@ -610,11 +616,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <div class="viewcode-block" id="Desktop"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.desktop.Desktop.html#pyaedt.desktop.Desktop">[docs]</a><span class="k">class</span> <span class="nc">Desktop</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Initializes AEDT based on the inputs provided.</span>
-
-<span class="sd">    .. note::</span>
-<span class="sd">       On Windows, this class works without limitations in IronPython and CPython.</span>
-<span class="sd">       On Linux, this class works only in embedded IronPython in AEDT.</span>
+    <span class="sd">&quot;&quot;&quot;Provides the Ansys Electronics Desktop (AEDT) interface.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -721,7 +723,7 @@ function checkPageExistsAndRedirect(event) {
             <span class="k">if</span> <span class="n">_com</span> <span class="o">==</span> <span class="s2">&quot;ironpython&quot;</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Launching PyAEDT outside AEDT with IronPython.&quot;</span><span class="p">)</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_init_ironpython</span><span class="p">(</span><span class="n">non_graphical</span><span class="p">,</span> <span class="n">new_desktop_session</span><span class="p">,</span> <span class="n">version</span><span class="p">)</span>
-            <span class="k">elif</span> <span class="n">_com</span> <span class="o">==</span> <span class="s2">&quot;grpc_v3&quot;</span> <span class="ow">or</span> <span class="n">settings</span><span class="o">.</span><span class="n">use_grpc_api</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">port</span><span class="p">:</span>
+            <span class="k">elif</span> <span class="n">_com</span> <span class="o">==</span> <span class="s2">&quot;grpc_v3&quot;</span> <span class="ow">or</span> <span class="n">settings</span><span class="o">.</span><span class="n">use_grpc_api</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">port</span> <span class="ow">or</span> <span class="n">version_key</span> <span class="o">&gt;</span> <span class="s2">&quot;2022.2&quot;</span><span class="p">:</span>
                 <span class="n">settings</span><span class="o">.</span><span class="n">use_grpc_api</span> <span class="o">=</span> <span class="kc">True</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_init_cpython_new</span><span class="p">(</span><span class="n">non_graphical</span><span class="p">,</span> <span class="n">new_desktop_session</span><span class="p">,</span> <span class="n">version</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_main</span><span class="o">.</span><span class="n">student_version</span><span class="p">)</span>
             <span class="k">elif</span> <span class="n">_com</span> <span class="o">==</span> <span class="s2">&quot;pythonnet_v3&quot;</span><span class="p">:</span>
@@ -735,6 +737,9 @@ function checkPageExistsAndRedirect(event) {
                         <span class="n">version_key</span><span class="p">,</span>
                         <span class="n">aedt_process_id</span><span class="p">,</span>
                     <span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">settings</span><span class="o">.</span><span class="n">use_grpc_api</span> <span class="o">=</span> <span class="kc">True</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_init_cpython_new</span><span class="p">(</span><span class="n">non_graphical</span><span class="p">,</span> <span class="n">new_desktop_session</span><span class="p">,</span> <span class="n">version</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_main</span><span class="o">.</span><span class="n">student_version</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="kn">from</span> <span class="nn">pyaedt.generic.clr_module</span> <span class="kn">import</span> <span class="n">win32_client</span>
 
@@ -868,6 +873,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="bp">self</span><span class="o">.</span><span class="n">_main</span><span class="o">.</span><span class="n">oDesktop</span><span class="o">.</span><span class="n">RestoreWindow</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_main</span><span class="o">.</span><span class="n">sDesktopinstallDirectory</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_main</span><span class="o">.</span><span class="n">oDesktop</span><span class="o">.</span><span class="n">GetExeDir</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_main</span><span class="o">.</span><span class="n">pyaedt_initialized</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">settings</span><span class="o">.</span><span class="n">enable_desktop_logs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_main</span><span class="o">.</span><span class="n">oDesktop</span><span class="o">.</span><span class="n">GetIsNonGraphical</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">_set_version</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">specified_version</span><span class="p">,</span> <span class="n">student_version</span><span class="p">):</span>
         <span class="n">student_version_flag</span> <span class="o">=</span> <span class="kc">False</span>
@@ -915,8 +921,6 @@ function checkPageExistsAndRedirect(event) {
             <span class="n">oAnsoftApp</span> <span class="o">=</span> <span class="n">StandalonePyScriptWrapper</span><span class="o">.</span><span class="n">CreateObjectNew</span><span class="p">(</span><span class="n">non_graphical</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">oAnsoftApp</span> <span class="o">=</span> <span class="n">StandalonePyScriptWrapper</span><span class="o">.</span><span class="n">CreateObject</span><span class="p">(</span><span class="n">version</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">non_graphical</span><span class="p">:</span>
-            <span class="n">settings</span><span class="o">.</span><span class="n">enable_desktop_logs</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_main</span><span class="o">.</span><span class="n">oDesktop</span> <span class="o">=</span> <span class="n">oAnsoftApp</span><span class="o">.</span><span class="n">GetAppDesktop</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_main</span><span class="o">.</span><span class="n">isoutsideDesktop</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">base_path</span><span class="p">,</span> <span class="s2">&quot;common&quot;</span><span class="p">,</span> <span class="s2">&quot;commonfiles&quot;</span><span class="p">,</span> <span class="s2">&quot;IronPython&quot;</span><span class="p">,</span> <span class="s2">&quot;DLLs&quot;</span><span class="p">))</span>
@@ -975,8 +979,6 @@ function checkPageExistsAndRedirect(event) {
             <span class="n">StandalonePyScriptWrapper</span><span class="o">.</span><span class="n">CreateObjectNew</span><span class="p">(</span><span class="n">non_graphical</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">StandalonePyScriptWrapper</span><span class="o">.</span><span class="n">CreateObject</span><span class="p">(</span><span class="n">version</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">non_graphical</span><span class="p">:</span>
-            <span class="n">settings</span><span class="o">.</span><span class="n">enable_desktop_logs</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="n">processID2</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">if</span> <span class="n">IsWindows</span><span class="p">:</span>
             <span class="n">processID2</span> <span class="o">=</span> <span class="n">com_active_sessions</span><span class="p">(</span><span class="n">version</span><span class="p">,</span> <span class="n">student_version</span><span class="p">,</span> <span class="n">non_graphical</span><span class="p">)</span>
@@ -1082,8 +1084,6 @@ function checkPageExistsAndRedirect(event) {
             <span class="bp">self</span><span class="o">.</span><span class="n">_main</span><span class="o">.</span><span class="n">isoutsideDesktop</span> <span class="o">=</span> <span class="kc">True</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_main</span><span class="o">.</span><span class="n">oDesktop</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_main</span><span class="o">.</span><span class="n">oAnsoftApplication</span><span class="o">.</span><span class="n">GetAppDesktop</span><span class="p">()</span>
             <span class="n">_proc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_main</span><span class="o">.</span><span class="n">oDesktop</span><span class="o">.</span><span class="n">GetProcessID</span><span class="p">()</span>
-            <span class="k">if</span> <span class="n">non_graphical</span><span class="p">:</span>
-                <span class="n">settings</span><span class="o">.</span><span class="n">enable_desktop_logs</span> <span class="o">=</span> <span class="kc">False</span>
             <span class="k">if</span> <span class="n">new_aedt_session</span><span class="p">:</span>
                 <span class="n">message</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> </span><span class="si">{}</span><span class="s2"> version started with process ID </span><span class="si">{}</span><span class="s2">.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
                     <span class="n">version</span><span class="p">,</span> <span class="s2">&quot;Student&quot;</span> <span class="k">if</span> <span class="n">student_version</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">_proc</span>

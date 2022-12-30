@@ -37,8 +37,8 @@ Perform required imports.
     import os
     from matplotlib import pyplot as plt
     import numpy as np
-    from pyaedt import Circuit
-    from pyaedt import generate_unique_project_name
+    import pyaedt
+
 
 
 
@@ -75,12 +75,16 @@ Launch AEDT with Circuit
 ~~~~~~~~~~~~~~~~~~~~~~~~
 Launch AEDT 2022 R2 in graphical mode with Circuit.
 
-.. GENERATED FROM PYTHON SOURCE LINES 31-35
+.. GENERATED FROM PYTHON SOURCE LINES 31-39
 
 .. code-block:: default
 
 
-    cir = Circuit(projectname=generate_unique_project_name(), specified_version="2022.2", new_desktop_session=True, non_graphical=non_graphical)
+    cir = pyaedt.Circuit(projectname=pyaedt.generate_unique_project_name(),
+                         specified_version="2022.2",
+                         new_desktop_session=True,
+                         non_graphical=non_graphical
+                         )
 
 
 
@@ -90,13 +94,13 @@ Launch AEDT 2022 R2 in graphical mode with Circuit.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 36-39
+.. GENERATED FROM PYTHON SOURCE LINES 40-43
 
 Read IBIS file
 ~~~~~~~~~~~~~~
 Read an IBIS file and place a buffer in the schematic.
 
-.. GENERATED FROM PYTHON SOURCE LINES 39-43
+.. GENERATED FROM PYTHON SOURCE LINES 43-47
 
 .. code-block:: default
 
@@ -111,13 +115,13 @@ Read an IBIS file and place a buffer in the schematic.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 44-47
+.. GENERATED FROM PYTHON SOURCE LINES 48-51
 
 Place ideal transmission line
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Place an ideal transmission line in the schematic and parametrize it.
 
-.. GENERATED FROM PYTHON SOURCE LINES 47-51
+.. GENERATED FROM PYTHON SOURCE LINES 51-55
 
 .. code-block:: default
 
@@ -132,13 +136,13 @@ Place an ideal transmission line in the schematic and parametrize it.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 52-55
+.. GENERATED FROM PYTHON SOURCE LINES 56-59
 
 Create resistor and ground
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 Create a resistor and ground in the schematic.
 
-.. GENERATED FROM PYTHON SOURCE LINES 55-60
+.. GENERATED FROM PYTHON SOURCE LINES 59-64
 
 .. code-block:: default
 
@@ -154,13 +158,13 @@ Create a resistor and ground in the schematic.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 61-64
+.. GENERATED FROM PYTHON SOURCE LINES 65-68
 
 Connect elements
 ~~~~~~~~~~~~~~~~
 Connect elements in the schematic.
 
-.. GENERATED FROM PYTHON SOURCE LINES 64-69
+.. GENERATED FROM PYTHON SOURCE LINES 68-73
 
 .. code-block:: default
 
@@ -182,13 +186,13 @@ Connect elements in the schematic.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 70-73
+.. GENERATED FROM PYTHON SOURCE LINES 74-77
 
 Place probe
 ~~~~~~~~~~~
 Place a probe and rename it to ``Vout``.
 
-.. GENERATED FROM PYTHON SOURCE LINES 73-81
+.. GENERATED FROM PYTHON SOURCE LINES 77-85
 
 .. code-block:: default
 
@@ -213,13 +217,13 @@ Place a probe and rename it to ``Vout``.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 82-85
+.. GENERATED FROM PYTHON SOURCE LINES 86-89
 
 Create setup and analyze
 ~~~~~~~~~~~~~~~~~~~~~~~~
 Create a transient analysis setup and analyze it.
 
-.. GENERATED FROM PYTHON SOURCE LINES 85-91
+.. GENERATED FROM PYTHON SOURCE LINES 89-95
 
 .. code-block:: default
 
@@ -242,7 +246,7 @@ Create a transient analysis setup and analyze it.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 92-97
+.. GENERATED FROM PYTHON SOURCE LINES 96-101
 
 Create report outside AEDT
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -250,7 +254,7 @@ Create a report outside AEDT using the ``get_solution_data`` method. This
 method allows you to get solution data and plot it outside AEDT without needing
 a UI.
 
-.. GENERATED FROM PYTHON SOURCE LINES 97-104
+.. GENERATED FROM PYTHON SOURCE LINES 101-108
 
 .. code-block:: default
 
@@ -279,7 +283,7 @@ a UI.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 105-110
+.. GENERATED FROM PYTHON SOURCE LINES 109-114
 
 Create report inside AEDT
 ~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -287,7 +291,7 @@ Create a report inside AEDT using the ``new_report`` object. This object is
 fully customizable and usable with most of the reports available in AEDT.
 The standard report is the main one used in Circuit and Twin Builder.
 
-.. GENERATED FROM PYTHON SOURCE LINES 110-129
+.. GENERATED FROM PYTHON SOURCE LINES 114-133
 
 .. code-block:: default
 
@@ -328,13 +332,13 @@ The standard report is the main one used in Circuit and Twin Builder.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 130-133
+.. GENERATED FROM PYTHON SOURCE LINES 134-137
 
 Create eye diagram inside AEDT
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Create an eye diagram inside AEDT using the ``new_eye`` object. 
 
-.. GENERATED FROM PYTHON SOURCE LINES 133-139
+.. GENERATED FROM PYTHON SOURCE LINES 137-143
 
 .. code-block:: default
 
@@ -357,14 +361,14 @@ Create an eye diagram inside AEDT using the ``new_eye`` object.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 140-144
+.. GENERATED FROM PYTHON SOURCE LINES 144-148
 
 Create eye diagram outside AEDT
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Create the same eye diagram outside AEDT using Matplotlib and the
 ``get_solution_data`` method.
 
-.. GENERATED FROM PYTHON SOURCE LINES 144-172
+.. GENERATED FROM PYTHON SOURCE LINES 148-176
 
 .. code-block:: default
 
@@ -408,13 +412,13 @@ Create the same eye diagram outside AEDT using Matplotlib and the
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 173-176
+.. GENERATED FROM PYTHON SOURCE LINES 177-180
 
 Release AEDT
 ~~~~~~~~~~~~
 Release AEDT.
 
-.. GENERATED FROM PYTHON SOURCE LINES 176-178
+.. GENERATED FROM PYTHON SOURCE LINES 180-182
 
 .. code-block:: default
 
@@ -436,7 +440,7 @@ Release AEDT.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  26.286 seconds)
+   **Total running time of the script:** ( 0 minutes  26.636 seconds)
 
 
 .. _sphx_glr_download_examples_07-Circuit_Circuit_Transient.py:

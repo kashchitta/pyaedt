@@ -33,6 +33,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
 
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
@@ -111,7 +112,13 @@
 
 <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="../../API/index.html">
-  API reference
+  API AEDT reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../EDBAPI/index.html">
+  API EDB reference
  </a>
 </li>
 
@@ -203,7 +210,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.40 variable.
+            // this version, rather than using sphinx's 0.6.42 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -845,11 +852,7 @@ design has changed, the boundary fails to apply.</p>
 <h2>Perform required imports<a class="headerlink" href="#perform-required-imports" title="Permalink to this heading">#</a></h2>
 <p>Perform required imports from PyAEDT.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">tempfile</span>
-<span class="kn">import</span> <span class="nn">shutil</span>
-<span class="kn">from</span> <span class="nn">pyaedt</span> <span class="kn">import</span> <span class="n">Icepak</span>
-<span class="kn">from</span> <span class="nn">pyaedt</span> <span class="kn">import</span> <span class="n">examples</span>
-<span class="kn">from</span> <span class="nn">pyaedt</span> <span class="kn">import</span> <span class="n">generate_unique_folder_name</span>
+<span class="kn">import</span> <span class="nn">pyaedt</span>
 </pre></div>
 </div>
 </section>
@@ -865,9 +868,9 @@ You can set <code class="docutils literal notranslate"><span class="pre">non_gra
 <section id="open-project">
 <h2>Open project<a class="headerlink" href="#open-project" title="Permalink to this heading">#</a></h2>
 <p>Download the project, open it, and save it to the temporary folder.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">project_full_name</span></a> <span class="o">=</span> <span class="n">examples</span><span class="o">.</span><span class="n">download_icepak</span><span class="p">(</span><span class="n">generate_unique_folder_name</span><span class="p">(</span><span class="s2">&quot;Graphic_Card&quot;</span><span class="p">))</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">project_full_name</span></a> <span class="o">=</span> <span class="n">pyaedt</span><span class="o">.</span><span class="n">downloads</span><span class="o">.</span><span class="n">download_icepak</span><span class="p">(</span><span class="n">pyaedt</span><span class="o">.</span><span class="n">generate_unique_folder_name</span><span class="p">(</span><span class="n">folder_name</span><span class="o">=</span><span class="s2">&quot;Graphic_Card&quot;</span><span class="p">))</span>
 
-<span class="n">ipk</span> <span class="o">=</span> <span class="n">Icepak</span><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">project_full_name</span></a><span class="p">,</span> <span class="n">specified_version</span><span class="o">=</span><span class="s2">&quot;2022.2&quot;</span><span class="p">,</span> <span class="n">new_desktop_session</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a><span class="o">=</span><a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a><span class="p">)</span>
+<span class="n">ipk</span> <span class="o">=</span> <span class="n">pyaedt</span><span class="o">.</span><span class="n">Icepak</span><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">project_full_name</span></a><span class="p">,</span> <span class="n">specified_version</span><span class="o">=</span><span class="s2">&quot;2022.2&quot;</span><span class="p">,</span> <span class="n">new_desktop_session</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a><span class="o">=</span><a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a><span class="p">)</span>
 <span class="n">ipk</span><span class="o">.</span><span class="n">autosave_disable</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -878,11 +881,11 @@ You can set <code class="docutils literal notranslate"><span class="pre">non_gra
 <section id="create-source-blocks">
 <h2>Create source blocks<a class="headerlink" href="#create-source-blocks" title="Permalink to this heading">#</a></h2>
 <p>Create a source block on the CPU and memories.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ipk</span><span class="o">.</span><span class="n">create_source_block</span><span class="p">(</span><span class="s2">&quot;CPU&quot;</span><span class="p">,</span> <span class="s2">&quot;25W&quot;</span><span class="p">)</span>
-<span class="n">ipk</span><span class="o">.</span><span class="n">create_source_block</span><span class="p">([</span><span class="s2">&quot;MEMORY1&quot;</span><span class="p">,</span> <span class="s2">&quot;MEMORY1_1&quot;</span><span class="p">],</span> <span class="s2">&quot;5W&quot;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ipk</span><span class="o">.</span><span class="n">create_source_block</span><span class="p">(</span><span class="n">object_name</span><span class="o">=</span><span class="s2">&quot;CPU&quot;</span><span class="p">,</span> <span class="n">input_power</span><span class="o">=</span><span class="s2">&quot;25W&quot;</span><span class="p">)</span>
+<span class="n">ipk</span><span class="o">.</span><span class="n">create_source_block</span><span class="p">(</span><span class="n">object_name</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;MEMORY1&quot;</span><span class="p">,</span> <span class="s2">&quot;MEMORY1_1&quot;</span><span class="p">],</span> <span class="n">input_power</span><span class="o">=</span><span class="s2">&quot;5W&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modules.Boundary.BoundaryObject object at 0x0000022BD021DFA0&gt;
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modules.Boundary.BoundaryObject object at 0x000002812042BCD0&gt;
 </pre></div>
 </div>
 </section>
@@ -894,7 +897,7 @@ You can set <code class="docutils literal notranslate"><span class="pre">non_gra
 <span class="n">ipk</span><span class="o">.</span><span class="n">assign_grille</span><span class="p">(</span><span class="n">air_faces</span><span class="o">=</span><span class="n">region</span><span class="o">.</span><span class="n">top_face_x</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">free_area_ratio</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modules.Boundary.BoundaryObject object at 0x0000022BDC4D8CD0&gt;
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modules.Boundary.BoundaryObject object at 0x000002817E098520&gt;
 </pre></div>
 </div>
 </section>
@@ -942,7 +945,7 @@ import sections.</p>
 <section id="create-project">
 <h2>Create project<a class="headerlink" href="#create-project" title="Permalink to this heading">#</a></h2>
 <p>Create an Icepak project and import the step.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">app</span> <span class="o">=</span> <span class="n">Icepak</span><span class="p">(</span><span class="n">projectname</span><span class="o">=</span><span class="s2">&quot;new_proj_Ipk&quot;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">app</span> <span class="o">=</span> <span class="n">pyaedt</span><span class="o">.</span><span class="n">Icepak</span><span class="p">(</span><span class="n">projectname</span><span class="o">=</span><span class="s2">&quot;new_proj_Ipk&quot;</span><span class="p">)</span>
 <span class="n">app</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">import_3d_cad</span><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">file_path</span></a><span class="p">)</span>
 </pre></div>
 </div>
@@ -965,11 +968,13 @@ JSON file that you import using options in the <code class="docutils literal not
 <section id="close-project">
 <h2>Close project<a class="headerlink" href="#close-project" title="Permalink to this heading">#</a></h2>
 <p>Close the project.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">os</span><span class="o">.</span><span class="n">name</span></a> <span class="o">!=</span> <span class="s2">&quot;posix&quot;</span><span class="p">:</span>
-    <span class="n">app</span><span class="o">.</span><span class="n">release_desktop</span><span class="p">()</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">app</span><span class="o">.</span><span class="n">release_desktop</span><span class="p">()</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  29.218 seconds)</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  29.241 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-01-modeling-setup-configurations-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/71769f8aaba26a4d546cd6c9b816adca/Configurations.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">Configurations.py</span></code></a></p>

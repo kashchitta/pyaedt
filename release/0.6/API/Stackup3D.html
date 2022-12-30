@@ -33,6 +33,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
 
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
@@ -51,8 +52,8 @@
     <link rel="shortcut icon" href="../_static/ansys-favicon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="pyaedt.modeler.stackup_3d.Stackup3D" href="_autosummary/pyaedt.modeler.stackup_3d.Stackup3D.html" />
-    <link rel="prev" title="yaw_name" href="_autosummary/pyaedt.modeler.multiparts.Actor.yaw_name.html" />
+    <link rel="next" title="pyaedt.modeler.advanced_cad.stackup_3d.Stackup3D" href="_autosummary/pyaedt.modeler.advanced_cad.stackup_3d.Stackup3D.html" />
+    <link rel="prev" title="yaw_name" href="_autosummary/pyaedt.modeler.advanced_cad.multiparts.Actor.yaw_name.html" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="docsearch:language" content="en">
   </head>
@@ -111,7 +112,13 @@
 
 <li class="toctree-l1 current active nav-item">
  <a class="reference internal nav-link" href="index.html">
-  API reference
+  API AEDT reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../EDBAPI/index.html">
+  API EDB reference
  </a>
 </li>
 
@@ -203,7 +210,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.40 variable.
+            // this version, rather than using sphinx's 0.6.42 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -273,8 +280,8 @@ function checkPageExistsAndRedirect(event) {
         <li class="nav-item nav-item-0"><a href="../index.html">PyAEDT</a> » </li>
     
 
-          <li class="nav-item nav-item-1"><a href="index.html" >API reference</a> » </li>
-          <li class="nav-item nav-item-2"><a href="Common.html" accesskey="U">Desktop and common classes</a> » </li>
+          <li class="nav-item nav-item-1"><a href="index.html" >API AEDT reference</a> » </li>
+          <li class="nav-item nav-item-2"><a href="Primitives3D.html" accesskey="U">Modeler in 2D and 3D</a> » </li>
         <li class="nav-item nav-item-this"><a href="">Stackup 3D components</a></li> 
       </ul>
     </div>
@@ -297,9 +304,19 @@ function checkPageExistsAndRedirect(event) {
   <div class="bd-toc-item active">
     
     <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Application.html">
+   AEDT apps
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="MaterialManagement.html">
+   Material and stackup
+  </a>
+ </li>
  <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="Common.html">
-   Desktop and common classes
+  <a class="reference internal" href="Primitives3D.html">
+   Modeler in 2D and 3D
   </a>
   <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
@@ -308,28 +325,68 @@ function checkPageExistsAndRedirect(event) {
   </label>
   <ul class="current">
    <li class="toctree-l2">
-    <a class="reference internal" href="_autosummary/pyaedt.Desktop.html">
-     Desktop
+    <a class="reference internal" href="_autosummary/pyaedt.modeler.modeler2d.Modeler2D.html">
+     pyaedt.modeler.modeler2d.Modeler2D
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="ClientServer.html">
-     Initial setup and launching AEDT
+    <a class="reference internal" href="_autosummary/pyaedt.modeler.modeler3d.Modeler3D.html">
+     pyaedt.modeler.modeler3d.Modeler3D
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="Constants.html">
-     Constants
+    <a class="reference internal" href="_autosummary/pyaedt.modeler.cad.object3d.Object3d.html">
+     pyaedt.modeler.cad.object3d.Object3d
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="Configuration.html">
-     Configuration files
+    <a class="reference internal" href="_autosummary/pyaedt.modeler.cad.elements3d.FacePrimitive.html">
+     pyaedt.modeler.cad.elements3d.FacePrimitive
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="SetupTemplates.html">
-     Setup templates
+    <a class="reference internal" href="_autosummary/pyaedt.modeler.cad.elements3d.EdgePrimitive.html">
+     pyaedt.modeler.cad.elements3d.EdgePrimitive
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="_autosummary/pyaedt.modeler.cad.elements3d.VertexPrimitive.html">
+     pyaedt.modeler.cad.elements3d.VertexPrimitive
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="_autosummary/pyaedt.modeler.cad.polylines.PolylineSegment.html">
+     pyaedt.modeler.cad.polylines.PolylineSegment
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="_autosummary/pyaedt.modeler.cad.polylines.Polyline.html">
+     pyaedt.modeler.cad.polylines.Polyline
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="_autosummary/pyaedt.modeler.cad.components_3d.UserDefinedComponent.html">
+     pyaedt.modeler.cad.components_3d.UserDefinedComponent
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="_autosummary/pyaedt.modeler.cad.elements3d.Point.html">
+     pyaedt.modeler.cad.elements3d.Point
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="_autosummary/pyaedt.modeler.cad.elements3d.Plane.html">
+     pyaedt.modeler.cad.elements3d.Plane
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="_autosummary/pyaedt.modeler.cad.Modeler.CoordinateSystem.html">
+     pyaedt.modeler.cad.Modeler.CoordinateSystem
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="_autosummary/pyaedt.modeler.geometry_operators.GeometryOperators.html">
+     pyaedt.modeler.geometry_operators.GeometryOperators
     </a>
    </li>
    <li class="toctree-l2">
@@ -348,87 +405,67 @@ function checkPageExistsAndRedirect(event) {
     </label>
     <ul>
      <li class="toctree-l3">
-      <a class="reference internal" href="_autosummary/pyaedt.modeler.stackup_3d.Stackup3D.html">
-       pyaedt.modeler.stackup_3d.Stackup3D
+      <a class="reference internal" href="_autosummary/pyaedt.modeler.advanced_cad.stackup_3d.Stackup3D.html">
+       pyaedt.modeler.advanced_cad.stackup_3d.Stackup3D
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="_autosummary/pyaedt.modeler.stackup_3d.Layer3D.html">
-       pyaedt.modeler.stackup_3d.Layer3D
+      <a class="reference internal" href="_autosummary/pyaedt.modeler.advanced_cad.stackup_3d.Layer3D.html">
+       pyaedt.modeler.advanced_cad.stackup_3d.Layer3D
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="_autosummary/pyaedt.modeler.stackup_3d.Padstack.html">
-       pyaedt.modeler.stackup_3d.Padstack
+      <a class="reference internal" href="_autosummary/pyaedt.modeler.advanced_cad.stackup_3d.Padstack.html">
+       pyaedt.modeler.advanced_cad.stackup_3d.Padstack
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="_autosummary/pyaedt.modeler.stackup_3d.PadstackLayer.html">
-       pyaedt.modeler.stackup_3d.PadstackLayer
+      <a class="reference internal" href="_autosummary/pyaedt.modeler.advanced_cad.stackup_3d.PadstackLayer.html">
+       pyaedt.modeler.advanced_cad.stackup_3d.PadstackLayer
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="_autosummary/pyaedt.modeler.stackup_3d.Patch.html">
-       pyaedt.modeler.stackup_3d.Patch
+      <a class="reference internal" href="_autosummary/pyaedt.modeler.advanced_cad.stackup_3d.Patch.html">
+       pyaedt.modeler.advanced_cad.stackup_3d.Patch
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="_autosummary/pyaedt.modeler.stackup_3d.Trace.html">
-       pyaedt.modeler.stackup_3d.Trace
+      <a class="reference internal" href="_autosummary/pyaedt.modeler.advanced_cad.stackup_3d.Trace.html">
+       pyaedt.modeler.advanced_cad.stackup_3d.Trace
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="_autosummary/pyaedt.modeler.stackup_3d.Polygon.html">
-       pyaedt.modeler.stackup_3d.Polygon
+      <a class="reference internal" href="_autosummary/pyaedt.modeler.advanced_cad.stackup_3d.Polygon.html">
+       pyaedt.modeler.advanced_cad.stackup_3d.Polygon
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="_autosummary/pyaedt.modeler.stackup_3d.NamedVariable.html">
-       pyaedt.modeler.stackup_3d.NamedVariable
+      <a class="reference internal" href="_autosummary/pyaedt.modeler.advanced_cad.stackup_3d.NamedVariable.html">
+       pyaedt.modeler.advanced_cad.stackup_3d.NamedVariable
       </a>
      </li>
     </ul>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="DesktopMessenger.html">
-     AEDT logger
-    </a>
-   </li>
   </ul>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="CoreEdb.html">
-   EDB editor
+  <a class="reference internal" href="Primitives3DLayout.html">
+   Modeler in  HFSS 3D Layout
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="Application.html">
-   AEDT apps
+  <a class="reference internal" href="PrimitivesCircuit.html">
+   Modeler and components Circuit
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="MaterialManagement.html">
-   Material and stackup
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Primitives.html">
-   Modeler and  primitives
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="CoreModules.html">
-   AEDT modules
+  <a class="reference internal" href="Boundaries.html">
+   Boundary objects
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Mesh.html">
    Mesh operations
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="CableModeling.html">
-   Cable modeling
   </a>
  </li>
  <li class="toctree-l1">
@@ -439,6 +476,41 @@ function checkPageExistsAndRedirect(event) {
  <li class="toctree-l1">
   <a class="reference internal" href="Post.html">
    Postprocessing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="DesktopMessenger.html">
+   Logger
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Optimetrics.html">
+   Optimetrics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Variables.html">
+   Variable
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Constants.html">
+   Constants
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Configuration.html">
+   Configuration files
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="SetupTemplates.html">
+   Setup templates
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="CableModeling.html">
+   Cable modeling
   </a>
  </li>
 </ul>
@@ -494,28 +566,28 @@ This consists of a set of one or more parametrized layer objects and placing lin
 and vias.</p>
 <table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="_autosummary/pyaedt.modeler.stackup_3d.Stackup3D.html#pyaedt.modeler.stackup_3d.Stackup3D" title="pyaedt.modeler.stackup_3d.Stackup3D"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stackup_3d.Stackup3D</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="_autosummary/pyaedt.modeler.advanced_cad.stackup_3d.Stackup3D.html#pyaedt.modeler.advanced_cad.stackup_3d.Stackup3D" title="pyaedt.modeler.advanced_cad.stackup_3d.Stackup3D"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stackup_3d.Stackup3D</span></code></a></p></td>
 <td><p>Main Stackup3D Class.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="_autosummary/pyaedt.modeler.stackup_3d.Layer3D.html#pyaedt.modeler.stackup_3d.Layer3D" title="pyaedt.modeler.stackup_3d.Layer3D"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stackup_3d.Layer3D</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="_autosummary/pyaedt.modeler.advanced_cad.stackup_3d.Layer3D.html#pyaedt.modeler.advanced_cad.stackup_3d.Layer3D" title="pyaedt.modeler.advanced_cad.stackup_3d.Layer3D"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stackup_3d.Layer3D</span></code></a></p></td>
 <td><p>Provides a class for a management of a parametric layer in 3D Modeler.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="_autosummary/pyaedt.modeler.stackup_3d.Padstack.html#pyaedt.modeler.stackup_3d.Padstack" title="pyaedt.modeler.stackup_3d.Padstack"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stackup_3d.Padstack</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="_autosummary/pyaedt.modeler.advanced_cad.stackup_3d.Padstack.html#pyaedt.modeler.advanced_cad.stackup_3d.Padstack" title="pyaedt.modeler.advanced_cad.stackup_3d.Padstack"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stackup_3d.Padstack</span></code></a></p></td>
 <td><p>Provides the <code class="docutils literal notranslate"><span class="pre">Padstack</span></code> class member of Stackup3D.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="_autosummary/pyaedt.modeler.stackup_3d.PadstackLayer.html#pyaedt.modeler.stackup_3d.PadstackLayer" title="pyaedt.modeler.stackup_3d.PadstackLayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stackup_3d.PadstackLayer</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="_autosummary/pyaedt.modeler.advanced_cad.stackup_3d.PadstackLayer.html#pyaedt.modeler.advanced_cad.stackup_3d.PadstackLayer" title="pyaedt.modeler.advanced_cad.stackup_3d.PadstackLayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stackup_3d.PadstackLayer</span></code></a></p></td>
 <td><p>Provides a data class for the definition of a padstack layer and relative pad and antipad values.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="_autosummary/pyaedt.modeler.stackup_3d.Patch.html#pyaedt.modeler.stackup_3d.Patch" title="pyaedt.modeler.stackup_3d.Patch"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stackup_3d.Patch</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="_autosummary/pyaedt.modeler.advanced_cad.stackup_3d.Patch.html#pyaedt.modeler.advanced_cad.stackup_3d.Patch" title="pyaedt.modeler.advanced_cad.stackup_3d.Patch"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stackup_3d.Patch</span></code></a></p></td>
 <td><p>Patch Class in Stackup3D.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="_autosummary/pyaedt.modeler.stackup_3d.Trace.html#pyaedt.modeler.stackup_3d.Trace" title="pyaedt.modeler.stackup_3d.Trace"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stackup_3d.Trace</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="_autosummary/pyaedt.modeler.advanced_cad.stackup_3d.Trace.html#pyaedt.modeler.advanced_cad.stackup_3d.Trace" title="pyaedt.modeler.advanced_cad.stackup_3d.Trace"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stackup_3d.Trace</span></code></a></p></td>
 <td><p>Trace Class in Stackup3D.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="_autosummary/pyaedt.modeler.stackup_3d.Polygon.html#pyaedt.modeler.stackup_3d.Polygon" title="pyaedt.modeler.stackup_3d.Polygon"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stackup_3d.Polygon</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="_autosummary/pyaedt.modeler.advanced_cad.stackup_3d.Polygon.html#pyaedt.modeler.advanced_cad.stackup_3d.Polygon" title="pyaedt.modeler.advanced_cad.stackup_3d.Polygon"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stackup_3d.Polygon</span></code></a></p></td>
 <td><p>Polygon Class in Stackup3D.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="_autosummary/pyaedt.modeler.stackup_3d.NamedVariable.html#pyaedt.modeler.stackup_3d.NamedVariable" title="pyaedt.modeler.stackup_3d.NamedVariable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stackup_3d.NamedVariable</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="_autosummary/pyaedt.modeler.advanced_cad.stackup_3d.NamedVariable.html#pyaedt.modeler.advanced_cad.stackup_3d.NamedVariable" title="pyaedt.modeler.advanced_cad.stackup_3d.NamedVariable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stackup_3d.NamedVariable</span></code></a></p></td>
 <td><p>Cast PyAEDT variable object to simplify getters and setters in Stackup3D.</p></td>
 </tr>
 </tbody>

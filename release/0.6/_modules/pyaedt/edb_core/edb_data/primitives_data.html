@@ -32,6 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery-binder.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery-dataframe.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery-rendered-html.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/custom.css" />
 
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
@@ -108,7 +109,13 @@
 
 <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="../../../../API/index.html">
-  API reference
+  API AEDT reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../../EDBAPI/index.html">
+  API EDB reference
  </a>
 </li>
 
@@ -200,7 +207,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.40 variable.
+            // this version, rather than using sphinx's 0.6.42 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -321,10 +328,10 @@ function checkPageExistsAndRedirect(event) {
 
 <span class="kn">from</span> <span class="nn">pyaedt.edb_core.general</span> <span class="kn">import</span> <span class="n">convert_py_list_to_net_list</span>
 <span class="kn">from</span> <span class="nn">pyaedt.generic.general_methods</span> <span class="kn">import</span> <span class="n">pyaedt_function_handler</span>
-<span class="kn">from</span> <span class="nn">pyaedt.modeler</span> <span class="kn">import</span> <span class="n">GeometryOperators</span>
+<span class="kn">from</span> <span class="nn">pyaedt.modeler.geometry_operators</span> <span class="kn">import</span> <span class="n">GeometryOperators</span>
 
 
-<div class="viewcode-block" id="EDBPrimitives"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.html#pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives">[docs]</a><span class="k">class</span> <span class="nc">EDBPrimitives</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="EDBPrimitives"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.html#pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives">[docs]</a><span class="k">class</span> <span class="nc">EDBPrimitives</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Manages EDB functionalities for a primitives.</span>
 <span class="sd">    It Inherits EDB Object properties.</span>
 
@@ -352,7 +359,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="bp">self</span><span class="o">.</span><span class="n">_core_net</span> <span class="o">=</span> <span class="n">core_app</span><span class="o">.</span><span class="n">core_nets</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">primitive_object</span> <span class="o">=</span> <span class="n">raw_primitive</span>
 
-<div class="viewcode-block" id="EDBPrimitives.area"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.area.html#pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.area">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EDBPrimitives.area"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.area.html#pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.area">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">area</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">include_voids</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return the total area.</span>
 
@@ -493,7 +500,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="c1"># fmt: on</span>
         <span class="k">return</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span>
 
-<div class="viewcode-block" id="EDBPrimitives.points"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.points.html#pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.points">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EDBPrimitives.points"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.points.html#pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.points">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">points</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arc_segments</span><span class="o">=</span><span class="mi">6</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return the list of points with arcs converted to segments.</span>
 
@@ -512,7 +519,7 @@ function checkPageExistsAndRedirect(event) {
             <span class="n">xt</span><span class="p">,</span> <span class="n">yt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_points_for_plot</span><span class="p">(</span><span class="n">my_net_points</span><span class="p">,</span> <span class="n">arc_segments</span><span class="p">)</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="n">xt</span><span class="p">:</span>
                 <span class="k">return</span> <span class="p">[]</span>
-            <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">GeometryOperators</span><span class="o">.</span><span class="n">GeometryOperators</span><span class="o">.</span><span class="n">orient_polygon</span><span class="p">(</span><span class="n">xt</span><span class="p">,</span> <span class="n">yt</span><span class="p">,</span> <span class="n">clockwise</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">GeometryOperators</span><span class="o">.</span><span class="n">orient_polygon</span><span class="p">(</span><span class="n">xt</span><span class="p">,</span> <span class="n">yt</span><span class="p">,</span> <span class="n">clockwise</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
             <span class="k">return</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span>
         <span class="k">except</span><span class="p">:</span>
             <span class="n">x</span> <span class="o">=</span> <span class="p">[]</span>
@@ -532,7 +539,7 @@ function checkPageExistsAndRedirect(event) {
             <span class="n">voids</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">EDBPrimitives</span><span class="p">(</span><span class="n">void</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="p">))</span>
         <span class="k">return</span> <span class="n">voids</span>
 
-<div class="viewcode-block" id="EDBPrimitives.points_raw"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.points_raw.html#pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.points_raw">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EDBPrimitives.points_raw"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.points_raw.html#pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.points_raw">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">points_raw</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return a list of Edb points.</span>
 
@@ -550,7 +557,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="k">except</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">points</span></div>
 
-<div class="viewcode-block" id="EDBPrimitives.is_arc"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.is_arc.html#pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.is_arc">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EDBPrimitives.is_arc"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.is_arc.html#pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.is_arc">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">is_arc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">point</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Either if a point is an arc or not.</span>
 
@@ -563,7 +570,7 @@ function checkPageExistsAndRedirect(event) {
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">type</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return the type of the primitive.</span>
-<span class="sd">        Allowed outputs are `&quot;Circle&quot;`, `&quot;Rectangle&quot;`,`&quot;Polygon&quot;`,`&quot;Path&quot;`,`&quot;Bondwire&quot;`.</span>
+<span class="sd">        Allowed outputs are ``&quot;Circle&quot;``, ``&quot;Rectangle&quot;``,``&quot;Polygon&quot;``,``&quot;Path&quot;`` or ``&quot;Bondwire&quot;``.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -631,12 +638,12 @@ function checkPageExistsAndRedirect(event) {
         <span class="k">else</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="s2">&quot;Value inserted not found. Input has to be layer name or layer object.&quot;</span><span class="p">)</span>
 
-<div class="viewcode-block" id="EDBPrimitives.delete"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.delete.html#pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.delete">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EDBPrimitives.delete"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.delete.html#pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.delete">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Delete this primtive.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">primitive_object</span><span class="o">.</span><span class="n">Delete</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="EDBPrimitives.get_connected_object_id_set"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.get_connected_object_id_set.html#pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.get_connected_object_id_set">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EDBPrimitives.get_connected_object_id_set"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.get_connected_object_id_set.html#pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.get_connected_object_id_set">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">get_connected_object_id_set</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Produce a list of all geometries physically connected to a given layout object.</span>
 
@@ -649,7 +656,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">layoutObjInst</span> <span class="o">=</span> <span class="n">layoutInst</span><span class="o">.</span><span class="n">GetLayoutObjInstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">primitive_object</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>  <span class="c1"># 2nd arg was []</span>
         <span class="k">return</span> <span class="p">[</span><span class="n">loi</span><span class="o">.</span><span class="n">GetLayoutObj</span><span class="p">()</span><span class="o">.</span><span class="n">GetId</span><span class="p">()</span> <span class="k">for</span> <span class="n">loi</span> <span class="ow">in</span> <span class="n">layoutInst</span><span class="o">.</span><span class="n">GetConnectedObjects</span><span class="p">(</span><span class="n">layoutObjInst</span><span class="p">)</span><span class="o">.</span><span class="n">Items</span><span class="p">]</span></div>
 
-<div class="viewcode-block" id="EDBPrimitives.convert_to_polygon"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.convert_to_polygon.html#pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.convert_to_polygon">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EDBPrimitives.convert_to_polygon"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.convert_to_polygon.html#pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.convert_to_polygon">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">convert_to_polygon</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Convert path to polygon.</span>
 
@@ -664,7 +671,7 @@ function checkPageExistsAndRedirect(event) {
             <span class="bp">self</span><span class="o">.</span><span class="n">primitive_object</span><span class="o">.</span><span class="n">Delete</span><span class="p">()</span>
             <span class="k">return</span> <span class="n">polygon</span></div>
 
-<div class="viewcode-block" id="EDBPrimitives.add_void"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.add_void.html#pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.add_void">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EDBPrimitives.add_void"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.add_void.html#pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.add_void">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">add_void</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">point_list</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Add a void to current primitive.</span>
 
@@ -688,7 +695,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">primitive_object</span><span class="o">.</span><span class="n">AddVoid</span><span class="p">(</span><span class="n">prim</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="EDBPrimitives.subtract"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.subtract.html#pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.subtract">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EDBPrimitives.subtract"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.subtract.html#pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.subtract">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">subtract</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">primitives</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Subtract active primitive with one or more primitives.</span>
 
@@ -773,7 +780,7 @@ function checkPageExistsAndRedirect(event) {
                     <span class="k">continue</span>
         <span class="k">return</span> <span class="n">new_polys</span></div>
 
-<div class="viewcode-block" id="EDBPrimitives.intersect"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.intersect.html#pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.intersect">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EDBPrimitives.intersect"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.intersect.html#pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.intersect">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">intersect</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">primitives</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Intersect active primitive with one or more primitives.</span>
 
@@ -858,7 +865,7 @@ function checkPageExistsAndRedirect(event) {
                     <span class="k">continue</span>
         <span class="k">return</span> <span class="n">new_polys</span></div>
 
-<div class="viewcode-block" id="EDBPrimitives.unite"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.unite.html#pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.unite">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EDBPrimitives.unite"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.unite.html#pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.unite">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">unite</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">primitives</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Unite active primitive with one or more primitives.</span>
 

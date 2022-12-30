@@ -33,6 +33,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
 
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
@@ -111,7 +112,13 @@
 
 <li class="toctree-l1 current active nav-item">
  <a class="reference internal nav-link" href="../index.html">
-  API reference
+  API AEDT reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../EDBAPI/index.html">
+  API EDB reference
  </a>
 </li>
 
@@ -203,7 +210,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.40 variable.
+            // this version, rather than using sphinx's 0.6.42 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -273,7 +280,7 @@ function checkPageExistsAndRedirect(event) {
         <li class="nav-item nav-item-0"><a href="../../index.html">PyAEDT</a> » </li>
     
 
-          <li class="nav-item nav-item-1"><a href="../index.html" >API reference</a> » </li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >API AEDT reference</a> » </li>
           <li class="nav-item nav-item-2"><a href="../Post.html" >Postprocessing</a> » </li>
           <li class="nav-item nav-item-3"><a href="pyaedt.modules.solutions.SolutionData.html" accesskey="U">pyaedt.modules.solutions.SolutionData</a> » </li>
         <li class="nav-item nav-item-this"><a href="">plot</a></li> 
@@ -299,16 +306,6 @@ function checkPageExistsAndRedirect(event) {
     
     <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../Common.html">
-   Desktop and common classes
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../CoreEdb.html">
-   EDB editor
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="../Application.html">
    AEDT apps
   </a>
@@ -319,23 +316,28 @@ function checkPageExistsAndRedirect(event) {
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../Primitives.html">
-   Modeler and  primitives
+  <a class="reference internal" href="../Primitives3D.html">
+   Modeler in 2D and 3D
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../CoreModules.html">
-   AEDT modules
+  <a class="reference internal" href="../Primitives3DLayout.html">
+   Modeler in  HFSS 3D Layout
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../PrimitivesCircuit.html">
+   Modeler and components Circuit
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Boundaries.html">
+   Boundary objects
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Mesh.html">
    Mesh operations
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../CableModeling.html">
-   Cable modeling
   </a>
  </li>
  <li class="toctree-l1">
@@ -353,11 +355,6 @@ function checkPageExistsAndRedirect(event) {
    </i>
   </label>
   <ul class="current">
-   <li class="toctree-l2">
-    <a class="reference internal" href="pyaedt.modules.PostProcessor.CircuitPostProcessor.html">
-     pyaedt.modules.PostProcessor.CircuitPostProcessor
-    </a>
-   </li>
    <li class="toctree-l2">
     <a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.html">
      pyaedt.modules.AdvancedPostProcessing.PostProcessor
@@ -526,11 +523,6 @@ function checkPageExistsAndRedirect(event) {
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.ModelPlotter.html">
-     pyaedt.modules.AdvancedPostProcessing.ModelPlotter
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="pyaedt.modules.report_templates.Trace.html">
      pyaedt.modules.report_templates.Trace
     </a>
@@ -575,7 +567,209 @@ function checkPageExistsAndRedirect(event) {
      pyaedt.modules.report_templates.Spectral
     </a>
    </li>
+   <li class="toctree-l2 current active has-children">
+    <a class="reference internal" href="pyaedt.modules.solutions.SolutionData.html">
+     pyaedt.modules.solutions.SolutionData
+    </a>
+    <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+    <label for="toctree-checkbox-3">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul class="current">
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modules.solutions.SolutionData.data_db.html">
+       data_db
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modules.solutions.SolutionData.data_db10.html">
+       data_db10
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modules.solutions.SolutionData.data_db20.html">
+       data_db20
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modules.solutions.SolutionData.data_imag.html">
+       data_imag
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modules.solutions.SolutionData.data_magnitude.html">
+       data_magnitude
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modules.solutions.SolutionData.data_phase.html">
+       data_phase
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modules.solutions.SolutionData.data_real.html">
+       data_real
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modules.solutions.SolutionData.export_data_to_csv.html">
+       export_data_to_csv
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modules.solutions.SolutionData.ifft.html">
+       ifft
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modules.solutions.SolutionData.ifft_to_file.html">
+       ifft_to_file
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modules.solutions.SolutionData.init_solutions_data.html">
+       init_solutions_data
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modules.solutions.SolutionData.is_real_only.html">
+       is_real_only
+      </a>
+     </li>
+     <li class="toctree-l3 current active">
+      <a class="current reference internal" href="#">
+       plot
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modules.solutions.SolutionData.plot_3d.html">
+       plot_3d
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modules.solutions.SolutionData.set_active_variation.html">
+       set_active_variation
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modules.solutions.SolutionData.to_degrees.html">
+       to_degrees
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modules.solutions.SolutionData.to_radians.html">
+       to_radians
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modules.solutions.SolutionData.update_sweeps.html">
+       update_sweeps
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modules.solutions.SolutionData.variation_values.html">
+       variation_values
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modules.solutions.SolutionData.enable_pandas_output.html">
+       enable_pandas_output
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modules.solutions.SolutionData.expressions.html">
+       expressions
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modules.solutions.SolutionData.full_matrix_mag_phase.html">
+       full_matrix_mag_phase
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modules.solutions.SolutionData.full_matrix_real_imag.html">
+       full_matrix_real_imag
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modules.solutions.SolutionData.intrinsics.html">
+       intrinsics
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modules.solutions.SolutionData.nominal_variation.html">
+       nominal_variation
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modules.solutions.SolutionData.primary_sweep.html">
+       primary_sweep
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modules.solutions.SolutionData.primary_sweep_values.html">
+       primary_sweep_values
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modules.solutions.SolutionData.primary_sweep_variations.html">
+       primary_sweep_variations
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modules.solutions.FieldPlot.html">
+     pyaedt.modules.solutions.FieldPlot
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modules.solutions.FfdSolutionData.html">
+     pyaedt.modules.solutions.FfdSolutionData
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.ModelPlotter.html">
+     pyaedt.modules.AdvancedPostProcessing.ModelPlotter
+    </a>
+   </li>
   </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../DesktopMessenger.html">
+   Logger
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Optimetrics.html">
+   Optimetrics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Variables.html">
+   Variable
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Constants.html">
+   Constants
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Configuration.html">
+   Configuration files
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../SetupTemplates.html">
+   Setup templates
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../CableModeling.html">
+   Cable modeling
+  </a>
  </li>
 </ul>
 
@@ -606,7 +800,7 @@ function checkPageExistsAndRedirect(event) {
   <a class="reference internal nav-link" href="#pyaedt.modules.solutions.SolutionData.plot">
    <code class="docutils literal notranslate">
     <span class="pre">
-     SolutionData.plot()
+     plot()
     </span>
    </code>
   </a>

@@ -33,6 +33,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
 
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
@@ -111,7 +112,13 @@
 
 <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="../../API/index.html">
-  API reference
+  API AEDT reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../EDBAPI/index.html">
+  API EDB reference
  </a>
 </li>
 
@@ -203,7 +210,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.40 variable.
+            // this version, rather than using sphinx's 0.6.42 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -898,12 +905,7 @@ This includes creating a setup, solving it, and creating postprocessing outputs.
 <h2>Perform required imports<a class="headerlink" href="#perform-required-imports" title="Permalink to this heading">#</a></h2>
 <p>Perform required imports.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">sys</span>
-<span class="kn">from</span> <span class="nn">pyaedt</span> <span class="kn">import</span> <span class="n">generate_unique_project_name</span>
-
-<span class="kn">from</span> <span class="nn">pyaedt.generic.constants</span> <span class="kn">import</span> <span class="n">GLOBALCS</span>
-<span class="kn">from</span> <span class="nn">pyaedt</span> <span class="kn">import</span> <span class="n">Hfss</span>
-<span class="kn">from</span> <span class="nn">pyaedt</span> <span class="kn">import</span> <span class="n">Icepak</span>
+<span class="kn">import</span> <span class="nn">pyaedt</span>
 </pre></div>
 </div>
 </section>
@@ -922,7 +924,7 @@ You can set <code class="docutils literal notranslate"><span class="pre">non_gra
 <p>Open the project.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">NewThread</span></a> <span class="o">=</span> <span class="kc">True</span>
 
-<a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">project_file</span></a> <span class="o">=</span> <span class="n">generate_unique_project_name</span><span class="p">()</span>
+<a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">project_file</span></a> <span class="o">=</span> <span class="n">pyaedt</span><span class="o">.</span><span class="n">generate_unique_project_name</span><span class="p">()</span>
 </pre></div>
 </div>
 </section>
@@ -930,7 +932,11 @@ You can set <code class="docutils literal notranslate"><span class="pre">non_gra
 <h2>Launch AEDT and initialize HFSS<a class="headerlink" href="#launch-aedt-and-initialize-hfss" title="Permalink to this heading">#</a></h2>
 <p>Launch AEDT and initialize HFSS. If there is an active HFSS design, the <code class="docutils literal notranslate"><span class="pre">aedtapp</span></code>
 object is linked to it. Otherwise, a new design is created.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">aedtapp</span> <span class="o">=</span> <span class="n">Hfss</span><span class="p">(</span><span class="n">projectname</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">project_file</span></a><span class="p">,</span> <span class="n">specified_version</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">desktopVersion</span></a><span class="p">,</span> <a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a><span class="o">=</span><a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a><span class="p">,</span> <span class="n">new_desktop_session</span><span class="o">=</span><a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">NewThread</span></a><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">aedtapp</span> <span class="o">=</span> <span class="n">pyaedt</span><span class="o">.</span><span class="n">Hfss</span><span class="p">(</span><span class="n">projectname</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">project_file</span></a><span class="p">,</span>
+                      <span class="n">specified_version</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">desktopVersion</span></a><span class="p">,</span>
+                      <a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a><span class="o">=</span><a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a><span class="p">,</span>
+                      <span class="n">new_desktop_session</span><span class="o">=</span><a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">NewThread</span></a>
+                      <span class="p">)</span>
 </pre></div>
 </div>
 </section>
@@ -948,7 +954,7 @@ the project. Otherwise, the variable is created for the design.</p>
 <section id="create-coaxial-and-cylinders">
 <h2>Create coaxial and cylinders<a class="headerlink" href="#create-coaxial-and-cylinders" title="Permalink to this heading">#</a></h2>
 <p>Create a coaxial and three cylinders. You can apply parameters
-directly using the <a class="reference internal" href="../../API/_autosummary/pyaedt.modeler.Primitives3D.Primitives3D.create_cylinder.html#pyaedt.modeler.Primitives3D.Primitives3D.create_cylinder" title="pyaedt.modeler.Primitives3D.Primitives3D.create_cylinder"><code class="xref py py-func docutils literal notranslate"><span class="pre">pyaedt.modeler.Primitives3D.Primitives3D.create_cylinder()</span></code></a>
+directly using the <code class="xref py py-func docutils literal notranslate"><span class="pre">pyaedt.modeler.Primitives3D.Primitives3D.create_cylinder()</span></code>
 method. You can assign a material directly to the object creation action.
 Optionally, you can assign a material using the <code class="xref py py-func docutils literal notranslate"><span class="pre">assign_material()</span></code> method.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># TODO: How does this work when two truesurfaces are defined?</span>
@@ -1000,7 +1006,7 @@ edit or review parameter values.</p>
 <span class="n">aedtapp</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">assign_length_mesh</span><span class="p">(</span><span class="n">o2</span><span class="o">.</span><span class="n">faces</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2000</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modules.Mesh.MeshOperation object at 0x0000022BE5889C40&gt;
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modules.Mesh.MeshOperation object at 0x000002812A067130&gt;
 </pre></div>
 </div>
 </section>
@@ -1043,7 +1049,7 @@ value.</p>
 <p>Create an Icepak model. After an HFSS setup is ready, link this model to an Icepak
 project and run a coupled physics analysis. The <code class="xref py py-func docutils literal notranslate"><span class="pre">FieldAnalysis3D.copy_solid_bodies_from()</span></code>
 method imports a model from HFSS with all material settings.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ipkapp</span> <span class="o">=</span> <span class="n">Icepak</span><span class="p">()</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ipkapp</span> <span class="o">=</span> <span class="n">pyaedt</span><span class="o">.</span><span class="n">Icepak</span><span class="p">()</span>
 <span class="n">ipkapp</span><span class="o">.</span><span class="n">copy_solid_bodies_from</span><span class="p">(</span><span class="n">aedtapp</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1060,7 +1066,7 @@ method imports a model from HFSS with all material settings.</p>
 <span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modules.Boundary.BoundaryObject object at 0x0000022BD8D9AD00&gt;
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modules.Boundary.BoundaryObject object at 0x000002812C4B2D90&gt;
 </pre></div>
 </div>
 </section>
@@ -1096,7 +1102,7 @@ a mesh operation to edit or review parameter values.</p>
 <span class="n">ipkapp</span><span class="o">.</span><span class="n">assign_openings</span><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">airfaces</span></a><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modules.Boundary.BoundaryObject object at 0x0000022BE54F4250&gt;
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modules.Boundary.BoundaryObject object at 0x000002812CA5FFD0&gt;
 </pre></div>
 </div>
 </section>
@@ -1107,8 +1113,8 @@ correctly in AEDT versions 2019 R3 through 2021 R1. Closing and opening projects
 can be helpful when performing operations on multiple projects.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">aedtapp</span><span class="o">.</span><span class="n">save_project</span><span class="p">()</span>
 <span class="n">aedtapp</span><span class="o">.</span><span class="n">close_project</span><span class="p">(</span><span class="n">aedtapp</span><span class="o">.</span><span class="n">project_name</span><span class="p">)</span>
-<span class="n">aedtapp</span> <span class="o">=</span> <span class="n">Hfss</span><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">project_file</span></a><span class="p">)</span>
-<span class="n">ipkapp</span> <span class="o">=</span> <span class="n">Icepak</span><span class="p">()</span>
+<span class="n">aedtapp</span> <span class="o">=</span> <span class="n">pyaedt</span><span class="o">.</span><span class="n">Hfss</span><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">project_file</span></a><span class="p">)</span>
+<span class="n">ipkapp</span> <span class="o">=</span> <span class="n">pyaedt</span><span class="o">.</span><span class="n">Icepak</span><span class="p">()</span>
 <span class="n">ipkapp</span><span class="o">.</span><span class="n">solution_type</span> <span class="o">=</span> <a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ipkapp</span><span class="o">.</span><span class="n">SOLUTIONS</span><span class="o">.</span><span class="n">Icepak</span><span class="o">.</span><span class="n">SteadyTemperatureAndFlow</span></a>
 <span class="n">ipkapp</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">fit_all</span><span class="p">()</span>
 </pre></div>
@@ -1130,7 +1136,7 @@ can be helpful when performing operations on multiple projects.</p>
 <section id="generate-field-plots-and-export">
 <h2>Generate field plots and export<a class="headerlink" href="#generate-field-plots-and-export" title="Permalink to this heading">#</a></h2>
 <p>Generate field plots on the HFSS project and export them as images.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">cutlist</span></a> <span class="o">=</span> <span class="p">[</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">GLOBALCS</span><span class="o">.</span><span class="n">XY</span></a><span class="p">,</span> <a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">GLOBALCS</span><span class="o">.</span><span class="n">ZX</span></a><span class="p">,</span> <a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">GLOBALCS</span><span class="o">.</span><span class="n">YZ</span></a><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">cutlist</span></a> <span class="o">=</span> <span class="p">[</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">pyaedt</span><span class="o">.</span><span class="n">constants</span><span class="o">.</span><span class="n">GLOBALCS</span><span class="o">.</span><span class="n">XY</span></a><span class="p">,</span> <a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">pyaedt</span><span class="o">.</span><span class="n">constants</span><span class="o">.</span><span class="n">GLOBALCS</span><span class="o">.</span><span class="n">ZX</span></a><span class="p">,</span> <a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">pyaedt</span><span class="o">.</span><span class="n">constants</span><span class="o">.</span><span class="n">GLOBALCS</span><span class="o">.</span><span class="n">YZ</span></a><span class="p">]</span>
 <a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">vollist</span></a> <span class="o">=</span> <span class="p">[</span><span class="n">o2</span><span class="o">.</span><span class="n">name</span><span class="p">]</span>
 <a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">setup_name</span></a> <span class="o">=</span> <span class="s2">&quot;MySetup : LastAdaptive&quot;</span>
 <a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">quantity_name</span></a> <span class="o">=</span> <span class="s2">&quot;ComplexMag_E&quot;</span>
@@ -1155,7 +1161,7 @@ can be helpful when performing operations on multiple projects.</p>
 <span class="p">)</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_Hfss_Icepak_Coupling_001.png" srcset="../../_images/sphx_glr_Hfss_Icepak_Coupling_001.png" alt="Hfss Icepak Coupling" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.generic.plot.ModelPlotter object at 0x0000022BE5B6E1C0&gt;
+<img src="../../_images/sphx_glr_Hfss_Icepak_Coupling_001.png" srcset="../../_images/sphx_glr_Hfss_Icepak_Coupling_001.png" alt="Hfss Icepak Coupling" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.generic.plot.ModelPlotter object at 0x000002812DA06A30&gt;
 </pre></div>
 </div>
 </section>
@@ -1192,7 +1198,7 @@ can be helpful when performing operations on multiple projects.</p>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Total Time&quot;</span><span class="p">,</span> <a href="https://docs.python.org/dev/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">endtime</span></a><span class="p">)</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_Hfss_Icepak_Coupling_002.png" srcset="../../_images/sphx_glr_Hfss_Icepak_Coupling_002.png" alt="Hfss Icepak Coupling" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Total Time 10.629307508468628
+<img src="../../_images/sphx_glr_Hfss_Icepak_Coupling_002.png" srcset="../../_images/sphx_glr_Hfss_Icepak_Coupling_002.png" alt="Hfss Icepak Coupling" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Total Time 10.70767855644226
 </pre></div>
 </div>
 </section>
@@ -1246,7 +1252,7 @@ were used early. Only the quantity is different.</p>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>True
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 2 minutes  32.268 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 2 minutes  36.202 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-06-multiphysics-hfss-icepak-coupling-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/fa55c6e8c43f01f1040d789e3a1de422/Hfss_Icepak_Coupling.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">Hfss_Icepak_Coupling.py</span></code></a></p>

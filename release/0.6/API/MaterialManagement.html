@@ -33,6 +33,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
 
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
@@ -111,7 +112,13 @@
 
 <li class="toctree-l1 current active nav-item">
  <a class="reference internal nav-link" href="index.html">
-  API reference
+  API AEDT reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../EDBAPI/index.html">
+  API EDB reference
  </a>
 </li>
 
@@ -203,7 +210,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.40 variable.
+            // this version, rather than using sphinx's 0.6.42 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -273,7 +280,7 @@ function checkPageExistsAndRedirect(event) {
         <li class="nav-item nav-item-0"><a href="../index.html">PyAEDT</a> » </li>
     
 
-          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">API reference</a> » </li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">API AEDT reference</a> » </li>
         <li class="nav-item nav-item-this"><a href="">Material and stackup</a></li> 
       </ul>
     </div>
@@ -297,16 +304,6 @@ function checkPageExistsAndRedirect(event) {
     
     <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="Common.html">
-   Desktop and common classes
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="CoreEdb.html">
-   EDB editor
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="Application.html">
    AEDT apps
   </a>
@@ -327,6 +324,16 @@ function checkPageExistsAndRedirect(event) {
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="_autosummary/pyaedt.modules.Material.Material.html">
+     pyaedt.modules.Material.Material
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="_autosummary/pyaedt.modules.Material.SurfaceMaterial.html">
+     pyaedt.modules.Material.SurfaceMaterial
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="_autosummary/pyaedt.modules.Material.MatProperties.html">
      pyaedt.modules.Material.MatProperties
     </a>
@@ -342,16 +349,6 @@ function checkPageExistsAndRedirect(event) {
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="_autosummary/pyaedt.modules.Material.Material.html">
-     pyaedt.modules.Material.Material
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="_autosummary/pyaedt.modules.Material.SurfaceMaterial.html">
-     pyaedt.modules.Material.SurfaceMaterial
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="_autosummary/pyaedt.modules.LayerStackup.Layers.html">
      pyaedt.modules.LayerStackup.Layers
     </a>
@@ -364,23 +361,28 @@ function checkPageExistsAndRedirect(event) {
   </ul>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="Primitives.html">
-   Modeler and  primitives
+  <a class="reference internal" href="Primitives3D.html">
+   Modeler in 2D and 3D
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="CoreModules.html">
-   AEDT modules
+  <a class="reference internal" href="Primitives3DLayout.html">
+   Modeler in  HFSS 3D Layout
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="PrimitivesCircuit.html">
+   Modeler and components Circuit
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Boundaries.html">
+   Boundary objects
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Mesh.html">
    Mesh operations
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="CableModeling.html">
-   Cable modeling
   </a>
  </li>
  <li class="toctree-l1">
@@ -391,6 +393,41 @@ function checkPageExistsAndRedirect(event) {
  <li class="toctree-l1">
   <a class="reference internal" href="Post.html">
    Postprocessing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="DesktopMessenger.html">
+   Logger
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Optimetrics.html">
+   Optimetrics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Variables.html">
+   Variable
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Constants.html">
+   Constants
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Configuration.html">
+   Configuration files
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="SetupTemplates.html">
+   Setup templates
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="CableModeling.html">
+   Cable modeling
   </a>
  </li>
 </ul>
@@ -412,9 +449,24 @@ function checkPageExistsAndRedirect(event) {
     
     <div class="toc-item">
       
+<div class="tocsection onthispage mt-5 pt-1 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
 
 <nav id="bd-toc-nav">
-    
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#material-management">
+   Material management
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#stackup-management">
+   Stackup management
+  </a>
+ </li>
+</ul>
+
 </nav>
     </div>
     
@@ -444,10 +496,19 @@ function checkPageExistsAndRedirect(event) {
 <p>This section lists material and stackup modules.
 These classes cannot be used directly but can be accessed through an app.
 Example:</p>
+<section id="material-management">
+<h2>Material management<a class="headerlink" href="#material-management" title="Permalink to this heading">#</a></h2>
+<p>This section describes all material-related classes and methods.</p>
 <table class="autosummary longtable table autosummary">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="_autosummary/pyaedt.modules.MaterialLib.Materials.html#pyaedt.modules.MaterialLib.Materials" title="pyaedt.modules.MaterialLib.Materials"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MaterialLib.Materials</span></code></a></p></td>
 <td><p>Contains the AEDT materials database and all methods for creating and editing materials.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="_autosummary/pyaedt.modules.Material.Material.html#pyaedt.modules.Material.Material" title="pyaedt.modules.Material.Material"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Material.Material</span></code></a></p></td>
+<td><p>Manages material properties.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="_autosummary/pyaedt.modules.Material.SurfaceMaterial.html#pyaedt.modules.Material.SurfaceMaterial" title="pyaedt.modules.Material.SurfaceMaterial"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Material.SurfaceMaterial</span></code></a></p></td>
+<td><p>Manages surface material properties for Icepak only.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="_autosummary/pyaedt.modules.Material.MatProperties.html#pyaedt.modules.Material.MatProperties" title="pyaedt.modules.Material.MatProperties"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Material.MatProperties</span></code></a></p></td>
 <td><p>Contains a list of constant names for all materials with mappings to their internal XML names.</p></td>
@@ -458,22 +519,10 @@ Example:</p>
 <tr class="row-even"><td><p><a class="reference internal" href="_autosummary/pyaedt.modules.Material.MatProperty.html#pyaedt.modules.Material.MatProperty" title="pyaedt.modules.Material.MatProperty"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Material.MatProperty</span></code></a></p></td>
 <td><p>Manages simple, anisotropic, tensor, and non-linear properties.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="_autosummary/pyaedt.modules.Material.Material.html#pyaedt.modules.Material.Material" title="pyaedt.modules.Material.Material"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Material.Material</span></code></a></p></td>
-<td><p>Manages material properties.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="_autosummary/pyaedt.modules.Material.SurfaceMaterial.html#pyaedt.modules.Material.SurfaceMaterial" title="pyaedt.modules.Material.SurfaceMaterial"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Material.SurfaceMaterial</span></code></a></p></td>
-<td><p>Manages surface material properties.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="_autosummary/pyaedt.modules.LayerStackup.Layers.html#pyaedt.modules.LayerStackup.Layers" title="pyaedt.modules.LayerStackup.Layers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LayerStackup.Layers</span></code></a></p></td>
-<td><p>Manages layers for the Circuit and HFSS 3D Layout tools.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="_autosummary/pyaedt.modules.LayerStackup.Layer.html#pyaedt.modules.LayerStackup.Layer" title="pyaedt.modules.LayerStackup.Layer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LayerStackup.Layer</span></code></a></p></td>
-<td><p>Manages the stackup layer.</p></td>
-</tr>
 </tbody>
 </table>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyaedt</span> <span class="kn">import</span> <span class="n">Hfss</span>
-<span class="n">app</span> <span class="o">=</span> <span class="n">Hfss</span><span class="p">(</span><span class="n">specified_version</span><span class="o">=</span><span class="s2">&quot;2022.1&quot;</span><span class="p">,</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">Hfss</span><span class="p">(</span><span class="n">specified_version</span><span class="o">=</span><span class="s2">&quot;2022.2&quot;</span><span class="p">,</span>
              <span class="n">non_graphical</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">new_desktop_session</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
              <span class="n">close_on_exit</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">student_version</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
@@ -486,6 +535,21 @@ Example:</p>
 <span class="o">...</span>
 </pre></div>
 </div>
+</section>
+<section id="stackup-management">
+<h2>Stackup management<a class="headerlink" href="#stackup-management" title="Permalink to this heading">#</a></h2>
+<p>This section describes all layer-related classes and methods used in HFSS 3D Layout (and indirectly in Circuit).</p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="_autosummary/pyaedt.modules.LayerStackup.Layers.html#pyaedt.modules.LayerStackup.Layers" title="pyaedt.modules.LayerStackup.Layers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LayerStackup.Layers</span></code></a></p></td>
+<td><p>Manages stackup for the Circuit and HFSS 3D Layout tools.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="_autosummary/pyaedt.modules.LayerStackup.Layer.html#pyaedt.modules.LayerStackup.Layer" title="pyaedt.modules.LayerStackup.Layer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LayerStackup.Layer</span></code></a></p></td>
+<td><p>Manages the stackup layer for the Circuit and HFSS 3D Layout tools.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
 </section>
 
 

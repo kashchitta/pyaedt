@@ -32,6 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery-binder.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery-dataframe.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery-rendered-html.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/custom.css" />
 
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
@@ -108,7 +109,13 @@
 
 <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="../../../../API/index.html">
-  API reference
+  API AEDT reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../../EDBAPI/index.html">
+  API EDB reference
  </a>
 </li>
 
@@ -200,7 +207,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.40 variable.
+            // this version, rather than using sphinx's 0.6.42 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -326,10 +333,10 @@ function checkPageExistsAndRedirect(event) {
 <span class="kn">from</span> <span class="nn">pyaedt.generic.clr_module</span> <span class="kn">import</span> <span class="n">_clr</span>
 <span class="kn">from</span> <span class="nn">pyaedt.generic.general_methods</span> <span class="kn">import</span> <span class="n">generate_unique_name</span>
 <span class="kn">from</span> <span class="nn">pyaedt.generic.general_methods</span> <span class="kn">import</span> <span class="n">pyaedt_function_handler</span>
-<span class="kn">from</span> <span class="nn">pyaedt.modeler.GeometryOperators</span> <span class="kn">import</span> <span class="n">GeometryOperators</span>
+<span class="kn">from</span> <span class="nn">pyaedt.modeler.geometry_operators</span> <span class="kn">import</span> <span class="n">GeometryOperators</span>
 
 
-<div class="viewcode-block" id="EDBPadProperties"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.padstacks_data.EDBPadProperties.html#pyaedt.edb_core.edb_data.padstacks_data.EDBPadProperties">[docs]</a><span class="k">class</span> <span class="nc">EDBPadProperties</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="EDBPadProperties"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.padstacks_data.EDBPadProperties.html#pyaedt.edb_core.edb_data.padstacks_data.EDBPadProperties">[docs]</a><span class="k">class</span> <span class="nc">EDBPadProperties</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Manages EDB functionalities for pad properties.</span>
 
 <span class="sd">    Parameters</span>
@@ -532,7 +539,7 @@ function checkPageExistsAndRedirect(event) {
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_update_pad_parameters_parameters</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="n">rotation_value</span><span class="p">)</span>
 
-<div class="viewcode-block" id="EDBPadProperties.int_to_pad_type"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.padstacks_data.EDBPadProperties.int_to_pad_type.html#pyaedt.edb_core.edb_data.padstacks_data.EDBPadProperties.int_to_pad_type">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EDBPadProperties.int_to_pad_type"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.padstacks_data.EDBPadProperties.int_to_pad_type.html#pyaedt.edb_core.edb_data.padstacks_data.EDBPadProperties.int_to_pad_type">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">int_to_pad_type</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Convert an integer to an EDB.PadGeometryType.</span>
 
@@ -547,7 +554,7 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pedbpadstack</span><span class="o">.</span><span class="n">_ppadstack</span><span class="o">.</span><span class="n">int_to_pad_type</span><span class="p">(</span><span class="n">val</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="EDBPadProperties.int_to_geometry_type"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.padstacks_data.EDBPadProperties.int_to_geometry_type.html#pyaedt.edb_core.edb_data.padstacks_data.EDBPadProperties.int_to_geometry_type">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EDBPadProperties.int_to_geometry_type"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.padstacks_data.EDBPadProperties.int_to_geometry_type.html#pyaedt.edb_core.edb_data.padstacks_data.EDBPadProperties.int_to_geometry_type">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">int_to_geometry_type</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Convert an integer to an EDB.PadGeometryType.</span>
 
@@ -626,7 +633,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="bp">self</span><span class="o">.</span><span class="n">_edb_padstack</span><span class="o">.</span><span class="n">SetData</span><span class="p">(</span><span class="n">newPadstackDefinitionData</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="EDBPadstack"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.padstacks_data.EDBPadstack.html#pyaedt.edb_core.edb_data.padstacks_data.EDBPadstack">[docs]</a><span class="k">class</span> <span class="nc">EDBPadstack</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="EDBPadstack"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.padstacks_data.EDBPadstack.html#pyaedt.edb_core.edb_data.padstacks_data.EDBPadstack">[docs]</a><span class="k">class</span> <span class="nc">EDBPadstack</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Manages EDB functionalities for a padstack.</span>
 
 <span class="sd">    Parameters</span>
@@ -957,7 +964,7 @@ function checkPageExistsAndRedirect(event) {
             <span class="nb">id</span><span class="p">:</span> <span class="n">via</span> <span class="k">for</span> <span class="nb">id</span><span class="p">,</span> <span class="n">via</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ppadstack</span><span class="o">.</span><span class="n">padstack_instances</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">via</span><span class="o">.</span><span class="n">padstack_definition</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
         <span class="p">}</span>
 
-<div class="viewcode-block" id="EDBPadstack.convert_to_3d_microvias"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.padstacks_data.EDBPadstack.convert_to_3d_microvias.html#pyaedt.edb_core.edb_data.padstacks_data.EDBPadstack.convert_to_3d_microvias">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EDBPadstack.convert_to_3d_microvias"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.padstacks_data.EDBPadstack.convert_to_3d_microvias.html#pyaedt.edb_core.edb_data.padstacks_data.EDBPadstack.convert_to_3d_microvias">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">convert_to_3d_microvias</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">convert_only_signal_vias</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">hole_wall_angle</span><span class="o">=</span><span class="mi">15</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Convert actual padstack instance to microvias 3D Objects with a given aspect ratio.</span>
 
@@ -1063,7 +1070,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="bp">self</span><span class="o">.</span><span class="n">_ppadstack</span><span class="o">.</span><span class="n">_pedb</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> Converted successfully to 3D Objects.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
         <span class="k">return</span> <span class="kc">True</span></div>
 
-<div class="viewcode-block" id="EDBPadstack.split_to_microvias"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.padstacks_data.EDBPadstack.split_to_microvias.html#pyaedt.edb_core.edb_data.padstacks_data.EDBPadstack.split_to_microvias">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EDBPadstack.split_to_microvias"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.padstacks_data.EDBPadstack.split_to_microvias.html#pyaedt.edb_core.edb_data.padstacks_data.EDBPadstack.split_to_microvias">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">split_to_microvias</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Convert actual padstack definition to multiple microvias definitions.</span>
 
@@ -1204,7 +1211,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="k">return</span> <span class="n">new_instances</span></div></div>
 
 
-<div class="viewcode-block" id="EDBPadstackInstance"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.padstacks_data.EDBPadstackInstance.html#pyaedt.edb_core.edb_data.padstacks_data.EDBPadstackInstance">[docs]</a><span class="k">class</span> <span class="nc">EDBPadstackInstance</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="EDBPadstackInstance"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.padstacks_data.EDBPadstackInstance.html#pyaedt.edb_core.edb_data.padstacks_data.EDBPadstackInstance">[docs]</a><span class="k">class</span> <span class="nc">EDBPadstackInstance</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Manages EDB functionalities for a padstack.</span>
 
 <span class="sd">    Parameters</span>
@@ -1267,7 +1274,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="p">]</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bounding_box</span>
 
-<div class="viewcode-block" id="EDBPadstackInstance.in_polygon"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.padstacks_data.EDBPadstackInstance.in_polygon.html#pyaedt.edb_core.edb_data.padstacks_data.EDBPadstackInstance.in_polygon">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EDBPadstackInstance.in_polygon"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.padstacks_data.EDBPadstackInstance.in_polygon.html#pyaedt.edb_core.edb_data.padstacks_data.EDBPadstackInstance.in_polygon">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">in_polygon</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">polygon_data</span><span class="p">,</span> <span class="n">include_partial</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">simple_check</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Check if padstack Instance is in given polygon data.</span>
 
@@ -1348,17 +1355,22 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">layer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span><span class="o">.</span><span class="n">edb</span><span class="o">.</span><span class="n">Cell</span><span class="o">.</span><span class="n">Layer</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span><span class="o">.</span><span class="n">edb</span><span class="o">.</span><span class="n">Cell</span><span class="o">.</span><span class="n">LayerType</span><span class="o">.</span><span class="n">SignalLayer</span><span class="p">)</span>
         <span class="n">val</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span><span class="o">.</span><span class="n">edb_value</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-        <span class="p">(</span>
-            <span class="n">flag</span><span class="p">,</span>
-            <span class="n">drill_to_layer</span><span class="p">,</span>
-            <span class="n">diameter</span><span class="p">,</span>
-        <span class="p">)</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb_padstackinstance</span><span class="o">.</span><span class="n">GetBackDrillParametersLayerValue</span><span class="p">(</span><span class="n">layer</span><span class="p">,</span> <span class="n">val</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">is_ironpython</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
+            <span class="n">diameter</span> <span class="o">=</span> <span class="n">_clr</span><span class="o">.</span><span class="n">StrongBox</span><span class="p">[</span><span class="nb">type</span><span class="p">(</span><span class="n">val</span><span class="p">)]()</span>
+            <span class="n">drill_to_layer</span> <span class="o">=</span> <span class="n">_clr</span><span class="o">.</span><span class="n">StrongBox</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span><span class="o">.</span><span class="n">edb</span><span class="o">.</span><span class="n">Cell</span><span class="o">.</span><span class="n">ILayerReadOnly</span><span class="p">]()</span>
+            <span class="n">flag</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb_padstackinstance</span><span class="o">.</span><span class="n">GetBackDrillParametersLayerValue</span><span class="p">(</span><span class="n">drill_to_layer</span><span class="p">,</span> <span class="n">diameter</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="p">(</span>
+                <span class="n">flag</span><span class="p">,</span>
+                <span class="n">drill_to_layer</span><span class="p">,</span>
+                <span class="n">diameter</span><span class="p">,</span>
+            <span class="p">)</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb_padstackinstance</span><span class="o">.</span><span class="n">GetBackDrillParametersLayerValue</span><span class="p">(</span><span class="n">layer</span><span class="p">,</span> <span class="n">val</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">flag</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">drill_to_layer</span><span class="o">.</span><span class="n">GetName</span><span class="p">(),</span> <span class="n">diameter</span><span class="o">.</span><span class="n">ToString</span><span class="p">()</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span>
 
-<div class="viewcode-block" id="EDBPadstackInstance.set_backdrill_top"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.padstacks_data.EDBPadstackInstance.set_backdrill_top.html#pyaedt.edb_core.edb_data.padstacks_data.EDBPadstackInstance.set_backdrill_top">[docs]</a>    <span class="k">def</span> <span class="nf">set_backdrill_top</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">drill_depth</span><span class="p">,</span> <span class="n">drill_diameter</span><span class="p">):</span>
+<div class="viewcode-block" id="EDBPadstackInstance.set_backdrill_top"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.padstacks_data.EDBPadstackInstance.set_backdrill_top.html#pyaedt.edb_core.edb_data.padstacks_data.EDBPadstackInstance.set_backdrill_top">[docs]</a>    <span class="k">def</span> <span class="nf">set_backdrill_top</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">drill_depth</span><span class="p">,</span> <span class="n">drill_diameter</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Set backdrill from top.</span>
 
 <span class="sd">        Parameters</span>
@@ -1388,17 +1400,22 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">layer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span><span class="o">.</span><span class="n">edb</span><span class="o">.</span><span class="n">Cell</span><span class="o">.</span><span class="n">Layer</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span><span class="o">.</span><span class="n">edb</span><span class="o">.</span><span class="n">Cell</span><span class="o">.</span><span class="n">LayerType</span><span class="o">.</span><span class="n">SignalLayer</span><span class="p">)</span>
         <span class="n">val</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span><span class="o">.</span><span class="n">edb_value</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-        <span class="p">(</span>
-            <span class="n">flag</span><span class="p">,</span>
-            <span class="n">drill_to_layer</span><span class="p">,</span>
-            <span class="n">diameter</span><span class="p">,</span>
-        <span class="p">)</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb_padstackinstance</span><span class="o">.</span><span class="n">GetBackDrillParametersLayerValue</span><span class="p">(</span><span class="n">layer</span><span class="p">,</span> <span class="n">val</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">is_ironpython</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
+            <span class="n">diameter</span> <span class="o">=</span> <span class="n">_clr</span><span class="o">.</span><span class="n">StrongBox</span><span class="p">[</span><span class="nb">type</span><span class="p">(</span><span class="n">val</span><span class="p">)]()</span>
+            <span class="n">drill_to_layer</span> <span class="o">=</span> <span class="n">_clr</span><span class="o">.</span><span class="n">StrongBox</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span><span class="o">.</span><span class="n">edb</span><span class="o">.</span><span class="n">Cell</span><span class="o">.</span><span class="n">ILayerReadOnly</span><span class="p">]()</span>
+            <span class="n">flag</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb_padstackinstance</span><span class="o">.</span><span class="n">GetBackDrillParametersLayerValue</span><span class="p">(</span><span class="n">drill_to_layer</span><span class="p">,</span> <span class="n">diameter</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="p">(</span>
+                <span class="n">flag</span><span class="p">,</span>
+                <span class="n">drill_to_layer</span><span class="p">,</span>
+                <span class="n">diameter</span><span class="p">,</span>
+            <span class="p">)</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb_padstackinstance</span><span class="o">.</span><span class="n">GetBackDrillParametersLayerValue</span><span class="p">(</span><span class="n">layer</span><span class="p">,</span> <span class="n">val</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">flag</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">drill_to_layer</span><span class="o">.</span><span class="n">GetName</span><span class="p">(),</span> <span class="n">diameter</span><span class="o">.</span><span class="n">ToString</span><span class="p">()</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span>
 
-<div class="viewcode-block" id="EDBPadstackInstance.set_backdrill_bottom"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.padstacks_data.EDBPadstackInstance.set_backdrill_bottom.html#pyaedt.edb_core.edb_data.padstacks_data.EDBPadstackInstance.set_backdrill_bottom">[docs]</a>    <span class="k">def</span> <span class="nf">set_backdrill_bottom</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">drill_depth</span><span class="p">,</span> <span class="n">drill_diameter</span><span class="p">):</span>
+<div class="viewcode-block" id="EDBPadstackInstance.set_backdrill_bottom"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.padstacks_data.EDBPadstackInstance.set_backdrill_bottom.html#pyaedt.edb_core.edb_data.padstacks_data.EDBPadstackInstance.set_backdrill_bottom">[docs]</a>    <span class="k">def</span> <span class="nf">set_backdrill_bottom</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">drill_depth</span><span class="p">,</span> <span class="n">drill_diameter</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Set backdrill from bottom.</span>
 
 <span class="sd">        Parameters</span>
@@ -1636,7 +1653,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">name</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">name</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s2">&quot;&#39;&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">name</span>
 
-<div class="viewcode-block" id="EDBPadstackInstance.parametrize_position"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.padstacks_data.EDBPadstackInstance.parametrize_position.html#pyaedt.edb_core.edb_data.padstacks_data.EDBPadstackInstance.parametrize_position">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EDBPadstackInstance.parametrize_position"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.padstacks_data.EDBPadstackInstance.parametrize_position.html#pyaedt.edb_core.edb_data.padstacks_data.EDBPadstackInstance.parametrize_position">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">parametrize_position</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Parametrize the instance position.</span>
 
@@ -1661,7 +1678,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="bp">self</span><span class="o">.</span><span class="n">position</span> <span class="o">=</span> <span class="p">[</span><span class="n">var_name</span> <span class="o">+</span> <span class="s2">&quot;X&quot;</span><span class="p">,</span> <span class="n">var_name</span> <span class="o">+</span> <span class="s2">&quot;Y&quot;</span><span class="p">]</span>
         <span class="k">return</span> <span class="p">[</span><span class="n">var_name</span> <span class="o">+</span> <span class="s2">&quot;X&quot;</span><span class="p">,</span> <span class="n">var_name</span> <span class="o">+</span> <span class="s2">&quot;Y&quot;</span><span class="p">]</span></div>
 
-<div class="viewcode-block" id="EDBPadstackInstance.delete_padstack_instance"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.padstacks_data.EDBPadstackInstance.delete_padstack_instance.html#pyaedt.edb_core.edb_data.padstacks_data.EDBPadstackInstance.delete_padstack_instance">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EDBPadstackInstance.delete_padstack_instance"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.padstacks_data.EDBPadstackInstance.delete_padstack_instance.html#pyaedt.edb_core.edb_data.padstacks_data.EDBPadstackInstance.delete_padstack_instance">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">delete_padstack_instance</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Delete this padstack instance.</span>
 
@@ -1672,13 +1689,13 @@ function checkPageExistsAndRedirect(event) {
         <span class="bp">self</span><span class="o">.</span><span class="n">_edb_padstackinstance</span><span class="o">.</span><span class="n">Delete</span><span class="p">()</span>
         <span class="k">return</span> <span class="kc">True</span></div>
 
-<div class="viewcode-block" id="EDBPadstackInstance.delete"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.padstacks_data.EDBPadstackInstance.delete.html#pyaedt.edb_core.edb_data.padstacks_data.EDBPadstackInstance.delete">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EDBPadstackInstance.delete"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.padstacks_data.EDBPadstackInstance.delete.html#pyaedt.edb_core.edb_data.padstacks_data.EDBPadstackInstance.delete">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Delete this padstack instance.&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_edb_padstackinstance</span><span class="o">.</span><span class="n">Delete</span><span class="p">()</span>
         <span class="k">return</span> <span class="kc">True</span></div>
 
-<div class="viewcode-block" id="EDBPadstackInstance.in_voids"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.padstacks_data.EDBPadstackInstance.in_voids.html#pyaedt.edb_core.edb_data.padstacks_data.EDBPadstackInstance.in_voids">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EDBPadstackInstance.in_voids"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.padstacks_data.EDBPadstackInstance.in_voids.html#pyaedt.edb_core.edb_data.padstacks_data.EDBPadstackInstance.in_voids">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">in_voids</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">net_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">layer_name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Check if this padstack instance is in any void.</span>
 
@@ -1764,7 +1781,7 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_edb_padstackinstance</span><span class="o">.</span><span class="n">GetGroup</span><span class="p">()</span><span class="o">.</span><span class="n">GetPlacementLayer</span><span class="p">()</span><span class="o">.</span><span class="n">GetTopBottomAssociation</span><span class="p">())</span>
 
-<div class="viewcode-block" id="EDBPadstackInstance.create_rectangle_in_pad"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.padstacks_data.EDBPadstackInstance.create_rectangle_in_pad.html#pyaedt.edb_core.edb_data.padstacks_data.EDBPadstackInstance.create_rectangle_in_pad">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EDBPadstackInstance.create_rectangle_in_pad"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.padstacks_data.EDBPadstackInstance.create_rectangle_in_pad.html#pyaedt.edb_core.edb_data.padstacks_data.EDBPadstackInstance.create_rectangle_in_pad">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">create_rectangle_in_pad</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">layer_name</span><span class="p">,</span> <span class="n">return_points</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Create a rectangle inscribed inside a padstack instance pad. The rectangle is fully inscribed in the</span>
 <span class="sd">        pad and has the maximum area. It is necessary to specify the layer on which the rectangle will be created.</span>
@@ -1956,7 +1973,7 @@ function checkPageExistsAndRedirect(event) {
             <span class="n">created_polygon</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span><span class="o">.</span><span class="n">core_primitives</span><span class="o">.</span><span class="n">create_polygon</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">layer_name</span><span class="p">)</span>
             <span class="k">return</span> <span class="n">created_polygon</span></div>
 
-<div class="viewcode-block" id="EDBPadstackInstance.get_connected_object_id_set"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.padstacks_data.EDBPadstackInstance.get_connected_object_id_set.html#pyaedt.edb_core.edb_data.padstacks_data.EDBPadstackInstance.get_connected_object_id_set">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EDBPadstackInstance.get_connected_object_id_set"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.padstacks_data.EDBPadstackInstance.get_connected_object_id_set.html#pyaedt.edb_core.edb_data.padstacks_data.EDBPadstackInstance.get_connected_object_id_set">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">get_connected_object_id_set</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Produce a list of all geometries physically connected to a given layout object.</span>
 

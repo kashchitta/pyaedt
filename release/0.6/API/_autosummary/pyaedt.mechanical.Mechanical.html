@@ -33,6 +33,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
 
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
@@ -111,7 +112,13 @@
 
 <li class="toctree-l1 current active nav-item">
  <a class="reference internal nav-link" href="../index.html">
-  API reference
+  API AEDT reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../EDBAPI/index.html">
+  API EDB reference
  </a>
 </li>
 
@@ -203,7 +210,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.40 variable.
+            // this version, rather than using sphinx's 0.6.42 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -273,7 +280,7 @@ function checkPageExistsAndRedirect(event) {
         <li class="nav-item nav-item-0"><a href="../../index.html">PyAEDT</a> » </li>
     
 
-          <li class="nav-item nav-item-1"><a href="../index.html" >API reference</a> » </li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >API AEDT reference</a> » </li>
           <li class="nav-item nav-item-2"><a href="../Application.html" accesskey="U">AEDT apps</a> » </li>
         <li class="nav-item nav-item-this"><a href="">pyaedt.mechanical.Mechanical</a></li> 
       </ul>
@@ -297,16 +304,6 @@ function checkPageExistsAndRedirect(event) {
   <div class="bd-toc-item active">
     
     <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../Common.html">
-   Desktop and common classes
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../CoreEdb.html">
-   EDB editor
-  </a>
- </li>
  <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="../Application.html">
    AEDT apps
@@ -1258,6 +1255,11 @@ function checkPageExistsAndRedirect(event) {
       </a>
      </li>
      <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.mechanical.Mechanical.settings.html">
+       settings
+      </a>
+     </li>
+     <li class="toctree-l3">
       <a class="reference internal" href="pyaedt.mechanical.Mechanical.setup_names.html">
        setup_names
       </a>
@@ -1320,6 +1322,11 @@ function checkPageExistsAndRedirect(event) {
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.maxwellcircuit.MaxwellCircuit.html">
+     pyaedt.maxwellcircuit.MaxwellCircuit
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="pyaedt.emit.Emit.html">
      pyaedt.emit.Emit
     </a>
@@ -1337,23 +1344,28 @@ function checkPageExistsAndRedirect(event) {
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../Primitives.html">
-   Modeler and  primitives
+  <a class="reference internal" href="../Primitives3D.html">
+   Modeler in 2D and 3D
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../CoreModules.html">
-   AEDT modules
+  <a class="reference internal" href="../Primitives3DLayout.html">
+   Modeler in  HFSS 3D Layout
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../PrimitivesCircuit.html">
+   Modeler and components Circuit
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Boundaries.html">
+   Boundary objects
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Mesh.html">
    Mesh operations
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../CableModeling.html">
-   Cable modeling
   </a>
  </li>
  <li class="toctree-l1">
@@ -1364,6 +1376,41 @@ function checkPageExistsAndRedirect(event) {
  <li class="toctree-l1">
   <a class="reference internal" href="../Post.html">
    Postprocessing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../DesktopMessenger.html">
+   Logger
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Optimetrics.html">
+   Optimetrics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Variables.html">
+   Variable
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Constants.html">
+   Constants
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Configuration.html">
+   Configuration files
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../SetupTemplates.html">
+   Setup templates
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../CableModeling.html">
+   Cable modeling
   </a>
  </li>
 </ul>
@@ -2055,34 +2102,37 @@ named <code class="docutils literal notranslate"><span class="pre">&quot;myfile.
 <tr class="row-even"><td><p><a class="reference internal" href="pyaedt.mechanical.Mechanical.results_directory.html#pyaedt.mechanical.Mechanical.results_directory" title="pyaedt.mechanical.Mechanical.results_directory"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Mechanical.results_directory</span></code></a></p></td>
 <td><p>Results directory.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.mechanical.Mechanical.setup_names.html#pyaedt.mechanical.Mechanical.setup_names" title="pyaedt.mechanical.Mechanical.setup_names"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Mechanical.setup_names</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.mechanical.Mechanical.settings.html#pyaedt.mechanical.Mechanical.settings" title="pyaedt.mechanical.Mechanical.settings"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Mechanical.settings</span></code></a></p></td>
+<td><p>Settings of the current Python/Pyaedt session.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.mechanical.Mechanical.setup_names.html#pyaedt.mechanical.Mechanical.setup_names" title="pyaedt.mechanical.Mechanical.setup_names"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Mechanical.setup_names</span></code></a></p></td>
 <td><p>Setup names.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.mechanical.Mechanical.solution_type.html#pyaedt.mechanical.Mechanical.solution_type" title="pyaedt.mechanical.Mechanical.solution_type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Mechanical.solution_type</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.mechanical.Mechanical.solution_type.html#pyaedt.mechanical.Mechanical.solution_type" title="pyaedt.mechanical.Mechanical.solution_type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Mechanical.solution_type</span></code></a></p></td>
 <td><p>Solution type.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.mechanical.Mechanical.src_dir.html#pyaedt.mechanical.Mechanical.src_dir" title="pyaedt.mechanical.Mechanical.src_dir"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Mechanical.src_dir</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.mechanical.Mechanical.src_dir.html#pyaedt.mechanical.Mechanical.src_dir" title="pyaedt.mechanical.Mechanical.src_dir"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Mechanical.src_dir</span></code></a></p></td>
 <td><p>Source directory for Python.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.mechanical.Mechanical.syslib.html#pyaedt.mechanical.Mechanical.syslib" title="pyaedt.mechanical.Mechanical.syslib"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Mechanical.syslib</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.mechanical.Mechanical.syslib.html#pyaedt.mechanical.Mechanical.syslib" title="pyaedt.mechanical.Mechanical.syslib"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Mechanical.syslib</span></code></a></p></td>
 <td><p>SysLib directory.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.mechanical.Mechanical.temp_directory.html#pyaedt.mechanical.Mechanical.temp_directory" title="pyaedt.mechanical.Mechanical.temp_directory"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Mechanical.temp_directory</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.mechanical.Mechanical.temp_directory.html#pyaedt.mechanical.Mechanical.temp_directory" title="pyaedt.mechanical.Mechanical.temp_directory"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Mechanical.temp_directory</span></code></a></p></td>
 <td><p>Path to the temporary directory.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.mechanical.Mechanical.toolkit_directory.html#pyaedt.mechanical.Mechanical.toolkit_directory" title="pyaedt.mechanical.Mechanical.toolkit_directory"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Mechanical.toolkit_directory</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.mechanical.Mechanical.toolkit_directory.html#pyaedt.mechanical.Mechanical.toolkit_directory" title="pyaedt.mechanical.Mechanical.toolkit_directory"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Mechanical.toolkit_directory</span></code></a></p></td>
 <td><p>Path to the toolkit directory.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.mechanical.Mechanical.userlib.html#pyaedt.mechanical.Mechanical.userlib" title="pyaedt.mechanical.Mechanical.userlib"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Mechanical.userlib</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.mechanical.Mechanical.userlib.html#pyaedt.mechanical.Mechanical.userlib" title="pyaedt.mechanical.Mechanical.userlib"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Mechanical.userlib</span></code></a></p></td>
 <td><p>UserLib directory.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.mechanical.Mechanical.valid_design.html#pyaedt.mechanical.Mechanical.valid_design" title="pyaedt.mechanical.Mechanical.valid_design"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Mechanical.valid_design</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.mechanical.Mechanical.valid_design.html#pyaedt.mechanical.Mechanical.valid_design" title="pyaedt.mechanical.Mechanical.valid_design"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Mechanical.valid_design</span></code></a></p></td>
 <td><p>Valid design.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.mechanical.Mechanical.variable_manager.html#pyaedt.mechanical.Mechanical.variable_manager" title="pyaedt.mechanical.Mechanical.variable_manager"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Mechanical.variable_manager</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.mechanical.Mechanical.variable_manager.html#pyaedt.mechanical.Mechanical.variable_manager" title="pyaedt.mechanical.Mechanical.variable_manager"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Mechanical.variable_manager</span></code></a></p></td>
 <td><p>Variable manager for creating and managing project design and postprocessing variables.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.mechanical.Mechanical.working_directory.html#pyaedt.mechanical.Mechanical.working_directory" title="pyaedt.mechanical.Mechanical.working_directory"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Mechanical.working_directory</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.mechanical.Mechanical.working_directory.html#pyaedt.mechanical.Mechanical.working_directory" title="pyaedt.mechanical.Mechanical.working_directory"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Mechanical.working_directory</span></code></a></p></td>
 <td><p>Path to the working directory.</p></td>
 </tr>
 </tbody>

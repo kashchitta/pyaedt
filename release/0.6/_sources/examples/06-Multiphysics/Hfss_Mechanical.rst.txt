@@ -29,17 +29,13 @@ Perform required imports
 ~~~~~~~~~~~~~~~~~~~~~~~~
 Perform required imports.
 
-.. GENERATED FROM PYTHON SOURCE LINES 12-20
+.. GENERATED FROM PYTHON SOURCE LINES 12-17
 
 .. code-block:: default
 
 
-    import tempfile
     import os
-    import shutil
-
-    from pyaedt import examples, generate_unique_folder_name
-    from pyaedt import Hfss, Circuit, Mechanical
+    import pyaedt
 
 
 
@@ -48,7 +44,8 @@ Perform required imports.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 21-26
+
+.. GENERATED FROM PYTHON SOURCE LINES 18-23
 
 Set non-graphical mode
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -56,7 +53,7 @@ Set non-graphical mode. ``"PYAEDT_NON_GRAPHICAL"`` is needed to generate
 documentation only.
 You can set ``non_graphical`` either to ``True`` or ``False``.
 
-.. GENERATED FROM PYTHON SOURCE LINES 26-29
+.. GENERATED FROM PYTHON SOURCE LINES 23-26
 
 .. code-block:: default
 
@@ -70,18 +67,18 @@ You can set ``non_graphical`` either to ``True`` or ``False``.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 30-33
+.. GENERATED FROM PYTHON SOURCE LINES 27-30
 
 Download and open project
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 Download and open the project. Save it to the temporary folder.
 
-.. GENERATED FROM PYTHON SOURCE LINES 33-37
+.. GENERATED FROM PYTHON SOURCE LINES 30-34
 
 .. code-block:: default
 
 
-    project_temp_name = examples.download_via_wizard(generate_unique_folder_name())
+    project_temp_name = pyaedt.downloads.download_via_wizard(pyaedt.generate_unique_folder_name())
 
 
 
@@ -91,19 +88,19 @@ Download and open the project. Save it to the temporary folder.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 38-41
+.. GENERATED FROM PYTHON SOURCE LINES 35-38
 
 Start HFSS
 ~~~~~~~~~~
 Start HFSS and initialize the PyAEDT object.
 
-.. GENERATED FROM PYTHON SOURCE LINES 41-46
+.. GENERATED FROM PYTHON SOURCE LINES 38-43
 
 .. code-block:: default
 
 
     version = "2022.2"
-    hfss = Hfss(project_temp_name, specified_version=version, non_graphical=non_graphical)
+    hfss = pyaedt.Hfss(project_temp_name, specified_version=version, non_graphical=non_graphical, new_desktop_session=True)
     pin_names = hfss.excitations
 
 
@@ -113,18 +110,18 @@ Start HFSS and initialize the PyAEDT object.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 47-50
+.. GENERATED FROM PYTHON SOURCE LINES 44-47
 
 Start Circuit
-~~~~~~~~~~~~~~
+~~~~~~~~~~~~~
 Start Circuit and add the HFSS dynamic link component to it.
 
-.. GENERATED FROM PYTHON SOURCE LINES 50-54
+.. GENERATED FROM PYTHON SOURCE LINES 47-51
 
 .. code-block:: default
 
 
-    circuit = Circuit()
+    circuit = pyaedt.Circuit()
     hfss_comp = circuit.modeler.schematic.add_subcircuit_dynamic_link(hfss)
 
 
@@ -134,14 +131,14 @@ Start Circuit and add the HFSS dynamic link component to it.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 55-59
+.. GENERATED FROM PYTHON SOURCE LINES 52-56
 
 Set up dynamic link options
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Set up dynamic link options. The argument for the ``set_sim_option_on_hfss_subcircuit``
 method can be the component name, component ID, or component object.
 
-.. GENERATED FROM PYTHON SOURCE LINES 59-65
+.. GENERATED FROM PYTHON SOURCE LINES 56-62
 
 .. code-block:: default
 
@@ -164,14 +161,14 @@ method can be the component name, component ID, or component object.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 66-70
+.. GENERATED FROM PYTHON SOURCE LINES 63-67
 
 Create ports and excitations
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Create ports and excitations. Find component pin locations and create interface
 ports on them. Define the voltage source on the input port.
 
-.. GENERATED FROM PYTHON SOURCE LINES 70-91
+.. GENERATED FROM PYTHON SOURCE LINES 67-88
 
 .. code-block:: default
 
@@ -192,30 +189,24 @@ ports on them. Define the voltage source on the input port.
 
     voltage = 1
     phase = 0
-    excitation_settings = [str(voltage) + " V", str(phase) + " deg", "0V", "0V", "0V", "1GHz", "0s", "0", "0deg", "0Hz"]
     ports_list = ["Excitation_1", "Excitation_2"]
-    circuit.assign_voltage_sinusoidal_excitation_to_ports(ports_list, excitation_settings)
+    source = circuit.assign_voltage_sinusoidal_excitation_to_ports(ports_list)
+    source.ac_magnitude = voltage
+    source.phase = phase
 
 
 
 
 
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
 
 
-    False
-
-
-
-.. GENERATED FROM PYTHON SOURCE LINES 92-95
+.. GENERATED FROM PYTHON SOURCE LINES 89-92
 
 Create setup
-~~~~~~~~~~~~~~
+~~~~~~~~~~~~
 Create a setup.
 
-.. GENERATED FROM PYTHON SOURCE LINES 95-105
+.. GENERATED FROM PYTHON SOURCE LINES 92-102
 
 .. code-block:: default
 
@@ -236,14 +227,14 @@ Create a setup.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 106-110
+.. GENERATED FROM PYTHON SOURCE LINES 103-107
 
 Solve and push excitations
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 Solve the circuit and push excitations to the HFSS model to calculate the
 correct value of losses.
 
-.. GENERATED FROM PYTHON SOURCE LINES 110-116
+.. GENERATED FROM PYTHON SOURCE LINES 107-113
 
 .. code-block:: default
 
@@ -262,22 +253,22 @@ correct value of losses.
  .. code-block:: none
 
 
-    False
+    True
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 117-120
+.. GENERATED FROM PYTHON SOURCE LINES 114-117
 
 Start Mechanical
-~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~
 Start Mechanical and copy bodies from the HFSS project.
 
-.. GENERATED FROM PYTHON SOURCE LINES 120-125
+.. GENERATED FROM PYTHON SOURCE LINES 117-122
 
 .. code-block:: default
 
 
-    mech = Mechanical()
+    mech = pyaedt.Mechanical()
     mech.copy_solid_bodies_from(hfss)
 
 
@@ -294,13 +285,13 @@ Start Mechanical and copy bodies from the HFSS project.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 126-129
+.. GENERATED FROM PYTHON SOURCE LINES 123-126
 
 Get losses from HFSS and assign convection to Mechanical
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Get losses from HFSS and assign the convection to Mechanical.
 
-.. GENERATED FROM PYTHON SOURCE LINES 129-143
+.. GENERATED FROM PYTHON SOURCE LINES 126-140
 
 .. code-block:: default
 
@@ -325,13 +316,13 @@ Get losses from HFSS and assign the convection to Mechanical.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 144-147
+.. GENERATED FROM PYTHON SOURCE LINES 141-144
 
 Plot model
 ~~~~~~~~~~
 Plot the model.
 
-.. GENERATED FROM PYTHON SOURCE LINES 147-150
+.. GENERATED FROM PYTHON SOURCE LINES 144-147
 
 .. code-block:: default
 
@@ -352,17 +343,17 @@ Plot the model.
  .. code-block:: none
 
 
-    <pyaedt.generic.plot.ModelPlotter object at 0x0000022BB4362520>
+    <pyaedt.generic.plot.ModelPlotter object at 0x000002812C7879D0>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 151-154
+.. GENERATED FROM PYTHON SOURCE LINES 148-151
 
 Solve and plot thermal results
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Solve and plot the thermal results.
 
-.. GENERATED FROM PYTHON SOURCE LINES 154-164
+.. GENERATED FROM PYTHON SOURCE LINES 151-161
 
 .. code-block:: default
 
@@ -385,17 +376,17 @@ Solve and plot the thermal results.
  .. code-block:: none
 
 
-    <pyaedt.modules.solutions.FieldPlot object at 0x0000022BE597B6D0>
+    <pyaedt.modules.solutions.FieldPlot object at 0x000002812C778DF0>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 165-168
+.. GENERATED FROM PYTHON SOURCE LINES 162-165
 
 Release AEDT
 ~~~~~~~~~~~~
 Release AEDT.
 
-.. GENERATED FROM PYTHON SOURCE LINES 168-170
+.. GENERATED FROM PYTHON SOURCE LINES 165-167
 
 .. code-block:: default
 
@@ -417,7 +408,7 @@ Release AEDT.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 3 minutes  32.238 seconds)
+   **Total running time of the script:** ( 3 minutes  32.590 seconds)
 
 
 .. _sphx_glr_download_examples_06-Multiphysics_Hfss_Mechanical.py:

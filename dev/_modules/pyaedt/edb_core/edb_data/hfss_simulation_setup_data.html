@@ -28,6 +28,7 @@
     <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/css/ansys_sphinx_theme.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/custom.css" />
 
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
@@ -36,14 +37,11 @@
         <link href="../../../../_static/css/breadcrumbs.css" rel="stylesheet">
     
     <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
-    <script src="../../../../_static/jquery.js"></script>
-    <script src="../../../../_static/underscore.js"></script>
-    <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../../_static/doctools.js"></script>
     <script src="../../../../_static/sphinx_highlight.js"></script>
     <script src="../../../../_static/clipboard.min.js"></script>
     <script src="../../../../_static/copybutton.js"></script>
-    <link rel="shortcut icon" href="../../../../_static/ansys-favicon.png"/>
+    <link rel="icon" href="../../../../_static/ansys-favicon.png"/>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -72,9 +70,8 @@
   
   
   
-    <img src="../../../../_static/pyansys-logo-black-cropped.png" class="logo__image only-light" alt="Logo image">
-    <img src="../../../../_static/pyansys-logo-black-cropped.png" class="logo__image only-dark" alt="Logo image">
   
+    <p class="title logo__title">PyAEDT</p>
   
 </a>
     
@@ -104,7 +101,13 @@
 
 <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="../../../../API/index.html">
-  API reference
+  API AEDT reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../../EDBAPI/index.html">
+  API EDB reference
  </a>
 </li>
 
@@ -313,8 +316,8 @@ function checkPageExistsAndRedirect(event) {
 <span class="kn">from</span> <span class="nn">pyaedt.generic.general_methods</span> <span class="kn">import</span> <span class="n">pyaedt_function_handler</span>
 
 
-<div class="viewcode-block" id="EdbFrequencySweep"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.hfss_simulation_setup_data.EdbFrequencySweep.html#pyaedt.edb_core.edb_data.hfss_simulation_setup_data.EdbFrequencySweep">[docs]</a><span class="k">class</span> <span class="nc">EdbFrequencySweep</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Manages EDB methods for frequency sweep.&quot;&quot;&quot;</span>
+<div class="viewcode-block" id="EdbFrequencySweep"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.hfss_simulation_setup_data.EdbFrequencySweep.html#pyaedt.edb_core.edb_data.hfss_simulation_setup_data.EdbFrequencySweep">[docs]</a><span class="k">class</span> <span class="nc">EdbFrequencySweep</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Manages EDB methods for frequency sweep.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sim_setup</span><span class="p">,</span> <span class="n">frequency_sweep</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">edb_sweep_data</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 
@@ -333,7 +336,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">_update_sweep</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Update sweep.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Update sweep.&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_sim_setup</span><span class="o">.</span><span class="n">_edb_sim_setup_info</span><span class="o">.</span><span class="n">SweepDataList</span><span class="o">.</span><span class="n">Clear</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">el</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_sim_setup</span><span class="o">.</span><span class="n">frequency_sweeps</span><span class="o">.</span><span class="n">values</span><span class="p">()):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_sim_setup</span><span class="o">.</span><span class="n">_edb_sim_setup_info</span><span class="o">.</span><span class="n">SweepDataList</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">el</span><span class="o">.</span><span class="n">_edb_sweep_data</span><span class="p">)</span>
@@ -342,28 +345,28 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Name of the sweep.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Name of the sweep.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb_sweep_data</span><span class="o">.</span><span class="n">Name</span>
 
     <span class="nd">@name</span><span class="o">.</span><span class="n">setter</span>
     <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Set name of this sweep&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set name of this sweep&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_edb_sweep_data</span><span class="o">.</span><span class="n">Name</span> <span class="o">=</span> <span class="n">value</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_update_sweep</span><span class="p">()</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">sweep_type</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Sweep type.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sweep type.&quot;&quot;&quot;</span>
         <span class="k">return</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">frequencies</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;List of frequencies points.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;List of frequencies points.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_edb_sweep_data</span><span class="o">.</span><span class="n">Frequencies</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">adaptive_sampling</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Whether adaptive sampling is used.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Whether adaptive sampling is used.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -374,7 +377,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">adv_dc_extrapolation</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Whether to turn on advanced DC Extrapolation.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Whether to turn on advanced DC Extrapolation.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -386,7 +389,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">auto_s_mat_only_solve</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Whether to turn on Auto/Manual SMatrix only solve.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Whether to turn on Auto/Manual SMatrix only solve.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -397,7 +400,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">enforce_causality</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Whether to enforce causality during interpolating sweep.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Whether to enforce causality during interpolating sweep.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -408,7 +411,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">enforce_dc_and_causality</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Whether to enforce DC point and causality.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Whether to enforce DC point and causality.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -420,7 +423,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">enforce_passivity</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Whether to enforce passivity during interpolating sweep.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Whether to enforce passivity during interpolating sweep.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -431,11 +434,11 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">freq_sweep_type</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Sweep type.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sweep type.</span>
 <span class="sd">        Options are:</span>
-<span class="sd">           - ``kInterpolatingSweep``.</span>
-<span class="sd">           - ``kDiscreteSweep``.</span>
-<span class="sd">           - ``kBroadbandFastSweep``.</span>
+<span class="sd">        - ``kInterpolatingSweep``.</span>
+<span class="sd">        - ``kDiscreteSweep``.</span>
+<span class="sd">        - ``kBroadbandFastSweep``.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -445,7 +448,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">interp_use_full_basis</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Whether to use Full basis elements.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Whether to use Full basis elements.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -456,7 +459,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">interp_use_port_impedance</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Whether to turn on the port impedance interpolation.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Whether to turn on the port impedance interpolation.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -467,7 +470,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">interp_use_prop_const</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Whether to use propagation constants.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Whether to use propagation constants.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -478,7 +481,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">interp_use_s_matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Whether to use S matrix.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Whether to use S matrix.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -489,7 +492,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">max_solutions</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Number of aximum solutions.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Number of aximum solutions.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -499,7 +502,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">min_freq_s_mat_only_solve</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Minimum frequency SMatrix only solve.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Minimum frequency SMatrix only solve.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -510,7 +513,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">min_solved_freq</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Minimum solved frequency.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Minimum solved frequency.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -521,7 +524,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">passivity_tolerance</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Tolerance for passivity enforcement.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Tolerance for passivity enforcement.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -531,7 +534,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">relative_s_error</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Specify S-parameter error tolerance for interpolating sweep.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Specify S-parameter error tolerance for interpolating sweep.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -541,7 +544,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">save_fields</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Whether to turn on or off the extraction of surface current data.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Whether to turn on or off the extraction of surface current data.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -552,7 +555,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">save_rad_fields_only</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Whether to turn on save radiated fields only.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Whether to turn on save radiated fields only.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -564,7 +567,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">use_q3d_for_dc</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Whether to enable Q3D solver for DC point extraction .</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Whether to enable Q3D solver for DC point extraction .</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -681,9 +684,9 @@ function checkPageExistsAndRedirect(event) {
         <span class="bp">self</span><span class="o">.</span><span class="n">_edb_sweep_data</span><span class="o">.</span><span class="n">SetFrequencies</span><span class="p">(</span><span class="n">freq_sweep_string</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_update_sweep</span><span class="p">()</span>
 
-<div class="viewcode-block" id="EdbFrequencySweep.set_frequencies_linear_scale"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.hfss_simulation_setup_data.EdbFrequencySweep.set_frequencies_linear_scale.html#pyaedt.edb_core.edb_data.hfss_simulation_setup_data.EdbFrequencySweep.set_frequencies_linear_scale">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EdbFrequencySweep.set_frequencies_linear_scale"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.hfss_simulation_setup_data.EdbFrequencySweep.set_frequencies_linear_scale.html#pyaedt.edb_core.edb_data.hfss_simulation_setup_data.EdbFrequencySweep.set_frequencies_linear_scale">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">set_frequencies_linear_scale</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="s2">&quot;0.1GHz&quot;</span><span class="p">,</span> <span class="n">stop</span><span class="o">=</span><span class="s2">&quot;20GHz&quot;</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="s2">&quot;50MHz&quot;</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Set a linear scale frequency sweep.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set a linear scale frequency sweep.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -700,15 +703,12 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">            ``True`` if correctly executed, ``False`` otherwise.</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">start</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sim_setup</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">arg_to_dim</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="s2">&quot;Hz&quot;</span><span class="p">)</span>
-        <span class="n">stop</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sim_setup</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">arg_to_dim</span><span class="p">(</span><span class="n">stop</span><span class="p">,</span> <span class="s2">&quot;Hz&quot;</span><span class="p">)</span>
-        <span class="n">step</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sim_setup</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">arg_to_dim</span><span class="p">(</span><span class="n">step</span><span class="p">,</span> <span class="s2">&quot;Hz&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_edb_sweep_data</span><span class="o">.</span><span class="n">Frequencies</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb_sweep_data</span><span class="o">.</span><span class="n">SetFrequencies</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">,</span> <span class="n">step</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_update_sweep</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="EdbFrequencySweep.set_frequencies_linear_count"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.hfss_simulation_setup_data.EdbFrequencySweep.set_frequencies_linear_count.html#pyaedt.edb_core.edb_data.hfss_simulation_setup_data.EdbFrequencySweep.set_frequencies_linear_count">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EdbFrequencySweep.set_frequencies_linear_count"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.hfss_simulation_setup_data.EdbFrequencySweep.set_frequencies_linear_count.html#pyaedt.edb_core.edb_data.hfss_simulation_setup_data.EdbFrequencySweep.set_frequencies_linear_count">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">set_frequencies_linear_count</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="s2">&quot;1kHz&quot;</span><span class="p">,</span> <span class="n">stop</span><span class="o">=</span><span class="s2">&quot;0.1GHz&quot;</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Set a linear count frequency sweep.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set a linear count frequency sweep.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -730,9 +730,9 @@ function checkPageExistsAndRedirect(event) {
         <span class="bp">self</span><span class="o">.</span><span class="n">_edb_sweep_data</span><span class="o">.</span><span class="n">Frequencies</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb_sweep_data</span><span class="o">.</span><span class="n">SetFrequencies</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">,</span> <span class="n">count</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_update_sweep</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="EdbFrequencySweep.set_frequencies_log_scale"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.hfss_simulation_setup_data.EdbFrequencySweep.set_frequencies_log_scale.html#pyaedt.edb_core.edb_data.hfss_simulation_setup_data.EdbFrequencySweep.set_frequencies_log_scale">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EdbFrequencySweep.set_frequencies_log_scale"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.hfss_simulation_setup_data.EdbFrequencySweep.set_frequencies_log_scale.html#pyaedt.edb_core.edb_data.hfss_simulation_setup_data.EdbFrequencySweep.set_frequencies_log_scale">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">set_frequencies_log_scale</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="s2">&quot;1kHz&quot;</span><span class="p">,</span> <span class="n">stop</span><span class="o">=</span><span class="s2">&quot;0.1GHz&quot;</span><span class="p">,</span> <span class="n">samples</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Set a log count frequency sweep.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set a log count frequency sweep.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -753,9 +753,9 @@ function checkPageExistsAndRedirect(event) {
         <span class="bp">self</span><span class="o">.</span><span class="n">_edb_sweep_data</span><span class="o">.</span><span class="n">Frequencies</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb_sweep_data</span><span class="o">.</span><span class="n">SetLogFrequencies</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">,</span> <span class="n">samples</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_update_sweep</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="EdbFrequencySweep.set_frequencies"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.hfss_simulation_setup_data.EdbFrequencySweep.set_frequencies.html#pyaedt.edb_core.edb_data.hfss_simulation_setup_data.EdbFrequencySweep.set_frequencies">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EdbFrequencySweep.set_frequencies"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.hfss_simulation_setup_data.EdbFrequencySweep.set_frequencies.html#pyaedt.edb_core.edb_data.hfss_simulation_setup_data.EdbFrequencySweep.set_frequencies">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">set_frequencies</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">frequency_list</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Set frequency list to the sweep frequencies.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set frequency list to the sweep frequencies.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -795,7 +795,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <span class="k">class</span> <span class="nc">MeshOperation</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Mesh Operation Class.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Mesh Operation Class.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="n">mesh_operation</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span> <span class="o">=</span> <span class="n">parent</span>
@@ -809,7 +809,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">enabled</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Whether if mesh operation is enabled.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Whether if mesh operation is enabled.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -820,7 +820,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">mesh_operation_type</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Mesh operation type.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Mesh operation type.</span>
 <span class="sd">        Options:</span>
 <span class="sd">        0- ``kMeshSetupBase``</span>
 <span class="sd">        1- ``kMeshSetupLength``</span>
@@ -835,7 +835,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">mesh_region</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Mesh region name.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Mesh region name.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -846,7 +846,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Mesh operation name.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Mesh operation name.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -856,7 +856,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">nets_layers_list</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;List of nets and layers.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;List of nets and layers.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -880,7 +880,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">refine_inside</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Whether to turn on refine inside objects.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Whether to turn on refine inside objects.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -912,7 +912,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">max_elements</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Maximum number of elements.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Maximum number of elements.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -922,7 +922,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">restrict_max_elements</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Whether to restrict maximum number  of elements.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Whether to restrict maximum number  of elements.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -937,7 +937,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@restrict_max_elements</span><span class="o">.</span><span class="n">setter</span>
     <span class="k">def</span> <span class="nf">restrict_max_elements</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Whether to restrict maximum number  of elements.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Whether to restrict maximum number  of elements.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -947,8 +947,8 @@ function checkPageExistsAndRedirect(event) {
         <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span><span class="o">.</span><span class="n">_update_setup</span><span class="p">()</span>
 
 
-<div class="viewcode-block" id="MeshOperationLength"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.hfss_simulation_setup_data.MeshOperationLength.html#pyaedt.edb_core.edb_data.hfss_simulation_setup_data.MeshOperationLength">[docs]</a><span class="k">class</span> <span class="nc">MeshOperationLength</span><span class="p">(</span><span class="n">MeshOperation</span><span class="p">,</span> <span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Mesh operation Length class.</span>
+<div class="viewcode-block" id="MeshOperationLength"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.hfss_simulation_setup_data.MeshOperationLength.html#pyaedt.edb_core.edb_data.hfss_simulation_setup_data.MeshOperationLength">[docs]</a><span class="k">class</span> <span class="nc">MeshOperationLength</span><span class="p">(</span><span class="n">MeshOperation</span><span class="p">,</span> <span class="nb">object</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Mesh operation Length class.</span>
 <span class="sd">    This class is accessible from Hfss Setup in EDB and add_length_mesh_operation method.</span>
 
 <span class="sd">    Examples</span>
@@ -962,7 +962,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">max_length</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Maximum length of elements.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Maximum length of elements.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -972,7 +972,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">restrict_length</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Whether to restrict length of elements.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Whether to restrict length of elements.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -987,7 +987,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@restrict_length</span><span class="o">.</span><span class="n">setter</span>
     <span class="k">def</span> <span class="nf">restrict_length</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Whether to restrict length of elements.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Whether to restrict length of elements.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -997,8 +997,8 @@ function checkPageExistsAndRedirect(event) {
         <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span><span class="o">.</span><span class="n">_update_setup</span><span class="p">()</span></div>
 
 
-<div class="viewcode-block" id="MeshOperationSkinDepth"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.hfss_simulation_setup_data.MeshOperationSkinDepth.html#pyaedt.edb_core.edb_data.hfss_simulation_setup_data.MeshOperationSkinDepth">[docs]</a><span class="k">class</span> <span class="nc">MeshOperationSkinDepth</span><span class="p">(</span><span class="n">MeshOperation</span><span class="p">,</span> <span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Mesh operation Skin Depth class.</span>
+<div class="viewcode-block" id="MeshOperationSkinDepth"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.hfss_simulation_setup_data.MeshOperationSkinDepth.html#pyaedt.edb_core.edb_data.hfss_simulation_setup_data.MeshOperationSkinDepth">[docs]</a><span class="k">class</span> <span class="nc">MeshOperationSkinDepth</span><span class="p">(</span><span class="n">MeshOperation</span><span class="p">,</span> <span class="nb">object</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Mesh operation Skin Depth class.</span>
 <span class="sd">    This class is accessible from Hfss Setup in EDB and assign_skin_depth_mesh_operation method.</span>
 
 <span class="sd">    Examples</span>
@@ -1012,7 +1012,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">skin_depth</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Skin depth value.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Skin depth value.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1027,7 +1027,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">surface_triangle_length</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Surface triangle length value.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Surface triangle length value.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1042,7 +1042,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">number_of_layer_elements</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Number of layer elements.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Number of layer elements.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1056,8 +1056,8 @@ function checkPageExistsAndRedirect(event) {
         <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span><span class="o">.</span><span class="n">_update_setup</span><span class="p">()</span></div>
 
 
-<div class="viewcode-block" id="HfssPortSettings"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.hfss_simulation_setup_data.HfssPortSettings.html#pyaedt.edb_core.edb_data.hfss_simulation_setup_data.HfssPortSettings">[docs]</a><span class="k">class</span> <span class="nc">HfssPortSettings</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Manages EDB methods for HFSS port settings.&quot;&quot;&quot;</span>
+<div class="viewcode-block" id="HfssPortSettings"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.hfss_simulation_setup_data.HfssPortSettings.html#pyaedt.edb_core.edb_data.hfss_simulation_setup_data.HfssPortSettings">[docs]</a><span class="k">class</span> <span class="nc">HfssPortSettings</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Manages EDB methods for HFSS port settings.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span> <span class="o">=</span> <span class="n">parent</span>
@@ -1068,7 +1068,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">max_delta_z0</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Maximum change to Z0 in successive passes.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Maximum change to Z0 in successive passes.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1083,7 +1083,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">max_triangles_wave_port</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Maximum number of triangles allowed for wave ports.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Maximum number of triangles allowed for wave ports.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1098,7 +1098,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">min_triangles_wave_port</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Minimum number of triangles allowed for wave ports.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Minimum number of triangles allowed for wave ports.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1113,7 +1113,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">enable_set_triangles_wave_port</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Whether to enable setting of minimum and maximum mesh limits for wave ports.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Whether to enable setting of minimum and maximum mesh limits for wave ports.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1128,8 +1128,8 @@ function checkPageExistsAndRedirect(event) {
         <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span><span class="o">.</span><span class="n">_update_setup</span><span class="p">()</span></div>
 
 
-<div class="viewcode-block" id="HfssSolverSettings"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.hfss_simulation_setup_data.HfssSolverSettings.html#pyaedt.edb_core.edb_data.hfss_simulation_setup_data.HfssSolverSettings">[docs]</a><span class="k">class</span> <span class="nc">HfssSolverSettings</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Manages EDB methods for HFSS solver settings.&quot;&quot;&quot;</span>
+<div class="viewcode-block" id="HfssSolverSettings"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.hfss_simulation_setup_data.HfssSolverSettings.html#pyaedt.edb_core.edb_data.hfss_simulation_setup_data.HfssSolverSettings">[docs]</a><span class="k">class</span> <span class="nc">HfssSolverSettings</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Manages EDB methods for HFSS solver settings.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span> <span class="o">=</span> <span class="n">parent</span>
@@ -1140,7 +1140,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">enhanced_low_freq_accuracy</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Whether to enable legacy low-frequency sampling.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Whether to enable legacy low-frequency sampling.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1156,26 +1156,28 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">order_basis</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Order of the basic functions for HFSS.</span>
-<span class="sd">        - 0=Mixed.</span>
-<span class="sd">        - 1=Zero.</span>
-<span class="sd">        - 2=1st order.</span>
-<span class="sd">        - 3=2nd order.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Order of the basic functions for HFSS.</span>
+<span class="sd">        - 0=Zero.</span>
+<span class="sd">        - 1=1st order.</span>
+<span class="sd">        - 2=2nd order.</span>
+<span class="sd">        - 3=Mixed.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
 <span class="sd">        int</span>
 <span class="sd">            Integer value according to the description.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hfss_solver_settings</span><span class="o">.</span><span class="n">OrderBasis</span>
+        <span class="n">mapping</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="s2">&quot;zero&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="s2">&quot;first&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="s2">&quot;second&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span> <span class="s2">&quot;mixed&quot;</span><span class="p">}</span>
+        <span class="k">return</span> <span class="n">mapping</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_hfss_solver_settings</span><span class="o">.</span><span class="n">OrderBasis</span><span class="p">]</span>
 
     <span class="nd">@order_basis</span><span class="o">.</span><span class="n">setter</span>
     <span class="k">def</span> <span class="nf">order_basis</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_hfss_solver_settings</span><span class="o">.</span><span class="n">OrderBasis</span> <span class="o">=</span> <span class="n">value</span>
+        <span class="n">mapping</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;zero&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;first&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;second&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;mixed&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_hfss_solver_settings</span><span class="o">.</span><span class="n">OrderBasis</span> <span class="o">=</span> <span class="n">mapping</span><span class="p">[</span><span class="n">value</span><span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span><span class="o">.</span><span class="n">_update_setup</span><span class="p">()</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">relative_residual</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Residual for use by the iterative solver.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Residual for use by the iterative solver.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1190,7 +1192,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">solver_type</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Get solver type to use (Direct/Iterative/Auto) for HFSS.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get solver type to use (Direct/Iterative/Auto) for HFSS.</span>
 <span class="sd">        Options:</span>
 <span class="sd">        1- ``kAutoSolver``.</span>
 <span class="sd">        2- ``kDirectSolver``.</span>
@@ -1201,11 +1203,23 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        -------</span>
 <span class="sd">        str</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hfss_solver_settings</span><span class="o">.</span><span class="n">SolverType</span><span class="o">.</span><span class="n">ToString</span><span class="p">()</span>
+        <span class="n">mapping</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;kAutoSolver&quot;</span><span class="p">:</span> <span class="s2">&quot;auto&quot;</span><span class="p">,</span> <span class="s2">&quot;kDirectSolver&quot;</span><span class="p">:</span> <span class="s2">&quot;direct&quot;</span><span class="p">,</span> <span class="s2">&quot;kIterativeSolver&quot;</span><span class="p">:</span> <span class="s2">&quot;iterative&quot;</span><span class="p">}</span>
+        <span class="n">solver_type</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hfss_solver_settings</span><span class="o">.</span><span class="n">SolverType</span><span class="o">.</span><span class="n">ToString</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">mapping</span><span class="p">[</span><span class="n">solver_type</span><span class="p">]</span>
+
+    <span class="nd">@solver_type</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">solver_type</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="n">mapping</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;auto&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hfss_solver_settings</span><span class="o">.</span><span class="n">SolverType</span><span class="o">.</span><span class="n">kAutoSolver</span><span class="p">,</span>
+            <span class="s2">&quot;direct&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hfss_solver_settings</span><span class="o">.</span><span class="n">SolverType</span><span class="o">.</span><span class="n">kDirectSolver</span><span class="p">,</span>
+            <span class="s2">&quot;iterative&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hfss_solver_settings</span><span class="o">.</span><span class="n">SolverType</span><span class="o">.</span><span class="n">kIterativeSolver</span><span class="p">,</span>
+        <span class="p">}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_hfss_solver_settings</span><span class="o">.</span><span class="n">SolverType</span> <span class="o">=</span> <span class="n">mapping</span><span class="p">[</span><span class="n">value</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span><span class="o">.</span><span class="n">_update_setup</span><span class="p">()</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">use_shell_elements</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Whether to enable use of shell elements.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Whether to enable use of shell elements.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1220,15 +1234,15 @@ function checkPageExistsAndRedirect(event) {
         <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span><span class="o">.</span><span class="n">_update_setup</span><span class="p">()</span></div>
 
 
-<div class="viewcode-block" id="AdaptiveFrequencyData"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.hfss_simulation_setup_data.AdaptiveFrequencyData.html#pyaedt.edb_core.edb_data.hfss_simulation_setup_data.AdaptiveFrequencyData">[docs]</a><span class="k">class</span> <span class="nc">AdaptiveFrequencyData</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Manages EDB methods for adaptive frequency data.&quot;&quot;&quot;</span>
+<div class="viewcode-block" id="AdaptiveFrequencyData"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.hfss_simulation_setup_data.AdaptiveFrequencyData.html#pyaedt.edb_core.edb_data.hfss_simulation_setup_data.AdaptiveFrequencyData">[docs]</a><span class="k">class</span> <span class="nc">AdaptiveFrequencyData</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Manages EDB methods for adaptive frequency data.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">adaptive_frequency_data</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_adaptive_frequency_data</span> <span class="o">=</span> <span class="n">adaptive_frequency_data</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">adaptive_frequency</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Adaptive frequency for the setup.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Adaptive frequency for the setup.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1243,7 +1257,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">max_delta</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Maximum change of S-parameters between two consecutive passes, which serves as</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Maximum change of S-parameters between two consecutive passes, which serves as</span>
 <span class="sd">        a stopping criterion.</span>
 
 <span class="sd">        Returns</span>
@@ -1258,7 +1272,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">max_passes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Maximum allowed number of mesh refinement cycles.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Maximum allowed number of mesh refinement cycles.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1271,8 +1285,8 @@ function checkPageExistsAndRedirect(event) {
         <span class="bp">self</span><span class="o">.</span><span class="n">_adaptive_frequency_data</span><span class="o">.</span><span class="n">MaxPasses</span> <span class="o">=</span> <span class="n">value</span></div>
 
 
-<div class="viewcode-block" id="AdaptiveSettings"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.hfss_simulation_setup_data.AdaptiveSettings.html#pyaedt.edb_core.edb_data.hfss_simulation_setup_data.AdaptiveSettings">[docs]</a><span class="k">class</span> <span class="nc">AdaptiveSettings</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Manages EDB methods for adaptive settings.&quot;&quot;&quot;</span>
+<div class="viewcode-block" id="AdaptiveSettings"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.hfss_simulation_setup_data.AdaptiveSettings.html#pyaedt.edb_core.edb_data.hfss_simulation_setup_data.AdaptiveSettings">[docs]</a><span class="k">class</span> <span class="nc">AdaptiveSettings</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Manages EDB methods for adaptive settings.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span> <span class="o">=</span> <span class="n">parent</span>
@@ -1285,12 +1299,17 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">adaptive_settings</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Adaptive EDB settings.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Adaptive EDB settings.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        :class:`pyaedt.edb_core.edb_data.hfss_simulation_setup_data.AdaptiveSettings`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span><span class="o">.</span><span class="n">_edb_sim_setup_info</span><span class="o">.</span><span class="n">SimulationSettings</span><span class="o">.</span><span class="n">AdaptiveSettings</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">adaptive_frequency_data_list</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;List of all adaptive frequency data.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;List of all adaptive frequency data.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1300,7 +1319,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">adapt_type</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Adaptive type.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Adaptive type.</span>
 <span class="sd">        Options:</span>
 <span class="sd">        1- ``kSingle``.</span>
 <span class="sd">        2- ``kMultiFrequencies``.</span>
@@ -1320,7 +1339,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">basic</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Whether if turn on basic adaptive.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Whether if turn on basic adaptive.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1335,7 +1354,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">do_adaptive</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Whether if adpative mesh is on.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Whether if adpative mesh is on.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1347,7 +1366,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">max_refinement</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Maximum number of mesh elements to be added per pass.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Maximum number of mesh elements to be added per pass.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1362,7 +1381,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">max_refine_per_pass</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Maximum number of mesh elementat that can be added during an adaptive pass.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Maximum number of mesh elementat that can be added during an adaptive pass.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1377,7 +1396,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">min_passes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Minimum number of passes.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Minimum number of passes.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1392,7 +1411,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">save_fields</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Whether to turn on save fields.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Whether to turn on save fields.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1408,7 +1427,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">save_rad_field_only</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Whether to turn on save radiated fields only.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Whether to turn on save radiated fields only.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1425,7 +1444,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">use_convergence_matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Whether to turn on the convergence matrix.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Whether to turn on the convergence matrix.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1442,7 +1461,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">use_max_refinement</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Whether to turn on maximum refinement.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Whether to turn on maximum refinement.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1456,9 +1475,9 @@ function checkPageExistsAndRedirect(event) {
         <span class="bp">self</span><span class="o">.</span><span class="n">adaptive_settings</span><span class="o">.</span><span class="n">UseMaxRefinement</span> <span class="o">=</span> <span class="n">value</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span><span class="o">.</span><span class="n">_update_setup</span><span class="p">()</span>
 
-<div class="viewcode-block" id="AdaptiveSettings.add_adaptive_frequency_data"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.hfss_simulation_setup_data.AdaptiveSettings.add_adaptive_frequency_data.html#pyaedt.edb_core.edb_data.hfss_simulation_setup_data.AdaptiveSettings.add_adaptive_frequency_data">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="AdaptiveSettings.add_adaptive_frequency_data"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.hfss_simulation_setup_data.AdaptiveSettings.add_adaptive_frequency_data.html#pyaedt.edb_core.edb_data.hfss_simulation_setup_data.AdaptiveSettings.add_adaptive_frequency_data">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">add_adaptive_frequency_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">frequency</span><span class="p">,</span> <span class="n">max_num_passes</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">max_delta_s</span><span class="o">=</span><span class="mf">0.02</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Add a setup for frequency data.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add a setup for frequency data.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1483,8 +1502,8 @@ function checkPageExistsAndRedirect(event) {
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span><span class="o">.</span><span class="n">_update_setup</span><span class="p">()</span></div></div>
 
 
-<div class="viewcode-block" id="DefeatureSettings"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.hfss_simulation_setup_data.DefeatureSettings.html#pyaedt.edb_core.edb_data.hfss_simulation_setup_data.DefeatureSettings">[docs]</a><span class="k">class</span> <span class="nc">DefeatureSettings</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Manages EDB methods for defeature settings.&quot;&quot;&quot;</span>
+<div class="viewcode-block" id="DefeatureSettings"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.hfss_simulation_setup_data.DefeatureSettings.html#pyaedt.edb_core.edb_data.hfss_simulation_setup_data.DefeatureSettings">[docs]</a><span class="k">class</span> <span class="nc">DefeatureSettings</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Manages EDB methods for defeature settings.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span> <span class="o">=</span> <span class="n">parent</span>
@@ -1495,7 +1514,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">defeature_abs_length</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Absolute length for polygon defeaturing.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Absolute length for polygon defeaturing.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1510,7 +1529,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">defeature_ratio</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Defeature ratio.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Defeature ratio.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1525,15 +1544,14 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">healing_option</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Whether to turn on healing of mis-aligned points and edges.</span>
-<span class="sd">        Options:</span>
-<span class="sd">          0- Turn off.</span>
-<span class="sd">          1- Turn on.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Whether to turn on healing of mis-aligned points and edges.</span>
+<span class="sd">        Options are:</span>
+<span class="sd">        0- Turn off.</span>
+<span class="sd">        1- Turn on.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
 <span class="sd">        int</span>
-
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_defeature_settings</span><span class="o">.</span><span class="n">HealingOption</span>
 
@@ -1544,7 +1562,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">model_type</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Model type.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Model type.</span>
 <span class="sd">        Options:</span>
 <span class="sd">        0- General.</span>
 <span class="sd">        1- IC.</span>
@@ -1557,13 +1575,13 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@model_type</span><span class="o">.</span><span class="n">setter</span>
     <span class="k">def</span> <span class="nf">model_type</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Model type (General 0 or IC 1).&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Model type (General 0 or IC 1).&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_defeature_settings</span><span class="o">.</span><span class="n">ModelType</span> <span class="o">=</span> <span class="n">value</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span><span class="o">.</span><span class="n">_update_setup</span><span class="p">()</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">remove_floating_geometry</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Whether to remove floating geometries.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Whether to remove floating geometries.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1579,7 +1597,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">small_void_area</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Small voids to remove area.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Small voids to remove area.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1594,7 +1612,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">union_polygons</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Whether to turn on the union of polygons before meshing.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Whether to turn on the union of polygons before meshing.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1610,7 +1628,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">use_defeature</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Whether to turn on the defeature.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Whether to turn on the defeature.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1626,7 +1644,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">use_defeature_abs_length</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Whether to turn on the defeature absolute length.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Whether to turn on the defeature absolute length.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1642,8 +1660,8 @@ function checkPageExistsAndRedirect(event) {
         <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span><span class="o">.</span><span class="n">_update_setup</span><span class="p">()</span></div>
 
 
-<div class="viewcode-block" id="ViaSettings"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.hfss_simulation_setup_data.ViaSettings.html#pyaedt.edb_core.edb_data.hfss_simulation_setup_data.ViaSettings">[docs]</a><span class="k">class</span> <span class="nc">ViaSettings</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Manages EDB methods for via settings.&quot;&quot;&quot;</span>
+<div class="viewcode-block" id="ViaSettings"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.hfss_simulation_setup_data.ViaSettings.html#pyaedt.edb_core.edb_data.hfss_simulation_setup_data.ViaSettings">[docs]</a><span class="k">class</span> <span class="nc">ViaSettings</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Manages EDB methods for via settings.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
@@ -1664,7 +1682,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">via_density</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Via density.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Via density.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1679,7 +1697,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">via_material</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Via material.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Via material.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1694,7 +1712,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">via_num_sides</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Via number of sides.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Via number of sides.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1709,7 +1727,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">via_style</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Via style.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Via style.</span>
 <span class="sd">        Options:</span>
 <span class="sd">        1- ``k25DViaWirebond``.</span>
 <span class="sd">        2- ``k25DViaRibbon``.</span>
@@ -1729,8 +1747,8 @@ function checkPageExistsAndRedirect(event) {
         <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span><span class="o">.</span><span class="n">_update_setup</span><span class="p">()</span></div>
 
 
-<div class="viewcode-block" id="AdvancedMeshSettings"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.hfss_simulation_setup_data.AdvancedMeshSettings.html#pyaedt.edb_core.edb_data.hfss_simulation_setup_data.AdvancedMeshSettings">[docs]</a><span class="k">class</span> <span class="nc">AdvancedMeshSettings</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Manages EDB methods for advanced mesh settings.&quot;&quot;&quot;</span>
+<div class="viewcode-block" id="AdvancedMeshSettings"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.hfss_simulation_setup_data.AdvancedMeshSettings.html#pyaedt.edb_core.edb_data.hfss_simulation_setup_data.AdvancedMeshSettings">[docs]</a><span class="k">class</span> <span class="nc">AdvancedMeshSettings</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Manages EDB methods for advanced mesh settings.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span> <span class="o">=</span> <span class="n">parent</span>
@@ -1741,7 +1759,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">layer_snap_tol</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Layer snap tolerance. Attempt to align independent stackups in the mesher.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Layer snap tolerance. Attempt to align independent stackups in the mesher.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1757,7 +1775,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">mesh_display_attributes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Mesh display attributes. Set color for mesh display (i.e. ``&quot;#000000&quot;``).</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Mesh display attributes. Set color for mesh display (i.e. ``&quot;#000000&quot;``).</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1772,7 +1790,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">replace_3d_triangles</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Whether to turn on replace 3D triangles.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Whether to turn on replace 3D triangles.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1788,8 +1806,8 @@ function checkPageExistsAndRedirect(event) {
         <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span><span class="o">.</span><span class="n">_update_setup</span><span class="p">()</span></div>
 
 
-<div class="viewcode-block" id="CurveApproxSettings"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.hfss_simulation_setup_data.CurveApproxSettings.html#pyaedt.edb_core.edb_data.hfss_simulation_setup_data.CurveApproxSettings">[docs]</a><span class="k">class</span> <span class="nc">CurveApproxSettings</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Manages EDB methods for curve approximate settings.&quot;&quot;&quot;</span>
+<div class="viewcode-block" id="CurveApproxSettings"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.hfss_simulation_setup_data.CurveApproxSettings.html#pyaedt.edb_core.edb_data.hfss_simulation_setup_data.CurveApproxSettings">[docs]</a><span class="k">class</span> <span class="nc">CurveApproxSettings</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Manages EDB methods for curve approximate settings.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span> <span class="o">=</span> <span class="n">parent</span>
@@ -1800,7 +1818,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">arc_angle</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Step-size to be used for arc faceting.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Step-size to be used for arc faceting.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1815,7 +1833,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">arc_to_chord_error</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Maximum tolerated error between straight edge (chord) and faceted arc.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Maximum tolerated error between straight edge (chord) and faceted arc.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1830,7 +1848,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">max_arc_points</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Maximum number of mesh points for arc segments.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Maximum number of mesh points for arc segments.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1845,7 +1863,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">start_azimuth</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Azimuth angle for first mesh point of the arc.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Azimuth angle for first mesh point of the arc.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1860,7 +1878,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">use_arc_to_chord_error</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Whether to turn on the arc-to-chord error setting for arc faceting.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Whether to turn on the arc-to-chord error setting for arc faceting.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1874,8 +1892,8 @@ function checkPageExistsAndRedirect(event) {
         <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span><span class="o">.</span><span class="n">_update_setup</span><span class="p">()</span></div>
 
 
-<div class="viewcode-block" id="DcrSettings"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.hfss_simulation_setup_data.DcrSettings.html#pyaedt.edb_core.edb_data.hfss_simulation_setup_data.DcrSettings">[docs]</a><span class="k">class</span> <span class="nc">DcrSettings</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Manages EDB methods for DCR settings.&quot;&quot;&quot;</span>
+<div class="viewcode-block" id="DcrSettings"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.hfss_simulation_setup_data.DcrSettings.html#pyaedt.edb_core.edb_data.hfss_simulation_setup_data.DcrSettings">[docs]</a><span class="k">class</span> <span class="nc">DcrSettings</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Manages EDB methods for DCR settings.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span> <span class="o">=</span> <span class="n">parent</span>
@@ -1886,7 +1904,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">conduction_max_passes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Conduction maximum number of passes.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Conduction maximum number of passes.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1901,7 +1919,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">conduction_min_converged_passes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Conduction minimum number of converged passes.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Conduction minimum number of converged passes.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1916,7 +1934,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">conduction_min_passes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Conduction minimum number of passes.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Conduction minimum number of passes.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1931,7 +1949,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">conduction_per_error</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;WConduction error percentage.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;WConduction error percentage.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1946,7 +1964,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">conduction_per_refine</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Conduction refinement.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Conduction refinement.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1960,8 +1978,8 @@ function checkPageExistsAndRedirect(event) {
         <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span><span class="o">.</span><span class="n">_update_setup</span><span class="p">()</span></div>
 
 
-<div class="viewcode-block" id="HfssSimulationSetup"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.hfss_simulation_setup_data.HfssSimulationSetup.html#pyaedt.edb_core.edb_data.hfss_simulation_setup_data.HfssSimulationSetup">[docs]</a><span class="k">class</span> <span class="nc">HfssSimulationSetup</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Manages EDB methods for HFSS simulation setup.&quot;&quot;&quot;</span>
+<div class="viewcode-block" id="HfssSimulationSetup"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.hfss_simulation_setup_data.HfssSimulationSetup.html#pyaedt.edb_core.edb_data.hfss_simulation_setup_data.HfssSimulationSetup">[docs]</a><span class="k">class</span> <span class="nc">HfssSimulationSetup</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Manages EDB methods for HFSS simulation setup.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">edb</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">edb_hfss_sim_setup</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_edb</span> <span class="o">=</span> <span class="n">edb</span>
@@ -1981,14 +1999,14 @@ function checkPageExistsAndRedirect(event) {
             <span class="k">else</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_edb_sim_setup_info</span><span class="o">.</span><span class="n">Name</span> <span class="o">=</span> <span class="n">name</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">=</span> <span class="n">name</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">hfss_solver_settings</span><span class="o">.</span><span class="n">order_basis</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">hfss_solver_settings</span><span class="o">.</span><span class="n">order_basis</span> <span class="o">=</span> <span class="s2">&quot;mixed&quot;</span>
 
             <span class="bp">self</span><span class="o">.</span><span class="n">_edb_sim_setup</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">edb</span><span class="o">.</span><span class="n">Utility</span><span class="o">.</span><span class="n">HFSSSimulationSetup</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_edb_sim_setup_info</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_update_setup</span><span class="p">()</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">edb_sim_setup_info</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;EDB internal simulation setup object.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;EDB internal simulation setup object.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb_sim_setup_info</span>
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
@@ -2012,7 +2030,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">frequency_sweeps</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Frequency sweep list.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Frequency sweep list.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2025,7 +2043,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Name of the setup.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Name of the setup.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb_sim_setup_info</span><span class="o">.</span><span class="n">Name</span>
 
     <span class="nd">@name</span><span class="o">.</span><span class="n">setter</span>
@@ -2039,12 +2057,12 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">solver_slider_type</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Solver slider type.</span>
-<span class="sd">        Options:</span>
-<span class="sd">         1- ``kFast``.</span>
-<span class="sd">         2- ``kMedium``.</span>
-<span class="sd">         3- ``kAccurate``.</span>
-<span class="sd">         4- ``kNumSliderTypes``.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Solver slider type.</span>
+<span class="sd">        Options are:</span>
+<span class="sd">        1 - ``kFast``.</span>
+<span class="sd">        2 - ``kMedium``.</span>
+<span class="sd">        3 - ``kAccurate``.</span>
+<span class="sd">        4 - ``kNumSliderTypes``.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2054,7 +2072,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@solver_slider_type</span><span class="o">.</span><span class="n">setter</span>
     <span class="k">def</span> <span class="nf">solver_slider_type</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Set solver slider type.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set solver slider type.&quot;&quot;&quot;</span>
         <span class="n">solver_types</span> <span class="o">=</span> <span class="p">{</span>
             <span class="s2">&quot;kFast&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb_sim_setup_info</span><span class="o">.</span><span class="n">SimulationSettings</span><span class="o">.</span><span class="n">TSolveSliderType</span><span class="o">.</span><span class="n">k25DViaWirebond</span><span class="p">,</span>
             <span class="s2">&quot;kMedium&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb_sim_setup_info</span><span class="o">.</span><span class="n">SimulationSettings</span><span class="o">.</span><span class="n">TSolveSliderType</span><span class="o">.</span><span class="n">k25DViaRibbon</span><span class="p">,</span>
@@ -2066,7 +2084,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">is_auto_setup</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Whether if auto setup is enabled.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Whether if auto setup is enabled.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb_sim_setup_info</span><span class="o">.</span><span class="n">SimulationSettings</span><span class="o">.</span><span class="n">IsAutoSetup</span>
 
     <span class="nd">@is_auto_setup</span><span class="o">.</span><span class="n">setter</span>
@@ -2076,12 +2094,12 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">setup_type</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Setup type.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Setup type.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb_sim_setup_info</span><span class="o">.</span><span class="n">SimulationSettings</span><span class="o">.</span><span class="n">SetupType</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">hfss_solver_settings</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Manages EDB methods for HFSS solver settings.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Manages EDB methods for HFSS solver settings.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2092,7 +2110,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">adaptive_settings</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Adaptive Settings Class.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Adaptive Settings Class.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2103,7 +2121,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">defeature_settings</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Defeature settings Class.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Defeature settings Class.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2114,7 +2132,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">via_settings</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Via settings Class.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Via settings Class.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2125,7 +2143,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">advanced_mesh_settings</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Advanced mesh settings Class.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Advanced mesh settings Class.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2136,7 +2154,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">curve_approx_settings</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Curve approximation settings Class.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Curve approximation settings Class.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2147,7 +2165,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">dcr_settings</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Dcr settings Class.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Dcr settings Class.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2158,7 +2176,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">hfss_port_settings</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;HFSS port settings Class.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;HFSS port settings Class.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2169,7 +2187,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">mesh_operations</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Mesh operations settings Class.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Mesh operations settings Class.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2190,7 +2208,7 @@ function checkPageExistsAndRedirect(event) {
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mesh_operations</span>
 
-<div class="viewcode-block" id="HfssSimulationSetup.add_length_mesh_operation"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.hfss_simulation_setup_data.HfssSimulationSetup.add_length_mesh_operation.html#pyaedt.edb_core.edb_data.hfss_simulation_setup_data.HfssSimulationSetup.add_length_mesh_operation">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="HfssSimulationSetup.add_length_mesh_operation"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.hfss_simulation_setup_data.HfssSimulationSetup.add_length_mesh_operation.html#pyaedt.edb_core.edb_data.hfss_simulation_setup_data.HfssSimulationSetup.add_length_mesh_operation">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">add_length_mesh_operation</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">net_layer_list</span><span class="p">,</span>
@@ -2202,7 +2220,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">refine_inside</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
         <span class="n">mesh_region</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Add a mesh operation to the setup.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add a mesh operation to the setup.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2241,7 +2259,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="bp">self</span><span class="o">.</span><span class="n">mesh_operations</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">mesh_operation</span>
         <span class="k">return</span> <span class="n">mesh_operation</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_update_setup</span><span class="p">()</span> <span class="k">else</span> <span class="kc">False</span></div>
 
-<div class="viewcode-block" id="HfssSimulationSetup.add_skin_depth_mesh_operation"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.hfss_simulation_setup_data.HfssSimulationSetup.add_skin_depth_mesh_operation.html#pyaedt.edb_core.edb_data.hfss_simulation_setup_data.HfssSimulationSetup.add_skin_depth_mesh_operation">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="HfssSimulationSetup.add_skin_depth_mesh_operation"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.hfss_simulation_setup_data.HfssSimulationSetup.add_skin_depth_mesh_operation.html#pyaedt.edb_core.edb_data.hfss_simulation_setup_data.HfssSimulationSetup.add_skin_depth_mesh_operation">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">add_skin_depth_mesh_operation</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">net_layer_list</span><span class="p">,</span>
@@ -2254,7 +2272,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">refine_inside</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
         <span class="n">mesh_region</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Add a mesh operation to the setup.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add a mesh operation to the setup.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2296,19 +2314,29 @@ function checkPageExistsAndRedirect(event) {
         <span class="bp">self</span><span class="o">.</span><span class="n">mesh_operations</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">mesh_operation</span>
         <span class="k">return</span> <span class="n">mesh_operation</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_update_setup</span><span class="p">()</span> <span class="k">else</span> <span class="kc">False</span></div>
 
-<div class="viewcode-block" id="HfssSimulationSetup.add_frequency_sweep"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.hfss_simulation_setup_data.HfssSimulationSetup.add_frequency_sweep.html#pyaedt.edb_core.edb_data.hfss_simulation_setup_data.HfssSimulationSetup.add_frequency_sweep">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="HfssSimulationSetup.add_frequency_sweep"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.hfss_simulation_setup_data.HfssSimulationSetup.add_frequency_sweep.html#pyaedt.edb_core.edb_data.hfss_simulation_setup_data.HfssSimulationSetup.add_frequency_sweep">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">add_frequency_sweep</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">frequency_sweep</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Add frequency sweep.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add frequency sweep.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        name : str, optional</span>
 <span class="sd">            Name of the frequency sweep.</span>
 <span class="sd">        frequency_sweep : list, optional</span>
+<span class="sd">            List of frequency points.</span>
 
 <span class="sd">        Returns</span>
-<span class="sd">        ----------</span>
-<span class="sd">        :class:`pyaedt.edb_core.edb_data.hfss_simulation_setup_data.EdbFrequencySweep</span>
+<span class="sd">        -------</span>
+<span class="sd">        :class:`pyaedt.edb_core.edb_data.hfss_simulation_setup_data.EdbFrequencySweep`</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; setup1 = edbapp.create_hfss_setup(&quot;setup1&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; setup1.add_frequency_sweep(frequency_sweep=[</span>
+<span class="sd">        ...                           [&quot;linear count&quot;, &quot;0&quot;, &quot;1kHz&quot;, 1],</span>
+<span class="sd">        ...                           [&quot;log scale&quot;, &quot;1kHz&quot;, &quot;0.1GHz&quot;, 10],</span>
+<span class="sd">        ...                           [&quot;linear scale&quot;, &quot;0.1GHz&quot;, &quot;10GHz&quot;, &quot;0.1GHz&quot;],</span>
+<span class="sd">        ...                           ])</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">frequency_sweeps</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">False</span>
@@ -2316,9 +2344,9 @@ function checkPageExistsAndRedirect(event) {
             <span class="n">name</span> <span class="o">=</span> <span class="n">generate_unique_name</span><span class="p">(</span><span class="s2">&quot;sweep&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">EdbFrequencySweep</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">frequency_sweep</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="HfssSimulationSetup.set_solution_single_frequency"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.hfss_simulation_setup_data.HfssSimulationSetup.set_solution_single_frequency.html#pyaedt.edb_core.edb_data.hfss_simulation_setup_data.HfssSimulationSetup.set_solution_single_frequency">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="HfssSimulationSetup.set_solution_single_frequency"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.hfss_simulation_setup_data.HfssSimulationSetup.set_solution_single_frequency.html#pyaedt.edb_core.edb_data.hfss_simulation_setup_data.HfssSimulationSetup.set_solution_single_frequency">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">set_solution_single_frequency</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">frequency</span><span class="o">=</span><span class="s2">&quot;5GHz&quot;</span><span class="p">,</span> <span class="n">max_num_passes</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">max_delta_s</span><span class="o">=</span><span class="mf">0.02</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Set single-frequency solution.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set single-frequency solution.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2334,13 +2362,13 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        bool</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">adaptive_settings</span><span class="o">.</span><span class="n">adaptive_settings</span><span class="o">.</span><span class="n">AdaptiveFrequencyDataList</span><span class="o">.</span><span class="n">Clear</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">adaptive_settings</span><span class="o">.</span><span class="n">adapt_type</span> <span class="o">=</span> <span class="s2">&quot;kSingle&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">adaptive_settings</span><span class="o">.</span><span class="n">adaptive_settings</span><span class="o">.</span><span class="n">AdaptiveFrequencyDataList</span><span class="o">.</span><span class="n">Clear</span><span class="p">()</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">adaptive_settings</span><span class="o">.</span><span class="n">add_adaptive_frequency_data</span><span class="p">(</span><span class="n">frequency</span><span class="p">,</span> <span class="n">max_num_passes</span><span class="p">,</span> <span class="n">max_delta_s</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="HfssSimulationSetup.set_solution_multi_frequencies"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.hfss_simulation_setup_data.HfssSimulationSetup.set_solution_multi_frequencies.html#pyaedt.edb_core.edb_data.hfss_simulation_setup_data.HfssSimulationSetup.set_solution_multi_frequencies">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="HfssSimulationSetup.set_solution_multi_frequencies"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.hfss_simulation_setup_data.HfssSimulationSetup.set_solution_multi_frequencies.html#pyaedt.edb_core.edb_data.hfss_simulation_setup_data.HfssSimulationSetup.set_solution_multi_frequencies">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">set_solution_multi_frequencies</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">frequencies</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;5GHz&quot;</span><span class="p">,</span> <span class="s2">&quot;10GHz&quot;</span><span class="p">),</span> <span class="n">max_num_passes</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">max_delta_s</span><span class="o">=</span><span class="s2">&quot;0.02&quot;</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Set multi-frequency solution.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set multi-frequency solution.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2363,11 +2391,11 @@ function checkPageExistsAndRedirect(event) {
                 <span class="k">return</span> <span class="kc">False</span>
         <span class="k">return</span> <span class="kc">True</span></div>
 
-<div class="viewcode-block" id="HfssSimulationSetup.set_solution_broadband"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.hfss_simulation_setup_data.HfssSimulationSetup.set_solution_broadband.html#pyaedt.edb_core.edb_data.hfss_simulation_setup_data.HfssSimulationSetup.set_solution_broadband">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="HfssSimulationSetup.set_solution_broadband"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.hfss_simulation_setup_data.HfssSimulationSetup.set_solution_broadband.html#pyaedt.edb_core.edb_data.hfss_simulation_setup_data.HfssSimulationSetup.set_solution_broadband">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">set_solution_broadband</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">low_frequency</span><span class="o">=</span><span class="s2">&quot;5GHz&quot;</span><span class="p">,</span> <span class="n">high_frequency</span><span class="o">=</span><span class="s2">&quot;10GHz&quot;</span><span class="p">,</span> <span class="n">max_num_passes</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">max_delta_s</span><span class="o">=</span><span class="s2">&quot;0.02&quot;</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Set broadband solution.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set broadband solution.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2411,13 +2439,13 @@ function checkPageExistsAndRedirect(event) {
   
   <div class="footer-item">
     <p class="copyright">
-    &copy; Copyright (c) 2022 ANSYS, Inc. All rights reserved.<br>
+    &copy; Copyright (c) 2023 ANSYS, Inc. All rights reserved.<br>
 </p>
   </div>
   
   <div class="footer-item">
     <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 6.1.1.<br>
 </p>
   </div>
   

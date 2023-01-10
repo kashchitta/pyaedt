@@ -28,6 +28,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/ansys_sphinx_theme.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
 
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
@@ -36,14 +37,11 @@
         <link href="../../_static/css/breadcrumbs.css" rel="stylesheet">
     
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/sphinx_highlight.js"></script>
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
-    <link rel="shortcut icon" href="../../_static/ansys-favicon.png"/>
+    <link rel="icon" href="../../_static/ansys-favicon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -72,9 +70,8 @@
   
   
   
-    <img src="../../_static/pyansys-logo-black-cropped.png" class="logo__image only-light" alt="Logo image">
-    <img src="../../_static/pyansys-logo-black-cropped.png" class="logo__image only-dark" alt="Logo image">
   
+    <p class="title logo__title">PyAEDT</p>
   
 </a>
     
@@ -104,7 +101,13 @@
 
 <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="../../API/index.html">
-  API reference
+  API AEDT reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../EDBAPI/index.html">
+  API EDB reference
  </a>
 </li>
 
@@ -323,7 +326,7 @@ function checkPageExistsAndRedirect(event) {
 <span class="kn">from</span> <span class="nn">pyaedt.generic.constants</span> <span class="kn">import</span> <span class="n">MATRIXOPERATIONSQ3D</span>
 <span class="kn">from</span> <span class="nn">pyaedt.generic.general_methods</span> <span class="kn">import</span> <span class="n">generate_unique_name</span>
 <span class="kn">from</span> <span class="nn">pyaedt.generic.general_methods</span> <span class="kn">import</span> <span class="n">pyaedt_function_handler</span>
-<span class="kn">from</span> <span class="nn">pyaedt.modeler.GeometryOperators</span> <span class="kn">import</span> <span class="n">GeometryOperators</span> <span class="k">as</span> <span class="n">go</span>
+<span class="kn">from</span> <span class="nn">pyaedt.modeler.geometry_operators</span> <span class="kn">import</span> <span class="n">GeometryOperators</span> <span class="k">as</span> <span class="n">go</span>
 <span class="kn">from</span> <span class="nn">pyaedt.modules.Boundary</span> <span class="kn">import</span> <span class="n">BoundaryObject</span>
 <span class="kn">from</span> <span class="nn">pyaedt.modules.Boundary</span> <span class="kn">import</span> <span class="n">Matrix</span>
 
@@ -335,7 +338,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <span class="k">class</span> <span class="nc">QExtractor</span><span class="p">(</span><span class="n">FieldAnalysis3D</span><span class="p">,</span> <span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Extracts a 2D or 3D field analysis.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Extracts a 2D or 3D field analysis.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -350,7 +353,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">design_file</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Design file.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Design file.&quot;&quot;&quot;</span>
         <span class="n">design_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">working_directory</span><span class="p">,</span> <span class="s2">&quot;design_data.json&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">design_file</span>
 
@@ -395,7 +398,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">excitations</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Get all excitation names.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get all excitation names.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -416,7 +419,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">new_source_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">new_sink_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Insert a new reduced matrix.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Insert a new reduced matrix.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -458,7 +461,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">get_all_sources</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Get all setup sources.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get all setup sources.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -481,7 +484,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">second_element_filter</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">category</span><span class="o">=</span><span class="s2">&quot;C&quot;</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Get a list of traces of specified designs ready to use in plot reports.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get a list of traces of specified designs ready to use in plot reports.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -521,7 +524,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">export_mesh_stats</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">setup_name</span><span class="p">,</span> <span class="n">variation_string</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">mesh_path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">setup_type</span><span class="o">=</span><span class="s2">&quot;CG&quot;</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Export mesh statistics to a file.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Export mesh statistics to a file.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -557,7 +560,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">acrl</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">dcrl</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Set up the source loaded for Q3D or Q2D in multiple sources simultaneously.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set up the source loaded for Q3D or Q2D in multiple sources simultaneously.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -725,13 +728,14 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">length_setting</span><span class="o">=</span><span class="s2">&quot;Distributed&quot;</span><span class="p">,</span>
         <span class="n">length</span><span class="o">=</span><span class="s2">&quot;1meter&quot;</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Export matrix data.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Export matrix data.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        file_name : str</span>
 <span class="sd">            Full path to save the matrix data to.</span>
-<span class="sd">            Options for file extensions are: *.m, *.lvl, *.csv, *.txt.</span>
+<span class="sd">            Options for file extensions are: ``*.m``, ``*.lvl``, ``*.csv``,</span>
+<span class="sd">            and ``*.txt``.</span>
 <span class="sd">        problem_type : str, optional</span>
 <span class="sd">            Problem type. The default value is ``None``, in which case ``&quot;C&quot;`` is</span>
 <span class="sd">            used. Options are ``&quot;C&quot;``, ``&quot;AC RL&quot;``, and ``&quot;DC RL&quot;``.</span>
@@ -1075,7 +1079,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">file_type</span><span class="o">=</span><span class="s2">&quot;HSPICE&quot;</span><span class="p">,</span>
         <span class="n">include_cpp</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Export matrix data.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Export matrix data.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1109,7 +1113,7 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">            Default value is True.</span>
 <span class="sd">        coupling_limit_type : int, optional</span>
 <span class="sd">            Coupling limit types.</span>
-<span class="sd">            Values can be : &quot;By Value&quot; -&gt; 0  or &quot;By Fraction Of Self Term&quot; -&gt; 1.</span>
+<span class="sd">            Values can be: ``&quot;By Value&quot; -&gt; 0`` or ``&quot;By Fraction Of Self Term&quot; -&gt; 1``.</span>
 <span class="sd">            If None, no coupling limits are set.</span>
 <span class="sd">            Default value is None.</span>
 <span class="sd">        include_dcr : bool, optional</span>
@@ -1136,9 +1140,6 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        parse_pin_names : bool, optional</span>
 <span class="sd">            Parse pin names.</span>
 <span class="sd">            Default value is False.</span>
-<span class="sd">        cs : str, optional</span>
-<span class="sd">            Coordinate system for chip package control.</span>
-<span class="sd">            Default value is Global.</span>
 <span class="sd">        export_distributed : bool, optional</span>
 <span class="sd">            Flag to tell whether to export in distributed mode or Lumped mode.</span>
 <span class="sd">            Default value is True.</span>
@@ -1175,7 +1176,8 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">            Default value is 0.</span>
 <span class="sd">        file_type : str, optional</span>
 <span class="sd">            The type of file format.</span>
-<span class="sd">            Used to specify the type of &quot;HSPICE&quot; file format (all HSPICE file formats have same extension *.sp).</span>
+<span class="sd">            Type of HSPICE file format. (All HSPICE file formats have the same extension,</span>
+<span class="sd">            which is ``*.sp``.) Options are:</span>
 <span class="sd">            &quot;Hspice&quot;: simple HSPICE file format.</span>
 <span class="sd">            &quot;Welement&quot;: Nexxim/HSPICE W Element file format</span>
 <span class="sd">            &quot;RLGC&quot;: Nexxim/HSPICE RLGC W Element file format</span>
@@ -1482,7 +1484,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <div class="viewcode-block" id="Q3d"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.q3d.Q3d.html#pyaedt.q3d.Q3d">[docs]</a><span class="k">class</span> <span class="nc">Q3d</span><span class="p">(</span><span class="n">QExtractor</span><span class="p">,</span> <span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Provides the Q3D app interface.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Provides the Q3D app interface.</span>
 
 <span class="sd">    This class allows you to create an instance of Q3D and link to an</span>
 <span class="sd">    existing project or create a new one.</span>
@@ -1582,7 +1584,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">nets</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Nets in a Q3D project.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Nets in a Q3D project.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1602,7 +1604,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Q3d.objects_from_nets"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.q3d.Q3d.objects_from_nets.html#pyaedt.q3d.Q3d.objects_from_nets">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">objects_from_nets</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nets</span><span class="p">,</span> <span class="n">materials</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Find the objects that belongs to a net. Material can be applied as filter.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Find the objects that belongs to a net. Material can be applied as filter.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1637,7 +1639,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Q3d.net_sources"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.q3d.Q3d.net_sources.html#pyaedt.q3d.Q3d.net_sources">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">net_sources</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">net_name</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Check if a net has sources and return a list of source names.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Check if a net has sources and return a list of source names.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1670,7 +1672,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Q3d.net_sinks"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.q3d.Q3d.net_sinks.html#pyaedt.q3d.Q3d.net_sinks">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">net_sinks</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">net_name</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Check if a net has sinks and return a list of sink names.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Check if a net has sinks and return a list of sink names.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1701,7 +1703,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Q3d.auto_identify_nets"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.q3d.Q3d.auto_identify_nets.html#pyaedt.q3d.Q3d.auto_identify_nets">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">auto_identify_nets</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Identify nets automatically.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Identify nets automatically.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1731,7 +1733,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Q3d.assign_net"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.q3d.Q3d.assign_net.html#pyaedt.q3d.Q3d.assign_net">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">assign_net</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">objects</span><span class="p">,</span> <span class="n">net_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">net_type</span><span class="o">=</span><span class="s2">&quot;Signal&quot;</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Assign a net to a list of objects.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Assign a net to a list of objects.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1781,7 +1783,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Q3d.assign_source_to_objectface"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.q3d.Q3d.assign_source_to_objectface.html#pyaedt.q3d.Q3d.assign_source_to_objectface">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">assign_source_to_objectface</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">object_name</span><span class="p">,</span> <span class="n">axisdir</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">source_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">net_name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Generate a source on a face of an object.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Generate a source on a face of an object.</span>
 
 <span class="sd">        The face ID is selected based on the axis direction. It is the face that</span>
 <span class="sd">        has the maximum/minimum in this axis direction.</span>
@@ -1830,7 +1832,7 @@ function checkPageExistsAndRedirect(event) {
     <span class="k">def</span> <span class="nf">assign_source_to_sheet</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">sheetname</span><span class="p">,</span> <span class="n">objectname</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">netname</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">sourcename</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">terminal_type</span><span class="o">=</span><span class="s2">&quot;voltage&quot;</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Generate a source on a sheet.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Generate a source on a sheet.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1879,7 +1881,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Q3d.assign_sink_to_objectface"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.q3d.Q3d.assign_sink_to_objectface.html#pyaedt.q3d.Q3d.assign_sink_to_objectface">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">assign_sink_to_objectface</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">object_name</span><span class="p">,</span> <span class="n">axisdir</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sink_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">net_name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Generate a sink on a face of an object.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Generate a sink on a face of an object.</span>
 
 <span class="sd">        The face ID is selected based on the axis direction. It is the face that has</span>
 <span class="sd">        the maximum or minimum in this axis direction.</span>
@@ -1927,7 +1929,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Q3d.assign_sink_to_sheet"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.q3d.Q3d.assign_sink_to_sheet.html#pyaedt.q3d.Q3d.assign_sink_to_sheet">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">assign_sink_to_sheet</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sheetname</span><span class="p">,</span> <span class="n">objectname</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">netname</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">sinkname</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">terminal_type</span><span class="o">=</span><span class="s2">&quot;voltage&quot;</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Generate a sink on a sheet.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Generate a sink on a sheet.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1978,7 +1980,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Q3d.create_frequency_sweep"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.q3d.Q3d.create_frequency_sweep.html#pyaedt.q3d.Q3d.create_frequency_sweep">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">create_frequency_sweep</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">setupname</span><span class="p">,</span> <span class="n">units</span><span class="p">,</span> <span class="n">freqstart</span><span class="p">,</span> <span class="n">freqstop</span><span class="p">,</span> <span class="n">freqstep</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">sweepname</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a frequency sweep.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a frequency sweep.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2041,7 +2043,7 @@ function checkPageExistsAndRedirect(event) {
     <span class="k">def</span> <span class="nf">create_discrete_sweep</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">setupname</span><span class="p">,</span> <span class="n">freqstart</span><span class="p">,</span> <span class="n">freqstop</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">freqstep</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="s2">&quot;GHz&quot;</span><span class="p">,</span> <span class="n">sweepname</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">savefields</span><span class="o">=</span><span class="kc">False</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a discrete sweep with a single frequency value.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a discrete sweep with a single frequency value.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2108,7 +2110,7 @@ function checkPageExistsAndRedirect(event) {
     <span class="k">def</span> <span class="nf">set_material_thresholds</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">insulator_threshold</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">perfect_conductor_threshold</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">magnetic_threshold</span><span class="o">=</span><span class="kc">None</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Set material threshold.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set material threshold.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2152,7 +2154,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <div class="viewcode-block" id="Q2d"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.q3d.Q2d.html#pyaedt.q3d.Q2d">[docs]</a><span class="k">class</span> <span class="nc">Q2d</span><span class="p">(</span><span class="n">QExtractor</span><span class="p">,</span> <span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Provides the Q2D app interface.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Provides the Q2D app interface.</span>
 
 <span class="sd">    This class allows you to create an instance of Q2D and link to an</span>
 <span class="sd">    existing project or create a new one.</span>
@@ -2229,7 +2231,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>  <span class="c1"># for legacy purposes</span>
     <span class="k">def</span> <span class="nf">dim</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Dimension.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Dimension.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">dimension</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
@@ -2267,7 +2269,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Q2d.create_rectangle"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.q3d.Q2d.create_rectangle.html#pyaedt.q3d.Q2d.create_rectangle">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">create_rectangle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">position</span><span class="p">,</span> <span class="n">dimension_list</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">matname</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Create a rectangle.</span>
 
 <span class="sd">        Parameters</span>
@@ -2285,7 +2287,7 @@ function checkPageExistsAndRedirect(event) {
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        :class:`pyaedt.modeler.Object3d.Object3d`</span>
+<span class="sd">        :class:`pyaedt.modeler.object3d.Object3d`</span>
 <span class="sd">            3D object.</span>
 
 <span class="sd">        References</span>
@@ -2297,7 +2299,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Q2d.assign_single_signal_line"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.q3d.Q2d.assign_single_signal_line.html#pyaedt.q3d.Q2d.assign_single_signal_line">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">assign_single_signal_line</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target_objects</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">solve_option</span><span class="o">=</span><span class="s2">&quot;SolveInside&quot;</span><span class="p">,</span> <span class="n">thickness</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="s2">&quot;um&quot;</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Assign the conductor type to sheets.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Assign the conductor type to sheets.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2337,7 +2339,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">thickness</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">unit</span><span class="o">=</span><span class="s2">&quot;um&quot;</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Assign the conductor type to sheets.</span>
 
 <span class="sd">        Parameters</span>
@@ -2399,7 +2401,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Q2d.assign_huray_finitecond_to_edges"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.q3d.Q2d.assign_huray_finitecond_to_edges.html#pyaedt.q3d.Q2d.assign_huray_finitecond_to_edges">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">assign_huray_finitecond_to_edges</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">edges</span><span class="p">,</span> <span class="n">radius</span><span class="p">,</span> <span class="n">ratio</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="s2">&quot;um&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Assign the Huray surface roughness model to edges.</span>
 
 <span class="sd">        Parameters</span>
@@ -2442,7 +2444,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Q2d.auto_assign_conductors"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.q3d.Q2d.auto_assign_conductors.html#pyaedt.q3d.Q2d.auto_assign_conductors">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">auto_assign_conductors</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Automatically assign conductors to signal lines.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Automatically assign conductors to signal lines.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2469,7 +2471,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Q2d.export_w_elements"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.q3d.Q2d.export_w_elements.html#pyaedt.q3d.Q2d.export_w_elements">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">export_w_elements</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">analyze</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">export_folder</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Export all W-elements to files.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Export all W-elements to files.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2590,7 +2592,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Q2d.toggle_conductor_type"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.q3d.Q2d.toggle_conductor_type.html#pyaedt.q3d.Q2d.toggle_conductor_type">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">toggle_conductor_type</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">conductor_name</span><span class="p">,</span> <span class="n">new_type</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Change the conductor type.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Change the conductor type.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2634,13 +2636,13 @@ function checkPageExistsAndRedirect(event) {
   
   <div class="footer-item">
     <p class="copyright">
-    &copy; Copyright (c) 2022 ANSYS, Inc. All rights reserved.<br>
+    &copy; Copyright (c) 2023 ANSYS, Inc. All rights reserved.<br>
 </p>
   </div>
   
   <div class="footer-item">
     <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 6.1.1.<br>
 </p>
   </div>
   

@@ -28,6 +28,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/ansys_sphinx_theme.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
 
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
@@ -36,14 +37,11 @@
         <link href="../../_static/css/breadcrumbs.css" rel="stylesheet">
     
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/sphinx_highlight.js"></script>
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
-    <link rel="shortcut icon" href="../../_static/ansys-favicon.png"/>
+    <link rel="icon" href="../../_static/ansys-favicon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -72,9 +70,8 @@
   
   
   
-    <img src="../../_static/pyansys-logo-black-cropped.png" class="logo__image only-light" alt="Logo image">
-    <img src="../../_static/pyansys-logo-black-cropped.png" class="logo__image only-dark" alt="Logo image">
   
+    <p class="title logo__title">PyAEDT</p>
   
 </a>
     
@@ -104,7 +101,13 @@
 
 <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="../../API/index.html">
-  API reference
+  API AEDT reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../EDBAPI/index.html">
+  API EDB reference
  </a>
 </li>
 
@@ -400,7 +403,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <span class="k">def</span> <span class="nf">exception_to_desktop</span><span class="p">(</span><span class="n">ex_value</span><span class="p">,</span> <span class="n">tb_data</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
-    <span class="sd">&quot;&quot;&quot;Writes the trace stack to AEDT when a Python error occurs.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Writes the trace stack to AEDT when a Python error occurs.</span>
 
 <span class="sd">    The message is added to the AEDT global logger and to the log file (if present).</span>
 
@@ -446,7 +449,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <span class="k">def</span> <span class="nf">release_desktop</span><span class="p">(</span><span class="n">close_projects</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">close_desktop</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Release the AEDT API.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Release the AEDT API.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -471,23 +474,21 @@ function checkPageExistsAndRedirect(event) {
                 <span class="n">desktop</span><span class="o">.</span><span class="n">CloseProject</span><span class="p">(</span><span class="n">project</span><span class="p">)</span>
         <span class="n">pid</span> <span class="o">=</span> <span class="n">_main</span><span class="o">.</span><span class="n">oDesktop</span><span class="o">.</span><span class="n">GetProcessID</span><span class="p">()</span>
         <span class="k">if</span> <span class="n">settings</span><span class="o">.</span><span class="n">aedt_version</span> <span class="o">&gt;=</span> <span class="s2">&quot;2022.2&quot;</span> <span class="ow">and</span> <span class="n">settings</span><span class="o">.</span><span class="n">use_grpc_api</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">is_ironpython</span><span class="p">:</span>
-            <span class="kn">import</span> <span class="nn">ScriptEnv</span>
+            <span class="k">if</span> <span class="n">_check_grpc_port</span><span class="p">(</span><span class="n">settings</span><span class="o">.</span><span class="n">port</span><span class="p">,</span> <span class="n">settings</span><span class="o">.</span><span class="n">machine</span><span class="p">):</span>
+                <span class="kn">import</span> <span class="nn">ScriptEnv</span>
 
-            <span class="k">if</span> <span class="n">close_desktop</span><span class="p">:</span>
-                <span class="n">ScriptEnv</span><span class="o">.</span><span class="n">Shutdown</span><span class="p">()</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">ScriptEnv</span><span class="o">.</span><span class="n">Release</span><span class="p">()</span>
+                <span class="k">if</span> <span class="n">close_desktop</span><span class="p">:</span>
+                    <span class="n">ScriptEnv</span><span class="o">.</span><span class="n">Shutdown</span><span class="p">()</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">ScriptEnv</span><span class="o">.</span><span class="n">Release</span><span class="p">()</span>
             <span class="n">_delete_objects</span><span class="p">()</span>
-            <span class="k">if</span> <span class="n">settings</span><span class="o">.</span><span class="n">remote_api</span><span class="p">:</span>
-                <span class="k">return</span> <span class="kc">True</span>
+            <span class="k">return</span> <span class="kc">True</span>
         <span class="k">elif</span> <span class="ow">not</span> <span class="n">inside_desktop</span><span class="p">:</span>
             <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
             <span class="n">scopeID</span> <span class="o">=</span> <span class="mi">5</span>
             <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">scopeID</span><span class="p">:</span>
                 <span class="n">_main</span><span class="o">.</span><span class="n">COMUtil</span><span class="o">.</span><span class="n">ReleaseCOMObjectScope</span><span class="p">(</span><span class="n">_main</span><span class="o">.</span><span class="n">COMUtil</span><span class="o">.</span><span class="n">PInvokeProxyAPI</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
                 <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
-        <span class="n">_delete_objects</span><span class="p">()</span>
-
         <span class="k">if</span> <span class="n">close_desktop</span><span class="p">:</span>
             <span class="k">try</span><span class="p">:</span>
                 <span class="n">os</span><span class="o">.</span><span class="n">kill</span><span class="p">(</span><span class="n">pid</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span>
@@ -496,6 +497,7 @@ function checkPageExistsAndRedirect(event) {
             <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
                 <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;Something went wrong in closing AEDT.&quot;</span><span class="p">)</span>
                 <span class="k">return</span> <span class="kc">False</span>
+        <span class="n">_delete_objects</span><span class="p">()</span>
         <span class="k">return</span> <span class="kc">True</span>
     <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
         <span class="n">_delete_objects</span><span class="p">()</span>
@@ -503,7 +505,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <span class="k">def</span> <span class="nf">force_close_desktop</span><span class="p">():</span>
-    <span class="sd">&quot;&quot;&quot;Forcibly close all AEDT projects and shut down AEDT.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Forcibly close all AEDT projects and shut down AEDT.</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
@@ -550,7 +552,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <span class="k">def</span> <span class="nf">run_process</span><span class="p">(</span><span class="n">command</span><span class="p">,</span> <span class="n">bufsize</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Run a process with a subprocess.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Run a process with a subprocess.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -567,7 +569,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <span class="k">def</span> <span class="nf">get_version_env_variable</span><span class="p">(</span><span class="n">version_id</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Get the environment variable for the AEDT version.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get the environment variable for the AEDT version.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -599,12 +601,8 @@ function checkPageExistsAndRedirect(event) {
     <span class="k">return</span> <span class="n">version_env_var</span>
 
 
-<div class="viewcode-block" id="Desktop"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.desktop.Desktop.html#pyaedt.desktop.Desktop">[docs]</a><span class="k">class</span> <span class="nc">Desktop</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Initializes AEDT based on the inputs provided.</span>
-
-<span class="sd">    .. note::</span>
-<span class="sd">       On Windows, this class works without limitations in IronPython and CPython.</span>
-<span class="sd">       On Linux, this class works only in embedded IronPython in AEDT.</span>
+<div class="viewcode-block" id="Desktop"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.desktop.Desktop.html#pyaedt.desktop.Desktop">[docs]</a><span class="k">class</span> <span class="nc">Desktop</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Provides the Ansys Electronics Desktop (AEDT) interface.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -669,7 +667,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">port</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
         <span class="n">aedt_process_id</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Initialize desktop.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialize desktop.&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_main</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">[</span><span class="s2">&quot;__main__&quot;</span><span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_main</span><span class="o">.</span><span class="n">interpreter</span> <span class="o">=</span> <span class="n">_com</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">release_on_exit</span> <span class="o">=</span> <span class="n">close_on_exit</span>
@@ -711,7 +709,7 @@ function checkPageExistsAndRedirect(event) {
             <span class="k">if</span> <span class="n">_com</span> <span class="o">==</span> <span class="s2">&quot;ironpython&quot;</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Launching PyAEDT outside AEDT with IronPython.&quot;</span><span class="p">)</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_init_ironpython</span><span class="p">(</span><span class="n">non_graphical</span><span class="p">,</span> <span class="n">new_desktop_session</span><span class="p">,</span> <span class="n">version</span><span class="p">)</span>
-            <span class="k">elif</span> <span class="n">_com</span> <span class="o">==</span> <span class="s2">&quot;grpc_v3&quot;</span> <span class="ow">or</span> <span class="n">settings</span><span class="o">.</span><span class="n">use_grpc_api</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">port</span><span class="p">:</span>
+            <span class="k">elif</span> <span class="n">_com</span> <span class="o">==</span> <span class="s2">&quot;grpc_v3&quot;</span> <span class="ow">or</span> <span class="n">settings</span><span class="o">.</span><span class="n">use_grpc_api</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">port</span> <span class="ow">or</span> <span class="n">version_key</span> <span class="o">&gt;</span> <span class="s2">&quot;2022.2&quot;</span><span class="p">:</span>
                 <span class="n">settings</span><span class="o">.</span><span class="n">use_grpc_api</span> <span class="o">=</span> <span class="kc">True</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_init_cpython_new</span><span class="p">(</span><span class="n">non_graphical</span><span class="p">,</span> <span class="n">new_desktop_session</span><span class="p">,</span> <span class="n">version</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_main</span><span class="o">.</span><span class="n">student_version</span><span class="p">)</span>
             <span class="k">elif</span> <span class="n">_com</span> <span class="o">==</span> <span class="s2">&quot;pythonnet_v3&quot;</span><span class="p">:</span>
@@ -725,6 +723,9 @@ function checkPageExistsAndRedirect(event) {
                         <span class="n">version_key</span><span class="p">,</span>
                         <span class="n">aedt_process_id</span><span class="p">,</span>
                     <span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">settings</span><span class="o">.</span><span class="n">use_grpc_api</span> <span class="o">=</span> <span class="kc">True</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_init_cpython_new</span><span class="p">(</span><span class="n">non_graphical</span><span class="p">,</span> <span class="n">new_desktop_session</span><span class="p">,</span> <span class="n">version</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_main</span><span class="o">.</span><span class="n">student_version</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="kn">from</span> <span class="nn">pyaedt.generic.clr_module</span> <span class="kn">import</span> <span class="n">win32_client</span>
 
@@ -759,7 +760,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project_design_name</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Get the application interface object (Hfss, Icepak, Maxwell3D...) for a given project name and design name.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the application interface object (Hfss, Icepak, Maxwell3D...) for a given project name and design name.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -798,14 +799,14 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">install_path</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Installation path for AEDT.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Installation path for AEDT.&quot;&quot;&quot;</span>
         <span class="n">version_key</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_main</span><span class="o">.</span><span class="n">AEDTVersion</span>
         <span class="n">root</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_version_ids</span><span class="p">[</span><span class="n">version_key</span><span class="p">]</span>
         <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="n">root</span><span class="p">]</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">version_keys</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Version keys for AEDT.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Version keys for AEDT.&quot;&quot;&quot;</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_version_keys</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_version_ids</span> <span class="o">=</span> <span class="p">{}</span>
@@ -839,7 +840,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">current_version</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Current AEDT version.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Current AEDT version.&quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">version_keys</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
         <span class="k">except</span> <span class="p">(</span><span class="ne">NameError</span><span class="p">,</span> <span class="ne">IndexError</span><span class="p">):</span>
@@ -847,7 +848,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">current_version_student</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Current student AEDT version.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Current student AEDT version.&quot;&quot;&quot;</span>
         <span class="k">for</span> <span class="n">version_key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">version_keys</span><span class="p">:</span>
             <span class="k">if</span> <span class="s2">&quot;SV&quot;</span> <span class="ow">in</span> <span class="n">version_key</span><span class="p">:</span>
                 <span class="k">return</span> <span class="n">version_key</span>
@@ -858,6 +859,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="bp">self</span><span class="o">.</span><span class="n">_main</span><span class="o">.</span><span class="n">oDesktop</span><span class="o">.</span><span class="n">RestoreWindow</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_main</span><span class="o">.</span><span class="n">sDesktopinstallDirectory</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_main</span><span class="o">.</span><span class="n">oDesktop</span><span class="o">.</span><span class="n">GetExeDir</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_main</span><span class="o">.</span><span class="n">pyaedt_initialized</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">settings</span><span class="o">.</span><span class="n">enable_desktop_logs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_main</span><span class="o">.</span><span class="n">oDesktop</span><span class="o">.</span><span class="n">GetIsNonGraphical</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">_set_version</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">specified_version</span><span class="p">,</span> <span class="n">student_version</span><span class="p">):</span>
         <span class="n">student_version_flag</span> <span class="o">=</span> <span class="kc">False</span>
@@ -867,7 +869,7 @@ function checkPageExistsAndRedirect(event) {
                     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;PyAEDT supports AEDT version 2021 R1 and later.&quot;</span><span class="p">)</span>
                 <span class="k">else</span><span class="p">:</span>
                     <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
-                        <span class="sd">&quot;&quot;&quot;PyAEDT has limited capabilities when used with an AEDT version earlier than 2021 R1.</span>
+<span class="w">                        </span><span class="sd">&quot;&quot;&quot;PyAEDT has limited capabilities when used with an AEDT version earlier than 2021 R1.</span>
 <span class="sd">                        PyAEDT officially supports AEDT version 2021 R1 and later.&quot;&quot;&quot;</span>
                     <span class="p">)</span>
             <span class="k">if</span> <span class="n">student_version</span><span class="p">:</span>
@@ -905,8 +907,6 @@ function checkPageExistsAndRedirect(event) {
             <span class="n">oAnsoftApp</span> <span class="o">=</span> <span class="n">StandalonePyScriptWrapper</span><span class="o">.</span><span class="n">CreateObjectNew</span><span class="p">(</span><span class="n">non_graphical</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">oAnsoftApp</span> <span class="o">=</span> <span class="n">StandalonePyScriptWrapper</span><span class="o">.</span><span class="n">CreateObject</span><span class="p">(</span><span class="n">version</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">non_graphical</span><span class="p">:</span>
-            <span class="n">settings</span><span class="o">.</span><span class="n">enable_desktop_logs</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_main</span><span class="o">.</span><span class="n">oDesktop</span> <span class="o">=</span> <span class="n">oAnsoftApp</span><span class="o">.</span><span class="n">GetAppDesktop</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_main</span><span class="o">.</span><span class="n">isoutsideDesktop</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">base_path</span><span class="p">,</span> <span class="s2">&quot;common&quot;</span><span class="p">,</span> <span class="s2">&quot;commonfiles&quot;</span><span class="p">,</span> <span class="s2">&quot;IronPython&quot;</span><span class="p">,</span> <span class="s2">&quot;DLLs&quot;</span><span class="p">))</span>
@@ -965,8 +965,6 @@ function checkPageExistsAndRedirect(event) {
             <span class="n">StandalonePyScriptWrapper</span><span class="o">.</span><span class="n">CreateObjectNew</span><span class="p">(</span><span class="n">non_graphical</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">StandalonePyScriptWrapper</span><span class="o">.</span><span class="n">CreateObject</span><span class="p">(</span><span class="n">version</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">non_graphical</span><span class="p">:</span>
-            <span class="n">settings</span><span class="o">.</span><span class="n">enable_desktop_logs</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="n">processID2</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">if</span> <span class="n">IsWindows</span><span class="p">:</span>
             <span class="n">processID2</span> <span class="o">=</span> <span class="n">com_active_sessions</span><span class="p">(</span><span class="n">version</span><span class="p">,</span> <span class="n">student_version</span><span class="p">,</span> <span class="n">non_graphical</span><span class="p">)</span>
@@ -1072,8 +1070,6 @@ function checkPageExistsAndRedirect(event) {
             <span class="bp">self</span><span class="o">.</span><span class="n">_main</span><span class="o">.</span><span class="n">isoutsideDesktop</span> <span class="o">=</span> <span class="kc">True</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_main</span><span class="o">.</span><span class="n">oDesktop</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_main</span><span class="o">.</span><span class="n">oAnsoftApplication</span><span class="o">.</span><span class="n">GetAppDesktop</span><span class="p">()</span>
             <span class="n">_proc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_main</span><span class="o">.</span><span class="n">oDesktop</span><span class="o">.</span><span class="n">GetProcessID</span><span class="p">()</span>
-            <span class="k">if</span> <span class="n">non_graphical</span><span class="p">:</span>
-                <span class="n">settings</span><span class="o">.</span><span class="n">enable_desktop_logs</span> <span class="o">=</span> <span class="kc">False</span>
             <span class="k">if</span> <span class="n">new_aedt_session</span><span class="p">:</span>
                 <span class="n">message</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> </span><span class="si">{}</span><span class="s2"> version started with process ID </span><span class="si">{}</span><span class="s2">.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
                     <span class="n">version</span><span class="p">,</span> <span class="s2">&quot;Student&quot;</span> <span class="k">if</span> <span class="n">student_version</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">_proc</span>
@@ -1102,17 +1098,17 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">messenger</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Messenger manager for the AEDT logger.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Messenger manager for the AEDT logger.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">pyaedt_logger</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">logger</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;AEDT logger.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;AEDT logger.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span>
 
 <div class="viewcode-block" id="Desktop.project_list"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.desktop.Desktop.project_list.html#pyaedt.desktop.Desktop.project_list">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">project_list</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Get a list of projects.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get a list of projects.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1124,7 +1120,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Desktop.analyze_all"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.desktop.Desktop.analyze_all.html#pyaedt.desktop.Desktop.analyze_all">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">analyze_all</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">design</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Analyze all setups in a project.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Analyze all setups in a project.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1155,7 +1151,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Desktop.clear_messages"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.desktop.Desktop.clear_messages.html#pyaedt.desktop.Desktop.clear_messages">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">clear_messages</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Clear all AEDT messages.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Clear all AEDT messages.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1167,7 +1163,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Desktop.save_project"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.desktop.Desktop.save_project.html#pyaedt.desktop.Desktop.save_project">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">save_project</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">project_path</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Save the project.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Save the project.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1195,7 +1191,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Desktop.copy_design"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.desktop.Desktop.copy_design.html#pyaedt.desktop.Desktop.copy_design">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">copy_design</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">design_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">target_project</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Copy a design and paste it in an existing project or new project.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Copy a design and paste it in an existing project or new project.</span>
 
 <span class="sd">        .. deprecated:: 0.6.31</span>
 <span class="sd">           Use :func:`copy_design_from` instead.</span>
@@ -1239,7 +1235,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Desktop.project_path"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.desktop.Desktop.project_path.html#pyaedt.desktop.Desktop.project_path">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">project_path</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project_name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Get the path to the project.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the path to the project.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1263,7 +1259,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Desktop.design_list"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.desktop.Desktop.design_list.html#pyaedt.desktop.Desktop.design_list">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">design_list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Get a list of the designs.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get a list of the designs.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1291,7 +1287,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Desktop.design_type"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.desktop.Desktop.design_type.html#pyaedt.desktop.Desktop.design_type">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">design_type</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">design_name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Get the type of a design.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the type of a design.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1323,7 +1319,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">personallib</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;PersonalLib directory.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;PersonalLib directory.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1335,7 +1331,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">userlib</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;UserLib directory.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;UserLib directory.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1347,7 +1343,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">syslib</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;SysLib directory.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;SysLib directory.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1359,7 +1355,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">aedt_version_id</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;AEDT version.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;AEDT version.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1373,7 +1369,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">src_dir</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Python source directory.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Python source directory.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1385,7 +1381,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">pyaedt_dir</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;PyAEDT directory.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;PyAEDT directory.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1396,7 +1392,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">src_dir</span><span class="p">,</span> <span class="s2">&quot;..&quot;</span><span class="p">))</span>
 
     <span class="k">def</span> <span class="nf">_exception</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ex_value</span><span class="p">,</span> <span class="n">tb_data</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Write the trace stack to AEDT when a Python error occurs.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Write the trace stack to AEDT when a Python error occurs.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1420,7 +1416,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">ex_value</span><span class="p">)</span>
 
 <div class="viewcode-block" id="Desktop.release_desktop"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.desktop.Desktop.release_desktop.html#pyaedt.desktop.Desktop.release_desktop">[docs]</a>    <span class="k">def</span> <span class="nf">release_desktop</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">close_projects</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">close_on_exit</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Release AEDT.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Release AEDT.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1450,7 +1446,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="k">return</span> <span class="n">result</span></div>
 
 <div class="viewcode-block" id="Desktop.force_close_desktop"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.desktop.Desktop.force_close_desktop.html#pyaedt.desktop.Desktop.force_close_desktop">[docs]</a>    <span class="k">def</span> <span class="nf">force_close_desktop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Forcibly close all projects and shut down AEDT.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Forcibly close all projects and shut down AEDT.</span>
 
 <span class="sd">        .. deprecated:: 0.4.0</span>
 <span class="sd">           Use :func:`desktop.close_desktop` instead.</span>
@@ -1465,7 +1461,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">force_close_desktop</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="Desktop.close_desktop"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.desktop.Desktop.close_desktop.html#pyaedt.desktop.Desktop.close_desktop">[docs]</a>    <span class="k">def</span> <span class="nf">close_desktop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Close all projects and shut down AEDT.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Close all projects and shut down AEDT.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1484,7 +1480,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">release_desktop</span><span class="p">(</span><span class="n">close_projects</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">close_on_exit</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Desktop.enable_autosave"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.desktop.Desktop.enable_autosave.html#pyaedt.desktop.Desktop.enable_autosave">[docs]</a>    <span class="k">def</span> <span class="nf">enable_autosave</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Enable the autosave option.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Enable the autosave option.</span>
 
 <span class="sd">        Examples</span>
 <span class="sd">        --------</span>
@@ -1498,7 +1494,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="bp">self</span><span class="o">.</span><span class="n">_main</span><span class="o">.</span><span class="n">oDesktop</span><span class="o">.</span><span class="n">EnableAutoSave</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Desktop.disable_autosave"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.desktop.Desktop.disable_autosave.html#pyaedt.desktop.Desktop.disable_autosave">[docs]</a>    <span class="k">def</span> <span class="nf">disable_autosave</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Disable the autosave option.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Disable the autosave option.</span>
 
 <span class="sd">        Examples</span>
 <span class="sd">        --------</span>
@@ -1512,7 +1508,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="bp">self</span><span class="o">.</span><span class="n">_main</span><span class="o">.</span><span class="n">oDesktop</span><span class="o">.</span><span class="n">EnableAutoSave</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Desktop.change_license_type"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.desktop.Desktop.change_license_type.html#pyaedt.desktop.Desktop.change_license_type">[docs]</a>    <span class="k">def</span> <span class="nf">change_license_type</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">license_type</span><span class="o">=</span><span class="s2">&quot;Pool&quot;</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Change the license type.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Change the license type.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1536,7 +1532,7 @@ function checkPageExistsAndRedirect(event) {
             <span class="k">return</span> <span class="kc">False</span></div>
 
 <div class="viewcode-block" id="Desktop.change_registry_key"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.desktop.Desktop.change_registry_key.html#pyaedt.desktop.Desktop.change_registry_key">[docs]</a>    <span class="k">def</span> <span class="nf">change_registry_key</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key_full_name</span><span class="p">,</span> <span class="n">key_value</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Change an AEDT registry key to a new value.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Change an AEDT registry key to a new value.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1571,7 +1567,7 @@ function checkPageExistsAndRedirect(event) {
             <span class="k">return</span> <span class="kc">False</span></div>
 
 <div class="viewcode-block" id="Desktop.change_active_dso_config_name"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.desktop.Desktop.change_active_dso_config_name.html#pyaedt.desktop.Desktop.change_active_dso_config_name">[docs]</a>    <span class="k">def</span> <span class="nf">change_active_dso_config_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">product_name</span><span class="o">=</span><span class="s2">&quot;HFSS&quot;</span><span class="p">,</span> <span class="n">config_name</span><span class="o">=</span><span class="s2">&quot;Local&quot;</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Change a specific registry key to a new value.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Change a specific registry key to a new value.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1596,7 +1592,7 @@ function checkPageExistsAndRedirect(event) {
             <span class="k">return</span> <span class="kc">False</span></div>
 
 <div class="viewcode-block" id="Desktop.change_registry_from_file"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.desktop.Desktop.change_registry_from_file.html#pyaedt.desktop.Desktop.change_registry_from_file">[docs]</a>    <span class="k">def</span> <span class="nf">change_registry_from_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">registry_file</span><span class="p">,</span> <span class="n">make_active</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Apply desktop registry settings from an ACF file.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Apply desktop registry settings from an ACF file.</span>
 
 <span class="sd">        One way to get an ACF file is to export a configuration from the AEDT UI and then edit and reuse it.</span>
 
@@ -1648,13 +1644,13 @@ function checkPageExistsAndRedirect(event) {
   
   <div class="footer-item">
     <p class="copyright">
-    &copy; Copyright (c) 2022 ANSYS, Inc. All rights reserved.<br>
+    &copy; Copyright (c) 2023 ANSYS, Inc. All rights reserved.<br>
 </p>
   </div>
   
   <div class="footer-item">
     <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 6.1.1.<br>
 </p>
   </div>
   

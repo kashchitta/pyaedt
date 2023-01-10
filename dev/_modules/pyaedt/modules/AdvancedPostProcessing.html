@@ -28,6 +28,7 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/css/ansys_sphinx_theme.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css" />
 
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
@@ -36,14 +37,11 @@
         <link href="../../../_static/css/breadcrumbs.css" rel="stylesheet">
     
     <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-    <script src="../../../_static/jquery.js"></script>
-    <script src="../../../_static/underscore.js"></script>
-    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../_static/doctools.js"></script>
     <script src="../../../_static/sphinx_highlight.js"></script>
     <script src="../../../_static/clipboard.min.js"></script>
     <script src="../../../_static/copybutton.js"></script>
-    <link rel="shortcut icon" href="../../../_static/ansys-favicon.png"/>
+    <link rel="icon" href="../../../_static/ansys-favicon.png"/>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -72,9 +70,8 @@
   
   
   
-    <img src="../../../_static/pyansys-logo-black-cropped.png" class="logo__image only-light" alt="Logo image">
-    <img src="../../../_static/pyansys-logo-black-cropped.png" class="logo__image only-dark" alt="Logo image">
   
+    <p class="title logo__title">PyAEDT</p>
   
 </a>
     
@@ -104,7 +101,13 @@
 
 <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="../../../API/index.html">
-  API reference
+  API AEDT reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../EDBAPI/index.html">
+  API EDB reference
  </a>
 </li>
 
@@ -341,7 +344,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <div class="viewcode-block" id="PostProcessor"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.AdvancedPostProcessing.PostProcessor.html#pyaedt.modules.AdvancedPostProcessing.PostProcessor">[docs]</a><span class="k">class</span> <span class="nc">PostProcessor</span><span class="p">(</span><span class="n">Post</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Contains advanced postprocessing functionalities that require Python 3.x packages like NumPy and Matplotlib.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Contains advanced postprocessing functionalities that require Python 3.x packages like NumPy and Matplotlib.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -362,7 +365,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="PostProcessor.nb_display"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.AdvancedPostProcessing.PostProcessor.nb_display.html#pyaedt.modules.AdvancedPostProcessing.PostProcessor.nb_display">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">nb_display</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">show_axis</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">show_grid</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">show_ruler</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Show the Jupyter Notebook display.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Show the Jupyter Notebook display.</span>
 
 <span class="sd">          .. note::</span>
 <span class="sd">              .assign_curvature_extraction Jupyter Notebook is not supported by IronPython.</span>
@@ -390,7 +393,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="PostProcessor.get_efields_data"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.AdvancedPostProcessing.PostProcessor.get_efields_data.html#pyaedt.modules.AdvancedPostProcessing.PostProcessor.get_efields_data">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">get_efields_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">setup_sweep_name</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">ff_setup</span><span class="o">=</span><span class="s2">&quot;Infinite Sphere1&quot;</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s2">&quot;All&quot;</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Compute Etheta and EPhi.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Compute Etheta and EPhi.</span>
 
 <span class="sd">        .. warning::</span>
 <span class="sd">           This method requires NumPy to be installed on your machine.</span>
@@ -478,7 +481,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">generate_mesh</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
         <span class="n">get_objects_from_aedt</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Initialize the Model Plotter object with actual modeler objects and return it.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialize the Model Plotter object with actual modeler objects and return it.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -540,7 +543,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">array_coordinates</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">view</span><span class="o">=</span><span class="s2">&quot;isometric&quot;</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Plot the model or a substet of objects.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Plot the model or a substet of objects.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -610,7 +613,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">plot_cad_objs</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
         <span class="n">log_scale</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Export a field plot to an image file (JPG or PNG) using Python PyVista.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Export a field plot to an image file (JPG or PNG) using Python PyVista.</span>
 
 <span class="sd">        .. note::</span>
 <span class="sd">           The PyVista module rebuilds the mesh and the overlap fields on the mesh.</span>
@@ -679,7 +682,6 @@ function checkPageExistsAndRedirect(event) {
             <span class="n">model</span><span class="o">.</span><span class="n">range_max</span> <span class="o">=</span> <span class="n">scale_max</span>
         <span class="k">if</span> <span class="n">show</span> <span class="ow">or</span> <span class="n">project_path</span><span class="p">:</span>
             <span class="n">model</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">project_path</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">project_name</span> <span class="o">+</span> <span class="s2">&quot;.&quot;</span> <span class="o">+</span> <span class="n">imageformat</span><span class="p">))</span>
-            <span class="n">model</span><span class="o">.</span><span class="n">clean_cache_and_files</span><span class="p">(</span><span class="n">clean_cache</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">model</span></div>
 
 <div class="viewcode-block" id="PostProcessor.animate_fields_from_aedtplt"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.AdvancedPostProcessing.PostProcessor.animate_fields_from_aedtplt.html#pyaedt.modules.AdvancedPostProcessing.PostProcessor.animate_fields_from_aedtplt">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
@@ -694,7 +696,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">export_gif</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
         <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Generate a field plot to an image file (JPG or PNG) using PyVista.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Generate a field plot to an image file (JPG or PNG) using PyVista.</span>
 
 <span class="sd">        .. note::</span>
 <span class="sd">           The PyVista module rebuilds the mesh and the overlap fields on the mesh.</span>
@@ -759,7 +761,6 @@ function checkPageExistsAndRedirect(event) {
 
         <span class="k">if</span> <span class="n">show</span> <span class="ow">or</span> <span class="n">export_gif</span><span class="p">:</span>
             <span class="n">model</span><span class="o">.</span><span class="n">animate</span><span class="p">()</span>
-            <span class="n">model</span><span class="o">.</span><span class="n">clean_cache_and_files</span><span class="p">(</span><span class="n">clean_cache</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">model</span></div>
 
 <div class="viewcode-block" id="PostProcessor.animate_fields_from_aedtplt_2"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.AdvancedPostProcessing.PostProcessor.animate_fields_from_aedtplt_2.html#pyaedt.modules.AdvancedPostProcessing.PostProcessor.animate_fields_from_aedtplt_2">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
@@ -779,7 +780,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">zoom</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">log_scale</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Generate a field plot to an animated gif file using PyVista.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Generate a field plot to an animated gif file using PyVista.</span>
 
 <span class="sd">         .. note::</span>
 <span class="sd">            The PyVista module rebuilds the mesh and the overlap fields on the mesh.</span>
@@ -857,15 +858,13 @@ function checkPageExistsAndRedirect(event) {
             <span class="n">model</span><span class="o">.</span><span class="n">zoom</span> <span class="o">=</span> <span class="n">zoom</span>
         <span class="k">if</span> <span class="n">show</span> <span class="ow">or</span> <span class="n">export_gif</span><span class="p">:</span>
             <span class="n">model</span><span class="o">.</span><span class="n">animate</span><span class="p">()</span>
-            <span class="n">model</span><span class="o">.</span><span class="n">clean_cache_and_files</span><span class="p">(</span><span class="n">clean_cache</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-
         <span class="k">return</span> <span class="n">model</span></div>
 
 <div class="viewcode-block" id="PostProcessor.create_3d_plot"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.AdvancedPostProcessing.PostProcessor.create_3d_plot.html#pyaedt.modules.AdvancedPostProcessing.PostProcessor.create_3d_plot">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">create_3d_plot</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">solution_data</span><span class="p">,</span> <span class="n">nominal_sweep</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">nominal_value</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">primary_sweep</span><span class="o">=</span><span class="s2">&quot;Theta&quot;</span><span class="p">,</span> <span class="n">secondary_sweep</span><span class="o">=</span><span class="s2">&quot;Phi&quot;</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a 3D plot using Matplotlib.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a 3D plot using Matplotlib.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -893,7 +892,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="PostProcessor.plot_scene"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.AdvancedPostProcessing.PostProcessor.plot_scene.html#pyaedt.modules.AdvancedPostProcessing.PostProcessor.plot_scene">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">plot_scene</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">frames_list</span><span class="p">,</span> <span class="n">output_gif_path</span><span class="p">,</span> <span class="n">norm_index</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">dy_rng</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">fps</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">view</span><span class="o">=</span><span class="s2">&quot;yz&quot;</span><span class="p">,</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Plot the current model 3D scene with overlapping animation coming from a file list and save the gif.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Plot the current model 3D scene with overlapping animation coming from a file list and save the gif.</span>
 
 
 <span class="sd">        Parameters</span>
@@ -978,13 +977,13 @@ function checkPageExistsAndRedirect(event) {
   
   <div class="footer-item">
     <p class="copyright">
-    &copy; Copyright (c) 2022 ANSYS, Inc. All rights reserved.<br>
+    &copy; Copyright (c) 2023 ANSYS, Inc. All rights reserved.<br>
 </p>
   </div>
   
   <div class="footer-item">
     <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 6.1.1.<br>
 </p>
   </div>
   

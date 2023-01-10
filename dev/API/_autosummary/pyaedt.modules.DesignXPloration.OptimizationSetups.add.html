@@ -29,6 +29,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/ansys_sphinx_theme.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
 
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
@@ -37,14 +38,11 @@
         <link href="../../_static/css/breadcrumbs.css" rel="stylesheet">
     
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/sphinx_highlight.js"></script>
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
-    <link rel="shortcut icon" href="../../_static/ansys-favicon.png"/>
+    <link rel="icon" href="../../_static/ansys-favicon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="delete" href="pyaedt.modules.DesignXPloration.OptimizationSetups.delete.html" />
@@ -75,9 +73,8 @@
   
   
   
-    <img src="../../_static/pyansys-logo-black-cropped.png" class="logo__image only-light" alt="Logo image">
-    <img src="../../_static/pyansys-logo-black-cropped.png" class="logo__image only-dark" alt="Logo image">
   
+    <p class="title logo__title">PyAEDT</p>
   
 </a>
     
@@ -107,7 +104,13 @@
 
 <li class="toctree-l1 current active nav-item">
  <a class="reference internal nav-link" href="../index.html">
-  API reference
+  API AEDT reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../EDBAPI/index.html">
+  API EDB reference
  </a>
 </li>
 
@@ -263,8 +266,8 @@ function checkPageExistsAndRedirect(event) {
         <li class="nav-item nav-item-0"><a href="../../index.html">PyAEDT</a> » </li>
     
 
-          <li class="nav-item nav-item-1"><a href="../index.html" >API reference</a> » </li>
-          <li class="nav-item nav-item-2"><a href="../CoreModules.html" >AEDT modules</a> » </li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >API AEDT reference</a> » </li>
+          <li class="nav-item nav-item-2"><a href="../Optimetrics.html" >Optimetrics</a> » </li>
           <li class="nav-item nav-item-3"><a href="pyaedt.modules.DesignXPloration.OptimizationSetups.html" accesskey="U">pyaedt.modules.DesignXPloration.OptimizationSetups</a> » </li>
         <li class="nav-item nav-item-this"><a href="">add</a></li> 
       </ul>
@@ -289,16 +292,6 @@ function checkPageExistsAndRedirect(event) {
     
     <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../Common.html">
-   Desktop and common classes
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../CoreEdb.html">
-   EDB editor
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="../Application.html">
    AEDT apps
   </a>
@@ -309,13 +302,48 @@ function checkPageExistsAndRedirect(event) {
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../Primitives.html">
-   Modeler and  primitives
+  <a class="reference internal" href="../Primitives3D.html">
+   Modeler in 2D and 3D
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Primitives3DLayout.html">
+   Modeler in  HFSS 3D Layout
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../PrimitivesCircuit.html">
+   Modeler and components Circuit
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Boundaries.html">
+   Boundary objects
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Mesh.html">
+   Mesh operations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Setup.html">
+   Setup
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Post.html">
+   Postprocessing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../DesktopMessenger.html">
+   Logger
   </a>
  </li>
  <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="../CoreModules.html">
-   AEDT modules
+  <a class="reference internal" href="../Optimetrics.html">
+   Optimetrics
   </a>
   <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
@@ -323,26 +351,6 @@ function checkPageExistsAndRedirect(event) {
    </i>
   </label>
   <ul class="current">
-   <li class="toctree-l2">
-    <a class="reference internal" href="pyaedt.application.Variables.CSVDataset.html">
-     pyaedt.application.Variables.CSVDataset
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="pyaedt.application.Variables.VariableManager.html">
-     pyaedt.application.Variables.VariableManager
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="pyaedt.application.Variables.Variable.html">
-     pyaedt.application.Variables.Variable
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="pyaedt.application.Variables.DataSet.html">
-     pyaedt.application.Variables.DataSet
-    </a>
-   </li>
    <li class="toctree-l2">
     <a class="reference internal" href="pyaedt.modules.DesignXPloration.ParametricSetups.html">
      pyaedt.modules.DesignXPloration.ParametricSetups
@@ -390,31 +398,31 @@ function checkPageExistsAndRedirect(event) {
      pyaedt.modules.DesignXPloration.SetupOpti
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Boundaries.html">
-     Boundary objects
-    </a>
-   </li>
   </ul>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../Mesh.html">
-   Mesh operations
+  <a class="reference internal" href="../Variables.html">
+   Variable
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Constants.html">
+   Constants
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Configuration.html">
+   Configuration files
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../SetupTemplates.html">
+   Setup templates
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../CableModeling.html">
    Cable modeling
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../Setup.html">
-   Setup
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../Post.html">
-   Postprocessing
   </a>
  </li>
 </ul>
@@ -446,7 +454,7 @@ function checkPageExistsAndRedirect(event) {
   <a class="reference internal nav-link" href="#pyaedt.modules.DesignXPloration.OptimizationSetups.add">
    <code class="docutils literal notranslate">
     <span class="pre">
-     OptimizationSetups.add()
+     add()
     </span>
    </code>
   </a>
@@ -482,8 +490,8 @@ function checkPageExistsAndRedirect(event) {
 <dl class="py method">
 <dt class="sig sig-object py" id="pyaedt.modules.DesignXPloration.OptimizationSetups.add">
 <span class="sig-prename descclassname"><span class="pre">OptimizationSetups.</span></span><span class="sig-name descname"><span class="pre">add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">calculation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ranges</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variables</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">optim_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Optimization'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">condition</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'&lt;='</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">goal_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">goal_weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">solution</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parametricname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subdesign_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">polyline_points</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">report_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pyaedt/modules/DesignXPloration.html#OptimizationSetups.add"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyaedt.modules.DesignXPloration.OptimizationSetups.add" title="Permalink to this definition">#</a></dt>
-<dd><p>Add a basic optimization analysis.</p>
-<p>You can customize all options after the analysis is added.</p>
+<dd><p>Add a basic optimization analysis.
+You can customize all options after the analysis is added.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
@@ -497,7 +505,7 @@ It includes intrinsics like “Freq”, “Time”, “Theta”, “Distance”.
 </dd>
 <dt><strong>optim_type</strong><span class="classifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">strm</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Optimization Type.
 Possible values are <cite>“Optimization”</cite>, <cite>“DXDOE”</cite>,`”DesignExplorer”<cite>,</cite>”Sensitivity”<cite>,</cite>”Statistical”`
-and <a href="#id1"><span class="problematic" id="id2">`</span></a>”optiSLang”’.</p>
+and <cite>“optiSLang”</cite>.</p>
 </dd>
 <dt><strong>condition</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#str" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>The default is <code class="docutils literal notranslate"><span class="pre">&quot;&lt;=&quot;</span></code>.</p>
 </dd>
@@ -555,13 +563,13 @@ default name is assigned.</p>
   
   <div class="footer-item">
     <p class="copyright">
-    &copy; Copyright (c) 2022 ANSYS, Inc. All rights reserved.<br>
+    &copy; Copyright (c) 2023 ANSYS, Inc. All rights reserved.<br>
 </p>
   </div>
   
   <div class="footer-item">
     <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 6.1.1.<br>
 </p>
   </div>
   

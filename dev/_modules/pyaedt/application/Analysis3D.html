@@ -28,6 +28,7 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/css/ansys_sphinx_theme.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css" />
 
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
@@ -36,14 +37,11 @@
         <link href="../../../_static/css/breadcrumbs.css" rel="stylesheet">
     
     <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-    <script src="../../../_static/jquery.js"></script>
-    <script src="../../../_static/underscore.js"></script>
-    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../_static/doctools.js"></script>
     <script src="../../../_static/sphinx_highlight.js"></script>
     <script src="../../../_static/clipboard.min.js"></script>
     <script src="../../../_static/copybutton.js"></script>
-    <link rel="shortcut icon" href="../../../_static/ansys-favicon.png"/>
+    <link rel="icon" href="../../../_static/ansys-favicon.png"/>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -72,9 +70,8 @@
   
   
   
-    <img src="../../../_static/pyansys-logo-black-cropped.png" class="logo__image only-light" alt="Logo image">
-    <img src="../../../_static/pyansys-logo-black-cropped.png" class="logo__image only-dark" alt="Logo image">
   
+    <p class="title logo__title">PyAEDT</p>
   
 </a>
     
@@ -104,7 +101,13 @@
 
 <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="../../../API/index.html">
-  API reference
+  API AEDT reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../EDBAPI/index.html">
+  API EDB reference
  </a>
 </li>
 
@@ -320,9 +323,9 @@ function checkPageExistsAndRedirect(event) {
 <span class="kn">from</span> <span class="nn">pyaedt.generic.general_methods</span> <span class="kn">import</span> <span class="n">is_ironpython</span>
 <span class="kn">from</span> <span class="nn">pyaedt.generic.general_methods</span> <span class="kn">import</span> <span class="n">open_file</span>
 <span class="kn">from</span> <span class="nn">pyaedt.generic.general_methods</span> <span class="kn">import</span> <span class="n">pyaedt_function_handler</span>
-<span class="kn">from</span> <span class="nn">pyaedt.modeler.Model2D</span> <span class="kn">import</span> <span class="n">Modeler2D</span>
-<span class="kn">from</span> <span class="nn">pyaedt.modeler.Model3D</span> <span class="kn">import</span> <span class="n">Modeler3D</span>
-<span class="kn">from</span> <span class="nn">pyaedt.modeler.stackup_3d</span> <span class="kn">import</span> <span class="n">Stackup3D</span>
+<span class="kn">from</span> <span class="nn">pyaedt.modeler.advanced_cad.stackup_3d</span> <span class="kn">import</span> <span class="n">Stackup3D</span>
+<span class="kn">from</span> <span class="nn">pyaedt.modeler.modeler2d</span> <span class="kn">import</span> <span class="n">Modeler2D</span>
+<span class="kn">from</span> <span class="nn">pyaedt.modeler.modeler3d</span> <span class="kn">import</span> <span class="n">Modeler3D</span>
 <span class="kn">from</span> <span class="nn">pyaedt.modules.Mesh</span> <span class="kn">import</span> <span class="n">Mesh</span>
 <span class="kn">from</span> <span class="nn">pyaedt.modules.MeshIcepak</span> <span class="kn">import</span> <span class="n">IcepakMesh</span>
 
@@ -333,7 +336,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <span class="k">class</span> <span class="nc">FieldAnalysis3D</span><span class="p">(</span><span class="n">Analysis</span><span class="p">,</span> <span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Manages 3D field analysis setup in HFSS, Maxwell 3D, and Q3D.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Manages 3D field analysis setup in HFSS, Maxwell 3D, and Q3D.</span>
 
 <span class="sd">    This class is automatically initialized by an application call from one of</span>
 <span class="sd">    the 3D tools. See the application function for parameter definitions.</span>
@@ -417,7 +420,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">configurations</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Property to import and export configuration files.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Property to import and export configuration files.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -427,17 +430,17 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">modeler</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Modeler.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Modeler.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        :class:`pyaedt.modeler.Model3D.Modeler3D` or :class:`pyaedt.modeler.Model2D.Modeler2D`</span>
+<span class="sd">        :class:`pyaedt.modeler.modeler3d.Modeler3D` or :class:`pyaedt.modeler.modeler2d.Modeler2D`</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_modeler</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">mesh</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Mesh.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Mesh.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -447,7 +450,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">components3d</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;3D components.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;3D components.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -490,7 +493,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">clean_files</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
         <span class="n">view</span><span class="o">=</span><span class="s2">&quot;isometric&quot;</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Plot the model or a subset of objects.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Plot the model or a subset of objects.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -541,7 +544,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">export_mesh_stats</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">setup_name</span><span class="p">,</span> <span class="n">variation_string</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">mesh_path</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Export mesh statistics to a file.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Export mesh statistics to a file.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -569,7 +572,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">get_components3d_vars</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">component3dname</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Read the A3DCOMP file and check for variables.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Read the A3DCOMP file and check for variables.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -618,7 +621,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">get_property_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">objectname</span><span class="p">,</span> <span class="nb">property</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve a property value.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve a property value.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -680,7 +683,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">copy_solid_bodies_from</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">design</span><span class="p">,</span> <span class="n">object_list</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">no_vacuum</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">no_pec</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">include_sheets</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Copy a list of objects and user defined models from one design to the active design.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Copy a list of objects and user defined models from one design to the active design.</span>
 <span class="sd">        If user defined models are selected, the project will be saved automatically.</span>
 
 <span class="sd">        Parameters</span>
@@ -762,7 +765,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">export3DModel</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fileName</span><span class="p">,</span> <span class="n">filePath</span><span class="p">,</span> <span class="n">fileFormat</span><span class="o">=</span><span class="s2">&quot;.step&quot;</span><span class="p">,</span> <span class="n">object_list</span><span class="o">=</span><span class="p">[],</span> <span class="n">removed_objects</span><span class="o">=</span><span class="p">[]):</span>
-        <span class="sd">&quot;&quot;&quot;Export the 3D model.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Export the 3D model.</span>
 
 <span class="sd">        .. deprecated:: 0.5.0</span>
 <span class="sd">           Use :func:`pyaedt.application.Analysis3D.modeler.export_3d_model` instead.</span>
@@ -773,7 +776,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">export_3d_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fileName</span><span class="p">,</span> <span class="n">filePath</span><span class="p">,</span> <span class="n">fileFormat</span><span class="o">=</span><span class="s2">&quot;.step&quot;</span><span class="p">,</span> <span class="n">object_list</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">removed_objects</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Export the 3D model.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Export the 3D model.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -844,7 +847,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">get_all_sources</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve all setup sources.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve all setup sources.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -860,7 +863,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">set_source_context</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sources</span><span class="p">,</span> <span class="n">number_of_modes</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Set the source context.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set the source context.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -892,7 +895,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">assign_material</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="n">mat</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Assign a material to one or more objects.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Assign a material to one or more objects.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -995,7 +998,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">get_all_conductors_names</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve all conductors in the active design.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve all conductors in the active design.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1018,7 +1021,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">get_all_dielectrics_names</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve all dielectrics in the active design.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve all dielectrics in the active design.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1054,7 +1057,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">assignmaterial_from_sherlock_files</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">csv_component</span><span class="p">,</span> <span class="n">csv_material</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Assign material to objects in a design based on a CSV file obtained from Sherlock.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Assign material to objects in a design based on a CSV file obtained from Sherlock.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1168,7 +1171,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">cleanup_solution</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">variations</span><span class="o">=</span><span class="s2">&quot;All&quot;</span><span class="p">,</span> <span class="n">entire_solution</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">field</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">mesh</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">linked_data</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Delete a set of Solution Variations or part of them.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Delete a set of Solution Variations or part of them.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1201,7 +1204,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span>
     <span class="k">def</span> <span class="nf">add_stackup_3d</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a stackup 3D object.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a stackup 3D object.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1212,7 +1215,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">flatten_3d_components</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">component_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">purge_history</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Flatten one or multiple 3d components in the actual layout. Each 3d Component is replaced with objects.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Flatten one or multiple 3d components in the actual layout. Each 3d Component is replaced with objects.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1269,13 +1272,13 @@ function checkPageExistsAndRedirect(event) {
   
   <div class="footer-item">
     <p class="copyright">
-    &copy; Copyright (c) 2022 ANSYS, Inc. All rights reserved.<br>
+    &copy; Copyright (c) 2023 ANSYS, Inc. All rights reserved.<br>
 </p>
   </div>
   
   <div class="footer-item">
     <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 6.1.1.<br>
 </p>
   </div>
   

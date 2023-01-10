@@ -28,6 +28,7 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/css/ansys_sphinx_theme.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css" />
 
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
@@ -36,14 +37,11 @@
         <link href="../../../_static/css/breadcrumbs.css" rel="stylesheet">
     
     <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-    <script src="../../../_static/jquery.js"></script>
-    <script src="../../../_static/underscore.js"></script>
-    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../_static/doctools.js"></script>
     <script src="../../../_static/sphinx_highlight.js"></script>
     <script src="../../../_static/clipboard.min.js"></script>
     <script src="../../../_static/copybutton.js"></script>
-    <link rel="shortcut icon" href="../../../_static/ansys-favicon.png"/>
+    <link rel="icon" href="../../../_static/ansys-favicon.png"/>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -72,9 +70,8 @@
   
   
   
-    <img src="../../../_static/pyansys-logo-black-cropped.png" class="logo__image only-light" alt="Logo image">
-    <img src="../../../_static/pyansys-logo-black-cropped.png" class="logo__image only-dark" alt="Logo image">
   
+    <p class="title logo__title">PyAEDT</p>
   
 </a>
     
@@ -104,7 +101,13 @@
 
 <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="../../../API/index.html">
-  API reference
+  API AEDT reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../EDBAPI/index.html">
+  API EDB reference
  </a>
 </li>
 
@@ -325,7 +328,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <div class="viewcode-block" id="db20"><a class="viewcode-back" href="../../../API/Constants.html#pyaedt.generic.constants.db20">[docs]</a><span class="k">def</span> <span class="nf">db20</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">inverse</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Convert db20 to decimal and vice versa.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert db20 to decimal and vice versa.&quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">inverse</span><span class="p">:</span>
         <span class="k">return</span> <span class="mi">20</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
@@ -333,7 +336,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <div class="viewcode-block" id="db10"><a class="viewcode-back" href="../../../API/Constants.html#pyaedt.generic.constants.db10">[docs]</a><span class="k">def</span> <span class="nf">db10</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">inverse</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Convert db10 to decimal and vice versa.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert db10 to decimal and vice versa.&quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">inverse</span><span class="p">:</span>
         <span class="k">return</span> <span class="mi">10</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
@@ -341,7 +344,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <div class="viewcode-block" id="fah2kel"><a class="viewcode-back" href="../../../API/Constants.html#pyaedt.generic.constants.fah2kel">[docs]</a><span class="k">def</span> <span class="nf">fah2kel</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="n">inverse</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Convert a temperature from Fahrenheit to Kelvin.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert a temperature from Fahrenheit to Kelvin.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -363,7 +366,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <div class="viewcode-block" id="cel2kel"><a class="viewcode-back" href="../../../API/Constants.html#pyaedt.generic.constants.cel2kel">[docs]</a><span class="k">def</span> <span class="nf">cel2kel</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="n">inverse</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Convert a temperature from Celsius to Kelvin.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert a temperature from Celsius to Kelvin.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -386,7 +389,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <div class="viewcode-block" id="unit_system"><a class="viewcode-back" href="../../../API/Constants.html#pyaedt.generic.constants.unit_system">[docs]</a><span class="k">def</span> <span class="nf">unit_system</span><span class="p">(</span><span class="n">units</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Retrieve the name of the unit system associated with a unit string.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Retrieve the name of the unit system associated with a unit string.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -409,7 +412,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <span class="k">def</span> <span class="nf">_resolve_unit_system</span><span class="p">(</span><span class="n">unit_system_1</span><span class="p">,</span> <span class="n">unit_system_2</span><span class="p">,</span> <span class="n">operation</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Retrieve the unit string of an arithmetic operation on ``Variable`` objects. If no resulting unit system</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Retrieve the unit string of an arithmetic operation on ``Variable`` objects. If no resulting unit system</span>
 <span class="sd">    is defined for a specific operation (in unit_system_operations), an empty string is returned</span>
 
 <span class="sd">    Parameters</span>
@@ -436,7 +439,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <div class="viewcode-block" id="unit_converter"><a class="viewcode-back" href="../../../API/Constants.html#pyaedt.generic.constants.unit_converter">[docs]</a><span class="k">def</span> <span class="nf">unit_converter</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">unit_system</span><span class="o">=</span><span class="s2">&quot;Length&quot;</span><span class="p">,</span> <span class="n">input_units</span><span class="o">=</span><span class="s2">&quot;meter&quot;</span><span class="p">,</span> <span class="n">output_units</span><span class="o">=</span><span class="s2">&quot;mm&quot;</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Convert unit in specified unit system.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert unit in specified unit system.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -473,7 +476,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <div class="viewcode-block" id="scale_units"><a class="viewcode-back" href="../../../API/Constants.html#pyaedt.generic.constants.scale_units">[docs]</a><span class="k">def</span> <span class="nf">scale_units</span><span class="p">(</span><span class="n">scale_to_unit</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Find the scale_to_unit into main system unit.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Find the scale_to_unit into main system unit.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -498,7 +501,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <div class="viewcode-block" id="validate_enum_class_value"><a class="viewcode-back" href="../../../API/Constants.html#pyaedt.generic.constants.validate_enum_class_value">[docs]</a><span class="k">def</span> <span class="nf">validate_enum_class_value</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Check whether the value for the class ``enumeration-class`` is valid.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Check whether the value for the class ``enumeration-class`` is valid.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -816,49 +819,49 @@ function checkPageExistsAndRedirect(event) {
 
 
 <div class="viewcode-block" id="INFINITE_SPHERE_TYPE"><a class="viewcode-back" href="../../../API/Constants.html#pyaedt.generic.constants.INFINITE_SPHERE_TYPE">[docs]</a><span class="k">class</span> <span class="nc">INFINITE_SPHERE_TYPE</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;INFINITE_SPHERE_TYPE Enumerator class.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;INFINITE_SPHERE_TYPE Enumerator class.&quot;&quot;&quot;</span>
 
     <span class="p">(</span><span class="n">ThetaPhi</span><span class="p">,</span> <span class="n">AzOverEl</span><span class="p">,</span> <span class="n">ElOverAz</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;Theta-Phi&quot;</span><span class="p">,</span> <span class="s2">&quot;Az Over El&quot;</span><span class="p">,</span> <span class="s2">&quot;El Over Az&quot;</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="FILLET"><a class="viewcode-back" href="../../../API/Constants.html#pyaedt.generic.constants.FILLET">[docs]</a><span class="k">class</span> <span class="nc">FILLET</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;FilletType Enumerator class.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;FilletType Enumerator class.&quot;&quot;&quot;</span>
 
     <span class="p">(</span><span class="n">Round</span><span class="p">,</span> <span class="n">Mitered</span><span class="p">)</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="AXIS"><a class="viewcode-back" href="../../../API/Constants.html#pyaedt.generic.constants.AXIS">[docs]</a><span class="k">class</span> <span class="nc">AXIS</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;CoordinateSystemAxis Enumerator class.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;CoordinateSystemAxis Enumerator class.&quot;&quot;&quot;</span>
 
     <span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Z</span><span class="p">)</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="PLANE"><a class="viewcode-back" href="../../../API/Constants.html#pyaedt.generic.constants.PLANE">[docs]</a><span class="k">class</span> <span class="nc">PLANE</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;CoordinateSystemPlane Enumerator class.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;CoordinateSystemPlane Enumerator class.&quot;&quot;&quot;</span>
 
     <span class="p">(</span><span class="n">YZ</span><span class="p">,</span> <span class="n">ZX</span><span class="p">,</span> <span class="n">XY</span><span class="p">)</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="GRAVITY"><a class="viewcode-back" href="../../../API/Constants.html#pyaedt.generic.constants.GRAVITY">[docs]</a><span class="k">class</span> <span class="nc">GRAVITY</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;GravityDirection Enumerator class.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;GravityDirection Enumerator class.&quot;&quot;&quot;</span>
 
     <span class="p">(</span><span class="n">XNeg</span><span class="p">,</span> <span class="n">YNeg</span><span class="p">,</span> <span class="n">ZNeg</span><span class="p">,</span> <span class="n">XPos</span><span class="p">,</span> <span class="n">YPos</span><span class="p">,</span> <span class="n">ZPos</span><span class="p">)</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="VIEW"><a class="viewcode-back" href="../../../API/Constants.html#pyaedt.generic.constants.VIEW">[docs]</a><span class="k">class</span> <span class="nc">VIEW</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;View Enumerator class.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;View Enumerator class.&quot;&quot;&quot;</span>
 
     <span class="p">(</span><span class="n">XY</span><span class="p">,</span> <span class="n">YZ</span><span class="p">,</span> <span class="n">ZX</span><span class="p">,</span> <span class="n">ISO</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;XY&quot;</span><span class="p">,</span> <span class="s2">&quot;YZ&quot;</span><span class="p">,</span> <span class="s2">&quot;ZX&quot;</span><span class="p">,</span> <span class="s2">&quot;iso&quot;</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="GLOBALCS"><a class="viewcode-back" href="../../../API/Constants.html#pyaedt.generic.constants.GLOBALCS">[docs]</a><span class="k">class</span> <span class="nc">GLOBALCS</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;GlobalCS Enumerator class.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;GlobalCS Enumerator class.&quot;&quot;&quot;</span>
 
     <span class="p">(</span><span class="n">XY</span><span class="p">,</span> <span class="n">YZ</span><span class="p">,</span> <span class="n">ZX</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;Global:XY&quot;</span><span class="p">,</span> <span class="s2">&quot;Global:YZ&quot;</span><span class="p">,</span> <span class="s2">&quot;Global:XZ&quot;</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="MATRIXOPERATIONSQ3D"><a class="viewcode-back" href="../../../API/Constants.html#pyaedt.generic.constants.MATRIXOPERATIONSQ3D">[docs]</a><span class="k">class</span> <span class="nc">MATRIXOPERATIONSQ3D</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Matrix Reduction types.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Matrix Reduction types.&quot;&quot;&quot;</span>
 
     <span class="p">(</span><span class="n">JoinSeries</span><span class="p">,</span> <span class="n">JoinParallel</span><span class="p">,</span> <span class="n">FloatNet</span><span class="p">,</span> <span class="n">GroundNet</span><span class="p">,</span> <span class="n">FloatTerminal</span><span class="p">,</span> <span class="n">FloatInfinity</span><span class="p">,</span> <span class="n">ReturnPath</span><span class="p">,</span> <span class="n">AddSink</span><span class="p">,</span> <span class="n">MoveSink</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span>
         <span class="s2">&quot;JoinSeries&quot;</span><span class="p">,</span>
@@ -874,7 +877,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <div class="viewcode-block" id="MATRIXOPERATIONSQ2D"><a class="viewcode-back" href="../../../API/Constants.html#pyaedt.generic.constants.MATRIXOPERATIONSQ2D">[docs]</a><span class="k">class</span> <span class="nc">MATRIXOPERATIONSQ2D</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Matrix Reduction types.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Matrix Reduction types.&quot;&quot;&quot;</span>
 
     <span class="p">(</span><span class="n">AddGround</span><span class="p">,</span> <span class="n">SetReferenceGround</span><span class="p">,</span> <span class="n">Float</span><span class="p">,</span> <span class="n">Parallel</span><span class="p">,</span> <span class="n">DiffPair</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span>
         <span class="s2">&quot;AddGround&quot;</span><span class="p">,</span>
@@ -886,7 +889,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <div class="viewcode-block" id="CATEGORIESQ3D"><a class="viewcode-back" href="../../../API/Constants.html#pyaedt.generic.constants.CATEGORIESQ3D">[docs]</a><span class="k">class</span> <span class="nc">CATEGORIESQ3D</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Plot Categories for Q2d and Q3d.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Plot Categories for Q2d and Q3d.&quot;&quot;&quot;</span>
 
     <span class="k">class</span> <span class="nc">Q2D</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
         <span class="p">(</span>
@@ -909,37 +912,37 @@ function checkPageExistsAndRedirect(event) {
 
 
 <div class="viewcode-block" id="CSMODE"><a class="viewcode-back" href="../../../API/Constants.html#pyaedt.generic.constants.CSMODE">[docs]</a><span class="k">class</span> <span class="nc">CSMODE</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;COORDINATE SYSTEM MODE Enumerator class.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;COORDINATE SYSTEM MODE Enumerator class.&quot;&quot;&quot;</span>
 
     <span class="p">(</span><span class="n">View</span><span class="p">,</span> <span class="n">Axis</span><span class="p">,</span> <span class="n">ZXZ</span><span class="p">,</span> <span class="n">ZYZ</span><span class="p">,</span> <span class="n">AXISROTATION</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;view&quot;</span><span class="p">,</span> <span class="s2">&quot;axis&quot;</span><span class="p">,</span> <span class="s2">&quot;zxz&quot;</span><span class="p">,</span> <span class="s2">&quot;zyz&quot;</span><span class="p">,</span> <span class="s2">&quot;axisrotation&quot;</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="SEGMENTTYPE"><a class="viewcode-back" href="../../../API/Constants.html#pyaedt.generic.constants.SEGMENTTYPE">[docs]</a><span class="k">class</span> <span class="nc">SEGMENTTYPE</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;CROSSSECTION Enumerator class.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;CROSSSECTION Enumerator class.&quot;&quot;&quot;</span>
 
     <span class="p">(</span><span class="n">Line</span><span class="p">,</span> <span class="n">Arc</span><span class="p">,</span> <span class="n">Spline</span><span class="p">,</span> <span class="n">AngularArc</span><span class="p">)</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="CROSSSECTION"><a class="viewcode-back" href="../../../API/Constants.html#pyaedt.generic.constants.CROSSSECTION">[docs]</a><span class="k">class</span> <span class="nc">CROSSSECTION</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;CROSSSECTION Enumerator class.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;CROSSSECTION Enumerator class.&quot;&quot;&quot;</span>
 
     <span class="p">(</span><span class="n">NONE</span><span class="p">,</span> <span class="n">Line</span><span class="p">,</span> <span class="n">Circle</span><span class="p">,</span> <span class="n">Rectangle</span><span class="p">,</span> <span class="n">Trapezoid</span><span class="p">)</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="SWEEPDRAFT"><a class="viewcode-back" href="../../../API/Constants.html#pyaedt.generic.constants.SWEEPDRAFT">[docs]</a><span class="k">class</span> <span class="nc">SWEEPDRAFT</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;SweepDraftType Enumerator class.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;SweepDraftType Enumerator class.&quot;&quot;&quot;</span>
 
     <span class="p">(</span><span class="n">Extended</span><span class="p">,</span> <span class="n">Round</span><span class="p">,</span> <span class="n">Natural</span><span class="p">,</span> <span class="n">Mixed</span><span class="p">)</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="FlipChipOrientation"><a class="viewcode-back" href="../../../API/Constants.html#pyaedt.generic.constants.FlipChipOrientation">[docs]</a><span class="k">class</span> <span class="nc">FlipChipOrientation</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Chip orientation enumerator class.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Chip orientation enumerator class.&quot;&quot;&quot;</span>
 
     <span class="p">(</span><span class="n">Up</span><span class="p">,</span> <span class="n">Down</span><span class="p">)</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="SolverType"><a class="viewcode-back" href="../../../API/Constants.html#pyaedt.generic.constants.SolverType">[docs]</a><span class="k">class</span> <span class="nc">SolverType</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Provides solver type classes.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Provides solver type classes.&quot;&quot;&quot;</span>
 
     <span class="p">(</span><span class="n">Hfss</span><span class="p">,</span> <span class="n">Siwave</span><span class="p">,</span> <span class="n">Q3D</span><span class="p">,</span> <span class="n">Maxwell</span><span class="p">,</span> <span class="n">Nexxim</span><span class="p">,</span> <span class="n">TwinBuilder</span><span class="p">,</span> <span class="n">Hfss3dLayout</span><span class="p">,</span> <span class="n">SiwaveSYZ</span><span class="p">,</span> <span class="n">SiwaveDC</span><span class="p">)</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span></div>
 
@@ -957,7 +960,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <div class="viewcode-block" id="BasisOrder"><a class="viewcode-back" href="../../../API/Constants.html#pyaedt.generic.constants.BasisOrder">[docs]</a><span class="k">class</span> <span class="nc">BasisOrder</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Enumeration-class for HFSS basis order settings.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Enumeration-class for HFSS basis order settings.</span>
 
 
 <span class="sd">    Warning: the value ``single`` has been renamed to ``Single`` for consistency. Please update references to</span>
@@ -968,22 +971,22 @@ function checkPageExistsAndRedirect(event) {
 
 
 <div class="viewcode-block" id="NodeType"><a class="viewcode-back" href="../../../API/Constants.html#pyaedt.generic.constants.NodeType">[docs]</a><span class="k">class</span> <span class="nc">NodeType</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Type of node for source creation.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Type of node for source creation.&quot;&quot;&quot;</span>
 
     <span class="p">(</span><span class="n">Positive</span><span class="p">,</span> <span class="n">Negative</span><span class="p">,</span> <span class="n">Floating</span><span class="p">)</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="SourceType"><a class="viewcode-back" href="../../../API/Constants.html#pyaedt.generic.constants.SourceType">[docs]</a><span class="k">class</span> <span class="nc">SourceType</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Type of excitation enumerator.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Type of excitation enumerator.&quot;&quot;&quot;</span>
 
     <span class="p">(</span><span class="n">CoaxPort</span><span class="p">,</span> <span class="n">CircPort</span><span class="p">,</span> <span class="n">LumpedPort</span><span class="p">,</span> <span class="n">Vsource</span><span class="p">,</span> <span class="n">Isource</span><span class="p">,</span> <span class="n">Rlc</span><span class="p">,</span> <span class="n">DcTerminal</span><span class="p">)</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="SOLUTIONS"><a class="viewcode-back" href="../../../API/Constants.html#pyaedt.generic.constants.SOLUTIONS">[docs]</a><span class="k">class</span> <span class="nc">SOLUTIONS</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Provides the names of default solution types.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Provides the names of default solution types.&quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="SOLUTIONS.Hfss"><a class="viewcode-back" href="../../../API/Constants.html#pyaedt.generic.constants.SOLUTIONS.Hfss">[docs]</a>    <span class="k">class</span> <span class="nc">Hfss</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Provides HFSS solution types.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Provides HFSS solution types.&quot;&quot;&quot;</span>
 
         <span class="p">(</span><span class="n">DrivenModal</span><span class="p">,</span> <span class="n">DrivenTerminal</span><span class="p">,</span> <span class="n">EigenMode</span><span class="p">,</span> <span class="n">Transient</span><span class="p">,</span> <span class="n">SBR</span><span class="p">,</span> <span class="n">Characteristic</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span>
             <span class="s2">&quot;Modal&quot;</span><span class="p">,</span>
@@ -995,7 +998,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="p">)</span></div>
 
 <div class="viewcode-block" id="SOLUTIONS.Maxwell3d"><a class="viewcode-back" href="../../../API/Constants.html#pyaedt.generic.constants.SOLUTIONS.Maxwell3d">[docs]</a>    <span class="k">class</span> <span class="nc">Maxwell3d</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Provides Maxwell 3D solution types.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Provides Maxwell 3D solution types.&quot;&quot;&quot;</span>
 
         <span class="p">(</span>
             <span class="n">Transient</span><span class="p">,</span>
@@ -1016,7 +1019,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="p">)</span></div>
 
 <div class="viewcode-block" id="SOLUTIONS.Maxwell2d"><a class="viewcode-back" href="../../../API/Constants.html#pyaedt.generic.constants.SOLUTIONS.Maxwell2d">[docs]</a>    <span class="k">class</span> <span class="nc">Maxwell2d</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Provides Maxwell 2D solution types.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Provides Maxwell 2D solution types.&quot;&quot;&quot;</span>
 
         <span class="p">(</span>
             <span class="n">TransientXY</span><span class="p">,</span>
@@ -1047,7 +1050,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="p">)</span></div>
 
 <div class="viewcode-block" id="SOLUTIONS.Icepak"><a class="viewcode-back" href="../../../API/Constants.html#pyaedt.generic.constants.SOLUTIONS.Icepak">[docs]</a>    <span class="k">class</span> <span class="nc">Icepak</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Provides Icepak solution types.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Provides Icepak solution types.&quot;&quot;&quot;</span>
 
         <span class="p">(</span>
             <span class="n">SteadyTemperatureAndFlow</span><span class="p">,</span>
@@ -1066,7 +1069,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="p">)</span></div>
 
 <div class="viewcode-block" id="SOLUTIONS.Circuit"><a class="viewcode-back" href="../../../API/Constants.html#pyaedt.generic.constants.SOLUTIONS.Circuit">[docs]</a>    <span class="k">class</span> <span class="nc">Circuit</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Provides Circuit solution types.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Provides Circuit solution types.&quot;&quot;&quot;</span>
 
         <span class="p">(</span>
             <span class="n">NexximLNA</span><span class="p">,</span>
@@ -1103,13 +1106,13 @@ function checkPageExistsAndRedirect(event) {
         <span class="p">)</span></div>
 
 <div class="viewcode-block" id="SOLUTIONS.Mechanical"><a class="viewcode-back" href="../../../API/Constants.html#pyaedt.generic.constants.SOLUTIONS.Mechanical">[docs]</a>    <span class="k">class</span> <span class="nc">Mechanical</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Provides Mechanical solution types.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Provides Mechanical solution types.&quot;&quot;&quot;</span>
 
         <span class="p">(</span><span class="n">Thermal</span><span class="p">,</span> <span class="n">Structural</span><span class="p">,</span> <span class="n">Modal</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;Thermal&quot;</span><span class="p">,</span> <span class="s2">&quot;Structural&quot;</span><span class="p">,</span> <span class="s2">&quot;Modal&quot;</span><span class="p">)</span></div></div>
 
 
 <div class="viewcode-block" id="SETUPS"><a class="viewcode-back" href="../../../API/Constants.html#pyaedt.generic.constants.SETUPS">[docs]</a><span class="k">class</span> <span class="nc">SETUPS</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Provides constants for the default setup types.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Provides constants for the default setup types.&quot;&quot;&quot;</span>
 
     <span class="p">(</span>
         <span class="n">HFSSDrivenAuto</span><span class="p">,</span>
@@ -1168,7 +1171,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <div class="viewcode-block" id="CoordinateSystemAxis"><a class="viewcode-back" href="../../../API/Constants.html#pyaedt.generic.constants.CoordinateSystemAxis">[docs]</a><span class="k">class</span> <span class="nc">CoordinateSystemAxis</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;CoordinateSystemAxis class.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;CoordinateSystemAxis class.</span>
 
 <span class="sd">    .. deprecated:: 0.4.8</span>
 <span class="sd">        Use :func:`AXIS` instead.&quot;&quot;&quot;</span>
@@ -1177,7 +1180,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <div class="viewcode-block" id="CoordinateSystemPlane"><a class="viewcode-back" href="../../../API/Constants.html#pyaedt.generic.constants.CoordinateSystemPlane">[docs]</a><span class="k">class</span> <span class="nc">CoordinateSystemPlane</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;CoordinateSystemPlane class.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;CoordinateSystemPlane class.</span>
 
 <span class="sd">    .. deprecated:: 0.4.8</span>
 <span class="sd">        Use :func:`PLANE` instead.&quot;&quot;&quot;</span>
@@ -1186,7 +1189,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <div class="viewcode-block" id="Plane"><a class="viewcode-back" href="../../../API/Constants.html#pyaedt.generic.constants.Plane">[docs]</a><span class="k">class</span> <span class="nc">Plane</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Plane class.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Plane class.</span>
 
 <span class="sd">    .. deprecated:: 0.4.8</span>
 <span class="sd">        Use :func:`VIEW` instead.&quot;&quot;&quot;</span>
@@ -1195,7 +1198,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <div class="viewcode-block" id="GravityDirection"><a class="viewcode-back" href="../../../API/Constants.html#pyaedt.generic.constants.GravityDirection">[docs]</a><span class="k">class</span> <span class="nc">GravityDirection</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;GravityDirection class.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;GravityDirection class.</span>
 
 <span class="sd">    .. deprecated:: 0.4.8</span>
 <span class="sd">        Use :func:`GRAVITY` instead.&quot;&quot;&quot;</span>
@@ -1312,7 +1315,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <div class="viewcode-block" id="LineStyle"><a class="viewcode-back" href="../../../API/Constants.html#pyaedt.generic.constants.LineStyle">[docs]</a><span class="k">class</span> <span class="nc">LineStyle</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Provides trace line style constants.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Provides trace line style constants.&quot;&quot;&quot;</span>
 
     <span class="p">(</span><span class="n">Solid</span><span class="p">,</span> <span class="n">Dot</span><span class="p">,</span> <span class="n">ShortDash</span><span class="p">,</span> <span class="n">DotShortDash</span><span class="p">,</span> <span class="n">Dash</span><span class="p">,</span> <span class="n">DotDash</span><span class="p">,</span> <span class="n">DotDot</span><span class="p">,</span> <span class="n">DotDotDash</span><span class="p">,</span> <span class="n">LongDash</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span>
         <span class="s2">&quot;Solid&quot;</span><span class="p">,</span>
@@ -1328,7 +1331,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <div class="viewcode-block" id="TraceType"><a class="viewcode-back" href="../../../API/Constants.html#pyaedt.generic.constants.TraceType">[docs]</a><span class="k">class</span> <span class="nc">TraceType</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Provides trace type constants.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Provides trace type constants.&quot;&quot;&quot;</span>
 
     <span class="p">(</span><span class="n">Continuous</span><span class="p">,</span> <span class="n">Discrete</span><span class="p">,</span> <span class="n">StickZero</span><span class="p">,</span> <span class="n">StickInfinity</span><span class="p">,</span> <span class="n">BarZero</span><span class="p">,</span> <span class="n">BarInfinity</span><span class="p">,</span> <span class="n">Histogram</span><span class="p">,</span> <span class="n">Step</span><span class="p">,</span> <span class="n">Stair</span><span class="p">,</span> <span class="n">Digital</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span>
         <span class="s2">&quot;Continuous&quot;</span><span class="p">,</span>
@@ -1345,7 +1348,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <div class="viewcode-block" id="SymbolStyle"><a class="viewcode-back" href="../../../API/Constants.html#pyaedt.generic.constants.SymbolStyle">[docs]</a><span class="k">class</span> <span class="nc">SymbolStyle</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Provides symbol style constants.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Provides symbol style constants.&quot;&quot;&quot;</span>
 
     <span class="p">(</span>
         <span class="n">Box</span><span class="p">,</span>
@@ -1386,13 +1389,13 @@ function checkPageExistsAndRedirect(event) {
   
   <div class="footer-item">
     <p class="copyright">
-    &copy; Copyright (c) 2022 ANSYS, Inc. All rights reserved.<br>
+    &copy; Copyright (c) 2023 ANSYS, Inc. All rights reserved.<br>
 </p>
   </div>
   
   <div class="footer-item">
     <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 6.1.1.<br>
 </p>
   </div>
   

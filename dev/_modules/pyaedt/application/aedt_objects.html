@@ -28,6 +28,7 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/css/ansys_sphinx_theme.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css" />
 
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
@@ -36,14 +37,11 @@
         <link href="../../../_static/css/breadcrumbs.css" rel="stylesheet">
     
     <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-    <script src="../../../_static/jquery.js"></script>
-    <script src="../../../_static/underscore.js"></script>
-    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../_static/doctools.js"></script>
     <script src="../../../_static/sphinx_highlight.js"></script>
     <script src="../../../_static/clipboard.min.js"></script>
     <script src="../../../_static/copybutton.js"></script>
-    <link rel="shortcut icon" href="../../../_static/ansys-favicon.png"/>
+    <link rel="icon" href="../../../_static/ansys-favicon.png"/>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -72,9 +70,8 @@
   
   
   
-    <img src="../../../_static/pyansys-logo-black-cropped.png" class="logo__image only-light" alt="Logo image">
-    <img src="../../../_static/pyansys-logo-black-cropped.png" class="logo__image only-dark" alt="Logo image">
   
+    <p class="title logo__title">PyAEDT</p>
   
 </a>
     
@@ -104,7 +101,13 @@
 
 <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="../../../API/index.html">
-  API reference
+  API AEDT reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../EDBAPI/index.html">
+  API EDB reference
  </a>
 </li>
 
@@ -351,7 +354,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">oradfield</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;AEDT Radiation Field Object.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;AEDT Radiation Field Object.</span>
 
 <span class="sd">        References</span>
 <span class="sd">        ----------</span>
@@ -364,7 +367,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">get_module</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">module_name</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Aedt Module object.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Aedt Module object.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">design_type</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;EMIT&quot;</span><span class="p">]</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">odesign</span><span class="p">:</span>
             <span class="k">try</span><span class="p">:</span>
                 <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">odesign</span><span class="o">.</span><span class="n">GetModule</span><span class="p">(</span><span class="n">module_name</span><span class="p">)</span>
@@ -374,7 +377,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">o_symbol_manager</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Aedt Simbol Manager.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Aedt Simbol Manager.</span>
 
 <span class="sd">        References</span>
 <span class="sd">        ----------</span>
@@ -385,7 +388,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">opadstackmanager</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;AEDT oPadstackManager.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;AEDT oPadstackManager.</span>
 
 <span class="sd">        References</span>
 <span class="sd">        ----------</span>
@@ -402,7 +405,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">oboundary</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Boundary Object.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Boundary Object.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_oboundary</span><span class="p">:</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">design_type</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;Twin Builder&quot;</span><span class="p">,</span> <span class="s2">&quot;RMxprt&quot;</span><span class="p">,</span> <span class="s2">&quot;RMxprtSolution&quot;</span><span class="p">,</span> <span class="s2">&quot;Circuit Design&quot;</span><span class="p">]:</span>
                 <span class="k">return</span>
@@ -414,7 +417,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">oimport_export</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Import/Export Manager Module.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Import/Export Manager Module.</span>
 
 <span class="sd">        References</span>
 <span class="sd">        ----------</span>
@@ -427,7 +430,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">ooptimetrics</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;AEDT Optimetrics Module.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;AEDT Optimetrics Module.</span>
 
 <span class="sd">        References</span>
 <span class="sd">        ----------</span>
@@ -440,7 +443,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">ooutput_variable</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;AEDT Output Variable Module.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;AEDT Output Variable Module.</span>
 
 <span class="sd">        References</span>
 <span class="sd">        ----------</span>
@@ -453,7 +456,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">oanalysis</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Analysis AEDT Module.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Analysis AEDT Module.</span>
 
 <span class="sd">        References</span>
 <span class="sd">        ----------</span>
@@ -476,7 +479,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">odefinition_manager</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Definition Manager Module.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Definition Manager Module.</span>
 
 <span class="sd">        References</span>
 <span class="sd">        ----------</span>
@@ -489,7 +492,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">omaterial_manager</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Material Manager Module.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Material Manager Module.</span>
 
 <span class="sd">        References</span>
 <span class="sd">        ----------</span>
@@ -503,7 +506,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">omodelsetup</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;AEDT Model Setup Object.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;AEDT Model Setup Object.</span>
 
 <span class="sd">        References</span>
 <span class="sd">        ----------</span>
@@ -523,7 +526,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">o_maxwell_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;AEDT Maxwell Parameter Setup Object.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;AEDT Maxwell Parameter Setup Object.</span>
 
 <span class="sd">        References</span>
 <span class="sd">        ----------</span>
@@ -538,7 +541,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">omonitor</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;AEDT Monitor Object.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;AEDT Monitor Object.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">design_type</span> <span class="o">==</span> <span class="s2">&quot;Icepak&quot;</span><span class="p">:</span>
             <span class="k">return</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_omonitor</span><span class="p">:</span>
@@ -547,7 +550,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">osolution</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Solution Module.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Solution Module.</span>
 
 <span class="sd">        References</span>
 <span class="sd">        ----------</span>
@@ -565,7 +568,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">oexcitation</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Solution Module.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Solution Module.</span>
 
 <span class="sd">        References</span>
 <span class="sd">        ----------</span>
@@ -581,7 +584,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">omatrix</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Matrix Object.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Matrix Object.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">design_type</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;Q3D Extractor&quot;</span><span class="p">,</span> <span class="s2">&quot;2D Extractor&quot;</span><span class="p">]:</span>
             <span class="k">return</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_omatrix</span><span class="p">:</span>
@@ -590,7 +593,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">ofieldsreporter</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Fields reporter.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Fields reporter.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -616,7 +619,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">oreportsetup</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Report setup.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Report setup.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -633,7 +636,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">omeshmodule</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Icepak Mesh Module.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Icepak Mesh Module.</span>
 
 <span class="sd">        References</span>
 <span class="sd">        ----------</span>
@@ -657,7 +660,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">oeditor</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Oeditor Module.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Oeditor Module.</span>
 
 <span class="sd">        References</span>
 <span class="sd">        ----------</span>
@@ -676,7 +679,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">layouteditor</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Return the Circuit Layout Editor.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the Circuit Layout Editor.</span>
 
 <span class="sd">        References</span>
 <span class="sd">        ----------</span>
@@ -689,14 +692,14 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">o_component_manager</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Component manager object.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Component manager object.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_o_component_manager</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_o_component_manager</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">odefinition_manager</span><span class="o">.</span><span class="n">GetManager</span><span class="p">(</span><span class="s2">&quot;Component&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_o_component_manager</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">o_model_manager</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Model manager object.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Model manager object.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_o_model_manager</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_o_model_manager</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">odefinition_manager</span><span class="o">.</span><span class="n">GetManager</span><span class="p">(</span><span class="s2">&quot;Model&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_o_model_manager</span>
@@ -720,13 +723,13 @@ function checkPageExistsAndRedirect(event) {
   
   <div class="footer-item">
     <p class="copyright">
-    &copy; Copyright (c) 2022 ANSYS, Inc. All rights reserved.<br>
+    &copy; Copyright (c) 2023 ANSYS, Inc. All rights reserved.<br>
 </p>
   </div>
   
   <div class="footer-item">
     <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 6.1.1.<br>
 </p>
   </div>
   

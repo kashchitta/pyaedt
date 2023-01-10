@@ -28,6 +28,7 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/css/ansys_sphinx_theme.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css" />
 
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
@@ -36,14 +37,11 @@
         <link href="../../../_static/css/breadcrumbs.css" rel="stylesheet">
     
     <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-    <script src="../../../_static/jquery.js"></script>
-    <script src="../../../_static/underscore.js"></script>
-    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../_static/doctools.js"></script>
     <script src="../../../_static/sphinx_highlight.js"></script>
     <script src="../../../_static/clipboard.min.js"></script>
     <script src="../../../_static/copybutton.js"></script>
-    <link rel="shortcut icon" href="../../../_static/ansys-favicon.png"/>
+    <link rel="icon" href="../../../_static/ansys-favicon.png"/>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -72,9 +70,8 @@
   
   
   
-    <img src="../../../_static/pyansys-logo-black-cropped.png" class="logo__image only-light" alt="Logo image">
-    <img src="../../../_static/pyansys-logo-black-cropped.png" class="logo__image only-dark" alt="Logo image">
   
+    <p class="title logo__title">PyAEDT</p>
   
 </a>
     
@@ -104,7 +101,13 @@
 
 <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="../../../API/index.html">
-  API reference
+  API AEDT reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../EDBAPI/index.html">
+  API EDB reference
  </a>
 </li>
 
@@ -309,6 +312,7 @@ function checkPageExistsAndRedirect(event) {
   <h1>Source code for pyaedt.generic.plot</h1><div class="highlight"><pre>
 <span></span><span class="kn">import</span> <span class="nn">ast</span>
 <span class="kn">import</span> <span class="nn">csv</span>
+<span class="kn">import</span> <span class="nn">math</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">tempfile</span>
 <span class="kn">import</span> <span class="nn">time</span>
@@ -377,7 +381,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <span class="k">def</span> <span class="nf">is_notebook</span><span class="p">():</span>
-    <span class="sd">&quot;&quot;&quot;Check if pyaedt is running in Jupyter or not.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Check if pyaedt is running in Jupyter or not.</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
@@ -394,7 +398,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <span class="k">def</span> <span class="nf">is_float</span><span class="p">(</span><span class="n">istring</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Convert a string to a float.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert a string to a float.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -604,7 +608,7 @@ function checkPageExistsAndRedirect(event) {
 <span class="k">def</span> <span class="nf">plot_polar_chart</span><span class="p">(</span>
     <span class="n">plot_data</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">2000</span><span class="p">,</span> <span class="mi">1000</span><span class="p">),</span> <span class="n">show_legend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">snapshot_path</span><span class="o">=</span><span class="kc">None</span>
 <span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Create a matplotlib polar plot based on a list of data.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a matplotlib polar plot based on a list of data.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -659,7 +663,7 @@ function checkPageExistsAndRedirect(event) {
 
 <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
 <span class="k">def</span> <span class="nf">plot_3d_chart</span><span class="p">(</span><span class="n">plot_data</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">2000</span><span class="p">,</span> <span class="mi">1000</span><span class="p">),</span> <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">snapshot_path</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Create a matplotlib 3D plot based on a list of data.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a matplotlib 3D plot based on a list of data.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -712,7 +716,7 @@ function checkPageExistsAndRedirect(event) {
 
 <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
 <span class="k">def</span> <span class="nf">plot_2d_chart</span><span class="p">(</span><span class="n">plot_data</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">2000</span><span class="p">,</span> <span class="mi">1000</span><span class="p">),</span> <span class="n">show_legend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">snapshot_path</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Create a matplotlib plot based on a list of data.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a matplotlib plot based on a list of data.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -721,16 +725,17 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        `[x points, y points, label]`.</span>
 <span class="sd">    size : tuple, optional</span>
 <span class="sd">        Image size in pixel (width, height).</span>
-<span class="sd">    show_legend : bool</span>
-<span class="sd">        Either to show legend or not.</span>
-<span class="sd">    xlabel : str</span>
-<span class="sd">        Plot X label.</span>
-<span class="sd">    ylabel : str</span>
-<span class="sd">        Plot Y label.</span>
-<span class="sd">    title : str</span>
-<span class="sd">        Plot Title label.</span>
-<span class="sd">    snapshot_path : str</span>
+<span class="sd">    show_legend : bool, optional</span>
+<span class="sd">        Either to show legend or not. The default value is ``True``.</span>
+<span class="sd">    xlabel : str, optional</span>
+<span class="sd">        Plot X label. The default value is ``&quot;&quot;``.</span>
+<span class="sd">    ylabel : str, optional</span>
+<span class="sd">        Plot Y label. The default value is ``&quot;&quot;``.</span>
+<span class="sd">    title : str, optional</span>
+<span class="sd">        Plot Title label. The default value is ``&quot;&quot;``.</span>
+<span class="sd">    snapshot_path : str, optional</span>
 <span class="sd">        Full path to image file if a snapshot is needed.</span>
+<span class="sd">        The default value is ``None``.</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
@@ -768,7 +773,7 @@ function checkPageExistsAndRedirect(event) {
 
 <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
 <span class="k">def</span> <span class="nf">plot_matplotlib</span><span class="p">(</span><span class="n">plot_data</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">2000</span><span class="p">,</span> <span class="mi">1000</span><span class="p">),</span> <span class="n">show_legend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">snapshot_path</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Create a matplotlib plot based on a list of data.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a matplotlib plot based on a list of data.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -826,7 +831,7 @@ function checkPageExistsAndRedirect(event) {
 
 <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
 <span class="k">def</span> <span class="nf">plot_contour</span><span class="p">(</span><span class="n">qty_to_plot</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">2000</span><span class="p">,</span> <span class="mi">1600</span><span class="p">),</span> <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">snapshot_path</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Create a matplotlib contour plot.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a matplotlib contour plot.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -881,7 +886,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <span class="k">class</span> <span class="nc">ObjClass</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Class that manages mesh files to be plotted in pyvista.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Manages mesh files to be plotted in pyvista.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -920,7 +925,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <span class="k">class</span> <span class="nc">FieldClass</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Class to manage Field data to be plotted in pyvista.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Class to manage Field data to be plotted in pyvista.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -974,12 +979,12 @@ function checkPageExistsAndRedirect(event) {
 
 
 <div class="viewcode-block" id="ModelPlotter"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.AdvancedPostProcessing.ModelPlotter.html#pyaedt.modules.AdvancedPostProcessing.ModelPlotter">[docs]</a><span class="k">class</span> <span class="nc">ModelPlotter</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Class that manage the plot data.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Manages the data to be plotted with ``pyvista``.</span>
 
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
 <span class="sd">    This Class can be instantiated within Pyaedt (with plot_model_object or different field plots</span>
-<span class="sd">    and standalone.</span>
+<span class="sd">    and standalone).</span>
 <span class="sd">    Here an example of standalone project</span>
 
 <span class="sd">    &gt;&gt;&gt; model = ModelPlotter()</span>
@@ -1040,10 +1045,29 @@ function checkPageExistsAndRedirect(event) {
         <span class="bp">self</span><span class="o">.</span><span class="n">_x_scale</span> <span class="o">=</span> <span class="mf">1.0</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_y_scale</span> <span class="o">=</span> <span class="mf">1.0</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_z_scale</span> <span class="o">=</span> <span class="mf">1.0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_convert_fields_in_db</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">convert_fields_in_db</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Either if convert the fields before plotting in dB10. Log scale will be disabled.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        bool</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_convert_fields_in_db</span>
+
+    <span class="nd">@convert_fields_in_db</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">convert_fields_in_db</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_convert_fields_in_db</span> <span class="o">=</span> <span class="n">value</span>
+        <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">fields</span><span class="p">:</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">_cached_polydata</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">frames</span><span class="p">:</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">_cached_polydata</span> <span class="o">=</span> <span class="kc">None</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">x_scale</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Scale plot on X.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Scale plot on X.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1057,7 +1081,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">y_scale</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Scale plot on Y.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Scale plot on Y.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1071,7 +1095,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">z_scale</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Scale plot on Z.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Scale plot on Z.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1085,7 +1109,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">isometric_view</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Enable or disable the default iso view.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Enable or disable the default iso view.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1104,7 +1128,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">view_up</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Get/Set the camera view axis. It disables the default iso view.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get/Set the camera view axis. It disables the default iso view.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1127,7 +1151,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">focal_point</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Get/Set the camera focal point value. It disables the default iso view.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get/Set the camera focal point value. It disables the default iso view.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1150,12 +1174,8 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">camera_position</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Get/Set the camera position value. It disables the default iso view.</span>
-
-<span class="sd">        Parameters</span>
-<span class="sd">        ----------</span>
-<span class="sd">        value : str or tuple</span>
-<span class="sd">            Value of camera position. One of `&quot;xy&quot;`, `&quot;xz&quot;`,`&quot;yz&quot;`.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get or set the camera position value. This parameter disables the default iso view.</span>
+<span class="sd">        Value for the camera position. The value is for ``&quot;xy&quot;``, ``&quot;xz&quot;`` or ``&quot;yz&quot;``.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1173,7 +1193,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">roll_angle</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Get/Set the roll angle value. It disables the default iso view.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get/Set the roll angle value. It disables the default iso view.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1193,7 +1213,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">azimuth_angle</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Get/Set the azimuth angle value. It disables the default iso view.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get/Set the azimuth angle value. It disables the default iso view.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1213,7 +1233,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">elevation_angle</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Get/Set the elevation angle value. It disables the default iso view.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get/Set the elevation angle value. It disables the default iso view.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1233,7 +1253,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">zoom</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Get/Set the zoom value.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get/Set the zoom value.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1252,7 +1272,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="ModelPlotter.set_orientation"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.AdvancedPostProcessing.ModelPlotter.set_orientation.html#pyaedt.modules.AdvancedPostProcessing.ModelPlotter.set_orientation">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">set_orientation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">camera_position</span><span class="o">=</span><span class="s2">&quot;xy&quot;</span><span class="p">,</span> <span class="n">roll_angle</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">azimuth_angle</span><span class="o">=</span><span class="mi">45</span><span class="p">,</span> <span class="n">elevation_angle</span><span class="o">=</span><span class="mi">20</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Change the plot default orientation.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Change the plot default orientation.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1281,7 +1301,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">background_color</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Background color.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Background color.</span>
 <span class="sd">        It can be a tuple of (r,g,b)  or color name.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_background_color</span>
 
@@ -1295,7 +1315,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">background_image</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Background image.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Background image.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1310,7 +1330,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">fields</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;List of fields object.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;List of fields object.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1320,7 +1340,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">frames</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Frames list for animation.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Frames list for animation.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1330,7 +1350,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">objects</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;List of class objects.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;List of class objects.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1340,7 +1360,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="ModelPlotter.add_object"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.AdvancedPostProcessing.ModelPlotter.add_object.html#pyaedt.modules.AdvancedPostProcessing.ModelPlotter.add_object">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">add_object</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cad_path</span><span class="p">,</span> <span class="n">cad_color</span><span class="o">=</span><span class="s2">&quot;dodgerblue&quot;</span><span class="p">,</span> <span class="n">opacity</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="s2">&quot;mm&quot;</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Add an mesh file to the scenario. It can be obj or any of pyvista supported files.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add an mesh file to the scenario. It can be obj or any of pyvista supported files.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1375,7 +1395,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">header_lines</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
         <span class="n">show_edges</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Add a field file to the scenario.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add a field file to the scenario.</span>
 <span class="sd">        It can be aedtplt, fld or csv file or any txt file with 4 column [x,y,z,field].</span>
 <span class="sd">        If text file they have to be space separated column.</span>
 
@@ -1428,7 +1448,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">surface_mapping_tolerance</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">,</span>
         <span class="n">header_lines</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Add a field file to the scenario. It can be aedtplt, fld or csv file.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add a field file to the scenario. It can be aedtplt, fld or csv file.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1481,7 +1501,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">surface_mapping_tolerance</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">,</span>
         <span class="n">show_edges</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Add field data to the scenario.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add field data to the scenario.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1537,6 +1557,8 @@ function checkPageExistsAndRedirect(event) {
             <span class="k">if</span> <span class="n">field</span><span class="o">.</span><span class="n">path</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">field</span><span class="o">.</span><span class="n">_cached_polydata</span><span class="p">:</span>
                 <span class="k">if</span> <span class="s2">&quot;.aedtplt&quot;</span> <span class="ow">in</span> <span class="n">field</span><span class="o">.</span><span class="n">path</span><span class="p">:</span>
                     <span class="n">vertices</span><span class="p">,</span> <span class="n">faces</span><span class="p">,</span> <span class="n">scalars</span><span class="p">,</span> <span class="n">log1</span> <span class="o">=</span> <span class="n">_parse_aedtplt</span><span class="p">(</span><span class="n">field</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">convert_fields_in_db</span><span class="p">:</span>
+                        <span class="n">scalars</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="mi">10</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">scalars</span><span class="p">]</span>
                     <span class="n">fields_vals</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">PolyData</span><span class="p">(</span><span class="n">vertices</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">faces</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
                     <span class="n">field</span><span class="o">.</span><span class="n">_cached_polydata</span> <span class="o">=</span> <span class="n">fields_vals</span>
                     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">scalars</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">list</span><span class="p">):</span>
@@ -1586,6 +1608,11 @@ function checkPageExistsAndRedirect(event) {
                                 <span class="n">is_vector</span> <span class="o">=</span> <span class="kc">True</span>
                             <span class="k">else</span><span class="p">:</span>
                                 <span class="n">values</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">tmp</span><span class="p">[</span><span class="mi">3</span><span class="p">]))</span>
+                    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">convert_fields_in_db</span><span class="p">:</span>
+                        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                            <span class="n">values</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">values</span><span class="p">]</span>
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="n">values</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">10</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">value</span><span class="p">]</span> <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">values</span><span class="p">]</span>
                     <span class="k">if</span> <span class="n">nodes</span><span class="p">:</span>
                         <span class="k">try</span><span class="p">:</span>
                             <span class="n">conv</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">AEDT_UNITS</span><span class="p">[</span><span class="s2">&quot;Length&quot;</span><span class="p">][</span><span class="bp">self</span><span class="o">.</span><span class="n">units</span><span class="p">]</span>
@@ -1618,7 +1645,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">max_elements</span> <span class="o">=</span> <span class="p">(</span><span class="n">startpos</span> <span class="o">-</span> <span class="n">endpos</span><span class="p">)</span> <span class="o">//</span> <span class="p">(</span><span class="n">size</span> <span class="o">+</span> <span class="p">(</span><span class="n">size</span> <span class="o">//</span> <span class="mi">10</span><span class="p">))</span>
 
         <span class="k">class</span> <span class="nc">SetVisibilityCallback</span><span class="p">:</span>
-            <span class="sd">&quot;&quot;&quot;Helper callback to keep a reference to the actor being modified.&quot;&quot;&quot;</span>
+<span class="w">            </span><span class="sd">&quot;&quot;&quot;Helper callback to keep a reference to the actor being modified.&quot;&quot;&quot;</span>
 
             <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">actor</span><span class="p">):</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">actor</span> <span class="o">=</span> <span class="n">actor</span>
@@ -1630,7 +1657,7 @@ function checkPageExistsAndRedirect(event) {
                     <span class="bp">self</span><span class="o">.</span><span class="n">actor</span><span class="o">.</span><span class="n">SetVisibility</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
 
         <span class="k">class</span> <span class="nc">ChangePageCallback</span><span class="p">:</span>
-            <span class="sd">&quot;&quot;&quot;Helper callback to keep a reference to the actor being modified.&quot;&quot;&quot;</span>
+<span class="w">            </span><span class="sd">&quot;&quot;&quot;Helper callback to keep a reference to the actor being modified.&quot;&quot;&quot;</span>
 
             <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">plot</span><span class="p">,</span> <span class="n">actor</span><span class="p">,</span> <span class="n">axes_color</span><span class="p">):</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">plot</span> <span class="o">=</span> <span class="n">plot</span>
@@ -1711,7 +1738,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="ModelPlotter.plot"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.AdvancedPostProcessing.ModelPlotter.plot.html#pyaedt.modules.AdvancedPostProcessing.ModelPlotter.plot">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">plot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">export_image_path</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Plot the current available Data. With `s` key a screenshot is saved in export_image_path or in tempdir.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Plot the current available Data. With `s` key a screenshot is saved in export_image_path or in tempdir.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1756,7 +1783,7 @@ function checkPageExistsAndRedirect(event) {
                 <span class="bp">self</span><span class="o">.</span><span class="n">pv</span><span class="o">.</span><span class="n">add_mesh</span><span class="p">(</span>
                     <span class="n">field</span><span class="o">.</span><span class="n">_cached_polydata</span><span class="o">.</span><span class="n">arrows</span><span class="p">,</span>
                     <span class="n">scalars</span><span class="o">=</span><span class="n">field</span><span class="o">.</span><span class="n">label</span><span class="p">,</span>
-                    <span class="n">log_scale</span><span class="o">=</span><span class="n">field</span><span class="o">.</span><span class="n">log_scale</span><span class="p">,</span>
+                    <span class="n">log_scale</span><span class="o">=</span><span class="kc">False</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">convert_fields_in_db</span> <span class="k">else</span> <span class="n">field</span><span class="o">.</span><span class="n">log_scale</span><span class="p">,</span>
                     <span class="n">scalar_bar_args</span><span class="o">=</span><span class="n">sargs</span><span class="p">,</span>
                     <span class="n">cmap</span><span class="o">=</span><span class="n">field</span><span class="o">.</span><span class="n">color_map</span><span class="p">,</span>
                 <span class="p">)</span>
@@ -1765,7 +1792,7 @@ function checkPageExistsAndRedirect(event) {
                 <span class="n">field</span><span class="o">.</span><span class="n">_cached_mesh</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pv</span><span class="o">.</span><span class="n">add_mesh</span><span class="p">(</span>
                     <span class="n">field</span><span class="o">.</span><span class="n">_cached_polydata</span><span class="p">,</span>
                     <span class="n">scalars</span><span class="o">=</span><span class="n">field</span><span class="o">.</span><span class="n">label</span><span class="p">,</span>
-                    <span class="n">log_scale</span><span class="o">=</span><span class="n">field</span><span class="o">.</span><span class="n">log_scale</span><span class="p">,</span>
+                    <span class="n">log_scale</span><span class="o">=</span><span class="kc">False</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">convert_fields_in_db</span> <span class="k">else</span> <span class="n">field</span><span class="o">.</span><span class="n">log_scale</span><span class="p">,</span>
                     <span class="n">scalar_bar_args</span><span class="o">=</span><span class="n">sargs</span><span class="p">,</span>
                     <span class="n">cmap</span><span class="o">=</span><span class="n">field</span><span class="o">.</span><span class="n">color_map</span><span class="p">,</span>
                     <span class="n">clim</span><span class="o">=</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">range_min</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">range_max</span><span class="p">],</span>
@@ -1776,7 +1803,7 @@ function checkPageExistsAndRedirect(event) {
                 <span class="n">field</span><span class="o">.</span><span class="n">_cached_mesh</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pv</span><span class="o">.</span><span class="n">add_mesh</span><span class="p">(</span>
                     <span class="n">field</span><span class="o">.</span><span class="n">_cached_polydata</span><span class="p">,</span>
                     <span class="n">scalars</span><span class="o">=</span><span class="n">field</span><span class="o">.</span><span class="n">label</span><span class="p">,</span>
-                    <span class="n">log_scale</span><span class="o">=</span><span class="n">field</span><span class="o">.</span><span class="n">log_scale</span><span class="p">,</span>
+                    <span class="n">log_scale</span><span class="o">=</span><span class="kc">False</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">convert_fields_in_db</span> <span class="k">else</span> <span class="n">field</span><span class="o">.</span><span class="n">log_scale</span><span class="p">,</span>
                     <span class="n">scalar_bar_args</span><span class="o">=</span><span class="n">sargs</span><span class="p">,</span>
                     <span class="n">cmap</span><span class="o">=</span><span class="n">field</span><span class="o">.</span><span class="n">color_map</span><span class="p">,</span>
                     <span class="n">opacity</span><span class="o">=</span><span class="n">field</span><span class="o">.</span><span class="n">opacity</span><span class="p">,</span>
@@ -1819,7 +1846,7 @@ function checkPageExistsAndRedirect(event) {
             <span class="n">root_name</span> <span class="o">=</span> <span class="s2">&quot;Image&quot;</span>  <span class="c1"># pragma: no cover</span>
 
         <span class="k">def</span> <span class="nf">s_callback</span><span class="p">():</span>  <span class="c1"># pragma: no cover</span>
-            <span class="sd">&quot;&quot;&quot;save screenshots&quot;&quot;&quot;</span>
+<span class="w">            </span><span class="sd">&quot;&quot;&quot;save screenshots&quot;&quot;&quot;</span>
             <span class="n">exp</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
                 <span class="n">path_image</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">{}{}{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">root_name</span><span class="p">,</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y_%M_</span><span class="si">%d</span><span class="s2">_%H-%M-%S&quot;</span><span class="p">),</span> <span class="nb">format</span><span class="p">)</span>
             <span class="p">)</span>
@@ -1838,7 +1865,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="ModelPlotter.clean_cache_and_files"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.AdvancedPostProcessing.ModelPlotter.clean_cache_and_files.html#pyaedt.modules.AdvancedPostProcessing.ModelPlotter.clean_cache_and_files">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">clean_cache_and_files</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">remove_objs</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">remove_fields</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">clean_cache</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Clean downloaded files, and, on demand, also the cached meshes.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Clean downloaded files, and, on demand, also the cached meshes.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1868,7 +1895,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="ModelPlotter.animate"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.AdvancedPostProcessing.ModelPlotter.animate.html#pyaedt.modules.AdvancedPostProcessing.ModelPlotter.animate">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">animate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Animate the current field plot.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Animate the current field plot.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1921,13 +1948,13 @@ function checkPageExistsAndRedirect(event) {
             <span class="bp">self</span><span class="o">.</span><span class="n">pv</span><span class="o">.</span><span class="n">open_gif</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">gif_file</span><span class="p">)</span>
 
         <span class="k">def</span> <span class="nf">q_callback</span><span class="p">():</span>
-            <span class="sd">&quot;&quot;&quot;exit when user wants to leave&quot;&quot;&quot;</span>
+<span class="w">            </span><span class="sd">&quot;&quot;&quot;exit when user wants to leave&quot;&quot;&quot;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_animating</span> <span class="o">=</span> <span class="kc">False</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_pause</span> <span class="o">=</span> <span class="kc">False</span>
 
         <span class="k">def</span> <span class="nf">p_callback</span><span class="p">():</span>
-            <span class="sd">&quot;&quot;&quot;exit when user wants to leave&quot;&quot;&quot;</span>
+<span class="w">            </span><span class="sd">&quot;&quot;&quot;exit when user wants to leave&quot;&quot;&quot;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_pause</span> <span class="o">=</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pause</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">pv</span><span class="o">.</span><span class="n">add_text</span><span class="p">(</span>
@@ -1956,7 +1983,7 @@ function checkPageExistsAndRedirect(event) {
             <span class="n">field</span><span class="o">.</span><span class="n">_cached_mesh</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pv</span><span class="o">.</span><span class="n">add_mesh</span><span class="p">(</span>
                 <span class="n">field</span><span class="o">.</span><span class="n">_cached_polydata</span><span class="p">,</span>
                 <span class="n">scalars</span><span class="o">=</span><span class="n">field</span><span class="o">.</span><span class="n">label</span><span class="p">,</span>
-                <span class="n">log_scale</span><span class="o">=</span><span class="n">field</span><span class="o">.</span><span class="n">log_scale</span><span class="p">,</span>
+                <span class="n">log_scale</span><span class="o">=</span><span class="kc">False</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">convert_fields_in_db</span> <span class="k">else</span> <span class="n">field</span><span class="o">.</span><span class="n">log_scale</span><span class="p">,</span>
                 <span class="n">scalar_bar_args</span><span class="o">=</span><span class="n">sargs</span><span class="p">,</span>
                 <span class="n">cmap</span><span class="o">=</span><span class="n">field</span><span class="o">.</span><span class="n">color_map</span><span class="p">,</span>
                 <span class="n">opacity</span><span class="o">=</span><span class="n">field</span><span class="o">.</span><span class="n">opacity</span><span class="p">,</span>
@@ -1982,7 +2009,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="bp">self</span><span class="o">.</span><span class="n">frames</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">_cached_mesh</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pv</span><span class="o">.</span><span class="n">add_mesh</span><span class="p">(</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">frames</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">_cached_polydata</span><span class="p">,</span>
             <span class="n">scalars</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">frames</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">label</span><span class="p">,</span>
-            <span class="n">log_scale</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">frames</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">log_scale</span><span class="p">,</span>
+            <span class="n">log_scale</span><span class="o">=</span><span class="kc">False</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">convert_fields_in_db</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">frames</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">log_scale</span><span class="p">,</span>
             <span class="n">scalar_bar_args</span><span class="o">=</span><span class="n">sargs</span><span class="p">,</span>
             <span class="n">cmap</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">frames</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">color_map</span><span class="p">,</span>
             <span class="n">clim</span><span class="o">=</span><span class="p">[</span><span class="n">mins</span><span class="p">,</span> <span class="n">maxs</span><span class="p">],</span>
@@ -2035,7 +2062,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="ModelPlotter.generate_geometry_mesh"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.AdvancedPostProcessing.ModelPlotter.generate_geometry_mesh.html#pyaedt.modules.AdvancedPostProcessing.ModelPlotter.generate_geometry_mesh">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">generate_geometry_mesh</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Generate mesh for objects only.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Generate mesh for objects only.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2070,13 +2097,13 @@ function checkPageExistsAndRedirect(event) {
   
   <div class="footer-item">
     <p class="copyright">
-    &copy; Copyright (c) 2022 ANSYS, Inc. All rights reserved.<br>
+    &copy; Copyright (c) 2023 ANSYS, Inc. All rights reserved.<br>
 </p>
   </div>
   
   <div class="footer-item">
     <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 6.1.1.<br>
 </p>
   </div>
   

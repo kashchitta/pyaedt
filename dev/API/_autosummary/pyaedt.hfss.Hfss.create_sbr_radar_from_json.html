@@ -29,6 +29,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/ansys_sphinx_theme.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
 
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
@@ -37,14 +38,11 @@
         <link href="../../_static/css/breadcrumbs.css" rel="stylesheet">
     
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/sphinx_highlight.js"></script>
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
-    <link rel="shortcut icon" href="../../_static/ansys-favicon.png"/>
+    <link rel="icon" href="../../_static/ansys-favicon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="create_scattering" href="pyaedt.hfss.Hfss.create_scattering.html" />
@@ -75,9 +73,8 @@
   
   
   
-    <img src="../../_static/pyansys-logo-black-cropped.png" class="logo__image only-light" alt="Logo image">
-    <img src="../../_static/pyansys-logo-black-cropped.png" class="logo__image only-dark" alt="Logo image">
   
+    <p class="title logo__title">PyAEDT</p>
   
 </a>
     
@@ -107,7 +104,13 @@
 
 <li class="toctree-l1 current active nav-item">
  <a class="reference internal nav-link" href="../index.html">
-  API reference
+  API AEDT reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../EDBAPI/index.html">
+  API EDB reference
  </a>
 </li>
 
@@ -263,7 +266,7 @@ function checkPageExistsAndRedirect(event) {
         <li class="nav-item nav-item-0"><a href="../../index.html">PyAEDT</a> » </li>
     
 
-          <li class="nav-item nav-item-1"><a href="../index.html" >API reference</a> » </li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >API AEDT reference</a> » </li>
           <li class="nav-item nav-item-2"><a href="../Application.html" >AEDT apps</a> » </li>
           <li class="nav-item nav-item-3"><a href="pyaedt.hfss.Hfss.html" accesskey="U">pyaedt.hfss.Hfss</a> » </li>
         <li class="nav-item nav-item-this"><a href="">create_sbr_radar_from_json</a></li> 
@@ -288,16 +291,6 @@ function checkPageExistsAndRedirect(event) {
   <div class="bd-toc-item active">
     
     <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../Common.html">
-   Desktop and common classes
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../CoreEdb.html">
-   EDB editor
-  </a>
- </li>
  <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="../Application.html">
    AEDT apps
@@ -1549,6 +1542,11 @@ function checkPageExistsAndRedirect(event) {
       </a>
      </li>
      <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.hfss.Hfss.settings.html">
+       settings
+      </a>
+     </li>
+     <li class="toctree-l3">
       <a class="reference internal" href="pyaedt.hfss.Hfss.setup_names.html">
        setup_names
       </a>
@@ -1646,6 +1644,11 @@ function checkPageExistsAndRedirect(event) {
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.maxwellcircuit.MaxwellCircuit.html">
+     pyaedt.maxwellcircuit.MaxwellCircuit
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="pyaedt.emit.Emit.html">
      pyaedt.emit.Emit
     </a>
@@ -1663,23 +1666,28 @@ function checkPageExistsAndRedirect(event) {
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../Primitives.html">
-   Modeler and  primitives
+  <a class="reference internal" href="../Primitives3D.html">
+   Modeler in 2D and 3D
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../CoreModules.html">
-   AEDT modules
+  <a class="reference internal" href="../Primitives3DLayout.html">
+   Modeler in  HFSS 3D Layout
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../PrimitivesCircuit.html">
+   Modeler and components Circuit
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Boundaries.html">
+   Boundary objects
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Mesh.html">
    Mesh operations
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../CableModeling.html">
-   Cable modeling
   </a>
  </li>
  <li class="toctree-l1">
@@ -1690,6 +1698,41 @@ function checkPageExistsAndRedirect(event) {
  <li class="toctree-l1">
   <a class="reference internal" href="../Post.html">
    Postprocessing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../DesktopMessenger.html">
+   Logger
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Optimetrics.html">
+   Optimetrics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Variables.html">
+   Variable
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Constants.html">
+   Constants
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Configuration.html">
+   Configuration files
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../SetupTemplates.html">
+   Setup templates
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../CableModeling.html">
+   Cable modeling
   </a>
  </li>
 </ul>
@@ -1721,7 +1764,7 @@ function checkPageExistsAndRedirect(event) {
   <a class="reference internal nav-link" href="#pyaedt.hfss.Hfss.create_sbr_radar_from_json">
    <code class="docutils literal notranslate">
     <span class="pre">
-     Hfss.create_sbr_radar_from_json()
+     create_sbr_radar_from_json()
     </span>
    </code>
   </a>
@@ -1760,35 +1803,35 @@ function checkPageExistsAndRedirect(event) {
 <dd><p>Create an SBR+ radar from a JSON file.</p>
 <p>Example of input JSON file:</p>
 <blockquote>
-<div><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Example_1Tx_1Rx&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;number_tx&quot;</span><span class="p">:</span><span class="s2">&quot;1&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;number_rx&quot;</span><span class="p">:</span><span class="s2">&quot;1&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;units&quot;</span><span class="p">:</span><span class="s2">&quot;mm&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;antennas&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;tx1&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;antenna_type&quot;</span><span class="p">:</span><span class="s2">&quot;parametric&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;mode&quot;</span><span class="p">:</span><span class="s2">&quot;tx&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;offset&quot;</span><span class="p">:[</span><span class="s2">&quot;0&quot;</span><span class="w"> </span><span class="p">,</span><span class="s2">&quot;0&quot;</span><span class="w"> </span><span class="p">,</span><span class="s2">&quot;0&quot;</span><span class="p">],</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;rotation_axis&quot;</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;rotation&quot;</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;beamwidth_elevation&quot;</span><span class="p">:</span><span class="s2">&quot;10deg&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;beamwidth_azimuth&quot;</span><span class="p">:</span><span class="s2">&quot;60deg&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;polarization&quot;</span><span class="p">:</span><span class="s2">&quot;Vertical&quot;</span><span class="w"></span>
-<span class="w">            </span><span class="p">},</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;rx1&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;antenna_type&quot;</span><span class="p">:</span><span class="s2">&quot;parametric&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;mode&quot;</span><span class="p">:</span><span class="s2">&quot;rx&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;offset&quot;</span><span class="p">:[</span><span class="s2">&quot;0&quot;</span><span class="w"> </span><span class="p">,</span><span class="s2">&quot;1.8&quot;</span><span class="w"> </span><span class="p">,</span><span class="s2">&quot;0&quot;</span><span class="p">],</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;rotation_axis&quot;</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;rotation&quot;</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;beamwidth_elevation&quot;</span><span class="p">:</span><span class="s2">&quot;10deg&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;beamwidth_azimuth&quot;</span><span class="p">:</span><span class="s2">&quot;60deg&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;polarization&quot;</span><span class="p">:</span><span class="s2">&quot;Vertical&quot;</span><span class="w"></span>
-<span class="w">            </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Example_1Tx_1Rx&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;number_tx&quot;</span><span class="p">:</span><span class="s2">&quot;1&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;number_rx&quot;</span><span class="p">:</span><span class="s2">&quot;1&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;units&quot;</span><span class="p">:</span><span class="s2">&quot;mm&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;antennas&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;tx1&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;antenna_type&quot;</span><span class="p">:</span><span class="s2">&quot;parametric&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;mode&quot;</span><span class="p">:</span><span class="s2">&quot;tx&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;offset&quot;</span><span class="p">:[</span><span class="s2">&quot;0&quot;</span><span class="w"> </span><span class="p">,</span><span class="s2">&quot;0&quot;</span><span class="w"> </span><span class="p">,</span><span class="s2">&quot;0&quot;</span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;rotation_axis&quot;</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;rotation&quot;</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;beamwidth_elevation&quot;</span><span class="p">:</span><span class="s2">&quot;10deg&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;beamwidth_azimuth&quot;</span><span class="p">:</span><span class="s2">&quot;60deg&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;polarization&quot;</span><span class="p">:</span><span class="s2">&quot;Vertical&quot;</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;rx1&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;antenna_type&quot;</span><span class="p">:</span><span class="s2">&quot;parametric&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;mode&quot;</span><span class="p">:</span><span class="s2">&quot;rx&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;offset&quot;</span><span class="p">:[</span><span class="s2">&quot;0&quot;</span><span class="w"> </span><span class="p">,</span><span class="s2">&quot;1.8&quot;</span><span class="w"> </span><span class="p">,</span><span class="s2">&quot;0&quot;</span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;rotation_axis&quot;</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;rotation&quot;</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;beamwidth_elevation&quot;</span><span class="p">:</span><span class="s2">&quot;10deg&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;beamwidth_azimuth&quot;</span><span class="p">:</span><span class="s2">&quot;60deg&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;polarization&quot;</span><span class="p">:</span><span class="s2">&quot;Vertical&quot;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -1812,7 +1855,7 @@ The default is <code class="docutils literal notranslate"><span class="pre">None
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt><a class="reference internal" href="pyaedt.modeler.actors.Radar.html#pyaedt.modeler.actors.Radar" title="pyaedt.modeler.actors.Radar"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyaedt.modeler.actors.Radar</span></code></a></dt><dd><p>Radar  class object.</p>
+<dt><code class="xref py py-class docutils literal notranslate"><span class="pre">pyaedt.modeler.actors.Radar</span></code></dt><dd><p>Radar  class object.</p>
 </dd>
 </dl>
 </dd>
@@ -1847,13 +1890,13 @@ The default is <code class="docutils literal notranslate"><span class="pre">None
   
   <div class="footer-item">
     <p class="copyright">
-    &copy; Copyright (c) 2022 ANSYS, Inc. All rights reserved.<br>
+    &copy; Copyright (c) 2023 ANSYS, Inc. All rights reserved.<br>
 </p>
   </div>
   
   <div class="footer-item">
     <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 6.1.1.<br>
 </p>
   </div>
   

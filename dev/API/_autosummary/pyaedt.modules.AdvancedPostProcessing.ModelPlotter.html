@@ -29,6 +29,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/ansys_sphinx_theme.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
 
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
@@ -37,18 +38,15 @@
         <link href="../../_static/css/breadcrumbs.css" rel="stylesheet">
     
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/sphinx_highlight.js"></script>
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
-    <link rel="shortcut icon" href="../../_static/ansys-favicon.png"/>
+    <link rel="icon" href="../../_static/ansys-favicon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="add_field_from_data" href="pyaedt.modules.AdvancedPostProcessing.ModelPlotter.add_field_from_data.html" />
-    <link rel="prev" title="phase_offset" href="pyaedt.modules.solutions.FfdSolutionData.phase_offset.html" />
+    <link rel="prev" title="window" href="pyaedt.modules.report_templates.Spectral.window.html" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="docsearch:language" content="en">
   </head>
@@ -75,9 +73,8 @@
   
   
   
-    <img src="../../_static/pyansys-logo-black-cropped.png" class="logo__image only-light" alt="Logo image">
-    <img src="../../_static/pyansys-logo-black-cropped.png" class="logo__image only-dark" alt="Logo image">
   
+    <p class="title logo__title">PyAEDT</p>
   
 </a>
     
@@ -107,7 +104,13 @@
 
 <li class="toctree-l1 current active nav-item">
  <a class="reference internal nav-link" href="../index.html">
-  API reference
+  API AEDT reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../EDBAPI/index.html">
+  API EDB reference
  </a>
 </li>
 
@@ -263,7 +266,7 @@ function checkPageExistsAndRedirect(event) {
         <li class="nav-item nav-item-0"><a href="../../index.html">PyAEDT</a> » </li>
     
 
-          <li class="nav-item nav-item-1"><a href="../index.html" >API reference</a> » </li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >API AEDT reference</a> » </li>
           <li class="nav-item nav-item-2"><a href="../Post.html" accesskey="U">Postprocessing</a> » </li>
         <li class="nav-item nav-item-this"><a href="">pyaedt.modules.AdvancedPostProcessing.ModelPlotter</a></li> 
       </ul>
@@ -288,16 +291,6 @@ function checkPageExistsAndRedirect(event) {
     
     <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../Common.html">
-   Desktop and common classes
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../CoreEdb.html">
-   EDB editor
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="../Application.html">
    AEDT apps
   </a>
@@ -308,23 +301,28 @@ function checkPageExistsAndRedirect(event) {
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../Primitives.html">
-   Modeler and  primitives
+  <a class="reference internal" href="../Primitives3D.html">
+   Modeler in 2D and 3D
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../CoreModules.html">
-   AEDT modules
+  <a class="reference internal" href="../Primitives3DLayout.html">
+   Modeler in  HFSS 3D Layout
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../PrimitivesCircuit.html">
+   Modeler and components Circuit
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Boundaries.html">
+   Boundary objects
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Mesh.html">
    Mesh operations
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../CableModeling.html">
-   Cable modeling
   </a>
  </li>
  <li class="toctree-l1">
@@ -343,13 +341,68 @@ function checkPageExistsAndRedirect(event) {
   </label>
   <ul class="current">
    <li class="toctree-l2">
-    <a class="reference internal" href="pyaedt.modules.PostProcessor.CircuitPostProcessor.html">
-     pyaedt.modules.PostProcessor.CircuitPostProcessor
+    <a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.html">
+     pyaedt.modules.AdvancedPostProcessing.PostProcessor
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.html">
-     pyaedt.modules.AdvancedPostProcessing.PostProcessor
+    <a class="reference internal" href="pyaedt.modules.solutions.SolutionData.html">
+     pyaedt.modules.solutions.SolutionData
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modules.solutions.FieldPlot.html">
+     pyaedt.modules.solutions.FieldPlot
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modules.solutions.FfdSolutionData.html">
+     pyaedt.modules.solutions.FfdSolutionData
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modules.report_templates.Trace.html">
+     pyaedt.modules.report_templates.Trace
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modules.report_templates.LimitLine.html">
+     pyaedt.modules.report_templates.LimitLine
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modules.report_templates.Standard.html">
+     pyaedt.modules.report_templates.Standard
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modules.report_templates.Fields.html">
+     pyaedt.modules.report_templates.Fields
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modules.report_templates.NearField.html">
+     pyaedt.modules.report_templates.NearField
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modules.report_templates.FarField.html">
+     pyaedt.modules.report_templates.FarField
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modules.report_templates.EyeDiagram.html">
+     pyaedt.modules.report_templates.EyeDiagram
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modules.report_templates.Emission.html">
+     pyaedt.modules.report_templates.Emission
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modules.report_templates.Spectral.html">
+     pyaedt.modules.report_templates.Spectral
     </a>
    </li>
    <li class="toctree-l2">
@@ -443,6 +496,11 @@ function checkPageExistsAndRedirect(event) {
       </a>
      </li>
      <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.ModelPlotter.convert_fields_in_db.html">
+       convert_fields_in_db
+      </a>
+     </li>
+     <li class="toctree-l3">
       <a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.ModelPlotter.elevation_angle.html">
        elevation_angle
       </a>
@@ -504,52 +562,42 @@ function checkPageExistsAndRedirect(event) {
      </li>
     </ul>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="pyaedt.modules.report_templates.Trace.html">
-     pyaedt.modules.report_templates.Trace
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="pyaedt.modules.report_templates.LimitLine.html">
-     pyaedt.modules.report_templates.LimitLine
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="pyaedt.modules.report_templates.Standard.html">
-     pyaedt.modules.report_templates.Standard
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="pyaedt.modules.report_templates.Fields.html">
-     pyaedt.modules.report_templates.Fields
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="pyaedt.modules.report_templates.NearField.html">
-     pyaedt.modules.report_templates.NearField
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="pyaedt.modules.report_templates.FarField.html">
-     pyaedt.modules.report_templates.FarField
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="pyaedt.modules.report_templates.EyeDiagram.html">
-     pyaedt.modules.report_templates.EyeDiagram
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="pyaedt.modules.report_templates.Emission.html">
-     pyaedt.modules.report_templates.Emission
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="pyaedt.modules.report_templates.Spectral.html">
-     pyaedt.modules.report_templates.Spectral
-    </a>
-   </li>
   </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../DesktopMessenger.html">
+   Logger
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Optimetrics.html">
+   Optimetrics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Variables.html">
+   Variable
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Constants.html">
+   Constants
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Configuration.html">
+   Configuration files
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../SetupTemplates.html">
+   Setup templates
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../CableModeling.html">
+   Cable modeling
+  </a>
  </li>
 </ul>
 
@@ -616,10 +664,10 @@ function checkPageExistsAndRedirect(event) {
 <dl class="py class">
 <dt class="sig sig-object py" id="pyaedt.modules.AdvancedPostProcessing.ModelPlotter">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyaedt.modules.AdvancedPostProcessing.</span></span><span class="sig-name descname"><span class="pre">ModelPlotter</span></span><a class="reference internal" href="../../_modules/pyaedt/generic/plot.html#ModelPlotter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyaedt.modules.AdvancedPostProcessing.ModelPlotter" title="Permalink to this definition">#</a></dt>
-<dd><p>Class that manage the plot data.</p>
+<dd><p>Manages the data to be plotted with <code class="docutils literal notranslate"><span class="pre">pyvista</span></code>.</p>
 <p class="rubric">Examples</p>
 <p>This Class can be instantiated within Pyaedt (with plot_model_object or different field plots
-and standalone.
+and standalone).
 Here an example of standalone project</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">ModelPlotter</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">model</span><span class="o">.</span><span class="n">add_object</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;D:\Simulationntenna.obj&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">200</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">255</span><span class="p">),</span> <span class="mf">0.6</span><span class="p">,</span> <span class="s2">&quot;in&quot;</span><span class="p">)</span>
@@ -685,42 +733,45 @@ Here an example of standalone project</p>
 <td><p>Background image.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.ModelPlotter.camera_position.html#pyaedt.modules.AdvancedPostProcessing.ModelPlotter.camera_position" title="pyaedt.modules.AdvancedPostProcessing.ModelPlotter.camera_position"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ModelPlotter.camera_position</span></code></a></p></td>
-<td><p>Get/Set the camera position value.</p></td>
+<td><p>Get or set the camera position value.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.ModelPlotter.elevation_angle.html#pyaedt.modules.AdvancedPostProcessing.ModelPlotter.elevation_angle" title="pyaedt.modules.AdvancedPostProcessing.ModelPlotter.elevation_angle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ModelPlotter.elevation_angle</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.ModelPlotter.convert_fields_in_db.html#pyaedt.modules.AdvancedPostProcessing.ModelPlotter.convert_fields_in_db" title="pyaedt.modules.AdvancedPostProcessing.ModelPlotter.convert_fields_in_db"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ModelPlotter.convert_fields_in_db</span></code></a></p></td>
+<td><p>Either if convert the fields before plotting in dB10.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.ModelPlotter.elevation_angle.html#pyaedt.modules.AdvancedPostProcessing.ModelPlotter.elevation_angle" title="pyaedt.modules.AdvancedPostProcessing.ModelPlotter.elevation_angle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ModelPlotter.elevation_angle</span></code></a></p></td>
 <td><p>Get/Set the elevation angle value.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.ModelPlotter.fields.html#pyaedt.modules.AdvancedPostProcessing.ModelPlotter.fields" title="pyaedt.modules.AdvancedPostProcessing.ModelPlotter.fields"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ModelPlotter.fields</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.ModelPlotter.fields.html#pyaedt.modules.AdvancedPostProcessing.ModelPlotter.fields" title="pyaedt.modules.AdvancedPostProcessing.ModelPlotter.fields"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ModelPlotter.fields</span></code></a></p></td>
 <td><p>List of fields object.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.ModelPlotter.focal_point.html#pyaedt.modules.AdvancedPostProcessing.ModelPlotter.focal_point" title="pyaedt.modules.AdvancedPostProcessing.ModelPlotter.focal_point"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ModelPlotter.focal_point</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.ModelPlotter.focal_point.html#pyaedt.modules.AdvancedPostProcessing.ModelPlotter.focal_point" title="pyaedt.modules.AdvancedPostProcessing.ModelPlotter.focal_point"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ModelPlotter.focal_point</span></code></a></p></td>
 <td><p>Get/Set the camera focal point value.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.ModelPlotter.frames.html#pyaedt.modules.AdvancedPostProcessing.ModelPlotter.frames" title="pyaedt.modules.AdvancedPostProcessing.ModelPlotter.frames"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ModelPlotter.frames</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.ModelPlotter.frames.html#pyaedt.modules.AdvancedPostProcessing.ModelPlotter.frames" title="pyaedt.modules.AdvancedPostProcessing.ModelPlotter.frames"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ModelPlotter.frames</span></code></a></p></td>
 <td><p>Frames list for animation.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.ModelPlotter.isometric_view.html#pyaedt.modules.AdvancedPostProcessing.ModelPlotter.isometric_view" title="pyaedt.modules.AdvancedPostProcessing.ModelPlotter.isometric_view"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ModelPlotter.isometric_view</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.ModelPlotter.isometric_view.html#pyaedt.modules.AdvancedPostProcessing.ModelPlotter.isometric_view" title="pyaedt.modules.AdvancedPostProcessing.ModelPlotter.isometric_view"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ModelPlotter.isometric_view</span></code></a></p></td>
 <td><p>Enable or disable the default iso view.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.ModelPlotter.objects.html#pyaedt.modules.AdvancedPostProcessing.ModelPlotter.objects" title="pyaedt.modules.AdvancedPostProcessing.ModelPlotter.objects"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ModelPlotter.objects</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.ModelPlotter.objects.html#pyaedt.modules.AdvancedPostProcessing.ModelPlotter.objects" title="pyaedt.modules.AdvancedPostProcessing.ModelPlotter.objects"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ModelPlotter.objects</span></code></a></p></td>
 <td><p>List of class objects.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.ModelPlotter.roll_angle.html#pyaedt.modules.AdvancedPostProcessing.ModelPlotter.roll_angle" title="pyaedt.modules.AdvancedPostProcessing.ModelPlotter.roll_angle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ModelPlotter.roll_angle</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.ModelPlotter.roll_angle.html#pyaedt.modules.AdvancedPostProcessing.ModelPlotter.roll_angle" title="pyaedt.modules.AdvancedPostProcessing.ModelPlotter.roll_angle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ModelPlotter.roll_angle</span></code></a></p></td>
 <td><p>Get/Set the roll angle value.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.ModelPlotter.view_up.html#pyaedt.modules.AdvancedPostProcessing.ModelPlotter.view_up" title="pyaedt.modules.AdvancedPostProcessing.ModelPlotter.view_up"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ModelPlotter.view_up</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.ModelPlotter.view_up.html#pyaedt.modules.AdvancedPostProcessing.ModelPlotter.view_up" title="pyaedt.modules.AdvancedPostProcessing.ModelPlotter.view_up"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ModelPlotter.view_up</span></code></a></p></td>
 <td><p>Get/Set the camera view axis.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.ModelPlotter.x_scale.html#pyaedt.modules.AdvancedPostProcessing.ModelPlotter.x_scale" title="pyaedt.modules.AdvancedPostProcessing.ModelPlotter.x_scale"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ModelPlotter.x_scale</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.ModelPlotter.x_scale.html#pyaedt.modules.AdvancedPostProcessing.ModelPlotter.x_scale" title="pyaedt.modules.AdvancedPostProcessing.ModelPlotter.x_scale"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ModelPlotter.x_scale</span></code></a></p></td>
 <td><p>Scale plot on X.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.ModelPlotter.y_scale.html#pyaedt.modules.AdvancedPostProcessing.ModelPlotter.y_scale" title="pyaedt.modules.AdvancedPostProcessing.ModelPlotter.y_scale"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ModelPlotter.y_scale</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.ModelPlotter.y_scale.html#pyaedt.modules.AdvancedPostProcessing.ModelPlotter.y_scale" title="pyaedt.modules.AdvancedPostProcessing.ModelPlotter.y_scale"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ModelPlotter.y_scale</span></code></a></p></td>
 <td><p>Scale plot on Y.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.ModelPlotter.z_scale.html#pyaedt.modules.AdvancedPostProcessing.ModelPlotter.z_scale" title="pyaedt.modules.AdvancedPostProcessing.ModelPlotter.z_scale"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ModelPlotter.z_scale</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.ModelPlotter.z_scale.html#pyaedt.modules.AdvancedPostProcessing.ModelPlotter.z_scale" title="pyaedt.modules.AdvancedPostProcessing.ModelPlotter.z_scale"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ModelPlotter.z_scale</span></code></a></p></td>
 <td><p>Scale plot on Z.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.ModelPlotter.zoom.html#pyaedt.modules.AdvancedPostProcessing.ModelPlotter.zoom" title="pyaedt.modules.AdvancedPostProcessing.ModelPlotter.zoom"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ModelPlotter.zoom</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.ModelPlotter.zoom.html#pyaedt.modules.AdvancedPostProcessing.ModelPlotter.zoom" title="pyaedt.modules.AdvancedPostProcessing.ModelPlotter.zoom"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ModelPlotter.zoom</span></code></a></p></td>
 <td><p>Get/Set the zoom value.</p></td>
 </tr>
 </tbody>
@@ -748,13 +799,13 @@ Here an example of standalone project</p>
   
   <div class="footer-item">
     <p class="copyright">
-    &copy; Copyright (c) 2022 ANSYS, Inc. All rights reserved.<br>
+    &copy; Copyright (c) 2023 ANSYS, Inc. All rights reserved.<br>
 </p>
   </div>
   
   <div class="footer-item">
     <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 6.1.1.<br>
 </p>
   </div>
   

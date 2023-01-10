@@ -28,6 +28,7 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/css/ansys_sphinx_theme.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css" />
 
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
@@ -36,14 +37,11 @@
         <link href="../../../_static/css/breadcrumbs.css" rel="stylesheet">
     
     <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-    <script src="../../../_static/jquery.js"></script>
-    <script src="../../../_static/underscore.js"></script>
-    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../_static/doctools.js"></script>
     <script src="../../../_static/sphinx_highlight.js"></script>
     <script src="../../../_static/clipboard.min.js"></script>
     <script src="../../../_static/copybutton.js"></script>
-    <link rel="shortcut icon" href="../../../_static/ansys-favicon.png"/>
+    <link rel="icon" href="../../../_static/ansys-favicon.png"/>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -72,9 +70,8 @@
   
   
   
-    <img src="../../../_static/pyansys-logo-black-cropped.png" class="logo__image only-light" alt="Logo image">
-    <img src="../../../_static/pyansys-logo-black-cropped.png" class="logo__image only-dark" alt="Logo image">
   
+    <p class="title logo__title">PyAEDT</p>
   
 </a>
     
@@ -104,7 +101,13 @@
 
 <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="../../../API/index.html">
-  API reference
+  API AEDT reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../EDBAPI/index.html">
+  API EDB reference
  </a>
 </li>
 
@@ -326,7 +329,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <span class="k">class</span> <span class="nc">CommonOptimetrics</span><span class="p">(</span><span class="n">PropsManager</span><span class="p">,</span> <span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Creates and sets up optimizations.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Creates and sets up optimizations.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -530,7 +533,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">update_dictionary</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Update the setup based on stored properties.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Update the setup based on stored properties.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -565,7 +568,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a setup.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a setup.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -680,7 +683,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">goal_weight</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
         <span class="n">goal_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Add an optimization goal to the setup.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add an optimization goal to the setup.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -795,14 +798,14 @@ function checkPageExistsAndRedirect(event) {
 
 
 <div class="viewcode-block" id="SetupOpti"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.DesignXPloration.SetupOpti.html#pyaedt.modules.DesignXPloration.SetupOpti">[docs]</a><span class="k">class</span> <span class="nc">SetupOpti</span><span class="p">(</span><span class="n">CommonOptimetrics</span><span class="p">,</span> <span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Sets up an optimization in Opimetrics.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Sets up an optimization in Opimetrics.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">app</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">dictinputs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">optim_type</span><span class="o">=</span><span class="s2">&quot;OptiDesignExplorer&quot;</span><span class="p">):</span>
         <span class="n">CommonOptimetrics</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">app</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">dictinputs</span><span class="o">=</span><span class="n">dictinputs</span><span class="p">,</span> <span class="n">optimtype</span><span class="o">=</span><span class="n">optim_type</span><span class="p">)</span>
 
 <div class="viewcode-block" id="SetupOpti.delete"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.DesignXPloration.SetupOpti.delete.html#pyaedt.modules.DesignXPloration.SetupOpti.delete">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Delete a defined Optimetrics Setup.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Delete a defined Optimetrics Setup.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -831,7 +834,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">polyline_points</span><span class="o">=</span><span class="mi">1001</span><span class="p">,</span>
         <span class="n">report_type</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Add a calculation to the setup.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add a calculation to the setup.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -891,7 +894,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">goal_value</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
         <span class="n">goal_weight</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Add a goal to the setup.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add a goal to the setup.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -958,7 +961,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">max_step</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">use_manufacturable</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Add a new variable as input for the optimization and defines its ranges.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add a new variable as input for the optimization and defines its ranges.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1035,7 +1038,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <div class="viewcode-block" id="SetupParam"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.DesignXPloration.SetupParam.html#pyaedt.modules.DesignXPloration.SetupParam">[docs]</a><span class="k">class</span> <span class="nc">SetupParam</span><span class="p">(</span><span class="n">CommonOptimetrics</span><span class="p">,</span> <span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Sets up a parametric analysis in Optimetrics.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Sets up a parametric analysis in Optimetrics.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">p_app</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">dictinputs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">optim_type</span><span class="o">=</span><span class="s2">&quot;OptiParametric&quot;</span><span class="p">):</span>
         <span class="n">CommonOptimetrics</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">p_app</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">dictinputs</span><span class="o">=</span><span class="n">dictinputs</span><span class="p">,</span> <span class="n">optimtype</span><span class="o">=</span><span class="n">optim_type</span><span class="p">)</span>
@@ -1043,7 +1046,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="SetupParam.delete"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.DesignXPloration.SetupParam.delete.html#pyaedt.modules.DesignXPloration.SetupParam.delete">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Delete a defined Optimetrics Setup.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Delete a defined Optimetrics Setup.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1062,7 +1065,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="SetupParam.add_variation"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.DesignXPloration.SetupParam.add_variation.html#pyaedt.modules.DesignXPloration.SetupParam.add_variation">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">add_variation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sweep_var</span><span class="p">,</span> <span class="n">start_point</span><span class="p">,</span> <span class="n">end_point</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">variation_type</span><span class="o">=</span><span class="s2">&quot;LinearCount&quot;</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Add a variation to an existing parametric setup.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add a variation to an existing parametric setup.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1134,7 +1137,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="SetupParam.sync_variables"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.DesignXPloration.SetupParam.sync_variables.html#pyaedt.modules.DesignXPloration.SetupParam.sync_variables">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">sync_variables</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">variables</span><span class="p">,</span> <span class="n">sync_n</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Sync variable variations in an existing parametric setup.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sync variable variations in an existing parametric setup.</span>
 <span class="sd">        Setting the sync number to `0` will effectively unsync the variables.</span>
 
 <span class="sd">        Parameters</span>
@@ -1191,7 +1194,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">polyline_points</span><span class="o">=</span><span class="mi">1001</span><span class="p">,</span>
         <span class="n">report_type</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Add a calculation to the parametric setup.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add a calculation to the parametric setup.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1229,7 +1232,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="SetupParam.export_to_csv"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.DesignXPloration.SetupParam.export_to_csv.html#pyaedt.modules.DesignXPloration.SetupParam.export_to_csv">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">export_to_csv</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Export the current Parametric Setup to csv.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Export the current Parametric Setup to csv.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1246,7 +1249,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <div class="viewcode-block" id="ParametricSetups"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.DesignXPloration.ParametricSetups.html#pyaedt.modules.DesignXPloration.ParametricSetups">[docs]</a><span class="k">class</span> <span class="nc">ParametricSetups</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Sets up Parametrics analyses. It includes Parametrics, Sensitivity and Statistical Analysis.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Sets up Parametrics analyses. It includes Parametrics, Sensitivity and Statistical Analysis.</span>
 
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
@@ -1272,12 +1275,12 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">p_app</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Parent.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Parent.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">optimodule</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Optimetrics module.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Optimetrics module.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1297,8 +1300,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">solution</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">parametricname</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Add a basic sensitivity analysis.</span>
-
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add a basic sensitivity analysis.</span>
 <span class="sd">        You can customize all options after the analysis is added.</span>
 
 <span class="sd">        Parameters</span>
@@ -1352,7 +1354,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="ParametricSetups.delete"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.DesignXPloration.ParametricSetups.delete.html#pyaedt.modules.DesignXPloration.ParametricSetups.delete">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">setup_name</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Delete a defined Parametric Setup.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Delete a defined Parametric Setup.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1372,7 +1374,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="ParametricSetups.add_from_file"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.DesignXPloration.ParametricSetups.add_from_file.html#pyaedt.modules.DesignXPloration.ParametricSetups.add_from_file">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">add_from_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">parametricname</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Add a Parametric Setup from a csv file.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add a Parametric Setup from a csv file.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1447,7 +1449,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <div class="viewcode-block" id="OptimizationSetups"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.DesignXPloration.OptimizationSetups.html#pyaedt.modules.DesignXPloration.OptimizationSetups">[docs]</a><span class="k">class</span> <span class="nc">OptimizationSetups</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Sets up optimizations. It includes Optimization, DOE and DesignXplorer Analysis.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Sets up optimizations. It includes Optimization, DOE and DesignXplorer Analysis.</span>
 
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
@@ -1477,12 +1479,12 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">p_app</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Parent.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Parent.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">optimodule</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Optimetrics module.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Optimetrics module.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1493,7 +1495,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="OptimizationSetups.delete"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.DesignXPloration.OptimizationSetups.delete.html#pyaedt.modules.DesignXPloration.OptimizationSetups.delete">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">setup_name</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Delete a defined Optimetrics Setup.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Delete a defined Optimetrics Setup.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1528,8 +1530,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">polyline_points</span><span class="o">=</span><span class="mi">1001</span><span class="p">,</span>
         <span class="n">report_type</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Add a basic optimization analysis.</span>
-
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add a basic optimization analysis.</span>
 <span class="sd">        You can customize all options after the analysis is added.</span>
 
 <span class="sd">        Parameters</span>
@@ -1545,7 +1546,7 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        optim_type : strm optional</span>
 <span class="sd">            Optimization Type.</span>
 <span class="sd">            Possible values are `&quot;Optimization&quot;`, `&quot;DXDOE&quot;`,`&quot;DesignExplorer&quot;`,`&quot;Sensitivity&quot;`,`&quot;Statistical&quot;`</span>
-<span class="sd">            and `&quot;optiSLang&quot;&#39;.</span>
+<span class="sd">            and `&quot;optiSLang&quot;`.</span>
 <span class="sd">        condition : string, optional</span>
 <span class="sd">            The default is ``&quot;&lt;=&quot;``.</span>
 <span class="sd">        goal_value : optional</span>
@@ -1667,13 +1668,13 @@ function checkPageExistsAndRedirect(event) {
   
   <div class="footer-item">
     <p class="copyright">
-    &copy; Copyright (c) 2022 ANSYS, Inc. All rights reserved.<br>
+    &copy; Copyright (c) 2023 ANSYS, Inc. All rights reserved.<br>
 </p>
   </div>
   
   <div class="footer-item">
     <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 6.1.1.<br>
 </p>
   </div>
   

@@ -28,6 +28,7 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/css/ansys_sphinx_theme.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css" />
 
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
@@ -36,14 +37,11 @@
         <link href="../../../_static/css/breadcrumbs.css" rel="stylesheet">
     
     <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-    <script src="../../../_static/jquery.js"></script>
-    <script src="../../../_static/underscore.js"></script>
-    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../_static/doctools.js"></script>
     <script src="../../../_static/sphinx_highlight.js"></script>
     <script src="../../../_static/clipboard.min.js"></script>
     <script src="../../../_static/copybutton.js"></script>
-    <link rel="shortcut icon" href="../../../_static/ansys-favicon.png"/>
+    <link rel="icon" href="../../../_static/ansys-favicon.png"/>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -72,9 +70,8 @@
   
   
   
-    <img src="../../../_static/pyansys-logo-black-cropped.png" class="logo__image only-light" alt="Logo image">
-    <img src="../../../_static/pyansys-logo-black-cropped.png" class="logo__image only-dark" alt="Logo image">
   
+    <p class="title logo__title">PyAEDT</p>
   
 </a>
     
@@ -104,7 +101,13 @@
 
 <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="../../../API/index.html">
-  API reference
+  API AEDT reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../EDBAPI/index.html">
+  API EDB reference
  </a>
 </li>
 
@@ -318,18 +321,18 @@ function checkPageExistsAndRedirect(event) {
 <span class="kn">from</span> <span class="nn">pyaedt.generic.DataHandlers</span> <span class="kn">import</span> <span class="n">_dict2arg</span>
 <span class="kn">from</span> <span class="nn">pyaedt.generic.DataHandlers</span> <span class="kn">import</span> <span class="n">random_string</span>
 <span class="kn">from</span> <span class="nn">pyaedt.generic.general_methods</span> <span class="kn">import</span> <span class="n">PropsManager</span>
+<span class="kn">from</span> <span class="nn">pyaedt.generic.general_methods</span> <span class="kn">import</span> <span class="n">_dim_arg</span>
 <span class="kn">from</span> <span class="nn">pyaedt.generic.general_methods</span> <span class="kn">import</span> <span class="n">filter_tuple</span>
 <span class="kn">from</span> <span class="nn">pyaedt.generic.general_methods</span> <span class="kn">import</span> <span class="n">generate_unique_name</span>
 <span class="kn">from</span> <span class="nn">pyaedt.generic.general_methods</span> <span class="kn">import</span> <span class="n">pyaedt_function_handler</span>
-<span class="kn">from</span> <span class="nn">pyaedt.modeler.Object3d</span> <span class="kn">import</span> <span class="n">EdgePrimitive</span>
-<span class="kn">from</span> <span class="nn">pyaedt.modeler.Object3d</span> <span class="kn">import</span> <span class="n">FacePrimitive</span>
-<span class="kn">from</span> <span class="nn">pyaedt.modeler.Object3d</span> <span class="kn">import</span> <span class="n">VertexPrimitive</span>
-<span class="kn">from</span> <span class="nn">pyaedt.modeler.Object3d</span> <span class="kn">import</span> <span class="n">_dim_arg</span>
+<span class="kn">from</span> <span class="nn">pyaedt.modeler.cad.elements3d</span> <span class="kn">import</span> <span class="n">EdgePrimitive</span>
+<span class="kn">from</span> <span class="nn">pyaedt.modeler.cad.elements3d</span> <span class="kn">import</span> <span class="n">FacePrimitive</span>
+<span class="kn">from</span> <span class="nn">pyaedt.modeler.cad.elements3d</span> <span class="kn">import</span> <span class="n">VertexPrimitive</span>
 <span class="kn">from</span> <span class="nn">pyaedt.modules.CircuitTemplates</span> <span class="kn">import</span> <span class="n">SourceKeys</span>
 
 
 <span class="k">class</span> <span class="nc">BoundaryProps</span><span class="p">(</span><span class="n">OrderedDict</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;AEDT Boundary Component Internal Parameters.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;AEDT Boundary Component Internal Parameters.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__setitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
         <span class="n">OrderedDict</span><span class="o">.</span><span class="fm">__setitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
@@ -364,11 +367,11 @@ function checkPageExistsAndRedirect(event) {
 
 
 <span class="k">class</span> <span class="nc">BoundaryCommon</span><span class="p">(</span><span class="n">PropsManager</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot; &quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; &quot;&quot;&quot;</span>
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">_get_args</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">props</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve boundary properties.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve boundary properties.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -389,7 +392,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Delete the boundary.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Delete the boundary.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -408,7 +411,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <div class="viewcode-block" id="NativeComponentObject"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.Boundary.NativeComponentObject.html#pyaedt.modules.Boundary.NativeComponentObject">[docs]</a><span class="k">class</span> <span class="nc">NativeComponentObject</span><span class="p">(</span><span class="n">BoundaryCommon</span><span class="p">,</span> <span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Manages Native Component data and execution.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Manages Native Component data and execution.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -486,7 +489,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">targetcs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Native Component Coordinate System.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Native Component Coordinate System.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -522,7 +525,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="NativeComponentObject.create"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.Boundary.NativeComponentObject.create.html#pyaedt.modules.Boundary.NativeComponentObject.create">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a Native Component in AEDT.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a Native Component in AEDT.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -544,7 +547,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="NativeComponentObject.update"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.Boundary.NativeComponentObject.update.html#pyaedt.modules.Boundary.NativeComponentObject.update">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Update the Native Component in AEDT.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Update the Native Component in AEDT.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -576,7 +579,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="NativeComponentObject.delete"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.Boundary.NativeComponentObject.delete.html#pyaedt.modules.Boundary.NativeComponentObject.delete">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Delete the Native Component in AEDT.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Delete the Native Component in AEDT.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -594,7 +597,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <div class="viewcode-block" id="BoundaryObject"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.Boundary.BoundaryObject.html#pyaedt.modules.Boundary.BoundaryObject">[docs]</a><span class="k">class</span> <span class="nc">BoundaryObject</span><span class="p">(</span><span class="n">BoundaryCommon</span><span class="p">,</span> <span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Manages boundary data and execution.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Manages boundary data and execution.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -632,7 +635,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Boundary Name.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Boundary Name.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_name</span>
 
     <span class="nd">@name</span><span class="o">.</span><span class="n">setter</span>
@@ -642,7 +645,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">_get_args</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">props</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve arguments.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve arguments.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -663,7 +666,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="BoundaryObject.create"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.Boundary.BoundaryObject.create.html#pyaedt.modules.Boundary.BoundaryObject.create">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a boundary.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a boundary.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -821,7 +824,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="BoundaryObject.update"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.Boundary.BoundaryObject.update.html#pyaedt.modules.Boundary.BoundaryObject.update">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Update the boundary.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Update the boundary.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -954,7 +957,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="BoundaryObject.update_assignment"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.Boundary.BoundaryObject.update_assignment.html#pyaedt.modules.Boundary.BoundaryObject.update_assignment">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">update_assignment</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Update the boundary assignment.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Update the boundary assignment.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -988,7 +991,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <span class="k">class</span> <span class="nc">MaxwellParameters</span><span class="p">(</span><span class="n">BoundaryCommon</span><span class="p">,</span> <span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Manages parameters data and execution.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Manages parameters data and execution.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -1024,7 +1027,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Boundary Name.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Boundary Name.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_name</span>
 
     <span class="nd">@name</span><span class="o">.</span><span class="n">setter</span>
@@ -1034,7 +1037,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">_get_args</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">props</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve arguments.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve arguments.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1055,7 +1058,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a boundary.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a boundary.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1075,7 +1078,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Update the boundary.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Update the boundary.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1113,7 +1116,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">join_series</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sources</span><span class="p">,</span> <span class="n">matrix_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">join_name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1136,7 +1139,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">join_parallel</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sources</span><span class="p">,</span> <span class="n">matrix_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">join_name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1159,7 +1162,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <span class="k">class</span> <span class="nc">FieldSetup</span><span class="p">(</span><span class="n">BoundaryCommon</span><span class="p">,</span> <span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Manages Far Field and Near Field Component data and execution.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Manages Far Field and Near Field Component data and execution.</span>
 
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
@@ -1183,7 +1186,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Variable name.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Variable name.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_name</span>
 
     <span class="nd">@name</span><span class="o">.</span><span class="n">setter</span>
@@ -1201,7 +1204,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a Field Setup Component in HFSS.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a Field Setup Component in HFSS.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1228,7 +1231,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Update the Field Setup in AEDT.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Update the Field Setup in AEDT.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1255,7 +1258,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Delete the Field Setup in AEDT.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Delete the Field Setup in AEDT.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1271,7 +1274,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <div class="viewcode-block" id="FarFieldSetup"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.Boundary.FarFieldSetup.html#pyaedt.modules.Boundary.FarFieldSetup">[docs]</a><span class="k">class</span> <span class="nc">FarFieldSetup</span><span class="p">(</span><span class="n">FieldSetup</span><span class="p">,</span> <span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Manages Far Field Component data and execution.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Manages Far Field Component data and execution.</span>
 
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
@@ -1291,7 +1294,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">definition</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Set/Get the Far Field Angle Definition.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set/Get the Far Field Angle Definition.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">props</span><span class="p">[</span><span class="s2">&quot;CSDefinition&quot;</span><span class="p">]</span>
 
     <span class="nd">@definition</span><span class="o">.</span><span class="n">setter</span>
@@ -1353,7 +1356,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">use_custom_radiation_surface</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Set/Get the Far Field Radiation Surface Enable.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set/Get the Far Field Radiation Surface Enable.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">props</span><span class="p">[</span><span class="s2">&quot;UseCustomRadiationSurface&quot;</span><span class="p">]</span>
 
     <span class="nd">@use_custom_radiation_surface</span><span class="o">.</span><span class="n">setter</span>
@@ -1363,7 +1366,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">custom_radiation_surface</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Set/Get the Far Field Radiation Surface FaceList.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set/Get the Far Field Radiation Surface FaceList.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">props</span><span class="p">[</span><span class="s2">&quot;CustomRadiationSurface&quot;</span><span class="p">]</span>
 
     <span class="nd">@custom_radiation_surface</span><span class="o">.</span><span class="n">setter</span>
@@ -1378,7 +1381,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">use_local_coordinate_system</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Set/Get the usage of a custom Coordinate System.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set/Get the usage of a custom Coordinate System.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">props</span><span class="p">[</span><span class="s2">&quot;UseLocalCS&quot;</span><span class="p">]</span>
 
     <span class="nd">@use_local_coordinate_system</span><span class="o">.</span><span class="n">setter</span>
@@ -1388,7 +1391,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">local_coordinate_system</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Set/Get the custom Coordinate System name.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set/Get the custom Coordinate System name.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">props</span><span class="p">[</span><span class="s2">&quot;CoordSystem&quot;</span><span class="p">]</span>
 
     <span class="nd">@local_coordinate_system</span><span class="o">.</span><span class="n">setter</span>
@@ -1403,7 +1406,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">polarization</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Set/Get the Far Field Polarization.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set/Get the Far Field Polarization.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">props</span><span class="p">[</span><span class="s2">&quot;Polarization&quot;</span><span class="p">]</span>
 
     <span class="nd">@polarization</span><span class="o">.</span><span class="n">setter</span>
@@ -1413,7 +1416,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">slant_angle</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Set/Get the Far Field Slant Angle if Polarization is Set to `Slant`.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set/Get the Far Field Slant Angle if Polarization is Set to `Slant`.&quot;&quot;&quot;</span>
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">props</span><span class="p">[</span><span class="s2">&quot;Polarization&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Slant&quot;</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">props</span><span class="p">[</span><span class="s2">&quot;SlantAngle&quot;</span><span class="p">]</span>
@@ -1428,7 +1431,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">theta_start</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Set/Get the Far Field Theta Start Angle if Definition is Set to `Theta-Phi`.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set/Get the Far Field Theta Start Angle if Definition is Set to `Theta-Phi`.&quot;&quot;&quot;</span>
 
         <span class="k">if</span> <span class="s2">&quot;ThetaStart&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">props</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">props</span><span class="p">[</span><span class="s2">&quot;ThetaStart&quot;</span><span class="p">]</span>
@@ -1437,7 +1440,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">theta_stop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Set/Get the Far Field Theta Stop Angle if Definition is Set to `Theta-Phi`.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set/Get the Far Field Theta Stop Angle if Definition is Set to `Theta-Phi`.&quot;&quot;&quot;</span>
 
         <span class="k">if</span> <span class="s2">&quot;ThetaStop&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">props</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">props</span><span class="p">[</span><span class="s2">&quot;ThetaStop&quot;</span><span class="p">]</span>
@@ -1446,7 +1449,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">theta_step</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Set/Get the Far Field Theta Step Angle if Definition is Set to `Theta-Phi`.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set/Get the Far Field Theta Step Angle if Definition is Set to `Theta-Phi`.&quot;&quot;&quot;</span>
 
         <span class="k">if</span> <span class="s2">&quot;ThetaStep&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">props</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">props</span><span class="p">[</span><span class="s2">&quot;ThetaStep&quot;</span><span class="p">]</span>
@@ -1455,7 +1458,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">phi_start</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Set/Get the Far Field Phi Start Angle if Definition is Set to `Theta-Phi`.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set/Get the Far Field Phi Start Angle if Definition is Set to `Theta-Phi`.&quot;&quot;&quot;</span>
 
         <span class="k">if</span> <span class="s2">&quot;PhiStart&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">props</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">props</span><span class="p">[</span><span class="s2">&quot;PhiStart&quot;</span><span class="p">]</span>
@@ -1464,7 +1467,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">phi_stop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Set/Get the Far Field Phi Stop Angle if Definition is Set to `Theta-Phi`.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set/Get the Far Field Phi Stop Angle if Definition is Set to `Theta-Phi`.&quot;&quot;&quot;</span>
 
         <span class="k">if</span> <span class="s2">&quot;PhiStop&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">props</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">props</span><span class="p">[</span><span class="s2">&quot;PhiStop&quot;</span><span class="p">]</span>
@@ -1473,7 +1476,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">phi_step</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Set/Get the Far Field Phi Step Angle if Definition is Set to `Theta-Phi`.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set/Get the Far Field Phi Step Angle if Definition is Set to `Theta-Phi`.&quot;&quot;&quot;</span>
 
         <span class="k">if</span> <span class="s2">&quot;PhiStep&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">props</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">props</span><span class="p">[</span><span class="s2">&quot;PhiStep&quot;</span><span class="p">]</span>
@@ -1482,7 +1485,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">azimuth_start</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Set/Get the Far Field Azimuth Start Angle if Definition is Set to `Az Over El` or `El Over Az`.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set/Get the Far Field Azimuth Start Angle if Definition is Set to `Az Over El` or `El Over Az`.&quot;&quot;&quot;</span>
 
         <span class="k">if</span> <span class="s2">&quot;AzimuthStart&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">props</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">props</span><span class="p">[</span><span class="s2">&quot;AzimuthStart&quot;</span><span class="p">]</span>
@@ -1491,7 +1494,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">azimuth_stop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Set/Get the Far Field Azimuth Stop Angle if Definition is Set to `Az Over El` or `El Over Az`.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set/Get the Far Field Azimuth Stop Angle if Definition is Set to `Az Over El` or `El Over Az`.&quot;&quot;&quot;</span>
 
         <span class="k">if</span> <span class="s2">&quot;AzimuthStop&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">props</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">props</span><span class="p">[</span><span class="s2">&quot;AzimuthStop&quot;</span><span class="p">]</span>
@@ -1500,7 +1503,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">azimuth_step</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Set/Get the Far Field Azimuth Step Angle if Definition is Set to `Az Over El` or `El Over Az`.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set/Get the Far Field Azimuth Step Angle if Definition is Set to `Az Over El` or `El Over Az`.&quot;&quot;&quot;</span>
 
         <span class="k">if</span> <span class="s2">&quot;AzimuthStep&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">props</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">props</span><span class="p">[</span><span class="s2">&quot;AzimuthStep&quot;</span><span class="p">]</span>
@@ -1509,7 +1512,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">elevation_start</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Set/Get the Far Field Elevation Start Angle if Definition is Set to `Az Over El` or `El Over Az`.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set/Get the Far Field Elevation Start Angle if Definition is Set to `Az Over El` or `El Over Az`.&quot;&quot;&quot;</span>
 
         <span class="k">if</span> <span class="s2">&quot;ElevationStart&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">props</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">props</span><span class="p">[</span><span class="s2">&quot;ElevationStart&quot;</span><span class="p">]</span>
@@ -1518,7 +1521,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">elevation_stop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Set/Get the Far Field Elevation Stop Angle if Definition is Set to `Az Over El` or `El Over Az`.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set/Get the Far Field Elevation Stop Angle if Definition is Set to `Az Over El` or `El Over Az`.&quot;&quot;&quot;</span>
 
         <span class="k">if</span> <span class="s2">&quot;ElevationStop&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">props</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">props</span><span class="p">[</span><span class="s2">&quot;ElevationStop&quot;</span><span class="p">]</span>
@@ -1527,7 +1530,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">elevation_step</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Set/Get the Far Field Elevation Step Angle if Definition is Set to `Az Over El` or `El Over Az`.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set/Get the Far Field Elevation Step Angle if Definition is Set to `Az Over El` or `El Over Az`.&quot;&quot;&quot;</span>
 
         <span class="k">if</span> <span class="s2">&quot;ElevationStep&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">props</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">props</span><span class="p">[</span><span class="s2">&quot;ElevationStep&quot;</span><span class="p">]</span>
@@ -1608,7 +1611,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <span class="k">class</span> <span class="nc">NearFieldSetup</span><span class="p">(</span><span class="n">FieldSetup</span><span class="p">,</span> <span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Manages Near Field Component data and execution.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Manages Near Field Component data and execution.</span>
 
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
@@ -1623,7 +1626,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <div class="viewcode-block" id="Matrix"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.Boundary.Matrix.html#pyaedt.modules.Boundary.Matrix">[docs]</a><span class="k">class</span> <span class="nc">Matrix</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Manages Matrix in Q3d and Q2d Projects.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Manages Matrix in Q3d and Q2d Projects.</span>
 
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
@@ -1645,7 +1648,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Matrix.sources"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.Boundary.Matrix.sources.html#pyaedt.modules.Boundary.Matrix.sources">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">sources</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">is_gc_sources</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;List of matrix sources.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;List of matrix sources.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1672,7 +1675,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">second_element_filter</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">category</span><span class="o">=</span><span class="s2">&quot;C&quot;</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Return a list of source of specified matrix ready to be used in plot reports.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return a list of source of specified matrix ready to be used in plot reports.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1723,7 +1726,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">operations</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;List of matrix operations.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;List of matrix operations.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1741,7 +1744,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">new_source_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">new_sink_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a new matrix.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a new matrix.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1768,7 +1771,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Matrix.delete"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.Boundary.Matrix.delete.html#pyaedt.modules.Boundary.Matrix.delete">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Delete current matrix.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Delete current matrix.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1790,7 +1793,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">new_source_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">new_sink_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Add a new operation to existing matrix.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add a new operation to existing matrix.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1865,7 +1868,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <div class="viewcode-block" id="BoundaryObject3dLayout"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.Boundary.BoundaryObject3dLayout.html#pyaedt.modules.Boundary.BoundaryObject3dLayout">[docs]</a><span class="k">class</span> <span class="nc">BoundaryObject3dLayout</span><span class="p">(</span><span class="n">BoundaryCommon</span><span class="p">,</span> <span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Manages boundary data and execution for Hfss3dLayout.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Manages boundary data and execution for Hfss3dLayout.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -1890,7 +1893,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Boundary Name.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Boundary Name.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_name</span>
 
     <span class="nd">@name</span><span class="o">.</span><span class="n">setter</span>
@@ -1900,7 +1903,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">_get_args</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">props</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve arguments.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve arguments.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1930,7 +1933,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="BoundaryObject3dLayout.update"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.Boundary.BoundaryObject3dLayout.update.html#pyaedt.modules.Boundary.BoundaryObject3dLayout.update">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Update the boundary.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Update the boundary.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1953,7 +1956,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <div class="viewcode-block" id="Sources"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.Boundary.Sources.html#pyaedt.modules.Boundary.Sources">[docs]</a><span class="k">class</span> <span class="nc">Sources</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Manages sources in Circuit projects.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Manages sources in Circuit projects.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">app</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">source_type</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_app</span> <span class="o">=</span> <span class="n">app</span>
@@ -1966,7 +1969,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Source name.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Source name.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1996,7 +1999,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">_logger</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Logger.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Logger.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">logger</span>
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
@@ -2105,7 +2108,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Sources.update"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.Boundary.Sources.update.html#pyaedt.modules.Boundary.Sources.update">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">original_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">new_source</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Update the source in AEDT.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Update the source in AEDT.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2210,7 +2213,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Sources.delete"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.Boundary.Sources.delete.html#pyaedt.modules.Boundary.Sources.delete">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Delete the source in AEDT.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Delete the source in AEDT.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2228,7 +2231,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Sources.create"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.Boundary.Sources.create.html#pyaedt.modules.Boundary.Sources.create">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a new source in AEDT.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a new source in AEDT.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2241,7 +2244,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <span class="k">class</span> <span class="nc">PowerSinSource</span><span class="p">(</span><span class="n">Sources</span><span class="p">,</span> <span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Power Sinusoidal Class.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Power Sinusoidal Class.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">app</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">source_type</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="n">Sources</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">app</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">source_type</span><span class="p">)</span>
@@ -2252,7 +2255,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">ac_magnitude</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;AC magnitude value.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;AC magnitude value.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2267,7 +2270,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">ac_phase</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;AC phase value.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;AC phase value.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2282,7 +2285,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">dc_magnitude</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;DC voltage value.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;DC voltage value.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2297,7 +2300,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">power_offset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Power offset from zero watts.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Power offset from zero watts.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2312,7 +2315,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">power_magnitude</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Available power of the source above power offset.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Available power of the source above power offset.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2327,7 +2330,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">frequency</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Frequency.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Frequency.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2342,7 +2345,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">delay</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Delay to start of sine wave.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Delay to start of sine wave.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2357,7 +2360,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">damping_factor</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Damping factor.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Damping factor.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2372,7 +2375,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">phase_delay</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Phase delay.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Phase delay.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2387,7 +2390,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">tone</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Frequency to use for harmonic balance.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Frequency to use for harmonic balance.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2402,7 +2405,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <span class="k">class</span> <span class="nc">PowerIQSource</span><span class="p">(</span><span class="n">Sources</span><span class="p">,</span> <span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Power IQ Class.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Power IQ Class.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">app</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">source_type</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="n">Sources</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">app</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">source_type</span><span class="p">)</span>
@@ -2413,7 +2416,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">carrier_frequency</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Carrier frequency value.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Carrier frequency value.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2428,7 +2431,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">sampling_time</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Sampling time value.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sampling time value.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2443,7 +2446,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">dc_magnitude</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;DC voltage value.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;DC voltage value.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2458,7 +2461,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">repeat_from</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Repeat from time.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Repeat from time.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2473,7 +2476,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">delay</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Delay to start of sine wave.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Delay to start of sine wave.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2488,7 +2491,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">carrier_amplitude_voltage</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Carrier amplitude value, voltage-based.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Carrier amplitude value, voltage-based.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2503,7 +2506,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">carrier_amplitude_power</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Carrier amplitude value, power-based.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Carrier amplitude value, power-based.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2518,7 +2521,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">carrier_offset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Carrier offset.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Carrier offset.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2533,7 +2536,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">real_impedance</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Real carrier impedance.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Real carrier impedance.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2548,7 +2551,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">imaginary_impedance</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Imaginary carrier impedance.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Imaginary carrier impedance.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2563,7 +2566,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">damping_factor</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Damping factor.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Damping factor.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2578,7 +2581,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">phase_delay</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Phase delay.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Phase delay.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2593,7 +2596,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">tone</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Frequency to use for harmonic balance.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Frequency to use for harmonic balance.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2608,7 +2611,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">i_q_values</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;I and Q value at each timepoint.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;I and Q value at each timepoint.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2637,7 +2640,7 @@ function checkPageExistsAndRedirect(event) {
     <span class="k">def</span> <span class="nf">file</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;File path with I and Q values.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;File path with I and Q values.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2652,7 +2655,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <span class="k">class</span> <span class="nc">VoltageFrequencyDependentSource</span><span class="p">(</span><span class="n">Sources</span><span class="p">,</span> <span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Voltage Frequency Dependent Class.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Voltage Frequency Dependent Class.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">app</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">source_type</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="n">Sources</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">app</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">source_type</span><span class="p">)</span>
@@ -2663,7 +2666,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">frequencies</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;List of frequencies in ``Hz``.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;List of frequencies in ``Hz``.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2678,7 +2681,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">vmag</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;List of magnitudes in ``V``.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;List of magnitudes in ``V``.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2693,7 +2696,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">vang</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;List of angles in ``rad``.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;List of angles in ``rad``.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2708,7 +2711,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">vreal</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;List of real values in ``V``.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;List of real values in ``V``.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2723,7 +2726,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">vimag</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;List of imaginary values in ``V``.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;List of imaginary values in ``V``.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2738,7 +2741,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">magnitude_angle</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Enable magnitude and angle data.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Enable magnitude and angle data.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2753,7 +2756,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">fds_filename</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;FDS file path.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;FDS file path.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2815,7 +2818,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <span class="k">class</span> <span class="nc">VoltageDCSource</span><span class="p">(</span><span class="n">Sources</span><span class="p">,</span> <span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Power Sinusoidal Class.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Power Sinusoidal Class.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">app</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">source_type</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="n">Sources</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">app</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">source_type</span><span class="p">)</span>
@@ -2826,7 +2829,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">ac_magnitude</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;AC magnitude value.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;AC magnitude value.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2841,7 +2844,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">ac_phase</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;AC phase value.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;AC phase value.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2856,7 +2859,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">dc_magnitude</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;DC voltage value.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;DC voltage value.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2871,7 +2874,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <span class="k">class</span> <span class="nc">VoltageSinSource</span><span class="p">(</span><span class="n">Sources</span><span class="p">,</span> <span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Power Sinusoidal Class.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Power Sinusoidal Class.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">app</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">source_type</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="n">Sources</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">app</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">source_type</span><span class="p">)</span>
@@ -2882,7 +2885,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">ac_magnitude</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;AC magnitude value.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;AC magnitude value.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2897,7 +2900,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">ac_phase</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;AC phase value.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;AC phase value.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2912,7 +2915,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">dc_magnitude</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;DC voltage value.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;DC voltage value.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2927,7 +2930,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">voltage_amplitude</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Voltage amplitude.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Voltage amplitude.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2942,7 +2945,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">voltage_offset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Voltage offset from zero watts.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Voltage offset from zero watts.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2957,7 +2960,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">frequency</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Frequency.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Frequency.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2972,7 +2975,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">delay</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Delay to start of sine wave.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Delay to start of sine wave.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2987,7 +2990,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">damping_factor</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Damping factor.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Damping factor.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -3002,7 +3005,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">phase_delay</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Phase delay.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Phase delay.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -3017,7 +3020,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">tone</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Frequency to use for harmonic balance.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Frequency to use for harmonic balance.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -3032,7 +3035,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <span class="k">class</span> <span class="nc">CurrentSinSource</span><span class="p">(</span><span class="n">Sources</span><span class="p">,</span> <span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Current Sinusoidal Class.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Current Sinusoidal Class.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">app</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">source_type</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="n">Sources</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">app</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">source_type</span><span class="p">)</span>
@@ -3043,7 +3046,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">ac_magnitude</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;AC magnitude value.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;AC magnitude value.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -3058,7 +3061,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">ac_phase</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;AC phase value.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;AC phase value.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -3073,7 +3076,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">dc_magnitude</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;DC current value.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;DC current value.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -3088,7 +3091,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">current_amplitude</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Current amplitude.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Current amplitude.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -3103,7 +3106,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">current_offset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Current offset.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Current offset.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -3118,7 +3121,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">frequency</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Frequency.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Frequency.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -3133,7 +3136,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">delay</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Delay to start of sine wave.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Delay to start of sine wave.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -3148,7 +3151,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">damping_factor</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Damping factor.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Damping factor.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -3163,7 +3166,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">phase_delay</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Phase delay.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Phase delay.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -3178,7 +3181,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">multiplier</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Multiplier for simulating multiple parallel current sources.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Multiplier for simulating multiple parallel current sources.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -3193,7 +3196,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">tone</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Frequency to use for harmonic balance.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Frequency to use for harmonic balance.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -3208,7 +3211,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <div class="viewcode-block" id="Excitations"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.Boundary.Excitations.html#pyaedt.modules.Boundary.Excitations">[docs]</a><span class="k">class</span> <span class="nc">Excitations</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Manages Excitations in Circuit Projects.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Manages Excitations in Circuit Projects.</span>
 
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
@@ -3237,7 +3240,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Excitation name.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Excitation name.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -3259,7 +3262,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">angle</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Symbol angle.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Symbol angle.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -3274,7 +3277,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">mirror</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Enable port mirror.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Enable port mirror.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -3289,7 +3292,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">location</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Port location.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Port location.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -3306,7 +3309,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">use_symbol_color</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Use symbol color.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Use symbol color.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -3322,7 +3325,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">impedance</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Port termination.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Port termination.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -3344,7 +3347,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">enable_noise</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Enable noise.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Enable noise.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -3362,7 +3365,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">noise_temperature</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Enable noise.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Enable noise.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -3381,7 +3384,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">microwave_symbol</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Enable microwave symbol.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Enable microwave symbol.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -3402,7 +3405,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">reference_node</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Reference node.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Reference node.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -3423,7 +3426,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">enabled_sources</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Enabled sources.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Enabled sources.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -3439,7 +3442,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">enabled_analyses</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Enabled analyses.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Enabled analyses.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -3542,7 +3545,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Excitations.update"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.Boundary.Excitations.update.html#pyaedt.modules.Boundary.Excitations.update">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Update the excitation in AEDT.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Update the excitation in AEDT.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -3601,7 +3604,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Excitations.delete"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.Boundary.Excitations.delete.html#pyaedt.modules.Boundary.Excitations.delete">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Delete the port in AEDT.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Delete the port in AEDT.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -3614,7 +3617,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">_logger</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Logger.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Logger.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">logger</span></div>
 </pre></div>
 
@@ -3636,13 +3639,13 @@ function checkPageExistsAndRedirect(event) {
   
   <div class="footer-item">
     <p class="copyright">
-    &copy; Copyright (c) 2022 ANSYS, Inc. All rights reserved.<br>
+    &copy; Copyright (c) 2023 ANSYS, Inc. All rights reserved.<br>
 </p>
   </div>
   
   <div class="footer-item">
     <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 6.1.1.<br>
 </p>
   </div>
   

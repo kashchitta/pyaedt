@@ -29,6 +29,7 @@
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="_static/css/ansys_sphinx_theme.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
 
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
@@ -37,14 +38,11 @@
         <link href="_static/css/breadcrumbs.css" rel="stylesheet">
     
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <link rel="shortcut icon" href="_static/ansys-favicon.png"/>
+    <link rel="icon" href="_static/ansys-favicon.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Getting started" href="Getting_started/index.html" />
@@ -74,9 +72,8 @@
   
   
   
-    <img src="_static/pyansys-logo-black-cropped.png" class="logo__image only-light" alt="Logo image">
-    <img src="_static/pyansys-logo-black-cropped.png" class="logo__image only-dark" alt="Logo image">
   
+    <p class="title logo__title">PyAEDT</p>
   
 </a>
     
@@ -106,7 +103,13 @@
 
 <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="API/index.html">
-  API reference
+  API AEDT reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="EDBAPI/index.html">
+  API EDB reference
  </a>
 </li>
 
@@ -425,7 +428,7 @@ function checkPageExistsAndRedirect(event) {
 </section>
 <section id="pyaedt">
 <h1>PyAEDT<a class="headerlink" href="#pyaedt" title="Permalink to this heading">#</a></h1>
-<p><a class="reference external" href="https://docs.pyansys.com/"><img alt="PyAnsys" src="https://img.shields.io/badge/Py-Ansys-ffc107.svg?logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAABDklEQVQ4jWNgoDfg5mD8vE7q/3bpVyskbW0sMRUwofHD7Dh5OBkZGBgW7/3W2tZpa2tLQEOyOzeEsfumlK2tbVpaGj4N6jIs1lpsDAwMJ278sveMY2BgCA0NFRISwqkhyQ1q/Nyd3zg4OBgYGNjZ2ePi4rB5loGBhZnhxTLJ/9ulv26Q4uVk1NXV/f///////69du4Zdg78lx//t0v+3S88rFISInD59GqIH2esIJ8G9O2/XVwhjzpw5EAam1xkkBJn/bJX+v1365hxxuCAfH9+3b9/+////48cPuNehNsS7cDEzMTAwMMzb+Q2u4dOnT2vWrMHu9ZtzxP9vl/69RVpCkBlZ3N7enoDXBwEAAA+YYitOilMVAAAAAElFTkSuQmCC" /></a> <a class="reference external" href="https://pypi.org/project/pyaedt/"><img alt="pypi" src="https://img.shields.io/pypi/v/pyaedt.svg?logo=python&amp;logoColor=white" /></a> <a class="reference external" href="https://pypi.org/project/pyaedt/"><img alt="PyPIact" src="https://img.shields.io/pypi/dm/pyaedt.svg?label=PyPI%20downloads" /></a> <a class="reference external" href="https://www.python.org/downloads/"><img alt="PythonVersion" src="https://img.shields.io/badge/python-3.7+-blue.svg" /></a> <a class="reference external" href="https://github.com/pyansys/pyaedt/actions/workflows/unit_tests.yml"><img alt="GH-CI" src="https://github.com/pyansys/pyaedt/actions/workflows/unit_tests.yml/badge.svg" /></a> <a class="reference external" href="https://codecov.io/gh/pyansys/pyaedt"><img alt="codecov" src="https://codecov.io/gh/pyansys/pyaedt/branch/main/graph/badge.svg" /></a> <a class="reference external" href="https://opensource.org/licenses/MIT"><img alt="MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" /></a> <a class="reference external" href="https://github.com/psf/black"><img alt="black" src="https://img.shields.io/badge/code%20style-black-000000.svg?style=flat" /></a></p>
+<p><a class="reference external" href="https://docs.pyansys.com/"><img alt="PyAnsys" src="https://img.shields.io/badge/Py-Ansys-ffc107.svg?logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAABDklEQVQ4jWNgoDfg5mD8vE7q/3bpVyskbW0sMRUwofHD7Dh5OBkZGBgW7/3W2tZpa2tLQEOyOzeEsfumlK2tbVpaGj4N6jIs1lpsDAwMJ278sveMY2BgCA0NFRISwqkhyQ1q/Nyd3zg4OBgYGNjZ2ePi4rB5loGBhZnhxTLJ/9ulv26Q4uVk1NXV/f///////69du4Zdg78lx//t0v+3S88rFISInD59GqIH2esIJ8G9O2/XVwhjzpw5EAam1xkkBJn/bJX+v1365hxxuCAfH9+3b9/+////48cPuNehNsS7cDEzMTAwMMzb+Q2u4dOnT2vWrMHu9ZtzxP9vl/69RVpCkBlZ3N7enoDXBwEAAA+YYitOilMVAAAAAElFTkSuQmCC" /></a> <a class="reference external" href="https://pypi.org/project/pyaedt/"><img alt="pypi" src="https://img.shields.io/pypi/v/pyaedt.svg?logo=python&amp;logoColor=white" /></a> <a class="reference external" href="https://pypi.org/project/pyaedt/"><img alt="PyPIact" src="https://pepy.tech/badge/pyaedt/month" /></a> <a class="reference external" href="https://www.python.org/downloads/"><img alt="PythonVersion" src="https://img.shields.io/badge/python-3.7+-blue.svg" /></a> <a class="reference external" href="https://github.com/pyansys/pyaedt/actions/workflows/unit_tests.yml"><img alt="GH-CI" src="https://github.com/pyansys/pyaedt/actions/workflows/unit_tests.yml/badge.svg" /></a> <a class="reference external" href="https://codecov.io/gh/pyansys/pyaedt"><img alt="codecov" src="https://codecov.io/gh/pyansys/pyaedt/branch/main/graph/badge.svg" /></a> <a class="reference external" href="https://opensource.org/licenses/MIT"><img alt="MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" /></a> <a class="reference external" href="https://github.com/psf/black"><img alt="black" src="https://img.shields.io/badge/code%20style-black-000000.svg?style=flat" /></a> <a class="reference external" href="https://anaconda.org/conda-forge/pyaedt"><img alt="Anaconda" src="https://anaconda.org/conda-forge/pyaedt/badges/version.svg" /></a> <a class="reference external" href="https://results.pre-commit.ci/latest/github/pyansys/pyaedt/main"><img alt="pre-commit.ci status" src="https://results.pre-commit.ci/badge/github/pyansys/pyaedt/main.svg" /></a></p>
 <section id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
 <p>PyAEDT is part of the larger <a class="reference external" href="https://docs.pyansys.com">PyAnsys</a>
@@ -460,8 +463,8 @@ as much as possible across the API.</p>
 <section id="documentation-and-issues">
 <h2>Documentation and issues<a class="headerlink" href="#documentation-and-issues" title="Permalink to this heading">#</a></h2>
 <p>In addition to installation and usage information, the PyAEDT
-documentation provides <a class="reference external" href="https://aedt.docs.pyansys.com/API/">API reference</a>,
-<a class="reference external" href="https://aedt.docs.pyansys.com/examples/index.html">Examples</a>, and <a class="reference external" href="https://aedt.docs.pyansys.com/Contributing.html">Contribute</a> sections.</p>
+documentation provides <a class="reference external" href="https://aedt.docs.pyansys.com/release/0.6/API/index.html">API reference</a>,
+<a class="reference external" href="https://aedt.docs.pyansys.com/release/0.6/examples/index.html">Examples</a>, and <a class="reference external" href="https://aedt.docs.pyansys.com/release/0.6/Contributing.html">Contribute</a> sections.</p>
 <p>On the <a class="reference external" href="https://github.com/pyansys/PyAEDT/issues">PyAEDT Issues</a> page, you can
 create issues to submit questions, report bugs, and request new features. To reach
 the project support team, email <a class="reference external" href="mailto:pyansys&#46;support&#37;&#52;&#48;ansys&#46;com">pyansys<span>&#46;</span>support<span>&#64;</span>ansys<span>&#46;</span>com</a>.</p>
@@ -516,10 +519,10 @@ in an IronPython or CPython environment and initializes AEDT accordingly.
 PyAEDT also provides advanced error management. Usage examples follow.</p>
 <section id="explicit-aedt-declaration-and-error-management">
 <h3>Explicit AEDT declaration and error management<a class="headerlink" href="#explicit-aedt-declaration-and-error-management" title="Permalink to this heading">#</a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Launch AEDT 2022 R1 in non-graphical mode</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Launch AEDT 2022 R2 in non-graphical mode</span>
 
 <span class="kn">from</span> <span class="nn">pyaedt</span> <span class="kn">import</span> <span class="n">Desktop</span><span class="p">,</span> <span class="n">Circuit</span>
-<span class="k">with</span> <span class="n">Desktop</span><span class="p">(</span><span class="n">specified_version</span><span class="o">=</span><span class="s2">&quot;2022.1&quot;</span><span class="p">,</span>
+<span class="k">with</span> <span class="n">Desktop</span><span class="p">(</span><span class="n">specified_version</span><span class="o">=</span><span class="s2">&quot;2022.2&quot;</span><span class="p">,</span>
              <span class="n">non_graphical</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">new_desktop_session</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
              <span class="n">close_on_exit</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">student_version</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="n">circuit</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">()</span>
@@ -536,7 +539,7 @@ PyAEDT also provides advanced error management. Usage examples follow.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Launch the latest installed version of AEDT in graphical mode</span>
 
 <span class="kn">from</span> <span class="nn">pyaedt</span> <span class="kn">import</span> <span class="n">Circuit</span>
-<span class="k">with</span> <span class="n">Circuit</span><span class="p">(</span><span class="n">specified_version</span><span class="o">=</span><span class="s2">&quot;2022.1&quot;</span><span class="p">,</span>
+<span class="k">with</span> <span class="n">Circuit</span><span class="p">(</span><span class="n">specified_version</span><span class="o">=</span><span class="s2">&quot;2022.2&quot;</span><span class="p">,</span>
              <span class="n">non_graphical</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="k">as</span> <span class="n">circuit</span><span class="p">:</span>
     <span class="o">...</span>
     <span class="c1"># Any error here will be caught by Desktop.</span>
@@ -630,13 +633,13 @@ on the Ansys website.</p>
   
   <div class="footer-item">
     <p class="copyright">
-    &copy; Copyright (c) 2022 ANSYS, Inc. All rights reserved.<br>
+    &copy; Copyright (c) 2023 ANSYS, Inc. All rights reserved.<br>
 </p>
   </div>
   
   <div class="footer-item">
     <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 6.1.1.<br>
 </p>
   </div>
   

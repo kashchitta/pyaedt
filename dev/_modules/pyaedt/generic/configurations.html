@@ -28,6 +28,7 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/css/ansys_sphinx_theme.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css" />
 
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
@@ -36,14 +37,11 @@
         <link href="../../../_static/css/breadcrumbs.css" rel="stylesheet">
     
     <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-    <script src="../../../_static/jquery.js"></script>
-    <script src="../../../_static/underscore.js"></script>
-    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../_static/doctools.js"></script>
     <script src="../../../_static/sphinx_highlight.js"></script>
     <script src="../../../_static/clipboard.min.js"></script>
     <script src="../../../_static/copybutton.js"></script>
-    <link rel="shortcut icon" href="../../../_static/ansys-favicon.png"/>
+    <link rel="icon" href="../../../_static/ansys-favicon.png"/>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -72,9 +70,8 @@
   
   
   
-    <img src="../../../_static/pyansys-logo-black-cropped.png" class="logo__image only-light" alt="Logo image">
-    <img src="../../../_static/pyansys-logo-black-cropped.png" class="logo__image only-dark" alt="Logo image">
   
+    <p class="title logo__title">PyAEDT</p>
   
 </a>
     
@@ -104,7 +101,13 @@
 
 <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="../../../API/index.html">
-  API reference
+  API AEDT reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../EDBAPI/index.html">
+  API EDB reference
  </a>
 </li>
 
@@ -318,8 +321,8 @@ function checkPageExistsAndRedirect(event) {
 <span class="kn">from</span> <span class="nn">pyaedt.generic.general_methods</span> <span class="kn">import</span> <span class="n">_create_json_file</span>
 <span class="kn">from</span> <span class="nn">pyaedt.generic.general_methods</span> <span class="kn">import</span> <span class="n">generate_unique_name</span>
 <span class="kn">from</span> <span class="nn">pyaedt.generic.general_methods</span> <span class="kn">import</span> <span class="n">pyaedt_function_handler</span>
-<span class="kn">from</span> <span class="nn">pyaedt.modeler.GeometryOperators</span> <span class="kn">import</span> <span class="n">GeometryOperators</span>
-<span class="kn">from</span> <span class="nn">pyaedt.modeler.Modeler</span> <span class="kn">import</span> <span class="n">CoordinateSystem</span>
+<span class="kn">from</span> <span class="nn">pyaedt.modeler.cad.Modeler</span> <span class="kn">import</span> <span class="n">CoordinateSystem</span>
+<span class="kn">from</span> <span class="nn">pyaedt.modeler.geometry_operators</span> <span class="kn">import</span> <span class="n">GeometryOperators</span>
 <span class="kn">from</span> <span class="nn">pyaedt.modules.Boundary</span> <span class="kn">import</span> <span class="n">BoundaryObject</span>
 <span class="kn">from</span> <span class="nn">pyaedt.modules.Boundary</span> <span class="kn">import</span> <span class="n">BoundaryProps</span>
 <span class="kn">from</span> <span class="nn">pyaedt.modules.DesignXPloration</span> <span class="kn">import</span> <span class="n">SetupOpti</span>
@@ -352,7 +355,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <div class="viewcode-block" id="ConfigurationsOptions"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.generic.configurations.ConfigurationsOptions.html#pyaedt.generic.configurations.ConfigurationsOptions">[docs]</a><span class="k">class</span> <span class="nc">ConfigurationsOptions</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Options class for the configurations.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Options class for the configurations.</span>
 <span class="sd">    User can enable or disable import export components.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -381,7 +384,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">object_mapping_tolerance</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Get/Set the tolerance value to be used in the object mapping (used e.g. for boundaries).</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get/Set the tolerance value to be used in the object mapping (used e.g. for boundaries).</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -395,7 +398,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">export_variables</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Define if the variables have to be exported into json file. Default is `True`.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Define if the variables have to be exported into json file. Default is `True`.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -415,7 +418,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">export_setups</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Define if the setups have to be exported to json file. Default is `True`.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Define if the setups have to be exported to json file. Default is `True`.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -435,7 +438,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">export_optimizations</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Define if the optimizations have to be exported to json file. Default is `True`.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Define if the optimizations have to be exported to json file. Default is `True`.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -455,14 +458,14 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">export_parametrics</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Define if the parametrics have to be exported to json file. Default is `True`.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Define if the parametrics have to be exported to json file. Default is `True`.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
 <span class="sd">        bool</span>
 
 <span class="sd">        Examples</span>
-<span class="sd">        ---------</span>
+<span class="sd">        --------</span>
 <span class="sd">        &gt;&gt;&gt; from pyaedt import Hfss</span>
 <span class="sd">        &gt;&gt;&gt; hfss = Hfss()</span>
 <span class="sd">        &gt;&gt;&gt; hfss.configurations.options.export_parametrics = False  # Disable the parametrics export</span>
@@ -475,7 +478,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">export_boundaries</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Define if the boundaries have to be exported to json file. Default is `True`.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Define if the boundaries have to be exported to json file. Default is `True`.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -495,7 +498,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">export_mesh_operations</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Define if the Mesh Operations have to be exported to json file. Default is `True`.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Define if the Mesh Operations have to be exported to json file. Default is `True`.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -515,7 +518,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">export_coordinate_systems</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Define if the Coordinate Systems have to be exported to json file. Default is `True`.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Define if the Coordinate Systems have to be exported to json file. Default is `True`.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -555,7 +558,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">export_materials</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Define if the materials have to be exported to json file. Default is `True`.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Define if the materials have to be exported to json file. Default is `True`.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -575,7 +578,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">export_object_properties</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Define if object properties have to be exported to json file. Default is `True`.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Define if object properties have to be exported to json file. Default is `True`.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -595,7 +598,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">import_variables</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Define if the variablbes have to be imported/created from json file. Default is `True`.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Define if the variablbes have to be imported/created from json file. Default is `True`.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -615,7 +618,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">import_setups</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Define if the setups have to be imported/created from json file. Default is `True`.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Define if the setups have to be imported/created from json file. Default is `True`.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -635,7 +638,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">import_optimizations</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Define if the optimizations have to be imported/created from json file. Default is `True`.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Define if the optimizations have to be imported/created from json file. Default is `True`.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -655,7 +658,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">import_parametrics</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Define if the parametrics have to be imported/created from json file. Default is `True`.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Define if the parametrics have to be imported/created from json file. Default is `True`.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -675,7 +678,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">import_boundaries</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Define if the boundaries have to be imported/created from json file. Default is `True`.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Define if the boundaries have to be imported/created from json file. Default is `True`.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -695,7 +698,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">import_mesh_operations</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Define if the Mesh Operations have to be imported/created from json file. Default is `True`.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Define if the Mesh Operations have to be imported/created from json file. Default is `True`.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -715,7 +718,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">import_coordinate_systems</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Define if the Coordinate Systems have to be imported/created from json file. Default is `True`.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Define if the Coordinate Systems have to be imported/created from json file. Default is `True`.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -755,7 +758,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">import_materials</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Define if the materials have to be imported/created from json file. Default is `True`.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Define if the materials have to be imported/created from json file. Default is `True`.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -775,7 +778,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">import_object_properties</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Define if object properties have to be imported/created from json file. Default is `True`.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Define if object properties have to be imported/created from json file. Default is `True`.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -795,7 +798,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">skip_import_if_exists</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Define if the existing boundaries or properties will be updated or not. Default is `True`.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Define if the existing boundaries or properties will be updated or not. Default is `True`.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -815,7 +818,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">_is_any_import_set</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Returns ``True`` if any import setting is set to ``True``. It returns ``False`` otherwise.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns ``True`` if any import setting is set to ``True``. It returns ``False`` otherwise.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -828,7 +831,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="ConfigurationsOptions.unset_all_export"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.generic.configurations.ConfigurationsOptions.unset_all_export.html#pyaedt.generic.configurations.ConfigurationsOptions.unset_all_export">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">unset_all_export</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Set all export properties to `False`.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set all export properties to `False`.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -841,7 +844,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="ConfigurationsOptions.set_all_export"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.generic.configurations.ConfigurationsOptions.set_all_export.html#pyaedt.generic.configurations.ConfigurationsOptions.set_all_export">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">set_all_export</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Set all export properties to `True`.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set all export properties to `True`.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -854,7 +857,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="ConfigurationsOptions.unset_all_import"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.generic.configurations.ConfigurationsOptions.unset_all_import.html#pyaedt.generic.configurations.ConfigurationsOptions.unset_all_import">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">unset_all_import</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Set all import properties to `False`.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set all import properties to `False`.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -867,7 +870,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="ConfigurationsOptions.set_all_import"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.generic.configurations.ConfigurationsOptions.set_all_import.html#pyaedt.generic.configurations.ConfigurationsOptions.set_all_import">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">set_all_import</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Set all import properties to `True`.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set all import properties to `True`.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -880,7 +883,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <div class="viewcode-block" id="ImportResults"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.generic.configurations.ImportResults.html#pyaedt.generic.configurations.ImportResults">[docs]</a><span class="k">class</span> <span class="nc">ImportResults</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Import Results Class.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Import Results Class.</span>
 <span class="sd">    Contains the results of the import operations. Each reusult can be ``True`` or ``False``.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
@@ -905,7 +908,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">global_import_success</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Returns ``True`` if all imports are successful. It returns ``False`` otherwise.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns ``True`` if all imports are successful. It returns ``False`` otherwise.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -918,7 +921,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <div class="viewcode-block" id="Configurations"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.generic.configurations.Configurations.html#pyaedt.generic.configurations.Configurations">[docs]</a><span class="k">class</span> <span class="nc">Configurations</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Configuration Class.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Configuration Class.</span>
 <span class="sd">    It enables to export and import configuration options to be applied on a new/existing design.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
@@ -1206,7 +1209,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Configurations.import_config"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.generic.configurations.Configurations.import_config.html#pyaedt.generic.configurations.Configurations.import_config">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">import_config</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config_file</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Import configuration settings from a json file and apply it to the current design.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Import configuration settings from a json file and apply it to the current design.</span>
 <span class="sd">        The sections to be applied are defined with ``configuration.options`` class.</span>
 <span class="sd">        The import operation result is saved in the ``configuration.results`` class.</span>
 
@@ -1372,6 +1375,9 @@ function checkPageExistsAndRedirect(event) {
             <span class="k">for</span> <span class="n">setup</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">setups</span><span class="p">:</span>
                 <span class="n">dict_out</span><span class="p">[</span><span class="s2">&quot;setups&quot;</span><span class="p">][</span><span class="n">setup</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">setup</span><span class="o">.</span><span class="n">props</span>
                 <span class="n">dict_out</span><span class="p">[</span><span class="s2">&quot;setups&quot;</span><span class="p">][</span><span class="n">setup</span><span class="o">.</span><span class="n">name</span><span class="p">][</span><span class="s2">&quot;SetupType&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">setup</span><span class="o">.</span><span class="n">setuptype</span>
+                <span class="k">if</span> <span class="n">setup</span><span class="o">.</span><span class="n">sweeps</span><span class="p">:</span>
+                    <span class="k">for</span> <span class="n">sweep</span> <span class="ow">in</span> <span class="n">setup</span><span class="o">.</span><span class="n">sweeps</span><span class="p">:</span>
+                        <span class="n">dict_out</span><span class="p">[</span><span class="s2">&quot;setups&quot;</span><span class="p">][</span><span class="n">setup</span><span class="o">.</span><span class="n">name</span><span class="p">][</span><span class="n">sweep</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">sweep</span><span class="o">.</span><span class="n">props</span>
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">_export_optimizations</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dict_out</span><span class="p">):</span>
@@ -1472,7 +1478,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Configurations.export_config"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.generic.configurations.Configurations.export_config.html#pyaedt.generic.configurations.Configurations.export_config">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">export_config</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Export current design properties to json file.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Export current design properties to json file.</span>
 <span class="sd">        The section to be exported are defined with ``configuration.options`` class.</span>
 
 
@@ -1544,7 +1550,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <span class="k">class</span> <span class="nc">ConfigurationsIcepak</span><span class="p">(</span><span class="n">Configurations</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Configuration Class.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Configuration Class.</span>
 <span class="sd">    It enables to export and import configuration options to be applied on a new/existing design.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
@@ -1674,13 +1680,13 @@ function checkPageExistsAndRedirect(event) {
   
   <div class="footer-item">
     <p class="copyright">
-    &copy; Copyright (c) 2022 ANSYS, Inc. All rights reserved.<br>
+    &copy; Copyright (c) 2023 ANSYS, Inc. All rights reserved.<br>
 </p>
   </div>
   
   <div class="footer-item">
     <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 6.1.1.<br>
 </p>
   </div>
   

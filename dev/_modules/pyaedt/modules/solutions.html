@@ -28,6 +28,7 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/css/ansys_sphinx_theme.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css" />
 
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
@@ -36,14 +37,11 @@
         <link href="../../../_static/css/breadcrumbs.css" rel="stylesheet">
     
     <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-    <script src="../../../_static/jquery.js"></script>
-    <script src="../../../_static/underscore.js"></script>
-    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../_static/doctools.js"></script>
     <script src="../../../_static/sphinx_highlight.js"></script>
     <script src="../../../_static/clipboard.min.js"></script>
     <script src="../../../_static/copybutton.js"></script>
-    <link rel="shortcut icon" href="../../../_static/ansys-favicon.png"/>
+    <link rel="icon" href="../../../_static/ansys-favicon.png"/>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -72,9 +70,8 @@
   
   
   
-    <img src="../../../_static/pyansys-logo-black-cropped.png" class="logo__image only-light" alt="Logo image">
-    <img src="../../../_static/pyansys-logo-black-cropped.png" class="logo__image only-dark" alt="Logo image">
   
+    <p class="title logo__title">PyAEDT</p>
   
 </a>
     
@@ -104,7 +101,13 @@
 
 <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="../../../API/index.html">
-  API reference
+  API AEDT reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../EDBAPI/index.html">
+  API EDB reference
  </a>
 </li>
 
@@ -330,7 +333,7 @@ function checkPageExistsAndRedirect(event) {
 <span class="kn">from</span> <span class="nn">pyaedt.generic.plot</span> <span class="kn">import</span> <span class="n">plot_3d_chart</span>
 <span class="kn">from</span> <span class="nn">pyaedt.generic.plot</span> <span class="kn">import</span> <span class="n">plot_contour</span>
 <span class="kn">from</span> <span class="nn">pyaedt.generic.plot</span> <span class="kn">import</span> <span class="n">plot_polar_chart</span>
-<span class="kn">from</span> <span class="nn">pyaedt.modeler.Object3d</span> <span class="kn">import</span> <span class="n">FacePrimitive</span>
+<span class="kn">from</span> <span class="nn">pyaedt.modeler.cad.elements3d</span> <span class="kn">import</span> <span class="n">FacePrimitive</span>
 
 <span class="n">pd</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="n">np</span> <span class="o">=</span> <span class="kc">None</span>
@@ -360,7 +363,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <div class="viewcode-block" id="SolutionData"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.solutions.SolutionData.html#pyaedt.modules.solutions.SolutionData">[docs]</a><span class="k">class</span> <span class="nc">SolutionData</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Contains information from the :func:`GetSolutionDataPerVariation` method.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Contains information from the :func:`GetSolutionDataPerVariation` method.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">aedtdata</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_original_data</span> <span class="o">=</span> <span class="n">aedtdata</span>
@@ -392,7 +395,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">enable_pandas_output</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Set/Get a flag to use Pandas to export dict and lists. This applies to Solution data output.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set/Get a flag to use Pandas to export dict and lists. This applies to Solution data output.</span>
 <span class="sd">        If ``True`` the property or method will return a pandas object in CPython environment.</span>
 <span class="sd">        Default is ``False``.</span>
 
@@ -410,7 +413,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="SolutionData.set_active_variation"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.solutions.SolutionData.set_active_variation.html#pyaedt.modules.solutions.SolutionData.set_active_variation">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">set_active_variation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">var_id</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Set the active variations to one of available variations in self.variations.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set the active variations to one of available variations in self.variations.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -439,7 +442,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="SolutionData.variation_values"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.solutions.SolutionData.variation_values.html#pyaedt.modules.solutions.SolutionData.variation_values">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">variation_values</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">variation_name</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Get the list of the specific variation available values.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the list of the specific variation available values.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -461,7 +464,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">intrinsics</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Get intrinsics dictionary on active variation.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get intrinsics dictionary on active variation.&quot;&quot;&quot;</span>
         <span class="n">_sweeps</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">({})</span>
         <span class="n">intrinsics</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sweeps_names</span> <span class="k">if</span> <span class="n">i</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">nominal_variation</span><span class="o">.</span><span class="n">GetDesignVariableNames</span><span class="p">()]</span>
         <span class="k">for</span> <span class="n">el</span> <span class="ow">in</span> <span class="n">intrinsics</span><span class="p">:</span>
@@ -472,7 +475,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">nominal_variation</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Nominal variation.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Nominal variation.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nominal_variation</span>
 
     <span class="nd">@nominal_variation</span><span class="o">.</span><span class="n">setter</span>
@@ -484,7 +487,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">primary_sweep</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Primary sweep.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Primary sweep.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -500,13 +503,13 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">expressions</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Expressions.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Expressions.&quot;&quot;&quot;</span>
         <span class="n">mydata</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nominal_variation</span><span class="o">.</span><span class="n">GetDataExpressions</span><span class="p">()]</span>
         <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="nb">dict</span><span class="o">.</span><span class="n">fromkeys</span><span class="p">(</span><span class="n">mydata</span><span class="p">))</span>
 
 <div class="viewcode-block" id="SolutionData.update_sweeps"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.solutions.SolutionData.update_sweeps.html#pyaedt.modules.solutions.SolutionData.update_sweeps">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">update_sweeps</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Update sweeps.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Update sweeps.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -524,7 +527,7 @@ function checkPageExistsAndRedirect(event) {
     <span class="nd">@staticmethod</span>
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">_quantity</span><span class="p">(</span><span class="n">unit</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -573,7 +576,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">_init_solution_data_real</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot; &quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; &quot;&quot;&quot;</span>
         <span class="n">sols_data</span> <span class="o">=</span> <span class="p">{}</span>
 
         <span class="k">for</span> <span class="n">expression</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">expressions</span><span class="p">:</span>
@@ -598,7 +601,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">_init_solution_data_imag</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot; &quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; &quot;&quot;&quot;</span>
         <span class="n">sols_data</span> <span class="o">=</span> <span class="p">{}</span>
 
         <span class="k">for</span> <span class="n">expression</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">expressions</span><span class="p">:</span>
@@ -640,7 +643,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">full_matrix_real_imag</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Get the full available solution data in Real and Imaginary parts.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the full available solution data in Real and Imaginary parts.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -651,7 +654,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">full_matrix_mag_phase</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Get the full available solution data magnitude and phase in radians.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the full available solution data magnitude and phase in radians.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -663,7 +666,7 @@ function checkPageExistsAndRedirect(event) {
 <div class="viewcode-block" id="SolutionData.to_degrees"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.solutions.SolutionData.to_degrees.html#pyaedt.modules.solutions.SolutionData.to_degrees">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">to_degrees</span><span class="p">(</span><span class="n">input_list</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Convert an input list from radians to degrees.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Convert an input list from radians to degrees.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -684,7 +687,7 @@ function checkPageExistsAndRedirect(event) {
 <div class="viewcode-block" id="SolutionData.to_radians"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.solutions.SolutionData.to_radians.html#pyaedt.modules.solutions.SolutionData.to_radians">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">to_radians</span><span class="p">(</span><span class="n">input_list</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Convert an input list from degrees to radians.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Convert an input list from degrees to radians.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -714,7 +717,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="SolutionData.data_magnitude"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.solutions.SolutionData.data_magnitude.html#pyaedt.modules.solutions.SolutionData.data_magnitude">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">data_magnitude</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expression</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">convert_to_SI</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve the data magnitude of an expression.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve the data magnitude of an expression.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -757,7 +760,7 @@ function checkPageExistsAndRedirect(event) {
     <span class="nd">@staticmethod</span>
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">_convert_list_to_SI</span><span class="p">(</span><span class="n">datalist</span><span class="p">,</span> <span class="n">dataunits</span><span class="p">,</span> <span class="n">units</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Convert a data list to the SI unit system.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Convert a data list to the SI unit system.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -781,7 +784,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="SolutionData.data_db"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.solutions.SolutionData.data_db.html#pyaedt.modules.solutions.SolutionData.data_db">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">data_db</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expression</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">convert_to_SI</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve the data in the database for an expression and convert in db10.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve the data in the database for an expression and convert in db10.</span>
 
 <span class="sd">        .. deprecated:: 0.4.8</span>
 <span class="sd">           Use :func:`data_db10` instead.</span>
@@ -809,7 +812,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="SolutionData.data_db10"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.solutions.SolutionData.data_db10.html#pyaedt.modules.solutions.SolutionData.data_db10">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">data_db10</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expression</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">convert_to_SI</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve the data in the database for an expression and convert in db10.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve the data in the database for an expression and convert in db10.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -834,7 +837,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="SolutionData.data_db20"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.solutions.SolutionData.data_db20.html#pyaedt.modules.solutions.SolutionData.data_db20">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">data_db20</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expression</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">convert_to_SI</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve the data in the database for an expression and convert in db20.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve the data in the database for an expression and convert in db20.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -859,7 +862,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="SolutionData.data_phase"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.solutions.SolutionData.data_phase.html#pyaedt.modules.solutions.SolutionData.data_phase">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">data_phase</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expression</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">radians</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve the phase part of the data for an expression.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve the phase part of the data for an expression.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -887,7 +890,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">primary_sweep_values</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve the primary sweep for a given data and primary variable.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve the primary sweep for a given data and primary variable.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -901,7 +904,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">primary_sweep_variations</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve the variations lists for a given primary variable.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve the variations lists for a given primary variable.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -933,7 +936,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="SolutionData.data_real"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.solutions.SolutionData.data_real.html#pyaedt.modules.solutions.SolutionData.data_real">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">data_real</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expression</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">convert_to_SI</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve the real part of the data for an expression.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve the real part of the data for an expression.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -975,7 +978,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="SolutionData.data_imag"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.solutions.SolutionData.data_imag.html#pyaedt.modules.solutions.SolutionData.data_imag">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">data_imag</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expression</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">convert_to_SI</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve the imaginary part of the data for an expression.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve the imaginary part of the data for an expression.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1015,7 +1018,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="SolutionData.is_real_only"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.solutions.SolutionData.is_real_only.html#pyaedt.modules.solutions.SolutionData.is_real_only">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">is_real_only</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expression</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Check if the expression has only real values or not.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Check if the expression has only real values or not.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1039,7 +1042,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="SolutionData.export_data_to_csv"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.solutions.SolutionData.export_data_to_csv.html#pyaedt.modules.solutions.SolutionData.export_data_to_csv">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">export_data_to_csv</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">output</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;;&quot;</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Save to output csv file the Solution Data.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Save to output csv file the Solution Data.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1089,7 +1092,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">snapshot_path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">is_polar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a matplotlib plot based on a list of data.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a matplotlib plot based on a list of data.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1174,7 +1177,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">2000</span><span class="p">,</span> <span class="mi">1000</span><span class="p">),</span>
         <span class="n">snapshot_path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a matplotlib 3d plot based on a list of data.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a matplotlib 3d plot based on a list of data.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1247,7 +1250,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="SolutionData.ifft"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.solutions.SolutionData.ifft.html#pyaedt.modules.solutions.SolutionData.ifft">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">ifft</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">curve_header</span><span class="o">=</span><span class="s2">&quot;NearE&quot;</span><span class="p">,</span> <span class="n">u_axis</span><span class="o">=</span><span class="s2">&quot;_u&quot;</span><span class="p">,</span> <span class="n">v_axis</span><span class="o">=</span><span class="s2">&quot;_v&quot;</span><span class="p">,</span> <span class="n">window</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create IFFT of given complex data.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create IFFT of given complex data.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1335,7 +1338,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">csv_dir</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">name_str</span><span class="o">=</span><span class="s2">&quot;res_&quot;</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Save IFFT Matrix to a list of csv files (one per time step).</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Save IFFT Matrix to a list of csv files (one per time step).</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1408,7 +1411,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <div class="viewcode-block" id="FfdSolutionData"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.solutions.FfdSolutionData.html#pyaedt.modules.solutions.FfdSolutionData">[docs]</a><span class="k">class</span> <span class="nc">FfdSolutionData</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Class containing Hfss Far Field Solution Data (ffd).&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Contains Hfss Far Field Solution Data (ffd).&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">app</span><span class="p">,</span> <span class="n">sphere_name</span><span class="p">,</span> <span class="n">setup_name</span><span class="p">,</span> <span class="n">frequencies</span><span class="p">,</span> <span class="n">variations</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">taper</span><span class="o">=</span><span class="s2">&quot;flat&quot;</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_app</span> <span class="o">=</span> <span class="n">app</span>
@@ -1484,7 +1487,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">frequency</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Get/set the Active Frequency.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get/set the Active Frequency.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1501,7 +1504,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">phase_offset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Additional phase offset in degrees on each port. Useful when element has more than one port.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Additional phase offset in degrees on each port. Useful when element has more than one port.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1523,7 +1526,7 @@ function checkPageExistsAndRedirect(event) {
 <div class="viewcode-block" id="FfdSolutionData.get_array_index"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.solutions.FfdSolutionData.get_array_index.html#pyaedt.modules.solutions.FfdSolutionData.get_array_index">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">get_array_index</span><span class="p">(</span><span class="n">port_name</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Get index of a given port.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get index of a given port.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1542,7 +1545,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="FfdSolutionData.array_min_max_values"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.solutions.FfdSolutionData.array_min_max_values.html#pyaedt.modules.solutions.FfdSolutionData.array_min_max_values">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">array_min_max_values</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Array bounding box.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Array bounding box.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1567,7 +1570,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="FfdSolutionData.array_center_and_edge"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.solutions.FfdSolutionData.array_center_and_edge.html#pyaedt.modules.solutions.FfdSolutionData.array_center_and_edge">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">array_center_and_edge</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Find the center and edge of our array, assumes all ports in far field</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Find the center and edge of our array, assumes all ports in far field</span>
 <span class="sd">        mapping file are active ports.</span>
 
 <span class="sd">        Returns</span>
@@ -1635,7 +1638,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="FfdSolutionData.element_location"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.solutions.FfdSolutionData.element_location.html#pyaedt.modules.solutions.FfdSolutionData.element_location">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">element_location</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Element location in the array.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Element location in the array.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1658,7 +1661,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="FfdSolutionData.assign_weight"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.solutions.FfdSolutionData.assign_weight.html#pyaedt.modules.solutions.FfdSolutionData.assign_weight">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">assign_weight</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">taper</span><span class="o">=</span><span class="s2">&quot;flat&quot;</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Assign weight to array.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Assign weight to array.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1737,7 +1740,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="FfdSolutionData.beamform"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.solutions.FfdSolutionData.beamform.html#pyaedt.modules.solutions.FfdSolutionData.beamform">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">beamform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">phi_scan</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">theta_scan</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Compute the far field pattern calculated for a specific phi/scan angle requested.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Compute the far field pattern calculated for a specific phi/scan angle requested.</span>
 <span class="sd">        This is calculated based on the lattice vector spacing and the embedded element</span>
 <span class="sd">        patterns of a ca-ddm or fa-ddm array in HFSS.</span>
 <span class="sd">        Calculates phase shifts between array elements in A and B directions,</span>
@@ -1844,7 +1847,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="FfdSolutionData.beamform_2beams"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.solutions.FfdSolutionData.beamform_2beams.html#pyaedt.modules.solutions.FfdSolutionData.beamform_2beams">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">beamform_2beams</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">phi_scan1</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">theta_scan1</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">phi_scan2</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">theta_scan2</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Compute the far field pattern calculated for a specific phi/scan angle requested.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Compute the far field pattern calculated for a specific phi/scan angle requested.</span>
 <span class="sd">        This is calculated based on the lattice vector spacing and the embedded element</span>
 <span class="sd">        patterns of a ca-ddm or fa-ddm array in HFSS.</span>
 
@@ -1983,7 +1986,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="FfdSolutionData.get_lattice_vectors"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.solutions.FfdSolutionData.get_lattice_vectors.html#pyaedt.modules.solutions.FfdSolutionData.get_lattice_vectors">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">get_lattice_vectors</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Compute Lattice vectors for Antenna Arrays or return default array in case of simple antenna analysis.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Compute Lattice vectors for Antenna Arrays or return default array in case of simple antenna analysis.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2072,7 +2075,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">convert_to_db</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
         <span class="n">export_image_path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a Contour plot of specified quantity.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a Contour plot of specified quantity.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2132,7 +2135,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">convert_to_db</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
         <span class="n">export_image_path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a 2D plot of specified quantity in matplotlib.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a 2D plot of specified quantity in matplotlib.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2224,7 +2227,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">convert_to_db</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
         <span class="n">export_image_path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a 3d plot of specified quantity.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a 3d plot of specified quantity.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2322,7 +2325,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">export_image_path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a 3d Polar Plot of Geometry with Radiation Pattern in Pyvista.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a 3d Polar Plot of Geometry with Radiation Pattern in Pyvista.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2465,7 +2468,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">export_image_path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a 3d Polar Plot with 2 beams of Geometry with Radiation Pattern in Pyvista.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a 3d Polar Plot with 2 beams of Geometry with Radiation Pattern in Pyvista.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2630,12 +2633,12 @@ function checkPageExistsAndRedirect(event) {
         <span class="k">return</span>
 
     <span class="k">def</span> <span class="nf">update_phi</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">phi</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Updates the Pyvista Plot with new phi value.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Updates the Pyvista Plot with new phi value.&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_phi</span> <span class="o">=</span> <span class="n">phi</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_update_both</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">update_theta</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">theta</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Updates the Pyvista Plot with new theta value.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Updates the Pyvista Plot with new theta value.&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_theta</span> <span class="o">=</span> <span class="n">theta</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_update_both</span><span class="p">()</span>
 
@@ -2665,28 +2668,28 @@ function checkPageExistsAndRedirect(event) {
         <span class="k">return</span>
 
     <span class="k">def</span> <span class="nf">update_phi1</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">phi1</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Updates the Pyvista Plot with new phi1 value.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Updates the Pyvista Plot with new phi1 value.&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_phi1</span> <span class="o">=</span> <span class="n">phi1</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_update_both</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">update_theta1</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">theta1</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Updates the Pyvista Plot with new theta1 value.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Updates the Pyvista Plot with new theta1 value.&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_theta1</span> <span class="o">=</span> <span class="n">theta1</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_update_both</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">update_phi2</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">phi2</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Updates the Pyvista Plot with new phi2 value.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Updates the Pyvista Plot with new phi2 value.&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_phi2</span> <span class="o">=</span> <span class="n">phi2</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_update_both</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">update_theta2</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">theta2</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Updates the Pyvista Plot with new theta2 value.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Updates the Pyvista Plot with new theta2 value.&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_theta2</span> <span class="o">=</span> <span class="n">theta2</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_update_both</span><span class="p">()</span>
 
 
 <div class="viewcode-block" id="FieldPlot"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.solutions.FieldPlot.html#pyaedt.modules.solutions.FieldPlot">[docs]</a><span class="k">class</span> <span class="nc">FieldPlot</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Creates and edits field plots.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Creates and edits field plots.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -2746,7 +2749,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">plotGeomInfo</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Plot geometry information.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Plot geometry information.&quot;&quot;&quot;</span>
         <span class="n">idx</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">volume_indexes</span><span class="p">:</span>
             <span class="n">idx</span> <span class="o">+=</span> <span class="mi">1</span>
@@ -2804,7 +2807,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">intrinsicVar</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Intrinsic variable.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Intrinsic variable.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2828,14 +2831,14 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">plotsettings</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Plot settings.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Plot settings.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
 <span class="sd">        list</span>
 <span class="sd">            List of plot settings.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">surfaces_indexes</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">surfaces_indexes</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">cutplane_indexes</span><span class="p">:</span>
             <span class="n">arg</span> <span class="o">=</span> <span class="p">[</span>
                 <span class="s2">&quot;NAME:PlotOnSurfaceSettings&quot;</span><span class="p">,</span>
                 <span class="s2">&quot;Filled:=&quot;</span><span class="p">,</span>
@@ -2899,7 +2902,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">surfacePlotInstruction</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Surface plot settings.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Surface plot settings.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2938,7 +2941,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">field_plot_settings</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Field Plot Settings.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Field Plot Settings.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2983,7 +2986,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="FieldPlot.create"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.solutions.FieldPlot.create.html#pyaedt.modules.solutions.FieldPlot.create">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a field plot.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a field plot.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2997,7 +3000,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="FieldPlot.update"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.solutions.FieldPlot.update.html#pyaedt.modules.solutions.FieldPlot.update">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Update the field plot.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Update the field plot.</span>
 
 <span class="sd">        .. note::</span>
 <span class="sd">           This method works on any plot created inside PyAEDT.</span>
@@ -3012,7 +3015,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="FieldPlot.update_field_plot_settings"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.solutions.FieldPlot.update_field_plot_settings.html#pyaedt.modules.solutions.FieldPlot.update_field_plot_settings">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">update_field_plot_settings</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Modify the field plot settings.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Modify the field plot settings.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -3024,13 +3027,13 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="FieldPlot.delete"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.solutions.FieldPlot.delete.html#pyaedt.modules.solutions.FieldPlot.delete">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Delete the field plot.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Delete the field plot.&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">oField</span><span class="o">.</span><span class="n">DeleteFieldPlot</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">])</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_postprocessor</span><span class="o">.</span><span class="n">field_plots</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="FieldPlot.change_plot_scale"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.solutions.FieldPlot.change_plot_scale.html#pyaedt.modules.solutions.FieldPlot.change_plot_scale">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">change_plot_scale</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">minimum_value</span><span class="p">,</span> <span class="n">maximum_value</span><span class="p">,</span> <span class="n">is_log</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">is_db</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Change Field Plot Scale.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Change Field Plot Scale.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -3087,7 +3090,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="FieldPlot.export_image"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.solutions.FieldPlot.export_image.html#pyaedt.modules.solutions.FieldPlot.export_image">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">export_image</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">full_path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">1920</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">1080</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="s2">&quot;isometric&quot;</span><span class="p">,</span> <span class="n">display_wireframe</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Export the active plot to an image file.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Export the active plot to an image file.</span>
 
 <span class="sd">        .. note::</span>
 <span class="sd">           There are some limitations on HFSS 3D Layout plots.</span>
@@ -3139,7 +3142,7 @@ function checkPageExistsAndRedirect(event) {
     <span class="k">def</span> <span class="nf">export_image_from_aedtplt</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">export_path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">view</span><span class="o">=</span><span class="s2">&quot;isometric&quot;</span><span class="p">,</span> <span class="n">plot_mesh</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">scale_min</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">scale_max</span><span class="o">=</span><span class="kc">None</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Save an image of the active plot using PyVista.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Save an image of the active plot using PyVista.</span>
 
 <span class="sd">        .. note::</span>
 <span class="sd">            This method only works if the CPython with PyVista module is installed.</span>
@@ -3207,13 +3210,13 @@ function checkPageExistsAndRedirect(event) {
   
   <div class="footer-item">
     <p class="copyright">
-    &copy; Copyright (c) 2022 ANSYS, Inc. All rights reserved.<br>
+    &copy; Copyright (c) 2023 ANSYS, Inc. All rights reserved.<br>
 </p>
   </div>
   
   <div class="footer-item">
     <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 6.1.1.<br>
 </p>
   </div>
   

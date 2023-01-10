@@ -29,6 +29,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/ansys_sphinx_theme.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
 
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
@@ -37,14 +38,11 @@
         <link href="../../_static/css/breadcrumbs.css" rel="stylesheet">
     
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/sphinx_highlight.js"></script>
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
-    <link rel="shortcut icon" href="../../_static/ansys-favicon.png"/>
+    <link rel="icon" href="../../_static/ansys-favicon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Matrix" href="pyaedt.modules.SetupTemplates.Matrix.html" />
@@ -75,9 +73,8 @@
   
   
   
-    <img src="../../_static/pyansys-logo-black-cropped.png" class="logo__image only-light" alt="Logo image">
-    <img src="../../_static/pyansys-logo-black-cropped.png" class="logo__image only-dark" alt="Logo image">
   
+    <p class="title logo__title">PyAEDT</p>
   
 </a>
     
@@ -107,7 +104,13 @@
 
 <li class="toctree-l1 current active nav-item">
  <a class="reference internal nav-link" href="../index.html">
-  API reference
+  API AEDT reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../EDBAPI/index.html">
+  API EDB reference
  </a>
 </li>
 
@@ -263,9 +266,8 @@ function checkPageExistsAndRedirect(event) {
         <li class="nav-item nav-item-0"><a href="../../index.html">PyAEDT</a> » </li>
     
 
-          <li class="nav-item nav-item-1"><a href="../index.html" >API reference</a> » </li>
-          <li class="nav-item nav-item-2"><a href="../Common.html" >Desktop and common classes</a> » </li>
-          <li class="nav-item nav-item-3"><a href="../SetupTemplates.html" accesskey="U">Setup templates</a> » </li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >API AEDT reference</a> » </li>
+          <li class="nav-item nav-item-2"><a href="../SetupTemplates.html" accesskey="U">Setup templates</a> » </li>
         <li class="nav-item nav-item-this"><a href="">ElectricTransient</a></li> 
       </ul>
     </div>
@@ -288,185 +290,6 @@ function checkPageExistsAndRedirect(event) {
   <div class="bd-toc-item active">
     
     <ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="../Common.html">
-   Desktop and common classes
-  </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul class="current">
-   <li class="toctree-l2">
-    <a class="reference internal" href="pyaedt.Desktop.html">
-     Desktop
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ClientServer.html">
-     Initial setup and launching AEDT
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Constants.html">
-     Constants
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Configuration.html">
-     Configuration files
-    </a>
-   </li>
-   <li class="toctree-l2 current active has-children">
-    <a class="reference internal" href="../SetupTemplates.html">
-     Setup templates
-    </a>
-    <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-    <label for="toctree-checkbox-2">
-     <i class="fas fa-chevron-down">
-     </i>
-    </label>
-    <ul class="current">
-     <li class="toctree-l3">
-      <a class="reference internal" href="pyaedt.modules.SetupTemplates.HFSSDrivenAuto.html">
-       HFSSDrivenAuto
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="pyaedt.modules.SetupTemplates.HFSSDrivenDefault.html">
-       HFSSDrivenDefault
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="pyaedt.modules.SetupTemplates.HFSSEigen.html">
-       HFSSEigen
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="pyaedt.modules.SetupTemplates.HFSSTransient.html">
-       HFSSTransient
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="pyaedt.modules.SetupTemplates.HFSSSBR.html">
-       HFSSSBR
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="pyaedt.modules.SetupTemplates.MaxwellTransient.html">
-       MaxwellTransient
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="pyaedt.modules.SetupTemplates.Magnetostatic.html">
-       Magnetostatic
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="pyaedt.modules.SetupTemplates.Electrostatic.html">
-       Electrostatic
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="pyaedt.modules.SetupTemplates.EddyCurrent.html">
-       EddyCurrent
-      </a>
-     </li>
-     <li class="toctree-l3 current active">
-      <a class="current reference internal" href="#">
-       ElectricTransient
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="pyaedt.modules.SetupTemplates.Matrix.html">
-       Matrix
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="pyaedt.modules.SetupTemplates.Close.html">
-       Close
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="pyaedt.modules.SetupTemplates.Open.html">
-       Open
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="pyaedt.modules.SetupTemplates.TransientFlowOnly.html">
-       TransientFlowOnly
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="pyaedt.modules.SetupTemplates.TransientTemperatureOnly.html">
-       TransientTemperatureOnly
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="pyaedt.modules.SetupTemplates.TransientTemperatureAndFlow.html">
-       TransientTemperatureAndFlow
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="pyaedt.modules.SetupTemplates.NexximLNA.html">
-       NexximLNA
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="pyaedt.modules.SetupTemplates.NexximDC.html">
-       NexximDC
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="pyaedt.modules.SetupTemplates.NexximTransient.html">
-       NexximTransient
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="pyaedt.modules.SetupTemplates.HFSS3DLayout.html">
-       HFSS3DLayout
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="pyaedt.modules.SetupTemplates.MechTerm.html">
-       MechTerm
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="pyaedt.modules.SetupTemplates.MechModal.html">
-       MechModal
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="pyaedt.modules.SetupTemplates.MechStructural.html">
-       MechStructural
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../MultiPartComponent.html">
-     Multi-part components
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Stackup3D.html">
-     Stackup 3D components
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../DesktopMessenger.html">
-     AEDT logger
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../CoreEdb.html">
-   EDB editor
-  </a>
- </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Application.html">
    AEDT apps
@@ -478,23 +301,28 @@ function checkPageExistsAndRedirect(event) {
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../Primitives.html">
-   Modeler and  primitives
+  <a class="reference internal" href="../Primitives3D.html">
+   Modeler in 2D and 3D
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../CoreModules.html">
-   AEDT modules
+  <a class="reference internal" href="../Primitives3DLayout.html">
+   Modeler in  HFSS 3D Layout
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../PrimitivesCircuit.html">
+   Modeler and components Circuit
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Boundaries.html">
+   Boundary objects
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Mesh.html">
    Mesh operations
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../CableModeling.html">
-   Cable modeling
   </a>
  </li>
  <li class="toctree-l1">
@@ -505,6 +333,163 @@ function checkPageExistsAndRedirect(event) {
  <li class="toctree-l1">
   <a class="reference internal" href="../Post.html">
    Postprocessing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../DesktopMessenger.html">
+   Logger
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Optimetrics.html">
+   Optimetrics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Variables.html">
+   Variable
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Constants.html">
+   Constants
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Configuration.html">
+   Configuration files
+  </a>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../SetupTemplates.html">
+   Setup templates
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modules.SetupTemplates.HFSSDrivenAuto.html">
+     HFSSDrivenAuto
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modules.SetupTemplates.HFSSDrivenDefault.html">
+     HFSSDrivenDefault
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modules.SetupTemplates.HFSSEigen.html">
+     HFSSEigen
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modules.SetupTemplates.HFSSTransient.html">
+     HFSSTransient
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modules.SetupTemplates.HFSSSBR.html">
+     HFSSSBR
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modules.SetupTemplates.MaxwellTransient.html">
+     MaxwellTransient
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modules.SetupTemplates.Magnetostatic.html">
+     Magnetostatic
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modules.SetupTemplates.Electrostatic.html">
+     Electrostatic
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modules.SetupTemplates.EddyCurrent.html">
+     EddyCurrent
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     ElectricTransient
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modules.SetupTemplates.Matrix.html">
+     Matrix
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modules.SetupTemplates.Close.html">
+     Close
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modules.SetupTemplates.Open.html">
+     Open
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modules.SetupTemplates.TransientFlowOnly.html">
+     TransientFlowOnly
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modules.SetupTemplates.TransientTemperatureOnly.html">
+     TransientTemperatureOnly
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modules.SetupTemplates.TransientTemperatureAndFlow.html">
+     TransientTemperatureAndFlow
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modules.SetupTemplates.NexximLNA.html">
+     NexximLNA
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modules.SetupTemplates.NexximDC.html">
+     NexximDC
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modules.SetupTemplates.NexximTransient.html">
+     NexximTransient
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modules.SetupTemplates.HFSS3DLayout.html">
+     HFSS3DLayout
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modules.SetupTemplates.MechTerm.html">
+     MechTerm
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modules.SetupTemplates.MechModal.html">
+     MechModal
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modules.SetupTemplates.MechStructural.html">
+     MechStructural
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../CableModeling.html">
+   Cable modeling
   </a>
  </li>
 </ul>
@@ -596,13 +581,13 @@ function checkPageExistsAndRedirect(event) {
   
   <div class="footer-item">
     <p class="copyright">
-    &copy; Copyright (c) 2022 ANSYS, Inc. All rights reserved.<br>
+    &copy; Copyright (c) 2023 ANSYS, Inc. All rights reserved.<br>
 </p>
   </div>
   
   <div class="footer-item">
     <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 6.1.1.<br>
 </p>
   </div>
   

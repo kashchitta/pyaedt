@@ -28,6 +28,7 @@
     <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/css/ansys_sphinx_theme.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/custom.css" />
 
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
@@ -36,14 +37,11 @@
         <link href="../../../../_static/css/breadcrumbs.css" rel="stylesheet">
     
     <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
-    <script src="../../../../_static/jquery.js"></script>
-    <script src="../../../../_static/underscore.js"></script>
-    <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../../_static/doctools.js"></script>
     <script src="../../../../_static/sphinx_highlight.js"></script>
     <script src="../../../../_static/clipboard.min.js"></script>
     <script src="../../../../_static/copybutton.js"></script>
-    <link rel="shortcut icon" href="../../../../_static/ansys-favicon.png"/>
+    <link rel="icon" href="../../../../_static/ansys-favicon.png"/>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -72,9 +70,8 @@
   
   
   
-    <img src="../../../../_static/pyansys-logo-black-cropped.png" class="logo__image only-light" alt="Logo image">
-    <img src="../../../../_static/pyansys-logo-black-cropped.png" class="logo__image only-dark" alt="Logo image">
   
+    <p class="title logo__title">PyAEDT</p>
   
 </a>
     
@@ -104,7 +101,13 @@
 
 <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="../../../../API/index.html">
-  API reference
+  API AEDT reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../../EDBAPI/index.html">
+  API EDB reference
  </a>
 </li>
 
@@ -324,8 +327,8 @@ function checkPageExistsAndRedirect(event) {
 <span class="kn">from</span> <span class="nn">pyaedt.generic.general_methods</span> <span class="kn">import</span> <span class="n">pyaedt_function_handler</span>
 
 
-<div class="viewcode-block" id="SimulationConfigurationBatch"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationBatch.html#pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationBatch">[docs]</a><span class="k">class</span> <span class="nc">SimulationConfigurationBatch</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Class containing all Cuotut and Batch analysis settings.</span>
+<div class="viewcode-block" id="SimulationConfigurationBatch"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationBatch.html#pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationBatch">[docs]</a><span class="k">class</span> <span class="nc">SimulationConfigurationBatch</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Contains all Cuotut and Batch analysis settings.</span>
 <span class="sd">    The class is part of `SimulationConfiguration` class as a property.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -359,7 +362,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">coplanar_instances</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve the list of component to be replaced by circuit ports (obsolete).</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve the list of component to be replaced by circuit ports (obsolete).</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -375,7 +378,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">signal_layer_etching_instances</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve the list of layers which has layer etching activated.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve the list of layers which has layer etching activated.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -391,7 +394,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">etching_factor_instances</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve the list of etching factor with associated layers.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve the list of etching factor with associated layers.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -407,7 +410,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">dielectric_extent</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve the value of dielectric extent.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve the value of dielectric extent.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -423,7 +426,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">airbox_horizontal_extent</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve the air box horizontal extent size for HFSS.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve the air box horizontal extent size for HFSS.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -439,7 +442,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">airbox_negative_vertical_extent</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve the air box negative vertical extent size for HFSS.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve the air box negative vertical extent size for HFSS.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -455,7 +458,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">airbox_positive_vertical_extent</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve the air box positive vertical extent size for HFSS.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve the air box positive vertical extent size for HFSS.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -471,7 +474,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">use_default_cutout</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
-        <span class="sd">&quot;&quot;&quot;Either if use the default EDB Cutout or new pyaedt cutout.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Either if use the default EDB Cutout or new pyaedt cutout.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -485,7 +488,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">generate_solder_balls</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve the boolean for applying solder balls.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve the boolean for applying solder balls.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -501,7 +504,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">signal_nets</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve the list of signal net names.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve the list of signal net names.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -518,7 +521,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">power_nets</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve the list of power and reference net names.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve the list of power and reference net names.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -534,7 +537,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">components</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve the list component name to be included in the simulation.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve the list component name to be included in the simulation.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -550,7 +553,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">coax_solder_ball_diameter</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve the list of solder balls diameter values when the auto evaluated one is overwritten.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve the list of solder balls diameter values when the auto evaluated one is overwritten.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -566,7 +569,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">use_default_coax_port_radial_extension</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve the boolean for using the default coaxial port extension value.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve the boolean for using the default coaxial port extension value.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -582,7 +585,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">trim_reference_size</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve the trim reference size when used.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve the trim reference size when used.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -598,7 +601,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">do_cutout_subdesign</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve boolean to perform the cutout during the project build.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve boolean to perform the cutout during the project build.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -614,7 +617,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">cutout_subdesign_type</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve the CutoutSubdesignType selection for clipping the design.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve the CutoutSubdesignType selection for clipping the design.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -629,7 +632,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">cutout_subdesign_expansion</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve expansion factor used for clipping the design.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve expansion factor used for clipping the design.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -646,7 +649,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">cutout_subdesign_round_corner</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve boolean to perform the design clipping using round corner for the extent generation.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve boolean to perform the design clipping using round corner for the extent generation.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -663,7 +666,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">output_aedb</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve the path for the output aedb folder. When provided will copy the initial aedb to the specified</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve the path for the output aedb folder. When provided will copy the initial aedb to the specified</span>
 <span class="sd">        path. This is used especially to preserve the initial project when several files have to be build based on</span>
 <span class="sd">        the last one. When the path is None, the initial project will be overwritten. So when cutout is applied mand</span>
 <span class="sd">        you want to preserve the project make sure you provide the full path for the new aedb folder.</span>
@@ -682,7 +685,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">sources</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve the source list.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve the source list.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -698,9 +701,9 @@ function checkPageExistsAndRedirect(event) {
             <span class="k">if</span> <span class="nb">len</span><span class="p">([</span><span class="n">src</span> <span class="k">for</span> <span class="n">src</span> <span class="ow">in</span> <span class="n">value</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">Source</span><span class="p">)])</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_sources</span> <span class="o">=</span> <span class="n">value</span>
 
-<div class="viewcode-block" id="SimulationConfigurationBatch.add_source"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationBatch.add_source.html#pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationBatch.add_source">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="SimulationConfigurationBatch.add_source"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationBatch.add_source.html#pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationBatch.add_source">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">add_source</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
-        <span class="sd">&quot;&quot;&quot;Add a new source to configuration.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add a new source to configuration.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -715,7 +718,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">honor_user_dielectric</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve the boolean to activate the feature &quot;&#39;Honor user dielectric&#39;&quot;.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve the boolean to activate the feature &quot;&#39;Honor user dielectric&#39;&quot;.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -731,7 +734,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">truncate_airbox_at_ground</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve the boolean to truncate hfss air box at ground.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve the boolean to truncate hfss air box at ground.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -747,7 +750,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">use_radiation_boundary</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve the boolean to use radiation boundary with HFSS.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve the boolean to use radiation boundary with HFSS.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -763,7 +766,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">signal_layers_properties</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve the list of layers to have properties changes.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve the list of layers to have properties changes.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -778,8 +781,8 @@ function checkPageExistsAndRedirect(event) {
             <span class="bp">self</span><span class="o">.</span><span class="n">_signal_layers_properties</span> <span class="o">=</span> <span class="n">value</span></div>
 
 
-<div class="viewcode-block" id="SimulationConfigurationDc"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationDc.html#pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationDc">[docs]</a><span class="k">class</span> <span class="nc">SimulationConfigurationDc</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Class containing all DC analysis settings.</span>
+<div class="viewcode-block" id="SimulationConfigurationDc"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationDc.html#pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationDc">[docs]</a><span class="k">class</span> <span class="nc">SimulationConfigurationDc</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Contains all DC analysis settings.</span>
 <span class="sd">    The class is part of `SimulationConfiguration` class as a property.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -818,7 +821,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">dc_min_plane_area_to_mesh</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve the value of the minimum plane area to be meshed by Siwave for DC solution.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve the value of the minimum plane area to be meshed by Siwave for DC solution.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -834,7 +837,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">dc_compute_inductance</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Return the boolean for computing the inductance with SIwave DC solver.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the boolean for computing the inductance with SIwave DC solver.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -850,7 +853,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">dc_contact_radius</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve the value for SIwave DC contact radius.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve the value for SIwave DC contact radius.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -872,7 +875,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">dc_slide_position</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve the SIwave DC slide position value.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve the SIwave DC slide position value.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -888,7 +891,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">dc_use_dc_custom_settings</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve the value for using DC custom settings.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve the value for using DC custom settings.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -905,7 +908,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">dc_plot_jv</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve the value for computing current density and voltage distribution.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve the value for computing current density and voltage distribution.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -922,7 +925,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">dc_min_void_area_to_mesh</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve the value for the minimum void surface to mesh.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve the value for the minimum void surface to mesh.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -939,7 +942,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">dc_error_energy</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve the value for the DC error energy.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve the value for the DC error energy.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -956,7 +959,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">dc_max_init_mesh_edge_length</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve the maximum initial mesh edge value.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve the maximum initial mesh edge value.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -973,7 +976,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">dc_max_num_pass</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve the maximum number of adaptive passes.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve the maximum number of adaptive passes.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -989,7 +992,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">dc_min_num_pass</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve the minimum number of adaptive passes.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve the minimum number of adaptive passes.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1005,7 +1008,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">dc_mesh_bondwires</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve the value for meshing bondwires.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve the value for meshing bondwires.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1022,7 +1025,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">dc_num_bondwire_sides</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve the number of sides used for cylinder discretization.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve the number of sides used for cylinder discretization.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1039,7 +1042,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">dc_mesh_vias</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve the value for meshing vias.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve the value for meshing vias.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1056,7 +1059,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">dc_num_via_sides</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve the number of sides used for cylinder discretization.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve the number of sides used for cylinder discretization.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1073,7 +1076,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">dc_percent_local_refinement</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve the value for local mesh refinement.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve the value for local mesh refinement.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1090,7 +1093,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">dc_perform_adaptive_refinement</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve the value for performing adaptive meshing.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve the value for performing adaptive meshing.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1107,7 +1110,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">dc_refine_bondwires</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve the value for performing bond wire refinement.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve the value for performing bond wire refinement.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1124,7 +1127,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">dc_refine_vias</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve the value for performing vias refinement.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve the value for performing vias refinement.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1141,7 +1144,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">dc_report_config_file</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve the report configuration file path.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve the report configuration file path.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1158,7 +1161,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">dc_report_show_Active_devices</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve the value for showing active devices.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve the value for showing active devices.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1175,7 +1178,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">dc_export_thermal_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve the value for using external data.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve the value for using external data.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1192,7 +1195,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">dc_full_report_path</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve the path for the report.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve the path for the report.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1209,7 +1212,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">dc_icepak_temp_file</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve the icepak temp file path.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve the icepak temp file path.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1225,7 +1228,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">dc_import_thermal_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve the value for importing thermal data.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve the value for importing thermal data.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1242,7 +1245,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">dc_per_pin_res_path</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve the file path.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve the file path.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1258,7 +1261,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">dc_per_pin_use_pin_format</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve the value for using pin format.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve the value for using pin format.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1273,7 +1276,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">dc_use_loop_res_for_per_pin</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve the value for using the loop resistor per pin.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve the value for using the loop resistor per pin.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1288,7 +1291,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">dc_via_report_path</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve the via report file path.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve the via report file path.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1310,7 +1313,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">dc_source_terms_to_ground</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve the dictionary of grounded terminals.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve the dictionary of grounded terminals.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1328,8 +1331,8 @@ function checkPageExistsAndRedirect(event) {
                     <span class="bp">self</span><span class="o">.</span><span class="n">_dc_source_terms_to_ground</span> <span class="o">=</span> <span class="n">value</span></div>
 
 
-<div class="viewcode-block" id="SimulationConfigurationAc"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationAc.html#pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationAc">[docs]</a><span class="k">class</span> <span class="nc">SimulationConfigurationAc</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Class containing all AC analysis settings.</span>
+<div class="viewcode-block" id="SimulationConfigurationAc"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationAc.html#pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationAc">[docs]</a><span class="k">class</span> <span class="nc">SimulationConfigurationAc</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Contains all AC analysis settings.</span>
 <span class="sd">    The class is part of `SimulationConfiguration` class as a property.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -1378,7 +1381,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">sweep_interpolating</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve boolean to add a sweep interpolating sweep.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve boolean to add a sweep interpolating sweep.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1395,7 +1398,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">use_q3d_for_dc</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve boolean to Q3D solver for DC point value computation.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve boolean to Q3D solver for DC point value computation.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1412,7 +1415,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">relative_error</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve relative error used for the interpolating sweep convergence.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve relative error used for the interpolating sweep convergence.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1429,7 +1432,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">use_error_z0</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve value for the error on Z0 for the port.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve value for the error on Z0 for the port.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1446,7 +1449,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">percentage_error_z0</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve boolean to perform the cutout during the project build.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve boolean to perform the cutout during the project build.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1463,7 +1466,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">enforce_causality</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve boolean to enforce causality for the frequency sweep.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve boolean to enforce causality for the frequency sweep.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1480,7 +1483,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">enforce_passivity</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve boolean to enforce passivity for the frequency sweep.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve boolean to enforce passivity for the frequency sweep.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1496,7 +1499,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">passivity_tolerance</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve the value for the passivity tolerance when used.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve the value for the passivity tolerance when used.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1512,7 +1515,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">sweep_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve frequency sweep name.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve frequency sweep name.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1528,7 +1531,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">radiation_box</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve RadiationBoxType object selection defined for the radiation box type.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve RadiationBoxType object selection defined for the radiation box type.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1544,7 +1547,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">start_freq</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
-        <span class="sd">&quot;&quot;&quot;Starting frequency for the frequency sweep.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Starting frequency for the frequency sweep.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1560,7 +1563,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">stop_freq</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve stop frequency for the frequency sweep.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve stop frequency for the frequency sweep.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1576,7 +1579,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">sweep_type</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve SweepType object for the frequency sweep.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve SweepType object for the frequency sweep.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1592,7 +1595,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">step_freq</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve step frequency for the frequency sweep.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve step frequency for the frequency sweep.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1608,7 +1611,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">decade_count</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve decade count number for the frequency sweep in case of a log sweep selected.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve decade count number for the frequency sweep in case of a log sweep selected.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1624,7 +1627,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">mesh_freq</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve the meshing frequency for the HFSS adaptive convergence.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve the meshing frequency for the HFSS adaptive convergence.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1640,7 +1643,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">max_num_passes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve maximum of points for the HFSS adaptive meshing.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve maximum of points for the HFSS adaptive meshing.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1656,7 +1659,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">max_mag_delta_s</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve the magnitude of the delta S convergence criteria for the interpolating sweep.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve the magnitude of the delta S convergence criteria for the interpolating sweep.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1672,7 +1675,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">min_num_passes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve the minimum number of adaptive passes for HFSS convergence.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve the minimum number of adaptive passes for HFSS convergence.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1688,7 +1691,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">basis_order</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve the BasisOrder object.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve the BasisOrder object.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1704,7 +1707,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">do_lambda_refinement</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve boolean to activate the lambda refinement.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve boolean to activate the lambda refinement.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1720,7 +1723,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">arc_angle</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve the value for the HFSS meshing arc angle.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve the value for the HFSS meshing arc angle.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1736,7 +1739,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">start_azimuth</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve the value of the starting azimuth for the HFSS meshing.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve the value of the starting azimuth for the HFSS meshing.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1752,7 +1755,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">max_arc_points</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve the value of the maximum arc points number for the HFSS meshing.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve the value of the maximum arc points number for the HFSS meshing.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1768,7 +1771,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">use_arc_to_chord_error</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve the boolean for activating the arc to chord for HFSS meshing.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve the boolean for activating the arc to chord for HFSS meshing.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1784,7 +1787,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">arc_to_chord_error</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve the value of arc to chord error for HFSS meshing.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve the value of arc to chord error for HFSS meshing.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1800,7 +1803,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">defeature_abs_length</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve the value of arc to chord for HFSS meshing.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve the value of arc to chord for HFSS meshing.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1816,7 +1819,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">defeature_layout</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve the boolean to activate the layout defeaturing.This method has been developed to simplify polygons</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve the boolean to activate the layout defeaturing.This method has been developed to simplify polygons</span>
 <span class="sd">        with reducing the number of points to simplify the meshing with controlling its surface deviation. This method</span>
 <span class="sd">        should be used at last resort when other methods failed.</span>
 
@@ -1834,7 +1837,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">minimum_void_surface</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve the minimum void surface to be considered for the layout defeaturing.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve the minimum void surface to be considered for the layout defeaturing.</span>
 <span class="sd">        Voids below this value will be ignored.</span>
 
 <span class="sd">        Returns</span>
@@ -1851,7 +1854,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">max_suf_dev</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve the value for the maximum surface deviation for the layout defeaturing.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve the value for the maximum surface deviation for the layout defeaturing.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1867,7 +1870,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">process_padstack_definitions</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve the boolean for activating the padstack definition processing.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve the boolean for activating the padstack definition processing.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1883,7 +1886,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">return_current_distribution</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
-        <span class="sd">&quot;&quot;&quot;Boolean to activate the current distribution return with Siwave.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Boolean to activate the current distribution return with Siwave.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1899,7 +1902,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">ignore_non_functional_pads</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
-        <span class="sd">&quot;&quot;&quot;Boolean to ignore nonfunctional pads with Siwave.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Boolean to ignore nonfunctional pads with Siwave.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">         -------</span>
@@ -1915,7 +1918,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">include_inter_plane_coupling</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
-        <span class="sd">&quot;&quot;&quot;Boolean to activate the inter-plane coupling with Siwave.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Boolean to activate the inter-plane coupling with Siwave.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1931,7 +1934,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">xtalk_threshold</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
-        <span class="sd">&quot;&quot;&quot;Return the value for Siwave cross talk threshold. THis value specifies the distance for the solver to</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the value for Siwave cross talk threshold. THis value specifies the distance for the solver to</span>
 <span class="sd">        consider lines coupled during the cross-section computation. Decreasing the value below -60dB can</span>
 <span class="sd">        potentially cause solver failure.</span>
 
@@ -1949,7 +1952,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">min_void_area</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve the value of minimum void area to be considered by Siwave.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve the value of minimum void area to be considered by Siwave.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1965,7 +1968,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">min_pad_area_to_mesh</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve the value of minimum pad area to be meshed by Siwave.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve the value of minimum pad area to be meshed by Siwave.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1981,7 +1984,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">snap_length_threshold</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve the boolean to activate the snapping threshold feature.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve the boolean to activate the snapping threshold feature.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1997,7 +2000,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">min_plane_area_to_mesh</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve the minimum plane area to be meshed by Siwave.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve the minimum plane area to be meshed by Siwave.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2013,7 +2016,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">mesh_sizefactor</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve the Mesh Size factor value.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve the Mesh Size factor value.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2029,8 +2032,8 @@ function checkPageExistsAndRedirect(event) {
                 <span class="bp">self</span><span class="o">.</span><span class="n">_do_lambda_refinement</span> <span class="o">=</span> <span class="kc">False</span></div>
 
 
-<div class="viewcode-block" id="SimulationConfiguration"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfiguration.html#pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfiguration">[docs]</a><span class="k">class</span> <span class="nc">SimulationConfiguration</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Provides an ASCII simulation configuration file parser.</span>
+<div class="viewcode-block" id="SimulationConfiguration"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfiguration.html#pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfiguration">[docs]</a><span class="k">class</span> <span class="nc">SimulationConfiguration</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Provides an ASCII simulation configuration file parser.</span>
 
 <span class="sd">    This parser supports all types of inputs for setting up and automating any kind</span>
 <span class="sd">    of SI or PI simulation with HFSS 3D Layout or Siwave. If fields are omitted, default</span>
@@ -2090,10 +2093,11 @@ function checkPageExistsAndRedirect(event) {
             <span class="bp">self</span><span class="o">.</span><span class="n">import_json</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_read_cfg</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span> <span class="o">=</span> <span class="n">edb</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">SOLVER_TYPE</span> <span class="o">=</span> <span class="n">SolverType</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">open_edb_after_build</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Either if open the Edb after the build or not.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Either if open the Edb after the build or not.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2108,7 +2112,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">dc_settings</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;DC Settings class.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;DC Settings class.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2118,7 +2122,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">ac_settings</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;AC Settings class.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;AC Settings class.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2128,7 +2132,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">batch_solve_settings</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Cutout and Batch Settings class.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Cutout and Batch Settings class.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2136,14 +2140,14 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_batch_solve_settings</span>
 
-<div class="viewcode-block" id="SimulationConfiguration.build_simulation_project"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfiguration.build_simulation_project.html#pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfiguration.build_simulation_project">[docs]</a>    <span class="k">def</span> <span class="nf">build_simulation_project</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Build active simulation project. This method requires to be run inside Edb Class.&quot;&quot;&quot;</span>
+<div class="viewcode-block" id="SimulationConfiguration.build_simulation_project"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfiguration.build_simulation_project.html#pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfiguration.build_simulation_project">[docs]</a>    <span class="k">def</span> <span class="nf">build_simulation_project</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Build active simulation project. This method requires to be run inside Edb Class.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span><span class="o">.</span><span class="n">build_simulation_project</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">solver_type</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve the SolverType class to select the solver to be called during the project build.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve the SolverType class to select the solver to be called during the project build.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2159,7 +2163,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">filename</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve the file name loaded for mapping properties value.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve the file name loaded for mapping properties value.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2175,7 +2179,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">setup_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve setup name for the simulation.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve setup name for the simulation.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2210,9 +2214,9 @@ function checkPageExistsAndRedirect(event) {
                 <span class="n">prop_values</span> <span class="o">=</span> <span class="p">[</span><span class="n">value</span><span class="o">.</span><span class="n">strip</span><span class="p">()]</span>
             <span class="k">return</span> <span class="n">prop_values</span>
 
-<div class="viewcode-block" id="SimulationConfiguration.add_dc_ground_source_term"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfiguration.add_dc_ground_source_term.html#pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfiguration.add_dc_ground_source_term">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="SimulationConfiguration.add_dc_ground_source_term"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfiguration.add_dc_ground_source_term.html#pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfiguration.add_dc_ground_source_term">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">add_dc_ground_source_term</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">node_to_ground</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Add a dc ground source terminal for Siwave.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add a dc ground source terminal for Siwave.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2238,7 +2242,7 @@ function checkPageExistsAndRedirect(event) {
                 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Missing parameter for layer </span><span class="si">{0}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">lp</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
 
     <span class="k">def</span> <span class="nf">_read_cfg</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
-        <span class="sd">&quot;&quot;&quot;Configuration file reader.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Configuration file reader.</span>
 
 <span class="sd">        Examples</span>
 <span class="sd">        --------</span>
@@ -2448,7 +2452,7 @@ function checkPageExistsAndRedirect(event) {
             <span class="k">raise</span>
 
     <span class="k">def</span> <span class="nf">_dict_to_json</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dict_out</span><span class="p">,</span> <span class="n">dict_in</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="n">exclude</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;_pedb&quot;</span><span class="p">]</span>
+        <span class="n">exclude</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;_pedb&quot;</span><span class="p">,</span> <span class="s2">&quot;SOLVER_TYPE&quot;</span><span class="p">]</span>
         <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">dict_in</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">exclude</span><span class="p">:</span>
                 <span class="k">continue</span>
@@ -2487,9 +2491,9 @@ function checkPageExistsAndRedirect(event) {
             <span class="k">else</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="fm">__setattr__</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
 
-<div class="viewcode-block" id="SimulationConfiguration.export_json"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfiguration.export_json.html#pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfiguration.export_json">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="SimulationConfiguration.export_json"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfiguration.export_json.html#pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfiguration.export_json">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">export_json</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">output_file</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Export Json file from SimulationConfiguration object.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Export Json file from SimulationConfiguration object.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2517,9 +2521,9 @@ function checkPageExistsAndRedirect(event) {
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">False</span></div>
 
-<div class="viewcode-block" id="SimulationConfiguration.import_json"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfiguration.import_json.html#pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfiguration.import_json">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="SimulationConfiguration.import_json"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfiguration.import_json.html#pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfiguration.import_json">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">import_json</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_file</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Import Json file into SimulationConfiguration object instance.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Import Json file into SimulationConfiguration object instance.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2546,7 +2550,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">False</span></div>
 
-<div class="viewcode-block" id="SimulationConfiguration.add_voltage_source"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfiguration.add_voltage_source.html#pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfiguration.add_voltage_source">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="SimulationConfiguration.add_voltage_source"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfiguration.add_voltage_source.html#pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfiguration.add_voltage_source">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">add_voltage_source</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">name</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
@@ -2558,7 +2562,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">negative_node_component</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
         <span class="n">negative_node_net</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Add a voltage source for the current SimulationConfiguration instance.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add a voltage source for the current SimulationConfiguration instance.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2618,7 +2622,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="k">except</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
             <span class="k">return</span> <span class="kc">False</span></div>
 
-<div class="viewcode-block" id="SimulationConfiguration.add_current_source"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfiguration.add_current_source.html#pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfiguration.add_current_source">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="SimulationConfiguration.add_current_source"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfiguration.add_current_source.html#pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfiguration.add_current_source">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">add_current_source</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">name</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
@@ -2630,7 +2634,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">negative_node_component</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
         <span class="n">negative_node_net</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Add a current source for the current SimulationConfiguration instance.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add a current source for the current SimulationConfiguration instance.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2690,7 +2694,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="k">except</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
             <span class="k">return</span> <span class="kc">False</span></div>
 
-<div class="viewcode-block" id="SimulationConfiguration.add_rlc"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfiguration.add_rlc.html#pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfiguration.add_rlc">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="SimulationConfiguration.add_rlc"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfiguration.add_rlc.html#pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfiguration.add_rlc">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">add_rlc</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">name</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
@@ -2703,7 +2707,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">negative_node_net</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
         <span class="n">create_physical_rlc</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Add a voltage source for the current SimulationConfiguration instance.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add a voltage source for the current SimulationConfiguration instance.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2785,13 +2789,13 @@ function checkPageExistsAndRedirect(event) {
   
   <div class="footer-item">
     <p class="copyright">
-    &copy; Copyright (c) 2022 ANSYS, Inc. All rights reserved.<br>
+    &copy; Copyright (c) 2023 ANSYS, Inc. All rights reserved.<br>
 </p>
   </div>
   
   <div class="footer-item">
     <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 6.1.1.<br>
 </p>
   </div>
   

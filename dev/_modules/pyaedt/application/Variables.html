@@ -28,6 +28,7 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/css/ansys_sphinx_theme.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css" />
 
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
@@ -36,14 +37,11 @@
         <link href="../../../_static/css/breadcrumbs.css" rel="stylesheet">
     
     <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-    <script src="../../../_static/jquery.js"></script>
-    <script src="../../../_static/underscore.js"></script>
-    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../_static/doctools.js"></script>
     <script src="../../../_static/sphinx_highlight.js"></script>
     <script src="../../../_static/clipboard.min.js"></script>
     <script src="../../../_static/copybutton.js"></script>
-    <link rel="shortcut icon" href="../../../_static/ansys-favicon.png"/>
+    <link rel="icon" href="../../../_static/ansys-favicon.png"/>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -72,9 +70,8 @@
   
   
   
-    <img src="../../../_static/pyansys-logo-black-cropped.png" class="logo__image only-light" alt="Logo image">
-    <img src="../../../_static/pyansys-logo-black-cropped.png" class="logo__image only-dark" alt="Logo image">
   
+    <p class="title logo__title">PyAEDT</p>
   
 </a>
     
@@ -104,7 +101,13 @@
 
 <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="../../../API/index.html">
-  API reference
+  API AEDT reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../EDBAPI/index.html">
+  API EDB reference
  </a>
 </li>
 
@@ -339,7 +342,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <div class="viewcode-block" id="CSVDataset"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.application.Variables.CSVDataset.html#pyaedt.application.Variables.CSVDataset">[docs]</a><span class="k">class</span> <span class="nc">CSVDataset</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Reads in a CSV file and extracts data, which can be augmented with constant values.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Reads in a CSV file and extracts data, which can be augmented with constant values.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -366,7 +369,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">number_of_rows</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Number of rows.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Number of rows.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">:</span>
             <span class="k">for</span> <span class="n">variable</span><span class="p">,</span> <span class="n">data_list</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
                 <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">data_list</span><span class="p">)</span>
@@ -375,22 +378,22 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">number_of_columns</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Number of columns.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Number of columns.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_header</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">header</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Header.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Header.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_header</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Data.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Data.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">path</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Path.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Path.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_csv_file</span><span class="p">))</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
@@ -491,7 +494,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="k">return</span> <span class="n">new_dataset</span>
 
     <span class="k">def</span> <span class="fm">__iadd__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Incrementally add the dataset in one CSV file to a dataset in another CSV file.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Incrementally add the dataset in one CSV file to a dataset in another CSV file.</span>
 
 <span class="sd">        .. note:</span>
 <span class="sd">           This assumes that the number of columns in both datasets are the same,</span>
@@ -536,7 +539,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="k">return</span> <span class="n">output_string</span>
 
 <div class="viewcode-block" id="CSVDataset.next"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.application.Variables.CSVDataset.next.html#pyaedt.application.Variables.CSVDataset.next">[docs]</a>    <span class="k">def</span> <span class="nf">next</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Yield the next row.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Yield the next row.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="fm">__next__</span><span class="p">()</span></div></div>
 
 
@@ -561,7 +564,7 @@ function checkPageExistsAndRedirect(event) {
 
 <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
 <span class="k">def</span> <span class="nf">decompose_variable_value</span><span class="p">(</span><span class="n">variable_value</span><span class="p">,</span> <span class="n">full_variables</span><span class="o">=</span><span class="p">{}):</span>
-    <span class="sd">&quot;&quot;&quot;Decompose a variable value.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Decompose a variable value.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -604,7 +607,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <div class="viewcode-block" id="VariableManager"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.application.Variables.VariableManager.html#pyaedt.application.Variables.VariableManager">[docs]</a><span class="k">class</span> <span class="nc">VariableManager</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Manages design properties and project variables.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Manages design properties and project variables.</span>
 
 <span class="sd">    Design properties are the local variables in a design. Project</span>
 <span class="sd">    variables are defined at the project level and start with ``$``.</span>
@@ -700,7 +703,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">variables</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Variables.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Variables.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -720,7 +723,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">design_variables</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Design variables.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Design variables.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -737,7 +740,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">project_variables</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Project variables.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Project variables.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -754,7 +757,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">post_processing_variables</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Post Processing variables.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Post Processing variables.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -783,7 +786,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">independent_variables</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Independent variables.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Independent variables.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -803,7 +806,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">independent_project_variables</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Independent project variables.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Independent project variables.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -820,7 +823,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">independent_design_variables</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Independent design variables.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Independent design variables.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -838,7 +841,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">dependent_variables</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Dependent variables.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Dependent variables.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -858,12 +861,12 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">variable_names</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;List of variables.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;List of variables.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="p">[</span><span class="n">var_name</span> <span class="k">for</span> <span class="n">var_name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">variables</span><span class="p">]</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">project_variable_names</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;List of project variables.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;List of project variables.</span>
 
 <span class="sd">        References</span>
 <span class="sd">        ----------</span>
@@ -875,7 +878,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">independent_project_variable_names</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;List of independent project variables.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;List of independent project variables.</span>
 
 <span class="sd">        References</span>
 <span class="sd">        ----------</span>
@@ -887,7 +890,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">design_variable_names</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;List of design variables.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;List of design variables.</span>
 
 <span class="sd">        References</span>
 <span class="sd">        ----------</span>
@@ -898,7 +901,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">independent_design_variable_names</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;List of independent design variables.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;List of independent design variables.</span>
 
 <span class="sd">        References</span>
 <span class="sd">        ----------</span>
@@ -909,7 +912,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">independent_variable_names</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;List of independent variables.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;List of independent variables.</span>
 
 <span class="sd">        References</span>
 <span class="sd">        ----------</span>
@@ -922,7 +925,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">dependent_variable_names</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;List of dependent variables.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;List of dependent variables.</span>
 
 <span class="sd">        References</span>
 <span class="sd">        ----------</span>
@@ -935,27 +938,30 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">_oproject</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Project.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Project.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">_oproject</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">_odesign</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Design.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Design.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">_odesign</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">_logger</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Logger.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Logger.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">logger</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">app</span><span class="p">):</span>
         <span class="c1"># Global Desktop Environment</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_app</span> <span class="o">=</span> <span class="n">app</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_variables</span> <span class="o">=</span> <span class="p">{}</span>
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="fm">__delitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Implement del with array name or index.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Implement del with array name or index.&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">delete_variable</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_variables</span><span class="p">:</span>
+            <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">_variables</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">variable_name</span><span class="p">):</span>
@@ -968,7 +974,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">_variable_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">object_list</span><span class="p">,</span> <span class="n">dependent</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">independent</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve the variable dictionary.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve the variable dictionary.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -985,26 +991,28 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">            Dictionary of the specified variables.</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">var_dict</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="n">all_names</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">object_list</span><span class="p">:</span>
             <span class="n">variables</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_var_list_from_aedt</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
             <span class="k">for</span> <span class="n">variable_name</span> <span class="ow">in</span> <span class="n">variables</span><span class="p">:</span>
-                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_expression</span><span class="p">(</span><span class="n">variable_name</span><span class="p">):</span>
-                    <span class="n">variable_expression</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_expression</span><span class="p">(</span><span class="n">variable_name</span><span class="p">)</span>
-                    <span class="n">all_names</span><span class="p">[</span><span class="n">variable_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">variable_expression</span>
-                    <span class="n">si_value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">get_evaluated_value</span><span class="p">(</span><span class="n">variable_name</span><span class="p">)</span>
-                    <span class="n">value</span> <span class="o">=</span> <span class="n">Variable</span><span class="p">(</span><span class="n">variable_expression</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">si_value</span><span class="p">,</span> <span class="n">all_names</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">variable_name</span><span class="p">,</span> <span class="n">app</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="p">)</span>
-                    <span class="n">is_number_flag</span> <span class="o">=</span> <span class="n">is_number</span><span class="p">(</span><span class="n">value</span><span class="o">.</span><span class="n">_calculated_value</span><span class="p">)</span>
-                    <span class="k">if</span> <span class="n">independent</span> <span class="ow">and</span> <span class="n">is_number_flag</span><span class="p">:</span>
-                        <span class="n">var_dict</span><span class="p">[</span><span class="n">variable_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
-                    <span class="k">elif</span> <span class="n">dependent</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">is_number_flag</span><span class="p">:</span>
-                        <span class="n">var_dict</span><span class="p">[</span><span class="n">variable_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
-        <span class="k">return</span> <span class="n">var_dict</span>
+                <span class="k">if</span> <span class="n">variable_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_variables</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_expression</span><span class="p">(</span><span class="n">variable_name</span><span class="p">):</span>
+                        <span class="n">variable_expression</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_expression</span><span class="p">(</span><span class="n">variable_name</span><span class="p">)</span>
+                        <span class="n">all_names</span><span class="p">[</span><span class="n">variable_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">variable_expression</span>
+                        <span class="n">si_value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">get_evaluated_value</span><span class="p">(</span><span class="n">variable_name</span><span class="p">)</span>
+                        <span class="n">value</span> <span class="o">=</span> <span class="n">Variable</span><span class="p">(</span>
+                            <span class="n">variable_expression</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">si_value</span><span class="p">,</span> <span class="n">all_names</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">variable_name</span><span class="p">,</span> <span class="n">app</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_app</span>
+                        <span class="p">)</span>
+                        <span class="n">is_number_flag</span> <span class="o">=</span> <span class="n">is_number</span><span class="p">(</span><span class="n">value</span><span class="o">.</span><span class="n">_calculated_value</span><span class="p">)</span>
+                        <span class="k">if</span> <span class="n">independent</span> <span class="ow">and</span> <span class="n">is_number_flag</span><span class="p">:</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">_variables</span><span class="p">[</span><span class="n">variable_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+                        <span class="k">elif</span> <span class="n">dependent</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">is_number_flag</span><span class="p">:</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">_variables</span><span class="p">[</span><span class="n">variable_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_variables</span>
 
 <div class="viewcode-block" id="VariableManager.get_expression"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.application.Variables.VariableManager.get_expression.html#pyaedt.application.Variables.VariableManager.get_expression">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">get_expression</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">variable_name</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve the variable value of a project or design variable as a string.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve the variable value of a project or design variable as a string.</span>
 
 <span class="sd">        References</span>
 <span class="sd">        ----------</span>
@@ -1012,14 +1020,18 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        &gt;&gt;&gt; oProject.GetVariableValue</span>
 <span class="sd">        &gt;&gt;&gt; oDesign.GetVariableValue</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="n">variable_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;CosimDefinition&quot;</span><span class="p">,</span> <span class="s2">&quot;CoSimulator&quot;</span><span class="p">,</span> <span class="s2">&quot;CoSimulator/Choices&quot;</span><span class="p">,</span> <span class="s2">&quot;InstanceName&quot;</span><span class="p">,</span> <span class="s2">&quot;ModelName&quot;</span><span class="p">]:</span>
-            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">aedt_object</span><span class="p">(</span><span class="n">variable_name</span><span class="p">)</span><span class="o">.</span><span class="n">GetVariableValue</span><span class="p">(</span><span class="n">variable_name</span><span class="p">)</span>
+        <span class="n">invalid_names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;CosimDefinition&quot;</span><span class="p">,</span> <span class="s2">&quot;CoSimulator&quot;</span><span class="p">,</span> <span class="s2">&quot;CoSimulator/Choices&quot;</span><span class="p">,</span> <span class="s2">&quot;InstanceName&quot;</span><span class="p">,</span> <span class="s2">&quot;ModelName&quot;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">variable_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">invalid_names</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">aedt_object</span><span class="p">(</span><span class="n">variable_name</span><span class="p">)</span><span class="o">.</span><span class="n">GetVariableValue</span><span class="p">(</span><span class="n">variable_name</span><span class="p">)</span>
+            <span class="k">except</span><span class="p">:</span>
+                <span class="k">return</span> <span class="kc">False</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">False</span></div>
 
 <div class="viewcode-block" id="VariableManager.aedt_object"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.application.Variables.VariableManager.aedt_object.html#pyaedt.application.Variables.VariableManager.aedt_object">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">aedt_object</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">variable</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve an AEDT object.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve an AEDT object.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1044,7 +1056,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">postprocessing</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
         <span class="n">circuit_parameter</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Set the value of a design property or project variable.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set the value of a design property or project variable.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1110,6 +1122,8 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        &gt;&gt;&gt; aedtapp.variable_manager.set_variable[&quot;$p1&quot;] == &quot;30mm&quot;</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">variable_name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_variables</span><span class="p">:</span>
+            <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">_variables</span><span class="p">[</span><span class="n">variable_name</span><span class="p">]</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">description</span><span class="p">:</span>
             <span class="n">description</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
 
@@ -1249,7 +1263,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="VariableManager.delete_separator"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.application.Variables.VariableManager.delete_separator.html#pyaedt.application.Variables.VariableManager.delete_separator">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">delete_separator</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">separator_name</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Delete a separator from either the active project or design.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Delete a separator from either the active project or design.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1290,7 +1304,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="VariableManager.delete_variable"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.application.Variables.VariableManager.delete_variable.html#pyaedt.application.Variables.VariableManager.delete_variable">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">delete_variable</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">var_name</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Delete a variable.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Delete a variable.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1350,7 +1364,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <div class="viewcode-block" id="Variable"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.application.Variables.Variable.html#pyaedt.application.Variables.Variable">[docs]</a><span class="k">class</span> <span class="nc">Variable</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Stores design properties and project variables and provides operations to perform on them.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Stores design properties and project variables and provides operations to perform on them.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -1453,9 +1467,63 @@ function checkPageExistsAndRedirect(event) {
             <span class="p">)</span>
         <span class="k">return</span> <span class="kc">False</span>
 
+    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">_set_prop_val</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prop</span><span class="p">,</span> <span class="n">val</span><span class="p">,</span> <span class="n">n_times</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">design_type</span> <span class="o">==</span> <span class="s2">&quot;Maxwell Circuit&quot;</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Variables&quot;</span>
+
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">design_type</span> <span class="ow">in</span> <span class="p">[</span>
+                <span class="s2">&quot;Circuit Design&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;Twin Builder&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;HFSS 3D Layout Design&quot;</span><span class="p">,</span>
+            <span class="p">]:</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_variable_name</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">get_oo_object</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">odesign</span><span class="p">,</span> <span class="s2">&quot;DefinitionParameters&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">GetPropNames</span><span class="p">()</span>
+                <span class="p">):</span>
+                    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;DefinitionParameters&quot;</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;LocalVariables&quot;</span>
+            <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n_times</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;DefinitionParameters&quot;</span><span class="p">:</span>
+                    <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">get_oo_object</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_aedt_obj</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span><span class="o">.</span><span class="n">SetPropValue</span><span class="p">(</span><span class="n">prop</span><span class="p">,</span> <span class="n">val</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">get_oo_object</span><span class="p">(</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">_aedt_obj</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">/</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_variable_name</span><span class="p">)</span>
+                    <span class="p">)</span><span class="o">.</span><span class="n">SetPropValue</span><span class="p">(</span><span class="n">prop</span><span class="p">,</span> <span class="n">val</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">result</span><span class="p">:</span>
+                    <span class="k">break</span>
+                <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="k">pass</span>
+
+    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">_get_prop_val</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prop</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">design_type</span> <span class="o">==</span> <span class="s2">&quot;Maxwell Circuit&quot;</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Variables&quot;</span>
+
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">design_type</span> <span class="ow">in</span> <span class="p">[</span>
+                <span class="s2">&quot;Circuit Design&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;Twin Builder&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;HFSS 3D Layout Design&quot;</span><span class="p">,</span>
+            <span class="p">]:</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_variable_name</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">get_oo_object</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">odesign</span><span class="p">,</span> <span class="s2">&quot;DefinitionParameters&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">GetPropNames</span><span class="p">()</span>
+                <span class="p">):</span>
+                    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">get_oo_object</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_aedt_obj</span><span class="p">,</span> <span class="s2">&quot;DefinitionParameters&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">GetPropValue</span><span class="p">(</span><span class="n">prop</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;LocalVariables&quot;</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">get_oo_object</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_aedt_obj</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">/</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_variable_name</span><span class="p">))</span><span class="o">.</span><span class="n">GetPropValue</span><span class="p">(</span><span class="n">prop</span><span class="p">)</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="k">pass</span>
+
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Variable name.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Variable name.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_variable_name</span>
 
     <span class="nd">@name</span><span class="o">.</span><span class="n">setter</span>
@@ -1469,220 +1537,116 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">is_optimization_enabled</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot; &quot;Check if optimization is enabled.&quot;&quot;&quot;</span>
-
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="p">:</span>
-            <span class="n">oo</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">get_oo_object</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_aedt_obj</span><span class="p">,</span> <span class="s2">&quot;Variables&quot;</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">oo</span><span class="p">:</span>
-                <span class="k">return</span> <span class="n">oo</span><span class="o">.</span><span class="n">GetChildObject</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_variable_name</span><span class="p">)</span><span class="o">.</span><span class="n">GetPropValue</span><span class="p">(</span><span class="s2">&quot;Optimization/Included&quot;</span><span class="p">)</span>
-        <span class="k">return</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; &quot;Check if optimization is enabled.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_prop_val</span><span class="p">(</span><span class="s2">&quot;Optimization/Included&quot;</span><span class="p">)</span>
 
     <span class="nd">@is_optimization_enabled</span><span class="o">.</span><span class="n">setter</span>
     <span class="k">def</span> <span class="nf">is_optimization_enabled</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="p">:</span>
-            <span class="n">oo</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">get_oo_object</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_aedt_obj</span><span class="p">,</span> <span class="s2">&quot;Variables&quot;</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">oo</span><span class="p">:</span>
-                <span class="n">oo</span><span class="o">.</span><span class="n">GetChildObject</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_variable_name</span><span class="p">)</span><span class="o">.</span><span class="n">SetPropValue</span><span class="p">(</span><span class="s2">&quot;Optimization/Included&quot;</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_set_prop_val</span><span class="p">(</span><span class="s2">&quot;Optimization/Included&quot;</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">optimization_min_value</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot; &quot;Optimization min value.&quot;&quot;&quot;</span>
-
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="p">:</span>
-            <span class="n">oo</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">get_oo_object</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_aedt_obj</span><span class="p">,</span> <span class="s2">&quot;Variables&quot;</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">oo</span><span class="p">:</span>
-                <span class="k">return</span> <span class="n">oo</span><span class="o">.</span><span class="n">GetChildObject</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_variable_name</span><span class="p">)</span><span class="o">.</span><span class="n">GetPropValue</span><span class="p">(</span><span class="s2">&quot;Optimization/Min&quot;</span><span class="p">)</span>
-        <span class="k">return</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; &quot;Optimization min value.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_prop_val</span><span class="p">(</span><span class="s2">&quot;Optimization/Min&quot;</span><span class="p">)</span>
 
     <span class="nd">@optimization_min_value</span><span class="o">.</span><span class="n">setter</span>
     <span class="k">def</span> <span class="nf">optimization_min_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="p">:</span>
-            <span class="n">oo</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">get_oo_object</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_aedt_obj</span><span class="p">,</span> <span class="s2">&quot;Variables&quot;</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">oo</span><span class="p">:</span>
-                <span class="n">oo</span><span class="o">.</span><span class="n">GetChildObject</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_variable_name</span><span class="p">)</span><span class="o">.</span><span class="n">SetPropValue</span><span class="p">(</span><span class="s2">&quot;Optimization/Min&quot;</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_set_prop_val</span><span class="p">(</span><span class="s2">&quot;Optimization/Min&quot;</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">optimization_max_value</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot; &quot;Optimization max value.&quot;&quot;&quot;</span>
-
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="p">:</span>
-            <span class="n">oo</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">get_oo_object</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_aedt_obj</span><span class="p">,</span> <span class="s2">&quot;Variables&quot;</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">oo</span><span class="p">:</span>
-                <span class="k">return</span> <span class="n">oo</span><span class="o">.</span><span class="n">GetChildObject</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_variable_name</span><span class="p">)</span><span class="o">.</span><span class="n">GetPropValue</span><span class="p">(</span><span class="s2">&quot;Optimization/Max&quot;</span><span class="p">)</span>
-        <span class="k">return</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; &quot;Optimization max value.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_prop_val</span><span class="p">(</span><span class="s2">&quot;Optimization/Max&quot;</span><span class="p">)</span>
 
     <span class="nd">@optimization_max_value</span><span class="o">.</span><span class="n">setter</span>
     <span class="k">def</span> <span class="nf">optimization_max_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="p">:</span>
-            <span class="n">oo</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">get_oo_object</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_aedt_obj</span><span class="p">,</span> <span class="s2">&quot;Variables&quot;</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">oo</span><span class="p">:</span>
-                <span class="n">oo</span><span class="o">.</span><span class="n">GetChildObject</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_variable_name</span><span class="p">)</span><span class="o">.</span><span class="n">SetPropValue</span><span class="p">(</span><span class="s2">&quot;Optimization/Max&quot;</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_set_prop_val</span><span class="p">(</span><span class="s2">&quot;Optimization/Max&quot;</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">is_sensitivity_enabled</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Check if Sensitivity is enabled.&quot;&quot;&quot;</span>
-
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="p">:</span>
-            <span class="n">oo</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">get_oo_object</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_aedt_obj</span><span class="p">,</span> <span class="s2">&quot;Variables&quot;</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">oo</span><span class="p">:</span>
-                <span class="k">return</span> <span class="n">oo</span><span class="o">.</span><span class="n">GetChildObject</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_variable_name</span><span class="p">)</span><span class="o">.</span><span class="n">GetPropValue</span><span class="p">(</span><span class="s2">&quot;Sensitivity/Included&quot;</span><span class="p">)</span>
-        <span class="k">return</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Check if Sensitivity is enabled.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_prop_val</span><span class="p">(</span><span class="s2">&quot;Sensitivity/Included&quot;</span><span class="p">)</span>
 
     <span class="nd">@is_sensitivity_enabled</span><span class="o">.</span><span class="n">setter</span>
     <span class="k">def</span> <span class="nf">is_sensitivity_enabled</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="p">:</span>
-            <span class="n">oo</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">get_oo_object</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_aedt_obj</span><span class="p">,</span> <span class="s2">&quot;Variables&quot;</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">oo</span><span class="p">:</span>
-                <span class="n">oo</span><span class="o">.</span><span class="n">GetChildObject</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_variable_name</span><span class="p">)</span><span class="o">.</span><span class="n">SetPropValue</span><span class="p">(</span><span class="s2">&quot;Sensitivity/Included&quot;</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_set_prop_val</span><span class="p">(</span><span class="s2">&quot;Sensitivity/Included&quot;</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">sensitivity_min_value</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot; &quot;Sensitivity min value.&quot;&quot;&quot;</span>
-
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="p">:</span>
-            <span class="n">oo</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">get_oo_object</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_aedt_obj</span><span class="p">,</span> <span class="s2">&quot;Variables&quot;</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">oo</span><span class="p">:</span>
-                <span class="k">return</span> <span class="n">oo</span><span class="o">.</span><span class="n">GetChildObject</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_variable_name</span><span class="p">)</span><span class="o">.</span><span class="n">GetPropValue</span><span class="p">(</span><span class="s2">&quot;Sensitivity/Min&quot;</span><span class="p">)</span>
-        <span class="k">return</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; &quot;Sensitivity min value.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_prop_val</span><span class="p">(</span><span class="s2">&quot;Sensitivity/Min&quot;</span><span class="p">)</span>
 
     <span class="nd">@sensitivity_min_value</span><span class="o">.</span><span class="n">setter</span>
     <span class="k">def</span> <span class="nf">sensitivity_min_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="p">:</span>
-            <span class="n">oo</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">get_oo_object</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_aedt_obj</span><span class="p">,</span> <span class="s2">&quot;Variables&quot;</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">oo</span><span class="p">:</span>
-                <span class="n">oo</span><span class="o">.</span><span class="n">GetChildObject</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_variable_name</span><span class="p">)</span><span class="o">.</span><span class="n">SetPropValue</span><span class="p">(</span><span class="s2">&quot;Sensitivity/Min&quot;</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_set_prop_val</span><span class="p">(</span><span class="s2">&quot;Sensitivity/Min&quot;</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">sensitivity_max_value</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot; &quot;Sensitivity max value.&quot;&quot;&quot;</span>
-
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="p">:</span>
-            <span class="n">oo</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">get_oo_object</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_aedt_obj</span><span class="p">,</span> <span class="s2">&quot;Variables&quot;</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">oo</span><span class="p">:</span>
-                <span class="k">return</span> <span class="n">oo</span><span class="o">.</span><span class="n">GetChildObject</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_variable_name</span><span class="p">)</span><span class="o">.</span><span class="n">GetPropValue</span><span class="p">(</span><span class="s2">&quot;Sensitivity/Max&quot;</span><span class="p">)</span>
-        <span class="k">return</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; &quot;Sensitivity max value.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_prop_val</span><span class="p">(</span><span class="s2">&quot;Sensitivity/Max&quot;</span><span class="p">)</span>
 
     <span class="nd">@sensitivity_max_value</span><span class="o">.</span><span class="n">setter</span>
     <span class="k">def</span> <span class="nf">sensitivity_max_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="p">:</span>
-            <span class="n">oo</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">get_oo_object</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_aedt_obj</span><span class="p">,</span> <span class="s2">&quot;Variables&quot;</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">oo</span><span class="p">:</span>
-                <span class="n">oo</span><span class="o">.</span><span class="n">GetChildObject</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_variable_name</span><span class="p">)</span><span class="o">.</span><span class="n">SetPropValue</span><span class="p">(</span><span class="s2">&quot;Sensitivity/Max&quot;</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_set_prop_val</span><span class="p">(</span><span class="s2">&quot;Sensitivity/Max&quot;</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">sensitivity_initial_disp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot; &quot;Sensitivity initial value.&quot;&quot;&quot;</span>
-
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="p">:</span>
-            <span class="n">oo</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">get_oo_object</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_aedt_obj</span><span class="p">,</span> <span class="s2">&quot;Variables&quot;</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">oo</span><span class="p">:</span>
-                <span class="k">return</span> <span class="n">oo</span><span class="o">.</span><span class="n">GetChildObject</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_variable_name</span><span class="p">)</span><span class="o">.</span><span class="n">GetPropValue</span><span class="p">(</span><span class="s2">&quot;Sensitivity/IDisp&quot;</span><span class="p">)</span>
-        <span class="k">return</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; &quot;Sensitivity initial value.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_prop_val</span><span class="p">(</span><span class="s2">&quot;Sensitivity/IDisp&quot;</span><span class="p">)</span>
 
     <span class="nd">@sensitivity_initial_disp</span><span class="o">.</span><span class="n">setter</span>
     <span class="k">def</span> <span class="nf">sensitivity_initial_disp</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="p">:</span>
-            <span class="n">oo</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">get_oo_object</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_aedt_obj</span><span class="p">,</span> <span class="s2">&quot;Variables&quot;</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">oo</span><span class="p">:</span>
-                <span class="n">oo</span><span class="o">.</span><span class="n">GetChildObject</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_variable_name</span><span class="p">)</span><span class="o">.</span><span class="n">SetPropValue</span><span class="p">(</span><span class="s2">&quot;Sensitivity/IDisp&quot;</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_set_prop_val</span><span class="p">(</span><span class="s2">&quot;Sensitivity/IDisp&quot;</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">is_tuning_enabled</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Check if tuning is enabled.&quot;&quot;&quot;</span>
-
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="p">:</span>
-            <span class="n">oo</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">get_oo_object</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_aedt_obj</span><span class="p">,</span> <span class="s2">&quot;Variables&quot;</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">oo</span><span class="p">:</span>
-                <span class="k">return</span> <span class="n">oo</span><span class="o">.</span><span class="n">GetChildObject</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_variable_name</span><span class="p">)</span><span class="o">.</span><span class="n">GetPropValue</span><span class="p">(</span><span class="s2">&quot;Tuning/Included&quot;</span><span class="p">)</span>
-        <span class="k">return</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Check if tuning is enabled.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_prop_val</span><span class="p">(</span><span class="s2">&quot;Tuning/Included&quot;</span><span class="p">)</span>
 
     <span class="nd">@is_tuning_enabled</span><span class="o">.</span><span class="n">setter</span>
     <span class="k">def</span> <span class="nf">is_tuning_enabled</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="p">:</span>
-            <span class="n">oo</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">get_oo_object</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_aedt_obj</span><span class="p">,</span> <span class="s2">&quot;Variables&quot;</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">oo</span><span class="p">:</span>
-                <span class="n">oo</span><span class="o">.</span><span class="n">GetChildObject</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_variable_name</span><span class="p">)</span><span class="o">.</span><span class="n">SetPropValue</span><span class="p">(</span><span class="s2">&quot;Tuning/Included&quot;</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_set_prop_val</span><span class="p">(</span><span class="s2">&quot;Tuning/Included&quot;</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">tuning_min_value</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot; &quot;Tuning min value.&quot;&quot;&quot;</span>
-
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="p">:</span>
-            <span class="n">oo</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">get_oo_object</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_aedt_obj</span><span class="p">,</span> <span class="s2">&quot;Variables&quot;</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">oo</span><span class="p">:</span>
-                <span class="k">return</span> <span class="n">oo</span><span class="o">.</span><span class="n">GetChildObject</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_variable_name</span><span class="p">)</span><span class="o">.</span><span class="n">GetPropValue</span><span class="p">(</span><span class="s2">&quot;Tuning/Min&quot;</span><span class="p">)</span>
-        <span class="k">return</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; &quot;Tuning min value.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_prop_val</span><span class="p">(</span><span class="s2">&quot;Tuning/Min&quot;</span><span class="p">)</span>
 
     <span class="nd">@tuning_min_value</span><span class="o">.</span><span class="n">setter</span>
     <span class="k">def</span> <span class="nf">tuning_min_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="p">:</span>
-            <span class="n">oo</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">get_oo_object</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_aedt_obj</span><span class="p">,</span> <span class="s2">&quot;Variables&quot;</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">oo</span><span class="p">:</span>
-                <span class="n">oo</span><span class="o">.</span><span class="n">GetChildObject</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_variable_name</span><span class="p">)</span><span class="o">.</span><span class="n">SetPropValue</span><span class="p">(</span><span class="s2">&quot;Tuning/Min&quot;</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_set_prop_val</span><span class="p">(</span><span class="s2">&quot;Tuning/Min&quot;</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">tuning_max_value</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot; &quot;Tuning max value.&quot;&quot;&quot;</span>
-
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="p">:</span>
-            <span class="n">oo</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">get_oo_object</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_aedt_obj</span><span class="p">,</span> <span class="s2">&quot;Variables&quot;</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">oo</span><span class="p">:</span>
-                <span class="k">return</span> <span class="n">oo</span><span class="o">.</span><span class="n">GetChildObject</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_variable_name</span><span class="p">)</span><span class="o">.</span><span class="n">GetPropValue</span><span class="p">(</span><span class="s2">&quot;Tuning/Max&quot;</span><span class="p">)</span>
-        <span class="k">return</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; &quot;Tuning max value.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_prop_val</span><span class="p">(</span><span class="s2">&quot;Tuning/Max&quot;</span><span class="p">)</span>
 
     <span class="nd">@tuning_max_value</span><span class="o">.</span><span class="n">setter</span>
     <span class="k">def</span> <span class="nf">tuning_max_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="p">:</span>
-            <span class="n">oo</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">get_oo_object</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_aedt_obj</span><span class="p">,</span> <span class="s2">&quot;Variables&quot;</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">oo</span><span class="p">:</span>
-                <span class="n">oo</span><span class="o">.</span><span class="n">GetChildObject</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_variable_name</span><span class="p">)</span><span class="o">.</span><span class="n">SetPropValue</span><span class="p">(</span><span class="s2">&quot;Tuning/Max&quot;</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_set_prop_val</span><span class="p">(</span><span class="s2">&quot;Tuning/Max&quot;</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">tuning_step_value</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot; &quot;Tuning Step value.&quot;&quot;&quot;</span>
-
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="p">:</span>
-            <span class="n">oo</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">get_oo_object</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_aedt_obj</span><span class="p">,</span> <span class="s2">&quot;Variables&quot;</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">oo</span><span class="p">:</span>
-                <span class="k">return</span> <span class="n">oo</span><span class="o">.</span><span class="n">GetChildObject</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_variable_name</span><span class="p">)</span><span class="o">.</span><span class="n">GetPropValue</span><span class="p">(</span><span class="s2">&quot;Tuning/Step&quot;</span><span class="p">)</span>
-        <span class="k">return</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; &quot;Tuning Step value.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_prop_val</span><span class="p">(</span><span class="s2">&quot;Tuning/Step&quot;</span><span class="p">)</span>
 
     <span class="nd">@tuning_step_value</span><span class="o">.</span><span class="n">setter</span>
     <span class="k">def</span> <span class="nf">tuning_step_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="p">:</span>
-            <span class="n">oo</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">get_oo_object</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_aedt_obj</span><span class="p">,</span> <span class="s2">&quot;Variables&quot;</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">oo</span><span class="p">:</span>
-                <span class="n">oo</span><span class="o">.</span><span class="n">GetChildObject</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_variable_name</span><span class="p">)</span><span class="o">.</span><span class="n">SetPropValue</span><span class="p">(</span><span class="s2">&quot;Tuning/Step&quot;</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_set_prop_val</span><span class="p">(</span><span class="s2">&quot;Tuning/Step&quot;</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">is_statistical_enabled</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Check if statistical is enabled.&quot;&quot;&quot;</span>
-
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="p">:</span>
-            <span class="n">oo</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">get_oo_object</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_aedt_obj</span><span class="p">,</span> <span class="s2">&quot;Variables&quot;</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">oo</span><span class="p">:</span>
-                <span class="k">return</span> <span class="n">oo</span><span class="o">.</span><span class="n">GetChildObject</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_variable_name</span><span class="p">)</span><span class="o">.</span><span class="n">GetPropValue</span><span class="p">(</span><span class="s2">&quot;Statistical/Included&quot;</span><span class="p">)</span>
-        <span class="k">return</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Check if statistical is enabled.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_prop_val</span><span class="p">(</span><span class="s2">&quot;Statistical/Included&quot;</span><span class="p">)</span>
 
     <span class="nd">@is_statistical_enabled</span><span class="o">.</span><span class="n">setter</span>
     <span class="k">def</span> <span class="nf">is_statistical_enabled</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="p">:</span>
-            <span class="n">oo</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">get_oo_object</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_aedt_obj</span><span class="p">,</span> <span class="s2">&quot;Variables&quot;</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">oo</span><span class="p">:</span>
-                <span class="n">oo</span><span class="o">.</span><span class="n">GetChildObject</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_variable_name</span><span class="p">)</span><span class="o">.</span><span class="n">SetPropValue</span><span class="p">(</span><span class="s2">&quot;Statistical/Included&quot;</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_set_prop_val</span><span class="p">(</span><span class="s2">&quot;Statistical/Included&quot;</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">read_only</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Read-only flag value.&quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="p">:</span>
-            <span class="k">try</span><span class="p">:</span>
-                <span class="k">return</span> <span class="p">(</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">_aedt_obj</span><span class="o">.</span><span class="n">GetChildObject</span><span class="p">(</span><span class="s2">&quot;Variables&quot;</span><span class="p">)</span>
-                    <span class="o">.</span><span class="n">GetChildObject</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_variable_name</span><span class="p">)</span>
-                    <span class="o">.</span><span class="n">GetPropValue</span><span class="p">(</span><span class="s2">&quot;ReadOnly&quot;</span><span class="p">)</span>
-                <span class="p">)</span>
-            <span class="k">except</span><span class="p">:</span>
-                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_readonly</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Read-only flag value.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_readonly</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_prop_val</span><span class="p">(</span><span class="s2">&quot;ReadOnly&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_readonly</span>
 
     <span class="nd">@read_only</span><span class="o">.</span><span class="n">setter</span>
@@ -1696,16 +1660,8 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">hidden</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Hidden flag value.&quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="p">:</span>
-            <span class="k">try</span><span class="p">:</span>
-                <span class="k">return</span> <span class="p">(</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">_aedt_obj</span><span class="o">.</span><span class="n">GetChildObject</span><span class="p">(</span><span class="s2">&quot;Variables&quot;</span><span class="p">)</span>
-                    <span class="o">.</span><span class="n">GetChildObject</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_variable_name</span><span class="p">)</span>
-                    <span class="o">.</span><span class="n">GetPropValue</span><span class="p">(</span><span class="s2">&quot;Hidden&quot;</span><span class="p">)</span>
-                <span class="p">)</span>
-            <span class="k">except</span><span class="p">:</span>
-                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hidden</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Hidden flag value.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_hidden</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_prop_val</span><span class="p">(</span><span class="s2">&quot;Hidden&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hidden</span>
 
     <span class="nd">@hidden</span><span class="o">.</span><span class="n">setter</span>
@@ -1719,16 +1675,8 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">description</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Description value.&quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="p">:</span>
-            <span class="k">try</span><span class="p">:</span>
-                <span class="k">return</span> <span class="p">(</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">_aedt_obj</span><span class="o">.</span><span class="n">GetChildObject</span><span class="p">(</span><span class="s2">&quot;Variables&quot;</span><span class="p">)</span>
-                    <span class="o">.</span><span class="n">GetChildObject</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_variable_name</span><span class="p">)</span>
-                    <span class="o">.</span><span class="n">GetPropValue</span><span class="p">(</span><span class="s2">&quot;Description&quot;</span><span class="p">)</span>
-                <span class="p">)</span>
-            <span class="k">except</span><span class="p">:</span>
-                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_description</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Description value.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_description</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_prop_val</span><span class="p">(</span><span class="s2">&quot;Description&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_description</span>
 
     <span class="nd">@description</span><span class="o">.</span><span class="n">setter</span>
@@ -1742,13 +1690,13 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">post_processing</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Postprocessing flag value.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Postprocessing flag value.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">True</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_variable_name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">variable_manager</span><span class="o">.</span><span class="n">post_processing_variables</span> <span class="k">else</span> <span class="kc">False</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">circuit_parameter</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Circuit parameter flag value.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Circuit parameter flag value.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="s2">&quot;$&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_variable_name</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">False</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">design_type</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;HFSS 3D Layout Design&quot;</span><span class="p">,</span> <span class="s2">&quot;Circuit Design&quot;</span><span class="p">,</span> <span class="s2">&quot;Maxwell Circuit&quot;</span><span class="p">,</span> <span class="s2">&quot;Twin Builder&quot;</span><span class="p">]:</span>
@@ -1762,7 +1710,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">expression</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Expression.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Expression.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_aedt_obj</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_aedt_obj</span><span class="o">.</span><span class="n">GetVariableValue</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_variable_name</span><span class="p">)</span>
         <span class="k">return</span>
@@ -1778,7 +1726,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">numeric_value</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Numeric part of the expression as a float value.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Numeric part of the expression as a float value.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">is_array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_value</span><span class="p">):</span>
             <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="nb">eval</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_value</span><span class="p">))</span>
         <span class="k">try</span><span class="p">:</span>
@@ -1800,12 +1748,12 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">unit_system</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Unit system of the expression as a string.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Unit system of the expression as a string.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">unit_system</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_units</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">units</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Units.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Units.&quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">var_obj</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_aedt_obj</span><span class="o">.</span><span class="n">GetChildObject</span><span class="p">(</span><span class="s2">&quot;Variables&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">GetChildObject</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_variable_name</span><span class="p">)</span>
             <span class="n">_</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_units</span> <span class="o">=</span> <span class="n">decompose_variable_value</span><span class="p">(</span><span class="n">var_obj</span><span class="o">.</span><span class="n">GetPropEvaluatedValue</span><span class="p">(</span><span class="s2">&quot;EvaluatedValue&quot;</span><span class="p">))</span>
@@ -1816,12 +1764,13 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">value</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Value.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Value.&quot;&quot;&quot;</span>
+
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_value</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">evaluated_value</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;String value.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;String value.</span>
 
 <span class="sd">        The numeric value with the unit is concatenated and returned as a string. The numeric display</span>
 <span class="sd">        in the modeler and the string value can differ. For example, you might see ``10mm`` in the</span>
@@ -1832,7 +1781,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Variable.rescale_to"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.application.Variables.Variable.rescale_to.html#pyaedt.application.Variables.Variable.rescale_to">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">rescale_to</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">units</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Rescale the expression to a new unit within the current unit system.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Rescale the expression to a new unit within the current unit system.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1860,7 +1809,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Variable.format"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.application.Variables.Variable.format.html#pyaedt.application.Variables.Variable.format">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">format</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">format</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve the string value with the specified numerical formatting.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve the string value with the specified numerical formatting.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1887,7 +1836,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="fm">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Multiply the variable with a number or another variable and return a new object.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Multiply the variable with a number or another variable and return a new object.</span>
 
 <span class="sd">                Parameters</span>
 <span class="sd">                ---------</span>
@@ -1946,7 +1895,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Add the variable to another variable to return a new object.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add the variable to another variable to return a new object.</span>
 
 <span class="sd">                Parameters</span>
 <span class="sd">                ---------</span>
@@ -1987,7 +1936,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="fm">__sub__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Subtract another variable from the variable to return a new object.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Subtract another variable from the variable to return a new object.</span>
 
 <span class="sd">                Parameters</span>
 <span class="sd">                ---------</span>
@@ -2029,7 +1978,7 @@ function checkPageExistsAndRedirect(event) {
     <span class="c1"># Python 3.x version</span>
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="fm">__truediv__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Divide the variable by a number or another variable to return a new object.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Divide the variable by a number or another variable to return a new object.</span>
 
 <span class="sd">                Parameters</span>
 <span class="sd">                ---------</span>
@@ -2073,7 +2022,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="fm">__rtruediv__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Divide another object by this object.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Divide another object by this object.</span>
 
 <span class="sd">                Parameters</span>
 <span class="sd">                ---------</span>
@@ -2115,7 +2064,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <div class="viewcode-block" id="DataSet"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.application.Variables.DataSet.html#pyaedt.application.Variables.DataSet">[docs]</a><span class="k">class</span> <span class="nc">DataSet</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Manages datasets.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Manages datasets.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -2154,7 +2103,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">_args</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve arguments.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve arguments.&quot;&quot;&quot;</span>
         <span class="n">arg</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="n">arg</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;Name:&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
         <span class="n">arg2</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Name:Coordinates&quot;</span><span class="p">]</span>
@@ -2194,7 +2143,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="DataSet.create"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.application.Variables.DataSet.create.html#pyaedt.application.Variables.DataSet.create">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a dataset.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a dataset.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2215,7 +2164,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="DataSet.add_point"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.application.Variables.DataSet.add_point.html#pyaedt.application.Variables.DataSet.add_point">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">add_point</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">v</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Add a point to the dataset.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add a point to the dataset.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2247,7 +2196,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="DataSet.remove_point_from_x"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.application.Variables.DataSet.remove_point_from_x.html#pyaedt.application.Variables.DataSet.remove_point_from_x">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">remove_point_from_x</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Remove a point from an X-axis value.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Remove a point from an X-axis value.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2272,7 +2221,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="DataSet.remove_point_from_index"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.application.Variables.DataSet.remove_point_from_index.html#pyaedt.application.Variables.DataSet.remove_point_from_index">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">remove_point_from_index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">id_to_remove</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Remove a point from an index.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Remove a point from an index.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2302,7 +2251,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="DataSet.update"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.application.Variables.DataSet.update.html#pyaedt.application.Variables.DataSet.update">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Update the dataset.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Update the dataset.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2326,7 +2275,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="DataSet.delete"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.application.Variables.DataSet.delete.html#pyaedt.application.Variables.DataSet.delete">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Delete the dataset.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Delete the dataset.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2349,7 +2298,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="DataSet.export"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.application.Variables.DataSet.export.html#pyaedt.application.Variables.DataSet.export">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">export</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataset_path</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Export the dataset.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Export the dataset.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2395,13 +2344,13 @@ function checkPageExistsAndRedirect(event) {
   
   <div class="footer-item">
     <p class="copyright">
-    &copy; Copyright (c) 2022 ANSYS, Inc. All rights reserved.<br>
+    &copy; Copyright (c) 2023 ANSYS, Inc. All rights reserved.<br>
 </p>
   </div>
   
   <div class="footer-item">
     <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 6.1.1.<br>
 </p>
   </div>
   

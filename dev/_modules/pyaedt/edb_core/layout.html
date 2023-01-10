@@ -28,6 +28,7 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/css/ansys_sphinx_theme.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css" />
 
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
@@ -36,14 +37,11 @@
         <link href="../../../_static/css/breadcrumbs.css" rel="stylesheet">
     
     <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-    <script src="../../../_static/jquery.js"></script>
-    <script src="../../../_static/underscore.js"></script>
-    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../_static/doctools.js"></script>
     <script src="../../../_static/sphinx_highlight.js"></script>
     <script src="../../../_static/clipboard.min.js"></script>
     <script src="../../../_static/copybutton.js"></script>
-    <link rel="shortcut icon" href="../../../_static/ansys-favicon.png"/>
+    <link rel="icon" href="../../../_static/ansys-favicon.png"/>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -72,9 +70,8 @@
   
   
   
-    <img src="../../../_static/pyansys-logo-black-cropped.png" class="logo__image only-light" alt="Logo image">
-    <img src="../../../_static/pyansys-logo-black-cropped.png" class="logo__image only-dark" alt="Logo image">
   
+    <p class="title logo__title">PyAEDT</p>
   
 </a>
     
@@ -104,7 +101,13 @@
 
 <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="../../../API/index.html">
-  API reference
+  API AEDT reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../EDBAPI/index.html">
+  API EDB reference
  </a>
 </li>
 
@@ -319,8 +322,8 @@ function checkPageExistsAndRedirect(event) {
 <span class="kn">from</span> <span class="nn">pyaedt.generic.general_methods</span> <span class="kn">import</span> <span class="n">pyaedt_function_handler</span>
 
 
-<div class="viewcode-block" id="EdbLayout"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.layout.EdbLayout.html#pyaedt.edb_core.layout.EdbLayout">[docs]</a><span class="k">class</span> <span class="nc">EdbLayout</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Manages EDB methods for primitives management accessible from `Edb.core_primitives` property.</span>
+<div class="viewcode-block" id="EdbLayout"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.layout.EdbLayout.html#pyaedt.edb_core.layout.EdbLayout">[docs]</a><span class="k">class</span> <span class="nc">EdbLayout</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Manages EDB methods for primitives management accessible from `Edb.core_primitives` property.</span>
 
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
@@ -341,7 +344,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">_logger</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Logger.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Logger.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span><span class="o">.</span><span class="n">logger</span>
 
     <span class="nd">@property</span>
@@ -362,12 +365,12 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">db</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Db object.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Db object.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span><span class="o">.</span><span class="n">db</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">layers</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Dictionary of layers.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Dictionary of layers.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -378,7 +381,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">primitives</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Primitives.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Primitives.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -393,7 +396,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">polygons_by_layer</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Primitives with layer names as keys.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Primitives with layer names as keys.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -407,7 +410,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">primitives_by_net</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Primitives with net names as keys.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Primitives with net names as keys.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -423,7 +426,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">primitives_by_layer</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Primitives with layer names as keys.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Primitives with layer names as keys.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -440,7 +443,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">rectangles</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Rectangles.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Rectangles.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -452,7 +455,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">circles</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Circles.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Circles.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -464,7 +467,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">paths</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Paths.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Paths.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -475,7 +478,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">bondwires</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Bondwires.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Bondwires.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -486,7 +489,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">polygons</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Polygons.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Polygons.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -495,9 +498,9 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">primitives</span> <span class="k">if</span> <span class="n">i</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s2">&quot;Polygon&quot;</span><span class="p">]</span>
 
-<div class="viewcode-block" id="EdbLayout.get_polygons_by_layer"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.layout.EdbLayout.get_polygons_by_layer.html#pyaedt.edb_core.layout.EdbLayout.get_polygons_by_layer">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EdbLayout.get_polygons_by_layer"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.layout.EdbLayout.get_polygons_by_layer.html#pyaedt.edb_core.layout.EdbLayout.get_polygons_by_layer">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">get_polygons_by_layer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">layer_name</span><span class="p">,</span> <span class="n">net_list</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve polygons by a layer.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve polygons by a layer.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -520,9 +523,9 @@ function checkPageExistsAndRedirect(event) {
                     <span class="n">objinst</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">el</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">objinst</span></div>
 
-<div class="viewcode-block" id="EdbLayout.get_polygon_bounding_box"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.layout.EdbLayout.get_polygon_bounding_box.html#pyaedt.edb_core.layout.EdbLayout.get_polygon_bounding_box">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EdbLayout.get_polygon_bounding_box"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.layout.EdbLayout.get_polygon_bounding_box.html#pyaedt.edb_core.layout.EdbLayout.get_polygon_bounding_box">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">get_polygon_bounding_box</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">polygon</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve a polygon bounding box.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve a polygon bounding box.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -552,9 +555,9 @@ function checkPageExistsAndRedirect(event) {
             <span class="k">pass</span>
         <span class="k">return</span> <span class="n">bounding</span></div>
 
-<div class="viewcode-block" id="EdbLayout.get_polygon_points"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.layout.EdbLayout.get_polygon_points.html#pyaedt.edb_core.layout.EdbLayout.get_polygon_points">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EdbLayout.get_polygon_points"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.layout.EdbLayout.get_polygon_points.html#pyaedt.edb_core.layout.EdbLayout.get_polygon_points">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">get_polygon_points</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">polygon</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve polygon points.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve polygon points.</span>
 
 <span class="sd">        .. note::</span>
 <span class="sd">           For arcs, one point is returned.</span>
@@ -596,9 +599,9 @@ function checkPageExistsAndRedirect(event) {
                 <span class="n">continue_iterate</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="k">return</span> <span class="n">points</span></div>
 
-<div class="viewcode-block" id="EdbLayout.parametrize_polygon"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.layout.EdbLayout.parametrize_polygon.html#pyaedt.edb_core.layout.EdbLayout.parametrize_polygon">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EdbLayout.parametrize_polygon"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.layout.EdbLayout.parametrize_polygon.html#pyaedt.edb_core.layout.EdbLayout.parametrize_polygon">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">parametrize_polygon</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">polygon</span><span class="p">,</span> <span class="n">selection_polygon</span><span class="p">,</span> <span class="n">offset_name</span><span class="o">=</span><span class="s2">&quot;offsetx&quot;</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Parametrize pieces of a polygon based on another polygon.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Parametrize pieces of a polygon based on another polygon.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -690,7 +693,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">end_cap_style</span><span class="o">=</span><span class="s2">&quot;Round&quot;</span><span class="p">,</span>
         <span class="n">corner_style</span><span class="o">=</span><span class="s2">&quot;Round&quot;</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Create a path based on a list of points.</span>
 
 <span class="sd">        Parameters</span>
@@ -759,7 +762,7 @@ function checkPageExistsAndRedirect(event) {
             <span class="k">return</span> <span class="kc">False</span>
         <span class="k">return</span> <span class="n">EDBPrimitives</span><span class="p">(</span><span class="n">polygon</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span><span class="p">)</span>
 
-<div class="viewcode-block" id="EdbLayout.create_trace"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.layout.EdbLayout.create_trace.html#pyaedt.edb_core.layout.EdbLayout.create_trace">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EdbLayout.create_trace"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.layout.EdbLayout.create_trace.html#pyaedt.edb_core.layout.EdbLayout.create_trace">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">create_trace</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">path_list</span><span class="p">,</span>
@@ -770,7 +773,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">end_cap_style</span><span class="o">=</span><span class="s2">&quot;Round&quot;</span><span class="p">,</span>
         <span class="n">corner_style</span><span class="o">=</span><span class="s2">&quot;Round&quot;</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Create a trace based on a list of points.</span>
 
 <span class="sd">        Parameters</span>
@@ -812,9 +815,9 @@ function checkPageExistsAndRedirect(event) {
 
         <span class="k">return</span> <span class="n">primitive</span></div>
 
-<div class="viewcode-block" id="EdbLayout.create_polygon"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.layout.EdbLayout.create_polygon.html#pyaedt.edb_core.layout.EdbLayout.create_polygon">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EdbLayout.create_polygon"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.layout.EdbLayout.create_polygon.html#pyaedt.edb_core.layout.EdbLayout.create_polygon">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">create_polygon</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">main_shape</span><span class="p">,</span> <span class="n">layer_name</span><span class="p">,</span> <span class="n">voids</span><span class="o">=</span><span class="p">[],</span> <span class="n">net_name</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a polygon based on a list of points and voids.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a polygon based on a list of points and voids.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -856,9 +859,9 @@ function checkPageExistsAndRedirect(event) {
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">polygon</span></div>
 
-<div class="viewcode-block" id="EdbLayout.create_polygon_from_points"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.layout.EdbLayout.create_polygon_from_points.html#pyaedt.edb_core.layout.EdbLayout.create_polygon_from_points">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EdbLayout.create_polygon_from_points"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.layout.EdbLayout.create_polygon_from_points.html#pyaedt.edb_core.layout.EdbLayout.create_polygon_from_points">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">create_polygon_from_points</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">point_list</span><span class="p">,</span> <span class="n">layer_name</span><span class="p">,</span> <span class="n">net_name</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a new polygon from a point list.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a new polygon from a point list.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -886,7 +889,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">EDBPrimitives</span><span class="p">(</span><span class="n">polygon</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="EdbLayout.create_rectangle"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.layout.EdbLayout.create_rectangle.html#pyaedt.edb_core.layout.EdbLayout.create_rectangle">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EdbLayout.create_rectangle"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.layout.EdbLayout.create_rectangle.html#pyaedt.edb_core.layout.EdbLayout.create_rectangle">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">create_rectangle</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">layer_name</span><span class="p">,</span>
@@ -900,7 +903,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">corner_radius</span><span class="o">=</span><span class="s2">&quot;0mm&quot;</span><span class="p">,</span>
         <span class="n">rotation</span><span class="o">=</span><span class="s2">&quot;0deg&quot;</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create rectangle.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create rectangle.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -964,9 +967,9 @@ function checkPageExistsAndRedirect(event) {
             <span class="k">return</span> <span class="n">EDBPrimitives</span><span class="p">(</span><span class="n">rect</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span><span class="p">)</span>
         <span class="k">return</span> <span class="kc">False</span>  <span class="c1"># pragma: no cover</span></div>
 
-<div class="viewcode-block" id="EdbLayout.create_circle"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.layout.EdbLayout.create_circle.html#pyaedt.edb_core.layout.EdbLayout.create_circle">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EdbLayout.create_circle"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.layout.EdbLayout.create_circle.html#pyaedt.edb_core.layout.EdbLayout.create_circle">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">create_circle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">layer_name</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">radius</span><span class="p">,</span> <span class="n">net_name</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a circle on a specified layer.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a circle on a specified layer.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1001,9 +1004,9 @@ function checkPageExistsAndRedirect(event) {
             <span class="k">return</span> <span class="n">EDBPrimitives</span><span class="p">(</span><span class="n">circle</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span><span class="p">)</span>
         <span class="k">return</span> <span class="kc">False</span>  <span class="c1"># pragma: no cover</span></div>
 
-<div class="viewcode-block" id="EdbLayout.delete_primitives"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.layout.EdbLayout.delete_primitives.html#pyaedt.edb_core.layout.EdbLayout.delete_primitives">[docs]</a>    <span class="nd">@pyaedt_function_handler</span>
+<div class="viewcode-block" id="EdbLayout.delete_primitives"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.layout.EdbLayout.delete_primitives.html#pyaedt.edb_core.layout.EdbLayout.delete_primitives">[docs]</a>    <span class="nd">@pyaedt_function_handler</span>
     <span class="k">def</span> <span class="nf">delete_primitives</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">net_names</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Delete primitives by net names.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Delete primitives by net names.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1028,9 +1031,9 @@ function checkPageExistsAndRedirect(event) {
                 <span class="n">p</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
         <span class="k">return</span> <span class="kc">True</span></div>
 
-<div class="viewcode-block" id="EdbLayout.get_primitives"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.layout.EdbLayout.get_primitives.html#pyaedt.edb_core.layout.EdbLayout.get_primitives">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EdbLayout.get_primitives"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.layout.EdbLayout.get_primitives.html#pyaedt.edb_core.layout.EdbLayout.get_primitives">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">get_primitives</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">net_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">layer_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">prim_type</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">is_void</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Get primitives by conditions.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get primitives by conditions.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1065,9 +1068,9 @@ function checkPageExistsAndRedirect(event) {
             <span class="n">prims</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">el</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">prims</span></div>
 
-<div class="viewcode-block" id="EdbLayout.fix_circle_void_for_clipping"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.layout.EdbLayout.fix_circle_void_for_clipping.html#pyaedt.edb_core.layout.EdbLayout.fix_circle_void_for_clipping">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EdbLayout.fix_circle_void_for_clipping"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.layout.EdbLayout.fix_circle_void_for_clipping.html#pyaedt.edb_core.layout.EdbLayout.fix_circle_void_for_clipping">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">fix_circle_void_for_clipping</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Fix issues when circle void are clipped due to a bug in EDB.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Fix issues when circle void are clipped due to a bug in EDB.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1097,9 +1100,9 @@ function checkPageExistsAndRedirect(event) {
                 <span class="n">void_circle</span><span class="o">.</span><span class="n">Delete</span><span class="p">()</span>
         <span class="k">return</span> <span class="kc">True</span></div>
 
-<div class="viewcode-block" id="EdbLayout.add_void"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.layout.EdbLayout.add_void.html#pyaedt.edb_core.layout.EdbLayout.add_void">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EdbLayout.add_void"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.layout.EdbLayout.add_void.html#pyaedt.edb_core.layout.EdbLayout.add_void">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">add_void</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">shape</span><span class="p">,</span> <span class="n">void_shape</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Add a void into a shape.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add a void into a shape.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1122,9 +1125,9 @@ function checkPageExistsAndRedirect(event) {
                 <span class="k">return</span> <span class="n">flag</span>
         <span class="k">return</span> <span class="kc">True</span></div>
 
-<div class="viewcode-block" id="EdbLayout.shape_to_polygon_data"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.layout.EdbLayout.shape_to_polygon_data.html#pyaedt.edb_core.layout.EdbLayout.shape_to_polygon_data">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EdbLayout.shape_to_polygon_data"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.layout.EdbLayout.shape_to_polygon_data.html#pyaedt.edb_core.layout.EdbLayout.shape_to_polygon_data">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">shape_to_polygon_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">shape</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Convert a shape to polygon data.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Convert a shape to polygon data.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1276,7 +1279,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Geometry</span><span class="o">.</span><span class="n">PolygonData</span><span class="o">.</span><span class="n">CreateFromBBox</span><span class="p">(</span><span class="n">points</span><span class="p">)</span>
 
     <span class="k">class</span> <span class="nc">Shape</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Shape class.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Shape class.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1315,7 +1318,7 @@ function checkPageExistsAndRedirect(event) {
             <span class="bp">self</span><span class="o">.</span><span class="n">points</span> <span class="o">=</span> <span class="n">points</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">properties</span> <span class="o">=</span> <span class="n">properties</span>
 
-<div class="viewcode-block" id="EdbLayout.parametrize_trace_width"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.layout.EdbLayout.parametrize_trace_width.html#pyaedt.edb_core.layout.EdbLayout.parametrize_trace_width">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EdbLayout.parametrize_trace_width"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.layout.EdbLayout.parametrize_trace_width.html#pyaedt.edb_core.layout.EdbLayout.parametrize_trace_width">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">parametrize_trace_width</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">nets_name</span><span class="p">,</span>
@@ -1323,7 +1326,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">parameter_name</span><span class="o">=</span><span class="s2">&quot;trace_width&quot;</span><span class="p">,</span>
         <span class="n">variable_value</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Parametrize a Trace on specific layer or all stackup.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Parametrize a Trace on specific layer or all stackup.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1367,9 +1370,9 @@ function checkPageExistsAndRedirect(event) {
                         <span class="n">p</span><span class="o">.</span><span class="n">SetWidth</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span><span class="o">.</span><span class="n">edb_value</span><span class="p">(</span><span class="n">parameter_name</span><span class="p">))</span>
         <span class="k">return</span> <span class="kc">True</span></div>
 
-<div class="viewcode-block" id="EdbLayout.unite_polygons_on_layer"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.layout.EdbLayout.unite_polygons_on_layer.html#pyaedt.edb_core.layout.EdbLayout.unite_polygons_on_layer">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EdbLayout.unite_polygons_on_layer"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.layout.EdbLayout.unite_polygons_on_layer.html#pyaedt.edb_core.layout.EdbLayout.unite_polygons_on_layer">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">unite_polygons_on_layer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">layer_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">delete_padstack_gemometries</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Try to unite all Polygons on specified layer.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Try to unite all Polygons on specified layer.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1436,9 +1439,9 @@ function checkPageExistsAndRedirect(event) {
                     <span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span><span class="o">.</span><span class="n">core_padstack</span><span class="o">.</span><span class="n">remove_pads_from_padstack</span><span class="p">(</span><span class="n">pad</span><span class="p">)</span>
         <span class="k">return</span> <span class="kc">True</span></div>
 
-<div class="viewcode-block" id="EdbLayout.defeature_polygon"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.layout.EdbLayout.defeature_polygon.html#pyaedt.edb_core.layout.EdbLayout.defeature_polygon">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EdbLayout.defeature_polygon"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.layout.EdbLayout.defeature_polygon.html#pyaedt.edb_core.layout.EdbLayout.defeature_polygon">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">defeature_polygon</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">setup_info</span><span class="p">,</span> <span class="n">poly</span><span class="p">,</span> <span class="n">max_surface_deviation</span><span class="o">=</span><span class="mf">0.001</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Defeature the polygon based on the maximum surface deviation criteria.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Defeature the polygon based on the maximum surface deviation criteria.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1534,9 +1537,9 @@ function checkPageExistsAndRedirect(event) {
 
         <span class="k">return</span> <span class="n">pts_list</span><span class="p">,</span> <span class="n">nb_pts_removed</span>
 
-<div class="viewcode-block" id="EdbLayout.get_layout_statistics"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.layout.EdbLayout.get_layout_statistics.html#pyaedt.edb_core.layout.EdbLayout.get_layout_statistics">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<div class="viewcode-block" id="EdbLayout.get_layout_statistics"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.layout.EdbLayout.get_layout_statistics.html#pyaedt.edb_core.layout.EdbLayout.get_layout_statistics">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">get_layout_statistics</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evaluate_area</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">net_list</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Return EDBStatistics object from a layout.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return EDBStatistics object from a layout.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1602,13 +1605,13 @@ function checkPageExistsAndRedirect(event) {
   
   <div class="footer-item">
     <p class="copyright">
-    &copy; Copyright (c) 2022 ANSYS, Inc. All rights reserved.<br>
+    &copy; Copyright (c) 2023 ANSYS, Inc. All rights reserved.<br>
 </p>
   </div>
   
   <div class="footer-item">
     <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 6.1.1.<br>
 </p>
   </div>
   

@@ -41,14 +41,11 @@
         <link href="../../../../_static/css/breadcrumbs.css" rel="stylesheet">
     
     <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
-    <script src="../../../../_static/jquery.js"></script>
-    <script src="../../../../_static/underscore.js"></script>
-    <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../../_static/doctools.js"></script>
     <script src="../../../../_static/sphinx_highlight.js"></script>
     <script src="../../../../_static/clipboard.min.js"></script>
     <script src="../../../../_static/copybutton.js"></script>
-    <link rel="shortcut icon" href="../../../../_static/ansys-favicon.png"/>
+    <link rel="icon" href="../../../../_static/ansys-favicon.png"/>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -77,9 +74,8 @@
   
   
   
-    <img src="../../../../_static/pyansys-logo-black-cropped.png" class="logo__image only-light" alt="Logo image">
-    <img src="../../../../_static/pyansys-logo-black-cropped.png" class="logo__image only-dark" alt="Logo image">
   
+    <p class="title logo__title">PyAEDT</p>
   
 </a>
     
@@ -207,7 +203,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.42 variable.
+            // this version, rather than using sphinx's 0.6.43 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -328,6 +324,7 @@ function checkPageExistsAndRedirect(event) {
 
 <span class="kn">import</span> <span class="nn">random</span>
 <span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
 <span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">OrderedDict</span>
 
 <span class="kn">from</span> <span class="nn">pyaedt</span> <span class="kn">import</span> <span class="n">pyaedt_function_handler</span>
@@ -358,14 +355,14 @@ function checkPageExistsAndRedirect(event) {
 
 
 <span class="k">class</span> <span class="nc">UserDefinedComponentProps</span><span class="p">(</span><span class="n">OrderedDict</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;User Defined Component Internal Parameters.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;User Defined Component Internal Parameters.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__setitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
         <span class="n">OrderedDict</span><span class="o">.</span><span class="fm">__setitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pyaedt_user_defined_component</span><span class="o">.</span><span class="n">auto_update</span><span class="p">:</span>
             <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pyaedt_user_defined_component</span><span class="o">.</span><span class="n">update_native</span><span class="p">()</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="n">res</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">_pyaedt_user_defined_component</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Update of </span><span class="si">%s</span><span class="s2"> Failed. Check needed arguments&quot;</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_pyaedt_user_defined_component</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Update of </span><span class="si">%s</span><span class="s2"> failed. Check needed arguments&quot;</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">user_defined_components</span><span class="p">,</span> <span class="n">props</span><span class="p">):</span>
         <span class="n">OrderedDict</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
@@ -382,13 +379,18 @@ function checkPageExistsAndRedirect(event) {
 
 
 <div class="viewcode-block" id="UserDefinedComponent"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.modeler.cad.components_3d.UserDefinedComponent.html#pyaedt.modeler.cad.components_3d.UserDefinedComponent">[docs]</a><span class="k">class</span> <span class="nc">UserDefinedComponent</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Manages object attributes for 3DComponent and User Defined Model.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Manages object attributes for 3DComponent and User Defined Model.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    primitives : :class:`pyaedt.modeler.Primitives3D.Primitives3D`</span>
 <span class="sd">        Inherited parent object.</span>
-<span class="sd">    name : str</span>
+<span class="sd">    name : str, optional</span>
+<span class="sd">        Name of the component. The default value is ``None``.</span>
+<span class="sd">    props : dict, optional</span>
+<span class="sd">        Dictionary of properties. The default value is ``None``.</span>
+<span class="sd">    component_type : str, optional</span>
+<span class="sd">        Type of the component. The default value is ``None``.</span>
 
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
@@ -398,23 +400,13 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">    &gt;&gt;&gt; aedtapp = Hfss()</span>
 <span class="sd">    &gt;&gt;&gt; prim = aedtapp.modeler.user_defined_components</span>
 
-<span class="sd">    Obtain user defined component names, to return an :class:`pyaedt.modeler.Object3d.UserDefinedComponent`.</span>
+<span class="sd">    Obtain user defined component names, to return a :class:`pyaedt.modeler.cad.components_3d.UserDefinedComponent`.</span>
 
 <span class="sd">    &gt;&gt;&gt; component_names = aedtapp.modeler.user_defined_components</span>
-<span class="sd">    &gt;&gt;&gt; component = aedtapp.modeler[component_names[0]]</span>
+<span class="sd">    &gt;&gt;&gt; component = aedtapp.modeler[component_names[&quot;3DC_Cell_Radome_In1&quot;]]</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">primitives</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">props</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">component_type</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Parameters</span>
-<span class="sd">        ----------</span>
-<span class="sd">        primitives : :class:`pyaedt.modeler.Primitives3D.Primitives3D`</span>
-<span class="sd">            Inherited parent object.</span>
-<span class="sd">        name : str, optional</span>
-<span class="sd">            The default is ``None``.</span>
-<span class="sd">        props : dict, optional</span>
-<span class="sd">            Dictionary of properties. The default is ``None``.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_fix_udm_props</span> <span class="o">=</span> <span class="p">[</span>
             <span class="s2">&quot;General[Name]&quot;</span><span class="p">,</span>
             <span class="s2">&quot;Group&quot;</span><span class="p">,</span>
@@ -495,7 +487,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">group_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Group the component belongs to.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Group the component belongs to.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -516,7 +508,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@group_name</span><span class="o">.</span><span class="n">setter</span>
     <span class="k">def</span> <span class="nf">group_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Assign component to a specific group. A new group is created if the specified group doesn&#39;t exist.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Assign component to a specific group. A new group is created if the specified group doesn&#39;t exist.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -568,7 +560,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">is3dcomponent</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;3DComponent flag.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;3DComponent flag.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -586,7 +578,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">mesh_assembly</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Mesh assembly flag.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Mesh assembly flag.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -615,7 +607,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Name of the object.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Name of the object.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -648,12 +640,12 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Component parameters.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Component parameters.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
 <span class="sd">        dict</span>
-<span class="sd">            :class:`pyaedt.modeler.Object3d.UserDefinedComponentParameters`</span>
+<span class="sd">            :class:`pyaedt.modeler.cad.components_3d.UserDefinedComponentParameters`.</span>
 
 <span class="sd">        References</span>
 <span class="sd">        ----------</span>
@@ -683,7 +675,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">parts</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Dictionary of objects that belong to the user-defined component.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Dictionary of objects that belong to the user-defined component.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -700,7 +692,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">target_coordinate_system</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Target coordinate system.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Target coordinate system.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -736,7 +728,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="UserDefinedComponent.delete"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.modeler.cad.components_3d.UserDefinedComponent.delete.html#pyaedt.modeler.cad.components_3d.UserDefinedComponent.delete">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Delete the object. The project must be saved after the operation to update the list</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Delete the object. The project must be saved after the operation to update the list</span>
 <span class="sd">        of names for user-defined components.</span>
 
 <span class="sd">        References</span>
@@ -763,11 +755,11 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="UserDefinedComponent.mirror"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.modeler.cad.components_3d.UserDefinedComponent.mirror.html#pyaedt.modeler.cad.components_3d.UserDefinedComponent.mirror">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">mirror</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">position</span><span class="p">,</span> <span class="n">vector</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Mirror a selection.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Mirror a selection.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        position : int or float</span>
+<span class="sd">        position : list, Position</span>
 <span class="sd">            List of the ``[x, y, z]`` coordinates or</span>
 <span class="sd">            the Application.Position object for the selection.</span>
 <span class="sd">        vector : float</span>
@@ -776,7 +768,7 @@ function checkPageExistsAndRedirect(event) {
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        pyaedt.modeler.Object3d.UserDefinedComponent, bool</span>
+<span class="sd">        pyaedt.modeler.cad.components_3d.UserDefinedComponent, bool</span>
 <span class="sd">            3D object when successful, ``False`` when failed.</span>
 
 <span class="sd">        References</span>
@@ -795,7 +787,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="UserDefinedComponent.rotate"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.modeler.cad.components_3d.UserDefinedComponent.rotate.html#pyaedt.modeler.cad.components_3d.UserDefinedComponent.rotate">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">rotate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cs_axis</span><span class="p">,</span> <span class="n">angle</span><span class="o">=</span><span class="mf">90.0</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="s2">&quot;deg&quot;</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Rotate the selection.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Rotate the selection.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -810,7 +802,7 @@ function checkPageExistsAndRedirect(event) {
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        pyaedt.modeler.Object3d.UserDefinedComponent, bool</span>
+<span class="sd">        pyaedt.modeler.cad.components_3d.UserDefinedComponent, bool</span>
 <span class="sd">            3D object when successful, ``False`` when failed.</span>
 
 <span class="sd">        References</span>
@@ -829,19 +821,17 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="UserDefinedComponent.move"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.modeler.cad.components_3d.UserDefinedComponent.move.html#pyaedt.modeler.cad.components_3d.UserDefinedComponent.move">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">move</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vector</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Move component from a list.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Move component from a list.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        objid : list, Position object</span>
-<span class="sd">            List of object IDs.</span>
 <span class="sd">        vector : list</span>
 <span class="sd">            Vector of the direction move. It can be a list of the ``[x, y, z]``</span>
-<span class="sd">            coordinates or a Position object.</span>
+<span class="sd">            coordinates or a ``Position`` object.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        pyaedt.modeler.Object3d.UserDefinedComponent, bool</span>
+<span class="sd">        pyaedt.modeler.cad.components_3d.UserDefinedComponent, bool</span>
 <span class="sd">            3D object when successful, ``False`` when failed.</span>
 
 <span class="sd">        References</span>
@@ -860,7 +850,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="UserDefinedComponent.duplicate_around_axis"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.modeler.cad.components_3d.UserDefinedComponent.duplicate_around_axis.html#pyaedt.modeler.cad.components_3d.UserDefinedComponent.duplicate_around_axis">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">duplicate_around_axis</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cs_axis</span><span class="p">,</span> <span class="n">angle</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span> <span class="n">nclones</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">create_new_objects</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Duplicate the component around the axis.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Duplicate the component around the axis.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -893,17 +883,17 @@ function checkPageExistsAndRedirect(event) {
         <span class="k">return</span> <span class="kc">False</span></div>
 
 <div class="viewcode-block" id="UserDefinedComponent.duplicate_along_line"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.modeler.cad.components_3d.UserDefinedComponent.duplicate_along_line.html#pyaedt.modeler.cad.components_3d.UserDefinedComponent.duplicate_along_line">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
-    <span class="k">def</span> <span class="nf">duplicate_along_line</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vector</span><span class="p">,</span> <span class="n">nclones</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">attachObject</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Duplicate the object along a line.</span>
+    <span class="k">def</span> <span class="nf">duplicate_along_line</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vector</span><span class="p">,</span> <span class="n">nclones</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">attach_object</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Duplicate the object along a line.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        vector : list</span>
 <span class="sd">            List of ``[x1 ,y1, z1]`` coordinates for the vector or the Application.Position object.</span>
-<span class="sd">        attachObject : bool, optional</span>
-<span class="sd">            Whether to attach the object. The default is ``False``.</span>
 <span class="sd">        nclones : int, optional</span>
 <span class="sd">            Number of clones. The default is ``2``.</span>
+<span class="sd">        attach_object : bool, optional</span>
+<span class="sd">            Whether to attach the object. The default is ``False``.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -916,9 +906,16 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        &gt;&gt;&gt; oEditor.DuplicateAlongLine</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="s2">&quot;attachObject&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+                <span class="s2">&quot;``attachObject`` is deprecated. Use ``attach_object`` instead.&quot;</span><span class="p">,</span>
+                <span class="ne">DeprecationWarning</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="n">attach_object</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;attachObject&quot;</span><span class="p">]</span>
+
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is3dcomponent</span><span class="p">:</span>
             <span class="n">_</span><span class="p">,</span> <span class="n">added_objects</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_primitives</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">duplicate_along_line</span><span class="p">(</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">vector</span><span class="p">,</span> <span class="n">nclones</span><span class="p">,</span> <span class="n">attachObject</span><span class="p">,</span> <span class="kc">True</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">vector</span><span class="p">,</span> <span class="n">nclones</span><span class="p">,</span> <span class="n">attach_object</span><span class="p">,</span> <span class="kc">True</span>
             <span class="p">)</span>
             <span class="k">return</span> <span class="n">added_objects</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;User-defined models do not support this operation.&quot;</span><span class="p">)</span>
@@ -926,7 +923,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="UserDefinedComponent.update_native"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.modeler.cad.components_3d.UserDefinedComponent.update_native.html#pyaedt.modeler.cad.components_3d.UserDefinedComponent.update_native">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">update_native</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Update the Native Component in AEDT.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Update the Native Component in AEDT.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -935,7 +932,6 @@ function checkPageExistsAndRedirect(event) {
 
 <span class="sd">        &quot;&quot;&quot;</span>
 
-        <span class="c1"># self.name = &quot;EditNativeComponentDefinitionData&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">update_props</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">({})</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">update_props</span><span class="p">[</span><span class="s2">&quot;DefinitionName&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">&quot;SubmodelDefinitionName&quot;</span><span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">update_props</span><span class="p">[</span><span class="s2">&quot;GeometryDefinitionParameters&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="p">[</span><span class="s2">&quot;GeometryDefinitionParameters&quot;</span><span class="p">]</span>
@@ -959,7 +955,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">_logger</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Logger.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Logger.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_primitives</span><span class="o">.</span><span class="n">logger</span>
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
@@ -987,8 +983,8 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">_m_Editor</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Pointer to the oEditor object in the AEDT API. This property is</span>
-<span class="sd">        intended primarily for use by FacePrimitive, EdgePrimitive, and</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Pointer to the oEditor object in the AEDT API. This property is</span>
+<span class="sd">        intended primarily to be used by FacePrimitive, EdgePrimitive, and</span>
 <span class="sd">        VertexPrimitive child objects.</span>
 
 <span class="sd">        Returns</span>
@@ -1000,14 +996,14 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">         </span><span class="si">{}</span><span class="s2"></span>
-<span class="s2">         is3dcomponent: </span><span class="si">{}</span><span class="s2">   parts: </span><span class="si">{}</span><span class="s2"></span>
+<span class="s2">         </span><span class="si">{}</span>
+<span class="s2">         is3dcomponent: </span><span class="si">{}</span><span class="s2">   parts: </span><span class="si">{}</span>
 <span class="s2">         --- read/write properties  ----</span>
-<span class="s2">         name: </span><span class="si">{}</span><span class="s2"></span>
-<span class="s2">         group_name: </span><span class="si">{}</span><span class="s2"></span>
-<span class="s2">         mesh_assembly: </span><span class="si">{}</span><span class="s2"></span>
-<span class="s2">         parameters: </span><span class="si">{}</span><span class="s2"></span>
-<span class="s2">         target_coordinate_system: </span><span class="si">{}</span><span class="s2"></span>
+<span class="s2">         name: </span><span class="si">{}</span>
+<span class="s2">         group_name: </span><span class="si">{}</span>
+<span class="s2">         mesh_assembly: </span><span class="si">{}</span>
+<span class="s2">         parameters: </span><span class="si">{}</span>
+<span class="s2">         target_coordinate_system: </span><span class="si">{}</span>
 <span class="s2">         &quot;&quot;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
             <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">),</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">is3dcomponent</span><span class="p">,</span>
@@ -1021,12 +1017,12 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="UserDefinedComponent.edit_definition"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.modeler.cad.components_3d.UserDefinedComponent.edit_definition.html#pyaedt.modeler.cad.components_3d.UserDefinedComponent.edit_definition">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">edit_definition</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Edit 3d Definition. Open AEDT Project and return Pyaedt Object.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Edit 3d Definition. Open AEDT Project and return Pyaedt Object.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        password : str, optional</span>
-<span class="sd">            Password for encrypted models.</span>
+<span class="sd">            Password for encrypted models. The default value is ``&quot;&quot;``.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1041,10 +1037,10 @@ function checkPageExistsAndRedirect(event) {
                 <span class="p">[</span><span class="s2">&quot;NAME:DefinitionAndPassword&quot;</span><span class="p">,</span> <span class="s2">&quot;Definition:=&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">definition_name</span><span class="p">,</span> <span class="s2">&quot;Password:=&quot;</span><span class="p">,</span> <span class="n">password</span><span class="p">],</span>
             <span class="p">]</span>
         <span class="p">)</span>
-        <span class="n">proj</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_primitives</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">odesktop</span><span class="o">.</span><span class="n">GetActiveProject</span><span class="p">()</span>
-        <span class="n">proj_name</span> <span class="o">=</span> <span class="n">proj</span><span class="o">.</span><span class="n">GetName</span><span class="p">()</span>
-        <span class="n">des_name</span> <span class="o">=</span> <span class="n">proj</span><span class="o">.</span><span class="n">GetActiveDesign</span><span class="p">()</span><span class="o">.</span><span class="n">GetName</span><span class="p">()</span>
-        <span class="k">return</span> <span class="n">get_pyaedt_app</span><span class="p">(</span><span class="n">proj_name</span><span class="p">,</span> <span class="n">des_name</span><span class="p">)</span></div></div>
+        <span class="n">project</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_primitives</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">odesktop</span><span class="o">.</span><span class="n">GetActiveProject</span><span class="p">()</span>
+        <span class="n">project_name</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">GetName</span><span class="p">()</span>
+        <span class="n">design_name</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">GetActiveDesign</span><span class="p">()</span><span class="o">.</span><span class="n">GetName</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">get_pyaedt_app</span><span class="p">(</span><span class="n">project_name</span><span class="p">,</span> <span class="n">design_name</span><span class="p">)</span></div></div>
 </pre></div>
 
               </article>
@@ -1065,13 +1061,13 @@ function checkPageExistsAndRedirect(event) {
   
   <div class="footer-item">
     <p class="copyright">
-    &copy; Copyright (c) 2022 ANSYS, Inc. All rights reserved.<br>
+    &copy; Copyright (c) 2023 ANSYS, Inc. All rights reserved.<br>
 </p>
   </div>
   
   <div class="footer-item">
     <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 6.1.3.<br>
 </p>
   </div>
   

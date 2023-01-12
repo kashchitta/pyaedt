@@ -41,14 +41,11 @@
         <link href="../../../../_static/css/breadcrumbs.css" rel="stylesheet">
     
     <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
-    <script src="../../../../_static/jquery.js"></script>
-    <script src="../../../../_static/underscore.js"></script>
-    <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../../_static/doctools.js"></script>
     <script src="../../../../_static/sphinx_highlight.js"></script>
     <script src="../../../../_static/clipboard.min.js"></script>
     <script src="../../../../_static/copybutton.js"></script>
-    <link rel="shortcut icon" href="../../../../_static/ansys-favicon.png"/>
+    <link rel="icon" href="../../../../_static/ansys-favicon.png"/>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -77,9 +74,8 @@
   
   
   
-    <img src="../../../../_static/pyansys-logo-black-cropped.png" class="logo__image only-light" alt="Logo image">
-    <img src="../../../../_static/pyansys-logo-black-cropped.png" class="logo__image only-dark" alt="Logo image">
   
+    <p class="title logo__title">PyAEDT</p>
   
 </a>
     
@@ -207,7 +203,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.42 variable.
+            // this version, rather than using sphinx's 0.6.43 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -335,7 +331,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <span class="k">class</span> <span class="nc">Node</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Provides for handling nodes for Siwave sources.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Provides for handling nodes for Siwave sources.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_component</span> <span class="o">=</span> <span class="kc">None</span>
@@ -345,7 +341,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">component</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
-        <span class="sd">&quot;&quot;&quot;Component name containing the node.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Component name containing the node.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_component</span>
 
     <span class="nd">@component</span><span class="o">.</span><span class="n">setter</span>
@@ -355,7 +351,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">net</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
-        <span class="sd">&quot;&quot;&quot;Net of the node.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Net of the node.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_net</span>
 
     <span class="nd">@net</span><span class="o">.</span><span class="n">setter</span>
@@ -365,7 +361,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">node_type</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
-        <span class="sd">&quot;&quot;&quot;Type of the node.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Type of the node.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_node_type</span>
 
     <span class="nd">@node_type</span><span class="o">.</span><span class="n">setter</span>
@@ -375,7 +371,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
-        <span class="sd">&quot;&quot;&quot;Name of the node.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Name of the node.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_name</span>
 
     <span class="nd">@name</span><span class="o">.</span><span class="n">setter</span>
@@ -395,7 +391,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <span class="k">class</span> <span class="nc">Source</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Provides for handling Siwave sources.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Provides for handling Siwave sources.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
@@ -416,7 +412,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
-        <span class="sd">&quot;&quot;&quot;Source name.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Source name.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_name</span>
 
     <span class="nd">@name</span><span class="o">.</span><span class="n">setter</span>
@@ -426,7 +422,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">source_type</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
-        <span class="sd">&quot;&quot;&quot;Source type.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Source type.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_source_type</span>
 
     <span class="nd">@source_type</span><span class="o">.</span><span class="n">setter</span>
@@ -444,7 +440,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">positive_node</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
-        <span class="sd">&quot;&quot;&quot;Positive node of the source.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Positive node of the source.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_positive_node</span>
 
     <span class="nd">@positive_node</span><span class="o">.</span><span class="n">setter</span>
@@ -454,7 +450,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">negative_node</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
-        <span class="sd">&quot;&quot;&quot;Negative node of the source.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Negative node of the source.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_negative_node</span>
 
     <span class="nd">@negative_node</span><span class="o">.</span><span class="n">setter</span>
@@ -465,7 +461,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">amplitude</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
-        <span class="sd">&quot;&quot;&quot;Amplitude value of the source. Either amperes for current source or volts for</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Amplitude value of the source. Either amperes for current source or volts for</span>
 <span class="sd">        voltage source.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_amplitude</span>
 
@@ -476,7 +472,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">phase</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
-        <span class="sd">&quot;&quot;&quot;Phase of the source.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Phase of the source.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_phase</span>
 
     <span class="nd">@phase</span><span class="o">.</span><span class="n">setter</span>
@@ -486,7 +482,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">impedance</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
-        <span class="sd">&quot;&quot;&quot;Impedance values of the source.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Impedance values of the source.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_impedance</span>
 
     <span class="nd">@impedance</span><span class="o">.</span><span class="n">setter</span>
@@ -551,7 +547,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <span class="k">class</span> <span class="nc">PinGroup</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Manages pin groups.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Manages pin groups.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">edb_pin_group</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">pedb</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span> <span class="o">=</span> <span class="n">pedb</span>
@@ -567,7 +563,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Name.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Name.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_name</span>
 
     <span class="nd">@name</span><span class="o">.</span><span class="n">setter</span>
@@ -576,7 +572,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">component</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Component.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Component.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_component</span>
 
     <span class="nd">@component</span><span class="o">.</span><span class="n">setter</span>
@@ -585,7 +581,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">node_pins</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Node pins.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Node pins.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_node_pins</span>
 
     <span class="nd">@node_pins</span><span class="o">.</span><span class="n">setter</span>
@@ -594,7 +590,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">net</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Net.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Net.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_net</span>
 
     <span class="nd">@net</span><span class="o">.</span><span class="n">setter</span>
@@ -607,10 +603,13 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="k">def</span> <span class="nf">_create_terminal</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">is_reference</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="n">pg_term</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb_pin_group</span><span class="o">.</span><span class="n">GetPinGroupTerminal</span><span class="p">()</span>
+        <span class="n">pin_group_net</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb_pin_group</span><span class="o">.</span><span class="n">GetNet</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">pin_group_net</span><span class="o">.</span><span class="n">IsNull</span><span class="p">():</span>  <span class="c1"># pragma: no cover</span>
+            <span class="n">pin_group_net</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_edb_pin_group</span><span class="o">.</span><span class="n">GetPins</span><span class="p">())[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">GetNet</span><span class="p">()</span>
         <span class="k">if</span> <span class="n">pg_term</span><span class="o">.</span><span class="n">IsNull</span><span class="p">():</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span><span class="o">.</span><span class="n">edb</span><span class="o">.</span><span class="n">Cell</span><span class="o">.</span><span class="n">Terminal</span><span class="o">.</span><span class="n">PinGroupTerminal</span><span class="o">.</span><span class="n">Create</span><span class="p">(</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_active_layout</span><span class="p">,</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">_edb_pin_group</span><span class="o">.</span><span class="n">GetNet</span><span class="p">(),</span>
+                <span class="n">pin_group_net</span><span class="p">,</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_edb_pin_group</span><span class="p">,</span>
                 <span class="n">is_reference</span><span class="p">,</span>
@@ -641,7 +640,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <span class="k">class</span> <span class="nc">CircuitPort</span><span class="p">(</span><span class="n">Source</span><span class="p">,</span> <span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Manages a circuit port.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Manages a circuit port.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">impedance</span><span class="o">=</span><span class="s2">&quot;50&quot;</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_impedance</span> <span class="o">=</span> <span class="n">impedance</span>
@@ -650,7 +649,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">impedance</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Impedance.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Impedance.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_impedance</span>
 
     <span class="nd">@impedance</span><span class="o">.</span><span class="n">setter</span>
@@ -659,12 +658,12 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">get_type</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Get type.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get type.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_source_type</span>
 
 
 <span class="k">class</span> <span class="nc">VoltageSource</span><span class="p">(</span><span class="n">Source</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Manages a voltage source.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Manages a voltage source.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">VoltageSource</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
@@ -675,7 +674,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">magnitude</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Magnitude.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Magnitude.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_magnitude</span>
 
     <span class="nd">@magnitude</span><span class="o">.</span><span class="n">setter</span>
@@ -684,7 +683,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">phase</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Phase.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Phase.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_phase</span>
 
     <span class="nd">@phase</span><span class="o">.</span><span class="n">setter</span>
@@ -693,7 +692,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">impedance</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Impedance.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Impedance.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_impedance</span>
 
     <span class="nd">@impedance</span><span class="o">.</span><span class="n">setter</span>
@@ -702,12 +701,12 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">source_type</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Source type.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Source type.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_source_type</span>
 
 
 <span class="k">class</span> <span class="nc">CurrentSource</span><span class="p">(</span><span class="n">Source</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Manages a current source.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Manages a current source.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">CurrentSource</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
@@ -718,7 +717,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">magnitude</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Magnitude.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Magnitude.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_magnitude</span>
 
     <span class="nd">@magnitude</span><span class="o">.</span><span class="n">setter</span>
@@ -727,7 +726,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">phase</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Phase.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Phase.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_phase</span>
 
     <span class="nd">@phase</span><span class="o">.</span><span class="n">setter</span>
@@ -736,7 +735,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">impedance</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Impedance.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Impedance.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_impedance</span>
 
     <span class="nd">@impedance</span><span class="o">.</span><span class="n">setter</span>
@@ -745,12 +744,12 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">source_type</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Source type.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Source type.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_source_type</span>
 
 
 <span class="k">class</span> <span class="nc">DCTerminal</span><span class="p">(</span><span class="n">Source</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Manages a dc terminal source.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Manages a dc terminal source.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">DCTerminal</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
@@ -759,12 +758,12 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">source_type</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Source type.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Source type.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_source_type</span>
 
 
 <span class="k">class</span> <span class="nc">ResistorSource</span><span class="p">(</span><span class="n">Source</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Manages a resistor source.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Manages a resistor source.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">ResistorSource</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
@@ -773,7 +772,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">rvalue</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Resistance value.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Resistance value.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rvalue</span>
 
     <span class="nd">@rvalue</span><span class="o">.</span><span class="n">setter</span>
@@ -782,7 +781,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">source_type</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Source type.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Source type.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_source_type</span>
 
 
@@ -797,7 +796,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Port Name.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Port Name.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -807,7 +806,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">net_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Net Name.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Net Name.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -817,7 +816,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">net</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Net Object.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Net Object.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -827,7 +826,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">terminal_type</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Terminal Type.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Terminal Type.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -837,7 +836,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">boundary_type</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Boundary Type.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Boundary Type.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -847,7 +846,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <div class="viewcode-block" id="ExcitationPorts"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.sources.ExcitationPorts.html#pyaedt.edb_core.edb_data.sources.ExcitationPorts">[docs]</a><span class="k">class</span> <span class="nc">ExcitationPorts</span><span class="p">(</span><span class="n">CommonExcitation</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Manages excitation properties.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Manages excitation properties.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -877,77 +876,77 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">hfss_type</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Get hfss port type.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get hfss port type.&quot;&quot;&quot;</span>
         <span class="n">txt</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;&#39;HFSS Type&#39;=&#39;.*?&#39;&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb_properties</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">txt</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;=&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;&#39;&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">horizontal_extent_factor</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Get horizontal extent factor.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get horizontal extent factor.&quot;&quot;&quot;</span>
         <span class="n">txt</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;&#39;Horizontal Extent Factor&#39;=&#39;.*?&#39;&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb_properties</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">()</span>
         <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">txt</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;=&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;&#39;&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">))</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">vertical_extent_factor</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Get vertical extent factor.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get vertical extent factor.&quot;&quot;&quot;</span>
         <span class="n">txt</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;&#39;Vertical Extent Factor&#39;=&#39;.*?&#39;&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb_properties</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">()</span>
         <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">txt</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;=&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;&#39;&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">))</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">radial_extent_factor</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Get radial extent factor.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get radial extent factor.&quot;&quot;&quot;</span>
         <span class="n">txt</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;&#39;Radial Extent Factor&#39;=&#39;.*?&#39;&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb_properties</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">()</span>
         <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">txt</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;=&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;&#39;&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">))</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">pec_launch_width</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Get pec launch width.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get pec launch width.&quot;&quot;&quot;</span>
         <span class="n">txt</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;&#39;PEC Launch Width&#39;=&#39;.*?&#39;&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb_properties</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">txt</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;=&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;&#39;&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">impedance</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Impedance of the port.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Impedance of the port.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb_terminal</span><span class="o">.</span><span class="n">GetImpedance</span><span class="p">()</span><span class="o">.</span><span class="n">ToDouble</span><span class="p">()</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">is_circuit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Return ``True`` if is a circuit port.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return ``True`` if is a circuit port.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb_terminal</span><span class="o">.</span><span class="n">GetIsCircuitPort</span><span class="p">()</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">magnitude</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Magnitude.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Magnitude.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb_terminal</span><span class="o">.</span><span class="n">GetSourceAmplitude</span><span class="p">()</span><span class="o">.</span><span class="n">ToDouble</span><span class="p">()</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">phase</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Phase.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Phase.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb_terminal</span><span class="o">.</span><span class="n">GetSourcePhase</span><span class="p">()</span><span class="o">.</span><span class="n">ToDouble</span><span class="p">()</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">renormalize</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Either if renormalize is active or not.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Either if renormalize is active or not.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb_terminal</span><span class="o">.</span><span class="n">GetPortPostProcessingProp</span><span class="p">()</span><span class="o">.</span><span class="n">DoRenormalize</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">deembed</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Either if deembed is active or not.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Either if deembed is active or not.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb_terminal</span><span class="o">.</span><span class="n">GetPortPostProcessingProp</span><span class="p">()</span><span class="o">.</span><span class="n">DoDeembed</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">deembed_gapport_inductance</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Deembed Gap Port Inductance value.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Deembed Gap Port Inductance value.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb_terminal</span><span class="o">.</span><span class="n">GetPortPostProcessingProp</span><span class="p">()</span><span class="o">.</span><span class="n">DoDeembedGapL</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">deembed_length</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Deembed Length.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Deembed Length.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb_terminal</span><span class="o">.</span><span class="n">GetPortPostProcessingProp</span><span class="p">()</span><span class="o">.</span><span class="n">DeembedLength</span><span class="o">.</span><span class="n">ToDouble</span><span class="p">()</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">renormalize_z0</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Renormalize Z0 value (real, imag).&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Renormalize Z0 value (real, imag).&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="p">(</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_edb_terminal</span><span class="o">.</span><span class="n">GetPortPostProcessingProp</span><span class="p">()</span><span class="o">.</span><span class="n">RenormalizionZ0</span><span class="o">.</span><span class="n">ToComplex</span><span class="p">()</span><span class="o">.</span><span class="n">Item1</span><span class="p">,</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_edb_terminal</span><span class="o">.</span><span class="n">GetPortPostProcessingProp</span><span class="p">()</span><span class="o">.</span><span class="n">RenormalizionZ0</span><span class="o">.</span><span class="n">ToComplex</span><span class="p">()</span><span class="o">.</span><span class="n">Item2</span><span class="p">,</span>
@@ -955,7 +954,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">reference_object</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;This returns the object assigned as reference. It can be a primitive or a padstack instance.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;This returns the object assigned as reference. It can be a primitive or a padstack instance.</span>
 
 
 <span class="sd">        Returns</span>
@@ -984,7 +983,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">reference_net_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Net name to which reference_object belongs.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Net name to which reference_object belongs.&quot;&quot;&quot;</span>
         <span class="n">ref_obj</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_reference_object</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_reference_object</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">reference_object</span>
         <span class="k">if</span> <span class="n">ref_obj</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">ref_obj</span><span class="o">.</span><span class="n">net_name</span>
@@ -992,7 +991,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="ExcitationPorts.get_padstack_terminal_reference_pin"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.sources.ExcitationPorts.get_padstack_terminal_reference_pin.html#pyaedt.edb_core.edb_data.sources.ExcitationPorts.get_padstack_terminal_reference_pin">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">get_padstack_terminal_reference_pin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gnd_net_name_preference</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Get a list of pad stacks instances and serves Coax wave ports,</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get a list of pad stacks instances and serves Coax wave ports,</span>
 <span class="sd">        pingroup terminals, PadEdge terminals.</span>
 
 <span class="sd">        Parameters</span>
@@ -1016,7 +1015,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="ExcitationPorts.get_pin_group_terminal_reference_pin"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.sources.ExcitationPorts.get_pin_group_terminal_reference_pin.html#pyaedt.edb_core.edb_data.sources.ExcitationPorts.get_pin_group_terminal_reference_pin">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">get_pin_group_terminal_reference_pin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gnd_net_name_preference</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Return a list of pins and serves terminals connected to pingroups.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return a list of pins and serves terminals connected to pingroups.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1050,7 +1049,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="ExcitationPorts.get_edge_terminal_reference_primitive"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.sources.ExcitationPorts.get_edge_terminal_reference_primitive.html#pyaedt.edb_core.edb_data.sources.ExcitationPorts.get_edge_terminal_reference_primitive">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">get_edge_terminal_reference_primitive</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Check and  return a primitive instance that serves Edge ports,</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Check and  return a primitive instance that serves Edge ports,</span>
 <span class="sd">        wave ports and coupled edge ports that are directly connedted to primitives.</span>
 
 <span class="sd">        Returns</span>
@@ -1074,7 +1073,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="ExcitationPorts.get_point_terminal_reference_primitive"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.sources.ExcitationPorts.get_point_terminal_reference_primitive.html#pyaedt.edb_core.edb_data.sources.ExcitationPorts.get_point_terminal_reference_primitive">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">get_point_terminal_reference_primitive</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Find and return the primitive reference for the point terminal or the padstack instance.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Find and return the primitive reference for the point terminal or the padstack instance.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1105,7 +1104,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="ExcitationPorts.get_pad_edge_terminal_reference_pin"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.sources.ExcitationPorts.get_pad_edge_terminal_reference_pin.html#pyaedt.edb_core.edb_data.sources.ExcitationPorts.get_pad_edge_terminal_reference_pin">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">get_pad_edge_terminal_reference_pin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gnd_net_name_preference</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Get the closest pin padstack instances and serves any edge terminal connected to a pad.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the closest pin padstack instances and serves any edge terminal connected to a pad.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1158,7 +1157,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <div class="viewcode-block" id="ExcitationSources"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.sources.ExcitationSources.html#pyaedt.edb_core.edb_data.sources.ExcitationSources">[docs]</a><span class="k">class</span> <span class="nc">ExcitationSources</span><span class="p">(</span><span class="n">CommonExcitation</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Manage sources properties.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Manage sources properties.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -1184,17 +1183,17 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">magnitude</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Get the magnitude of the source.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the magnitude of the source.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb_terminal</span><span class="o">.</span><span class="n">GetSourceAmplitude</span><span class="p">()</span><span class="o">.</span><span class="n">ToDouble</span><span class="p">()</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">phase</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Get the phase of the source.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the phase of the source.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb_terminal</span><span class="o">.</span><span class="n">GetSourcePhase</span><span class="p">()</span><span class="o">.</span><span class="n">ToDouble</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="ExcitationProbes"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.sources.ExcitationProbes.html#pyaedt.edb_core.edb_data.sources.ExcitationProbes">[docs]</a><span class="k">class</span> <span class="nc">ExcitationProbes</span><span class="p">(</span><span class="n">CommonExcitation</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Manage probes properties.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Manage probes properties.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -1218,7 +1217,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <div class="viewcode-block" id="ExcitationDifferential"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.sources.ExcitationDifferential.html#pyaedt.edb_core.edb_data.sources.ExcitationDifferential">[docs]</a><span class="k">class</span> <span class="nc">ExcitationDifferential</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Manages differential excitation properties.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Manages differential excitation properties.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pedb</span><span class="p">,</span> <span class="n">edb_boundle_terminal</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span> <span class="o">=</span> <span class="n">pedb</span>
@@ -1226,22 +1225,22 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Port Name.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Port Name.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb_boundle_terminal</span><span class="o">.</span><span class="n">GetName</span><span class="p">()</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">edb</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
-        <span class="sd">&quot;&quot;&quot;Get edb.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get edb.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span><span class="o">.</span><span class="n">edb</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">terminals</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Get terminals belonging to this excitation.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get terminals belonging to this excitation.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="p">{</span><span class="n">i</span><span class="o">.</span><span class="n">GetName</span><span class="p">():</span> <span class="n">ExcitationPorts</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">edb_boundle_terminal</span><span class="o">.</span><span class="n">GetTerminals</span><span class="p">())}</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">reference_net_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Reference Name. Not applicable to Differential pairs.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Reference Name. Not applicable to Differential pairs.&quot;&quot;&quot;</span>
         <span class="k">return</span></div>
 </pre></div>
 
@@ -1263,13 +1262,13 @@ function checkPageExistsAndRedirect(event) {
   
   <div class="footer-item">
     <p class="copyright">
-    &copy; Copyright (c) 2022 ANSYS, Inc. All rights reserved.<br>
+    &copy; Copyright (c) 2023 ANSYS, Inc. All rights reserved.<br>
 </p>
   </div>
   
   <div class="footer-item">
     <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 6.1.3.<br>
 </p>
   </div>
   

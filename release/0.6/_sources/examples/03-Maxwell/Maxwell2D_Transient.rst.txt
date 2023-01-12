@@ -42,7 +42,7 @@ Perform required imports
 ~~~~~~~~~~~~~~~~~~~~~~~~
 Perform required imports.
 
-.. GENERATED FROM PYTHON SOURCE LINES 25-30
+.. GENERATED FROM PYTHON SOURCE LINES 25-29
 
 .. code-block:: default
 
@@ -57,16 +57,15 @@ Perform required imports.
 
 
 
-
-.. GENERATED FROM PYTHON SOURCE LINES 31-36
+.. GENERATED FROM PYTHON SOURCE LINES 30-35
 
 Set non-graphical mode
 ~~~~~~~~~~~~~~~~~~~~~~
-Set non-graphical mode. ``"PYAEDT_NON_GRAPHICAL"``` is needed to generate
+Set non-graphical mode. ``"PYAEDT_NON_GRAPHICAL"`` is needed to generate
 documentation only.
 You can set ``non_graphical`` either to ``True`` or ``False``.
 
-.. GENERATED FROM PYTHON SOURCE LINES 36-39
+.. GENERATED FROM PYTHON SOURCE LINES 35-38
 
 .. code-block:: default
 
@@ -80,19 +79,19 @@ You can set ``non_graphical`` either to ``True`` or ``False``.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 40-43
+.. GENERATED FROM PYTHON SOURCE LINES 39-42
 
 Insert Maxwell 2D design and save project
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Insert a Maxwell 2D design and save the project.
 
-.. GENERATED FROM PYTHON SOURCE LINES 43-47
+.. GENERATED FROM PYTHON SOURCE LINES 42-46
 
 .. code-block:: default
 
 
     maxwell_2d = pyaedt.Maxwell2d(solution_type="TransientXY", specified_version="2022.2", non_graphical=non_graphical,
-                           new_desktop_session=True, projectname=pyaedt.generate_unique_project_name())
+                                  new_desktop_session=True, projectname=pyaedt.generate_unique_project_name())
 
 
 
@@ -101,13 +100,13 @@ Insert a Maxwell 2D design and save the project.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 48-51
+.. GENERATED FROM PYTHON SOURCE LINES 47-50
 
 Create rectangle and duplicate it
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Create a rectangle and duplicate it.
 
-.. GENERATED FROM PYTHON SOURCE LINES 51-56
+.. GENERATED FROM PYTHON SOURCE LINES 50-55
 
 .. code-block:: default
 
@@ -123,13 +122,13 @@ Create a rectangle and duplicate it.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 57-60
+.. GENERATED FROM PYTHON SOURCE LINES 56-59
 
 Create air region
 ~~~~~~~~~~~~~~~~~
 Create an air region.
 
-.. GENERATED FROM PYTHON SOURCE LINES 60-63
+.. GENERATED FROM PYTHON SOURCE LINES 59-62
 
 .. code-block:: default
 
@@ -143,13 +142,13 @@ Create an air region.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 64-67
+.. GENERATED FROM PYTHON SOURCE LINES 63-66
 
 Assign windings and balloon
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Assigns windings to the sheets and a balloon to the air region.
 
-.. GENERATED FROM PYTHON SOURCE LINES 67-72
+.. GENERATED FROM PYTHON SOURCE LINES 66-70
 
 .. code-block:: default
 
@@ -161,29 +160,27 @@ Assigns windings to the sheets and a balloon to the air region.
 
 
 
-
 .. rst-class:: sphx-glr-script-out
 
  .. code-block:: none
 
 
-    <pyaedt.modules.Boundary.BoundaryObject object at 0x000002812C288940>
+    <pyaedt.modules.Boundary.BoundaryObject object at 0x000001E0D1B64D90>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 73-76
+.. GENERATED FROM PYTHON SOURCE LINES 71-74
 
 Plot model
 ~~~~~~~~~~
 Plot the model.
 
-.. GENERATED FROM PYTHON SOURCE LINES 76-80
+.. GENERATED FROM PYTHON SOURCE LINES 74-77
 
 .. code-block:: default
 
 
     maxwell_2d.plot(show=False, export_path=os.path.join(maxwell_2d.working_directory, "Image.jpg"), plot_air_objects=True)
-
 
 
 
@@ -199,17 +196,17 @@ Plot the model.
  .. code-block:: none
 
 
-    <pyaedt.generic.plot.ModelPlotter object at 0x000002812C288BB0>
+    <pyaedt.generic.plot.ModelPlotter object at 0x000001E0815CADC0>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 81-84
+.. GENERATED FROM PYTHON SOURCE LINES 78-81
 
 Create setup
 ~~~~~~~~~~~~
 Create the transient setup.
 
-.. GENERATED FROM PYTHON SOURCE LINES 84-93
+.. GENERATED FROM PYTHON SOURCE LINES 81-90
 
 .. code-block:: default
 
@@ -229,13 +226,13 @@ Create the transient setup.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 94-97
+.. GENERATED FROM PYTHON SOURCE LINES 91-94
 
 Create rectangular plot
 ~~~~~~~~~~~~~~~~~~~~~~~
 Create a rectangular plot.
 
-.. GENERATED FROM PYTHON SOURCE LINES 97-102
+.. GENERATED FROM PYTHON SOURCE LINES 94-99
 
 .. code-block:: default
 
@@ -253,17 +250,17 @@ Create a rectangular plot.
  .. code-block:: none
 
 
-    <pyaedt.modules.report_templates.Standard object at 0x000002812A067730>
+    <pyaedt.modules.report_templates.Standard object at 0x000001E0D13BCE20>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 103-106
+.. GENERATED FROM PYTHON SOURCE LINES 100-103
 
 Solve model
 ~~~~~~~~~~~
 Solve the model.
 
-.. GENERATED FROM PYTHON SOURCE LINES 106-109
+.. GENERATED FROM PYTHON SOURCE LINES 103-106
 
 .. code-block:: default
 
@@ -283,13 +280,13 @@ Solve the model.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 110-113
+.. GENERATED FROM PYTHON SOURCE LINES 107-110
 
 Create output and plot using PyVista
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Create the output and plot it using PyVista.
 
-.. GENERATED FROM PYTHON SOURCE LINES 113-139
+.. GENERATED FROM PYTHON SOURCE LINES 110-136
 
 .. code-block:: default
 
@@ -337,13 +334,13 @@ Create the output and plot it using PyVista.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 140-143
+.. GENERATED FROM PYTHON SOURCE LINES 137-140
 
 Generate plot outside of AEDT
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Generate the same plot outside of AEDT.
+Generate the same plot outside AEDT.
 
-.. GENERATED FROM PYTHON SOURCE LINES 143-147
+.. GENERATED FROM PYTHON SOURCE LINES 140-144
 
 .. code-block:: default
 
@@ -369,13 +366,13 @@ Generate the same plot outside of AEDT.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 148-151
+.. GENERATED FROM PYTHON SOURCE LINES 145-148
 
 Close AEDT
 ~~~~~~~~~~
 Close AEDT.
 
-.. GENERATED FROM PYTHON SOURCE LINES 151-153
+.. GENERATED FROM PYTHON SOURCE LINES 148-150
 
 .. code-block:: default
 
@@ -397,7 +394,7 @@ Close AEDT.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  39.774 seconds)
+   **Total running time of the script:** ( 0 minutes  39.530 seconds)
 
 
 .. _sphx_glr_download_examples_03-Maxwell_Maxwell2D_Transient.py:

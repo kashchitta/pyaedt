@@ -52,7 +52,7 @@ Launch AEDT
 ~~~~~~~~~~~
 Launch AEDT 2022 R2 in graphical mode. This example uses SI units.
 
-.. GENERATED FROM PYTHON SOURCE LINES 21-25
+.. GENERATED FROM PYTHON SOURCE LINES 21-24
 
 .. code-block:: default
 
@@ -66,8 +66,7 @@ Launch AEDT 2022 R2 in graphical mode. This example uses SI units.
 
 
 
-
-.. GENERATED FROM PYTHON SOURCE LINES 26-33
+.. GENERATED FROM PYTHON SOURCE LINES 25-32
 
 Set non-graphical mode
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -77,7 +76,7 @@ You can set ``non_graphical`` either to ``True`` or ``False``.
 The Boolean parameter ``new_thread`` defines whether to create a new instance
 of AEDT or try to connect to an existing instance of it.
 
-.. GENERATED FROM PYTHON SOURCE LINES 33-37
+.. GENERATED FROM PYTHON SOURCE LINES 32-36
 
 .. code-block:: default
 
@@ -92,14 +91,14 @@ of AEDT or try to connect to an existing instance of it.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 38-42
+.. GENERATED FROM PYTHON SOURCE LINES 37-41
 
 Launch AEDT and Circuit
 ~~~~~~~~~~~~~~~~~~~~~~~
 Launch AEDT and Circuit. The :class:`pyaedt.Desktop` class initializes AEDT and
 starts the specified version in the specified mode.
 
-.. GENERATED FROM PYTHON SOURCE LINES 42-46
+.. GENERATED FROM PYTHON SOURCE LINES 41-45
 
 .. code-block:: default
 
@@ -114,13 +113,13 @@ starts the specified version in the specified mode.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 47-50
+.. GENERATED FROM PYTHON SOURCE LINES 46-49
 
 Create circuit setup
 ~~~~~~~~~~~~~~~~~~~~
 Create and customize an LNA (linear network analysis) setup.
 
-.. GENERATED FROM PYTHON SOURCE LINES 50-54
+.. GENERATED FROM PYTHON SOURCE LINES 49-53
 
 .. code-block:: default
 
@@ -135,20 +134,20 @@ Create and customize an LNA (linear network analysis) setup.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 55-58
+.. GENERATED FROM PYTHON SOURCE LINES 54-57
 
 Create components
 ~~~~~~~~~~~~~~~~~
 Create components, such as an inductor, resistor, and capacitor.
 
-.. GENERATED FROM PYTHON SOURCE LINES 58-63
+.. GENERATED FROM PYTHON SOURCE LINES 57-62
 
 .. code-block:: default
 
 
-    inductor = aedt_app.modeler.schematic.create_inductor("L1", 1e-9, [0, 0])
-    resistor = aedt_app.modeler.schematic.create_resistor("R1", 50, [0.0254, 0])
-    capacitor = aedt_app.modeler.schematic.create_capacitor("C1", 1e-12)
+    inductor = aedt_app.modeler.schematic.create_inductor(compname="L1", value=1e-9, location=[0, 0])
+    resistor = aedt_app.modeler.schematic.create_resistor(compname="R1", value=50, location=[0.0254, 0])
+    capacitor = aedt_app.modeler.schematic.create_capacitor(compname="C1", value=1e-12)
 
 
 
@@ -157,13 +156,13 @@ Create components, such as an inductor, resistor, and capacitor.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 64-67
+.. GENERATED FROM PYTHON SOURCE LINES 63-66
 
 Get all pins
 ~~~~~~~~~~~~
 Get all pins of a specified component.
 
-.. GENERATED FROM PYTHON SOURCE LINES 67-71
+.. GENERATED FROM PYTHON SOURCE LINES 66-69
 
 .. code-block:: default
 
@@ -177,19 +176,18 @@ Get all pins of a specified component.
 
 
 
-
-.. GENERATED FROM PYTHON SOURCE LINES 72-75
+.. GENERATED FROM PYTHON SOURCE LINES 70-73
 
 Create port and ground
 ~~~~~~~~~~~~~~~~~~~~~~
 Create a port and a ground, which are needed for the circuit analysis.
 
-.. GENERATED FROM PYTHON SOURCE LINES 75-79
+.. GENERATED FROM PYTHON SOURCE LINES 73-77
 
 .. code-block:: default
 
 
-    port = aedt_app.modeler.components.create_interface_port("myport")
+    port = aedt_app.modeler.components.create_interface_port(name="myport")
     gnd = aedt_app.modeler.components.create_gnd()
 
 
@@ -199,21 +197,21 @@ Create a port and a ground, which are needed for the circuit analysis.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 80-83
+.. GENERATED FROM PYTHON SOURCE LINES 78-81
 
 Connect components
 ~~~~~~~~~~~~~~~~~~
 Connect components with wires.
 
-.. GENERATED FROM PYTHON SOURCE LINES 83-89
+.. GENERATED FROM PYTHON SOURCE LINES 81-87
 
 .. code-block:: default
 
 
-    port.pins[0].connect_to_component(inductor.pins[0])
-    inductor.pins[1].connect_to_component(resistor.pins[0])
-    resistor.pins[1].connect_to_component(capacitor.pins[0])
-    capacitor.pins[1].connect_to_component(gnd.pins[0])
+    port.pins[0].connect_to_component(component_pin=inductor.pins[0])
+    inductor.pins[1].connect_to_component(component_pin=resistor.pins[0])
+    resistor.pins[1].connect_to_component(component_pin=capacitor.pins[0])
+    capacitor.pins[1].connect_to_component(component_pin=gnd.pins[0])
 
 
 
@@ -228,20 +226,20 @@ Connect components with wires.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 90-93
+.. GENERATED FROM PYTHON SOURCE LINES 88-91
 
 Create transient setup
 ~~~~~~~~~~~~~~~~~~~~~~
 Create a transient setup.
 
-.. GENERATED FROM PYTHON SOURCE LINES 93-98
+.. GENERATED FROM PYTHON SOURCE LINES 91-96
 
 .. code-block:: default
 
 
-    setup2 = aedt_app.create_setup("MyTransient", aedt_app.SETUPS.NexximTransient)
+    setup2 = aedt_app.create_setup(setupname="MyTransient", setuptype=aedt_app.SETUPS.NexximTransient)
     setup2.props["TransientData"] = ["0.01ns", "200ns"]
-    setup3 = aedt_app.create_setup("MyDC", aedt_app.SETUPS.NexximDC)
+    setup3 = aedt_app.create_setup(setupname="MyDC", setuptype=aedt_app.SETUPS.NexximDC)
 
 
 
@@ -250,21 +248,19 @@ Create a transient setup.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 99-102
+.. GENERATED FROM PYTHON SOURCE LINES 97-100
 
 Solve transient setup
 ~~~~~~~~~~~~~~~~~~~~~
 Solve the transient setup.
 
-.. GENERATED FROM PYTHON SOURCE LINES 102-108
+.. GENERATED FROM PYTHON SOURCE LINES 100-104
 
 .. code-block:: default
 
 
     aedt_app.analyze_setup("MyLNA")
-
     aedt_app.export_fullwave_spice()
-
 
 
 
@@ -275,17 +271,17 @@ Solve the transient setup.
  .. code-block:: none
 
 
-    'D:/Temp/pyaedt_prj_52V/Project_QVU.pyaedt\\Circuit Design_HOJ\\Circuit Design_HOJ.sp'
+    'D:/Temp/pyaedt_prj_UMS/Project_3Z4.pyaedt\\Circuit Design_GE8\\Circuit Design_GE8.sp'
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 109-112
+.. GENERATED FROM PYTHON SOURCE LINES 105-108
 
 Create report
 ~~~~~~~~~~~~~
 Create a report that plots solution data.
 
-.. GENERATED FROM PYTHON SOURCE LINES 112-120
+.. GENERATED FROM PYTHON SOURCE LINES 108-116
 
 .. code-block:: default
 
@@ -323,19 +319,18 @@ Create a report that plots solution data.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 121-124
+.. GENERATED FROM PYTHON SOURCE LINES 117-120
 
 Plot data
 ~~~~~~~~~
 Create a plot based on solution data.
 
-.. GENERATED FROM PYTHON SOURCE LINES 124-128
+.. GENERATED FROM PYTHON SOURCE LINES 120-123
 
 .. code-block:: default
 
+
     fig = solutions.plot()
-
-
 
 
 
@@ -349,7 +344,7 @@ Create a plot based on solution data.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 129-134
+.. GENERATED FROM PYTHON SOURCE LINES 124-129
 
 Close AEDT
 ~~~~~~~~~~
@@ -357,7 +352,7 @@ After the simulation completes, you can close AEDT or release it using the
 :func:`pyaedt.Desktop.force_close_desktop` method.
 All methods provide for saving the project before closing.
 
-.. GENERATED FROM PYTHON SOURCE LINES 134-136
+.. GENERATED FROM PYTHON SOURCE LINES 129-131
 
 .. code-block:: default
 
@@ -379,7 +374,7 @@ All methods provide for saving the project before closing.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  35.901 seconds)
+   **Total running time of the script:** ( 0 minutes  35.155 seconds)
 
 
 .. _sphx_glr_download_examples_07-Circuit_Circuit_Example.py:

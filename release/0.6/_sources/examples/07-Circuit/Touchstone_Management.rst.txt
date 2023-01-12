@@ -52,7 +52,7 @@ Perform required imports and set the local path to the path for PyAEDT.
 .. GENERATED FROM PYTHON SOURCE LINES 21-24
 
 Import libraries and Touchstone file
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Import Matplotlib, NumPy, and the Touchstone file.
 
 .. GENERATED FROM PYTHON SOURCE LINES 24-36
@@ -105,15 +105,15 @@ Get curve names
 Get the curve names. The following code shows how to get lists of the return losses,
 insertion losses, fext, and next based on a few inputs and port names.
 
-.. GENERATED FROM PYTHON SOURCE LINES 48-55
+.. GENERATED FROM PYTHON SOURCE LINES 48-54
 
 .. code-block:: default
 
 
     rl_list = get_return_losses(data.ports)
-    il_list = get_insertion_losses_from_prefix(data.ports, "U1", "U7")
-    fext_list = get_fext_xtalk_from_prefix(data.ports, "U1", "U7")
-    next_list = get_next_xtalk(data.ports, "U1")
+    il_list = get_insertion_losses_from_prefix(expressions=data.ports, tx_prefix="U1", rx_prefix="U7")
+    fext_list = get_fext_xtalk_from_prefix(expressions=data.ports, tx_prefix="U1", rx_prefix="U7")
+    next_list = get_next_xtalk(expressions=data.ports, tx_prefix="U1")
 
 
 
@@ -122,14 +122,13 @@ insertion losses, fext, and next based on a few inputs and port names.
 
 
 
-
-.. GENERATED FROM PYTHON SOURCE LINES 56-59
+.. GENERATED FROM PYTHON SOURCE LINES 55-58
 
 Get curve worst cases
 ~~~~~~~~~~~~~~~~~~~~~
 Get curve worst cases.
 
-.. GENERATED FROM PYTHON SOURCE LINES 59-73
+.. GENERATED FROM PYTHON SOURCE LINES 58-72
 
 .. code-block:: default
 
@@ -154,13 +153,13 @@ Get curve worst cases.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 74-77
+.. GENERATED FROM PYTHON SOURCE LINES 73-76
 
 Plot curves using Matplotlib
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Plot the curves using Matplotlib.
 
-.. GENERATED FROM PYTHON SOURCE LINES 77-94
+.. GENERATED FROM PYTHON SOURCE LINES 76-93
 
 .. code-block:: default
 
@@ -196,7 +195,7 @@ Plot the curves using Matplotlib.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  0.391 seconds)
+   **Total running time of the script:** ( 0 minutes  0.359 seconds)
 
 
 .. _sphx_glr_download_examples_07-Circuit_Touchstone_Management.py:

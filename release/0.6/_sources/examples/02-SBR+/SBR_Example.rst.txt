@@ -30,14 +30,13 @@ Perform required imports
 Perrform rquired imports and set up the local path to the path for the PyAEDT
 directory.
 
-.. GENERATED FROM PYTHON SOURCE LINES 12-20
+.. GENERATED FROM PYTHON SOURCE LINES 12-18
 
 .. code-block:: default
 
 
     import os
     import pyaedt
-
 
     project_full_name = pyaedt.downloads.download_sbr(pyaedt.generate_unique_project_name(project_name="sbr_freq"))
 
@@ -48,8 +47,7 @@ directory.
 
 
 
-
-.. GENERATED FROM PYTHON SOURCE LINES 21-26
+.. GENERATED FROM PYTHON SOURCE LINES 19-24
 
 Set non-graphical mode
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -57,7 +55,7 @@ Set non-graphical mode. ``"PYAEDT_NON_GRAPHICAL"`` is needed to generate
 documentation only.
 You can set ``non_graphical`` either to ``True`` or ``False``.
 
-.. GENERATED FROM PYTHON SOURCE LINES 26-29
+.. GENERATED FROM PYTHON SOURCE LINES 24-27
 
 .. code-block:: default
 
@@ -71,14 +69,14 @@ You can set ``non_graphical`` either to ``True`` or ``False``.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 30-34
+.. GENERATED FROM PYTHON SOURCE LINES 28-32
 
 Define designs
 ~~~~~~~~~~~~~~
 Define two designs, one source and one target, with each design connected to
 a different object.
 
-.. GENERATED FROM PYTHON SOURCE LINES 34-49
+.. GENERATED FROM PYTHON SOURCE LINES 32-47
 
 .. code-block:: default
 
@@ -104,13 +102,13 @@ a different object.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 50-53
+.. GENERATED FROM PYTHON SOURCE LINES 48-51
 
 Define linked antenna
 ~~~~~~~~~~~~~~~~~~~~~~~
 Define a linked antenna. This is HFSS far field applied to HFSS SBR+.
 
-.. GENERATED FROM PYTHON SOURCE LINES 53-56
+.. GENERATED FROM PYTHON SOURCE LINES 51-54
 
 .. code-block:: default
 
@@ -126,17 +124,17 @@ Define a linked antenna. This is HFSS far field applied to HFSS SBR+.
  .. code-block:: none
 
 
-    <pyaedt.modules.Boundary.NativeComponentObject object at 0x000002817E12EB20>
+    <pyaedt.modules.Boundary.NativeComponentObject object at 0x000001E0D134E340>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 57-60
+.. GENERATED FROM PYTHON SOURCE LINES 55-58
 
 Assign boundaries
 ~~~~~~~~~~~~~~~~~
 Assign boundaries.
 
-.. GENERATED FROM PYTHON SOURCE LINES 60-65
+.. GENERATED FROM PYTHON SOURCE LINES 58-62
 
 .. code-block:: default
 
@@ -148,23 +146,22 @@ Assign boundaries.
 
 
 
-
 .. rst-class:: sphx-glr-script-out
 
  .. code-block:: none
 
 
-    <pyaedt.modules.Mesh.MeshOperation object at 0x000002812C4B18E0>
+    <pyaedt.modules.Mesh.MeshOperation object at 0x000001E0E5FA51C0>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 66-69
+.. GENERATED FROM PYTHON SOURCE LINES 63-66
 
 Plot model
 ~~~~~~~~~~
 Plot the model
 
-.. GENERATED FROM PYTHON SOURCE LINES 69-73
+.. GENERATED FROM PYTHON SOURCE LINES 66-70
 
 .. code-block:: default
 
@@ -198,17 +195,17 @@ Plot the model
  .. code-block:: none
 
 
-    <pyaedt.generic.plot.ModelPlotter object at 0x000002812C6A9250>
+    <pyaedt.generic.plot.ModelPlotter object at 0x000001E0E5F864F0>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 74-77
+.. GENERATED FROM PYTHON SOURCE LINES 71-74
 
 Create setup and solve
 ~~~~~~~~~~~~~~~~~~~~~~~~
 Create a setup and solve it.
 
-.. GENERATED FROM PYTHON SOURCE LINES 77-87
+.. GENERATED FROM PYTHON SOURCE LINES 74-84
 
 .. code-block:: default
 
@@ -235,13 +232,13 @@ Create a setup and solve it.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 88-91
+.. GENERATED FROM PYTHON SOURCE LINES 85-88
 
 Plot results
 ~~~~~~~~~~~~
 Plot results.
 
-.. GENERATED FROM PYTHON SOURCE LINES 91-105
+.. GENERATED FROM PYTHON SOURCE LINES 88-102
 
 .. code-block:: default
 
@@ -268,17 +265,17 @@ Plot results.
  .. code-block:: none
 
 
-    <pyaedt.modules.report_templates.FarField object at 0x000002812D3374F0>
+    <pyaedt.modules.report_templates.FarField object at 0x000001E0E7589850>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 106-109
+.. GENERATED FROM PYTHON SOURCE LINES 103-106
 
 Plot results outside AEDT
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 Plot results using Matplotlib.
 
-.. GENERATED FROM PYTHON SOURCE LINES 109-121
+.. GENERATED FROM PYTHON SOURCE LINES 106-117
 
 .. code-block:: default
 
@@ -292,7 +289,6 @@ Plot results using Matplotlib.
         report_category="Far Fields",
     )
     solution.plot()
-
 
 
 
@@ -312,13 +308,13 @@ Plot results using Matplotlib.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 122-125
+.. GENERATED FROM PYTHON SOURCE LINES 118-121
 
 Release AEDT
 ~~~~~~~~~~~~
 Release AEDT and close the example.
 
-.. GENERATED FROM PYTHON SOURCE LINES 125-127
+.. GENERATED FROM PYTHON SOURCE LINES 121-123
 
 .. code-block:: default
 
@@ -340,7 +336,7 @@ Release AEDT and close the example.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 1 minutes  28.555 seconds)
+   **Total running time of the script:** ( 1 minutes  24.465 seconds)
 
 
 .. _sphx_glr_download_examples_02-SBR+_SBR_Example.py:

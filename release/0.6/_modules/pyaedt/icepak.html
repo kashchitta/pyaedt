@@ -41,14 +41,11 @@
         <link href="../../_static/css/breadcrumbs.css" rel="stylesheet">
     
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/sphinx_highlight.js"></script>
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
-    <link rel="shortcut icon" href="../../_static/ansys-favicon.png"/>
+    <link rel="icon" href="../../_static/ansys-favicon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -77,9 +74,8 @@
   
   
   
-    <img src="../../_static/pyansys-logo-black-cropped.png" class="logo__image only-light" alt="Logo image">
-    <img src="../../_static/pyansys-logo-black-cropped.png" class="logo__image only-dark" alt="Logo image">
   
+    <p class="title logo__title">PyAEDT</p>
   
 </a>
     
@@ -207,7 +203,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.42 variable.
+            // this version, rather than using sphinx's 0.6.43 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -341,7 +337,10 @@ function checkPageExistsAndRedirect(event) {
 <span class="k">else</span><span class="p">:</span>
     <span class="kn">import</span> <span class="nn">subprocess</span>
 
+<span class="kn">import</span> <span class="nn">re</span>
+
 <span class="kn">from</span> <span class="nn">pyaedt.application.Analysis3D</span> <span class="kn">import</span> <span class="n">FieldAnalysis3D</span>
+<span class="kn">from</span> <span class="nn">pyaedt.generic.configurations</span> <span class="kn">import</span> <span class="n">ConfigurationsIcepak</span>
 <span class="kn">from</span> <span class="nn">pyaedt.generic.DataHandlers</span> <span class="kn">import</span> <span class="n">_arg2dict</span>
 <span class="kn">from</span> <span class="nn">pyaedt.generic.DataHandlers</span> <span class="kn">import</span> <span class="n">random_string</span>
 <span class="kn">from</span> <span class="nn">pyaedt.generic.general_methods</span> <span class="kn">import</span> <span class="n">generate_unique_name</span>
@@ -351,10 +350,11 @@ function checkPageExistsAndRedirect(event) {
 <span class="kn">from</span> <span class="nn">pyaedt.modeler.geometry_operators</span> <span class="kn">import</span> <span class="n">GeometryOperators</span>
 <span class="kn">from</span> <span class="nn">pyaedt.modules.Boundary</span> <span class="kn">import</span> <span class="n">BoundaryObject</span>
 <span class="kn">from</span> <span class="nn">pyaedt.modules.Boundary</span> <span class="kn">import</span> <span class="n">NativeComponentObject</span>
+<span class="kn">from</span> <span class="nn">pyaedt.modules.MonitorIcepak</span> <span class="kn">import</span> <span class="n">Monitor</span>
 
 
 <div class="viewcode-block" id="Icepak"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.icepak.Icepak.html#pyaedt.icepak.Icepak">[docs]</a><span class="k">class</span> <span class="nc">Icepak</span><span class="p">(</span><span class="n">FieldAnalysis3D</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Provides the Icepak application interface.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Provides the Icepak application interface.</span>
 
 <span class="sd">    This class allows you to connect to an existing Icepak design or create a</span>
 <span class="sd">    new Icepak design if one does not exist.</span>
@@ -479,13 +479,15 @@ function checkPageExistsAndRedirect(event) {
             <span class="n">port</span><span class="p">,</span>
             <span class="n">aedt_process_id</span><span class="p">,</span>
         <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_monitor</span> <span class="o">=</span> <span class="n">Monitor</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_configurations</span> <span class="o">=</span> <span class="n">ConfigurationsIcepak</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="fm">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">problem_type</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Problem type of the Icepak design. Options are ``&quot;TemperatureAndFlow&quot;``, ``&quot;TemperatureOnly&quot;``,</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Problem type of the Icepak design. Options are ``&quot;TemperatureAndFlow&quot;``, ``&quot;TemperatureOnly&quot;``,</span>
 <span class="sd">        and ``&quot;FlowOnly&quot;``.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">design_solutions</span><span class="o">.</span><span class="n">problem_type</span>
@@ -497,7 +499,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">existing_analysis_sweeps</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Existing analysis setups.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Existing analysis setups.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -512,6 +514,17 @@ function checkPageExistsAndRedirect(event) {
             <span class="n">sweep_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">el</span> <span class="o">+</span> <span class="s2">&quot; : &quot;</span> <span class="o">+</span> <span class="n">s_type</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">sweep_list</span>
 
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">monitor</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Property to handle monitor objects.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        :class:`pyaedt.modules.MonitorIcepak.Monitor`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_monitor</span><span class="o">.</span><span class="n">_delete_removed_monitors</span><span class="p">()</span>  <span class="c1"># force update. some operations may delete monitors</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_monitor</span>
+
 <div class="viewcode-block" id="Icepak.assign_grille"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.icepak.Icepak.assign_grille.html#pyaedt.icepak.Icepak.assign_grille">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">assign_grille</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
@@ -524,7 +537,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">x_curve</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;0&quot;</span><span class="p">,</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="s2">&quot;2&quot;</span><span class="p">],</span>
         <span class="n">y_curve</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;0&quot;</span><span class="p">,</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="s2">&quot;2&quot;</span><span class="p">],</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Assign grille to a face or list of faces.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Assign grille to a face or list of faces.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -591,7 +604,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Icepak.assign_openings"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.icepak.Icepak.assign_openings.html#pyaedt.icepak.Icepak.assign_openings">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">assign_openings</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">air_faces</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Assign openings to a list of faces.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Assign openings to a list of faces.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -640,7 +653,7 @@ function checkPageExistsAndRedirect(event) {
     <span class="k">def</span> <span class="nf">assign_2way_coupling</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">setup_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">number_of_iterations</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">continue_ipk_iterations</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ipk_iterations_per_coupling</span><span class="o">=</span><span class="mi">20</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Assign two-way coupling to a setup.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Assign two-way coupling to a setup.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -692,7 +705,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Icepak.create_source_blocks_from_list"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.icepak.Icepak.create_source_blocks_from_list.html#pyaedt.icepak.Icepak.create_source_blocks_from_list">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">create_source_blocks_from_list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">list_powers</span><span class="p">,</span> <span class="n">assign_material</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">default_material</span><span class="o">=</span><span class="s2">&quot;Ceramic_material&quot;</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Assign to a box in Icepak the sources that come from the CSV file.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Assign to a box in Icepak the sources that come from the CSV file.</span>
 
 <span class="sd">        Assignment is made by name.</span>
 
@@ -756,7 +769,7 @@ function checkPageExistsAndRedirect(event) {
     <span class="k">def</span> <span class="nf">create_source_block</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">object_name</span><span class="p">,</span> <span class="n">input_power</span><span class="p">,</span> <span class="n">assign_material</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">material_name</span><span class="o">=</span><span class="s2">&quot;Ceramic_material&quot;</span><span class="p">,</span> <span class="n">use_object_for_name</span><span class="o">=</span><span class="kc">True</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a source block for an object.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a source block for an object.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -818,23 +831,131 @@ function checkPageExistsAndRedirect(event) {
             <span class="k">return</span> <span class="n">bound</span>
         <span class="k">return</span> <span class="kc">None</span></div>
 
+<div class="viewcode-block" id="Icepak.create_conduting_plate"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.icepak.Icepak.create_conduting_plate.html#pyaedt.icepak.Icepak.create_conduting_plate">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">create_conduting_plate</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">face_id</span><span class="p">,</span>
+        <span class="n">thermal_specification</span><span class="p">,</span>
+        <span class="n">thermal_dependent_dataset</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">input_power</span><span class="o">=</span><span class="s2">&quot;0W&quot;</span><span class="p">,</span>
+        <span class="n">radiate_low</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">low_surf_material</span><span class="o">=</span><span class="s2">&quot;Steel-oxidised-surface&quot;</span><span class="p">,</span>
+        <span class="n">radiate_high</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">high_surf_material</span><span class="o">=</span><span class="s2">&quot;Steel-oxidised-surface&quot;</span><span class="p">,</span>
+        <span class="n">shell_conduction</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">thickness</span><span class="o">=</span><span class="s2">&quot;1mm&quot;</span><span class="p">,</span>
+        <span class="n">solid_material</span><span class="o">=</span><span class="s2">&quot;Al-Extruded&quot;</span><span class="p">,</span>
+        <span class="n">thermal_conductance</span><span class="o">=</span><span class="s2">&quot;0W_per_Cel&quot;</span><span class="p">,</span>
+        <span class="n">thermal_resistance</span><span class="o">=</span><span class="s2">&quot;0Kel_per_W&quot;</span><span class="p">,</span>
+        <span class="n">thermal_impedance</span><span class="o">=</span><span class="s2">&quot;0celm2_per_w&quot;</span><span class="p">,</span>
+        <span class="n">bc_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add a conductive plate thermal assignment on a face.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        face_id : int or str</span>
+<span class="sd">            If int, Face ID. If str, object name.</span>
+<span class="sd">        thermal_specification : str</span>
+<span class="sd">            Select what thermal specification is to be applied. The possible choices are ``&quot;Thickness&quot;``,</span>
+<span class="sd">            ``&quot;Conductance&quot;``, ``&quot;Thermal Impedance&quot;`` and ``&quot;Thermal Resistance&quot;``</span>
+<span class="sd">        thermal_dependent_dataset : str, optional</span>
+<span class="sd">            Name of the dataset if a thermal dependent power source is to be assigned. The default is ``None``.</span>
+<span class="sd">        input_power : str, float, or int, optional</span>
+<span class="sd">            Input power. The default is ``&quot;0W&quot;``. Ignored if thermal_dependent_dataset is set</span>
+<span class="sd">        radiate_low : bool, optional</span>
+<span class="sd">            Whether to enable radiation on the lower face. The default is ``False``.</span>
+<span class="sd">        low_surf_material : str, optional</span>
+<span class="sd">            Low surface material. The default is ``&quot;Steel-oxidised-surface&quot;``.</span>
+<span class="sd">        radiate_high : bool, optional</span>
+<span class="sd">            Whether to enable radiation on the higher face. The default is ``False``.</span>
+<span class="sd">        high_surf_material : str, optional</span>
+<span class="sd">            High surface material. The default is ``&quot;Steel-oxidised-surface&quot;``.</span>
+<span class="sd">        shell_conduction : str, optional</span>
+<span class="sd">            Whether to enable shell conduction. The default is ``False``.</span>
+<span class="sd">        thickness : str, optional</span>
+<span class="sd">            Thickness value, relevant only if ``thermal_specification=&quot;Thickness&quot;``. The default is ``&quot;1mm&quot;``.</span>
+<span class="sd">        thermal_conductance : str, optional</span>
+<span class="sd">            Thermal Conductance value, relevant only if ``thermal_specification=&quot;Conductance&quot;``.</span>
+<span class="sd">            The default is ``&quot;0W_per_Cel&quot;``.</span>
+<span class="sd">        thermal_resistance : str, optional</span>
+<span class="sd">            Thermal resistance value, relevant only if ``thermal_specification=&quot;Thermal Resistance&quot;``.</span>
+<span class="sd">            The default is ``&quot;0Kel_per_W&quot;``.</span>
+<span class="sd">        thermal_impedance : str, optional</span>
+<span class="sd">            Thermal impedance value, relevant only if ``thermal_specification=&quot;Thermal Impedance&quot;``.</span>
+<span class="sd">            The default is ``&quot;0celm2_per_w&quot;``.</span>
+<span class="sd">        solid_material : str, optional</span>
+<span class="sd">            Material type for the wall. The default is ``&quot;Al-Extruded&quot;``.</span>
+<span class="sd">        bc_name : str, optional</span>
+<span class="sd">            Name of the plate. The default is ``None``.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        :class:`pyaedt.modules.Boundary.BoundaryObject`</span>
+<span class="sd">            Boundary object when successful or ``None`` when failed.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">bc_name</span><span class="p">:</span>
+            <span class="n">bc_name</span> <span class="o">=</span> <span class="n">generate_unique_name</span><span class="p">(</span><span class="s2">&quot;Source&quot;</span><span class="p">)</span>
+        <span class="n">props</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">face_id</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+            <span class="n">props</span><span class="p">[</span><span class="s2">&quot;Faces&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">face_id</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">face_id</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="n">props</span><span class="p">[</span><span class="s2">&quot;Objects&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">face_id</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">radiate_low</span><span class="p">:</span>
+            <span class="n">props</span><span class="p">[</span><span class="s2">&quot;LowSide&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">(</span>
+                <span class="p">{</span><span class="s2">&quot;Radiate&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s2">&quot;RadiateTo&quot;</span><span class="p">:</span> <span class="s2">&quot;AllObjects&quot;</span><span class="p">,</span> <span class="s2">&quot;Surface Material&quot;</span><span class="p">:</span> <span class="n">low_surf_material</span><span class="p">}</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">props</span><span class="p">[</span><span class="s2">&quot;LowSide&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">({</span><span class="s2">&quot;Radiate&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">})</span>
+        <span class="k">if</span> <span class="n">radiate_high</span><span class="p">:</span>
+            <span class="n">props</span><span class="p">[</span><span class="s2">&quot;HighSide&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">(</span>
+                <span class="p">{</span><span class="s2">&quot;Radiate&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s2">&quot;RadiateTo&quot;</span><span class="p">:</span> <span class="s2">&quot;AllObjects - High&quot;</span><span class="p">,</span> <span class="s2">&quot;Surface Material - High&quot;</span><span class="p">:</span> <span class="n">high_surf_material</span><span class="p">}</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">props</span><span class="p">[</span><span class="s2">&quot;HighSide&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">({</span><span class="s2">&quot;Radiate&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">})</span>
+        <span class="n">props</span><span class="p">[</span><span class="s2">&quot;Thermal Specification&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">thermal_specification</span>
+        <span class="n">props</span><span class="p">[</span><span class="s2">&quot;Thickness&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">thickness</span>
+        <span class="n">props</span><span class="p">[</span><span class="s2">&quot;Solid Material&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">solid_material</span>
+        <span class="n">props</span><span class="p">[</span><span class="s2">&quot;Conductance&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">thermal_conductance</span>
+        <span class="n">props</span><span class="p">[</span><span class="s2">&quot;Thermal Resistance&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">thermal_resistance</span>
+        <span class="n">props</span><span class="p">[</span><span class="s2">&quot;Thermal Impedance&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">thermal_impedance</span>
+        <span class="k">if</span> <span class="n">thermal_dependent_dataset</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">props</span><span class="p">[</span><span class="s2">&quot;Total Power&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">input_power</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">props</span><span class="p">[</span><span class="s2">&quot;Total Power Variation Data&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">(</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;Variation Type&quot;</span><span class="p">:</span> <span class="s2">&quot;Temp Dep&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;Variation Function&quot;</span><span class="p">:</span> <span class="s2">&quot;Piecewise Linear&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;Variation Value&quot;</span><span class="p">:</span> <span class="s1">&#39;[&quot;1W&quot;, &quot;pwl(</span><span class="si">{}</span><span class="s1">,Temp)&quot;]&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">thermal_dependent_dataset</span><span class="p">),</span>
+                <span class="p">}</span>
+            <span class="p">)</span>
+        <span class="n">props</span><span class="p">[</span><span class="s2">&quot;Shell Conduction&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">shell_conduction</span>
+        <span class="n">bound</span> <span class="o">=</span> <span class="n">BoundaryObject</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bc_name</span><span class="p">,</span> <span class="n">props</span><span class="p">,</span> <span class="s2">&quot;Conducting Plate&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">bound</span><span class="o">.</span><span class="n">create</span><span class="p">():</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">boundaries</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">bound</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">bound</span></div>
+
 <div class="viewcode-block" id="Icepak.create_source_power"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.icepak.Icepak.create_source_power.html#pyaedt.icepak.Icepak.create_source_power">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">create_source_power</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">face_id</span><span class="p">,</span>
-        <span class="n">input_power</span><span class="o">=</span><span class="s2">&quot;0W&quot;</span><span class="p">,</span>
+        <span class="n">thermal_dependent_dataset</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">input_power</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">thermal_condtion</span><span class="o">=</span><span class="s2">&quot;Total Power&quot;</span><span class="p">,</span>
         <span class="n">surface_heat</span><span class="o">=</span><span class="s2">&quot;0irrad_W_per_m2&quot;</span><span class="p">,</span>
         <span class="n">temperature</span><span class="o">=</span><span class="s2">&quot;AmbientTemp&quot;</span><span class="p">,</span>
         <span class="n">radiate</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
         <span class="n">source_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a source power for a face.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a source power for a face.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        face_id : int or str</span>
 <span class="sd">            If int, Face ID. If str, object name.</span>
+<span class="sd">        thermal_dependent_dataset : str, optional</span>
+<span class="sd">            Name of the dataset if a thermal dependent power source is to be assigned. The default is ``None``.</span>
 <span class="sd">        input_power : str, float, or int, optional</span>
 <span class="sd">            Input power. The default is ``&quot;0W&quot;``.</span>
 <span class="sd">        thermal_condtion : str, optional</span>
@@ -874,6 +995,10 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        &#39;28cel&#39;</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">input_power</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">input_power</span> <span class="o">=</span> <span class="s2">&quot;0W&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">bool</span><span class="p">(</span><span class="n">input_power</span><span class="p">)</span> <span class="o">^</span> <span class="nb">bool</span><span class="p">(</span><span class="n">thermal_dependent_dataset</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Please assigned one input between ``thermal_dependent_dataset`` and  ``input_power``&quot;</span><span class="p">)</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">source_name</span><span class="p">:</span>
             <span class="n">source_name</span> <span class="o">=</span> <span class="n">generate_unique_name</span><span class="p">(</span><span class="s2">&quot;Source&quot;</span><span class="p">)</span>
         <span class="n">props</span> <span class="o">=</span> <span class="p">{}</span>
@@ -882,7 +1007,16 @@ function checkPageExistsAndRedirect(event) {
         <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">face_id</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
             <span class="n">props</span><span class="p">[</span><span class="s2">&quot;Objects&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">face_id</span><span class="p">]</span>
         <span class="n">props</span><span class="p">[</span><span class="s2">&quot;Thermal Condition&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">thermal_condtion</span>
-        <span class="n">props</span><span class="p">[</span><span class="s2">&quot;Total Power&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">input_power</span>
+        <span class="k">if</span> <span class="n">thermal_dependent_dataset</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">props</span><span class="p">[</span><span class="s2">&quot;Total Power&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">input_power</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">props</span><span class="p">[</span><span class="s2">&quot;Total Power Variation Data&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">(</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;Variation Type&quot;</span><span class="p">:</span> <span class="s2">&quot;Temp Dep&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;Variation Function&quot;</span><span class="p">:</span> <span class="s2">&quot;Piecewise Linear&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;Variation Value&quot;</span><span class="p">:</span> <span class="s1">&#39;[&quot;1W&quot;, &quot;pwl(</span><span class="si">{}</span><span class="s1">,Temp)&quot;]&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">thermal_dependent_dataset</span><span class="p">),</span>
+                <span class="p">}</span>
+            <span class="p">)</span>
         <span class="n">props</span><span class="p">[</span><span class="s2">&quot;Surface Heat&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">surface_heat</span>
         <span class="n">props</span><span class="p">[</span><span class="s2">&quot;Temperature&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">temperature</span>
         <span class="n">props</span><span class="p">[</span><span class="s2">&quot;Radiation&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">({</span><span class="s2">&quot;Radiate&quot;</span><span class="p">:</span> <span class="n">radiate</span><span class="p">})</span>
@@ -904,7 +1038,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">default_material</span><span class="o">=</span><span class="s2">&quot;Ceramic_material&quot;</span><span class="p">,</span>
         <span class="n">use_object_for_name</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a network block.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a network block.</span>
 
 <span class="sd">        .. deprecated:: 0.6.27</span>
 <span class="sd">            This method will be replaced by `create_two_resistor_network_block`.</span>
@@ -1007,7 +1141,7 @@ function checkPageExistsAndRedirect(event) {
     <span class="k">def</span> <span class="nf">create_network_blocks</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">input_list</span><span class="p">,</span> <span class="n">gravity_dir</span><span class="p">,</span> <span class="n">top</span><span class="p">,</span> <span class="n">assign_material</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">default_material</span><span class="o">=</span><span class="s2">&quot;Ceramic_material&quot;</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create network blocks from CSV files.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create network blocks from CSV files.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1077,7 +1211,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Icepak.assign_surface_monitor"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.icepak.Icepak.assign_surface_monitor.html#pyaedt.icepak.Icepak.assign_surface_monitor">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">assign_surface_monitor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">face_name</span><span class="p">,</span> <span class="n">monitor_type</span><span class="o">=</span><span class="s2">&quot;Temperature&quot;</span><span class="p">,</span> <span class="n">monitor_name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Assign a surface monitor.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Assign a surface monitor.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1109,18 +1243,11 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        &gt;&gt;&gt; icepak.assign_surface_monitor(&quot;Surface1&quot;, monitor_name=&quot;monitor&quot;)</span>
 <span class="sd">        &#39;monitor&#39;</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">original_monitors</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">odesign</span><span class="o">.</span><span class="n">GetChildObject</span><span class="p">(</span><span class="s2">&quot;Monitor&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">GetChildNames</span><span class="p">())</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">monitor_name</span><span class="p">:</span>
-            <span class="n">monitor_name</span> <span class="o">=</span> <span class="n">generate_unique_name</span><span class="p">(</span><span class="s2">&quot;Monitor&quot;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">omonitor</span><span class="o">.</span><span class="n">AssignFaceMonitor</span><span class="p">(</span>
-            <span class="p">[</span><span class="s2">&quot;NAME:&quot;</span> <span class="o">+</span> <span class="n">monitor_name</span><span class="p">,</span> <span class="s2">&quot;Quantities:=&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">monitor_type</span><span class="p">],</span> <span class="s2">&quot;Objects:=&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">face_name</span><span class="p">]]</span>
-        <span class="p">)</span>
-        <span class="n">new_monitors</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">odesign</span><span class="o">.</span><span class="n">GetChildObject</span><span class="p">(</span><span class="s2">&quot;Monitor&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">GetChildNames</span><span class="p">())</span>
-        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">new_monitors</span><span class="p">)</span><span class="o">.</span><span class="n">difference</span><span class="p">(</span><span class="n">original_monitors</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_monitor</span><span class="o">.</span><span class="n">assign_surface_monitor</span><span class="p">(</span><span class="n">face_name</span><span class="p">,</span> <span class="n">monitor_quantity</span><span class="o">=</span><span class="n">monitor_type</span><span class="p">,</span> <span class="n">monitor_name</span><span class="o">=</span><span class="n">monitor_name</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Icepak.assign_point_monitor"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.icepak.Icepak.assign_point_monitor.html#pyaedt.icepak.Icepak.assign_point_monitor">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">assign_point_monitor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">point_position</span><span class="p">,</span> <span class="n">monitor_type</span><span class="o">=</span><span class="s2">&quot;Temperature&quot;</span><span class="p">,</span> <span class="n">monitor_name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create and assign a point monitor.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create and assign a point monitor.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1139,43 +1266,23 @@ function checkPageExistsAndRedirect(event) {
 
 <span class="sd">        References</span>
 <span class="sd">        ----------</span>
-
 <span class="sd">        &gt;&gt;&gt; oModule.AssignPointMonitor</span>
 
 <span class="sd">        Examples</span>
 <span class="sd">        --------</span>
-
 <span class="sd">        Create a temperature monitor at the point ``[1, 1, 1]``.</span>
 
 <span class="sd">        &gt;&gt;&gt; icepak.assign_point_monitor([1, 1, 1], monitor_name=&quot;monitor1&quot;)</span>
 <span class="sd">        &#39;monitor1&#39;</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">point_name</span> <span class="o">=</span> <span class="n">generate_unique_name</span><span class="p">(</span><span class="s2">&quot;Point&quot;</span><span class="p">)</span>
-        <span class="n">original_monitors</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">odesign</span><span class="o">.</span><span class="n">GetChildObject</span><span class="p">(</span><span class="s2">&quot;Monitor&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">GetChildNames</span><span class="p">())</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">oeditor</span><span class="o">.</span><span class="n">CreatePoint</span><span class="p">(</span>
-            <span class="p">[</span>
-                <span class="s2">&quot;NAME:PointParameters&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;PointX:=&quot;</span><span class="p">,</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">_arg_with_dim</span><span class="p">(</span><span class="n">point_position</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span>
-                <span class="s2">&quot;PointY:=&quot;</span><span class="p">,</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">_arg_with_dim</span><span class="p">(</span><span class="n">point_position</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span>
-                <span class="s2">&quot;PointZ:=&quot;</span><span class="p">,</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">_arg_with_dim</span><span class="p">(</span><span class="n">point_position</span><span class="p">[</span><span class="mi">2</span><span class="p">]),</span>
-            <span class="p">],</span>
-            <span class="p">[</span><span class="s2">&quot;NAME:Attributes&quot;</span><span class="p">,</span> <span class="s2">&quot;Name:=&quot;</span><span class="p">,</span> <span class="n">point_name</span><span class="p">,</span> <span class="s2">&quot;Color:=&quot;</span><span class="p">,</span> <span class="s2">&quot;(143 175 143)&quot;</span><span class="p">],</span>
-        <span class="p">)</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">monitor_name</span><span class="p">:</span>
-            <span class="n">monitor_name</span> <span class="o">=</span> <span class="n">generate_unique_name</span><span class="p">(</span><span class="s2">&quot;Monitor&quot;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">omonitor</span><span class="o">.</span><span class="n">AssignPointMonitor</span><span class="p">(</span>
-            <span class="p">[</span><span class="s2">&quot;NAME:&quot;</span> <span class="o">+</span> <span class="n">monitor_name</span><span class="p">,</span> <span class="s2">&quot;Quantities:=&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">monitor_type</span><span class="p">],</span> <span class="s2">&quot;Points:=&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">point_name</span><span class="p">]]</span>
-        <span class="p">)</span>
-        <span class="n">new_monitors</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">odesign</span><span class="o">.</span><span class="n">GetChildObject</span><span class="p">(</span><span class="s2">&quot;Monitor&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">GetChildNames</span><span class="p">())</span>
-        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">new_monitors</span><span class="p">)</span><span class="o">.</span><span class="n">difference</span><span class="p">(</span><span class="n">original_monitors</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_monitor</span><span class="o">.</span><span class="n">assign_point_monitor</span><span class="p">(</span>
+            <span class="n">point_position</span><span class="p">,</span> <span class="n">monitor_quantity</span><span class="o">=</span><span class="n">monitor_type</span><span class="p">,</span> <span class="n">monitor_name</span><span class="o">=</span><span class="n">monitor_name</span>
+        <span class="p">)</span></div>
 
 <div class="viewcode-block" id="Icepak.assign_point_monitor_in_object"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.icepak.Icepak.assign_point_monitor_in_object.html#pyaedt.icepak.Icepak.assign_point_monitor_in_object">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">assign_point_monitor_in_object</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">monitor_type</span><span class="o">=</span><span class="s2">&quot;Temperature&quot;</span><span class="p">,</span> <span class="n">monitor_name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Assign a point monitor in the centroid of a specific object.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Assign a point monitor in the centroid of a specific object.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1206,29 +1313,13 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        &gt;&gt;&gt; icepak.assign_point_monitor(box.name, monitor_name=&quot;monitor2&quot;)</span>
 <span class="sd">        &quot;&#39;monitor2&#39;</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Object name must be a string&quot;</span><span class="p">)</span>
-            <span class="k">return</span> <span class="kc">False</span>
-        <span class="n">name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">convert_to_selections</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
-        <span class="n">original_monitors</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">odesign</span><span class="o">.</span><span class="n">GetChildObject</span><span class="p">(</span><span class="s2">&quot;Monitor&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">GetChildNames</span><span class="p">())</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">monitor_name</span><span class="p">:</span>
-            <span class="n">monitor_name</span> <span class="o">=</span> <span class="n">generate_unique_name</span><span class="p">(</span><span class="s2">&quot;Monitor&quot;</span><span class="p">)</span>
-        <span class="k">elif</span> <span class="n">monitor_name</span> <span class="ow">in</span> <span class="n">original_monitors</span><span class="p">:</span>
-            <span class="n">monitor_name</span> <span class="o">=</span> <span class="n">generate_unique_name</span><span class="p">(</span><span class="n">monitor_name</span><span class="p">)</span>
-        <span class="n">existing_names</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">name</span><span class="p">)</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">object_names</span><span class="p">))</span>
-        <span class="k">if</span> <span class="n">existing_names</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">omonitor</span><span class="o">.</span><span class="n">AssignPointMonitor</span><span class="p">(</span>
-                <span class="p">[</span><span class="s2">&quot;NAME:&quot;</span> <span class="o">+</span> <span class="n">monitor_name</span><span class="p">,</span> <span class="s2">&quot;Quantities:=&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">monitor_type</span><span class="p">],</span> <span class="s2">&quot;Objects:=&quot;</span><span class="p">,</span> <span class="n">existing_names</span><span class="p">]</span>
-            <span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Object is not present in the design&quot;</span><span class="p">)</span>
-            <span class="k">return</span> <span class="kc">False</span>
-        <span class="n">new_monitors</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">odesign</span><span class="o">.</span><span class="n">GetChildObject</span><span class="p">(</span><span class="s2">&quot;Monitor&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">GetChildNames</span><span class="p">())</span>
-        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">new_monitors</span><span class="p">)</span><span class="o">.</span><span class="n">difference</span><span class="p">(</span><span class="n">original_monitors</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_monitor</span><span class="o">.</span><span class="n">assign_point_monitor_in_object</span><span class="p">(</span>
+            <span class="n">name</span><span class="p">,</span> <span class="n">monitor_quantity</span><span class="o">=</span><span class="n">monitor_type</span><span class="p">,</span> <span class="n">monitor_name</span><span class="o">=</span><span class="n">monitor_name</span>
+        <span class="p">)</span></div>
 
 <div class="viewcode-block" id="Icepak.assign_block_from_sherlock_file"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.icepak.Icepak.assign_block_from_sherlock_file.html#pyaedt.icepak.Icepak.assign_block_from_sherlock_file">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">assign_block_from_sherlock_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">csv_name</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Assign block power to components based on a CSV file from Sherlock.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Assign block power to components based on a CSV file from Sherlock.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1288,7 +1379,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Icepak.assign_priority_on_intersections"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.icepak.Icepak.assign_priority_on_intersections.html#pyaedt.icepak.Icepak.assign_priority_on_intersections">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">assign_priority_on_intersections</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">component_prefix</span><span class="o">=</span><span class="s2">&quot;COMP_&quot;</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Validate an Icepak design.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Validate an Icepak design.</span>
 
 <span class="sd">        If there are intersections, priorities are automatically applied to overcome simulation issues.</span>
 
@@ -1330,7 +1421,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Icepak.find_top"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.icepak.Icepak.find_top.html#pyaedt.icepak.Icepak.find_top">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">find_top</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gravityDir</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Find the top location of the layout given a gravity.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Find the top location of the layout given a gravity.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1388,7 +1479,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">rotation</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
         <span class="n">tolerance</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a parametric heat sink.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a parametric heat sink.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1589,7 +1680,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">export_monitor</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
         <span class="n">export_directory</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">(),</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Update the main settings of the design.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Update the main settings of the design.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1683,7 +1774,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">paramlist</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">object_list</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Map EM losses to an Icepak design.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Map EM losses to an Icepak design.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1727,20 +1818,20 @@ function checkPageExistsAndRedirect(event) {
             <span class="n">object_list</span> <span class="o">=</span> <span class="p">[]</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Mapping HFSS EM losses.&quot;</span><span class="p">)</span>
-        <span class="n">oName</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">project_name</span>
-        <span class="k">if</span> <span class="n">oName</span> <span class="o">==</span> <span class="n">source_project_name</span> <span class="ow">or</span> <span class="n">source_project_name</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">projname</span> <span class="o">=</span> <span class="s2">&quot;This Project*&quot;</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">project_name</span> <span class="o">==</span> <span class="n">source_project_name</span> <span class="ow">or</span> <span class="n">source_project_name</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">project_name</span> <span class="o">=</span> <span class="s2">&quot;This Project*&quot;</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">projname</span> <span class="o">=</span> <span class="n">source_project_name</span> <span class="o">+</span> <span class="s2">&quot;.aedt&quot;</span>
+            <span class="n">project_name</span> <span class="o">=</span> <span class="n">source_project_name</span> <span class="o">+</span> <span class="s2">&quot;.aedt&quot;</span>
         <span class="c1">#</span>
         <span class="c1"># Generate a list of model objects from the lists made previously and use to map the HFSS losses into Icepak</span>
         <span class="c1">#</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">object_list</span><span class="p">:</span>
-            <span class="n">allObjects</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">object_names</span>
-            <span class="k">if</span> <span class="s2">&quot;Region&quot;</span> <span class="ow">in</span> <span class="n">allObjects</span><span class="p">:</span>
-                <span class="n">allObjects</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s2">&quot;Region&quot;</span><span class="p">)</span>
+            <span class="n">all_objects</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">object_names</span>
+            <span class="k">if</span> <span class="s2">&quot;Region&quot;</span> <span class="ow">in</span> <span class="n">all_objects</span><span class="p">:</span>
+                <span class="n">all_objects</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s2">&quot;Region&quot;</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">allObjects</span> <span class="o">=</span> <span class="n">object_list</span><span class="p">[:]</span>
+            <span class="n">all_objects</span> <span class="o">=</span> <span class="n">object_list</span><span class="p">[:]</span>
 
         <span class="n">surfaces</span> <span class="o">=</span> <span class="n">surface_objects</span>
         <span class="k">if</span> <span class="n">map_frequency</span><span class="p">:</span>
@@ -1761,8 +1852,8 @@ function checkPageExistsAndRedirect(event) {
 
         <span class="n">props</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">(</span>
             <span class="p">{</span>
-                <span class="s2">&quot;Objects&quot;</span><span class="p">:</span> <span class="n">allObjects</span><span class="p">,</span>
-                <span class="s2">&quot;Project&quot;</span><span class="p">:</span> <span class="n">projname</span><span class="p">,</span>
+                <span class="s2">&quot;Objects&quot;</span><span class="p">:</span> <span class="n">all_objects</span><span class="p">,</span>
+                <span class="s2">&quot;Project&quot;</span><span class="p">:</span> <span class="n">project_name</span><span class="p">,</span>
                 <span class="s2">&quot;Product&quot;</span><span class="p">:</span> <span class="s2">&quot;ElectronicsDesktop&quot;</span><span class="p">,</span>
                 <span class="s2">&quot;Design&quot;</span><span class="p">:</span> <span class="n">designname</span><span class="p">,</span>
                 <span class="s2">&quot;Soln&quot;</span><span class="p">:</span> <span class="n">setupname</span> <span class="o">+</span> <span class="s2">&quot; : &quot;</span> <span class="o">+</span> <span class="n">sweepname</span><span class="p">,</span>
@@ -1779,7 +1870,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">bound</span> <span class="o">=</span> <span class="n">BoundaryObject</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">props</span><span class="p">,</span> <span class="s2">&quot;EMLoss&quot;</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">bound</span><span class="o">.</span><span class="n">create</span><span class="p">():</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">boundaries</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">bound</span><span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;EM losses mapped from design </span><span class="si">%s</span><span class="s2">.&quot;</span><span class="p">,</span> <span class="n">designname</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;EM losses mapped from design: </span><span class="si">%s</span><span class="s2">.&quot;</span><span class="p">,</span> <span class="n">designname</span><span class="p">)</span>
             <span class="k">return</span> <span class="n">bound</span>
         <span class="k">return</span> <span class="kc">False</span></div>
 
@@ -1793,7 +1884,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">sweep_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">parameter_dict_with_values</span><span class="o">=</span><span class="p">{},</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Export the field surface output.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Export the field surface output.</span>
 
 <span class="sd">        This method exports one CSV file for the specified variation.</span>
 
@@ -1866,7 +1957,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">sweep_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">parameter_dict_with_values</span><span class="o">=</span><span class="p">{},</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Export the field volume output.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Export the field volume output.</span>
 
 <span class="sd">        This method exports one CSV file for the specified variation.</span>
 
@@ -1938,7 +2029,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">variation</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
         <span class="n">variationlist</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Export a fields summary of all objects.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Export a fields summary of all objects.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2023,7 +2114,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Icepak.get_radiation_settings"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.icepak.Icepak.get_radiation_settings.html#pyaedt.icepak.Icepak.get_radiation_settings">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">get_radiation_settings</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">radiation</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Get radiation settings.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get radiation settings.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2038,24 +2129,25 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
 <span class="sd">        (bool, bool)</span>
+<span class="sd">            Tuple containing the low side radiation and the high side radiation.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">radiation</span> <span class="o">==</span> <span class="s2">&quot;Nothing&quot;</span><span class="p">:</span>
-            <span class="n">lowSideRad</span> <span class="o">=</span> <span class="kc">False</span>
-            <span class="n">highSideRad</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="n">low_side_radiation</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="n">high_side_radiation</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="k">elif</span> <span class="n">radiation</span> <span class="o">==</span> <span class="s2">&quot;Low&quot;</span><span class="p">:</span>
-            <span class="n">lowSideRad</span> <span class="o">=</span> <span class="kc">True</span>
-            <span class="n">highSideRad</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="n">low_side_radiation</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="n">high_side_radiation</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="k">elif</span> <span class="n">radiation</span> <span class="o">==</span> <span class="s2">&quot;High&quot;</span><span class="p">:</span>
-            <span class="n">lowSideRad</span> <span class="o">=</span> <span class="kc">False</span>
-            <span class="n">highSideRad</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="n">low_side_radiation</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="n">high_side_radiation</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="k">elif</span> <span class="n">radiation</span> <span class="o">==</span> <span class="s2">&quot;Both&quot;</span><span class="p">:</span>
-            <span class="n">lowSideRad</span> <span class="o">=</span> <span class="kc">True</span>
-            <span class="n">highSideRad</span> <span class="o">=</span> <span class="kc">True</span>
-        <span class="k">return</span> <span class="n">lowSideRad</span><span class="p">,</span> <span class="n">highSideRad</span></div>
+            <span class="n">low_side_radiation</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="n">high_side_radiation</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">return</span> <span class="n">low_side_radiation</span><span class="p">,</span> <span class="n">high_side_radiation</span></div>
 
 <div class="viewcode-block" id="Icepak.get_link_data"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.icepak.Icepak.get_link_data.html#pyaedt.icepak.Icepak.get_link_data">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
-    <span class="k">def</span> <span class="nf">get_link_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">linkData</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Get a list of linked data.</span>
+    <span class="k">def</span> <span class="nf">get_link_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">links_data</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get a list of linked data.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2074,15 +2166,23 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">            List containing the requested link data.</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="n">linkData</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+
+        <span class="k">if</span> <span class="s2">&quot;linkData&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+                <span class="s2">&quot;The ``linkData`` parameter was deprecated in 0.6.43. Use the ``links_data`` parameter instead.&quot;</span><span class="p">,</span>
+                <span class="ne">DeprecationWarning</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="n">links_data</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;linkData&quot;</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="n">links_data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">project_name</span> <span class="o">=</span> <span class="s2">&quot;This Project*&quot;</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">project_name</span> <span class="o">=</span> <span class="n">linkData</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;/&quot;</span><span class="p">)</span>
+            <span class="n">project_name</span> <span class="o">=</span> <span class="n">links_data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;/&quot;</span><span class="p">)</span>
 
-        <span class="n">designName</span> <span class="o">=</span> <span class="n">linkData</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-        <span class="n">hfssSolutionName</span> <span class="o">=</span> <span class="n">linkData</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
-        <span class="n">forceSourceSimEnabler</span> <span class="o">=</span> <span class="n">linkData</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
-        <span class="n">preserveSrcResEnabler</span> <span class="o">=</span> <span class="n">linkData</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
+        <span class="n">design_name</span> <span class="o">=</span> <span class="n">links_data</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">hfss_solution_name</span> <span class="o">=</span> <span class="n">links_data</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+        <span class="n">force_source_sim_enabler</span> <span class="o">=</span> <span class="n">links_data</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+        <span class="n">preserve_src_res_enabler</span> <span class="o">=</span> <span class="n">links_data</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
 
         <span class="n">arg</span> <span class="o">=</span> <span class="p">[</span>
             <span class="s2">&quot;NAME:DefnLink&quot;</span><span class="p">,</span>
@@ -2091,14 +2191,14 @@ function checkPageExistsAndRedirect(event) {
             <span class="s2">&quot;Product:=&quot;</span><span class="p">,</span>
             <span class="s2">&quot;ElectronicsDesktop&quot;</span><span class="p">,</span>
             <span class="s2">&quot;Design:=&quot;</span><span class="p">,</span>
-            <span class="n">designName</span><span class="p">,</span>
+            <span class="n">design_name</span><span class="p">,</span>
             <span class="s2">&quot;Soln:=&quot;</span><span class="p">,</span>
-            <span class="n">hfssSolutionName</span><span class="p">,</span>
+            <span class="n">hfss_solution_name</span><span class="p">,</span>
             <span class="p">[</span><span class="s2">&quot;NAME:Params&quot;</span><span class="p">],</span>
             <span class="s2">&quot;ForceSourceToSolve:=&quot;</span><span class="p">,</span>
-            <span class="n">forceSourceSimEnabler</span><span class="p">,</span>
+            <span class="n">force_source_sim_enabler</span><span class="p">,</span>
             <span class="s2">&quot;PreservePartnerSoln:=&quot;</span><span class="p">,</span>
-            <span class="n">preserveSrcResEnabler</span><span class="p">,</span>
+            <span class="n">preserve_src_res_enabler</span><span class="p">,</span>
             <span class="s2">&quot;PathRelativeTo:=&quot;</span><span class="p">,</span>
             <span class="s2">&quot;TargetProject&quot;</span><span class="p">,</span>
         <span class="p">]</span>
@@ -2116,7 +2216,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">hub_radius</span><span class="o">=</span><span class="s2">&quot;0mm&quot;</span><span class="p">,</span>
         <span class="n">origin</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a fan component in Icepak that is linked to an HFSS 3D Layout object.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a fan component in Icepak that is linked to an HFSS 3D Layout object.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2221,7 +2321,7 @@ function checkPageExistsAndRedirect(event) {
             <span class="p">}</span>
         <span class="p">)</span>
 
-        <span class="n">insts</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">oeditor</span><span class="o">.</span><span class="n">Get3DComponentInstanceNames</span><span class="p">(</span><span class="n">name</span><span class="p">))</span>
+        <span class="n">component3d_names</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">oeditor</span><span class="o">.</span><span class="n">Get3DComponentInstanceNames</span><span class="p">(</span><span class="n">name</span><span class="p">))</span>
 
         <span class="n">native</span> <span class="o">=</span> <span class="n">NativeComponentObject</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;Fan&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">native_props</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">native</span><span class="o">.</span><span class="n">create</span><span class="p">():</span>
@@ -2229,10 +2329,12 @@ function checkPageExistsAndRedirect(event) {
                 <span class="bp">self</span><span class="o">.</span><span class="n">modeler</span><span class="p">,</span> <span class="n">native</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">native_props</span><span class="p">[</span><span class="s2">&quot;NativeComponentDefinitionProvider&quot;</span><span class="p">],</span> <span class="s2">&quot;Fan&quot;</span>
             <span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">user_defined_components</span><span class="p">[</span><span class="n">native</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">user_defined_component</span>
-            <span class="n">new_name</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">oeditor</span><span class="o">.</span><span class="n">Get3DComponentInstanceNames</span><span class="p">(</span><span class="n">name</span><span class="p">))</span> <span class="k">if</span> <span class="n">i</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">insts</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">new_name</span> <span class="o">=</span> <span class="p">[</span>
+                <span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">oeditor</span><span class="o">.</span><span class="n">Get3DComponentInstanceNames</span><span class="p">(</span><span class="n">name</span><span class="p">))</span> <span class="k">if</span> <span class="n">i</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">component3d_names</span>
+            <span class="p">][</span><span class="mi">0</span><span class="p">]</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">refresh_all_ids</span><span class="p">()</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">materials</span><span class="o">.</span><span class="n">_load_from_project</span><span class="p">()</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">native_components</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">native</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_native_components</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">native</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">origin</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">new_name</span><span class="p">,</span> <span class="n">origin</span><span class="p">)</span>
             <span class="k">return</span> <span class="n">native</span>
@@ -2247,13 +2349,14 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">resolution</span><span class="p">,</span>
         <span class="n">PCB_CS</span><span class="o">=</span><span class="s2">&quot;Global&quot;</span><span class="p">,</span>
         <span class="n">rad</span><span class="o">=</span><span class="s2">&quot;Nothing&quot;</span><span class="p">,</span>
-        <span class="n">extenttype</span><span class="o">=</span><span class="s2">&quot;Bounding Box&quot;</span><span class="p">,</span>
-        <span class="n">outlinepolygon</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="n">extent_type</span><span class="o">=</span><span class="s2">&quot;Bounding Box&quot;</span><span class="p">,</span>
+        <span class="n">outline_polygon</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
         <span class="n">powerin</span><span class="o">=</span><span class="s2">&quot;0W&quot;</span><span class="p">,</span>
         <span class="n">custom_x_resolution</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">custom_y_resolution</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">kwargs</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a PCB component in Icepak that is linked to an HFSS 3D Layout object.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a PCB component in Icepak that is linked to an HFSS 3D Layout object.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2270,10 +2373,10 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">            Coordinate system for the PCB. The default is ``&quot;Global&quot;``.</span>
 <span class="sd">        rad : str, optional</span>
 <span class="sd">            Radiating faces. The default is ``&quot;Nothing&quot;``.</span>
-<span class="sd">        extenttype : str, optional</span>
+<span class="sd">        extent_type : str, optional</span>
 <span class="sd">            Type of the extent. Options are ``&quot;Bounding Box&quot;`` and ``&quot;Polygon&quot;``.</span>
 <span class="sd">            The default is ``&quot;Bounding Box&quot;``.</span>
-<span class="sd">        outlinepolygon : str, optional</span>
+<span class="sd">        outline_polygon : str, optional</span>
 <span class="sd">            Name of the polygon if ``extentype=&quot;Polygon&quot;``. The default is ``&quot;&quot;``.</span>
 <span class="sd">        powerin : str, optional</span>
 <span class="sd">            Power to dissipate if cosimulation is disabled. The default is ``&quot;0W&quot;``.</span>
@@ -2292,9 +2395,25 @@ function checkPageExistsAndRedirect(event) {
 
 <span class="sd">        &gt;&gt;&gt; oModule.InsertNativeComponent</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">lowRad</span><span class="p">,</span> <span class="n">highRad</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_radiation_settings</span><span class="p">(</span><span class="n">rad</span><span class="p">)</span>
-        <span class="n">hfssLinkInfo</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">({})</span>
-        <span class="n">_arg2dict</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_link_data</span><span class="p">(</span><span class="n">setupLinkInfo</span><span class="p">),</span> <span class="n">hfssLinkInfo</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="s2">&quot;extenttype&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+                <span class="s2">&quot;The ``extenttype`` parameter was deprecated in 0.6.43. Use the ``extent_type`` parameter instead.&quot;</span><span class="p">,</span>
+                <span class="ne">DeprecationWarning</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="n">extent_type</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;extenttype&quot;</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="s2">&quot;outlinepolygon&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+<span class="w">                </span><span class="sd">&quot;&quot;&quot;The ``outlinepolygon`` parameter was deprecated in 0.6.43.</span>
+<span class="sd">                Use the ``outline_polygon`` parameter instead.&quot;&quot;&quot;</span><span class="p">,</span>
+                <span class="ne">DeprecationWarning</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="n">outline_polygon</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;outlinepolygon&quot;</span><span class="p">]</span>
+
+        <span class="n">low_radiation</span><span class="p">,</span> <span class="n">high_radiation</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_radiation_settings</span><span class="p">(</span><span class="n">rad</span><span class="p">)</span>
+        <span class="n">hfss_link_info</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">({})</span>
+        <span class="n">_arg2dict</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_link_data</span><span class="p">(</span><span class="n">setupLinkInfo</span><span class="p">),</span> <span class="n">hfss_link_info</span><span class="p">)</span>
 
         <span class="n">native_props</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">(</span>
             <span class="p">{</span>
@@ -2304,14 +2423,14 @@ function checkPageExistsAndRedirect(event) {
                         <span class="s2">&quot;Unit&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">model_units</span><span class="p">,</span>
                         <span class="s2">&quot;MovePlane&quot;</span><span class="p">:</span> <span class="s2">&quot;XY&quot;</span><span class="p">,</span>
                         <span class="s2">&quot;Use3DLayoutExtents&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
-                        <span class="s2">&quot;ExtentsType&quot;</span><span class="p">:</span> <span class="n">extenttype</span><span class="p">,</span>
-                        <span class="s2">&quot;OutlinePolygon&quot;</span><span class="p">:</span> <span class="n">outlinepolygon</span><span class="p">,</span>
+                        <span class="s2">&quot;ExtentsType&quot;</span><span class="p">:</span> <span class="n">extent_type</span><span class="p">,</span>
+                        <span class="s2">&quot;OutlinePolygon&quot;</span><span class="p">:</span> <span class="n">outline_polygon</span><span class="p">,</span>
                         <span class="s2">&quot;CreateDevices&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
                         <span class="s2">&quot;CreateTopSolderballs&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
                         <span class="s2">&quot;CreateBottomSolderballs&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
                         <span class="s2">&quot;Resolution&quot;</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">resolution</span><span class="p">),</span>
-                        <span class="s2">&quot;LowSide&quot;</span><span class="p">:</span> <span class="n">OrderedDict</span><span class="p">({</span><span class="s2">&quot;Radiate&quot;</span><span class="p">:</span> <span class="n">lowRad</span><span class="p">}),</span>
-                        <span class="s2">&quot;HighSide&quot;</span><span class="p">:</span> <span class="n">OrderedDict</span><span class="p">({</span><span class="s2">&quot;Radiate&quot;</span><span class="p">:</span> <span class="n">highRad</span><span class="p">}),</span>
+                        <span class="s2">&quot;LowSide&quot;</span><span class="p">:</span> <span class="n">OrderedDict</span><span class="p">({</span><span class="s2">&quot;Radiate&quot;</span><span class="p">:</span> <span class="n">low_radiation</span><span class="p">}),</span>
+                        <span class="s2">&quot;HighSide&quot;</span><span class="p">:</span> <span class="n">OrderedDict</span><span class="p">({</span><span class="s2">&quot;Radiate&quot;</span><span class="p">:</span> <span class="n">high_radiation</span><span class="p">}),</span>
                     <span class="p">}</span>
                 <span class="p">)</span>
             <span class="p">}</span>
@@ -2333,11 +2452,11 @@ function checkPageExistsAndRedirect(event) {
             <span class="c1">#                    &quot;CustomResolution:=&quot;, False]</span>
         <span class="k">if</span> <span class="n">solutionFreq</span><span class="p">:</span>
             <span class="n">native_props</span><span class="p">[</span><span class="s2">&quot;NativeComponentDefinitionProvider&quot;</span><span class="p">][</span><span class="s2">&quot;Frequency&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">solutionFreq</span>
-            <span class="n">native_props</span><span class="p">[</span><span class="s2">&quot;NativeComponentDefinitionProvider&quot;</span><span class="p">][</span><span class="s2">&quot;DefnLink&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">hfssLinkInfo</span><span class="p">[</span><span class="s2">&quot;DefnLink&quot;</span><span class="p">]</span>
+            <span class="n">native_props</span><span class="p">[</span><span class="s2">&quot;NativeComponentDefinitionProvider&quot;</span><span class="p">][</span><span class="s2">&quot;DefnLink&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">hfss_link_info</span><span class="p">[</span><span class="s2">&quot;DefnLink&quot;</span><span class="p">]</span>
             <span class="c1"># compDefinition += [&quot;Frequency:=&quot;, solutionFreq, hfssLinkInfo]</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">native_props</span><span class="p">[</span><span class="s2">&quot;NativeComponentDefinitionProvider&quot;</span><span class="p">][</span><span class="s2">&quot;Power&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">powerin</span>
-            <span class="n">native_props</span><span class="p">[</span><span class="s2">&quot;NativeComponentDefinitionProvider&quot;</span><span class="p">][</span><span class="s2">&quot;DefnLink&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">hfssLinkInfo</span><span class="p">[</span><span class="s2">&quot;DefnLink&quot;</span><span class="p">]</span>
+            <span class="n">native_props</span><span class="p">[</span><span class="s2">&quot;NativeComponentDefinitionProvider&quot;</span><span class="p">][</span><span class="s2">&quot;DefnLink&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">hfss_link_info</span><span class="p">[</span><span class="s2">&quot;DefnLink&quot;</span><span class="p">]</span>
             <span class="c1"># compDefinition += [&quot;Power:=&quot;, powerin, hfssLinkInfo]</span>
 
         <span class="n">native_props</span><span class="p">[</span><span class="s2">&quot;TargetCS&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">PCB_CS</span>
@@ -2349,7 +2468,7 @@ function checkPageExistsAndRedirect(event) {
             <span class="bp">self</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">user_defined_components</span><span class="p">[</span><span class="n">native</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">user_defined_component</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">refresh_all_ids</span><span class="p">()</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">materials</span><span class="o">.</span><span class="n">_load_from_project</span><span class="p">()</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">native_components</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">native</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_native_components</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">native</span><span class="p">)</span>
             <span class="k">return</span> <span class="n">native</span>
         <span class="k">return</span> <span class="kc">False</span></div>
 
@@ -2360,14 +2479,15 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">project_name</span><span class="p">,</span>
         <span class="n">design_name</span><span class="p">,</span>
         <span class="n">resolution</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-        <span class="n">extenttype</span><span class="o">=</span><span class="s2">&quot;Bounding Box&quot;</span><span class="p">,</span>
-        <span class="n">outlinepolygon</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="n">extent_type</span><span class="o">=</span><span class="s2">&quot;Bounding Box&quot;</span><span class="p">,</span>
+        <span class="n">outline_polygon</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
         <span class="n">close_linked_project_after_import</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
         <span class="n">custom_x_resolution</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">custom_y_resolution</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">power_in</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">kwargs</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a PCB component in Icepak that is linked to an HFSS 3DLayout object linking only to the geometry file.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a PCB component in Icepak that is linked to an HFSS 3DLayout object linking only to the geometry file.</span>
 
 <span class="sd">        .. note::</span>
 <span class="sd">           No solution is linked.</span>
@@ -2382,11 +2502,11 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">            Name of the design.</span>
 <span class="sd">        resolution : int, optional</span>
 <span class="sd">            Resolution of the mapping. The default is ``2``.</span>
-<span class="sd">        extenttype :</span>
+<span class="sd">        extent_type :</span>
 <span class="sd">            Type of the extent. Options are ``&quot;Polygon&quot;`` and ``&quot;Bounding Box&quot;``. The default</span>
 <span class="sd">            is ``&quot;Bounding Box&quot;``.</span>
-<span class="sd">        outlinepolygon : str, optional</span>
-<span class="sd">            Name of the outline polygon if ``extenttype=&quot;Polygon&quot;``. The default is ``&quot;&quot;``.</span>
+<span class="sd">        outline_polygon : str, optional</span>
+<span class="sd">            Name of the outline polygon if ``extent_type=&quot;Polygon&quot;``. The default is ``&quot;&quot;``.</span>
 <span class="sd">        close_linked_project_after_import : bool, optional</span>
 <span class="sd">            Whether to close the linked AEDT project after the import. The default is ``True``.</span>
 <span class="sd">        custom_x_resolution :</span>
@@ -2406,6 +2526,21 @@ function checkPageExistsAndRedirect(event) {
 
 <span class="sd">        &gt;&gt;&gt; oModule.InsertNativeComponent</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="s2">&quot;extenttype&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+                <span class="s2">&quot;``extenttype`` was deprecated in 0.6.43. Use ``extent_type`` instead.&quot;</span><span class="p">,</span>
+                <span class="ne">DeprecationWarning</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="n">extent_type</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;extenttype&quot;</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="s2">&quot;outlinepolygon&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+                <span class="s2">&quot;``outlinepolygon`` was deprecated in 0.6.43. Use ``outline_polygon`` instead.&quot;</span><span class="p">,</span>
+                <span class="ne">DeprecationWarning</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="n">outline_polygon</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;outlinepolygon&quot;</span><span class="p">]</span>
+
         <span class="k">if</span> <span class="n">project_name</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">project_name</span><span class="p">:</span>
             <span class="n">project_name</span> <span class="o">=</span> <span class="s2">&quot;This Project*&quot;</span>
         <span class="n">link_data</span> <span class="o">=</span> <span class="p">[</span><span class="n">project_name</span><span class="p">,</span> <span class="n">design_name</span><span class="p">,</span> <span class="s2">&quot;&lt;--EDB Layout Data--&gt;&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">]</span>
@@ -2414,8 +2549,8 @@ function checkPageExistsAndRedirect(event) {
             <span class="n">link_data</span><span class="p">,</span>
             <span class="s2">&quot;&quot;</span><span class="p">,</span>
             <span class="n">resolution</span><span class="p">,</span>
-            <span class="n">extenttype</span><span class="o">=</span><span class="n">extenttype</span><span class="p">,</span>
-            <span class="n">outlinepolygon</span><span class="o">=</span><span class="n">outlinepolygon</span><span class="p">,</span>
+            <span class="n">extent_type</span><span class="o">=</span><span class="n">extent_type</span><span class="p">,</span>
+            <span class="n">outline_polygon</span><span class="o">=</span><span class="n">outline_polygon</span><span class="p">,</span>
             <span class="n">custom_x_resolution</span><span class="o">=</span><span class="n">custom_x_resolution</span><span class="p">,</span>
             <span class="n">custom_y_resolution</span><span class="o">=</span><span class="n">custom_y_resolution</span><span class="p">,</span>
             <span class="n">powerin</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">_arg_with_dim</span><span class="p">(</span><span class="n">power_in</span><span class="p">,</span> <span class="s2">&quot;W&quot;</span><span class="p">),</span>
@@ -2428,18 +2563,18 @@ function checkPageExistsAndRedirect(event) {
         <span class="k">return</span> <span class="n">status</span></div>
 
 <div class="viewcode-block" id="Icepak.copyGroupFrom"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.icepak.Icepak.copyGroupFrom.html#pyaedt.icepak.Icepak.copyGroupFrom">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
-    <span class="k">def</span> <span class="nf">copyGroupFrom</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">groupName</span><span class="p">,</span> <span class="n">sourceDesign</span><span class="p">,</span> <span class="n">sourceProject</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">sourceProjectPath</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Copy a group from another design.</span>
+    <span class="k">def</span> <span class="nf">copyGroupFrom</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">group_name</span><span class="p">,</span> <span class="n">source_design</span><span class="p">,</span> <span class="n">source_project_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">source_project_path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Copy a group from another design.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        groupName : str</span>
+<span class="sd">        group_name : str</span>
 <span class="sd">            Name of the group.</span>
-<span class="sd">        sourceDesign : str</span>
+<span class="sd">        source_design : str</span>
 <span class="sd">            Name of the source design.</span>
-<span class="sd">        sourceProject : str, optional</span>
-<span class="sd">            Name of the source project. The default is ``None``.</span>
-<span class="sd">        sourceProjectPath : str, optional</span>
+<span class="sd">        source_project_name : str, optional</span>
+<span class="sd">            Name of the source project. The default is ``None`` in which case, the current active project will be used.</span>
+<span class="sd">        source_project_path : str, optional</span>
 <span class="sd">            Path to the source project. The default is ``None``.</span>
 
 <span class="sd">        Returns</span>
@@ -2453,16 +2588,46 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        &gt;&gt;&gt; oEditor.Copy</span>
 <span class="sd">        &gt;&gt;&gt; oeditor.Paste</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">oName</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">project_name</span>
-        <span class="k">if</span> <span class="n">sourceProject</span> <span class="o">==</span> <span class="n">oName</span> <span class="ow">or</span> <span class="n">sourceProject</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">oSrcProject</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_desktop</span><span class="o">.</span><span class="n">GetActiveProject</span><span class="p">()</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_desktop</span><span class="o">.</span><span class="n">OpenProject</span><span class="p">(</span><span class="n">sourceProjectPath</span><span class="p">)</span>
-            <span class="n">oSrcProject</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_desktop</span><span class="o">.</span><span class="n">SetActiveProject</span><span class="p">(</span><span class="n">sourceProject</span><span class="p">)</span>
 
-        <span class="n">oDesign</span> <span class="o">=</span> <span class="n">oSrcProject</span><span class="o">.</span><span class="n">SetActiveDesign</span><span class="p">(</span><span class="n">sourceDesign</span><span class="p">)</span>
-        <span class="n">oEditor</span> <span class="o">=</span> <span class="n">oDesign</span><span class="o">.</span><span class="n">SetActiveEditor</span><span class="p">(</span><span class="s2">&quot;3D Modeler&quot;</span><span class="p">)</span>
-        <span class="n">oEditor</span><span class="o">.</span><span class="n">Copy</span><span class="p">([</span><span class="s2">&quot;NAME:Selections&quot;</span><span class="p">,</span> <span class="s2">&quot;Selections:=&quot;</span><span class="p">,</span> <span class="n">groupName</span><span class="p">])</span>
+        <span class="k">if</span> <span class="s2">&quot;groupName&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+                <span class="s2">&quot;The ``groupName`` parameter was deprecated in 0.6.43. Use the ``group_name`` parameter instead.&quot;</span><span class="p">,</span>
+                <span class="ne">DeprecationWarning</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="n">group_name</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;groupName&quot;</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="s2">&quot;sourceDesign&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+                <span class="s2">&quot;The ``sourceDesign`` parameter was deprecated in 0.6.43. Use the ``source_design`` parameter instead.&quot;</span><span class="p">,</span>
+                <span class="ne">DeprecationWarning</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="n">source_design</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;sourceDesign&quot;</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="s2">&quot;sourceProject&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+<span class="w">                </span><span class="sd">&quot;&quot;&quot;The ``sourceProject`` parameter was deprecated in 0.6.43.</span>
+<span class="sd">                Use the ``source_project_name`` parameter instead.&quot;&quot;&quot;</span><span class="p">,</span>
+                <span class="ne">DeprecationWarning</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="n">source_project_name</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;sourceProject&quot;</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="s2">&quot;sourceProjectPath&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+<span class="w">                </span><span class="sd">&quot;&quot;&quot;The ``sourceProjectPath`` parameter was deprecated in 0.6.43.</span>
+<span class="sd">                Use the ``source_project_path`` parameter instead.&quot;&quot;&quot;</span><span class="p">,</span>
+                <span class="ne">DeprecationWarning</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="n">source_project_path</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;sourceProjectPath&quot;</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="n">source_project_name</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">project_name</span> <span class="ow">or</span> <span class="n">source_project_name</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">active_project</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_desktop</span><span class="o">.</span><span class="n">GetActiveProject</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_desktop</span><span class="o">.</span><span class="n">OpenProject</span><span class="p">(</span><span class="n">source_project_path</span><span class="p">)</span>
+            <span class="n">active_project</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_desktop</span><span class="o">.</span><span class="n">SetActiveProject</span><span class="p">(</span><span class="n">source_project_name</span><span class="p">)</span>
+
+        <span class="n">active_design</span> <span class="o">=</span> <span class="n">active_project</span><span class="o">.</span><span class="n">SetActiveDesign</span><span class="p">(</span><span class="n">source_design</span><span class="p">)</span>
+        <span class="n">active_editor</span> <span class="o">=</span> <span class="n">active_design</span><span class="o">.</span><span class="n">SetActiveEditor</span><span class="p">(</span><span class="s2">&quot;3D Modeler&quot;</span><span class="p">)</span>
+        <span class="n">active_editor</span><span class="o">.</span><span class="n">Copy</span><span class="p">([</span><span class="s2">&quot;NAME:Selections&quot;</span><span class="p">,</span> <span class="s2">&quot;Selections:=&quot;</span><span class="p">,</span> <span class="n">group_name</span><span class="p">])</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">oeditor</span><span class="o">.</span><span class="n">Paste</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">refresh_all_ids</span><span class="p">()</span>
@@ -2481,7 +2646,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">edge_min_elements</span><span class="o">=</span><span class="s2">&quot;1&quot;</span><span class="p">,</span>
         <span class="nb">object</span><span class="o">=</span><span class="s2">&quot;Region&quot;</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a custom mesh tailored on a PCB design.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a custom mesh tailored on a PCB design.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2514,10 +2679,10 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        &gt;&gt;&gt; oModule.EditGlobalMeshRegion</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
-        <span class="n">oBoundingBox</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">oeditor</span><span class="o">.</span><span class="n">GetModelBoundingBox</span><span class="p">()</span>
-        <span class="n">xsize</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">oBoundingBox</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">-</span> <span class="nb">float</span><span class="p">(</span><span class="n">oBoundingBox</span><span class="p">[</span><span class="mi">3</span><span class="p">]))</span> <span class="o">/</span> <span class="p">(</span><span class="mi">15</span> <span class="o">*</span> <span class="n">meshtype</span> <span class="o">*</span> <span class="n">meshtype</span><span class="p">)</span>
-        <span class="n">ysize</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">oBoundingBox</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">-</span> <span class="nb">float</span><span class="p">(</span><span class="n">oBoundingBox</span><span class="p">[</span><span class="mi">4</span><span class="p">]))</span> <span class="o">/</span> <span class="p">(</span><span class="mi">15</span> <span class="o">*</span> <span class="n">meshtype</span> <span class="o">*</span> <span class="n">meshtype</span><span class="p">)</span>
-        <span class="n">zsize</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">oBoundingBox</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="o">-</span> <span class="nb">float</span><span class="p">(</span><span class="n">oBoundingBox</span><span class="p">[</span><span class="mi">5</span><span class="p">]))</span> <span class="o">/</span> <span class="p">(</span><span class="mi">10</span> <span class="o">*</span> <span class="n">meshtype</span><span class="p">)</span>
+        <span class="n">bounding_box</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">oeditor</span><span class="o">.</span><span class="n">GetModelBoundingBox</span><span class="p">()</span>
+        <span class="n">xsize</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">bounding_box</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">-</span> <span class="nb">float</span><span class="p">(</span><span class="n">bounding_box</span><span class="p">[</span><span class="mi">3</span><span class="p">]))</span> <span class="o">/</span> <span class="p">(</span><span class="mi">15</span> <span class="o">*</span> <span class="n">meshtype</span> <span class="o">*</span> <span class="n">meshtype</span><span class="p">)</span>
+        <span class="n">ysize</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">bounding_box</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">-</span> <span class="nb">float</span><span class="p">(</span><span class="n">bounding_box</span><span class="p">[</span><span class="mi">4</span><span class="p">]))</span> <span class="o">/</span> <span class="p">(</span><span class="mi">15</span> <span class="o">*</span> <span class="n">meshtype</span> <span class="o">*</span> <span class="n">meshtype</span><span class="p">)</span>
+        <span class="n">zsize</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">bounding_box</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="o">-</span> <span class="nb">float</span><span class="p">(</span><span class="n">bounding_box</span><span class="p">[</span><span class="mi">5</span><span class="p">]))</span> <span class="o">/</span> <span class="p">(</span><span class="mi">10</span> <span class="o">*</span> <span class="n">meshtype</span><span class="p">)</span>
         <span class="n">MaxSizeRatio</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="p">(</span><span class="n">meshtype</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">omeshmodule</span><span class="o">.</span><span class="n">EditGlobalMeshRegion</span><span class="p">(</span>
@@ -2571,7 +2736,7 @@ function checkPageExistsAndRedirect(event) {
     <span class="k">def</span> <span class="nf">create_meshregion_component</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">scale_factor</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Component_Region&quot;</span><span class="p">,</span> <span class="n">restore_padding_values</span><span class="o">=</span><span class="p">[</span><span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">]</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a bounding box to use as a mesh region in Icepak.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a bounding box to use as a mesh region in Icepak.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2594,14 +2759,14 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">edit_region_dimensions</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
 
-        <span class="n">verticesID</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">oeditor</span><span class="o">.</span><span class="n">GetVertexIDsFromObject</span><span class="p">(</span><span class="s2">&quot;Region&quot;</span><span class="p">)</span>
+        <span class="n">vertex_ids</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">oeditor</span><span class="o">.</span><span class="n">GetVertexIDsFromObject</span><span class="p">(</span><span class="s2">&quot;Region&quot;</span><span class="p">)</span>
 
         <span class="n">x_values</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="n">y_values</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="n">z_values</span> <span class="o">=</span> <span class="p">[]</span>
 
-        <span class="k">for</span> <span class="nb">id</span> <span class="ow">in</span> <span class="n">verticesID</span><span class="p">:</span>
-            <span class="n">tmp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">oeditor</span><span class="o">.</span><span class="n">GetVertexPosition</span><span class="p">(</span><span class="nb">id</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">vertex_id</span> <span class="ow">in</span> <span class="n">vertex_ids</span><span class="p">:</span>
+            <span class="n">tmp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">oeditor</span><span class="o">.</span><span class="n">GetVertexPosition</span><span class="p">(</span><span class="n">vertex_id</span><span class="p">)</span>
             <span class="n">x_values</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tmp</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
             <span class="n">y_values</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tmp</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
             <span class="n">z_values</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tmp</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
@@ -2631,50 +2796,9 @@ function checkPageExistsAndRedirect(event) {
         <span class="bp">self</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">edit_region_dimensions</span><span class="p">(</span><span class="n">restore_padding_values</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">dis_x</span><span class="p">,</span> <span class="n">dis_y</span><span class="p">,</span> <span class="n">dis_z</span></div>
 
-<div class="viewcode-block" id="Icepak.create_temp_point_monitor"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.icepak.Icepak.create_temp_point_monitor.html#pyaedt.icepak.Icepak.create_temp_point_monitor">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
-    <span class="k">def</span> <span class="nf">create_temp_point_monitor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">point_name</span><span class="p">,</span> <span class="n">point_coord</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]):</span>
-        <span class="sd">&quot;&quot;&quot;Create a temperature monitor for the simulation.</span>
-
-<span class="sd">        Parameters</span>
-<span class="sd">        ----------</span>
-<span class="sd">        point_name : str</span>
-<span class="sd">            Name of the temperature monitor.</span>
-<span class="sd">        point_coord : list, optional</span>
-<span class="sd">            List of ``[x, y, z}&quot;&quot; coordinates for the temperature monitor.</span>
-<span class="sd">            The default is ``[0, 0, 0]``.</span>
-
-<span class="sd">        Returns</span>
-<span class="sd">        -------</span>
-<span class="sd">        bool</span>
-<span class="sd">             ``True`` when successful, ``False`` when failed.</span>
-
-<span class="sd">        References</span>
-<span class="sd">        ----------</span>
-
-<span class="sd">        &gt;&gt;&gt; oModule.AssignPointMonitor</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">arg1</span> <span class="o">=</span> <span class="p">[</span>
-            <span class="s2">&quot;NAME:PointParameters&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;PointX:=&quot;</span><span class="p">,</span>
-            <span class="n">point_coord</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
-            <span class="s2">&quot;PointY:=&quot;</span><span class="p">,</span>
-            <span class="n">point_coord</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
-            <span class="s2">&quot;PointZ:=&quot;</span><span class="p">,</span>
-            <span class="n">point_coord</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span>
-        <span class="p">]</span>
-
-        <span class="n">arg2</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;NAME:Attributes&quot;</span><span class="p">,</span> <span class="s2">&quot;Name:=&quot;</span><span class="p">,</span> <span class="n">point_name</span><span class="p">,</span> <span class="s2">&quot;Color:=&quot;</span><span class="p">,</span> <span class="s2">&quot;(143 175 143)&quot;</span><span class="p">]</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">oeditor</span><span class="o">.</span><span class="n">CreatePoint</span><span class="p">(</span><span class="n">arg1</span><span class="p">,</span> <span class="n">arg2</span><span class="p">)</span>
-
-        <span class="n">arg</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;NAME:&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">point_name</span><span class="p">),</span> <span class="s2">&quot;Quantities:=&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;Temperature&quot;</span><span class="p">],</span> <span class="s2">&quot;Points:=&quot;</span><span class="p">,</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">point_name</span><span class="p">)]]</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">omonitor</span><span class="o">.</span><span class="n">AssignPointMonitor</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span>
-        <span class="k">return</span> <span class="kc">True</span></div>
-
 <div class="viewcode-block" id="Icepak.delete_em_losses"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.icepak.Icepak.delete_em_losses.html#pyaedt.icepak.Icepak.delete_em_losses">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">delete_em_losses</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bound_name</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Delete the EM losses boundary.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Delete the EM losses boundary.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2696,7 +2820,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Icepak.delete_pcb_component"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.icepak.Icepak.delete_pcb_component.html#pyaedt.icepak.Icepak.delete_pcb_component">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">delete_pcb_component</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">comp_name</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Delete a PCB component.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Delete a PCB component.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2720,7 +2844,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Icepak.get_liquid_objects"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.icepak.Icepak.get_liquid_objects.html#pyaedt.icepak.Icepak.get_liquid_objects">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">get_liquid_objects</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Get liquid material objects.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get liquid material objects.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2734,7 +2858,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Icepak.get_gas_objects"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.icepak.Icepak.get_gas_objects.html#pyaedt.icepak.Icepak.get_gas_objects">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">get_gas_objects</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Get gas objects.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get gas objects.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2748,7 +2872,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Icepak.generate_fluent_mesh"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.icepak.Icepak.generate_fluent_mesh.html#pyaedt.icepak.Icepak.generate_fluent_mesh">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">generate_fluent_mesh</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">object_lists</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Generate a Fluent mesh for a list of selected objects and assign the mesh automatically to the objects.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Generate a Fluent mesh for a list of selected objects and assign the mesh automatically to the objects.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2868,7 +2992,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">default_solid</span><span class="o">=</span><span class="s2">&quot;Al-Extruded&quot;</span><span class="p">,</span>
         <span class="n">default_surface</span><span class="o">=</span><span class="s2">&quot;Steel-oxidised-surface&quot;</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Apply Icepak default design settings.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Apply Icepak default design settings.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2879,13 +3003,13 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">            Gravity direction index in the range ``[0, 5]``. The default is ``5``.</span>
 <span class="sd">        perform_minimal_val : bool, optional</span>
 <span class="sd">            Whether to perform minimal validation. The default is ``True``.</span>
-<span class="sd">            If ``False``, full validation is performend.</span>
+<span class="sd">            If ``False``, full validation is performed.</span>
 <span class="sd">        default_fluid : str, optional</span>
-<span class="sd">            Default for the type of fluid. The default is ``&quot;Air&quot;``.</span>
+<span class="sd">            Type of fluid. The default is ``&quot;Air&quot;``.</span>
 <span class="sd">        default_solid :</span>
-<span class="sd">            Default for  the type of solid. The default is ``&quot;Al-Extruded&quot;``.</span>
+<span class="sd">            Type of solid. The default is ``&quot;Al-Extruded&quot;``.</span>
 <span class="sd">        default_surface :</span>
-<span class="sd">            Default for the type of surface. The default is ``&quot;Steel-oxidised-surface&quot;``.</span>
+<span class="sd">            Type of surface. The default is ``&quot;Steel-oxidised-surface&quot;``.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2898,13 +3022,13 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        &gt;&gt;&gt; oDesign.SetDesignSettings</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
-        <span class="n">AmbientTemp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">_arg_with_dim</span><span class="p">(</span><span class="n">ambienttemp</span><span class="p">,</span> <span class="s2">&quot;cel&quot;</span><span class="p">)</span>
+        <span class="n">ambient_temperature</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">_arg_with_dim</span><span class="p">(</span><span class="n">ambienttemp</span><span class="p">,</span> <span class="s2">&quot;cel&quot;</span><span class="p">)</span>
 
-        <span class="n">IceGravity</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;X&quot;</span><span class="p">,</span> <span class="s2">&quot;Y&quot;</span><span class="p">,</span> <span class="s2">&quot;Z&quot;</span><span class="p">]</span>
+        <span class="n">axes</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;X&quot;</span><span class="p">,</span> <span class="s2">&quot;Y&quot;</span><span class="p">,</span> <span class="s2">&quot;Z&quot;</span><span class="p">]</span>
         <span class="n">GVPos</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">gravityDir</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
             <span class="n">GVPos</span> <span class="o">=</span> <span class="kc">True</span>
-        <span class="n">GVA</span> <span class="o">=</span> <span class="n">IceGravity</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">gravityDir</span><span class="p">)</span> <span class="o">-</span> <span class="mi">3</span><span class="p">]</span>
+        <span class="n">gravity_axis</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">gravityDir</span><span class="p">)</span> <span class="o">-</span> <span class="mi">3</span><span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">odesign</span><span class="o">.</span><span class="n">SetDesignSettings</span><span class="p">(</span>
             <span class="p">[</span>
                 <span class="s2">&quot;NAME:Design Settings Data&quot;</span><span class="p">,</span>
@@ -2917,15 +3041,15 @@ function checkPageExistsAndRedirect(event) {
                 <span class="s2">&quot;Default Surface Material:=&quot;</span><span class="p">,</span>
                 <span class="n">default_surface</span><span class="p">,</span>
                 <span class="s2">&quot;AmbientTemperature:=&quot;</span><span class="p">,</span>
-                <span class="n">AmbientTemp</span><span class="p">,</span>
+                <span class="n">ambient_temperature</span><span class="p">,</span>
                 <span class="s2">&quot;AmbientPressure:=&quot;</span><span class="p">,</span>
                 <span class="s2">&quot;0n_per_meter_sq&quot;</span><span class="p">,</span>
                 <span class="s2">&quot;AmbientRadiationTemperature:=&quot;</span><span class="p">,</span>
-                <span class="n">AmbientTemp</span><span class="p">,</span>
+                <span class="n">ambient_temperature</span><span class="p">,</span>
                 <span class="s2">&quot;Gravity Vector CS ID:=&quot;</span><span class="p">,</span>
                 <span class="mi">1</span><span class="p">,</span>
                 <span class="s2">&quot;Gravity Vector Axis:=&quot;</span><span class="p">,</span>
-                <span class="n">GVA</span><span class="p">,</span>
+                <span class="n">gravity_axis</span><span class="p">,</span>
                 <span class="s2">&quot;Positive:=&quot;</span><span class="p">,</span>
                 <span class="n">GVPos</span><span class="p">,</span>
             <span class="p">],</span>
@@ -2935,7 +3059,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Icepak.assign_surface_material"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.icepak.Icepak.assign_surface_material.html#pyaedt.icepak.Icepak.assign_surface_material">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">assign_surface_material</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="n">mat</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Assign a surface material to one or more objects.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Assign a surface material to one or more objects.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2991,6 +3115,94 @@ function checkPageExistsAndRedirect(event) {
                 <span class="bp">self</span><span class="o">.</span><span class="n">materials</span><span class="o">.</span><span class="n">surface_material_keys</span><span class="p">[</span><span class="n">mat</span><span class="o">.</span><span class="n">lower</span><span class="p">()]</span> <span class="o">=</span> <span class="n">sm</span>
         <span class="k">return</span> <span class="kc">True</span></div>
 
+<div class="viewcode-block" id="Icepak.create_two_resistor_network_block_depr"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.icepak.Icepak.create_two_resistor_network_block_depr.html#pyaedt.icepak.Icepak.create_two_resistor_network_block_depr">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">create_two_resistor_network_block_depr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">object_name</span><span class="p">,</span> <span class="n">power</span><span class="p">,</span> <span class="n">rjb</span><span class="p">,</span> <span class="n">rjc</span><span class="p">,</span> <span class="n">placement</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a two-resistor network block.</span>
+
+<span class="sd">        .. deprecated:: 0.6.30</span>
+<span class="sd">            This method is replaced by the ``create_two_resistor_network_block`` method.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        object_name : str</span>
+<span class="sd">            Name of the object (3D block primitive) on which to create the two-resistor</span>
+<span class="sd">            network.</span>
+<span class="sd">        power : float</span>
+<span class="sd">            Junction power in [W].</span>
+<span class="sd">        rjb : float</span>
+<span class="sd">            Junction-to-board thermal resistance in [K/W].</span>
+<span class="sd">        rjc : float</span>
+<span class="sd">            Junction-to-case thermal resistance in [K/W].</span>
+<span class="sd">        placement : str</span>
+<span class="sd">            Placement of the network block. Options are:</span>
+<span class="sd">            - ``top``: Network block is placed on top of the board.</span>
+<span class="sd">            - &quot;bottom&quot; : Network block is placed on bottom of the board.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        :class:`pyaedt.modules.Boundary.BoundaryObject`</span>
+<span class="sd">            Boundary object.</span>
+
+<span class="sd">        References</span>
+<span class="sd">        ----------</span>
+
+<span class="sd">        &gt;&gt;&gt; oModule.AssignNetworkBoundary</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+
+<span class="sd">        &gt;&gt;&gt; box = icepak.modeler.create_box([4, 5, 6], [5, 5, 5], &quot;NetworkBox1&quot;, &quot;copper&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; block = icepak.create_two_resistor_network_block(&quot;NetworkBox1&quot;, &quot;2W&quot;, 20, 10, &quot;top&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; block.props[&quot;Nodes&quot;][&quot;Internal&quot;][0]</span>
+<span class="sd">        &#39;2W&#39;</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+            <span class="s2">&quot;This method is deprecated in 0.6.29. Use the ``create_two_resistor_network_block`` method instead.&quot;</span><span class="p">,</span>
+            <span class="ne">DeprecationWarning</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">object_handle</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">get_object_from_name</span><span class="p">(</span><span class="n">object_name</span><span class="p">)</span>
+        <span class="n">placement</span> <span class="o">=</span> <span class="n">placement</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">placement</span> <span class="o">==</span> <span class="s2">&quot;top&quot;</span><span class="p">:</span>
+            <span class="n">board_face_id</span> <span class="o">=</span> <span class="n">object_handle</span><span class="o">.</span><span class="n">top_face_z</span><span class="o">.</span><span class="n">id</span>
+            <span class="n">case_face_id</span> <span class="o">=</span> <span class="n">object_handle</span><span class="o">.</span><span class="n">bottom_face_z</span><span class="o">.</span><span class="n">id</span>
+            <span class="n">board_side</span> <span class="o">=</span> <span class="s2">&quot;bottom&quot;</span>
+            <span class="n">case_side</span> <span class="o">=</span> <span class="s2">&quot;top&quot;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">board_face_id</span> <span class="o">=</span> <span class="n">object_handle</span><span class="o">.</span><span class="n">bottom_face_z</span><span class="o">.</span><span class="n">id</span>
+            <span class="n">case_face_id</span> <span class="o">=</span> <span class="n">object_handle</span><span class="o">.</span><span class="n">top_face_z</span><span class="o">.</span><span class="n">id</span>
+            <span class="n">board_side</span> <span class="o">=</span> <span class="s2">&quot;top&quot;</span>
+            <span class="n">case_side</span> <span class="o">=</span> <span class="s2">&quot;bottom&quot;</span>
+
+        <span class="c1"># Define network properties in props directory</span>
+        <span class="n">props</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;Faces&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">board_face_id</span><span class="p">,</span> <span class="n">case_face_id</span><span class="p">],</span>
+            <span class="s2">&quot;Nodes&quot;</span><span class="p">:</span> <span class="n">OrderedDict</span><span class="p">(</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;Case_side(&quot;</span> <span class="o">+</span> <span class="n">case_side</span> <span class="o">+</span> <span class="s2">&quot;)&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">case_face_id</span><span class="p">,</span> <span class="s2">&quot;NoResistance&quot;</span><span class="p">],</span>
+                    <span class="s2">&quot;Board_side(&quot;</span> <span class="o">+</span> <span class="n">board_side</span> <span class="o">+</span> <span class="s2">&quot;)&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">board_face_id</span><span class="p">,</span> <span class="s2">&quot;NoResistance&quot;</span><span class="p">],</span>
+                    <span class="s2">&quot;Internal&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">power</span><span class="p">],</span>
+                <span class="p">}</span>
+            <span class="p">),</span>
+            <span class="s2">&quot;Links&quot;</span><span class="p">:</span> <span class="n">OrderedDict</span><span class="p">(</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;Rjc&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Case_side(&quot;</span> <span class="o">+</span> <span class="n">case_side</span> <span class="o">+</span> <span class="s2">&quot;)&quot;</span><span class="p">,</span> <span class="s2">&quot;Internal&quot;</span><span class="p">,</span> <span class="s2">&quot;R&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">rjc</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;cel_per_w&quot;</span><span class="p">],</span>
+                    <span class="s2">&quot;Rjb&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Board_side(&quot;</span> <span class="o">+</span> <span class="n">board_side</span> <span class="o">+</span> <span class="s2">&quot;)&quot;</span><span class="p">,</span> <span class="s2">&quot;Internal&quot;</span><span class="p">,</span> <span class="s2">&quot;R&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">rjb</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;cel_per_w&quot;</span><span class="p">],</span>
+                <span class="p">}</span>
+            <span class="p">),</span>
+            <span class="s2">&quot;SchematicData&quot;</span><span class="p">:</span> <span class="p">({}),</span>
+        <span class="p">}</span>
+
+        <span class="c1"># Default material is Ceramic_material</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">modeler</span><span class="p">[</span><span class="n">object_name</span><span class="p">]</span><span class="o">.</span><span class="n">material_name</span> <span class="o">=</span> <span class="s2">&quot;Ceramic_material&quot;</span>
+
+        <span class="c1"># Create boundary condition and set solve_inside = False</span>
+        <span class="n">bound</span> <span class="o">=</span> <span class="n">BoundaryObject</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">object_name</span><span class="p">,</span> <span class="n">props</span><span class="p">,</span> <span class="s2">&quot;Network&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">bound</span><span class="o">.</span><span class="n">create</span><span class="p">():</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">boundaries</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">bound</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">primitives</span><span class="p">[</span><span class="n">object_name</span><span class="p">]</span><span class="o">.</span><span class="n">solve_inside</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="k">return</span> <span class="n">bound</span>
+        <span class="k">return</span> <span class="kc">None</span></div>
+
 <div class="viewcode-block" id="Icepak.import_idf"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.icepak.Icepak.import_idf.html#pyaedt.icepak.Icepak.import_idf">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">import_idf</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
@@ -3019,7 +3231,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">cutoff_height</span><span class="o">=</span><span class="s2">&quot;5mm&quot;</span><span class="p">,</span>
         <span class="n">component_lib</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Import an IDF file into an Icepak design.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Import an IDF file into an Icepak design.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -3180,7 +3392,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Icepak.create_two_resistor_network_block"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.icepak.Icepak.create_two_resistor_network_block.html#pyaedt.icepak.Icepak.create_two_resistor_network_block">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">create_two_resistor_network_block</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">object_name</span><span class="p">,</span> <span class="n">pcb</span><span class="p">,</span> <span class="n">power</span><span class="p">,</span> <span class="n">rjb</span><span class="p">,</span> <span class="n">rjc</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Function to create 2-Resistor network object.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Function to create 2-Resistor network object.</span>
 <span class="sd">        This method is going to replace create_network_block method.</span>
 
 <span class="sd">        Parameters</span>
@@ -3219,16 +3431,23 @@ function checkPageExistsAndRedirect(event) {
         <span class="k">def</span> <span class="nf">get_face_normal</span><span class="p">(</span><span class="n">obj_face</span><span class="p">):</span>
             <span class="n">vertex1</span> <span class="o">=</span> <span class="n">obj_face</span><span class="o">.</span><span class="n">vertices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">position</span>
             <span class="n">vertex2</span> <span class="o">=</span> <span class="n">obj_face</span><span class="o">.</span><span class="n">vertices</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">position</span>
-            <span class="n">fc</span> <span class="o">=</span> <span class="n">obj_face</span><span class="o">.</span><span class="n">center_from_aedt</span>
-            <span class="n">v1</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="n">j</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">vertex1</span><span class="p">,</span> <span class="n">fc</span><span class="p">)]</span>
-            <span class="n">v2</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="n">j</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">vertex2</span><span class="p">,</span> <span class="n">fc</span><span class="p">)]</span>
+            <span class="n">face_center</span> <span class="o">=</span> <span class="n">obj_face</span><span class="o">.</span><span class="n">center_from_aedt</span>
+            <span class="n">v1</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="n">j</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">vertex1</span><span class="p">,</span> <span class="n">face_center</span><span class="p">)]</span>
+            <span class="n">v2</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="n">j</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">vertex2</span><span class="p">,</span> <span class="n">face_center</span><span class="p">)]</span>
             <span class="n">n</span> <span class="o">=</span> <span class="n">GeometryOperators</span><span class="o">.</span><span class="n">v_cross</span><span class="p">(</span><span class="n">v1</span><span class="p">,</span> <span class="n">v2</span><span class="p">)</span>
             <span class="n">normalized_n</span> <span class="o">=</span> <span class="n">GeometryOperators</span><span class="o">.</span><span class="n">normalize_vector</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
             <span class="k">return</span> <span class="n">normalized_n</span>
 
         <span class="n">net_handle</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">get_object_from_name</span><span class="p">(</span><span class="n">object_name</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">pcb</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">user_defined_component_names</span><span class="p">:</span>
-            <span class="n">part_names</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">get_3d_component_object_list</span><span class="p">(</span><span class="n">componentname</span><span class="o">=</span><span class="n">pcb</span><span class="p">))</span>
+            <span class="n">part_names</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span>
+                <span class="p">[</span>
+                    <span class="n">pcb_layer</span>
+                    <span class="k">for</span> <span class="n">pcb_layer</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">get_3d_component_object_list</span><span class="p">(</span><span class="n">componentname</span><span class="o">=</span><span class="n">pcb</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">user_defined_components</span><span class="p">[</span><span class="n">pcb</span><span class="p">]</span><span class="o">.</span><span class="n">definition_name</span> <span class="o">+</span> <span class="sa">r</span><span class="s2">&quot;_\d\d\d.*&quot;</span><span class="p">,</span> <span class="n">pcb_layer</span><span class="p">)</span>
+                <span class="p">]</span>
+            <span class="p">)</span>
+
             <span class="n">pcb_layers</span> <span class="o">=</span> <span class="p">[</span><span class="n">part_names</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">part_names</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span>
             <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="n">pcb_layers</span><span class="p">:</span>
                 <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">get_object_from_name</span><span class="p">(</span><span class="n">object_name</span><span class="p">)</span><span class="o">.</span><span class="n">get_touching_faces</span><span class="p">(</span><span class="n">layer</span><span class="p">)</span>
@@ -3279,11 +3498,11 @@ function checkPageExistsAndRedirect(event) {
         <span class="p">}</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">primitives</span><span class="p">[</span><span class="n">object_name</span><span class="p">]</span><span class="o">.</span><span class="n">material_name</span> <span class="o">=</span> <span class="s2">&quot;Ceramic_material&quot;</span>
-        <span class="n">bound</span> <span class="o">=</span> <span class="n">BoundaryObject</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">object_name</span><span class="p">,</span> <span class="n">props</span><span class="p">,</span> <span class="s2">&quot;Network&quot;</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">bound</span><span class="o">.</span><span class="n">create</span><span class="p">():</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">boundaries</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">bound</span><span class="p">)</span>
+        <span class="n">boundary</span> <span class="o">=</span> <span class="n">BoundaryObject</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">object_name</span><span class="p">,</span> <span class="n">props</span><span class="p">,</span> <span class="s2">&quot;Network&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">boundary</span><span class="o">.</span><span class="n">create</span><span class="p">():</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">boundaries</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">boundary</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">primitives</span><span class="p">[</span><span class="n">object_name</span><span class="p">]</span><span class="o">.</span><span class="n">solve_inside</span> <span class="o">=</span> <span class="kc">False</span>
-            <span class="k">return</span> <span class="n">bound</span>
+            <span class="k">return</span> <span class="n">boundary</span>
         <span class="k">return</span> <span class="kc">None</span></div></div>
 </pre></div>
 
@@ -3305,13 +3524,13 @@ function checkPageExistsAndRedirect(event) {
   
   <div class="footer-item">
     <p class="copyright">
-    &copy; Copyright (c) 2022 ANSYS, Inc. All rights reserved.<br>
+    &copy; Copyright (c) 2023 ANSYS, Inc. All rights reserved.<br>
 </p>
   </div>
   
   <div class="footer-item">
     <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 6.1.3.<br>
 </p>
   </div>
   

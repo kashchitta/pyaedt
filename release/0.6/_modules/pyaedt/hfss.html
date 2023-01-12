@@ -41,14 +41,11 @@
         <link href="../../_static/css/breadcrumbs.css" rel="stylesheet">
     
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/sphinx_highlight.js"></script>
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
-    <link rel="shortcut icon" href="../../_static/ansys-favicon.png"/>
+    <link rel="icon" href="../../_static/ansys-favicon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -77,9 +74,8 @@
   
   
   
-    <img src="../../_static/pyansys-logo-black-cropped.png" class="logo__image only-light" alt="Logo image">
-    <img src="../../_static/pyansys-logo-black-cropped.png" class="logo__image only-dark" alt="Logo image">
   
+    <p class="title logo__title">PyAEDT</p>
   
 </a>
     
@@ -207,7 +203,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.42 variable.
+            // this version, rather than using sphinx's 0.6.43 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -355,7 +351,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <div class="viewcode-block" id="Hfss"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.hfss.Hfss.html#pyaedt.hfss.Hfss">[docs]</a><span class="k">class</span> <span class="nc">Hfss</span><span class="p">(</span><span class="n">FieldAnalysis3D</span><span class="p">,</span> <span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Provides the HFSS application interface.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Provides the HFSS application interface.</span>
 
 <span class="sd">    This class allows you to create an interactive instance of HFSS and</span>
 <span class="sd">    connect to an existing HFSS design or create a new HFSS design if</span>
@@ -513,7 +509,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">field_setups</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;List of AEDT radiation fields.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;List of AEDT radiation fields.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -525,7 +521,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">field_setup_names</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;List of AEDT radiation field names.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;List of AEDT radiation field names.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -534,13 +530,13 @@ function checkPageExistsAndRedirect(event) {
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">odesign</span><span class="o">.</span><span class="n">GetChildObject</span><span class="p">(</span><span class="s2">&quot;Radiation&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">GetChildNames</span><span class="p">()</span>
 
     <span class="k">class</span> <span class="nc">BoundaryType</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Creates and manages boundaries.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Creates and manages boundaries.&quot;&quot;&quot;</span>
 
         <span class="p">(</span><span class="n">PerfectE</span><span class="p">,</span> <span class="n">PerfectH</span><span class="p">,</span> <span class="n">Aperture</span><span class="p">,</span> <span class="n">Radiation</span><span class="p">,</span> <span class="n">Impedance</span><span class="p">,</span> <span class="n">LayeredImp</span><span class="p">,</span> <span class="n">LumpedRLC</span><span class="p">,</span> <span class="n">FiniteCond</span><span class="p">,</span> <span class="n">Hybrid</span><span class="p">)</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">hybrid</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;HFSS hybrid mode for the active solution.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;HFSS hybrid mode for the active solution.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">design_solutions</span><span class="o">.</span><span class="n">hybrid</span>
 
     <span class="nd">@hybrid</span><span class="o">.</span><span class="n">setter</span>
@@ -550,7 +546,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">composite</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;HFSS composite mode for the active solution.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;HFSS composite mode for the active solution.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">design_solutions</span><span class="o">.</span><span class="n">composite</span>
 
     <span class="nd">@composite</span><span class="o">.</span><span class="n">setter</span>
@@ -560,7 +556,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Hfss.set_auto_open"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.hfss.Hfss.set_auto_open.html#pyaedt.hfss.Hfss.set_auto_open">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">set_auto_open</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">enable</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">boundary_type</span><span class="o">=</span><span class="s2">&quot;Radiation&quot;</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Set the HFSS auto open type.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set the HFSS auto open type.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -620,7 +616,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">_create_boundary</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">props</span><span class="p">,</span> <span class="n">boundary_type</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a boundary.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a boundary.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ---------</span>
@@ -893,7 +889,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">radius</span><span class="o">=</span><span class="s2">&quot;0.5um&quot;</span><span class="p">,</span>
         <span class="n">ratio</span><span class="o">=</span><span class="s2">&quot;2.9&quot;</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Assign finite conductivity to one or more objects of a given material.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Assign finite conductivity to one or more objects of a given material.</span>
 
 <span class="sd">        .. deprecated:: 0.4.5</span>
 <span class="sd">           Use :func:`Hfss.assign_coating` instead.</span>
@@ -936,12 +932,12 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">radius</span><span class="o">=</span><span class="s2">&quot;0.5um&quot;</span><span class="p">,</span>
         <span class="n">ratio</span><span class="o">=</span><span class="s2">&quot;2.9&quot;</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Assign finite conductivity to one or more objects of a given material.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Assign finite conductivity to one or more objects or faces of a given material.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        obj : str or list</span>
-<span class="sd">            One or more objects to assign finite conductivity to.</span>
+<span class="sd">            One or more objects or faces to assign finite conductivity to.</span>
 <span class="sd">        mat : str, optional</span>
 <span class="sd">            Material to use. The default is ``None``.</span>
 <span class="sd">        cond : float, optional</span>
@@ -982,20 +978,42 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        Examples</span>
 <span class="sd">        --------</span>
 
-<span class="sd">        Create a cylinder at the XY working plane and assign a copper coating of 0.2 mm to it.</span>
-
+<span class="sd">        Create two cylinders in the XY working plane and assign a copper coating of 0.2 mm to the inner cylinder and</span>
+<span class="sd">        outer face.</span>
+<span class="sd">        &gt;&gt;&gt; from pyaedt import Hfss</span>
+<span class="sd">        &gt;&gt;&gt; hfss = Hfss()</span>
 <span class="sd">        &gt;&gt;&gt; origin = hfss.modeler.Position(0, 0, 0)</span>
 <span class="sd">        &gt;&gt;&gt; inner = hfss.modeler.create_cylinder(</span>
 <span class="sd">        ...     hfss.PLANE.XY, origin, 3, 200, 0, &quot;inner&quot;</span>
 <span class="sd">        ... )</span>
-<span class="sd">        &gt;&gt;&gt; inner_id = hfss.modeler.get_obj_id(&quot;inner&quot;)</span>
-<span class="sd">        &gt;&gt;&gt; coat = hfss.assign_coating([inner_id], &quot;copper&quot;, usethickness=True, thickness=&quot;0.2mm&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; outer = hfss.modeler.create_cylinder(</span>
+<span class="sd">        ...     hfss.PLANE.XY, origin, 4, 200, 0, &quot;outer&quot;</span>
+<span class="sd">        ... )</span>
+<span class="sd">        &gt;&gt;&gt; coat = hfss.assign_coating([&quot;inner&quot;, outer.faces[2].id], &quot;copper&quot;, usethickness=True, thickness=&quot;0.2mm&quot;)</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
 
-        <span class="n">listobj</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">convert_to_selections</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
-        <span class="n">listobjname</span> <span class="o">=</span> <span class="s2">&quot;_&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">listobj</span><span class="p">)</span>
-        <span class="n">props</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Objects&quot;</span><span class="p">:</span> <span class="n">listobj</span><span class="p">}</span>
+        <span class="n">userlst</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">convert_to_selections</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+        <span class="n">lstobj</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">lstface</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">selection</span> <span class="ow">in</span> <span class="n">userlst</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">selection</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">model_objects</span><span class="p">:</span>
+                <span class="n">lstobj</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">selection</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">selection</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">_find_object_from_face_id</span><span class="p">(</span><span class="n">selection</span><span class="p">):</span>
+                <span class="n">lstface</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">selection</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">lstface</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">lstobj</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Objects or Faces selected do not exist in the design.&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="n">listobjname</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+        <span class="n">props</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">if</span> <span class="n">lstobj</span><span class="p">:</span>
+            <span class="n">listobjname</span> <span class="o">=</span> <span class="n">listobjname</span> <span class="o">+</span> <span class="s2">&quot;_&quot;</span> <span class="o">+</span> <span class="s2">&quot;_&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">lstobj</span><span class="p">)</span>
+            <span class="n">props</span><span class="p">[</span><span class="s2">&quot;Objects&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">lstobj</span>
+        <span class="k">if</span> <span class="n">lstface</span><span class="p">:</span>
+            <span class="n">props</span><span class="p">[</span><span class="s2">&quot;Faces&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">lstface</span>
+            <span class="n">lstface</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">lstface</span><span class="p">]</span>
+            <span class="n">listobjname</span> <span class="o">=</span> <span class="n">listobjname</span> <span class="o">+</span> <span class="s2">&quot;_&quot;</span> <span class="o">+</span> <span class="s2">&quot;_&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">lstface</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">mat</span><span class="p">:</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">materials</span><span class="p">[</span><span class="n">mat</span><span class="p">]:</span>
                 <span class="n">props</span><span class="p">[</span><span class="s2">&quot;UseMaterial&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
@@ -1022,7 +1040,7 @@ function checkPageExistsAndRedirect(event) {
             <span class="n">props</span><span class="p">[</span><span class="s2">&quot;IsShellElement&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">issheelElement</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">props</span><span class="p">[</span><span class="s2">&quot;IsInternal&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">isInternal</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_boundary</span><span class="p">(</span><span class="s2">&quot;Coating_&quot;</span> <span class="o">+</span> <span class="n">listobjname</span><span class="p">[:</span><span class="mi">32</span><span class="p">],</span> <span class="n">props</span><span class="p">,</span> <span class="s2">&quot;Finite Conductivity&quot;</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_boundary</span><span class="p">(</span><span class="s2">&quot;Coating_&quot;</span> <span class="o">+</span> <span class="n">listobjname</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">props</span><span class="p">,</span> <span class="s2">&quot;Finite Conductivity&quot;</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Hfss.create_frequency_sweep"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.hfss.Hfss.create_frequency_sweep.html#pyaedt.hfss.Hfss.create_frequency_sweep">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">create_frequency_sweep</span><span class="p">(</span>
@@ -1039,7 +1057,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">save_fields</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
         <span class="n">save_rad_fields</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a frequency sweep.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a frequency sweep.</span>
 
 <span class="sd">        .. deprecated:: 0.4.0</span>
 <span class="sd">           Use :func:`Hfss.create_linear_count_sweep` instead.</span>
@@ -1079,7 +1097,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">interpolation_tol</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
         <span class="n">interpolation_max_solutions</span><span class="o">=</span><span class="mi">250</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a sweep with a specified number of points.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a sweep with a specified number of points.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1186,7 +1204,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">save_rad_fields</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
         <span class="n">sweep_type</span><span class="o">=</span><span class="s2">&quot;Discrete&quot;</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a sweep with a specified frequency step.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a sweep with a specified frequency step.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1285,7 +1303,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">save_fields</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
         <span class="n">save_rad_fields</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a sweep with a single frequency point.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a sweep with a single frequency point.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1394,7 +1412,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">thin_sources</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
         <span class="n">power_fraction</span><span class="o">=</span><span class="s2">&quot;0.95&quot;</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a linked antenna.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a linked antenna.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1506,7 +1524,7 @@ function checkPageExistsAndRedirect(event) {
                 <span class="bp">self</span><span class="o">.</span><span class="n">modeler</span><span class="p">,</span> <span class="n">native</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">native_props</span><span class="p">[</span><span class="s2">&quot;NativeComponentDefinitionProvider&quot;</span><span class="p">],</span> <span class="n">antenna_type</span>
             <span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">user_defined_components</span><span class="p">[</span><span class="n">native</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">user_defined_component</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">native_components</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">native</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_native_components</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">native</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Native component </span><span class="si">%s</span><span class="s2"> </span><span class="si">%s</span><span class="s2"> has been correctly created.&quot;</span><span class="p">,</span> <span class="n">antenna_type</span><span class="p">,</span> <span class="n">antenna_name</span><span class="p">)</span>
             <span class="k">return</span> <span class="n">native</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Error in native component creation for </span><span class="si">%s</span><span class="s2"> </span><span class="si">%s</span><span class="s2">.&quot;</span><span class="p">,</span> <span class="n">antenna_type</span><span class="p">,</span> <span class="n">antenna_name</span><span class="p">)</span>
@@ -1685,7 +1703,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">is_array</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
         <span class="n">antenna_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a parametric beam antenna in SBR+.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a parametric beam antenna in SBR+.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1799,7 +1817,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">model_units</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">antenna_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a linked antenna.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a linked antenna.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1860,7 +1878,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Hfss.set_sbr_txrx_settings"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.hfss.Hfss.set_sbr_txrx_settings.html#pyaedt.hfss.Hfss.set_sbr_txrx_settings">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">set_sbr_txrx_settings</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">txrx_settings</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Set SBR+ TX RX antenna settings.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set SBR+ TX RX antenna settings.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1891,7 +1909,7 @@ function checkPageExistsAndRedirect(event) {
     <span class="k">def</span> <span class="nf">create_circuit_port_between_objects</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">startobj</span><span class="p">,</span> <span class="n">endobject</span><span class="p">,</span> <span class="n">axisdir</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">impedance</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">portname</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">renorm</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">renorm_impedance</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">deemb</span><span class="o">=</span><span class="kc">False</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a circuit port taking the closest edges of two objects.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a circuit port taking the closest edges of two objects.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1955,7 +1973,7 @@ function checkPageExistsAndRedirect(event) {
     <span class="k">def</span> <span class="nf">create_lumped_port_between_objects</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">startobj</span><span class="p">,</span> <span class="n">endobject</span><span class="p">,</span> <span class="n">axisdir</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">impedance</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">portname</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">renorm</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">deemb</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">port_on_plane</span><span class="o">=</span><span class="kc">True</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a lumped port taking the closest edges of two objects.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a lumped port taking the closest edges of two objects.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2040,7 +2058,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Hfss.create_spiral_lumped_port"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.hfss.Hfss.create_spiral_lumped_port.html#pyaedt.hfss.Hfss.create_spiral_lumped_port">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">create_spiral_lumped_port</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start_object</span><span class="p">,</span> <span class="n">end_object</span><span class="p">,</span> <span class="n">port_width</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a spiral lumped port between two adjacent objects.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a spiral lumped port between two adjacent objects.</span>
 
 <span class="sd">        The two objects must have two adjacent, parallel, and identical faces.</span>
 <span class="sd">        The faces must be a polygon (not a circle).</span>
@@ -2243,7 +2261,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Hfss.create_voltage_source_from_objects"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.hfss.Hfss.create_voltage_source_from_objects.html#pyaedt.hfss.Hfss.create_voltage_source_from_objects">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">create_voltage_source_from_objects</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">startobj</span><span class="p">,</span> <span class="n">endobject</span><span class="p">,</span> <span class="n">axisdir</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sourcename</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">source_on_plane</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a voltage source taking the closest edges of two objects.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a voltage source taking the closest edges of two objects.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2301,7 +2319,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Hfss.create_current_source_from_objects"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.hfss.Hfss.create_current_source_from_objects.html#pyaedt.hfss.Hfss.create_current_source_from_objects">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">create_current_source_from_objects</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">startobj</span><span class="p">,</span> <span class="n">endobject</span><span class="p">,</span> <span class="n">axisdir</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sourcename</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">source_on_plane</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a current source taking the closest edges of two objects.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a current source taking the closest edges of two objects.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2357,7 +2375,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Hfss.create_source_excitation"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.hfss.Hfss.create_source_excitation.html#pyaedt.hfss.Hfss.create_source_excitation">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">create_source_excitation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sheet_name</span><span class="p">,</span> <span class="n">point1</span><span class="p">,</span> <span class="n">point2</span><span class="p">,</span> <span class="n">sourcename</span><span class="p">,</span> <span class="n">sourcetype</span><span class="o">=</span><span class="s2">&quot;Voltage&quot;</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a source excitation.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a source excitation.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2402,7 +2420,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">port_on_plane</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
         <span class="n">add_pec_cap</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a waveport taking the closest edges of two objects.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a waveport taking the closest edges of two objects.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2504,7 +2522,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">reporter_filter</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
         <span class="n">lattice_cs</span><span class="o">=</span><span class="s2">&quot;Global&quot;</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a floquet port on a face.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a floquet port on a face.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2599,7 +2617,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">phase_delay_param2</span><span class="o">=</span><span class="s2">&quot;0deg&quot;</span><span class="p">,</span>
         <span class="n">pair_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Assign a lattice pair to a couple of faces.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Assign a lattice pair to a couple of faces.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2660,7 +2678,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Hfss.auto_assign_lattice_pairs"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.hfss.Hfss.auto_assign_lattice_pairs.html#pyaedt.hfss.Hfss.auto_assign_lattice_pairs">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">auto_assign_lattice_pairs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">object_to_assign</span><span class="p">,</span> <span class="n">coordinate_system</span><span class="o">=</span><span class="s2">&quot;Global&quot;</span><span class="p">,</span> <span class="n">coordinate_plane</span><span class="o">=</span><span class="s2">&quot;XY&quot;</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Assign lattice pairs to a geometry automatically.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Assign lattice pairs to a geometry automatically.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2703,7 +2721,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">coord_name</span><span class="o">=</span><span class="s2">&quot;Global&quot;</span><span class="p">,</span>
         <span class="n">secondary_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Assign the secondary boundary condition.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Assign the secondary boundary condition.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2781,7 +2799,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Hfss.assign_primary"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.hfss.Hfss.assign_primary.html#pyaedt.hfss.Hfss.assign_primary">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">assign_primary</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">face</span><span class="p">,</span> <span class="n">u_start</span><span class="p">,</span> <span class="n">u_end</span><span class="p">,</span> <span class="n">reverse_v</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">coord_name</span><span class="o">=</span><span class="s2">&quot;Global&quot;</span><span class="p">,</span> <span class="n">primary_name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Assign the primary boundary condition.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Assign the primary boundary condition.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2863,7 +2881,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">vfactor</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
         <span class="n">hfactor</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a waveport taking the closest edges of two objects.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a waveport taking the closest edges of two objects.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2954,7 +2972,7 @@ function checkPageExistsAndRedirect(event) {
     <span class="k">def</span> <span class="nf">create_perfecte_from_objects</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">startobj</span><span class="p">,</span> <span class="n">endobject</span><span class="p">,</span> <span class="n">axisdir</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sourcename</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">is_infinite_gnd</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">bound_on_plane</span><span class="o">=</span><span class="kc">True</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a Perfect E taking the closest edges of two objects.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a Perfect E taking the closest edges of two objects.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -3019,7 +3037,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Hfss.create_perfecth_from_objects"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.hfss.Hfss.create_perfecth_from_objects.html#pyaedt.hfss.Hfss.create_perfecth_from_objects">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">create_perfecth_from_objects</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">startobj</span><span class="p">,</span> <span class="n">endobject</span><span class="p">,</span> <span class="n">axisdir</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sourcename</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">bound_on_plane</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a Perfect H taking the closest edges of two objects.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a Perfect H taking the closest edges of two objects.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -3080,7 +3098,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Hfss.SARSetup"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.hfss.Hfss.SARSetup.html#pyaedt.hfss.Hfss.SARSetup">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">SARSetup</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Tissue_object_List_ID</span><span class="p">,</span> <span class="n">TissueMass</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">MaterialDensity</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">voxel_size</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">Average_SAR_method</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Define SAR settings.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Define SAR settings.</span>
 
 <span class="sd">        .. deprecated:: 0.4.5</span>
 <span class="sd">           Use :func:`Hfss.sar_setup` instead.</span>
@@ -3091,7 +3109,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Hfss.sar_setup"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.hfss.Hfss.sar_setup.html#pyaedt.hfss.Hfss.sar_setup">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">sar_setup</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Tissue_object_List_ID</span><span class="p">,</span> <span class="n">TissueMass</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">MaterialDensity</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">voxel_size</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">Average_SAR_method</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Define SAR settings.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Define SAR settings.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -3122,7 +3140,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Hfss.create_open_region"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.hfss.Hfss.create_open_region.html#pyaedt.hfss.Hfss.create_open_region">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">create_open_region</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Frequency</span><span class="o">=</span><span class="s2">&quot;1GHz&quot;</span><span class="p">,</span> <span class="n">Boundary</span><span class="o">=</span><span class="s2">&quot;Radiation&quot;</span><span class="p">,</span> <span class="n">ApplyInfiniteGP</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">GPAXis</span><span class="o">=</span><span class="s2">&quot;-z&quot;</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create an open region on the active editor.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create an open region on the active editor.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -3167,7 +3185,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">Cvalue</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">bound_on_plane</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a lumped RLC taking the closest edges of two objects.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a lumped RLC taking the closest edges of two objects.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -3267,7 +3285,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">is_infground</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
         <span class="n">bound_on_plane</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create an impedance taking the closest edges of two objects.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create an impedance taking the closest edges of two objects.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -3345,7 +3363,7 @@ function checkPageExistsAndRedirect(event) {
     <span class="k">def</span> <span class="nf">create_boundary</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">boundary_type</span><span class="o">=</span><span class="n">BoundaryType</span><span class="o">.</span><span class="n">PerfectE</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">boundary_name</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">is_infinite_gnd</span><span class="o">=</span><span class="kc">False</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a boundary given specific inputs.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a boundary given specific inputs.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -3446,7 +3464,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">renorm</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
         <span class="n">terminal_references</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a waveport on sheet objects created starting from sheets.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a waveport on sheet objects created starting from sheets.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -3554,7 +3572,7 @@ function checkPageExistsAndRedirect(event) {
     <span class="k">def</span> <span class="nf">create_lumped_port_to_sheet</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">sheet_name</span><span class="p">,</span> <span class="n">axisdir</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">impedance</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">portname</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">renorm</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">deemb</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">reference_object_list</span><span class="o">=</span><span class="p">[]</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a lumped port taking one sheet.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a lumped port taking one sheet.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -3651,7 +3669,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Hfss.assig_voltage_source_to_sheet"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.hfss.Hfss.assig_voltage_source_to_sheet.html#pyaedt.hfss.Hfss.assig_voltage_source_to_sheet">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">assig_voltage_source_to_sheet</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sheet_name</span><span class="p">,</span> <span class="n">axisdir</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sourcename</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a voltage source taking one sheet.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a voltage source taking one sheet.</span>
 
 <span class="sd">        .. deprecated:: 0.4.0</span>
 <span class="sd">           Use :func:`Hfss.assign_voltage_source_to_sheet` instead.</span>
@@ -3666,7 +3684,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Hfss.assign_voltage_source_to_sheet"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.hfss.Hfss.assign_voltage_source_to_sheet.html#pyaedt.hfss.Hfss.assign_voltage_source_to_sheet">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">assign_voltage_source_to_sheet</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sheet_name</span><span class="p">,</span> <span class="n">axisdir</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sourcename</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a voltage source taking one sheet.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a voltage source taking one sheet.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -3720,7 +3738,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Hfss.assign_current_source_to_sheet"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.hfss.Hfss.assign_current_source_to_sheet.html#pyaedt.hfss.Hfss.assign_current_source_to_sheet">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">assign_current_source_to_sheet</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sheet_name</span><span class="p">,</span> <span class="n">axisdir</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sourcename</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a current source taking one sheet.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a current source taking one sheet.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -3773,7 +3791,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Hfss.assign_perfecte_to_sheets"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.hfss.Hfss.assign_perfecte_to_sheets.html#pyaedt.hfss.Hfss.assign_perfecte_to_sheets">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">assign_perfecte_to_sheets</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sheet_list</span><span class="p">,</span> <span class="n">sourcename</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">is_infinite_gnd</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a Perfect E taking one sheet.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a Perfect E taking one sheet.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -3817,7 +3835,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Hfss.assign_perfecth_to_sheets"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.hfss.Hfss.assign_perfecth_to_sheets.html#pyaedt.hfss.Hfss.assign_perfecth_to_sheets">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">assign_perfecth_to_sheets</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sheet_list</span><span class="p">,</span> <span class="n">sourcename</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Assign a Perfect H to sheets.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Assign a Perfect H to sheets.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -3862,7 +3880,7 @@ function checkPageExistsAndRedirect(event) {
     <span class="k">def</span> <span class="nf">assign_lumped_rlc_to_sheet</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">sheet_name</span><span class="p">,</span> <span class="n">axisdir</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sourcename</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">rlctype</span><span class="o">=</span><span class="s2">&quot;Parallel&quot;</span><span class="p">,</span> <span class="n">Rvalue</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">Lvalue</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">Cvalue</span><span class="o">=</span><span class="kc">None</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a lumped RLC taking one sheet.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a lumped RLC taking one sheet.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -3890,7 +3908,7 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
 <span class="sd">        :class:`pyaedt.modules.Boundary.BoundaryObject`</span>
-<span class="sd">            Boundary object if successful, ``False`` otherwise</span>
+<span class="sd">            Boundary object if successful, ``False`` otherwise.</span>
 
 <span class="sd">        References</span>
 <span class="sd">        ----------</span>
@@ -3951,7 +3969,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Hfss.assign_impedance_to_sheet"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.hfss.Hfss.assign_impedance_to_sheet.html#pyaedt.hfss.Hfss.assign_impedance_to_sheet">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">assign_impedance_to_sheet</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sheet_name</span><span class="p">,</span> <span class="n">sourcename</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">resistance</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">reactance</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">is_infground</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create an impedance taking one sheet.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create an impedance taking one sheet.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -4020,7 +4038,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">renorm_impedance</span><span class="o">=</span><span class="s2">&quot;50&quot;</span><span class="p">,</span>
         <span class="n">deembed</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a circuit port from two edges.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a circuit port from two edges.</span>
 
 <span class="sd">        The integration line is from edge 2 to edge 1.</span>
 
@@ -4089,7 +4107,7 @@ function checkPageExistsAndRedirect(event) {
     <span class="k">def</span> <span class="nf">edit_sources</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">excitations</span><span class="p">,</span> <span class="n">include_port_post_processing</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">max_available_power</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">use_incident_voltage</span><span class="o">=</span><span class="kc">False</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Set up the power loaded for HFSS postprocessing in multiple sources simultaneously.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set up the power loaded for HFSS postprocessing in multiple sources simultaneously.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -4159,7 +4177,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Hfss.edit_source"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.hfss.Hfss.edit_source.html#pyaedt.hfss.Hfss.edit_source">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">edit_source</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">portandmode</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">powerin</span><span class="o">=</span><span class="s2">&quot;1W&quot;</span><span class="p">,</span> <span class="n">phase</span><span class="o">=</span><span class="s2">&quot;0deg&quot;</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Set up the power loaded for HFSS postprocessing.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set up the power loaded for HFSS postprocessing.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -4231,7 +4249,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">data_format</span><span class="o">=</span><span class="s2">&quot;Power&quot;</span><span class="p">,</span>
         <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Edit a source from file data.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Edit a source from file data.</span>
 <span class="sd">        File data is a csv containing either frequency data or time domain data that will be converted through FFT.</span>
 
 <span class="sd">        Parameters</span>
@@ -4306,7 +4324,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Hfss.thicken_port_sheets"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.hfss.Hfss.thicken_port_sheets.html#pyaedt.hfss.Hfss.thicken_port_sheets">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">thicken_port_sheets</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputlist</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">internalExtr</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">internalvalue</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create thickened sheets over a list of input port sheets.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create thickened sheets over a list of input port sheets.</span>
 
 <span class="sd">        This method is built to work with the output of ``modeler.find_port_faces``.</span>
 
@@ -4463,7 +4481,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Hfss.validate_full_design"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.hfss.Hfss.validate_full_design.html#pyaedt.hfss.Hfss.validate_full_design">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">validate_full_design</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dname</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">outputdir</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ports</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Validate a design based on an expected value and save information to the log file.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Validate a design based on an expected value and save information to the log file.</span>
 
 
 <span class="sd">        Parameters</span>
@@ -4602,7 +4620,7 @@ function checkPageExistsAndRedirect(event) {
     <span class="k">def</span> <span class="nf">create_scattering</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">plot_name</span><span class="o">=</span><span class="s2">&quot;S Parameter Plot Nominal&quot;</span><span class="p">,</span> <span class="n">sweep_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">port_names</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">port_excited</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">variations</span><span class="o">=</span><span class="kc">None</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a scattering report.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a scattering report.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -4654,7 +4672,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Hfss.create_qfactor_report"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.hfss.Hfss.create_qfactor_report.html#pyaedt.hfss.Hfss.create_qfactor_report">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">create_qfactor_report</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project_dir</span><span class="p">,</span> <span class="n">outputlist</span><span class="p">,</span> <span class="n">setupname</span><span class="p">,</span> <span class="n">plotname</span><span class="p">,</span> <span class="n">Xaxis</span><span class="o">=</span><span class="s2">&quot;X&quot;</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Export a CSV file of the EigenQ plot.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Export a CSV file of the EigenQ plot.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -4695,7 +4713,7 @@ function checkPageExistsAndRedirect(event) {
     <span class="k">def</span> <span class="nf">export_touchstone</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">solution_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">sweep_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">file_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">variations</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">variations_value</span><span class="o">=</span><span class="kc">None</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Export the Touchstone file to a local folder.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Export the Touchstone file to a local folder.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -4728,7 +4746,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Hfss.set_export_touchstone"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.hfss.Hfss.set_export_touchstone.html#pyaedt.hfss.Hfss.set_export_touchstone">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">set_export_touchstone</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">activate</span><span class="p">,</span> <span class="n">export_dir</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Set automatic export of the Touchstone file after simulation.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set automatic export of the Touchstone file after simulation.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -4764,7 +4782,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Hfss.assign_radiation_boundary_to_objects"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.hfss.Hfss.assign_radiation_boundary_to_objects.html#pyaedt.hfss.Hfss.assign_radiation_boundary_to_objects">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">assign_radiation_boundary_to_objects</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj_names</span><span class="p">,</span> <span class="n">boundary_name</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Assign a radiation boundary to one or more objects (usually airbox objects).</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Assign a radiation boundary to one or more objects (usually airbox objects).</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -4805,7 +4823,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Hfss.assign_hybrid_region"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.hfss.Hfss.assign_hybrid_region.html#pyaedt.hfss.Hfss.assign_hybrid_region">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">assign_hybrid_region</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj_names</span><span class="p">,</span> <span class="n">boundary_name</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">hybrid_region</span><span class="o">=</span><span class="s2">&quot;SBR+&quot;</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Assign a hybrid region to one or more objects.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Assign a hybrid region to one or more objects.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -4851,7 +4869,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Hfss.assign_radiation_boundary_to_faces"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.hfss.Hfss.assign_radiation_boundary_to_faces.html#pyaedt.hfss.Hfss.assign_radiation_boundary_to_faces">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">assign_radiation_boundary_to_faces</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">faces_id</span><span class="p">,</span> <span class="n">boundary_name</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Assign a radiation boundary to one or more faces.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Assign a radiation boundary to one or more faces.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -4965,7 +4983,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">doppler_ad_sampling_rate</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
         <span class="n">setup_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create an SBR+ Chirp I Setup.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create an SBR+ Chirp I Setup.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -5001,8 +5019,9 @@ function checkPageExistsAndRedirect(event) {
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        (:class:`pyaedt.modules.SolveSetup.Setup`,</span>
-<span class="sd">            :class:`pyaedt.modules.DesignXPloration.ParametericsSetups.Optimetrics`)</span>
+<span class="sd">        tuple</span>
+<span class="sd">            The tuple contains: (:class:`pyaedt.modules.SolveSetup.Setup`,</span>
+<span class="sd">            :class:`pyaedt.modules.DesignXPloration.ParametericsSetups.Optimetrics`).</span>
 
 <span class="sd">        References</span>
 <span class="sd">        ----------</span>
@@ -5069,7 +5088,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">doppler_ad_sampling_rate</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
         <span class="n">setup_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create an SBR+ Chirp IQ Setup.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create an SBR+ Chirp IQ Setup.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -5106,8 +5125,9 @@ function checkPageExistsAndRedirect(event) {
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        (:class:`pyaedt.modules.SolveSetup.Setup`,</span>
-<span class="sd">            :class:`pyaedt.modules.DesignXPloration.ParametericsSetups.Optimetrics`)</span>
+<span class="sd">        tuple</span>
+<span class="sd">            The tuple contains: (:class:`pyaedt.modules.SolveSetup.Setup`,</span>
+<span class="sd">            :class:`pyaedt.modules.DesignXPloration.ParametericsSetups.Optimetrics`).</span>
 
 <span class="sd">        References</span>
 <span class="sd">        ----------</span>
@@ -5167,7 +5187,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">max_bounces</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
         <span class="n">setup_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create an SBR+ pulse Doppler setup.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create an SBR+ pulse Doppler setup.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -5202,8 +5222,9 @@ function checkPageExistsAndRedirect(event) {
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        (:class:`pyaedt.modules.SolveSetup.Setup`,</span>
-<span class="sd">            :class:`pyaedt.modules.DesignXPloration.ParametericsSetups.Optimetrics`)</span>
+<span class="sd">        tuple</span>
+<span class="sd">            The tuple contains: (:class:`pyaedt.modules.SolveSetup.Setup`,</span>
+<span class="sd">            :class:`pyaedt.modules.DesignXPloration.ParametericsSetups.Optimetrics`).</span>
 
 <span class="sd">        References</span>
 <span class="sd">        ----------</span>
@@ -5251,7 +5272,7 @@ function checkPageExistsAndRedirect(event) {
     <span class="k">def</span> <span class="nf">create_sbr_radar_from_json</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">radar_file</span><span class="p">,</span> <span class="n">radar_name</span><span class="p">,</span> <span class="n">offset</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">speed</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">use_relative_cs</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">relative_cs_name</span><span class="o">=</span><span class="kc">None</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create an SBR+ radar from a JSON file.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create an SBR+ radar from a JSON file.</span>
 
 <span class="sd">        Example of input JSON file:</span>
 
@@ -5350,7 +5371,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">polarization_angle</span><span class="o">=</span><span class="mi">45</span><span class="p">,</span>
         <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create an infinite sphere.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create an infinite sphere.</span>
 
 <span class="sd">        .. note::</span>
 <span class="sd">           This method is not supported by HFSS ``EigenMode`` and ``CharacteristicMode`` solution types.</span>
@@ -5446,7 +5467,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">custom_coordinate_system</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a near field sphere.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a near field sphere.</span>
 
 <span class="sd">        .. note::</span>
 <span class="sd">           This method is not supported by HFSS ``EigenMode`` and ``CharacteristicMode`` solution types.</span>
@@ -5527,7 +5548,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">custom_coordinate_system</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a near field box.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a near field box.</span>
 
 <span class="sd">        .. note::</span>
 <span class="sd">           This method is not supported by HFSS ``EigenMode`` and ``CharacteristicMode`` solution types.</span>
@@ -5600,7 +5621,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">custom_coordinate_system</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a near field rectangle.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a near field rectangle.</span>
 
 <span class="sd">        .. note::</span>
 <span class="sd">           This method is not supported by HFSS ``EigenMode`` and ``CharacteristicMode`` solution types.</span>
@@ -5663,7 +5684,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">custom_radiation_faces</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a near field line.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a near field line.</span>
 
 <span class="sd">        .. note::</span>
 <span class="sd">           This method is not supported by HFSS ``EigenMode`` and ``CharacteristicMode`` solution types.</span>
@@ -5705,7 +5726,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Hfss.set_sbr_current_sources_options"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.hfss.Hfss.set_sbr_current_sources_options.html#pyaedt.hfss.Hfss.set_sbr_current_sources_options">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">set_sbr_current_sources_options</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">conformance</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">thin_sources</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">power_fraction</span><span class="o">=</span><span class="mf">0.95</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Set SBR+ setup options for the current source.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set SBR+ setup options for the current source.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -5758,7 +5779,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">active</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
         <span class="n">matched</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Add a differential pair definition.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add a differential pair definition.</span>
 
 <span class="sd">        Differential pairs can be defined only in Terminal and Transient solution types.</span>
 
@@ -5829,7 +5850,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Hfss.add_3d_component_array_from_json"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.hfss.Hfss.add_3d_component_array_from_json.html#pyaedt.hfss.Hfss.add_3d_component_array_from_json">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">add_3d_component_array_from_json</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">json_file</span><span class="p">,</span> <span class="n">array_name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Add or edit a new 3D component array from a JSON file.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add or edit a new 3D component array from a JSON file.</span>
 <span class="sd">        The 3D component is placed in the layout if it is not present.</span>
 
 <span class="sd">        Parameters</span>
@@ -5998,7 +6019,7 @@ function checkPageExistsAndRedirect(event) {
     <span class="k">def</span> <span class="nf">get_antenna_ffd_solution_data</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">frequencies</span><span class="p">,</span> <span class="n">setup_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">sphere_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">variations</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">taper</span><span class="o">=</span><span class="s2">&quot;flat&quot;</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Export antenna parameters to Far Field Data (FFD) files and return the ``FfdSolutionData`` object.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Export antenna parameters to Far Field Data (FFD) files and return the ``FfdSolutionData`` object.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -6058,7 +6079,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Hfss.set_material_threshold"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.hfss.Hfss.set_material_threshold.html#pyaedt.hfss.Hfss.set_material_threshold">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">set_material_threshold</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mi">100000</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Set the material conductivity threshold.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set the material conductivity threshold.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -6078,7 +6099,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Hfss.assign_symmetry"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.hfss.Hfss.assign_symmetry.html#pyaedt.hfss.Hfss.assign_symmetry">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">assign_symmetry</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entity_list</span><span class="p">,</span> <span class="n">symmetry_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">is_perfect_e</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Assign symmetry to planar entities.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Assign symmetry to planar entities.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -6152,13 +6173,13 @@ function checkPageExistsAndRedirect(event) {
   
   <div class="footer-item">
     <p class="copyright">
-    &copy; Copyright (c) 2022 ANSYS, Inc. All rights reserved.<br>
+    &copy; Copyright (c) 2023 ANSYS, Inc. All rights reserved.<br>
 </p>
   </div>
   
   <div class="footer-item">
     <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 6.1.3.<br>
 </p>
   </div>
   

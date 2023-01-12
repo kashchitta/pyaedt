@@ -34,7 +34,7 @@ Perform required imports
 ~~~~~~~~~~~~~~~~~~~~~~~~
 Perform required imports.
 
-.. GENERATED FROM PYTHON SOURCE LINES 16-21
+.. GENERATED FROM PYTHON SOURCE LINES 16-20
 
 .. code-block:: default
 
@@ -49,8 +49,7 @@ Perform required imports.
 
 
 
-
-.. GENERATED FROM PYTHON SOURCE LINES 22-27
+.. GENERATED FROM PYTHON SOURCE LINES 21-26
 
 Set non-graphical mode
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -58,7 +57,7 @@ Set non-graphical mode. ``"PYAEDT_NON_GRAPHICAL"`` is needed to generate
 documentation only.
 You can set ``non_graphical`` either to ``True`` or ``False``.
 
-.. GENERATED FROM PYTHON SOURCE LINES 27-31
+.. GENERATED FROM PYTHON SOURCE LINES 26-30
 
 .. code-block:: default
 
@@ -73,13 +72,13 @@ You can set ``non_graphical`` either to ``True`` or ``False``.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 32-35
+.. GENERATED FROM PYTHON SOURCE LINES 31-34
 
 Open project
 ~~~~~~~~~~~~
 Open the project.
 
-.. GENERATED FROM PYTHON SOURCE LINES 35-40
+.. GENERATED FROM PYTHON SOURCE LINES 34-39
 
 .. code-block:: default
 
@@ -95,14 +94,14 @@ Open the project.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 41-45
+.. GENERATED FROM PYTHON SOURCE LINES 40-44
 
 Launch AEDT and initialize HFSS
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Launch AEDT and initialize HFSS. If there is an active HFSS design, the ``aedtapp``
 object is linked to it. Otherwise, a new design is created.
 
-.. GENERATED FROM PYTHON SOURCE LINES 45-52
+.. GENERATED FROM PYTHON SOURCE LINES 44-51
 
 .. code-block:: default
 
@@ -120,7 +119,7 @@ object is linked to it. Otherwise, a new design is created.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 53-58
+.. GENERATED FROM PYTHON SOURCE LINES 52-57
 
 Initialize variable settings
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -128,7 +127,7 @@ Initialize variable settings. You can initialize a variable simply by creating
 it as a list object. If you enter the prefix ``$``, the variable is created for
 the project. Otherwise, the variable is created for the design.
 
-.. GENERATED FROM PYTHON SOURCE LINES 58-63
+.. GENERATED FROM PYTHON SOURCE LINES 57-62
 
 .. code-block:: default
 
@@ -144,7 +143,7 @@ the project. Otherwise, the variable is created for the design.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 64-70
+.. GENERATED FROM PYTHON SOURCE LINES 63-69
 
 Create coaxial and cylinders
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -153,15 +152,18 @@ directly using the :func:`pyaedt.modeler.Primitives3D.Primitives3D.create_cylind
 method. You can assign a material directly to the object creation action.
 Optionally, you can assign a material using the :func:`assign_material` method.
 
-.. GENERATED FROM PYTHON SOURCE LINES 70-76
+.. GENERATED FROM PYTHON SOURCE LINES 69-78
 
 .. code-block:: default
 
 
     # TODO: How does this work when two truesurfaces are defined?
-    o1 = aedtapp.modeler.create_cylinder(aedtapp.PLANE.ZX, udp, "inner", "$coax_dimension", numSides=0, name="inner")
-    o2 = aedtapp.modeler.create_cylinder(aedtapp.PLANE.ZX, udp, 8, "$coax_dimension", numSides=0, matname="teflon_based")
-    o3 = aedtapp.modeler.create_cylinder(aedtapp.PLANE.ZX, udp, 10, "$coax_dimension", numSides=0, name="outer")
+    o1 = aedtapp.modeler.create_cylinder(cs_axis=aedtapp.PLANE.ZX, position=udp, radius="inner", height="$coax_dimension",
+                                         numSides=0, name="inner")
+    o2 = aedtapp.modeler.create_cylinder(cs_axis=aedtapp.PLANE.ZX, position=udp, radius=8, height="$coax_dimension",
+                                         numSides=0, matname="teflon_based")
+    o3 = aedtapp.modeler.create_cylinder(cs_axis=aedtapp.PLANE.ZX, position=udp, radius=10, height="$coax_dimension",
+                                         numSides=0, name="outer")
 
 
 
@@ -170,13 +172,13 @@ Optionally, you can assign a material using the :func:`assign_material` method.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 77-80
+.. GENERATED FROM PYTHON SOURCE LINES 79-82
 
 Assign colors
 ~~~~~~~~~~~~~
 Assign colors to each primitive.
 
-.. GENERATED FROM PYTHON SOURCE LINES 80-87
+.. GENERATED FROM PYTHON SOURCE LINES 82-89
 
 .. code-block:: default
 
@@ -194,14 +196,14 @@ Assign colors to each primitive.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 88-92
+.. GENERATED FROM PYTHON SOURCE LINES 90-94
 
 Assign materials
 ~~~~~~~~~~~~~~~~
 Assign materials. You can assign materials either directly when creating the primitive,
 which was done for ``id2``, or after the object is created.
 
-.. GENERATED FROM PYTHON SOURCE LINES 92-96
+.. GENERATED FROM PYTHON SOURCE LINES 94-98
 
 .. code-block:: default
 
@@ -216,14 +218,14 @@ which was done for ``id2``, or after the object is created.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 97-101
+.. GENERATED FROM PYTHON SOURCE LINES 99-103
 
 Perform modeler operations
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 Perform modeler operations. You can subtract, add, and perform other operations
 using either the object ID or object name.
 
-.. GENERATED FROM PYTHON SOURCE LINES 101-105
+.. GENERATED FROM PYTHON SOURCE LINES 103-107
 
 .. code-block:: default
 
@@ -244,7 +246,7 @@ using either the object ID or object name.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 106-111
+.. GENERATED FROM PYTHON SOURCE LINES 108-113
 
 Perform mesh operations
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -252,14 +254,14 @@ Perform mesh operations. Most mesh operations are available.
 After a mesh is created, you can access a mesh operation to
 edit or review parameter values.
 
-.. GENERATED FROM PYTHON SOURCE LINES 111-116
+.. GENERATED FROM PYTHON SOURCE LINES 113-118
 
 .. code-block:: default
 
 
-    aedtapp.mesh.assign_initial_mesh_from_slider(6)
-    aedtapp.mesh.assign_model_resolution([o1.name, o3.name], None)
-    aedtapp.mesh.assign_length_mesh(o2.faces, False, 1, 2000)
+    aedtapp.mesh.assign_initial_mesh_from_slider(level=6)
+    aedtapp.mesh.assign_model_resolution(names=[o1.name, o3.name], defeature_length=None)
+    aedtapp.mesh.assign_length_mesh(names=o2.faces, isinside=False, maxlength=1, maxel=2000)
 
 
 
@@ -270,11 +272,11 @@ edit or review parameter values.
  .. code-block:: none
 
 
-    <pyaedt.modules.Mesh.MeshOperation object at 0x000002812A067130>
+    <pyaedt.modules.Mesh.MeshOperation object at 0x000001E0B5B257C0>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 117-123
+.. GENERATED FROM PYTHON SOURCE LINES 119-125
 
 Create excitations
 ~~~~~~~~~~~~~~~~~~
@@ -283,15 +285,17 @@ identifies the closest faces on a predefined direction and creates a sheet to co
 the faces. It also assigns a port to this face. If ``add_pec_cap=True``, the method
 creates a PEC cap.
 
-.. GENERATED FROM PYTHON SOURCE LINES 123-131
+.. GENERATED FROM PYTHON SOURCE LINES 125-134
 
 .. code-block:: default
 
 
-    aedtapp.create_wave_port_between_objects("inner", "outer", axisdir=1, add_pec_cap=True, portname="P1")
-    aedtapp.create_wave_port_between_objects("inner", "outer", axisdir=4, add_pec_cap=True, portname="P2")
+    aedtapp.create_wave_port_between_objects(startobj="inner", endobject="outer", axisdir=1, add_pec_cap=True,
+                                             portname="P1")
+    aedtapp.create_wave_port_between_objects(startobj="inner", endobject="outer", axisdir=4, add_pec_cap=True,
+                                             portname="P2")
 
-    portnames = aedtapp.get_all_sources()
+    port_names = aedtapp.get_all_sources()
     aedtapp.modeler.fit_all()
 
 
@@ -301,16 +305,15 @@ creates a PEC cap.
 
 
 
-
-.. GENERATED FROM PYTHON SOURCE LINES 132-137
+.. GENERATED FROM PYTHON SOURCE LINES 135-140
 
 Create setup
-~~~~~~~~~~~~~
+~~~~~~~~~~~~
 Create a setup. A setup is created with default values. After its creation,
 you can change values and update the setup. The ``update`` method returns a Boolean
 value.
 
-.. GENERATED FROM PYTHON SOURCE LINES 137-144
+.. GENERATED FROM PYTHON SOURCE LINES 140-147
 
 .. code-block:: default
 
@@ -328,18 +331,19 @@ value.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 145-148
+.. GENERATED FROM PYTHON SOURCE LINES 148-151
 
 Create sweep
 ~~~~~~~~~~~~
 Create a sweep. A sweep is created with default values.
 
-.. GENERATED FROM PYTHON SOURCE LINES 148-151
+.. GENERATED FROM PYTHON SOURCE LINES 151-155
 
 .. code-block:: default
 
 
-    sweepname = aedtapp.create_linear_count_sweep("MySetup", "GHz", 0.8, 1.2, 401, sweep_type="Interpolating")
+    sweepname = aedtapp.create_linear_count_sweep(setupname="MySetup", unit="GHz", freqstart=0.8, freqstop=1.2,
+                                                  num_of_freq_points=401, sweep_type="Interpolating")
 
 
 
@@ -348,7 +352,7 @@ Create a sweep. A sweep is created with default values.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 152-157
+.. GENERATED FROM PYTHON SOURCE LINES 156-161
 
 Create Icepak model
 ~~~~~~~~~~~~~~~~~~~
@@ -356,7 +360,7 @@ Create an Icepak model. After an HFSS setup is ready, link this model to an Icep
 project and run a coupled physics analysis. The :func:`FieldAnalysis3D.copy_solid_bodies_from`
 method imports a model from HFSS with all material settings.
 
-.. GENERATED FROM PYTHON SOURCE LINES 157-161
+.. GENERATED FROM PYTHON SOURCE LINES 161-165
 
 .. code-block:: default
 
@@ -377,21 +381,20 @@ method imports a model from HFSS with all material settings.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 162-165
+.. GENERATED FROM PYTHON SOURCE LINES 166-169
 
 Link sources to EM losses
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 Link sources to the EM losses.
 
-.. GENERATED FROM PYTHON SOURCE LINES 165-171
+.. GENERATED FROM PYTHON SOURCE LINES 169-174
 
 .. code-block:: default
 
 
     surfaceobj = ["inner", "outer"]
-    ipkapp.assign_em_losses(
-        aedtapp.design_name, "MySetup", "LastAdaptive", "1GHz", surfaceobj, paramlist=["$coax_dimension", "inner"]
-    )
+    ipkapp.assign_em_losses(designname=aedtapp.design_name, setupname="MySetup", sweepname="LastAdaptive",
+                            map_frequency="1GHz", surface_objects=surfaceobj, paramlist=["$coax_dimension", "inner"])
 
 
 
@@ -402,17 +405,17 @@ Link sources to the EM losses.
  .. code-block:: none
 
 
-    <pyaedt.modules.Boundary.BoundaryObject object at 0x000002812C4B2D90>
+    <pyaedt.modules.Boundary.BoundaryObject object at 0x000001E0E7388F40>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 172-175
+.. GENERATED FROM PYTHON SOURCE LINES 175-178
 
 Edit gravity setting
 ~~~~~~~~~~~~~~~~~~~~
 Edit the gravity setting if necessary because it is important for a fluid analysis.
 
-.. GENERATED FROM PYTHON SOURCE LINES 175-178
+.. GENERATED FROM PYTHON SOURCE LINES 178-181
 
 .. code-block:: default
 
@@ -432,7 +435,7 @@ Edit the gravity setting if necessary because it is important for a fluid analys
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 179-186
+.. GENERATED FROM PYTHON SOURCE LINES 182-189
 
 Set up Icepak project
 ~~~~~~~~~~~~~~~~~~~~~
@@ -442,7 +445,7 @@ command to pass the correct value to the property. The ``update`` function
 applies the settings to the setup. The setup creation process is identical
 for all tools.
 
-.. GENERATED FROM PYTHON SOURCE LINES 186-190
+.. GENERATED FROM PYTHON SOURCE LINES 189-193
 
 .. code-block:: default
 
@@ -457,14 +460,14 @@ for all tools.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 191-195
+.. GENERATED FROM PYTHON SOURCE LINES 194-198
 
 Edit or review mesh parameters
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Edit or review the mesh parameters. After a mesh is created, you can access
 a mesh operation to edit or review parameter values.
 
-.. GENERATED FROM PYTHON SOURCE LINES 195-201
+.. GENERATED FROM PYTHON SOURCE LINES 198-204
 
 .. code-block:: default
 
@@ -483,11 +486,11 @@ a mesh operation to edit or review parameter values.
  .. code-block:: none
 
 
-    <pyaedt.modules.Boundary.BoundaryObject object at 0x000002812CA5FFD0>
+    <pyaedt.modules.Boundary.BoundaryObject object at 0x000001E0E7440280>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 202-207
+.. GENERATED FROM PYTHON SOURCE LINES 205-210
 
 Close and open projects
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -495,7 +498,7 @@ Close and open the projects to ensure that the HFSS - Icepak coupling works
 correctly in AEDT versions 2019 R3 through 2021 R1. Closing and opening projects
 can be helpful when performing operations on multiple projects.
 
-.. GENERATED FROM PYTHON SOURCE LINES 207-215
+.. GENERATED FROM PYTHON SOURCE LINES 210-218
 
 .. code-block:: default
 
@@ -514,13 +517,13 @@ can be helpful when performing operations on multiple projects.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 216-219
+.. GENERATED FROM PYTHON SOURCE LINES 219-222
 
 Solve Icepak project
 ~~~~~~~~~~~~~~~~~~~~
 Solve the Icepak project and the HFSS sweep.
 
-.. GENERATED FROM PYTHON SOURCE LINES 219-225
+.. GENERATED FROM PYTHON SOURCE LINES 222-228
 
 .. code-block:: default
 
@@ -543,13 +546,13 @@ Solve the Icepak project and the HFSS sweep.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 226-229
+.. GENERATED FROM PYTHON SOURCE LINES 229-232
 
 Generate field plots and export
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Generate field plots on the HFSS project and export them as images.
 
-.. GENERATED FROM PYTHON SOURCE LINES 229-254
+.. GENERATED FROM PYTHON SOURCE LINES 232-257
 
 .. code-block:: default
 
@@ -592,17 +595,17 @@ Generate field plots on the HFSS project and export them as images.
  .. code-block:: none
 
 
-    <pyaedt.generic.plot.ModelPlotter object at 0x000002812DA06A30>
+    <pyaedt.generic.plot.ModelPlotter object at 0x000001E081F18850>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 255-258
+.. GENERATED FROM PYTHON SOURCE LINES 258-261
 
 Generate animation from field plots
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Generate an animation from field plots using PyVista.
 
-.. GENERATED FROM PYTHON SOURCE LINES 258-288
+.. GENERATED FROM PYTHON SOURCE LINES 261-291
 
 .. code-block:: default
 
@@ -649,19 +652,19 @@ Generate an animation from field plots using PyVista.
 
  .. code-block:: none
 
-    Total Time 10.70767855644226
+    Total Time 10.694056987762451
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 289-293
+.. GENERATED FROM PYTHON SOURCE LINES 292-296
 
 Create Icepak plots and export
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Create Icepak plots and export them as images using the same functions that
 were used early. Only the quantity is different.
 
-.. GENERATED FROM PYTHON SOURCE LINES 293-311
+.. GENERATED FROM PYTHON SOURCE LINES 296-314
 
 .. code-block:: default
 
@@ -701,13 +704,13 @@ were used early. Only the quantity is different.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 312-315
+.. GENERATED FROM PYTHON SOURCE LINES 315-318
 
 Generate plots outside of AEDT
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Generate plots outside of AEDT using Matplotlib and NumPy.
 
-.. GENERATED FROM PYTHON SOURCE LINES 315-322
+.. GENERATED FROM PYTHON SOURCE LINES 318-325
 
 .. code-block:: default
 
@@ -736,18 +739,17 @@ Generate plots outside of AEDT using Matplotlib and NumPy.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 323-326
+.. GENERATED FROM PYTHON SOURCE LINES 326-329
 
 Close project and release AEDT
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Close the project and release AEDT.
 
-.. GENERATED FROM PYTHON SOURCE LINES 326-329
+.. GENERATED FROM PYTHON SOURCE LINES 329-331
 
 .. code-block:: default
 
 
-    # aedtapp.close_project(aedtapp.project_name)
     aedtapp.release_desktop()
 
 
@@ -765,7 +767,7 @@ Close the project and release AEDT.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 2 minutes  36.202 seconds)
+   **Total running time of the script:** ( 2 minutes  31.734 seconds)
 
 
 .. _sphx_glr_download_examples_06-Multiphysics_Hfss_Icepak_Coupling.py:

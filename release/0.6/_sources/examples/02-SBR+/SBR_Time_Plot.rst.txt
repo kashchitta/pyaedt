@@ -48,7 +48,7 @@ Perform requried imports.
 
 Set non-graphical mode
 ~~~~~~~~~~~~~~~~~~~~~~
-Set non-graphical model. ``"PYAEDT_NON_GRAPHICAL"`` is needed to generate
+Set non-graphical mode. ``"PYAEDT_NON_GRAPHICAL"`` is needed to generate
 documentation only.
 You can set ``non_graphical`` either to ``True`` or ``False``.
 
@@ -79,7 +79,7 @@ Launch AEDT and load the project.
 
     project_file = downloads.download_sbr_time()
 
-    hfss = Hfss(project_file, specified_version="2022.2", non_graphical=non_graphical, new_desktop_session=True)
+    hfss = Hfss(projectname=project_file, specified_version="2022.2", non_graphical=non_graphical, new_desktop_session=True)
 
     hfss.analyze_nominal()
 
@@ -173,13 +173,13 @@ Plot the scene to create the time plot animation
 .. code-block:: default
 
 
-    hfss.post.plot_scene(frames_list_file, os.path.join(hfss.working_directory, "animation.gif"), norm_index=15, dy_rng=35,
+    hfss.post.plot_scene(frames_list=frames_list_file,
+                         output_gif_path=os.path.join(hfss.working_directory, "animation.gif"),
+                         norm_index=15,
+                         dy_rng=35,
                          show=False, view="xy", zoom=1)
 
-
     hfss.release_desktop()
-
-
 
 
 
@@ -201,7 +201,7 @@ Plot the scene to create the time plot animation
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 1 minutes  38.115 seconds)
+   **Total running time of the script:** ( 1 minutes  36.521 seconds)
 
 
 .. _sphx_glr_download_examples_02-SBR+_SBR_Time_Plot.py:

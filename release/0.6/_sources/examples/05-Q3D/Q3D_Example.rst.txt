@@ -29,7 +29,7 @@ Perform required imports
 ~~~~~~~~~~~~~~~~~~~~~~~~
 Perform required imports.
 
-.. GENERATED FROM PYTHON SOURCE LINES 11-16
+.. GENERATED FROM PYTHON SOURCE LINES 11-15
 
 .. code-block:: default
 
@@ -44,8 +44,7 @@ Perform required imports.
 
 
 
-
-.. GENERATED FROM PYTHON SOURCE LINES 17-22
+.. GENERATED FROM PYTHON SOURCE LINES 16-21
 
 Set non-graphical mode
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -53,7 +52,7 @@ Set non-graphical mode. ``"PYAEDT_NON_GRAPHICAL"`` is needed to generate
 documentation only.
 You can set ``non_graphical`` either to ``True`` or ``False``.
 
-.. GENERATED FROM PYTHON SOURCE LINES 22-25
+.. GENERATED FROM PYTHON SOURCE LINES 21-24
 
 .. code-block:: default
 
@@ -67,16 +66,15 @@ You can set ``non_graphical`` either to ``True`` or ``False``.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 26-29
+.. GENERATED FROM PYTHON SOURCE LINES 25-28
 
 Launch AEDT and Q3D Extractor
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Launch AEDT 2022 R2 in graphical mode and launch Q3D Extractor. This example uses SI units.
 
-.. GENERATED FROM PYTHON SOURCE LINES 29-36
+.. GENERATED FROM PYTHON SOURCE LINES 28-34
 
 .. code-block:: default
-
 
 
     q = pyaedt.Q3d(projectname=pyaedt.generate_unique_project_name(),
@@ -91,13 +89,13 @@ Launch AEDT 2022 R2 in graphical mode and launch Q3D Extractor. This example use
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 37-40
+.. GENERATED FROM PYTHON SOURCE LINES 35-38
 
 Create primitives
 ~~~~~~~~~~~~~~~~~
 Create polylines for three busbars and a box for the substrate.
 
-.. GENERATED FROM PYTHON SOURCE LINES 40-77
+.. GENERATED FROM PYTHON SOURCE LINES 38-75
 
 .. code-block:: default
 
@@ -152,18 +150,18 @@ Create polylines for three busbars and a box for the substrate.
  .. code-block:: none
 
 
-    <pyaedt.generic.plot.ModelPlotter object at 0x000002812C9BC2B0>
+    <pyaedt.generic.plot.ModelPlotter object at 0x000001E0E5A27160>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 78-82
+.. GENERATED FROM PYTHON SOURCE LINES 76-80
 
 Set up boundaries
 ~~~~~~~~~~~~~~~~~
 Identify nets and assign sources and sinks to all nets.
 There is a source and sink for each busbar.
 
-.. GENERATED FROM PYTHON SOURCE LINES 82-94
+.. GENERATED FROM PYTHON SOURCE LINES 80-92
 
 .. code-block:: default
 
@@ -186,13 +184,13 @@ There is a source and sink for each busbar.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 95-98
+.. GENERATED FROM PYTHON SOURCE LINES 93-96
 
 Print information
 ~~~~~~~~~~~~~~~~~
 Use the different methods available to print net and terminal information.
 
-.. GENERATED FROM PYTHON SOURCE LINES 98-107
+.. GENERATED FROM PYTHON SOURCE LINES 96-105
 
 .. code-block:: default
 
@@ -224,14 +222,14 @@ Use the different methods available to print net and terminal information.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 108-112
+.. GENERATED FROM PYTHON SOURCE LINES 106-110
 
 Create setup
 ~~~~~~~~~~~~
 Create a setup for Q3D Extractor and add a sweep that defines the adaptive
 frequency value.
 
-.. GENERATED FROM PYTHON SOURCE LINES 112-120
+.. GENERATED FROM PYTHON SOURCE LINES 110-118
 
 .. code-block:: default
 
@@ -256,13 +254,13 @@ frequency value.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 121-124
+.. GENERATED FROM PYTHON SOURCE LINES 119-122
 
 Get curves to plot
-~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~
 Get the curves to plot. The following code simplifies the way to get curves.
 
-.. GENERATED FROM PYTHON SOURCE LINES 124-130
+.. GENERATED FROM PYTHON SOURCE LINES 122-128
 
 .. code-block:: default
 
@@ -285,19 +283,18 @@ Get the curves to plot. The following code simplifies the way to get curves.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 131-134
+.. GENERATED FROM PYTHON SOURCE LINES 129-132
 
 Create rectangular plot
 ~~~~~~~~~~~~~~~~~~~~~~~
 Create a rectangular plot and a data table.
 
-.. GENERATED FROM PYTHON SOURCE LINES 134-139
+.. GENERATED FROM PYTHON SOURCE LINES 132-136
 
 .. code-block:: default
 
 
     q.post.create_report(expressions=data_plot_self)
-
     q.post.create_report(expressions=data_plot_mutual, context="Original", plot_type="Data Table")
 
 
@@ -309,17 +306,17 @@ Create a rectangular plot and a data table.
  .. code-block:: none
 
 
-    <pyaedt.modules.report_templates.Standard object at 0x000002812C9C2B80>
+    <pyaedt.modules.report_templates.Standard object at 0x000001E0D50756A0>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 140-143
+.. GENERATED FROM PYTHON SOURCE LINES 137-140
 
 Solve setup
 ~~~~~~~~~~~
 Solve the setup.
 
-.. GENERATED FROM PYTHON SOURCE LINES 143-147
+.. GENERATED FROM PYTHON SOURCE LINES 140-144
 
 .. code-block:: default
 
@@ -340,13 +337,13 @@ Solve the setup.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 148-151
+.. GENERATED FROM PYTHON SOURCE LINES 145-148
 
 Get report data
 ~~~~~~~~~~~~~~~
 Get the report data into a data structure that allows you to manipulate it.
 
-.. GENERATED FROM PYTHON SOURCE LINES 151-157
+.. GENERATED FROM PYTHON SOURCE LINES 148-154
 
 .. code-block:: default
 
@@ -374,14 +371,14 @@ Get the report data into a data structure that allows you to manipulate it.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 158-162
+.. GENERATED FROM PYTHON SOURCE LINES 155-159
 
 Close AEDT
 ~~~~~~~~~~
 After the simulation completes, you can close AEDT or release it using the
 ``release_desktop`` method. All methods provide for saving projects before closing.
 
-.. GENERATED FROM PYTHON SOURCE LINES 162-164
+.. GENERATED FROM PYTHON SOURCE LINES 159-161
 
 .. code-block:: default
 
@@ -403,7 +400,7 @@ After the simulation completes, you can close AEDT or release it using the
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 1 minutes  12.884 seconds)
+   **Total running time of the script:** ( 1 minutes  10.573 seconds)
 
 
 .. _sphx_glr_download_examples_05-Q3D_Q3D_Example.py:

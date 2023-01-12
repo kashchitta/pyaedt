@@ -28,9 +28,10 @@ Perform required imports
 ~~~~~~~~~~~~~~~~~~~~~~~~
 Perform required imports.
 
-.. GENERATED FROM PYTHON SOURCE LINES 11-15
+.. GENERATED FROM PYTHON SOURCE LINES 11-16
 
 .. code-block:: default
+
 
     import pyaedt
 
@@ -43,7 +44,7 @@ Perform required imports.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 16-21
+.. GENERATED FROM PYTHON SOURCE LINES 17-22
 
 Set non-graphical mode
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -51,7 +52,7 @@ Set non-graphical mode. ``"PYAEDT_NON_GRAPHICAL"`` is needed to generate
 documentation only.
 You can set ``non_graphical`` either to ``True`` or ``False``.
 
-.. GENERATED FROM PYTHON SOURCE LINES 21-24
+.. GENERATED FROM PYTHON SOURCE LINES 22-25
 
 .. code-block:: default
 
@@ -65,14 +66,14 @@ You can set ``non_graphical`` either to ``True`` or ``False``.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 25-29
+.. GENERATED FROM PYTHON SOURCE LINES 26-30
 
 Initialize object and create variables
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Initialize the ``Hfss`` object and create two needed design variables,
 ``w1`` and ``w2``.
 
-.. GENERATED FROM PYTHON SOURCE LINES 29-34
+.. GENERATED FROM PYTHON SOURCE LINES 30-35
 
 .. code-block:: default
 
@@ -88,14 +89,14 @@ Initialize the ``Hfss`` object and create two needed design variables,
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 35-39
+.. GENERATED FROM PYTHON SOURCE LINES 36-40
 
 Create waveguide with sheets on it
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Create one of the standard waveguide structures and parametrize it.
 You can also create rectangles of waveguide openings and assign ports later.
 
-.. GENERATED FROM PYTHON SOURCE LINES 39-54
+.. GENERATED FROM PYTHON SOURCE LINES 40-55
 
 .. code-block:: default
 
@@ -132,13 +133,13 @@ You can also create rectangles of waveguide openings and assign ports later.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 55-58
+.. GENERATED FROM PYTHON SOURCE LINES 56-59
 
 Create wave ports on sheets
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Create two wave ports on the sheets.
 
-.. GENERATED FROM PYTHON SOURCE LINES 58-62
+.. GENERATED FROM PYTHON SOURCE LINES 59-63
 
 .. code-block:: default
 
@@ -155,18 +156,18 @@ Create two wave ports on the sheets.
  .. code-block:: none
 
 
-    <pyaedt.modules.Boundary.BoundaryObject object at 0x000002817E20F2B0>
+    <pyaedt.modules.Boundary.BoundaryObject object at 0x000001E0D1B96790>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 63-67
+.. GENERATED FROM PYTHON SOURCE LINES 64-68
 
 Create setup and frequency sweep
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Create a setup and a frequency sweep to use as the base for optimetrics
 setups.
 
-.. GENERATED FROM PYTHON SOURCE LINES 67-73
+.. GENERATED FROM PYTHON SOURCE LINES 68-74
 
 .. code-block:: default
 
@@ -185,11 +186,11 @@ setups.
  .. code-block:: none
 
 
-    <pyaedt.modules.SetupTemplates.SweepHFSS object at 0x000002817E2E4520>
+    <pyaedt.modules.SetupTemplates.SweepHFSS object at 0x000001E0D1D32D30>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 74-79
+.. GENERATED FROM PYTHON SOURCE LINES 75-80
 
 Optimetrics analysis
 ----------------------
@@ -197,7 +198,7 @@ Create parametrics analysis
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Create a simple optimetrics parametrics analysis with output calculations.
 
-.. GENERATED FROM PYTHON SOURCE LINES 79-85
+.. GENERATED FROM PYTHON SOURCE LINES 80-86
 
 .. code-block:: default
 
@@ -220,13 +221,13 @@ Create a simple optimetrics parametrics analysis with output calculations.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 86-89
+.. GENERATED FROM PYTHON SOURCE LINES 87-90
 
 Create sensitivity analysis
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Create an optimetrics sensitivity analysis with output calculations.
 
-.. GENERATED FROM PYTHON SOURCE LINES 89-94
+.. GENERATED FROM PYTHON SOURCE LINES 90-95
 
 .. code-block:: default
 
@@ -248,13 +249,13 @@ Create an optimetrics sensitivity analysis with output calculations.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 95-98
+.. GENERATED FROM PYTHON SOURCE LINES 96-99
 
 Create optimization based on goals and calculations
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Create an optimization analysis based on goals and calculations.
 
-.. GENERATED FROM PYTHON SOURCE LINES 98-109
+.. GENERATED FROM PYTHON SOURCE LINES 99-110
 
 .. code-block:: default
 
@@ -282,13 +283,13 @@ Create an optimization analysis based on goals and calculations.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 110-113
+.. GENERATED FROM PYTHON SOURCE LINES 111-114
 
 Create DX optimization based on a goal and calculation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Create a DX (DesignXplorer) optimization based on a goal and a calculation.
 
-.. GENERATED FROM PYTHON SOURCE LINES 113-117
+.. GENERATED FROM PYTHON SOURCE LINES 114-118
 
 .. code-block:: default
 
@@ -309,13 +310,13 @@ Create a DX (DesignXplorer) optimization based on a goal and a calculation.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 118-121
+.. GENERATED FROM PYTHON SOURCE LINES 119-122
 
 Create DOE based on a goal and calculation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Create a DOE (Design of Experiments) based on a goal and a calculation.
 
-.. GENERATED FROM PYTHON SOURCE LINES 121-126
+.. GENERATED FROM PYTHON SOURCE LINES 122-127
 
 .. code-block:: default
 
@@ -337,13 +338,13 @@ Create a DOE (Design of Experiments) based on a goal and a calculation.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 127-130
+.. GENERATED FROM PYTHON SOURCE LINES 128-131
 
 Create DOE based on a goal and calculation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Create a DOE based on a goal and a calculation.
 
-.. GENERATED FROM PYTHON SOURCE LINES 130-141
+.. GENERATED FROM PYTHON SOURCE LINES 131-142
 
 .. code-block:: default
 
@@ -365,7 +366,7 @@ Create a DOE based on a goal and a calculation.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 142-147
+.. GENERATED FROM PYTHON SOURCE LINES 143-148
 
 Close AEDT
 ----------
@@ -373,7 +374,7 @@ After the simulaton completes, you can close AEDT or release it using the
 :func:`pyaedt.Desktop.release_desktop` method.
 All methods provide for saving the project before closing.
 
-.. GENERATED FROM PYTHON SOURCE LINES 147-149
+.. GENERATED FROM PYTHON SOURCE LINES 148-150
 
 .. code-block:: default
 
@@ -395,7 +396,7 @@ All methods provide for saving the project before closing.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  24.172 seconds)
+   **Total running time of the script:** ( 0 minutes  23.455 seconds)
 
 
 .. _sphx_glr_download_examples_01-Modeling-Setup_Optimetrics.py:

@@ -42,14 +42,11 @@
         <link href="../../_static/css/breadcrumbs.css" rel="stylesheet">
     
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/sphinx_highlight.js"></script>
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
-    <link rel="shortcut icon" href="../../_static/ansys-favicon.png"/>
+    <link rel="icon" href="../../_static/ansys-favicon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Maxwell 2D: transient winding analysis" href="Maxwell2D_Transient.html" />
@@ -80,9 +77,8 @@
   
   
   
-    <img src="../../_static/pyansys-logo-black-cropped.png" class="logo__image only-light" alt="Logo image">
-    <img src="../../_static/pyansys-logo-black-cropped.png" class="logo__image only-dark" alt="Logo image">
   
+    <p class="title logo__title">PyAEDT</p>
   
 </a>
     
@@ -210,7 +206,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.42 variable.
+            // this version, rather than using sphinx's 0.6.43 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -1213,7 +1209,7 @@ method.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mat_PM</span> <span class="o">=</span> <span class="n">M2D</span><span class="o">.</span><span class="n">materials</span><span class="o">.</span><span class="n">add_material</span><span class="p">(</span><span class="s2">&quot;Arnold_Magnetics_N30UH_80C_new&quot;</span><span class="p">)</span>
 <span class="n">mat_PM</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
 <span class="n">mat_PM</span><span class="o">.</span><span class="n">conductivity</span> <span class="o">=</span> <span class="s2">&quot;555555.5556&quot;</span>
-<span class="n">mat_PM</span><span class="o">.</span><span class="n">set_magnetic_coercitivity</span><span class="p">(</span><span class="o">-</span><span class="mf">800146.66287534</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">mat_PM</span><span class="o">.</span><span class="n">set_magnetic_coercitivity</span><span class="p">(</span><span class="n">value</span><span class="o">=-</span><span class="mf">800146.66287534</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">mat_PM</span><span class="o">.</span><span class="n">mass_density</span> <span class="o">=</span> <span class="s2">&quot;7500&quot;</span>
 <a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">BH_List_PM</span></a> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">filename_PM</span></a><span class="p">)</span> <span class="k">as</span> <a href="https://docs.python.org/dev/library/io.html#io.TextIOWrapper" title="io.TextIOWrapper" class="sphx-glr-backref-module-io sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">f</span></a><span class="p">:</span>
@@ -1221,7 +1217,7 @@ method.</p>
     <span class="nb">next</span><span class="p">(</span><span class="n">reader</span><span class="p">)</span>
     <span class="k">for</span> <a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">row</span></a> <span class="ow">in</span> <span class="n">reader</span><span class="p">:</span>
         <a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">BH_List_PM</span></a><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="nb">float</span><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">row</span></a><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="nb">float</span><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">row</span></a><span class="p">[</span><span class="mi">1</span><span class="p">])])</span>
-<span class="n">mat_PM</span><span class="o">.</span><span class="n">permeability</span><span class="o">.</span><span class="n">set_non_linear</span><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">BH_List_PM</span></a><span class="p">)</span>
+<span class="n">mat_PM</span><span class="o">.</span><span class="n">permeability</span><span class="o">.</span><span class="n">set_non_linear</span><span class="p">(</span><span class="n">point_list</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">BH_List_PM</span></a><span class="p">)</span>
 </pre></div>
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>True
@@ -1260,7 +1256,7 @@ which is set to electrical steel.</p>
 <h2>Create geometry for stator<a class="headerlink" href="#create-geometry-for-stator" title="Permalink to this heading">#</a></h2>
 <p>Create the geometry for the stator. It is created via
 the RMxprt user-defined primitive. A list of lists is
-created with the proper UDP paramters.</p>
+created with the proper UDP parameters.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">udp_par_list_stator</span></a> <span class="o">=</span> <span class="p">[[</span><span class="s2">&quot;DiaGap&quot;</span><span class="p">,</span> <span class="s2">&quot;DiaGap&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;DiaYoke&quot;</span><span class="p">,</span> <span class="s2">&quot;DiaStatorYoke&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;Length&quot;</span><span class="p">,</span> <span class="s2">&quot;Stator_Lam_Length&quot;</span><span class="p">],</span>
                        <span class="p">[</span><span class="s2">&quot;Skew&quot;</span><span class="p">,</span> <span class="s2">&quot;StatorSkewAngle&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;Slots&quot;</span><span class="p">,</span> <span class="s2">&quot;SlotNumber&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;SlotType&quot;</span><span class="p">,</span> <span class="s2">&quot;SlotType&quot;</span><span class="p">],</span>
                        <span class="p">[</span><span class="s2">&quot;Hs0&quot;</span><span class="p">,</span> <span class="s2">&quot;1.2mm&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;Hs01&quot;</span><span class="p">,</span> <span class="s2">&quot;0mm&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;Hs1&quot;</span><span class="p">,</span> <span class="s2">&quot;0.4834227384999mm&quot;</span><span class="p">],</span>
@@ -1282,7 +1278,7 @@ created with the proper UDP paramters.</p>
 <h2>Assign properties to stator<a class="headerlink" href="#assign-properties-to-stator" title="Permalink to this heading">#</a></h2>
 <p>Assign properties to the stator. The following code assigns
 the material, name, color, and  <code class="docutils literal notranslate"><span class="pre">solve_inside</span></code> properties.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">M2D</span><span class="o">.</span><span class="n">assign_material</span><span class="p">(</span><span class="n">stator_id</span><span class="p">,</span> <span class="s2">&quot;30DH_20C_smooth&quot;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">M2D</span><span class="o">.</span><span class="n">assign_material</span><span class="p">(</span><span class="n">obj</span><span class="o">=</span><span class="n">stator_id</span><span class="p">,</span> <span class="n">mat</span><span class="o">=</span><span class="s2">&quot;30DH_20C_smooth&quot;</span><span class="p">)</span>
 <span class="n">stator_id</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Stator&quot;</span>
 <span class="n">stator_id</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">)</span>  <span class="c1"># rgb</span>
 <span class="n">stator_id</span><span class="o">.</span><span class="n">solve_inside</span> <span class="o">=</span> <span class="kc">True</span>  <span class="c1"># to be reassigned: M2D.assign material puts False if not dielectric</span>
@@ -1350,7 +1346,7 @@ coordinate systems in case of outer magnetization.</p>
 </section>
 <section id="create-outer-and-inner-pms">
 <h2>Create outer and inner PMs<a class="headerlink" href="#create-outer-and-inner-pms" title="Permalink to this heading">#</a></h2>
-<p>Create the outter and inner PMs and assign color to them.</p>
+<p>Create the outer and inner PMs and assign color to them.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">IM1_points</span></a> <span class="o">=</span> <span class="p">[[</span><span class="mf">56.70957112</span><span class="p">,</span> <span class="mf">3.104886585</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mf">40.25081875</span><span class="p">,</span> <span class="mf">16.67243502</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mf">38.59701538</span><span class="p">,</span> <span class="mf">14.66621111</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
               <span class="p">[</span><span class="mf">55.05576774</span><span class="p">,</span> <span class="mf">1.098662669</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]</span>
 <a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">OM1_points</span></a> <span class="o">=</span> <span class="p">[[</span><span class="mf">54.37758185</span><span class="p">,</span> <span class="mf">22.52393189</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mf">59.69688156</span><span class="p">,</span> <span class="mf">9.68200639</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mf">63.26490432</span><span class="p">,</span> <span class="mf">11.15992981</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
@@ -1420,17 +1416,17 @@ coordinate systems in case of outer magnetization.</p>
 <section id="assign-motion-setup-to-object">
 <h2>Assign motion setup to object<a class="headerlink" href="#assign-motion-setup-to-object" title="Permalink to this heading">#</a></h2>
 <p>Assign a motion setup to a <code class="docutils literal notranslate"><span class="pre">Band</span></code> object named <code class="docutils literal notranslate"><span class="pre">RotatingBand_mid</span></code>.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">M2D</span><span class="o">.</span><span class="n">assign_rotate_motion</span><span class="p">(</span><span class="s1">&#39;Band&#39;</span><span class="p">,</span> <span class="n">coordinate_system</span><span class="o">=</span><span class="s2">&quot;Global&quot;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s2">&quot;Z&quot;</span><span class="p">,</span> <span class="n">positive_movement</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">M2D</span><span class="o">.</span><span class="n">assign_rotate_motion</span><span class="p">(</span><span class="n">band_object</span><span class="o">=</span><span class="s1">&#39;Band&#39;</span><span class="p">,</span> <span class="n">coordinate_system</span><span class="o">=</span><span class="s2">&quot;Global&quot;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s2">&quot;Z&quot;</span><span class="p">,</span> <span class="n">positive_movement</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                          <span class="n">start_position</span><span class="o">=</span><span class="s2">&quot;InitialPositionMD&quot;</span><span class="p">,</span> <span class="n">angular_velocity</span><span class="o">=</span><span class="s2">&quot;MachineRPM&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modules.Boundary.BoundaryObject object at 0x000002812C261550&gt;
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modules.Boundary.BoundaryObject object at 0x000001E0E5FE53A0&gt;
 </pre></div>
 </div>
 </section>
 <section id="create-list-of-vacuum-objects">
 <h2>Create list of vacuum objects<a class="headerlink" href="#create-list-of-vacuum-objects" title="Permalink to this heading">#</a></h2>
-<p>Create a list of vaccum objects and assign color.</p>
+<p>Create a list of vacuum objects and assign color.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">vacuum_obj_id</span></a> <span class="o">=</span> <span class="p">[</span><span class="n">shaft_id</span><span class="p">,</span> <span class="n">region_id</span><span class="p">,</span> <span class="n">bandIN_id</span><span class="p">,</span> <span class="n">bandMID_id</span><span class="p">,</span> <span class="n">bandOUT_id</span><span class="p">]</span>  <span class="c1"># put shaft first</span>
 <span class="k">for</span> <a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">item</span></a> <span class="ow">in</span> <a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">vacuum_obj_id</span></a><span class="p">:</span>
     <a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">item</span><span class="o">.</span><span class="n">color</span></a> <span class="o">=</span> <span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">)</span>
@@ -1462,7 +1458,7 @@ Allocated PMs are created.</p>
 <span class="n">slot_OM_id</span> <span class="o">=</span> <span class="n">mod2D</span><span class="o">.</span><span class="n">create_polyline</span><span class="p">(</span><span class="n">position_list</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">slot_OM1_points</span></a><span class="p">,</span> <span class="n">cover_surface</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;slot_OM1&quot;</span><span class="p">,</span>
                                    <span class="n">matname</span><span class="o">=</span><span class="s2">&quot;vacuum&quot;</span><span class="p">)</span>
 
-<span class="n">M2D</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">duplicate_and_mirror</span><span class="p">([</span><span class="n">slot_IM_id</span><span class="p">,</span> <span class="n">slot_OM_id</span><span class="p">],</span> <span class="n">position</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+<span class="n">M2D</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">duplicate_and_mirror</span><span class="p">(</span><span class="n">objid</span><span class="o">=</span><span class="p">[</span><span class="n">slot_IM_id</span><span class="p">,</span> <span class="n">slot_OM_id</span><span class="p">],</span> <span class="n">position</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
                                  <span class="n">vector</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;cos((360deg/SymmetryFactor/2)+90deg)&quot;</span><span class="p">,</span>
                                          <span class="s2">&quot;sin((360deg/SymmetryFactor/2)+90deg)&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
 
@@ -1502,9 +1498,9 @@ advantage of symmetries.</p>
 Edges for assignment are picked by position.
 The points for edge picking are in the airgap.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">pos_1</span></a> <span class="o">=</span> <span class="s2">&quot;((DiaGap - (1.0 * Airgap))/4)&quot;</span>
-<a href="https://docs.python.org/dev/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">id_bc_1</span></a> <span class="o">=</span> <span class="n">mod2D</span><span class="o">.</span><span class="n">get_edgeid_from_position</span><span class="p">([</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">pos_1</span></a><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">obj_name</span><span class="o">=</span><span class="s1">&#39;Region&#39;</span><span class="p">)</span>
+<a href="https://docs.python.org/dev/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">id_bc_1</span></a> <span class="o">=</span> <span class="n">mod2D</span><span class="o">.</span><span class="n">get_edgeid_from_position</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="p">[</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">pos_1</span></a><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">obj_name</span><span class="o">=</span><span class="s1">&#39;Region&#39;</span><span class="p">)</span>
 <a href="https://docs.python.org/dev/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">id_bc_2</span></a> <span class="o">=</span> <span class="n">mod2D</span><span class="o">.</span><span class="n">get_edgeid_from_position</span><span class="p">(</span>
-    <span class="p">[</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">pos_1</span></a> <span class="o">+</span> <span class="s2">&quot;*cos((360deg/SymmetryFactor))&quot;</span><span class="p">,</span> <a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">pos_1</span></a> <span class="o">+</span> <span class="s2">&quot;*sin((360deg/SymmetryFactor))&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="n">position</span><span class="o">=</span><span class="p">[</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">pos_1</span></a> <span class="o">+</span> <span class="s2">&quot;*cos((360deg/SymmetryFactor))&quot;</span><span class="p">,</span> <a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">pos_1</span></a> <span class="o">+</span> <span class="s2">&quot;*sin((360deg/SymmetryFactor))&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
     <span class="n">obj_name</span><span class="o">=</span><span class="s1">&#39;Region&#39;</span><span class="p">)</span>
 <span class="n">M2D</span><span class="o">.</span><span class="n">assign_master_slave</span><span class="p">(</span><span class="n">master_edge</span><span class="o">=</span><a href="https://docs.python.org/dev/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">id_bc_1</span></a><span class="p">,</span> <span class="n">slave_edge</span><span class="o">=</span><a href="https://docs.python.org/dev/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">id_bc_2</span></a><span class="p">,</span>
                         <span class="n">reverse_master</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
@@ -1513,7 +1509,7 @@ The points for edge picking are in the airgap.</p>
                         <span class="n">bound_name</span><span class="o">=</span><span class="s2">&quot;Matching&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>(&lt;pyaedt.modules.Boundary.BoundaryObject object at 0x000002812CDD60D0&gt;, &lt;pyaedt.modules.Boundary.BoundaryObject object at 0x000002812C650D30&gt;)
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>(&lt;pyaedt.modules.Boundary.BoundaryObject object at 0x000001E0E5FE5310&gt;, &lt;pyaedt.modules.Boundary.BoundaryObject object at 0x000001E083DDA610&gt;)
 </pre></div>
 </div>
 </section>
@@ -1522,12 +1518,12 @@ The points for edge picking are in the airgap.</p>
 <p>Assign a vector potential of <code class="docutils literal notranslate"><span class="pre">0</span></code> to the second position.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">pos_2</span></a> <span class="o">=</span> <span class="s2">&quot;(DiaOuter/2)&quot;</span>
 <a href="https://docs.python.org/dev/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">id_bc_az</span></a> <span class="o">=</span> <span class="n">mod2D</span><span class="o">.</span><span class="n">get_edgeid_from_position</span><span class="p">(</span>
-    <span class="p">[</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">pos_2</span></a> <span class="o">+</span> <span class="s2">&quot;*cos((360deg/SymmetryFactor/2))&quot;</span><span class="p">,</span> <a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">pos_2</span></a> <span class="o">+</span> <span class="s2">&quot;*sin((360deg/SymmetryFactor)/2)&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="n">position</span><span class="o">=</span><span class="p">[</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">pos_2</span></a> <span class="o">+</span> <span class="s2">&quot;*cos((360deg/SymmetryFactor/2))&quot;</span><span class="p">,</span> <a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">pos_2</span></a> <span class="o">+</span> <span class="s2">&quot;*sin((360deg/SymmetryFactor)/2)&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
     <span class="n">obj_name</span><span class="o">=</span><span class="s1">&#39;Region&#39;</span><span class="p">)</span>
 <span class="n">M2D</span><span class="o">.</span><span class="n">assign_vector_potential</span><span class="p">(</span><a href="https://docs.python.org/dev/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">id_bc_az</span></a><span class="p">,</span> <span class="n">vectorvalue</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">bound_name</span><span class="o">=</span><span class="s2">&quot;VectorPotentialZero&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modules.Boundary.BoundaryObject object at 0x000002812CDF3B50&gt;
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modules.Boundary.BoundaryObject object at 0x000001E0E739E3D0&gt;
 </pre></div>
 </div>
 </section>
@@ -1543,11 +1539,11 @@ The points for edge picking are in the airgap.</p>
 <section id="define-windings-in-phase-a">
 <h2>Define windings in phase A<a class="headerlink" href="#define-windings-in-phase-a" title="Permalink to this heading">#</a></h2>
 <p>Define windings in phase A.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">M2D</span><span class="o">.</span><span class="n">assign_coil</span><span class="p">([</span><span class="s2">&quot;Coil&quot;</span><span class="p">],</span> <span class="n">conductor_number</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">polarity</span><span class="o">=</span><span class="s2">&quot;Positive&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;CT_Ph1_P2_C1_Go&quot;</span><span class="p">)</span>
-<span class="n">M2D</span><span class="o">.</span><span class="n">assign_coil</span><span class="p">([</span><span class="s2">&quot;Coil_5&quot;</span><span class="p">],</span> <span class="n">conductor_number</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">polarity</span><span class="o">=</span><span class="s2">&quot;Negative&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;CT_Ph1_P2_C1_Ret&quot;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">M2D</span><span class="o">.</span><span class="n">assign_coil</span><span class="p">(</span><span class="n">input_object</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Coil&quot;</span><span class="p">],</span> <span class="n">conductor_number</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">polarity</span><span class="o">=</span><span class="s2">&quot;Positive&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;CT_Ph1_P2_C1_Go&quot;</span><span class="p">)</span>
+<span class="n">M2D</span><span class="o">.</span><span class="n">assign_coil</span><span class="p">(</span><span class="n">input_object</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Coil_5&quot;</span><span class="p">],</span> <span class="n">conductor_number</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">polarity</span><span class="o">=</span><span class="s2">&quot;Negative&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;CT_Ph1_P2_C1_Ret&quot;</span><span class="p">)</span>
 <span class="n">M2D</span><span class="o">.</span><span class="n">assign_winding</span><span class="p">(</span><span class="n">coil_terminals</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">winding_type</span><span class="o">=</span><span class="s2">&quot;Current&quot;</span><span class="p">,</span> <span class="n">is_solid</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                    <span class="n">current_value</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">PhA_current</span></a><span class="p">,</span> <span class="n">parallel_branches</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Phase_A&quot;</span><span class="p">)</span>
-<span class="n">M2D</span><span class="o">.</span><span class="n">add_winding_coils</span><span class="p">(</span><span class="s2">&quot;Phase_A&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;CT_Ph1_P2_C1_Go&quot;</span><span class="p">,</span> <span class="s2">&quot;CT_Ph1_P2_C1_Ret&quot;</span><span class="p">])</span>
+<span class="n">M2D</span><span class="o">.</span><span class="n">add_winding_coils</span><span class="p">(</span><span class="n">windingname</span><span class="o">=</span><span class="s2">&quot;Phase_A&quot;</span><span class="p">,</span> <span class="n">coil_names</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;CT_Ph1_P2_C1_Go&quot;</span><span class="p">,</span> <span class="s2">&quot;CT_Ph1_P2_C1_Ret&quot;</span><span class="p">])</span>
 </pre></div>
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>True
@@ -1557,12 +1553,12 @@ The points for edge picking are in the airgap.</p>
 <section id="define-windings-in-phase-b">
 <h2>Define windings in phase B<a class="headerlink" href="#define-windings-in-phase-b" title="Permalink to this heading">#</a></h2>
 <p>Define windings in phase B.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">M2D</span><span class="o">.</span><span class="n">assign_coil</span><span class="p">(</span><span class="s2">&quot;Coil_3&quot;</span><span class="p">,</span> <span class="n">conductor_number</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">polarity</span><span class="o">=</span><span class="s2">&quot;Positive&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;CT_Ph3_P1_C2_Go&quot;</span><span class="p">)</span>
-<span class="n">M2D</span><span class="o">.</span><span class="n">assign_coil</span><span class="p">(</span><span class="s2">&quot;Coil_4&quot;</span><span class="p">,</span> <span class="n">conductor_number</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">polarity</span><span class="o">=</span><span class="s2">&quot;Positive&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;CT_Ph3_P1_C1_Go&quot;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">M2D</span><span class="o">.</span><span class="n">assign_coil</span><span class="p">(</span><span class="n">input_object</span><span class="o">=</span><span class="s2">&quot;Coil_3&quot;</span><span class="p">,</span> <span class="n">conductor_number</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">polarity</span><span class="o">=</span><span class="s2">&quot;Positive&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;CT_Ph3_P1_C2_Go&quot;</span><span class="p">)</span>
+<span class="n">M2D</span><span class="o">.</span><span class="n">assign_coil</span><span class="p">(</span><span class="n">input_object</span><span class="o">=</span><span class="s2">&quot;Coil_4&quot;</span><span class="p">,</span> <span class="n">conductor_number</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">polarity</span><span class="o">=</span><span class="s2">&quot;Positive&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;CT_Ph3_P1_C1_Go&quot;</span><span class="p">)</span>
 <span class="n">M2D</span><span class="o">.</span><span class="n">assign_winding</span><span class="p">(</span><span class="n">coil_terminals</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">winding_type</span><span class="o">=</span><span class="s2">&quot;Current&quot;</span><span class="p">,</span> <span class="n">is_solid</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                    <span class="n">current_value</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">PhB_current</span></a><span class="p">,</span> <span class="n">parallel_branches</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
                    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Phase_B&quot;</span><span class="p">)</span>
-<span class="n">M2D</span><span class="o">.</span><span class="n">add_winding_coils</span><span class="p">(</span><span class="s2">&quot;Phase_B&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;CT_Ph3_P1_C2_Go&quot;</span><span class="p">,</span> <span class="s2">&quot;CT_Ph3_P1_C1_Go&quot;</span><span class="p">])</span>
+<span class="n">M2D</span><span class="o">.</span><span class="n">add_winding_coils</span><span class="p">(</span><span class="n">windingname</span><span class="o">=</span><span class="s2">&quot;Phase_B&quot;</span><span class="p">,</span> <span class="n">coil_names</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;CT_Ph3_P1_C2_Go&quot;</span><span class="p">,</span> <span class="s2">&quot;CT_Ph3_P1_C1_Go&quot;</span><span class="p">])</span>
 </pre></div>
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>True
@@ -1572,12 +1568,12 @@ The points for edge picking are in the airgap.</p>
 <section id="define-windings-in-phase-c">
 <h2>Define windings in phase C<a class="headerlink" href="#define-windings-in-phase-c" title="Permalink to this heading">#</a></h2>
 <p>Define windings in phase C.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">M2D</span><span class="o">.</span><span class="n">assign_coil</span><span class="p">(</span><span class="s2">&quot;Coil_1&quot;</span><span class="p">,</span> <span class="n">conductor_number</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">polarity</span><span class="o">=</span><span class="s2">&quot;Negative&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;CT_Ph2_P2_C2_Ret&quot;</span><span class="p">)</span>
-<span class="n">M2D</span><span class="o">.</span><span class="n">assign_coil</span><span class="p">(</span><span class="s2">&quot;Coil_2&quot;</span><span class="p">,</span> <span class="n">conductor_number</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">polarity</span><span class="o">=</span><span class="s2">&quot;Negative&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;CT_Ph2_P2_C1_Ret&quot;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">M2D</span><span class="o">.</span><span class="n">assign_coil</span><span class="p">(</span><span class="n">input_object</span><span class="o">=</span><span class="s2">&quot;Coil_1&quot;</span><span class="p">,</span> <span class="n">conductor_number</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">polarity</span><span class="o">=</span><span class="s2">&quot;Negative&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;CT_Ph2_P2_C2_Ret&quot;</span><span class="p">)</span>
+<span class="n">M2D</span><span class="o">.</span><span class="n">assign_coil</span><span class="p">(</span><span class="n">input_object</span><span class="o">=</span><span class="s2">&quot;Coil_2&quot;</span><span class="p">,</span> <span class="n">conductor_number</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">polarity</span><span class="o">=</span><span class="s2">&quot;Negative&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;CT_Ph2_P2_C1_Ret&quot;</span><span class="p">)</span>
 <span class="n">M2D</span><span class="o">.</span><span class="n">assign_winding</span><span class="p">(</span><span class="n">coil_terminals</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">winding_type</span><span class="o">=</span><span class="s2">&quot;Current&quot;</span><span class="p">,</span> <span class="n">is_solid</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                    <span class="n">current_value</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">PhC_current</span></a><span class="p">,</span> <span class="n">parallel_branches</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
                    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Phase_C&quot;</span><span class="p">)</span>
-<span class="n">M2D</span><span class="o">.</span><span class="n">add_winding_coils</span><span class="p">(</span><span class="s2">&quot;Phase_C&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;CT_Ph2_P2_C2_Ret&quot;</span><span class="p">,</span> <span class="s2">&quot;CT_Ph2_P2_C1_Ret&quot;</span><span class="p">])</span>
+<span class="n">M2D</span><span class="o">.</span><span class="n">add_winding_coils</span><span class="p">(</span><span class="n">windingname</span><span class="o">=</span><span class="s2">&quot;Phase_C&quot;</span><span class="p">,</span> <span class="n">coil_names</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;CT_Ph2_P2_C2_Ret&quot;</span><span class="p">,</span> <span class="s2">&quot;CT_Ph2_P2_C1_Ret&quot;</span><span class="p">])</span>
 </pre></div>
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>True
@@ -1601,7 +1597,7 @@ The points for edge picking are in the airgap.</p>
 <span class="n">M2D</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">assign_length_mesh</span><span class="p">(</span><span class="n">rotor_id</span><span class="p">,</span> <span class="n">isinside</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">maxlength</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">maxel</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">meshop_name</span><span class="o">=</span><span class="s2">&quot;rotor&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modules.Mesh.MeshOperation object at 0x000002812C6650D0&gt;
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modules.Mesh.MeshOperation object at 0x000001E0B58683D0&gt;
 </pre></div>
 </div>
 </section>
@@ -1625,7 +1621,7 @@ The points for edge picking are in the airgap.</p>
 </section>
 <section id="compute-transient-inductance">
 <h2>Compute transient inductance<a class="headerlink" href="#compute-transient-inductance" title="Permalink to this heading">#</a></h2>
-<p>Compute the transient inducatance.</p>
+<p>Compute the transient inductance.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">M2D</span><span class="o">.</span><span class="n">change_inductance_computation</span><span class="p">(</span><span class="n">compute_transient_inductance</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">incremental_matrix</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1673,8 +1669,8 @@ The points for edge picking are in the airgap.</p>
 </section>
 <section id="initialize-definitions-for-output-variables">
 <h2>Initialize definitions for output variables<a class="headerlink" href="#initialize-definitions-for-output-variables" title="Permalink to this heading">#</a></h2>
-<p>Initialize the definitions for the needed output variables. You use these
-output variables later to generate reports.</p>
+<p>Initialize the definitions for the output variables.
+These will be used later to generate reports.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/dev/library/stdtypes.html#dict" title="builtins.dict" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">output_vars</span></a> <span class="o">=</span> <span class="p">{</span>
     <span class="s2">&quot;Current_A&quot;</span><span class="p">:</span> <span class="s2">&quot;InputCurrent(Phase_A)&quot;</span><span class="p">,</span>
     <span class="s2">&quot;Current_B&quot;</span><span class="p">:</span> <span class="s2">&quot;InputCurrent(Phase_B)&quot;</span><span class="p">,</span>
@@ -1788,10 +1784,11 @@ formerly created when the section is applied.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">faces_reg</span></a> <span class="o">=</span> <span class="n">mod2D</span><span class="o">.</span><span class="n">get_object_faces</span><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">object_list</span></a><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>  <span class="c1"># Region</span>
 <span class="c1"># Maxwell Transient needs time specified in a dictionary</span>
 <span class="c1"># &quot;IntrinsicVar:=&quot;  , &quot;Time=\&#39;0\&#39;&quot;,</span>
-<span class="n">M2D</span><span class="o">.</span><span class="n">post</span><span class="o">.</span><span class="n">create_fieldplot_surface</span><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">faces_reg</span></a><span class="p">,</span> <span class="s1">&#39;Flux_Lines&#39;</span><span class="p">,</span> <span class="n">intrinsincDict</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Time&quot;</span><span class="p">:</span> <span class="s2">&quot;0.000&quot;</span><span class="p">},</span> <span class="n">plot_name</span><span class="o">=</span><span class="s2">&quot;Flux_Lines&quot;</span><span class="p">)</span>
+<span class="n">M2D</span><span class="o">.</span><span class="n">post</span><span class="o">.</span><span class="n">create_fieldplot_surface</span><span class="p">(</span><span class="n">objlist</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">faces_reg</span></a><span class="p">,</span> <span class="n">quantityName</span><span class="o">=</span><span class="s1">&#39;Flux_Lines&#39;</span><span class="p">,</span> <span class="n">intrinsincDict</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Time&quot;</span><span class="p">:</span> <span class="s2">&quot;0.000&quot;</span><span class="p">},</span>
+                                  <span class="n">plot_name</span><span class="o">=</span><span class="s2">&quot;Flux_Lines&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modules.solutions.FieldPlot object at 0x000002812CAA14C0&gt;
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modules.solutions.FieldPlot object at 0x000001E0E73B8AC0&gt;
 </pre></div>
 </div>
 </section>
@@ -1815,7 +1812,7 @@ formerly created when the section is applied.</p>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>True
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 2 minutes  45.502 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 2 minutes  39.267 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-03-maxwell-maxwell2d-nissanleaf-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/f19681ed04b8eb18fe205d53191d34a9/Maxwell2D_NissanLeaf.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">Maxwell2D_NissanLeaf.py</span></code></a></p>
@@ -1847,13 +1844,13 @@ formerly created when the section is applied.</p>
   
   <div class="footer-item">
     <p class="copyright">
-    &copy; Copyright (c) 2022 ANSYS, Inc. All rights reserved.<br>
+    &copy; Copyright (c) 2023 ANSYS, Inc. All rights reserved.<br>
 </p>
   </div>
   
   <div class="footer-item">
     <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 6.1.3.<br>
 </p>
   </div>
   

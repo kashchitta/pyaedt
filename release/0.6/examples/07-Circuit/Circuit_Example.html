@@ -42,14 +42,11 @@
         <link href="../../_static/css/breadcrumbs.css" rel="stylesheet">
     
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/sphinx_highlight.js"></script>
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
-    <link rel="shortcut icon" href="../../_static/ansys-favicon.png"/>
+    <link rel="icon" href="../../_static/ansys-favicon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Circuit: schematic subcircuit management" href="Circuit_Subcircuit_Example.html" />
@@ -80,9 +77,8 @@
   
   
   
-    <img src="../../_static/pyansys-logo-black-cropped.png" class="logo__image only-light" alt="Logo image">
-    <img src="../../_static/pyansys-logo-black-cropped.png" class="logo__image only-dark" alt="Logo image">
   
+    <p class="title logo__title">PyAEDT</p>
   
 </a>
     
@@ -210,7 +206,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.42 variable.
+            // this version, rather than using sphinx's 0.6.43 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -892,9 +888,9 @@ starts the specified version in the specified mode.</p>
 <section id="create-components">
 <h2>Create components<a class="headerlink" href="#create-components" title="Permalink to this heading">#</a></h2>
 <p>Create components, such as an inductor, resistor, and capacitor.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">inductor</span> <span class="o">=</span> <span class="n">aedt_app</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">schematic</span><span class="o">.</span><span class="n">create_inductor</span><span class="p">(</span><span class="s2">&quot;L1&quot;</span><span class="p">,</span> <span class="mf">1e-9</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
-<span class="n">resistor</span> <span class="o">=</span> <span class="n">aedt_app</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">schematic</span><span class="o">.</span><span class="n">create_resistor</span><span class="p">(</span><span class="s2">&quot;R1&quot;</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.0254</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
-<span class="n">capacitor</span> <span class="o">=</span> <span class="n">aedt_app</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">schematic</span><span class="o">.</span><span class="n">create_capacitor</span><span class="p">(</span><span class="s2">&quot;C1&quot;</span><span class="p">,</span> <span class="mf">1e-12</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">inductor</span> <span class="o">=</span> <span class="n">aedt_app</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">schematic</span><span class="o">.</span><span class="n">create_inductor</span><span class="p">(</span><span class="n">compname</span><span class="o">=</span><span class="s2">&quot;L1&quot;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mf">1e-9</span><span class="p">,</span> <span class="n">location</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="n">resistor</span> <span class="o">=</span> <span class="n">aedt_app</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">schematic</span><span class="o">.</span><span class="n">create_resistor</span><span class="p">(</span><span class="n">compname</span><span class="o">=</span><span class="s2">&quot;R1&quot;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">location</span><span class="o">=</span><span class="p">[</span><span class="mf">0.0254</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="n">capacitor</span> <span class="o">=</span> <span class="n">aedt_app</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">schematic</span><span class="o">.</span><span class="n">create_capacitor</span><span class="p">(</span><span class="n">compname</span><span class="o">=</span><span class="s2">&quot;C1&quot;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mf">1e-12</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
@@ -908,7 +904,7 @@ starts the specified version in the specified mode.</p>
 <section id="create-port-and-ground">
 <h2>Create port and ground<a class="headerlink" href="#create-port-and-ground" title="Permalink to this heading">#</a></h2>
 <p>Create a port and a ground, which are needed for the circuit analysis.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">port</span> <span class="o">=</span> <span class="n">aedt_app</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">components</span><span class="o">.</span><span class="n">create_interface_port</span><span class="p">(</span><span class="s2">&quot;myport&quot;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">port</span> <span class="o">=</span> <span class="n">aedt_app</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">components</span><span class="o">.</span><span class="n">create_interface_port</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;myport&quot;</span><span class="p">)</span>
 <span class="n">gnd</span> <span class="o">=</span> <span class="n">aedt_app</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">components</span><span class="o">.</span><span class="n">create_gnd</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -916,10 +912,10 @@ starts the specified version in the specified mode.</p>
 <section id="connect-components">
 <h2>Connect components<a class="headerlink" href="#connect-components" title="Permalink to this heading">#</a></h2>
 <p>Connect components with wires.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">port</span><span class="o">.</span><span class="n">pins</span></a><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">connect_to_component</span><span class="p">(</span><span class="n">inductor</span><span class="o">.</span><span class="n">pins</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-<span class="n">inductor</span><span class="o">.</span><span class="n">pins</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">connect_to_component</span><span class="p">(</span><span class="n">resistor</span><span class="o">.</span><span class="n">pins</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-<span class="n">resistor</span><span class="o">.</span><span class="n">pins</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">connect_to_component</span><span class="p">(</span><span class="n">capacitor</span><span class="o">.</span><span class="n">pins</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-<span class="n">capacitor</span><span class="o">.</span><span class="n">pins</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">connect_to_component</span><span class="p">(</span><span class="n">gnd</span><span class="o">.</span><span class="n">pins</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">port</span><span class="o">.</span><span class="n">pins</span></a><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">connect_to_component</span><span class="p">(</span><span class="n">component_pin</span><span class="o">=</span><span class="n">inductor</span><span class="o">.</span><span class="n">pins</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">inductor</span><span class="o">.</span><span class="n">pins</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">connect_to_component</span><span class="p">(</span><span class="n">component_pin</span><span class="o">=</span><span class="n">resistor</span><span class="o">.</span><span class="n">pins</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">resistor</span><span class="o">.</span><span class="n">pins</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">connect_to_component</span><span class="p">(</span><span class="n">component_pin</span><span class="o">=</span><span class="n">capacitor</span><span class="o">.</span><span class="n">pins</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">capacitor</span><span class="o">.</span><span class="n">pins</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">connect_to_component</span><span class="p">(</span><span class="n">component_pin</span><span class="o">=</span><span class="n">gnd</span><span class="o">.</span><span class="n">pins</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 </pre></div>
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>True
@@ -929,9 +925,9 @@ starts the specified version in the specified mode.</p>
 <section id="create-transient-setup">
 <h2>Create transient setup<a class="headerlink" href="#create-transient-setup" title="Permalink to this heading">#</a></h2>
 <p>Create a transient setup.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">setup2</span> <span class="o">=</span> <span class="n">aedt_app</span><span class="o">.</span><span class="n">create_setup</span><span class="p">(</span><span class="s2">&quot;MyTransient&quot;</span><span class="p">,</span> <a href="https://docs.python.org/dev/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">aedt_app</span><span class="o">.</span><span class="n">SETUPS</span><span class="o">.</span><span class="n">NexximTransient</span></a><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">setup2</span> <span class="o">=</span> <span class="n">aedt_app</span><span class="o">.</span><span class="n">create_setup</span><span class="p">(</span><span class="n">setupname</span><span class="o">=</span><span class="s2">&quot;MyTransient&quot;</span><span class="p">,</span> <span class="n">setuptype</span><span class="o">=</span><a href="https://docs.python.org/dev/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">aedt_app</span><span class="o">.</span><span class="n">SETUPS</span><span class="o">.</span><span class="n">NexximTransient</span></a><span class="p">)</span>
 <span class="n">setup2</span><span class="o">.</span><span class="n">props</span><span class="p">[</span><span class="s2">&quot;TransientData&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;0.01ns&quot;</span><span class="p">,</span> <span class="s2">&quot;200ns&quot;</span><span class="p">]</span>
-<span class="n">setup3</span> <span class="o">=</span> <span class="n">aedt_app</span><span class="o">.</span><span class="n">create_setup</span><span class="p">(</span><span class="s2">&quot;MyDC&quot;</span><span class="p">,</span> <a href="https://docs.python.org/dev/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">aedt_app</span><span class="o">.</span><span class="n">SETUPS</span><span class="o">.</span><span class="n">NexximDC</span></a><span class="p">)</span>
+<span class="n">setup3</span> <span class="o">=</span> <span class="n">aedt_app</span><span class="o">.</span><span class="n">create_setup</span><span class="p">(</span><span class="n">setupname</span><span class="o">=</span><span class="s2">&quot;MyDC&quot;</span><span class="p">,</span> <span class="n">setuptype</span><span class="o">=</span><a href="https://docs.python.org/dev/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">aedt_app</span><span class="o">.</span><span class="n">SETUPS</span><span class="o">.</span><span class="n">NexximDC</span></a><span class="p">)</span>
 </pre></div>
 </div>
 </section>
@@ -939,11 +935,10 @@ starts the specified version in the specified mode.</p>
 <h2>Solve transient setup<a class="headerlink" href="#solve-transient-setup" title="Permalink to this heading">#</a></h2>
 <p>Solve the transient setup.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">aedt_app</span><span class="o">.</span><span class="n">analyze_setup</span><span class="p">(</span><span class="s2">&quot;MyLNA&quot;</span><span class="p">)</span>
-
 <span class="n">aedt_app</span><span class="o">.</span><span class="n">export_fullwave_spice</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&#39;D:/Temp/pyaedt_prj_52V/Project_QVU.pyaedt\\Circuit Design_HOJ\\Circuit Design_HOJ.sp&#39;
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&#39;D:/Temp/pyaedt_prj_UMS/Project_3Z4.pyaedt\\Circuit Design_GE8\\Circuit Design_GE8.sp&#39;
 </pre></div>
 </div>
 </section>
@@ -993,7 +988,7 @@ All methods provide for saving the project before closing.</p>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>True
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  35.901 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  35.155 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-07-circuit-circuit-example-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/5b1b639b4dc016f123422eedf0082f4e/Circuit_Example.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">Circuit_Example.py</span></code></a></p>
@@ -1025,13 +1020,13 @@ All methods provide for saving the project before closing.</p>
   
   <div class="footer-item">
     <p class="copyright">
-    &copy; Copyright (c) 2022 ANSYS, Inc. All rights reserved.<br>
+    &copy; Copyright (c) 2023 ANSYS, Inc. All rights reserved.<br>
 </p>
   </div>
   
   <div class="footer-item">
     <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 6.1.3.<br>
 </p>
   </div>
   

@@ -28,7 +28,7 @@ Perform required imports
 ~~~~~~~~~~~~~~~~~~~~~~~~
 Perform required imports
 
-.. GENERATED FROM PYTHON SOURCE LINES 10-16
+.. GENERATED FROM PYTHON SOURCE LINES 10-15
 
 .. code-block:: default
 
@@ -44,8 +44,7 @@ Perform required imports
 
 
 
-
-.. GENERATED FROM PYTHON SOURCE LINES 17-22
+.. GENERATED FROM PYTHON SOURCE LINES 16-21
 
 Set non-graphical mode
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -53,7 +52,7 @@ Set non-graphical mode. ``"PYAEDT_NON_GRAPHICAL"`` is needed to generate
 documentation only.
 You can set ``non_graphical`` either to ``True`` or ``False``.
 
-.. GENERATED FROM PYTHON SOURCE LINES 22-26
+.. GENERATED FROM PYTHON SOURCE LINES 21-24
 
 .. code-block:: default
 
@@ -67,19 +66,18 @@ You can set ``non_graphical`` either to ``True`` or ``False``.
 
 
 
-
-.. GENERATED FROM PYTHON SOURCE LINES 27-30
+.. GENERATED FROM PYTHON SOURCE LINES 25-28
 
 Launch AEDT in graphical mode
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Launch AEDT 2022 R2 in graphical mode.
 
-.. GENERATED FROM PYTHON SOURCE LINES 30-33
+.. GENERATED FROM PYTHON SOURCE LINES 28-31
 
 .. code-block:: default
 
 
-    d = pyaedt.launch_desktop("2022.2", non_graphical=non_graphical, new_desktop_session=True)
+    d = pyaedt.launch_desktop(specified_version="2022.2", non_graphical=non_graphical, new_desktop_session=True)
 
 
 
@@ -88,13 +86,13 @@ Launch AEDT 2022 R2 in graphical mode.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 34-37
+.. GENERATED FROM PYTHON SOURCE LINES 32-35
 
 Insert HFSS design
 ~~~~~~~~~~~~~~~~~~
 Insert an HFSS design with the default name.
 
-.. GENERATED FROM PYTHON SOURCE LINES 37-40
+.. GENERATED FROM PYTHON SOURCE LINES 35-38
 
 .. code-block:: default
 
@@ -108,7 +106,7 @@ Insert an HFSS design with the default name.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 41-46
+.. GENERATED FROM PYTHON SOURCE LINES 39-44
 
 Create coordinate system
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -116,7 +114,7 @@ The coordinate system is centered on the global origin and has the axis
 aligned to the global coordinate system. The new coordinate system is
 saved in the object ``cs1``.
 
-.. GENERATED FROM PYTHON SOURCE LINES 46-49
+.. GENERATED FROM PYTHON SOURCE LINES 44-47
 
 .. code-block:: default
 
@@ -130,14 +128,14 @@ saved in the object ``cs1``.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 50-54
+.. GENERATED FROM PYTHON SOURCE LINES 48-52
 
 Modify coordinate system
 ~~~~~~~~~~~~~~~~~~~~~~~~
 The ``cs1`` object exposes properties and methods to manipulate the
 coordinate system. The origin can be changed.
 
-.. GENERATED FROM PYTHON SOURCE LINES 54-66
+.. GENERATED FROM PYTHON SOURCE LINES 52-64
 
 .. code-block:: default
 
@@ -160,13 +158,13 @@ coordinate system. The origin can be changed.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 67-70
+.. GENERATED FROM PYTHON SOURCE LINES 65-68
 
 Rename coordinate system
 ~~~~~~~~~~~~~~~~~~~~~~~~
 Rename the coordinate system.
 
-.. GENERATED FROM PYTHON SOURCE LINES 70-73
+.. GENERATED FROM PYTHON SOURCE LINES 68-71
 
 .. code-block:: default
 
@@ -186,7 +184,7 @@ Rename the coordinate system.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 74-79
+.. GENERATED FROM PYTHON SOURCE LINES 72-77
 
 Change coordinate system mode
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -194,7 +192,7 @@ Use the ``change_cs_mode`` method to change the mode. Options are ``0``
 for axis/position, ``1`` for Euler angle ZXZ, and ``2`` for Euler angle ZYZ.
 Here ``1`` sets Euler angle ZXZ as the mode.
 
-.. GENERATED FROM PYTHON SOURCE LINES 79-87
+.. GENERATED FROM PYTHON SOURCE LINES 77-85
 
 .. code-block:: default
 
@@ -213,13 +211,13 @@ Here ``1`` sets Euler angle ZXZ as the mode.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 88-91
+.. GENERATED FROM PYTHON SOURCE LINES 86-89
 
 Delete coordinate system
 ~~~~~~~~~~~~~~~~~~~~~~~~
 Delete the coordinate system.
 
-.. GENERATED FROM PYTHON SOURCE LINES 91-94
+.. GENERATED FROM PYTHON SOURCE LINES 89-92
 
 .. code-block:: default
 
@@ -239,14 +237,14 @@ Delete the coordinate system.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 95-99
+.. GENERATED FROM PYTHON SOURCE LINES 93-97
 
 Create coordinate system by defining axes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Create a coordinate system by defining the axes. During creation, you can
 specify all coordinate system properties.
 
-.. GENERATED FROM PYTHON SOURCE LINES 99-104
+.. GENERATED FROM PYTHON SOURCE LINES 97-102
 
 .. code-block:: default
 
@@ -262,13 +260,13 @@ specify all coordinate system properties.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 105-108
+.. GENERATED FROM PYTHON SOURCE LINES 103-106
 
 Create coordinate system by defining Euler angles
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Create a coordinate system by defining Euler angles.
 
-.. GENERATED FROM PYTHON SOURCE LINES 108-111
+.. GENERATED FROM PYTHON SOURCE LINES 106-109
 
 .. code-block:: default
 
@@ -282,7 +280,7 @@ Create a coordinate system by defining Euler angles.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 112-117
+.. GENERATED FROM PYTHON SOURCE LINES 110-115
 
 Create coordinate system by defining view
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -290,7 +288,7 @@ Create a coordinate system by defining the view. Options are ``"iso"``,
 ``"XY"``, ``"XZ"``, and ``"XY"``. Here ``"iso"`` is specified.
 The axes are set automatically.
 
-.. GENERATED FROM PYTHON SOURCE LINES 117-120
+.. GENERATED FROM PYTHON SOURCE LINES 115-118
 
 .. code-block:: default
 
@@ -304,7 +302,7 @@ The axes are set automatically.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 121-126
+.. GENERATED FROM PYTHON SOURCE LINES 119-124
 
 Create coordinate system by defining axis and angle rotation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -312,7 +310,7 @@ Create a coordinate system by defining the axis and angle rotation. When you
 specify the axis and angle rotation, this data is automatically translated
 to Euler angles.
 
-.. GENERATED FROM PYTHON SOURCE LINES 126-129
+.. GENERATED FROM PYTHON SOURCE LINES 124-127
 
 .. code-block:: default
 
@@ -326,7 +324,7 @@ to Euler angles.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 130-136
+.. GENERATED FROM PYTHON SOURCE LINES 128-134
 
 Create face coordinate system
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -335,7 +333,7 @@ First create a box and then define the face coordinate system on one of its
 faces. To create the reference face for the face coordinate system, you must 
 specify starting and ending points for the axis.
 
-.. GENERATED FROM PYTHON SOURCE LINES 136-143
+.. GENERATED FROM PYTHON SOURCE LINES 134-141
 
 .. code-block:: default
 
@@ -353,14 +351,14 @@ specify starting and ending points for the axis.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 144-148
+.. GENERATED FROM PYTHON SOURCE LINES 142-146
 
 Create face coordinate system centered on face
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Create a face coordinate system centered on the face with the X axis pointing
 to the edge vertex.
 
-.. GENERATED FROM PYTHON SOURCE LINES 148-153
+.. GENERATED FROM PYTHON SOURCE LINES 146-151
 
 .. code-block:: default
 
@@ -376,14 +374,14 @@ to the edge vertex.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 154-158
+.. GENERATED FROM PYTHON SOURCE LINES 152-156
 
 Swap X and Y axes of face coordinate system
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Swap the X axis and Y axis of the face coordinate system. The X axis is the
 pointing ``axis_position`` by default. You can optionally select the Y axis.
 
-.. GENERATED FROM PYTHON SOURCE LINES 158-164
+.. GENERATED FROM PYTHON SOURCE LINES 156-162
 
 .. code-block:: default
 
@@ -400,7 +398,7 @@ pointing ``axis_position`` by default. You can optionally select the Y axis.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 165-170
+.. GENERATED FROM PYTHON SOURCE LINES 163-168
 
 Apply a rotation around Z axis
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -408,7 +406,7 @@ Apply a rotation around the Z axis. The Z axis of a face coordinate system
 is always orthogonal to the face. A rotation can be applied at definition.
 Rotation is expressed in degrees.
 
-.. GENERATED FROM PYTHON SOURCE LINES 170-176
+.. GENERATED FROM PYTHON SOURCE LINES 168-174
 
 .. code-block:: default
 
@@ -425,14 +423,14 @@ Rotation is expressed in degrees.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 177-181
+.. GENERATED FROM PYTHON SOURCE LINES 175-179
 
 Apply offset to X and Y axes of face coordinate system
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Apply an offset to the X axis and Y axis of a face coordinate system.
 The offset is in respect to the face coordinate system itself.
 
-.. GENERATED FROM PYTHON SOURCE LINES 181-190
+.. GENERATED FROM PYTHON SOURCE LINES 179-188
 
 .. code-block:: default
 
@@ -452,14 +450,14 @@ The offset is in respect to the face coordinate system itself.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 191-195
+.. GENERATED FROM PYTHON SOURCE LINES 189-193
 
 Create coordinate system relative to face coordinate system
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Create a coordinate system relative to a face coordinate system. Coordinate
 systems and face coordinate systems interact with each other.
 
-.. GENERATED FROM PYTHON SOURCE LINES 195-203
+.. GENERATED FROM PYTHON SOURCE LINES 193-200
 
 .. code-block:: default
 
@@ -477,14 +475,13 @@ systems and face coordinate systems interact with each other.
 
 
 
-
-.. GENERATED FROM PYTHON SOURCE LINES 204-207
+.. GENERATED FROM PYTHON SOURCE LINES 201-204
 
 Get all coordinate systems
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 Get all coordinate systems.
 
-.. GENERATED FROM PYTHON SOURCE LINES 207-212
+.. GENERATED FROM PYTHON SOURCE LINES 204-209
 
 .. code-block:: default
 
@@ -501,18 +498,18 @@ Get all coordinate systems.
 
  .. code-block:: none
 
-    ['CS_FCS', 'Face_CS_ZC4IRB', 'Face_CS_KQ1IRY', 'Face_CS_I4EDI4', 'Face_CS_MPQF56', 'FCS2', 'FCS1', 'CS5', 'CS4', 'CS3', 'CS2']
+    ['CS_FCS', 'Face_CS_SU74HM', 'Face_CS_0Q3NLZ', 'Face_CS_4KUOJP', 'Face_CS_J8757P', 'FCS2', 'FCS1', 'CS5', 'CS4', 'CS3', 'CS2']
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 213-216
+.. GENERATED FROM PYTHON SOURCE LINES 210-213
 
 Select coordinate system
 ~~~~~~~~~~~~~~~~~~~~~~~~
 Select an existing coordinate system.
 
-.. GENERATED FROM PYTHON SOURCE LINES 216-221
+.. GENERATED FROM PYTHON SOURCE LINES 213-218
 
 .. code-block:: default
 
@@ -534,14 +531,14 @@ Select an existing coordinate system.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 222-226
+.. GENERATED FROM PYTHON SOURCE LINES 219-223
 
 Get point coordinate under another coordinate system
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Get a point coordinate under another coordinate system. A point coordinate
 can be translated in respect to any coordinate system.
 
-.. GENERATED FROM PYTHON SOURCE LINES 226-233
+.. GENERATED FROM PYTHON SOURCE LINES 223-230
 
 .. code-block:: default
 
@@ -566,7 +563,7 @@ can be translated in respect to any coordinate system.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 234-239
+.. GENERATED FROM PYTHON SOURCE LINES 231-236
 
 Close AEDT
 ~~~~~~~~~~
@@ -574,7 +571,7 @@ After the simulaton completes, you can close AEDT or release it using the
 :func:`pyaedt.Desktop.release_desktop` method.
 All methods provide for saving the project before closing.
 
-.. GENERATED FROM PYTHON SOURCE LINES 239-241
+.. GENERATED FROM PYTHON SOURCE LINES 236-238
 
 .. code-block:: default
 
@@ -596,7 +593,7 @@ All methods provide for saving the project before closing.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  21.666 seconds)
+   **Total running time of the script:** ( 0 minutes  21.537 seconds)
 
 
 .. _sphx_glr_download_examples_01-Modeling-Setup_HFSS_CoordinateSystem.py:

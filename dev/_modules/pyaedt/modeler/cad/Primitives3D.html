@@ -322,6 +322,8 @@ function checkPageExistsAndRedirect(event) {
 <span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span>
 <span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">tan</span>
 
+<span class="kn">from</span> <span class="nn">pyaedt</span> <span class="kn">import</span> <span class="n">Icepak</span>
+<span class="kn">from</span> <span class="nn">pyaedt.generic</span> <span class="kn">import</span> <span class="n">LoadAEDTFile</span>
 <span class="kn">from</span> <span class="nn">pyaedt.generic.general_methods</span> <span class="kn">import</span> <span class="n">_retry_ntimes</span>
 <span class="kn">from</span> <span class="nn">pyaedt.generic.general_methods</span> <span class="kn">import</span> <span class="n">open_file</span>
 <span class="kn">from</span> <span class="nn">pyaedt.generic.general_methods</span> <span class="kn">import</span> <span class="n">pyaedt_function_handler</span>
@@ -332,6 +334,7 @@ function checkPageExistsAndRedirect(event) {
 <span class="kn">from</span> <span class="nn">pyaedt.modeler.advanced_cad.multiparts</span> <span class="kn">import</span> <span class="n">MultiPartComponent</span>
 <span class="kn">from</span> <span class="nn">pyaedt.modeler.cad.Primitives</span> <span class="kn">import</span> <span class="n">Primitives</span>
 <span class="kn">from</span> <span class="nn">pyaedt.modeler.geometry_operators</span> <span class="kn">import</span> <span class="n">GeometryOperators</span>
+<span class="kn">from</span> <span class="nn">pyaedt.modules.Boundary</span> <span class="kn">import</span> <span class="n">NativeComponentObject</span>
 
 
 <span class="k">class</span> <span class="nc">Primitives3D</span><span class="p">(</span><span class="n">Primitives</span><span class="p">,</span> <span class="nb">object</span><span class="p">):</span>
@@ -820,7 +823,7 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        &gt;&gt;&gt; origin = [0,0,0]</span>
 <span class="sd">        &gt;&gt;&gt; endpos = [10,5,20]</span>
 <span class="sd">        &gt;&gt;&gt; #Material and name are not mandatory fields</span>
-<span class="sd">        &gt;&gt;&gt; object_id = hfss.modeler.primivites.create_bondwire(origin, endpos,h1=0.5, h2=0.1, alpha=75, beta=4,</span>
+<span class="sd">        &gt;&gt;&gt; object_id = hfss.modeler.create_bondwire(origin, endpos,h1=0.5, h2=0.1, alpha=75, beta=4,</span>
 <span class="sd">        ...                                                     bond_type=0, name=&quot;mybox&quot;, matname=&quot;copper&quot;)</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">x_position</span><span class="p">,</span> <span class="n">y_position</span><span class="p">,</span> <span class="n">z_position</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pos_with_arg</span><span class="p">(</span><span class="n">start_position</span><span class="p">)</span>
@@ -893,6 +896,15 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        ----------</span>
 
 <span class="sd">        &gt;&gt;&gt; oEditor.CreateRectangle</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; from pyaedt import Hfss</span>
+<span class="sd">        &gt;&gt;&gt; hfss = Hfss()</span>
+<span class="sd">        &gt;&gt;&gt; plane = 0</span>
+<span class="sd">        &gt;&gt;&gt; position = [0,0,0]</span>
+<span class="sd">        &gt;&gt;&gt; dimension = [10,5]</span>
+<span class="sd">        &gt;&gt;&gt; rect_obj = hfss.modeler.create_rectangle(plane, position, dimension)</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">szAxis</span> <span class="o">=</span> <span class="n">GeometryOperators</span><span class="o">.</span><span class="n">cs_plane_to_axis_str</span><span class="p">(</span><span class="n">csPlane</span><span class="p">)</span>
@@ -1410,6 +1422,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">targetCS</span><span class="o">=</span><span class="s2">&quot;Global&quot;</span><span class="p">,</span>
         <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">password</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="n">auxiliary_dict</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
     <span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Insert a new 3D component.</span>
 
@@ -1429,6 +1442,9 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">            3D component name. The default is ``None``.</span>
 <span class="sd">        password : str, optional</span>
 <span class="sd">            Password for encrypted components. The default is an empty string.</span>
+<span class="sd">        auxiliary_dict : bool or str, optional</span>
+<span class="sd">            Enable the advanced 3d component import. It is possible to set explicitly the json file.</span>
+<span class="sd">            The default is ``False``.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1492,11 +1508,176 @@ function checkPageExistsAndRedirect(event) {
                 <span class="k">for</span> <span class="n">new_name</span> <span class="ow">in</span> <span class="n">obj_list</span><span class="p">:</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">_create_object</span><span class="p">(</span><span class="n">new_name</span><span class="p">)</span>
                 <span class="n">udm_obj</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_user_defined_component</span><span class="p">(</span><span class="n">new_object_name</span><span class="p">)</span>
-                <span class="k">if</span> <span class="n">name</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">name</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">auxiliary_dict</span><span class="p">:</span>
                     <span class="n">udm_obj</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
-                <span class="k">return</span> <span class="n">udm_obj</span>
         <span class="k">except</span><span class="p">:</span>
-            <span class="k">return</span> <span class="kc">False</span>
+            <span class="n">udm_obj</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">if</span> <span class="n">auxiliary_dict</span> <span class="ow">and</span> <span class="n">udm_obj</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">auxiliary_dict</span><span class="p">,</span> <span class="nb">bool</span><span class="p">):</span>
+                <span class="n">auxiliary_dict</span> <span class="o">=</span> <span class="n">comp_file</span> <span class="o">+</span> <span class="s2">&quot;.json&quot;</span>
+            <span class="n">aux_dict</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="n">auxiliary_dict</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">))</span>
+            <span class="n">mapping_dict</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="k">if</span> <span class="n">aux_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;monitor&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">):</span>
+                <span class="n">temp_proj_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">_generate_unique_project_name</span><span class="p">()</span>
+                <span class="n">ipkapp_temp</span> <span class="o">=</span> <span class="n">Icepak</span><span class="p">(</span><span class="n">projectname</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">toolkit_directory</span><span class="p">,</span> <span class="n">temp_proj_name</span><span class="p">))</span>
+                <span class="n">ipkapp_temp</span><span class="o">.</span><span class="n">delete_design</span><span class="p">(</span><span class="n">ipkapp_temp</span><span class="o">.</span><span class="n">design_name</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">oproject</span><span class="o">.</span><span class="n">CopyDesign</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">design_name</span><span class="p">)</span>
+                <span class="n">ipkapp_temp</span><span class="o">.</span><span class="n">oproject</span><span class="o">.</span><span class="n">Paste</span><span class="p">()</span>
+                <span class="n">temp_proj</span> <span class="o">=</span> <span class="n">ipkapp_temp</span><span class="o">.</span><span class="n">project_file</span>
+                <span class="n">ipkapp_temp</span><span class="o">.</span><span class="n">close_project</span><span class="p">()</span>
+                <span class="n">read_dict</span> <span class="o">=</span> <span class="n">LoadAEDTFile</span><span class="o">.</span><span class="n">load_keyword_in_aedt_file</span><span class="p">(</span><span class="n">temp_proj</span><span class="p">,</span> <span class="s2">&quot;ToplevelParts&quot;</span><span class="p">)</span>
+                <span class="n">read_cs</span> <span class="o">=</span> <span class="kc">False</span>
+                <span class="n">parts_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">odesign</span><span class="o">.</span><span class="n">GetChildObject</span><span class="p">(</span><span class="s2">&quot;3D Modeler&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">GetChildObject</span><span class="p">(</span><span class="n">udm_obj</span><span class="o">.</span><span class="n">name</span><span class="p">)</span><span class="o">.</span><span class="n">GetChildNames</span><span class="p">()</span>
+                <span class="n">mapping_dict</span> <span class="o">=</span> <span class="p">{</span>
+                    <span class="s2">&quot;ReferenceCoordSystemID&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+                    <span class="s2">&quot;FaceKeyIDMap&quot;</span><span class="p">:</span> <span class="p">{},</span>
+                    <span class="s2">&quot;EdgeKeyIDMap&quot;</span><span class="p">:</span> <span class="p">{},</span>
+                    <span class="s2">&quot;VertexKeyIDMap&quot;</span><span class="p">:</span> <span class="p">{},</span>
+                    <span class="s2">&quot;BodyKeyIDMap&quot;</span><span class="p">:</span> <span class="p">{},</span>
+                <span class="p">}</span>
+                <span class="n">geometry_part_list</span> <span class="o">=</span> <span class="n">read_dict</span><span class="p">[</span><span class="s2">&quot;ToplevelParts&quot;</span><span class="p">][</span><span class="s2">&quot;GeometryPart&quot;</span><span class="p">]</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">geometry_part_list</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+                    <span class="n">geometry_part_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">geometry_part_list</span><span class="p">]</span>
+                <span class="k">for</span> <span class="n">part</span> <span class="ow">in</span> <span class="n">geometry_part_list</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">part</span><span class="p">[</span><span class="s2">&quot;Attributes&quot;</span><span class="p">][</span><span class="s2">&quot;Name&quot;</span><span class="p">]</span> <span class="ow">in</span> <span class="n">parts_name</span><span class="p">:</span>
+                        <span class="n">mapping_dict</span><span class="p">[</span><span class="s2">&quot;ReferenceCoordSystemID&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">part</span><span class="p">[</span><span class="s2">&quot;Operations&quot;</span><span class="p">][</span><span class="s2">&quot;Operation&quot;</span><span class="p">][</span>
+                            <span class="s2">&quot;ReferenceCoordSystemID&quot;</span>
+                        <span class="p">]</span>
+                        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;FaceKeyIDMap&quot;</span><span class="p">,</span> <span class="s2">&quot;EdgeKeyIDMap&quot;</span><span class="p">,</span> <span class="s2">&quot;VertexKeyIDMap&quot;</span><span class="p">,</span> <span class="s2">&quot;BodyKeyIDMap&quot;</span><span class="p">]:</span>
+                            <span class="k">try</span><span class="p">:</span>
+                                <span class="n">dict_str</span> <span class="o">=</span> <span class="p">(</span>
+                                    <span class="s2">&quot;{&quot;</span>
+                                    <span class="o">+</span> <span class="s2">&quot;,&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">part</span><span class="p">[</span><span class="s2">&quot;Operations&quot;</span><span class="p">][</span><span class="s2">&quot;Operation&quot;</span><span class="p">][</span><span class="s2">&quot;OperationIdentity&quot;</span><span class="p">][</span><span class="n">i</span><span class="p">])</span>
+                                    <span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;&#39;&quot;</span><span class="p">,</span> <span class="s1">&#39;&quot;&#39;</span><span class="p">)</span>
+                                    <span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;=&quot;</span><span class="p">,</span> <span class="s2">&quot;:&quot;</span><span class="p">)</span>
+                                    <span class="o">+</span> <span class="s2">&quot;}&quot;</span>
+                                <span class="p">)</span>
+                            <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>  <span class="c1"># TODO: fix reading AEDT</span>
+                                <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">part</span><span class="p">[</span><span class="s2">&quot;Operations&quot;</span><span class="p">][</span><span class="s2">&quot;Operation&quot;</span><span class="p">][</span><span class="s2">&quot;OperationIdentity&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                                    <span class="k">if</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">key</span><span class="p">:</span>
+                                        <span class="n">keyarr</span> <span class="o">=</span> <span class="n">key</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;(&quot;</span><span class="p">)</span>
+                                        <span class="n">dict_str</span> <span class="o">=</span> <span class="p">(</span>
+                                            <span class="s2">&quot;{&quot;</span>
+                                            <span class="o">+</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">keyarr</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">val</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;)&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;&#39;&quot;</span><span class="p">,</span> <span class="s1">&#39;&quot;&#39;</span><span class="p">)</span>
+                                            <span class="o">+</span> <span class="s2">&quot;}&quot;</span>
+                                        <span class="p">)</span>
+                                        <span class="k">break</span>
+                            <span class="n">mapping_dict</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">dict_str</span><span class="p">))</span>
+                <span class="k">if</span> <span class="n">mapping_dict</span><span class="p">[</span><span class="s2">&quot;ReferenceCoordSystemID&quot;</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+                    <span class="n">read_cs</span> <span class="o">=</span> <span class="kc">True</span>
+                <span class="k">if</span> <span class="n">read_cs</span><span class="p">:</span>
+                    <span class="n">read_dict</span> <span class="o">=</span> <span class="n">LoadAEDTFile</span><span class="o">.</span><span class="n">load_keyword_in_aedt_file</span><span class="p">(</span><span class="n">temp_proj</span><span class="p">,</span> <span class="s2">&quot;CoordinateSystems&quot;</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">read_dict</span><span class="p">[</span><span class="s2">&quot;CoordinateSystems&quot;</span><span class="p">][</span><span class="s2">&quot;Operation&quot;</span><span class="p">],</span> <span class="nb">list</span><span class="p">):</span>
+                        <span class="n">cs_dict</span> <span class="o">=</span> <span class="p">{</span>
+                            <span class="n">cs</span><span class="p">[</span><span class="s2">&quot;ID&quot;</span><span class="p">]:</span> <span class="n">cs</span><span class="p">[</span><span class="s2">&quot;Attributes&quot;</span><span class="p">][</span><span class="s2">&quot;Name&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">cs</span> <span class="ow">in</span> <span class="n">read_dict</span><span class="p">[</span><span class="s2">&quot;CoordinateSystems&quot;</span><span class="p">][</span><span class="s2">&quot;Operation&quot;</span><span class="p">]</span>
+                        <span class="p">}</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">cs_dict</span> <span class="o">=</span> <span class="p">{</span>
+                            <span class="n">read_dict</span><span class="p">[</span><span class="s2">&quot;CoordinateSystems&quot;</span><span class="p">][</span><span class="s2">&quot;Operation&quot;</span><span class="p">][</span><span class="s2">&quot;ID&quot;</span><span class="p">]:</span> <span class="n">read_dict</span><span class="p">[</span><span class="s2">&quot;CoordinateSystems&quot;</span><span class="p">][</span>
+                                <span class="s2">&quot;Operation&quot;</span>
+                            <span class="p">][</span><span class="s2">&quot;Attributes&quot;</span><span class="p">][</span><span class="s2">&quot;Name&quot;</span><span class="p">]</span>
+                        <span class="p">}</span>
+                    <span class="n">mapping_dict</span><span class="p">[</span><span class="s2">&quot;ReferenceCoordSystemName&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cs_dict</span><span class="p">[</span><span class="n">mapping_dict</span><span class="p">[</span><span class="s2">&quot;ReferenceCoordSystemID&quot;</span><span class="p">]]</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">mapping_dict</span><span class="p">[</span><span class="s2">&quot;ReferenceCoordSystemName&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Global&quot;</span>
+                <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">aux_dict</span><span class="p">[</span><span class="s2">&quot;monitor&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                    <span class="n">key</span> <span class="o">=</span> <span class="n">udm_obj</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s2">&quot;_&quot;</span> <span class="o">+</span> <span class="n">key</span>
+                    <span class="n">m_case</span> <span class="o">=</span> <span class="n">val</span><span class="p">[</span><span class="s2">&quot;Type&quot;</span><span class="p">]</span>
+                    <span class="k">if</span> <span class="n">m_case</span> <span class="o">==</span> <span class="s2">&quot;Point&quot;</span><span class="p">:</span>
+                        <span class="n">cs_old</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">odesign</span><span class="o">.</span><span class="n">SetActiveEditor</span><span class="p">(</span><span class="s2">&quot;3D Modeler&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">GetActiveCoordinateSystem</span><span class="p">()</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">set_working_coordinate_system</span><span class="p">(</span><span class="n">targetCS</span><span class="p">)</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">monitor</span><span class="o">.</span><span class="n">assign_point_monitor</span><span class="p">(</span>
+                            <span class="n">val</span><span class="p">[</span><span class="s2">&quot;Location&quot;</span><span class="p">],</span> <span class="n">monitor_quantity</span><span class="o">=</span><span class="n">val</span><span class="p">[</span><span class="s2">&quot;Quantity&quot;</span><span class="p">],</span> <span class="n">monitor_name</span><span class="o">=</span><span class="n">key</span>
+                        <span class="p">)</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">set_working_coordinate_system</span><span class="p">(</span><span class="n">cs_old</span><span class="p">)</span>
+                    <span class="k">elif</span> <span class="n">m_case</span> <span class="o">==</span> <span class="s2">&quot;Face&quot;</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">monitor</span><span class="o">.</span><span class="n">assign_face_monitor</span><span class="p">(</span>
+                            <span class="n">mapping_dict</span><span class="p">[</span><span class="s2">&quot;FaceKeyIDMap&quot;</span><span class="p">][</span><span class="nb">str</span><span class="p">(</span><span class="n">val</span><span class="p">[</span><span class="s2">&quot;ID&quot;</span><span class="p">])],</span>
+                            <span class="n">monitor_quantity</span><span class="o">=</span><span class="n">val</span><span class="p">[</span><span class="s2">&quot;Quantity&quot;</span><span class="p">],</span>
+                            <span class="n">monitor_name</span><span class="o">=</span><span class="n">key</span><span class="p">,</span>
+                        <span class="p">)</span>
+                    <span class="k">elif</span> <span class="n">m_case</span> <span class="o">==</span> <span class="s2">&quot;Vertex&quot;</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">monitor</span><span class="o">.</span><span class="n">assign_point_monitor_to_vertex</span><span class="p">(</span>
+                            <span class="n">mapping_dict</span><span class="p">[</span><span class="s2">&quot;VertexKeyIDMap&quot;</span><span class="p">][</span><span class="nb">str</span><span class="p">(</span><span class="n">val</span><span class="p">[</span><span class="s2">&quot;ID&quot;</span><span class="p">])],</span>
+                            <span class="n">monitor_quantity</span><span class="o">=</span><span class="n">val</span><span class="p">[</span><span class="s2">&quot;Quantity&quot;</span><span class="p">],</span>
+                            <span class="n">monitor_name</span><span class="o">=</span><span class="n">key</span><span class="p">,</span>
+                        <span class="p">)</span>
+                    <span class="k">elif</span> <span class="n">m_case</span> <span class="o">==</span> <span class="s2">&quot;Surface&quot;</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">monitor</span><span class="o">.</span><span class="n">assign_surface_monitor</span><span class="p">(</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">objects</span><span class="p">[</span><span class="n">mapping_dict</span><span class="p">[</span><span class="s2">&quot;BodyKeyIDMap&quot;</span><span class="p">][</span><span class="nb">str</span><span class="p">(</span><span class="n">val</span><span class="p">[</span><span class="s2">&quot;ID&quot;</span><span class="p">])]]</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+                            <span class="n">monitor_quantity</span><span class="o">=</span><span class="n">val</span><span class="p">[</span><span class="s2">&quot;Quantity&quot;</span><span class="p">],</span>
+                            <span class="n">monitor_name</span><span class="o">=</span><span class="n">key</span><span class="p">,</span>
+                        <span class="p">)</span>
+                    <span class="k">elif</span> <span class="n">m_case</span> <span class="o">==</span> <span class="s2">&quot;Object&quot;</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">monitor</span><span class="o">.</span><span class="n">assign_point_monitor_in_object</span><span class="p">(</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">objects</span><span class="p">[</span><span class="n">mapping_dict</span><span class="p">[</span><span class="s2">&quot;BodyKeyIDMap&quot;</span><span class="p">][</span><span class="nb">str</span><span class="p">(</span><span class="n">val</span><span class="p">[</span><span class="s2">&quot;ID&quot;</span><span class="p">])]]</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+                            <span class="n">monitor_quantity</span><span class="o">=</span><span class="n">val</span><span class="p">[</span><span class="s2">&quot;Quantity&quot;</span><span class="p">],</span>
+                            <span class="n">monitor_name</span><span class="o">=</span><span class="n">key</span><span class="p">,</span>
+                        <span class="p">)</span>
+            <span class="k">if</span> <span class="n">aux_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;datasets&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">):</span>
+                <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">aux_dict</span><span class="p">[</span><span class="s2">&quot;datasets&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                    <span class="k">if</span> <span class="n">key</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;$&quot;</span><span class="p">):</span>
+                        <span class="n">is_project_dataset</span> <span class="o">=</span> <span class="kc">True</span>
+                        <span class="n">dsname</span> <span class="o">=</span> <span class="n">key</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">is_project_dataset</span> <span class="o">=</span> <span class="kc">False</span>
+                        <span class="n">dsname</span> <span class="o">=</span> <span class="n">key</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">create_dataset</span><span class="p">(</span>
+                        <span class="n">dsname</span><span class="p">,</span>
+                        <span class="n">val</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">],</span>
+                        <span class="n">val</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">],</span>
+                        <span class="n">val</span><span class="p">[</span><span class="s2">&quot;z&quot;</span><span class="p">],</span>
+                        <span class="n">val</span><span class="p">[</span><span class="s2">&quot;v&quot;</span><span class="p">],</span>
+                        <span class="n">is_project_dataset</span><span class="p">,</span>
+                        <span class="n">val</span><span class="p">[</span><span class="s2">&quot;xunit&quot;</span><span class="p">],</span>
+                        <span class="n">val</span><span class="p">[</span><span class="s2">&quot;yunit&quot;</span><span class="p">],</span>
+                        <span class="n">val</span><span class="p">[</span><span class="s2">&quot;zunit&quot;</span><span class="p">],</span>
+                        <span class="n">val</span><span class="p">[</span><span class="s2">&quot;vunit&quot;</span><span class="p">],</span>
+                    <span class="p">)</span>
+            <span class="k">if</span> <span class="n">name</span><span class="p">:</span>
+                <span class="n">udm_obj</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+            <span class="k">if</span> <span class="n">aux_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;native components&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">aux_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;coordinatesystems&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">):</span>
+                    <span class="k">for</span> <span class="n">cs</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">aux_dict</span><span class="p">[</span><span class="s2">&quot;coordinatesystems&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+                        <span class="n">aux_dict</span><span class="p">[</span><span class="s2">&quot;coordinatesystems&quot;</span><span class="p">][</span><span class="n">udm_obj</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s2">&quot;_&quot;</span> <span class="o">+</span> <span class="n">cs</span><span class="p">]</span> <span class="o">=</span> <span class="n">aux_dict</span><span class="p">[</span><span class="s2">&quot;coordinatesystems&quot;</span><span class="p">][</span><span class="n">cs</span><span class="p">]</span>
+                        <span class="n">aux_dict</span><span class="p">[</span><span class="s2">&quot;coordinatesystems&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">cs</span><span class="p">)</span>
+                        <span class="k">if</span> <span class="n">aux_dict</span><span class="p">[</span><span class="s2">&quot;coordinatesystems&quot;</span><span class="p">][</span><span class="n">udm_obj</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s2">&quot;_&quot;</span> <span class="o">+</span> <span class="n">cs</span><span class="p">][</span><span class="s2">&quot;Reference CS&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Global&quot;</span><span class="p">:</span>
+                            <span class="n">aux_dict</span><span class="p">[</span><span class="s2">&quot;coordinatesystems&quot;</span><span class="p">][</span><span class="n">udm_obj</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s2">&quot;_&quot;</span> <span class="o">+</span> <span class="n">cs</span><span class="p">][</span><span class="s2">&quot;Reference CS&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">targetCS</span>
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="n">aux_dict</span><span class="p">[</span><span class="s2">&quot;coordinatesystems&quot;</span><span class="p">][</span><span class="n">udm_obj</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s2">&quot;_&quot;</span> <span class="o">+</span> <span class="n">cs</span><span class="p">][</span><span class="s2">&quot;Reference CS&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+                                <span class="n">udm_obj</span><span class="o">.</span><span class="n">name</span>
+                                <span class="o">+</span> <span class="s2">&quot;_&quot;</span>
+                                <span class="o">+</span> <span class="n">aux_dict</span><span class="p">[</span><span class="s2">&quot;coordinatesystems&quot;</span><span class="p">][</span><span class="n">udm_obj</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s2">&quot;_&quot;</span> <span class="o">+</span> <span class="n">cs</span><span class="p">][</span><span class="s2">&quot;Reference CS&quot;</span><span class="p">]</span>
+                            <span class="p">)</span>
+                    <span class="n">add_cs</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">aux_dict</span><span class="p">[</span><span class="s2">&quot;coordinatesystems&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+                    <span class="n">available_cs</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Global&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">cs</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">cs</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">coordinate_systems</span><span class="p">]</span>
+                    <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+                    <span class="k">while</span> <span class="n">add_cs</span><span class="p">:</span>
+                        <span class="k">if</span> <span class="n">aux_dict</span><span class="p">[</span><span class="s2">&quot;coordinatesystems&quot;</span><span class="p">][</span><span class="n">add_cs</span><span class="p">[</span><span class="n">i</span><span class="p">]][</span><span class="s2">&quot;Reference CS&quot;</span><span class="p">]</span> <span class="ow">in</span> <span class="n">available_cs</span><span class="p">:</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">configurations</span><span class="o">.</span><span class="n">_update_coordinate_systems</span><span class="p">(</span>
+                                <span class="n">add_cs</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">aux_dict</span><span class="p">[</span><span class="s2">&quot;coordinatesystems&quot;</span><span class="p">][</span><span class="n">add_cs</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span>
+                            <span class="p">)</span>
+                            <span class="n">available_cs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">add_cs</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+                            <span class="n">add_cs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+                            <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="k">for</span> <span class="n">nc</span><span class="p">,</span> <span class="n">ncdict</span> <span class="ow">in</span> <span class="n">aux_dict</span><span class="p">[</span><span class="s2">&quot;native components&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                    <span class="k">for</span> <span class="n">nc_cs</span> <span class="ow">in</span> <span class="n">ncdict</span><span class="p">[</span><span class="s2">&quot;CS&quot;</span><span class="p">]:</span>
+                        <span class="k">if</span> <span class="n">nc_cs</span> <span class="o">==</span> <span class="s2">&quot;Global&quot;</span><span class="p">:</span>
+                            <span class="n">ncdict</span><span class="p">[</span><span class="s2">&quot;Props&quot;</span><span class="p">][</span><span class="s2">&quot;TargetCS&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">targetCS</span>
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="n">ncdict</span><span class="p">[</span><span class="s2">&quot;Props&quot;</span><span class="p">][</span><span class="s2">&quot;TargetCS&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">udm_obj</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s2">&quot;_&quot;</span> <span class="o">+</span> <span class="n">nc_cs</span>
+                        <span class="n">native</span> <span class="o">=</span> <span class="n">NativeComponentObject</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ncdict</span><span class="p">[</span><span class="s2">&quot;Type&quot;</span><span class="p">],</span> <span class="n">nc</span><span class="p">,</span> <span class="n">ncdict</span><span class="p">[</span><span class="s2">&quot;Props&quot;</span><span class="p">])</span>
+                        <span class="k">try</span><span class="p">:</span>
+                            <span class="n">native</span><span class="o">.</span><span class="n">create</span><span class="p">()</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">_native_components</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">native</span><span class="p">)</span>
+                        <span class="k">except</span><span class="p">:</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Native component </span><span class="si">{}</span><span class="s2"> creation failed.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">nc</span><span class="p">))</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">temp_proj</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">udm_obj</span><span class="p">,</span> <span class="n">mapping_dict</span><span class="p">,</span> <span class="n">aux_dict</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">udm_obj</span>
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">get_3d_component_object_list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">componentname</span><span class="p">):</span>
@@ -1936,7 +2117,8 @@ function checkPageExistsAndRedirect(event) {
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        List of</span>
+<span class="sd">        List</span>
+<span class="sd">            Three parameters output</span>
 <span class="sd">            bool</span>
 <span class="sd">                ``True`` when successful, ``False`` when failed.</span>
 <span class="sd">            :class:`pyaedt.modeler.cad.object3d.Object3d`</span>
@@ -1957,7 +2139,7 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        &gt;&gt;&gt; from pyaedt import Hfss</span>
 <span class="sd">        &gt;&gt;&gt; hfss = Hfss()</span>
 <span class="sd">        &gt;&gt;&gt; dictionary_values = hfss.modeler.check_choke_values(&quot;C:/Example/Of/Path/myJsonFile.json&quot;)</span>
-<span class="sd">        &gt;&gt;&gt; mychoke = hfss.modeler.create_choke(&quot;C:/Example/Of/Path/myJsonFile_Corrected.json&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; my_choke = hfss.modeler.create_choke(&quot;C:/Example/Of/Path/myJsonFile_Corrected.json&quot;)</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="k">with</span> <span class="n">open_file</span><span class="p">(</span><span class="n">json_file</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">read_file</span><span class="p">:</span>
@@ -2964,7 +3146,7 @@ function checkPageExistsAndRedirect(event) {
   
   <div class="footer-item">
     <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 6.1.1.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 6.1.3.<br>
 </p>
   </div>
   

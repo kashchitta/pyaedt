@@ -1646,13 +1646,13 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        prefix : str, optional</span>
-<span class="sd">            Prefix for the variable name.</span>
+<span class="sd">            Prefix for the variable name. Default is ``None``.</span>
 <span class="sd">            Example `&quot;MyVariableName&quot;` will create 2 Project variables $MyVariableNamesX and $MyVariableNamesY.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
 <span class="sd">        List</span>
-<span class="sd">            Variables created</span>
+<span class="sd">            List of variables created.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">p</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">position</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">prefix</span><span class="p">:</span>
@@ -1688,13 +1688,14 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        net_name : str</span>
-<span class="sd">            Net name of the voids to be checked.</span>
+<span class="sd">            Net name of the voids to be checked. Default is ``None``.</span>
 <span class="sd">        layer_name : str</span>
-<span class="sd">            Layer name of the voids to be checked.</span>
+<span class="sd">            Layer name of the voids to be checked. Default is ``None``.</span>
+
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
 <span class="sd">        list</span>
-<span class="sd">            List of the voids includes this padstack instance.</span>
+<span class="sd">            List of the voids that include this padstack instance.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">x_pos</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span><span class="o">.</span><span class="n">edb_value</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">position</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
         <span class="n">y_pos</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span><span class="o">.</span><span class="n">edb_value</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">position</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
@@ -1997,7 +1998,7 @@ function checkPageExistsAndRedirect(event) {
   
   <div class="footer-item">
     <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 6.1.1.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 6.1.3.<br>
 </p>
   </div>
   

@@ -588,9 +588,9 @@ function checkPageExistsAndRedirect(event) {
 
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">oeditor</span><span class="o">.</span><span class="n">Delete</span><span class="p">([</span><span class="s2">&quot;NAME:Selections&quot;</span><span class="p">,</span> <span class="s2">&quot;Selections:=&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">])</span>
-        <span class="k">for</span> <span class="n">el</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">native_components</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">el</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">_native_components</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">el</span><span class="o">.</span><span class="n">component_name</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">component_name</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">native_components</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">el</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">_native_components</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">el</span><span class="p">)</span>
                 <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">user_defined_components</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">]</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">cleanup_objects</span><span class="p">()</span>
         <span class="k">return</span> <span class="kc">True</span></div></div>
@@ -750,6 +750,10 @@ function checkPageExistsAndRedirect(event) {
             <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">oboundary</span><span class="o">.</span><span class="n">AssignThermalCondition</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_get_args</span><span class="p">())</span>
         <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s2">&quot;Convection&quot;</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">oboundary</span><span class="o">.</span><span class="n">AssignConvection</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_get_args</span><span class="p">())</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s2">&quot;HeatFlux&quot;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">oboundary</span><span class="o">.</span><span class="n">AssignHeatFlux</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_get_args</span><span class="p">())</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s2">&quot;HeatGeneration&quot;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">oboundary</span><span class="o">.</span><span class="n">AssignHeatGeneration</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_get_args</span><span class="p">())</span>
         <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s2">&quot;Temperature&quot;</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">oboundary</span><span class="o">.</span><span class="n">AssignTemperature</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_get_args</span><span class="p">())</span>
         <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s2">&quot;RotatingFluid&quot;</span><span class="p">:</span>
@@ -908,6 +912,10 @@ function checkPageExistsAndRedirect(event) {
             <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">oboundary</span><span class="o">.</span><span class="n">EditBlockBoundary</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_boundary_name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_args</span><span class="p">())</span>
         <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s2">&quot;SourceIcepak&quot;</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">oboundary</span><span class="o">.</span><span class="n">EditSourceBoundary</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_get_args</span><span class="p">())</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s2">&quot;HeatFlux&quot;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">oboundary</span><span class="o">.</span><span class="n">EditHeatFlux</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_boundary_name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_args</span><span class="p">())</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s2">&quot;HeatGeneration&quot;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">oboundary</span><span class="o">.</span><span class="n">EditHeatGeneration</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_boundary_name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_args</span><span class="p">())</span>
         <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s2">&quot;Voltage&quot;</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">oboundary</span><span class="o">.</span><span class="n">EditVoltage</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_boundary_name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_args</span><span class="p">())</span>
         <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s2">&quot;VoltageDrop&quot;</span><span class="p">:</span>
@@ -1776,7 +1784,7 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
 <span class="sd">        bool</span>
-<span class="sd">            `True` if succeeded.</span>
+<span class="sd">            ``True`` when successful, ``False`` when failed.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">omatrix</span><span class="o">.</span><span class="n">DeleteRM</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">el</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">matrices</span><span class="p">:</span>
@@ -3645,7 +3653,7 @@ function checkPageExistsAndRedirect(event) {
   
   <div class="footer-item">
     <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 6.1.1.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 6.1.3.<br>
 </p>
   </div>
   

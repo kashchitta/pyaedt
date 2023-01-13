@@ -41,14 +41,11 @@
         <link href="../../../../_static/css/breadcrumbs.css" rel="stylesheet">
     
     <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
-    <script src="../../../../_static/jquery.js"></script>
-    <script src="../../../../_static/underscore.js"></script>
-    <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../../_static/doctools.js"></script>
     <script src="../../../../_static/sphinx_highlight.js"></script>
     <script src="../../../../_static/clipboard.min.js"></script>
     <script src="../../../../_static/copybutton.js"></script>
-    <link rel="shortcut icon" href="../../../../_static/ansys-favicon.png"/>
+    <link rel="icon" href="../../../../_static/ansys-favicon.png"/>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -77,9 +74,8 @@
   
   
   
-    <img src="../../../../_static/pyansys-logo-black-cropped.png" class="logo__image only-light" alt="Logo image">
-    <img src="../../../../_static/pyansys-logo-black-cropped.png" class="logo__image only-dark" alt="Logo image">
   
+    <p class="title logo__title">PyAEDT</p>
   
 </a>
     
@@ -207,7 +203,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.42 variable.
+            // this version, rather than using sphinx's 0.6.43 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -332,7 +328,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <div class="viewcode-block" id="EDBPrimitives"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.html#pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives">[docs]</a><span class="k">class</span> <span class="nc">EDBPrimitives</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Manages EDB functionalities for a primitives.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Manages EDB functionalities for a primitives.</span>
 <span class="sd">    It Inherits EDB Object properties.</span>
 
 <span class="sd">    Examples</span>
@@ -361,7 +357,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="EDBPrimitives.area"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.area.html#pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.area">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">area</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">include_voids</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Return the total area.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the total area.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -380,7 +376,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">is_void</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Either if the primitive is a void or not.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Either if the primitive is a void or not.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -392,7 +388,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">id</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Primitive ID.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Primitive ID.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -402,7 +398,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">_eval_arc_points</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1e-12</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Get the points of the arc</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the points of the arc</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -475,7 +471,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="k">return</span> <span class="n">xr</span><span class="p">,</span> <span class="n">yr</span>
 
     <span class="k">def</span> <span class="nf">_get_points_for_plot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">my_net_points</span><span class="p">,</span> <span class="n">num</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Get the points to be plotted.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="c1"># fmt: off</span>
@@ -502,7 +498,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="EDBPrimitives.points"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.points.html#pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.points">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">points</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arc_segments</span><span class="o">=</span><span class="mi">6</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Return the list of points with arcs converted to segments.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the list of points with arcs converted to segments.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -511,8 +507,8 @@ function checkPageExistsAndRedirect(event) {
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        list, list</span>
-<span class="sd">            x and y list of points.</span>
+<span class="sd">        tuple</span>
+<span class="sd">            The tuple contains 2 lists made of X and Y points coordinates.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">my_net_points</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">primitive_object</span><span class="o">.</span><span class="n">GetPolygonData</span><span class="p">()</span><span class="o">.</span><span class="n">Points</span><span class="p">)</span>
@@ -528,7 +524,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">voids</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Return a list of voids of the given primitive if any.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return a list of voids of the given primitive if any.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -541,7 +537,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="EDBPrimitives.points_raw"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.points_raw.html#pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.points_raw">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">points_raw</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Return a list of Edb points.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return a list of Edb points.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -559,7 +555,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="EDBPrimitives.is_arc"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.is_arc.html#pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.is_arc">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">is_arc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">point</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Either if a point is an arc or not.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Either if a point is an arc or not.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -569,7 +565,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">type</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Return the type of the primitive.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the type of the primitive.</span>
 <span class="sd">        Allowed outputs are ``&quot;Circle&quot;``, ``&quot;Rectangle&quot;``,``&quot;Polygon&quot;``,``&quot;Path&quot;`` or ``&quot;Bondwire&quot;``.</span>
 
 <span class="sd">        Returns</span>
@@ -584,12 +580,12 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">net</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Return EDB Net Object.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return EDB Net Object.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">primitive_object</span><span class="o">.</span><span class="n">GetNet</span><span class="p">()</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">net_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Get or Set the primitive net name.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get or Set the primitive net name.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -612,12 +608,12 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">layer</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Get the primitive edb layer object.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the primitive edb layer object.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">primitive_object</span><span class="o">.</span><span class="n">GetLayer</span><span class="p">()</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">layer_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Get or Set the primitive layer name.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get or Set the primitive layer name.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -640,12 +636,12 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="EDBPrimitives.delete"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.delete.html#pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.delete">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Delete this primtive.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Delete this primitive.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">primitive_object</span><span class="o">.</span><span class="n">Delete</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="EDBPrimitives.get_connected_object_id_set"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.get_connected_object_id_set.html#pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.get_connected_object_id_set">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">get_connected_object_id_set</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Produce a list of all geometries physically connected to a given layout object.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Produce a list of all geometries physically connected to a given layout object.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -658,7 +654,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="EDBPrimitives.convert_to_polygon"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.convert_to_polygon.html#pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.convert_to_polygon">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">convert_to_polygon</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Convert path to polygon.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Convert path to polygon.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -673,7 +669,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="EDBPrimitives.add_void"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.add_void.html#pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.add_void">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">add_void</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">point_list</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Add a void to current primitive.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add a void to current primitive.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -697,7 +693,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="EDBPrimitives.subtract"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.subtract.html#pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.subtract">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">subtract</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">primitives</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Subtract active primitive with one or more primitives.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Subtract active primitive with one or more primitives.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -782,7 +778,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="EDBPrimitives.intersect"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.intersect.html#pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.intersect">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">intersect</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">primitives</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Intersect active primitive with one or more primitives.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Intersect active primitive with one or more primitives.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -867,7 +863,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="EDBPrimitives.unite"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.unite.html#pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.unite">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">unite</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">primitives</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Unite active primitive with one or more primitives.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Unite active primitive with one or more primitives.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -920,7 +916,287 @@ function checkPageExistsAndRedirect(event) {
                     <span class="n">prim</span><span class="o">.</span><span class="n">Delete</span><span class="p">()</span>
                 <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
                     <span class="k">continue</span>
-        <span class="k">return</span> <span class="n">new_polys</span></div></div>
+        <span class="k">return</span> <span class="n">new_polys</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">polygon_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the Primitive Polygon data object.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">primitive_object</span><span class="o">.</span><span class="n">GetPolygonData</span><span class="p">()</span>
+
+<div class="viewcode-block" id="EDBPrimitives.intersection_type"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.intersection_type.html#pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.intersection_type">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">intersection_type</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">primitive</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get intersection type between actual primitive and another primitive or polygon data.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        primitive : :class:`pyaeedt.edb_core.edb_data.primitives_data.EDBPrimitives` or `PolygonData`</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        int</span>
+<span class="sd">            Intersection type:</span>
+<span class="sd">            0 - objects do not intersect,</span>
+<span class="sd">            1 - this object fully inside other (no common contour points),</span>
+<span class="sd">            2 - other object fully inside this,</span>
+<span class="sd">            3 - common contour points,</span>
+<span class="sd">            4 - undefined intersection.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">poly</span> <span class="o">=</span> <span class="n">primitive</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">primitive</span><span class="p">,</span> <span class="n">EDBPrimitives</span><span class="p">):</span>
+            <span class="n">poly</span> <span class="o">=</span> <span class="n">primitive</span><span class="o">.</span><span class="n">polygon_data</span>
+        <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">polygon_data</span><span class="o">.</span><span class="n">GetIntersectionType</span><span class="p">(</span><span class="n">poly</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="EDBPrimitives.is_intersecting"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.is_intersecting.html#pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.is_intersecting">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">is_intersecting</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">primitive</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Check if actual primitive and another primitive or polygon data intesects.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        primitive : :class:`pyaeedt.edb_core.edb_data.primitives_data.EDBPrimitives` or `PolygonData`</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        bool</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="kc">True</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">intersection_type</span><span class="p">(</span><span class="n">primitive</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">1</span> <span class="k">else</span> <span class="kc">False</span></div>
+
+<div class="viewcode-block" id="EDBPrimitives.get_closest_point"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.get_closest_point.html#pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.get_closest_point">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">get_closest_point</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">point</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the closest point of the primitive to the input data.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        point : list of float or PointData</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        list of float</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">point</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+            <span class="n">point</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">edb</span><span class="o">.</span><span class="n">Geometry</span><span class="o">.</span><span class="n">PointData</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">edb_value</span><span class="p">(</span><span class="n">point</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">edb_value</span><span class="p">(</span><span class="n">point</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+
+        <span class="n">p0</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">polygon_data</span><span class="o">.</span><span class="n">GetClosestPoint</span><span class="p">(</span><span class="n">point</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">p0</span><span class="o">.</span><span class="n">X</span><span class="o">.</span><span class="n">ToDouble</span><span class="p">(),</span> <span class="n">p0</span><span class="o">.</span><span class="n">Y</span><span class="o">.</span><span class="n">ToDouble</span><span class="p">()]</span></div>
+
+<div class="viewcode-block" id="EDBPrimitives.get_closest_arc_midpoint"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.get_closest_arc_midpoint.html#pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.get_closest_arc_midpoint">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">get_closest_arc_midpoint</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">point</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the closest arc midpoint of the primitive to the input data.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        point : list of float or PointData</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        list of float</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">point</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">edb</span><span class="o">.</span><span class="n">Geometry</span><span class="o">.</span><span class="n">PointData</span><span class="p">):</span>
+            <span class="n">point</span> <span class="o">=</span> <span class="p">[</span><span class="n">point</span><span class="o">.</span><span class="n">X</span><span class="o">.</span><span class="n">ToDouble</span><span class="p">(),</span> <span class="n">point</span><span class="o">.</span><span class="n">Y</span><span class="o">.</span><span class="n">ToDouble</span><span class="p">()]</span>
+        <span class="n">dist</span> <span class="o">=</span> <span class="mf">1e12</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">for</span> <span class="n">arc</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">arcs</span><span class="p">:</span>
+            <span class="n">mid_point</span> <span class="o">=</span> <span class="n">arc</span><span class="o">.</span><span class="n">mid_point</span>
+            <span class="n">mid_point</span> <span class="o">=</span> <span class="p">[</span><span class="n">mid_point</span><span class="o">.</span><span class="n">X</span><span class="o">.</span><span class="n">ToDouble</span><span class="p">(),</span> <span class="n">mid_point</span><span class="o">.</span><span class="n">Y</span><span class="o">.</span><span class="n">ToDouble</span><span class="p">()]</span>
+            <span class="k">if</span> <span class="n">GeometryOperators</span><span class="o">.</span><span class="n">points_distance</span><span class="p">(</span><span class="n">mid_point</span><span class="p">,</span> <span class="n">point</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">dist</span><span class="p">:</span>
+                <span class="n">out</span> <span class="o">=</span> <span class="n">arc</span><span class="o">.</span><span class="n">mid_point</span>
+                <span class="n">dist</span> <span class="o">=</span> <span class="n">GeometryOperators</span><span class="o">.</span><span class="n">points_distance</span><span class="p">(</span><span class="n">mid_point</span><span class="p">,</span> <span class="n">point</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">out</span><span class="o">.</span><span class="n">X</span><span class="o">.</span><span class="n">ToDouble</span><span class="p">(),</span> <span class="n">out</span><span class="o">.</span><span class="n">Y</span><span class="o">.</span><span class="n">ToDouble</span><span class="p">()]</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">arcs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the Primitive Arc Data.&quot;&quot;&quot;</span>
+        <span class="n">arcs</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">polygon_data</span><span class="o">.</span><span class="n">IsClosed</span><span class="p">():</span>
+            <span class="n">arcs</span> <span class="o">=</span> <span class="p">[</span><span class="n">EDBArcs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">polygon_data</span><span class="o">.</span><span class="n">GetArcData</span><span class="p">())]</span>
+        <span class="k">return</span> <span class="n">arcs</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">longest_arc</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the longest arc.&quot;&quot;&quot;</span>
+        <span class="nb">len</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">arc</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">arcs</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">i</span><span class="o">.</span><span class="n">is_segment</span> <span class="ow">and</span> <span class="n">i</span><span class="o">.</span><span class="n">length</span> <span class="o">&gt;</span> <span class="nb">len</span><span class="p">:</span>
+                <span class="n">arc</span> <span class="o">=</span> <span class="n">i</span>
+                <span class="nb">len</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">length</span>
+        <span class="k">return</span> <span class="n">arc</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">shortest_arc</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the longest arc.&quot;&quot;&quot;</span>
+        <span class="nb">len</span> <span class="o">=</span> <span class="mf">1e12</span>
+        <span class="n">arc</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">arcs</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">i</span><span class="o">.</span><span class="n">is_segment</span> <span class="ow">and</span> <span class="n">i</span><span class="o">.</span><span class="n">length</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">:</span>
+                <span class="n">arc</span> <span class="o">=</span> <span class="n">i</span>
+                <span class="nb">len</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">length</span>
+        <span class="k">return</span> <span class="n">arc</span>
+
+<div class="viewcode-block" id="EDBPrimitives.in_polygon"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.in_polygon.html#pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.in_polygon">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">in_polygon</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">point_data</span><span class="p">,</span>
+        <span class="n">include_partial</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Check if padstack Instance is in given polygon data.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        point_data : PointData Object or list of float</span>
+<span class="sd">        include_partial : bool, optional</span>
+<span class="sd">            Whether to include partial intersecting instances. The default is ``True``.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        bool</span>
+<span class="sd">            ``True`` when successful, ``False`` when failed.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">point_data</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+            <span class="n">point_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">edb</span><span class="o">.</span><span class="n">Geometry</span><span class="o">.</span><span class="n">PointData</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">edb_value</span><span class="p">(</span><span class="n">point_data</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">edb_value</span><span class="p">(</span><span class="n">point_data</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+            <span class="p">)</span>
+        <span class="n">int_val</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">polygon_data</span><span class="o">.</span><span class="n">PointInPolygon</span><span class="p">(</span><span class="n">point_data</span><span class="p">))</span>
+
+        <span class="c1"># Intersection type:</span>
+        <span class="c1"># 0 = objects do not intersect</span>
+        <span class="c1"># 1 = this object fully inside other (no common contour points)</span>
+        <span class="c1"># 2 = other object fully inside this</span>
+        <span class="c1"># 3 = common contour points 4 = undefined intersection</span>
+        <span class="k">if</span> <span class="n">int_val</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">elif</span> <span class="n">include_partial</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">elif</span> <span class="n">int_val</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span></div></div>
+
+
+<div class="viewcode-block" id="EDBArcs"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.primitives_data.EDBArcs.html#pyaedt.edb_core.edb_data.primitives_data.EDBArcs">[docs]</a><span class="k">class</span> <span class="nc">EDBArcs</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Manages EDB Arc Data functionalities.</span>
+<span class="sd">    It Inherits EDB primitives arcs properties.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; from pyaedt import Edb</span>
+<span class="sd">    &gt;&gt;&gt; edb = Edb(myedb, edbversion=&quot;2021.2&quot;)</span>
+<span class="sd">    &gt;&gt;&gt; prim_arcs = edb.core_primitives.primitives[0].arcs</span>
+<span class="sd">    &gt;&gt;&gt; prim_arcs.center # arc center</span>
+<span class="sd">    &gt;&gt;&gt; prim_arcs.points # arc point list</span>
+<span class="sd">    &gt;&gt;&gt; prim_arcs.mid_point # arc mid point</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">app</span><span class="p">,</span> <span class="n">arc</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_app</span> <span class="o">=</span> <span class="n">app</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">arc_object</span> <span class="o">=</span> <span class="n">arc</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">center</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Arc center.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        list</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">cent</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">arc_object</span><span class="o">.</span><span class="n">GetCenter</span><span class="p">()</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">cent</span><span class="o">.</span><span class="n">X</span><span class="o">.</span><span class="n">ToDouble</span><span class="p">(),</span> <span class="n">cent</span><span class="o">.</span><span class="n">Y</span><span class="o">.</span><span class="n">ToDouble</span><span class="p">()]</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">length</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Arc length.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        float</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">arc_object</span><span class="o">.</span><span class="n">GetLength</span><span class="p">()</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">mid_point</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Arc mid point.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        float</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">arc_object</span><span class="o">.</span><span class="n">GetMidPoint</span><span class="p">()</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">radius</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Arc radius.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        float</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">arc_object</span><span class="o">.</span><span class="n">GetRadius</span><span class="p">()</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">is_segment</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Either if it is a straight segment or not.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        bool</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">arc_object</span><span class="o">.</span><span class="n">IsSegment</span><span class="p">()</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">is_point</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Either if it is a point or not.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        bool</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">arc_object</span><span class="o">.</span><span class="n">IsPoint</span><span class="p">()</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">is_ccw</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Test whether arc is counter clockwise.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        bool</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">arc_object</span><span class="o">.</span><span class="n">IsCCW</span><span class="p">()</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">points_raw</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return a list of Edb points.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        list</span>
+<span class="sd">            Edb Points.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">arc_object</span><span class="o">.</span><span class="n">GetPointData</span><span class="p">())</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">points</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arc_segments</span><span class="o">=</span><span class="mi">6</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the list of points with arcs converted to segments.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        arc_segments : int</span>
+<span class="sd">            Number of facets to convert an arc. Default is `6`.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        list, list</span>
+<span class="sd">            x and y list of points.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">my_net_points</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">points_raw</span>
+            <span class="n">xt</span><span class="p">,</span> <span class="n">yt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">_get_points_for_plot</span><span class="p">(</span><span class="n">my_net_points</span><span class="p">,</span> <span class="n">arc_segments</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">xt</span><span class="p">:</span>
+                <span class="k">return</span> <span class="p">[]</span>
+            <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">GeometryOperators</span><span class="o">.</span><span class="n">orient_polygon</span><span class="p">(</span><span class="n">xt</span><span class="p">,</span> <span class="n">yt</span><span class="p">,</span> <span class="n">clockwise</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="n">y</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">return</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span></div>
 </pre></div>
 
               </article>
@@ -941,13 +1217,13 @@ function checkPageExistsAndRedirect(event) {
   
   <div class="footer-item">
     <p class="copyright">
-    &copy; Copyright (c) 2022 ANSYS, Inc. All rights reserved.<br>
+    &copy; Copyright (c) 2023 ANSYS, Inc. All rights reserved.<br>
 </p>
   </div>
   
   <div class="footer-item">
     <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 6.1.3.<br>
 </p>
   </div>
   

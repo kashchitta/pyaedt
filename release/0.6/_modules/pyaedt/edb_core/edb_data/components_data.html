@@ -41,14 +41,11 @@
         <link href="../../../../_static/css/breadcrumbs.css" rel="stylesheet">
     
     <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
-    <script src="../../../../_static/jquery.js"></script>
-    <script src="../../../../_static/underscore.js"></script>
-    <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../../_static/doctools.js"></script>
     <script src="../../../../_static/sphinx_highlight.js"></script>
     <script src="../../../../_static/clipboard.min.js"></script>
     <script src="../../../../_static/copybutton.js"></script>
-    <link rel="shortcut icon" href="../../../../_static/ansys-favicon.png"/>
+    <link rel="icon" href="../../../../_static/ansys-favicon.png"/>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -77,9 +74,8 @@
   
   
   
-    <img src="../../../../_static/pyansys-logo-black-cropped.png" class="logo__image only-light" alt="Logo image">
-    <img src="../../../../_static/pyansys-logo-black-cropped.png" class="logo__image only-dark" alt="Logo image">
   
+    <p class="title logo__title">PyAEDT</p>
   
 </a>
     
@@ -207,7 +203,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.42 variable.
+            // this version, rather than using sphinx's 0.6.43 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -344,7 +340,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <div class="viewcode-block" id="EDBComponentDef"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.components_data.EDBComponentDef.html#pyaedt.edb_core.edb_data.components_data.EDBComponentDef">[docs]</a><span class="k">class</span> <span class="nc">EDBComponentDef</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Manages EDB functionalities for component definitions.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Manages EDB functionalities for component definitions.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -364,7 +360,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">part_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve component definition name.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve component definition name.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb_comp_def</span><span class="o">.</span><span class="n">GetName</span><span class="p">()</span>
 
     <span class="nd">@part_name</span><span class="o">.</span><span class="n">setter</span>
@@ -373,7 +369,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">type</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve the component definition type.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve the component definition type.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -394,7 +390,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">components</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Get the list of components belonging to this component definition.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the list of components belonging to this component definition.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -410,7 +406,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="EDBComponentDef.assign_rlc_model"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.components_data.EDBComponentDef.assign_rlc_model.html#pyaedt.edb_core.edb_data.components_data.EDBComponentDef.assign_rlc_model">[docs]</a>    <span class="nd">@pyaedt_function_handler</span>
     <span class="k">def</span> <span class="nf">assign_rlc_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">res</span><span class="p">,</span> <span class="n">ind</span><span class="p">,</span> <span class="n">cap</span><span class="p">,</span> <span class="n">is_parallel</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Assign RLC to all components under this part name.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Assign RLC to all components under this part name.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -430,7 +426,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="EDBComponentDef.assign_s_param_model"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.components_data.EDBComponentDef.assign_s_param_model.html#pyaedt.edb_core.edb_data.components_data.EDBComponentDef.assign_s_param_model">[docs]</a>    <span class="nd">@pyaedt_function_handler</span>
     <span class="k">def</span> <span class="nf">assign_s_param_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file_path</span><span class="p">,</span> <span class="n">model_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">reference_net</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Assign S-parameter to all components under this part name.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Assign S-parameter to all components under this part name.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -448,7 +444,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="EDBComponentDef.assign_spice_model"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.components_data.EDBComponentDef.assign_spice_model.html#pyaedt.edb_core.edb_data.components_data.EDBComponentDef.assign_spice_model">[docs]</a>    <span class="nd">@pyaedt_function_handler</span>
     <span class="k">def</span> <span class="nf">assign_spice_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file_path</span><span class="p">,</span> <span class="n">model_name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Assign Spice model to all components under this part name.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Assign Spice model to all components under this part name.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -466,7 +462,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <div class="viewcode-block" id="EDBComponent"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.components_data.EDBComponent.html#pyaedt.edb_core.edb_data.components_data.EDBComponent">[docs]</a><span class="k">class</span> <span class="nc">EDBComponent</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Manages EDB functionalities for components.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Manages EDB functionalities for components.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -600,14 +596,14 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">layout_instance</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Edb layout instance object.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Edb layout instance object.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_layout_instance</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_layout_instance</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pcomponents</span><span class="o">.</span><span class="n">_pedb</span><span class="o">.</span><span class="n">layout_instance</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_layout_instance</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">component_instance</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Edb component instance.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Edb component instance.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_comp_instance</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_comp_instance</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">layout_instance</span><span class="o">.</span><span class="n">GetLayoutObjInstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">edbcomponent</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_comp_instance</span>
@@ -622,7 +618,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">component_property</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;``ComponentProperty`` object.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;``ComponentProperty`` object.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">edbcomponent</span><span class="o">.</span><span class="n">GetComponentProperty</span><span class="p">()</span><span class="o">.</span><span class="n">Clone</span><span class="p">()</span>
 
     <span class="nd">@property</span>
@@ -640,7 +636,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">spice_model</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Get assigned Spice model properties.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get assigned Spice model properties.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_type</span> <span class="o">==</span> <span class="s2">&quot;SPICEModel&quot;</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">None</span>
         <span class="k">else</span><span class="p">:</span>
@@ -648,7 +644,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">s_param_model</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Get assigned S-parameter model properties.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get assigned S-parameter model properties.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_type</span> <span class="o">==</span> <span class="s2">&quot;SParameterModel&quot;</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">None</span>
         <span class="k">else</span><span class="p">:</span>
@@ -656,7 +652,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">netlist_model</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Get assigned netlist model properties.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get assigned netlist model properties.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_type</span> <span class="o">==</span> <span class="s2">&quot;NetlistModel&quot;</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">None</span>
         <span class="k">else</span><span class="p">:</span>
@@ -664,21 +660,21 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">solder_ball_height</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Solder ball height if available.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Solder ball height if available.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="s2">&quot;GetSolderBallProperty&quot;</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">component_property</span><span class="p">):</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">component_property</span><span class="o">.</span><span class="n">GetSolderBallProperty</span><span class="p">()</span><span class="o">.</span><span class="n">GetHeight</span><span class="p">()</span>
         <span class="k">return</span> <span class="kc">None</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">solder_ball_placement</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Solder ball placement if available..&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Solder ball placement if available..&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="s2">&quot;GetSolderBallProperty&quot;</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">component_property</span><span class="p">):</span>
             <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">component_property</span><span class="o">.</span><span class="n">GetSolderBallProperty</span><span class="p">()</span><span class="o">.</span><span class="n">GetPlacement</span><span class="p">())</span>
         <span class="k">return</span> <span class="mi">2</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">refdes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Reference Designator Name.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Reference Designator Name.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -693,7 +689,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">is_enabled</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Check if the current object is enabled.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Check if the current object is enabled.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -707,7 +703,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@is_enabled</span><span class="o">.</span><span class="n">setter</span>
     <span class="k">def</span> <span class="nf">is_enabled</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">enabled</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Enables the current object.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Enables the current object.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;Resistor&quot;</span><span class="p">,</span> <span class="s2">&quot;Capacitor&quot;</span><span class="p">,</span> <span class="s2">&quot;Inductor&quot;</span><span class="p">]:</span>
             <span class="n">component_property</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">component_property</span>
             <span class="n">component_property</span><span class="o">.</span><span class="n">SetEnabled</span><span class="p">(</span><span class="n">enabled</span><span class="p">)</span>
@@ -715,7 +711,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">model_type</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve assigned model type.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve assigned model type.&quot;&quot;&quot;</span>
         <span class="n">_model_type</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb_model</span><span class="o">.</span><span class="n">ToString</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
         <span class="k">if</span> <span class="n">_model_type</span> <span class="o">==</span> <span class="s2">&quot;PinPairModel&quot;</span><span class="p">:</span>
             <span class="k">return</span> <span class="s2">&quot;RLC&quot;</span>
@@ -724,7 +720,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">rlc_values</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Get component rlc values.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get component rlc values.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_pin_pairs</span><span class="p">):</span>
             <span class="k">return</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span>
         <span class="n">pin_pair</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pin_pairs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -732,7 +728,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">value</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve discrete component value.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve discrete component value.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -770,7 +766,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">res_value</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Resistance value.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Resistance value.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -791,7 +787,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">cap_value</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Capacitance Value.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Capacitance Value.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -812,7 +808,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">ind_value</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Inductance Value.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Inductance Value.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -833,7 +829,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">is_parallel_rlc</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Define if model is Parallel or Series.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Define if model is Parallel or Series.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -865,7 +861,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">center</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Compute the component center.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Compute the component center.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -876,7 +872,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">bounding_box</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Component&#39;s bounding box.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Component&#39;s bounding box.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -892,7 +888,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">rotation</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Compute the component rotation in radian.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Compute the component rotation in radian.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -902,7 +898,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">pinlist</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Pins of the component.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Pins of the component.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -920,7 +916,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">nets</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Nets of Component.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Nets of Component.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -934,7 +930,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">pins</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;EDBPadstackInstance of Component.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;EDBPadstackInstance of Component.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -948,7 +944,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">type</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Component type.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Component type.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -971,7 +967,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@type</span><span class="o">.</span><span class="n">setter</span>
     <span class="k">def</span> <span class="nf">type</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">new_type</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Set component type</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set component type</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -997,7 +993,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">numpins</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Number of Pins of Component.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Number of Pins of Component.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1008,7 +1004,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">partname</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
-        <span class="sd">&quot;&quot;&quot;Component part name.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Component part name.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1019,12 +1015,12 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@partname</span><span class="o">.</span><span class="n">setter</span>
     <span class="k">def</span> <span class="nf">partname</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
-        <span class="sd">&quot;&quot;&quot;Set component part name.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set component part name.&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">part_name</span> <span class="o">=</span> <span class="n">name</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">part_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Component part name.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Component part name.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1035,7 +1031,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@part_name</span><span class="o">.</span><span class="n">setter</span>
     <span class="k">def</span> <span class="nf">part_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
-        <span class="sd">&quot;&quot;&quot;Set component part name.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set component part name.&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">edbcomponent</span><span class="o">.</span><span class="n">GetComponentDef</span><span class="p">()</span><span class="o">.</span><span class="n">SetName</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
 
     <span class="nd">@property</span>
@@ -1044,7 +1040,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">placement_layer</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Placement layer.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Placement layer.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1055,7 +1051,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">lower_elevation</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Lower elevation of the placement layer.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Lower elevation of the placement layer.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1066,7 +1062,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">upper_elevation</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Upper elevation of the placement layer.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Upper elevation of the placement layer.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1078,7 +1074,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">top_bottom_association</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Top/bottom association of the placement layer.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Top/bottom association of the placement layer.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1108,7 +1104,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="EDBComponent.assign_spice_model"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.components_data.EDBComponent.assign_spice_model.html#pyaedt.edb_core.edb_data.components_data.EDBComponent.assign_spice_model">[docs]</a>    <span class="nd">@pyaedt_function_handler</span>
     <span class="k">def</span> <span class="nf">assign_spice_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file_path</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Assign Spice model to this component.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Assign Spice model to this component.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1146,7 +1142,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="EDBComponent.assign_s_param_model"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.components_data.EDBComponent.assign_s_param_model.html#pyaedt.edb_core.edb_data.components_data.EDBComponent.assign_s_param_model">[docs]</a>    <span class="nd">@pyaedt_function_handler</span>
     <span class="k">def</span> <span class="nf">assign_s_param_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file_path</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">reference_net</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Assign S-parameter to this component.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Assign S-parameter to this component.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1177,7 +1173,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="EDBComponent.assign_rlc_model"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.components_data.EDBComponent.assign_rlc_model.html#pyaedt.edb_core.edb_data.components_data.EDBComponent.assign_rlc_model">[docs]</a>    <span class="nd">@pyaedt_function_handler</span>
     <span class="k">def</span> <span class="nf">assign_rlc_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">res</span><span class="p">,</span> <span class="n">ind</span><span class="p">,</span> <span class="n">cap</span><span class="p">,</span> <span class="n">is_parallel</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Assign RLC to this component.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Assign RLC to this component.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1219,13 +1215,13 @@ function checkPageExistsAndRedirect(event) {
   
   <div class="footer-item">
     <p class="copyright">
-    &copy; Copyright (c) 2022 ANSYS, Inc. All rights reserved.<br>
+    &copy; Copyright (c) 2023 ANSYS, Inc. All rights reserved.<br>
 </p>
   </div>
   
   <div class="footer-item">
     <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 6.1.3.<br>
 </p>
   </div>
   

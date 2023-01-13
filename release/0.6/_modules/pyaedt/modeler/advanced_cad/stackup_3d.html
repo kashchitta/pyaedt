@@ -41,14 +41,11 @@
         <link href="../../../../_static/css/breadcrumbs.css" rel="stylesheet">
     
     <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
-    <script src="../../../../_static/jquery.js"></script>
-    <script src="../../../../_static/underscore.js"></script>
-    <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../../_static/doctools.js"></script>
     <script src="../../../../_static/sphinx_highlight.js"></script>
     <script src="../../../../_static/clipboard.min.js"></script>
     <script src="../../../../_static/copybutton.js"></script>
-    <link rel="shortcut icon" href="../../../../_static/ansys-favicon.png"/>
+    <link rel="icon" href="../../../../_static/ansys-favicon.png"/>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -77,9 +74,8 @@
   
   
   
-    <img src="../../../../_static/pyansys-logo-black-cropped.png" class="logo__image only-light" alt="Logo image">
-    <img src="../../../../_static/pyansys-logo-black-cropped.png" class="logo__image only-dark" alt="Logo image">
   
+    <p class="title logo__title">PyAEDT</p>
   
 </a>
     
@@ -207,7 +203,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.42 variable.
+            // this version, rather than using sphinx's 0.6.43 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -350,7 +346,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <span class="k">def</span> <span class="nf">_replace_by_underscore</span><span class="p">(</span><span class="n">character</span><span class="p">,</span> <span class="n">string</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Replace each character of a string by underscores.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Replace each character of a string by underscores.</span>
 <span class="sd">    This method is used to create Hfss variable relative to a material,</span>
 <span class="sd">    and so reformat the material name into the variable name format.</span>
 
@@ -383,7 +379,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <div class="viewcode-block" id="NamedVariable"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.modeler.advanced_cad.stackup_3d.NamedVariable.html#pyaedt.modeler.advanced_cad.stackup_3d.NamedVariable">[docs]</a><span class="k">class</span> <span class="nc">NamedVariable</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Cast PyAEDT variable object to simplify getters and setters in Stackup3D.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Cast PyAEDT variable object to simplify getters and setters in Stackup3D.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -421,17 +417,17 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Name of the variable as a string.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Name of the variable as a string.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_name</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">expression</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Expression of the variable as a string.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Expression of the variable as a string.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_expression</span>
 
     <span class="nd">@expression</span><span class="o">.</span><span class="n">setter</span>
     <span class="k">def</span> <span class="nf">expression</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expression</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Set the expression of the variable.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set the expression of the variable.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -445,32 +441,32 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">unit_system</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Unit system of the expression as a string.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Unit system of the expression as a string.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_variable</span><span class="o">.</span><span class="n">unit_system</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">units</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Units.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Units.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_variable</span><span class="o">.</span><span class="n">units</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">value</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Value.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Value.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_variable</span><span class="o">.</span><span class="n">value</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">numeric_value</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Numeric part of the expression as a float value.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Numeric part of the expression as a float value.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_variable</span><span class="o">.</span><span class="n">numeric_value</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">evaluated_value</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;String that combines the numeric value and the units.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;String that combines the numeric value and the units.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_variable</span><span class="o">.</span><span class="n">evaluated_value</span>
 
 <div class="viewcode-block" id="NamedVariable.hide_variable"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.modeler.advanced_cad.stackup_3d.NamedVariable.hide_variable.html#pyaedt.modeler.advanced_cad.stackup_3d.NamedVariable.hide_variable">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">hide_variable</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Set the variable to a hidden variable.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set the variable to a hidden variable.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -486,7 +482,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="NamedVariable.read_only_variable"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.modeler.advanced_cad.stackup_3d.NamedVariable.read_only_variable.html#pyaedt.modeler.advanced_cad.stackup_3d.NamedVariable.read_only_variable">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">read_only_variable</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Set the variable to a read-only variable.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set the variable to a read-only variable.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -502,7 +498,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <span class="k">class</span> <span class="nc">DuplicatedParametrizedMaterial</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Provides a class to duplicate a material and manage its duplication in PyAEDT and in AEDT.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Provides a class to duplicate a material and manage its duplication in PyAEDT and in AEDT.</span>
 <span class="sd">    For each material property a NamedVariable is created as attribute.</span>
 
 <span class="sd">    Parameters</span>
@@ -607,7 +603,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <div class="viewcode-block" id="Layer3D"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.modeler.advanced_cad.stackup_3d.Layer3D.html#pyaedt.modeler.advanced_cad.stackup_3d.Layer3D">[docs]</a><span class="k">class</span> <span class="nc">Layer3D</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Provides a class for a management of a parametric layer in 3D Modeler. The Layer3D class is not intended</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Provides a class for a management of a parametric layer in 3D Modeler. The Layer3D class is not intended</span>
 <span class="sd">    to be used with its constructor, but by using the method &quot;add_layer&quot; available in the Stackup3D class.</span>
 
 <span class="sd">    Parameters</span>
@@ -735,7 +731,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Layer name.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Layer name.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -745,7 +741,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">type</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Layer type.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Layer type.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -755,7 +751,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">number</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Layer ID.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Layer ID.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -765,7 +761,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">material_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Material name.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Material name.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -775,7 +771,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">material</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Material.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Material.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -786,7 +782,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">duplicated_material</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Duplicated material.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Duplicated material.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -797,7 +793,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">filling_material</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Fill material.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Fill material.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -808,7 +804,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">filling_material_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Fill material name.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Fill material name.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -818,7 +814,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">thickness</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Thickness variable.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Thickness variable.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -829,7 +825,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">thickness_value</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Thickness value.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Thickness value.</span>
 
 
 <span class="sd">        Returns</span>
@@ -844,7 +840,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">elevation</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Layer elevation.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Layer elevation.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -855,7 +851,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">elevation_value</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Layer elevation value.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Layer elevation value.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -865,7 +861,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">stackup</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Stackup.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Stackup.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -875,7 +871,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">frequency</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Frequency variable.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Frequency variable.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -885,7 +881,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Layer3D.duplicate_parametrize_material"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.modeler.advanced_cad.stackup_3d.Layer3D.duplicate_parametrize_material.html#pyaedt.modeler.advanced_cad.stackup_3d.Layer3D.duplicate_parametrize_material">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">duplicate_parametrize_material</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">material_name</span><span class="p">,</span> <span class="n">cloned_material_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">list_of_properties</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Duplicate a material and parametrize all properties.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Duplicate a material and parametrize all properties.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -928,7 +924,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">patch_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">axis</span><span class="o">=</span><span class="s2">&quot;X&quot;</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a parametric patch.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a parametric patch.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1003,7 +999,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">patch_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">axis</span><span class="o">=</span><span class="s2">&quot;X&quot;</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a new parametric patch using machine learning algorithm rather than analytic formulas.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a new parametric patch using machine learning algorithm rather than analytic formulas.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1079,7 +1075,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">reference_system</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">frequency</span><span class="o">=</span><span class="mf">1e9</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a trace.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a trace.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1163,7 +1159,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Layer3D.add_polygon"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.modeler.advanced_cad.stackup_3d.Layer3D.add_polygon.html#pyaedt.modeler.advanced_cad.stackup_3d.Layer3D.add_polygon">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">add_polygon</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">points</span><span class="p">,</span> <span class="n">material</span><span class="o">=</span><span class="s2">&quot;copper&quot;</span><span class="p">,</span> <span class="n">is_void</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">poly_name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a polygon.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a polygon.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1234,7 +1230,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <div class="viewcode-block" id="PadstackLayer"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.modeler.advanced_cad.stackup_3d.PadstackLayer.html#pyaedt.modeler.advanced_cad.stackup_3d.PadstackLayer">[docs]</a><span class="k">class</span> <span class="nc">PadstackLayer</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Provides a data class for the definition of a padstack layer and relative pad and antipad values.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Provides a data class for the definition of a padstack layer and relative pad and antipad values.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">padstack</span><span class="p">,</span> <span class="n">layer_name</span><span class="p">,</span> <span class="n">elevation</span><span class="p">,</span> <span class="n">thickness</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_padstack</span> <span class="o">=</span> <span class="n">padstack</span>
@@ -1247,7 +1243,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">layer_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Padstack instance layer.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Padstack instance layer.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1258,7 +1254,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">pad_radius</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Pad radius on the specified layer.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Pad radius on the specified layer.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1273,7 +1269,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">antipad_radius</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Antipad radius on the specified layer.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Antipad radius on the specified layer.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1288,7 +1284,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <div class="viewcode-block" id="Padstack"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.modeler.advanced_cad.stackup_3d.Padstack.html#pyaedt.modeler.advanced_cad.stackup_3d.Padstack">[docs]</a><span class="k">class</span> <span class="nc">Padstack</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Provides the ``Padstack`` class member of Stackup3D.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Provides the ``Padstack`` class member of Stackup3D.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">app</span><span class="p">,</span> <span class="n">stackup</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">material</span><span class="o">=</span><span class="s2">&quot;copper&quot;</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_app</span> <span class="o">=</span> <span class="n">app</span>
@@ -1309,7 +1305,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">plating_ratio</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Plating ratio between 0 and 1.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Plating ratio between 0 and 1.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1328,7 +1324,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">padstacks_by_layer</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Get the padstack definitions by layers.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the padstack definitions by layers.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1339,7 +1335,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">num_sides</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Number of sides on the circle, which is ``0`` for a true circle.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Number of sides on the circle, which is ``0`` for a true circle.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1353,7 +1349,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Padstack.set_all_pad_value"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.modeler.advanced_cad.stackup_3d.Padstack.set_all_pad_value.html#pyaedt.modeler.advanced_cad.stackup_3d.Padstack.set_all_pad_value">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">set_all_pad_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Set all pads in all layers to a specified value.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set all pads in all layers to a specified value.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1371,7 +1367,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Padstack.set_all_antipad_value"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.modeler.advanced_cad.stackup_3d.Padstack.set_all_antipad_value.html#pyaedt.modeler.advanced_cad.stackup_3d.Padstack.set_all_antipad_value">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">set_all_antipad_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Set all antipads in all layers to a specified value.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set all antipads in all layers to a specified value.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1389,7 +1385,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Padstack.set_start_layer"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.modeler.advanced_cad.stackup_3d.Padstack.set_start_layer.html#pyaedt.modeler.advanced_cad.stackup_3d.Padstack.set_start_layer">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">set_start_layer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">layer</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Set the start layer to a specified value.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set the start layer to a specified value.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1418,7 +1414,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Padstack.set_stop_layer"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.modeler.advanced_cad.stackup_3d.Padstack.set_stop_layer.html#pyaedt.modeler.advanced_cad.stackup_3d.Padstack.set_stop_layer">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">set_stop_layer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">layer</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Set the stop layer to a specified value.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set the stop layer to a specified value.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1443,7 +1439,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Padstack.add_via"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.modeler.advanced_cad.stackup_3d.Padstack.add_via.html#pyaedt.modeler.advanced_cad.stackup_3d.Padstack.add_via">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">add_via</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">position_x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">position_y</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">instance_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">reference_system</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Insert a new via on this padstack.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Insert a new via on this padstack.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1528,7 +1524,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <div class="viewcode-block" id="Stackup3D"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.modeler.advanced_cad.stackup_3d.Stackup3D.html#pyaedt.modeler.advanced_cad.stackup_3d.Stackup3D">[docs]</a><span class="k">class</span> <span class="nc">Stackup3D</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Main Stackup3D Class.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Main Stackup3D Class.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -1582,7 +1578,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">thickness</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Total stackup thickness.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Total stackup thickness.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1592,7 +1588,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">application</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Application object.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Application object.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1602,7 +1598,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">padstacks</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;List of padstacks created.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;List of padstacks created.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1612,7 +1608,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">dielectrics</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;List of dielectrics created.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;List of dielectrics created.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1622,7 +1618,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">grounds</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;List of grounds created.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;List of grounds created.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1632,7 +1628,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">signals</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;List of signals created.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;List of signals created.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1642,7 +1638,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">objects</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;List of obects created.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;List of obects created.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1652,7 +1648,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">objects_by_layer</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;List of padstacks created.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;List of padstacks created.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1668,7 +1664,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">start_position</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Variable containing the start position.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Variable containing the start position.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1682,7 +1678,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">dielectric_x_position</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Stackup x origin.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Stackup x origin.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1697,7 +1693,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">dielectric_y_position</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Stackup y origin.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Stackup y origin.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1712,7 +1708,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">dielectric_width</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Stackup width.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Stackup width.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1727,7 +1723,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">dielectric_length</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Stackup length.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Stackup length.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1742,7 +1738,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">layer_names</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;List of all layer names.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;List of all layer names.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1752,7 +1748,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">layer_positions</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;List of all layer positions.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;List of all layer positions.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1762,7 +1758,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">stackup_layers</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Dictionary of all stackup layers.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Dictionary of all stackup layers.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1772,7 +1768,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">z_position_offset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Elevation.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Elevation.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1782,7 +1778,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">frequency</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Frequency variable.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Frequency variable.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1792,7 +1788,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">duplicated_material_list</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;List of all duplicated material.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;List of all duplicated material.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1802,7 +1798,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Stackup3D.add_padstack"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.modeler.advanced_cad.stackup_3d.Stackup3D.add_padstack.html#pyaedt.modeler.advanced_cad.stackup_3d.Stackup3D.add_padstack">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">add_padstack</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">material</span><span class="o">=</span><span class="s2">&quot;copper&quot;</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Add a new padstack definition.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add a new padstack definition.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1823,7 +1819,7 @@ function checkPageExistsAndRedirect(event) {
     <span class="k">def</span> <span class="nf">add_layer</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">layer_type</span><span class="o">=</span><span class="s2">&quot;S&quot;</span><span class="p">,</span> <span class="n">material_name</span><span class="o">=</span><span class="s2">&quot;copper&quot;</span><span class="p">,</span> <span class="n">thickness</span><span class="o">=</span><span class="mf">0.035</span><span class="p">,</span> <span class="n">fill_material</span><span class="o">=</span><span class="s2">&quot;FR4_epoxy&quot;</span><span class="p">,</span> <span class="n">frequency</span><span class="o">=</span><span class="kc">None</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Add a new layer to the stackup.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add a new layer to the stackup.</span>
 <span class="sd">        The new layer can be a signal (S), ground (G), or dielectric (D).</span>
 <span class="sd">        The layer is entirely filled with the specified fill material. Anything will be drawn</span>
 <span class="sd">        material.</span>
@@ -1899,7 +1895,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Stackup3D.add_signal_layer"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.modeler.advanced_cad.stackup_3d.Stackup3D.add_signal_layer.html#pyaedt.modeler.advanced_cad.stackup_3d.Stackup3D.add_signal_layer">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">add_signal_layer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">material</span><span class="o">=</span><span class="s2">&quot;copper&quot;</span><span class="p">,</span> <span class="n">thickness</span><span class="o">=</span><span class="mf">0.035</span><span class="p">,</span> <span class="n">fill_material</span><span class="o">=</span><span class="s2">&quot;FR4_epoxy&quot;</span><span class="p">,</span> <span class="n">frequency</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Add a new ground layer to the stackup.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add a new ground layer to the stackup.</span>
 <span class="sd">        A signal layer is positive. The layer is entirely filled with the fill material.</span>
 <span class="sd">        Anything will be drawn material.</span>
 
@@ -1949,7 +1945,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Stackup3D.add_dielectric_layer"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.modeler.advanced_cad.stackup_3d.Stackup3D.add_dielectric_layer.html#pyaedt.modeler.advanced_cad.stackup_3d.Stackup3D.add_dielectric_layer">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">add_dielectric_layer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">material</span><span class="o">=</span><span class="s2">&quot;FR4_epoxy&quot;</span><span class="p">,</span> <span class="n">thickness</span><span class="o">=</span><span class="mf">0.035</span><span class="p">,</span> <span class="n">frequency</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Add a new dielectric layer to the stackup.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add a new dielectric layer to the stackup.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1989,7 +1985,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Stackup3D.add_ground_layer"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.modeler.advanced_cad.stackup_3d.Stackup3D.add_ground_layer.html#pyaedt.modeler.advanced_cad.stackup_3d.Stackup3D.add_ground_layer">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">add_ground_layer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">material</span><span class="o">=</span><span class="s2">&quot;copper&quot;</span><span class="p">,</span> <span class="n">thickness</span><span class="o">=</span><span class="mf">0.035</span><span class="p">,</span> <span class="n">fill_material</span><span class="o">=</span><span class="s2">&quot;air&quot;</span><span class="p">,</span> <span class="n">frequency</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Add a new ground layer to the stackup. A ground layer is negative.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add a new ground layer to the stackup. A ground layer is negative.</span>
 <span class="sd">        The layer is entirely filled with  metal. Any polygon will draw a void in it.</span>
 
 <span class="sd">        Parameters</span>
@@ -2032,7 +2028,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">_layer_position_manager</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">layer</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2052,7 +2048,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Stackup3D.resize"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.modeler.advanced_cad.stackup_3d.Stackup3D.resize.html#pyaedt.modeler.advanced_cad.stackup_3d.Stackup3D.resize">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">resize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">percentage_offset</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Resize the stackup around objects created by a percentage offset.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Resize the stackup around objects created by a percentage offset.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2103,7 +2099,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="k">return</span> <span class="kc">True</span></div>
 
 <div class="viewcode-block" id="Stackup3D.resize_around_element"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.modeler.advanced_cad.stackup_3d.Stackup3D.resize_around_element.html#pyaedt.modeler.advanced_cad.stackup_3d.Stackup3D.resize_around_element">[docs]</a>    <span class="k">def</span> <span class="nf">resize_around_element</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">element</span><span class="p">,</span> <span class="n">percentage_offset</span><span class="o">=</span><span class="mf">0.25</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Resize the stackup around parametrized objects and make it parametrize.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Resize the stackup around parametrized objects and make it parametrize.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2142,7 +2138,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <span class="k">class</span> <span class="nc">CommonObject</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;CommonObject Class in Stackup3D. This class must not be directly used.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;CommonObject Class in Stackup3D. This class must not be directly used.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">application</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_application</span> <span class="o">=</span> <span class="n">application</span>
@@ -2157,7 +2153,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">reference_system</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Coordinate system of the object.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Coordinate system of the object.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2167,7 +2163,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">dielectric_layer</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Dielectric layer that the object belongs to.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Dielectric layer that the object belongs to.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2177,7 +2173,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">signal_layer</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Signal layer that the object belongs to.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Signal layer that the object belongs to.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2187,7 +2183,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Object name.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Object name.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2197,12 +2193,12 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">application</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;App object.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;App object.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_application</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">aedt_object</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;PyAEDT object 3D.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;PyAEDT object 3D.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2212,7 +2208,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">layer_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Layer name.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Layer name.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2222,7 +2218,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">layer_number</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Layer ID.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Layer ID.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2232,7 +2228,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">material_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Material name.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Material name.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2242,7 +2238,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">points_on_layer</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Object bounding box.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Object bounding box.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2254,7 +2250,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <div class="viewcode-block" id="Patch"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.modeler.advanced_cad.stackup_3d.Patch.html#pyaedt.modeler.advanced_cad.stackup_3d.Patch">[docs]</a><span class="k">class</span> <span class="nc">Patch</span><span class="p">(</span><span class="n">CommonObject</span><span class="p">,</span> <span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Patch Class in Stackup3D. Create a parametrized patch. It is preferable to use the add_patch method</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Patch Class in Stackup3D. Create a parametrized patch. It is preferable to use the add_patch method</span>
 <span class="sd">    in the class Layer3D than directly the class constructor.</span>
 
 <span class="sd">    Parameters</span>
@@ -2416,7 +2412,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">frequency</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Model frequency.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Model frequency.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2427,7 +2423,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">substrate_thickness</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Substrate thickness.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Substrate thickness.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2438,7 +2434,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">width</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Width.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Width.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2449,7 +2445,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">position_x</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Starting position X.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Starting position X.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2460,7 +2456,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">position_y</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Starting position Y.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Starting position Y.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2471,7 +2467,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">permittivity</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Permittivity.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Permittivity.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2482,7 +2478,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">_permittivity_calcul</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Permittivity calculation.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Permittivity calculation.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2494,7 +2490,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">effective_permittivity</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Effective permittivity.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Effective permittivity.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2505,7 +2501,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">_effective_permittivity_calcul</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a NamedVariable containing the calculation of the patch effective permittivity and return it.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a NamedVariable containing the calculation of the patch effective permittivity and return it.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2525,7 +2521,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">added_length</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Added length calculation.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Added length calculation.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2536,7 +2532,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">_added_length_calcul</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a NamedVariable containing the calculation of the patch added length and return it.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a NamedVariable containing the calculation of the patch added length and return it.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2558,7 +2554,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">wave_length</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Wave length.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Wave length.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2569,7 +2565,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">_wave_length_calcul</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a NamedVariable containing the calculation of the patch wave length and return it.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a NamedVariable containing the calculation of the patch wave length and return it.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2589,7 +2585,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">length</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Length.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Length.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2600,7 +2596,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">_length_calcul</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a NamedVariable containing the calculation of the patch length and return it.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a NamedVariable containing the calculation of the patch length and return it.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2616,7 +2612,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">impedance</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Impedance.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Impedance.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2627,7 +2623,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">_impedance_calcul</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create NamedVariable containing the calculations of the patch impedance and return it.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create NamedVariable containing the calculations of the patch impedance and return it.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2661,7 +2657,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_impedance_l_w</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_impedance_w_l</span>
 
 <div class="viewcode-block" id="Patch.create_lumped_port"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.modeler.advanced_cad.stackup_3d.Patch.create_lumped_port.html#pyaedt.modeler.advanced_cad.stackup_3d.Patch.create_lumped_port">[docs]</a>    <span class="k">def</span> <span class="nf">create_lumped_port</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">reference_layer</span><span class="p">,</span> <span class="n">opposite_side</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">port_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">axisdir</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a parametrized lumped port.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a parametrized lumped port.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2725,7 +2721,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="k">return</span> <span class="n">port</span></div>
 
 <div class="viewcode-block" id="Patch.quarter_wave_feeding_line"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.modeler.advanced_cad.stackup_3d.Patch.quarter_wave_feeding_line.html#pyaedt.modeler.advanced_cad.stackup_3d.Patch.quarter_wave_feeding_line">[docs]</a>    <span class="k">def</span> <span class="nf">quarter_wave_feeding_line</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">impedance_to_adapt</span><span class="o">=</span><span class="mi">50</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a Trace to feed the patch. The trace length is the quarter wavelength, and this width is calculated</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a Trace to feed the patch. The trace length is the quarter wavelength, and this width is calculated</span>
 <span class="sd">        to return the desired impedance.</span>
 
 <span class="sd">        Parameters</span>
@@ -2776,7 +2772,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="k">return</span> <span class="n">feeding_line</span></div>
 
 <div class="viewcode-block" id="Patch.set_optimal_width"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.modeler.advanced_cad.stackup_3d.Patch.set_optimal_width.html#pyaedt.modeler.advanced_cad.stackup_3d.Patch.set_optimal_width">[docs]</a>    <span class="k">def</span> <span class="nf">set_optimal_width</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Set the expression of the NamedVariable corresponding to the patch width, to an optimal expression.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set the expression of the NamedVariable corresponding to the patch width, to an optimal expression.</span>
 
 <span class="sd">        Examples</span>
 <span class="sd">        --------</span>
@@ -2799,7 +2795,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <div class="viewcode-block" id="Trace"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.modeler.advanced_cad.stackup_3d.Trace.html#pyaedt.modeler.advanced_cad.stackup_3d.Trace">[docs]</a><span class="k">class</span> <span class="nc">Trace</span><span class="p">(</span><span class="n">CommonObject</span><span class="p">,</span> <span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Trace Class in Stackup3D. Create a parametrized trace. It is preferable to use the add_trace method</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Trace Class in Stackup3D. Create a parametrized trace. It is preferable to use the add_trace method</span>
 <span class="sd">    in the class Layer3D than directly the class constructor.</span>
 
 <span class="sd">    Parameters</span>
@@ -2994,7 +2990,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">frequency</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Frequency.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Frequency.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -3005,7 +3001,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">substrate_thickness</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Substrate Thickness.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Substrate Thickness.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -3016,7 +3012,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">width</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Width.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Width.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -3034,7 +3030,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">width_h_w</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Width when the substrat thickness is two times upper than the width.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Width when the substrat thickness is two times upper than the width.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -3046,7 +3042,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">width_w_h</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Width when the width is two times upper than substrat thickness.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Width when the width is two times upper than substrat thickness.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -3058,7 +3054,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">_width_calcul</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create NamedVariable containing the calculations of the line width and return it.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create NamedVariable containing the calculations of the line width and return it.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -3117,7 +3113,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">position_x</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Starting Position X.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Starting Position X.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -3128,7 +3124,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">position_y</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Starting Position Y.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Starting Position Y.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -3139,7 +3135,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">permittivity</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Permittivity.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Permittivity.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -3150,7 +3146,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">_permittivity_calcul</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Permittivity Calculation.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Permittivity Calculation.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -3162,7 +3158,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">added_length</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Added Length.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Added Length.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -3173,7 +3169,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">_added_length_calcul</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a NamedVariable containing the calculation of the line added length and return it.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a NamedVariable containing the calculation of the line added length and return it.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -3195,7 +3191,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">length</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Length.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Length.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -3206,7 +3202,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">_length_calcul</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a NamedVariable containing the calculation of the line length and return it.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a NamedVariable containing the calculation of the line length and return it.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -3222,7 +3218,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">charac_impedance</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Characteristic Impedance.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Characteristic Impedance.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -3233,7 +3229,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">_charac_impedance_calcul</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create NamedVariable containing the calculations of the line characteristic impedance and return it.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create NamedVariable containing the calculations of the line characteristic impedance and return it.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -3261,7 +3257,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">effective_permittivity</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Effective Permittivity.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Effective Permittivity.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -3275,7 +3271,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">effective_permittivity_w_h</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Effective Permittivity when width is upper than dielectric thickness.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Effective Permittivity when width is upper than dielectric thickness.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -3286,7 +3282,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">effective_permittivity_h_w</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Effective Permittivity when dielectric thickness is upper than width.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Effective Permittivity when dielectric thickness is upper than width.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -3297,7 +3293,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">_effective_permittivity_calcul</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create NamedVariable containing the calculations of the line effective permittivity and return it.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create NamedVariable containing the calculations of the line effective permittivity and return it.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -3338,7 +3334,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">wave_length</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Wave Length.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Wave Length.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -3349,7 +3345,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">_wave_length_calcul</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a NamedVariable containing the calculation of the line wavelength and return it.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a NamedVariable containing the calculation of the line wavelength and return it.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -3370,7 +3366,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">electrical_length</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Electrical Length.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Electrical Length.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -3381,7 +3377,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">_electrical_length_calcul</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a NamedVariable containing the calculation of the line electrical length and return it.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a NamedVariable containing the calculation of the line electrical length and return it.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -3396,7 +3392,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_electrical_length</span>
 
 <div class="viewcode-block" id="Trace.create_lumped_port"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.modeler.advanced_cad.stackup_3d.Trace.create_lumped_port.html#pyaedt.modeler.advanced_cad.stackup_3d.Trace.create_lumped_port">[docs]</a>    <span class="k">def</span> <span class="nf">create_lumped_port</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">reference_layer</span><span class="p">,</span> <span class="n">opposite_side</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">port_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">axisdir</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a parametrized lumped port.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a parametrized lumped port.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -3464,7 +3460,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <div class="viewcode-block" id="Polygon"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.modeler.advanced_cad.stackup_3d.Polygon.html#pyaedt.modeler.advanced_cad.stackup_3d.Polygon">[docs]</a><span class="k">class</span> <span class="nc">Polygon</span><span class="p">(</span><span class="n">CommonObject</span><span class="p">,</span> <span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Polygon Class in Stackup3D. It is preferable to use the add_polygon method in the class Layer3D than directly</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Polygon Class in Stackup3D. It is preferable to use the add_polygon method in the class Layer3D than directly</span>
 <span class="sd">    the class constructor.</span>
 
 <span class="sd">    Parameters</span>
@@ -3550,7 +3546,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">points_on_layer</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Object Bounding Box.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Object Bounding Box.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -3562,7 +3558,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <span class="k">class</span> <span class="nc">MachineLearningPatch</span><span class="p">(</span><span class="n">Patch</span><span class="p">,</span> <span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;MachineLearningPatch Class in Stackup3D. Create an antenna whose length is predicted by a</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;MachineLearningPatch Class in Stackup3D. Create an antenna whose length is predicted by a</span>
 <span class="sd">    machine learning algorithm.</span>
 
 <span class="sd">    The machine learning algorithm determines the length according to resonant frequency,</span>
@@ -3699,13 +3695,13 @@ function checkPageExistsAndRedirect(event) {
   
   <div class="footer-item">
     <p class="copyright">
-    &copy; Copyright (c) 2022 ANSYS, Inc. All rights reserved.<br>
+    &copy; Copyright (c) 2023 ANSYS, Inc. All rights reserved.<br>
 </p>
   </div>
   
   <div class="footer-item">
     <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 6.1.3.<br>
 </p>
   </div>
   

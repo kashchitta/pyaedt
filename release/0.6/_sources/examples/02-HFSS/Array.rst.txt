@@ -49,8 +49,8 @@ Perform required imports.
 
 Set non-graphical mode
 ~~~~~~~~~~~~~~~~~~~~~~
-Set non-graphical mode. ``"PYAEDT_NON_GRAPHICAL"`` is needed
-to generate documentation only.
+Set non-graphical mode. ``"PYAEDT_NON_GRAPHICAL"`` is needed to generate
+documentation only.
 You can set ``non_graphical`` either to ``True`` or ``False``.
 
 .. GENERATED FROM PYTHON SOURCE LINES 22-25
@@ -113,7 +113,7 @@ Launch HFSS and save the project.
 
  .. code-block:: none
 
-    Project name D:\Temp\pyaedt_prj_USG\array.aedt
+    Project name D:\Temp\pyaedt_prj_MZE\array.aedt
 
 
 
@@ -130,7 +130,7 @@ If a 3D component is not available in the design, it is loaded
 into the dictionary from the path that you specify. The following
 code edits the dictionary to point to the location of the A3DCOMP file.
 
-.. GENERATED FROM PYTHON SOURCE LINES 54-61
+.. GENERATED FROM PYTHON SOURCE LINES 54-60
 
 .. code-block:: default
 
@@ -139,7 +139,6 @@ code edits the dictionary to point to the location of the A3DCOMP file.
     dict_in["Circ_Patch_5GHz1"] = os.path.join(example_path, "Circ_Patch_5GHz.a3dcomp")
     dict_in["cells"][(3, 3)] = {"name": "Circ_Patch_5GHz1"}
     hfss.add_3d_component_array_from_json(dict_in)
-
 
 
 
@@ -154,13 +153,13 @@ code edits the dictionary to point to the location of the A3DCOMP file.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 62-65
+.. GENERATED FROM PYTHON SOURCE LINES 61-64
 
 Set up simulation
 ~~~~~~~~~~~~~~~~~
 Set up a simulation and analyze it.
 
-.. GENERATED FROM PYTHON SOURCE LINES 65-72
+.. GENERATED FROM PYTHON SOURCE LINES 64-71
 
 .. code-block:: default
 
@@ -184,14 +183,14 @@ Set up a simulation and analyze it.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 73-77
+.. GENERATED FROM PYTHON SOURCE LINES 72-76
 
 Get far field data
 ~~~~~~~~~~~~~~~~~~
 Get far field data. After the simulation completes, the far
 field data is generated port by port and stored in a data class.
 
-.. GENERATED FROM PYTHON SOURCE LINES 77-81
+.. GENERATED FROM PYTHON SOURCE LINES 76-80
 
 .. code-block:: default
 
@@ -206,14 +205,14 @@ field data is generated port by port and stored in a data class.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 82-86
+.. GENERATED FROM PYTHON SOURCE LINES 81-85
 
 Generate contour plot
 ~~~~~~~~~~~~~~~~~~~~~
 Generate a contour plot. You can define the Theta scan
 and Phi scan.
 
-.. GENERATED FROM PYTHON SOURCE LINES 86-90
+.. GENERATED FROM PYTHON SOURCE LINES 85-89
 
 .. code-block:: default
 
@@ -239,14 +238,14 @@ and Phi scan.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 91-95
+.. GENERATED FROM PYTHON SOURCE LINES 90-94
 
 Generate 2D cutout plots
 ~~~~~~~~~~~~~~~~~~~~~~~~
 Generate 2D cutout plots. You can define the Theta scan
 and Phi scan.
 
-.. GENERATED FROM PYTHON SOURCE LINES 95-106
+.. GENERATED FROM PYTHON SOURCE LINES 94-105
 
 .. code-block:: default
 
@@ -291,14 +290,14 @@ and Phi scan.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 107-111
+.. GENERATED FROM PYTHON SOURCE LINES 106-110
 
 Generate 3D polar plots in Matplotlib
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Generate 3D polar plots in Matplotlib. You can define
 the Theta scan and Phi scan.
 
-.. GENERATED FROM PYTHON SOURCE LINES 111-115
+.. GENERATED FROM PYTHON SOURCE LINES 110-114
 
 .. code-block:: default
 
@@ -318,7 +317,7 @@ the Theta scan and Phi scan.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 116-121
+.. GENERATED FROM PYTHON SOURCE LINES 115-120
 
 Generate 3D plots in PyVista
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -326,7 +325,7 @@ Generate 3D plots in PyVista. You can define the Theta and Phi
 scan angles. You can change the easy-to-use interactive plot
 that is generated on the fly. 
 
-.. GENERATED FROM PYTHON SOURCE LINES 121-127
+.. GENERATED FROM PYTHON SOURCE LINES 120-126
 
 .. code-block:: default
 
@@ -364,17 +363,17 @@ that is generated on the fly.
     c:\actions-runner\_work\pyaedt\pyaedt\testenv\lib\site-packages\pyvista\core\dataset.py:2132: PyVistaDeprecationWarning: Use of `DataSet.overwrite` is deprecated. Use `DataSet.copy_from` instead.
       warnings.warn(
 
-    <pyvista.plotting.plotting.Plotter object at 0x000002812A08AFA0>
+    <pyvista.plotting.plotting.Plotter object at 0x000001E0DA86F730>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 128-131
+.. GENERATED FROM PYTHON SOURCE LINES 127-130
 
 Release AEDT
 ~~~~~~~~~~~~
 Release AEDT.
 
-.. GENERATED FROM PYTHON SOURCE LINES 131-133
+.. GENERATED FROM PYTHON SOURCE LINES 130-132
 
 .. code-block:: default
 
@@ -396,7 +395,7 @@ Release AEDT.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 1 minutes  4.703 seconds)
+   **Total running time of the script:** ( 1 minutes  2.130 seconds)
 
 
 .. _sphx_glr_download_examples_02-HFSS_Array.py:

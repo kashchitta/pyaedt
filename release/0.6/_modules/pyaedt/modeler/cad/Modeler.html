@@ -41,14 +41,11 @@
         <link href="../../../../_static/css/breadcrumbs.css" rel="stylesheet">
     
     <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
-    <script src="../../../../_static/jquery.js"></script>
-    <script src="../../../../_static/underscore.js"></script>
-    <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../../_static/doctools.js"></script>
     <script src="../../../../_static/sphinx_highlight.js"></script>
     <script src="../../../../_static/clipboard.min.js"></script>
     <script src="../../../../_static/copybutton.js"></script>
-    <link rel="shortcut icon" href="../../../../_static/ansys-favicon.png"/>
+    <link rel="icon" href="../../../../_static/ansys-favicon.png"/>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -77,9 +74,8 @@
   
   
   
-    <img src="../../../../_static/pyansys-logo-black-cropped.png" class="logo__image only-light" alt="Logo image">
-    <img src="../../../../_static/pyansys-logo-black-cropped.png" class="logo__image only-dark" alt="Logo image">
   
+    <p class="title logo__title">PyAEDT</p>
   
 </a>
     
@@ -207,7 +203,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.42 variable.
+            // this version, rather than using sphinx's 0.6.43 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -356,7 +352,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <span class="k">class</span> <span class="nc">CsProps</span><span class="p">(</span><span class="n">OrderedDict</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;AEDT Cooardinate System Internal Parameters.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;AEDT Cooardinate System Internal Parameters.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__setitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
         <span class="n">OrderedDict</span><span class="o">.</span><span class="fm">__setitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
@@ -380,7 +376,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <span class="k">class</span> <span class="nc">ListsProps</span><span class="p">(</span><span class="n">OrderedDict</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;AEDT Lists Internal Parameters.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;AEDT Lists Internal Parameters.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__setitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
         <span class="n">OrderedDict</span><span class="o">.</span><span class="fm">__setitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
@@ -404,7 +400,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <span class="k">class</span> <span class="nc">BaseCoordinateSystem</span><span class="p">(</span><span class="n">PropsManager</span><span class="p">,</span> <span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Base methods common to FaceCoordinateSystem and CoordinateSystem.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Base methods common to FaceCoordinateSystem and CoordinateSystem.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -425,7 +421,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">_dim_arg</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Dimension argument.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Dimension argument.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -452,7 +448,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Delete the coordinate system.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Delete the coordinate system.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -482,7 +478,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">set_as_working_cs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Set the coordinate system as the working coordinate system.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set the coordinate system as the working coordinate system.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -497,7 +493,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">_change_property</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">arg</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Update properties of the coordinate system.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Update properties of the coordinate system.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -518,7 +514,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">rename</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">newname</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Rename the coordinate system.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Rename the coordinate system.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -537,7 +533,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <span class="k">class</span> <span class="nc">FaceCoordinateSystem</span><span class="p">(</span><span class="n">BaseCoordinateSystem</span><span class="p">,</span> <span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Manages face coordinate system data and execution.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Manages face coordinate system data and execution.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -564,7 +560,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">_part_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Internally get the part name which the face belongs to&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Internally get the part name which the face belongs to&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">face_id</span><span class="p">:</span>
             <span class="c1"># face_id has not been defined yet</span>
             <span class="k">return</span> <span class="kc">None</span>
@@ -576,14 +572,14 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">_face_paramenters</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Internal named array for paramenteers of the face coordinate system.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Internal named array for paramenteers of the face coordinate system.&quot;&quot;&quot;</span>
         <span class="n">arg</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Name:FaceCSParameters&quot;</span><span class="p">]</span>
         <span class="n">_dict2arg</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">props</span><span class="p">,</span> <span class="n">arg</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">arg</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">_attributes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Internal named array for attributes of the face coordinate system.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Internal named array for attributes of the face coordinate system.&quot;&quot;&quot;</span>
         <span class="n">coordinateSystemAttributes</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;NAME:Attributes&quot;</span><span class="p">,</span> <span class="s2">&quot;Name:=&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="s2">&quot;PartName:=&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_part_name</span><span class="p">]</span>
         <span class="k">return</span> <span class="n">coordinateSystemAttributes</span>
 
@@ -591,7 +587,7 @@ function checkPageExistsAndRedirect(event) {
     <span class="k">def</span> <span class="nf">create</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">face</span><span class="p">,</span> <span class="n">origin</span><span class="p">,</span> <span class="n">axis_position</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s2">&quot;X&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">offset</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">always_move_to_end</span><span class="o">=</span><span class="kc">True</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a face coordinate system.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a face coordinate system.</span>
 <span class="sd">        The face coordinate has always the Z axis parallel to face normal.</span>
 <span class="sd">        The X and Y axis lie on the face plane.</span>
 
@@ -729,7 +725,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">_get_type_from_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj_id</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Get the entity type from the id&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the entity type from the id&quot;&quot;&quot;</span>
         <span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_modeler</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
             <span class="k">if</span> <span class="n">obj</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="n">obj_id</span><span class="p">:</span>
                 <span class="k">return</span> <span class="s2">&quot;3dObject&quot;</span>
@@ -746,7 +742,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">_get_type_from_object</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Get the entity type from the object&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the entity type from the object&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span> <span class="ow">is</span> <span class="n">FacePrimitive</span><span class="p">:</span>
             <span class="k">return</span> <span class="s2">&quot;Face&quot;</span>
         <span class="k">elif</span> <span class="nb">type</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span> <span class="ow">is</span> <span class="n">EdgePrimitive</span><span class="p">:</span>
@@ -760,7 +756,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Update the coordinate system.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Update the coordinate system.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -795,7 +791,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <div class="viewcode-block" id="CoordinateSystem"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.modeler.cad.Modeler.CoordinateSystem.html#pyaedt.modeler.cad.Modeler.CoordinateSystem">[docs]</a><span class="k">class</span> <span class="nc">CoordinateSystem</span><span class="p">(</span><span class="n">BaseCoordinateSystem</span><span class="p">,</span> <span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Manages coordinate system data and execution.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Manages coordinate system data and execution.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -823,7 +819,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="CoordinateSystem.update"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.modeler.cad.Modeler.CoordinateSystem.update.html#pyaedt.modeler.cad.Modeler.CoordinateSystem.update">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Update the coordinate system.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Update the coordinate system.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -891,7 +887,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="CoordinateSystem.change_cs_mode"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.modeler.cad.Modeler.CoordinateSystem.change_cs_mode.html#pyaedt.modeler.cad.Modeler.CoordinateSystem.change_cs_mode">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">change_cs_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mode_type</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Change the mode of the coordinate system.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Change the mode of the coordinate system.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1007,7 +1003,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">psi</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
         <span class="n">u</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a coordinate system.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a coordinate system.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1166,7 +1162,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">quaternion</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Quaternion computed based on specific axis mode.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Quaternion computed based on specific axis mode.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1218,20 +1214,20 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">_orientation</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Internal named array for orientation of the coordinate system.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Internal named array for orientation of the coordinate system.&quot;&quot;&quot;</span>
         <span class="n">arg</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Name:RelativeCSParameters&quot;</span><span class="p">]</span>
         <span class="n">_dict2arg</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">props</span><span class="p">,</span> <span class="n">arg</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">arg</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">_attributes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Internal named array for attributes of the coordinate system.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Internal named array for attributes of the coordinate system.&quot;&quot;&quot;</span>
         <span class="n">coordinateSystemAttributes</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;NAME:Attributes&quot;</span><span class="p">,</span> <span class="s2">&quot;Name:=&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">]</span>
         <span class="k">return</span> <span class="n">coordinateSystemAttributes</span></div>
 
 
 <span class="k">class</span> <span class="nc">Lists</span><span class="p">(</span><span class="n">PropsManager</span><span class="p">,</span> <span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Manages Lists data and execution.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Manages Lists data and execution.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -1252,7 +1248,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Update the List.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Update the List.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1286,7 +1282,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Object&quot;</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a List.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a List.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1333,7 +1329,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Delete the List.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Delete the List.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1347,7 +1343,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">rename</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">newname</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Rename the List.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Rename the List.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1405,7 +1401,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <span class="k">class</span> <span class="nc">Modeler</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Provides the `Modeler` application class that other `Modeler` classes inherit.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Provides the `Modeler` application class that other `Modeler` classes inherit.</span>
 
 <span class="sd">    This class is inherited in the caller application and is accessible through the modeler variable</span>
 <span class="sd">    object( eg. ``hfss.modeler``).</span>
@@ -1428,32 +1424,32 @@ function checkPageExistsAndRedirect(event) {
     <span class="c1"># Properties derived from internal parent data</span>
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">_desktop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Desktop.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Desktop.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">_desktop</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">logger</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Logger.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Logger.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">logger</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">_odesign</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Design.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Design.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">_odesign</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">_oimportexport</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Import/Export.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Import/Export.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">oimport_export</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">projdir</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Project directory.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Project directory.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">project_path</span>
 
 
 <span class="k">class</span> <span class="nc">GeometryModeler</span><span class="p">(</span><span class="n">Modeler</span><span class="p">,</span> <span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Manages the main AEDT Modeler functionalities for geometry-based designs.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Manages the main AEDT Modeler functionalities for geometry-based designs.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -1476,28 +1472,28 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">coordinate_systems</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Coordinate Systems.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Coordinate Systems.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_coordinate_systems</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_coordinate_systems</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_coordinates_data</span><span class="p">()</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_coordinate_systems</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">user_lists</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;User Lists.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;User Lists.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_user_lists</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_user_lists</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_lists_data</span><span class="p">()</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_user_lists</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">planes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Planes.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Planes.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_planes</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_planes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_planes_data</span><span class="p">()</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_planes</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">oeditor</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Aedt oEditor Module.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Aedt oEditor Module.</span>
 
 <span class="sd">        References</span>
 <span class="sd">        ----------</span>
@@ -1508,7 +1504,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">materials</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Material library used in the project.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Material library used in the project.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1519,7 +1515,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">_convert_list_to_ids</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_list</span><span class="p">,</span> <span class="n">convert_objects_ids_to_name</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Convert a list to IDs.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Convert a list to IDs.</span>
 
 <span class="sd">        .. deprecated:: 0.5.0</span>
 <span class="sd">           Use :func:`pyaedt.application.modeler.convert_to_selections` instead.</span>
@@ -1675,7 +1671,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="k">return</span> <span class="n">coord</span>
 
     <span class="k">def</span> <span class="nf">_get_lists_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve user object list data.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve user object list data.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1711,7 +1707,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="k">return</span> <span class="n">design_lists</span>
 
     <span class="k">def</span> <span class="nf">_get_planes_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve planes data.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve planes data.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1731,7 +1727,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">model_units</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Model units as a string. For example ``&quot;mm&quot;``.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Model units as a string. For example ``&quot;mm&quot;``.</span>
 
 <span class="sd">        References</span>
 <span class="sd">        ----------</span>
@@ -1748,7 +1744,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">selections</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Selections.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Selections.</span>
 
 <span class="sd">        References</span>
 <span class="sd">        ----------</span>
@@ -1759,7 +1755,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">obounding_box</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Bounding box.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Bounding box.</span>
 
 <span class="sd">        References</span>
 <span class="sd">        ----------</span>
@@ -1770,7 +1766,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">fit_all</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Fit all.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Fit all.</span>
 
 <span class="sd">        References</span>
 <span class="sd">        ----------</span>
@@ -1781,7 +1777,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">dimension</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Dimensions.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Dimensions.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1806,7 +1802,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">design_type</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Design type.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Design type.</span>
 
 <span class="sd">        References</span>
 <span class="sd">        ----------</span>
@@ -1817,7 +1813,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">geometry_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Geometry mode.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Geometry mode.</span>
 
 <span class="sd">        References</span>
 <span class="sd">        ----------</span>
@@ -1827,7 +1823,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">solid_bodies</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;List of Object Names.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;List of Object Names.</span>
 
 <span class="sd">        .. note::</span>
 <span class="sd">            Non-model objects are also returned.</span>
@@ -1881,7 +1877,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">cover_lines</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">selection</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Cover a closed line and transform it to sheet.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Cover a closed line and transform it to sheet.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1915,7 +1911,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">phi</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
         <span class="n">u</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a coordinate system.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a coordinate system.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2013,7 +2009,7 @@ function checkPageExistsAndRedirect(event) {
     <span class="k">def</span> <span class="nf">create_face_coordinate_system</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">face</span><span class="p">,</span> <span class="n">origin</span><span class="p">,</span> <span class="n">axis_position</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s2">&quot;X&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">offset</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">always_move_to_end</span><span class="o">=</span><span class="kc">True</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a face coordinate system.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a face coordinate system.</span>
 <span class="sd">        The face coordinate has always the Z axis parallel to face normal.</span>
 <span class="sd">        The X and Y axis lie on the face plane.</span>
 
@@ -2081,7 +2077,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">global_to_cs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">point</span><span class="p">,</span> <span class="n">ref_cs</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Transform a point from the global coordinate system to another coordinate system.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Transform a point from the global coordinate system to another coordinate system.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2139,7 +2135,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">set_working_coordinate_system</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Set the working coordinate system to another coordinate system.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set the working coordinate system to another coordinate system.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2168,7 +2164,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">set_objects_deformation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">objects</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Assign deformation objects to a Workbench link.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Assign deformation objects to a Workbench link.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2197,7 +2193,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">set_objects_temperature</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">objects</span><span class="p">,</span> <span class="n">ambient_temp</span><span class="o">=</span><span class="mi">22</span><span class="p">,</span> <span class="n">create_project_var</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Assign temperatures to objects.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Assign temperatures to objects.</span>
 
 <span class="sd">        The materials assigned to the objects must have a thermal modifier.</span>
 
@@ -2257,7 +2253,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">_create_sheet_from_object_closest_edge</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">startobj</span><span class="p">,</span> <span class="n">endobject</span><span class="p">,</span> <span class="n">axisdir</span><span class="p">,</span> <span class="n">portonplane</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a sheet from the edge closest to the object.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a sheet from the edge closest to the object.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2300,7 +2296,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">find_point_around</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">objectname</span><span class="p">,</span> <span class="n">startposition</span><span class="p">,</span> <span class="n">offset</span><span class="p">,</span> <span class="n">plane</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Find the point around an object.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Find the point around an object.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2352,7 +2348,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">create_sheet_to_ground</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">objectname</span><span class="p">,</span> <span class="n">groundname</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">axisdir</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sheet_dim</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a sheet between an object and a ground plane.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a sheet between an object and a ground plane.</span>
 
 <span class="sd">        The ground plane must be bigger than the object and perpendicular</span>
 <span class="sd">        to one of the three axes.</span>
@@ -2445,7 +2441,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">_get_faceid_on_axis</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">objname</span><span class="p">,</span> <span class="n">axisdir</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Get the ID of the face on the axis.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the ID of the face on the axis.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2529,7 +2525,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">get_boundaries_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve all boundary names.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve all boundary names.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2542,13 +2538,16 @@ function checkPageExistsAndRedirect(event) {
 
 <span class="sd">        &gt;&gt;&gt; oModule.GetBoundaries</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">list_names</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">oboundary</span><span class="o">.</span><span class="n">GetBoundaries</span><span class="p">())</span>
-        <span class="k">del</span> <span class="n">list_names</span><span class="p">[</span><span class="mi">1</span><span class="p">::</span><span class="mi">2</span><span class="p">]</span>
-        <span class="k">return</span> <span class="n">list_names</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">design_type</span> <span class="o">==</span> <span class="s2">&quot;Icepak&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">odesign</span><span class="o">.</span><span class="n">GetChildObject</span><span class="p">(</span><span class="s2">&quot;Thermal&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">GetChildNames</span><span class="p">())</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">list_names</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">oboundary</span><span class="o">.</span><span class="n">GetBoundaries</span><span class="p">())</span>
+            <span class="k">del</span> <span class="n">list_names</span><span class="p">[</span><span class="mi">1</span><span class="p">::</span><span class="mi">2</span><span class="p">]</span>
+            <span class="k">return</span> <span class="n">list_names</span>
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">set_object_model_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj_list</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Set a list of objects to either models or non-models.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set a list of objects to either models or non-models.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2575,7 +2574,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">get_objects_in_group</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">group</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve a list of objects belonging to a group.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve a list of objects belonging to a group.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2601,7 +2600,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">get_group_bounding_box</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">group</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve the bounding box of a group.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve the bounding box of a group.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2638,7 +2637,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">convert_to_selections</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">objtosplit</span><span class="p">,</span> <span class="n">return_list</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Convert one or more object to selections.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Convert one or more object to selections.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2683,7 +2682,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">split</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">objects</span><span class="p">,</span> <span class="n">plane</span><span class="p">,</span> <span class="n">sides</span><span class="o">=</span><span class="s2">&quot;Both&quot;</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Split a list of objects.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Split a list of objects.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2741,7 +2740,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">is_3d_comp</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
         <span class="n">duplicate_assignment</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Duplicate and mirror a selection.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Duplicate and mirror a selection.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2794,7 +2793,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">mirror</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">objid</span><span class="p">,</span> <span class="n">position</span><span class="p">,</span> <span class="n">vector</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Mirror a selection.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Mirror a selection.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2836,7 +2835,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">move</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">objid</span><span class="p">,</span> <span class="n">vector</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Move objects from a list.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Move objects from a list.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2880,7 +2879,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">is_3d_comp</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
         <span class="n">duplicate_assignment</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Duplicate a selection around an axis.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Duplicate a selection around an axis.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2954,7 +2953,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">is_3d_comp</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
         <span class="n">duplicate_assignment</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Duplicate a selection along a line.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Duplicate a selection along a line.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -3000,7 +2999,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">thicken_sheet</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">objid</span><span class="p">,</span> <span class="n">thickness</span><span class="p">,</span> <span class="n">bBothSides</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Thicken the sheet of the selection.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Thicken the sheet of the selection.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -3032,7 +3031,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">sweep_along_normal</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj_name</span><span class="p">,</span> <span class="n">face_id</span><span class="p">,</span> <span class="n">sweep_value</span><span class="o">=</span><span class="mf">0.1</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Sweep the selection along the vector.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sweep the selection along the vector.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -3078,7 +3077,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">sweep_along_vector</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">objid</span><span class="p">,</span> <span class="n">sweep_vector</span><span class="p">,</span> <span class="n">draft_angle</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">draft_type</span><span class="o">=</span><span class="s2">&quot;Round&quot;</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Sweep the selection along a vector.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sweep the selection along a vector.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -3121,7 +3120,7 @@ function checkPageExistsAndRedirect(event) {
     <span class="k">def</span> <span class="nf">sweep_along_path</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">objid</span><span class="p">,</span> <span class="n">sweep_object</span><span class="p">,</span> <span class="n">draft_angle</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">draft_type</span><span class="o">=</span><span class="s2">&quot;Round&quot;</span><span class="p">,</span> <span class="n">is_check_face_intersection</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">twist_angle</span><span class="o">=</span><span class="mi">0</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Sweep the selection along a path.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sweep the selection along a path.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -3163,7 +3162,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">sweep_around_axis</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">objid</span><span class="p">,</span> <span class="n">cs_axis</span><span class="p">,</span> <span class="n">sweep_angle</span><span class="o">=</span><span class="mi">360</span><span class="p">,</span> <span class="n">draft_angle</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">number_of_segments</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Sweep the selection around the axis.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sweep the selection around the axis.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -3213,7 +3212,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">section</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">object_list</span><span class="p">,</span> <span class="n">plane</span><span class="p">,</span> <span class="n">create_new</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">section_cross_object</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Section the selection.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Section the selection.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -3258,7 +3257,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">separate_bodies</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">object_list</span><span class="p">,</span> <span class="n">create_group</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Separate bodies of the selection.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Separate bodies of the selection.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -3287,7 +3286,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">rotate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">objid</span><span class="p">,</span> <span class="n">cs_axis</span><span class="p">,</span> <span class="n">angle</span><span class="o">=</span><span class="mf">90.0</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="s2">&quot;deg&quot;</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Rotate the selection.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Rotate the selection.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -3325,7 +3324,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">subtract</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">blank_list</span><span class="p">,</span> <span class="n">tool_list</span><span class="p">,</span> <span class="n">keep_originals</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Subtract objects.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Subtract objects.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -3365,7 +3364,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">imprint</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">blank_list</span><span class="p">,</span> <span class="n">tool_list</span><span class="p">,</span> <span class="n">keep_originals</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Imprin an object list on another object list.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Imprin an object list on another object list.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -3433,7 +3432,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">tool_list</span><span class="p">,</span>
         <span class="n">keep_originals</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Imprint the normal projection of objects over a sheet.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Imprint the normal projection of objects over a sheet.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -3463,7 +3462,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">distance</span><span class="p">,</span>
         <span class="n">keep_originals</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Imprint the projection of objects over a sheet with a specified vector and distance.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Imprint the projection of objects over a sheet with a specified vector and distance.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -3491,7 +3490,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">purge_history</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">theList</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Purge history objects from object names.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Purge history objects from object names.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -3517,7 +3516,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">get_model_bounding_box</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve the model bounding box.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve the model bounding box.</span>
 
 
 <span class="sd">        Returns</span>
@@ -3537,7 +3536,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">unite</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">theList</span><span class="p">,</span> <span class="n">purge</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Unite objects from a list.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Unite objects from a list.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -3587,7 +3586,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">clone</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">objid</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Clone objects from a list of object IDs.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Clone objects from a list of object IDs.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -3618,7 +3617,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">intersect</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">theList</span><span class="p">,</span> <span class="n">keep_originals</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Intersect objects from a list.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Intersect objects from a list.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -3658,7 +3657,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">connect</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">theList</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Connect objects from a list.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Connect objects from a list.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -3692,7 +3691,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">translate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">objid</span><span class="p">,</span> <span class="n">vector</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Translate objects from a list.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Translate objects from a list.</span>
 
 <span class="sd">        .. deprecated:: 0.4.0</span>
 <span class="sd">           Use :func:`move` instead.</span>
@@ -3731,7 +3730,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">chassis_subtraction</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">chassis_part</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Subtract all non-vacuum objects from the main chassis object.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Subtract all non-vacuum objects from the main chassis object.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -3749,7 +3748,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">blank_part</span> <span class="o">=</span> <span class="n">chassis_part</span>
         <span class="c1"># in main code this object will need to be determined automatically eg by name such as chassis or sheer size</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Blank Part in Subtraction = &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">blank_part</span><span class="p">))</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        check if blank part exists, if not, skip subtraction</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">tool_parts</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">oeditor</span><span class="o">.</span><span class="n">GetObjectsInGroup</span><span class="p">(</span><span class="s2">&quot;Solids&quot;</span><span class="p">))</span>
@@ -3768,7 +3767,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">_offset_on_plane</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">offset</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Offset the object on a plane.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Offset the object on a plane.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -3805,7 +3804,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">check_plane</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="n">faceposition</span><span class="p">,</span> <span class="n">offset</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Check for the plane that is defined as the face for an object.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Check for the plane that is defined as the face for an object.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -3818,8 +3817,8 @@ function checkPageExistsAndRedirect(event) {
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        type</span>
-<span class="sd">            Plane string</span>
+<span class="sd">        str</span>
+<span class="sd">            Name of the plane. It can be &quot;XY&quot;, &quot;XZ&quot; or &quot;YZ&quot;.</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
 
@@ -3855,7 +3854,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">get_matched_object_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">search_string</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve the name of the matched object.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve the name of the matched object.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -3877,7 +3876,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">clean_objects_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">main_part_name</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Clean the names of the objects for a main part.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Clean the names of the objects for a main part.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -3909,7 +3908,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">create_airbox</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">offset</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">offset_type</span><span class="o">=</span><span class="s2">&quot;Absolute&quot;</span><span class="p">,</span> <span class="n">defname</span><span class="o">=</span><span class="s2">&quot;AirBox_Auto&quot;</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create an airbox that is as big as the bounding extension of the project.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create an airbox that is as big as the bounding extension of the project.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -3953,7 +3952,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">create_air_region</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x_pos</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">y_pos</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">z_pos</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">x_neg</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">y_neg</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">z_neg</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">is_percentage</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create an air region.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create an air region.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -3998,7 +3997,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">edit_region_dimensions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">listvalues</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Modify the dimensions of the region.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Modify the dimensions of the region.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -4033,7 +4032,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">create_face_list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">face_list</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a list of faces given a list of face ID or a list of objects.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a list of faces given a list of face ID or a list of objects.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -4078,7 +4077,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">create_object_list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">object_list</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create an object list given a list of object names.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create an object list given a list of object names.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -4122,7 +4121,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">generate_object_history</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">objectname</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Generate history for the object.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Generate history for the object.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -4148,7 +4147,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">create_faceted_bondwire_from_true_surface</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bondname</span><span class="p">,</span> <span class="n">bond_direction</span><span class="p">,</span> <span class="n">min_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">numberofsegments</span><span class="o">=</span><span class="mi">8</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a faceted bondwire from an existing true surface bondwire.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a faceted bondwire from an existing true surface bondwire.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -4271,7 +4270,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">get_entitylist_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve the ID of an entity list.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve the ID of an entity list.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -4293,7 +4292,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">create_outer_facelist</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">externalobjects</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;outer_faces&quot;</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a face list from a list of outer objects.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a face list from a list of outer objects.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -4315,7 +4314,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">explicitly_subtract</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">diellist</span><span class="p">,</span> <span class="n">metallist</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Explicitly subtract all elements in a SolveInside list and a SolveSurface list.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Explicitly subtract all elements in a SolveInside list and a SolveSurface list.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -4365,7 +4364,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">find_port_faces</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">port_sheets</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Find the vaccums given a list of input sheets.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Find the vaccums given a list of input sheets.</span>
 
 <span class="sd">        Starting from a list of input sheets, this method creates a list of output sheets</span>
 <span class="sd">        that represent the blank parts (vacuums) and the tool parts of all the intersections</span>
@@ -4398,7 +4397,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">load_objects_bytype</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj_type</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Load all objects of a specified type.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Load all objects of a specified type.</span>
 
 <span class="sd">        .. deprecated:: 0.5.0</span>
 <span class="sd">           Use :func:`get_objects_in_group` property instead.</span>
@@ -4431,7 +4430,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">get_line_ids</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a dictionary of object IDs for the lines in the design with the line name as the key.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a dictionary of object IDs for the lines in the design with the line name as the key.&quot;&quot;&quot;</span>
         <span class="n">line_ids</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="n">line_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">oeditor</span><span class="o">.</span><span class="n">GetObjectsInGroup</span><span class="p">(</span><span class="s2">&quot;Lines&quot;</span><span class="p">))</span>
         <span class="k">for</span> <span class="n">line_object</span> <span class="ow">in</span> <span class="n">line_list</span><span class="p">:</span>
@@ -4444,7 +4443,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">get_bounding_dimension</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve the dimension array of the bounding box.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve the dimension array of the bounding box.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -4466,7 +4465,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">get_object_name_from_edge_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">edge_id</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve the object name for a predefined edge ID.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve the object name for a predefined edge ID.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -4494,7 +4493,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">get_solving_volume</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Generate a mesh for a setup.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Generate a mesh for a setup.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -4513,7 +4512,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">vertex_data_of_lines</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">txtfilter</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Generate a dictionary of line vertex data for all lines contained within the design.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Generate a dictionary of line vertex data for all lines contained within the design.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -4538,7 +4537,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">get_vertices_of_line</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sLineName</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Generate a list of vertex positions for a line object from AEDT in model units.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Generate a list of vertex positions for a line object from AEDT in model units.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -4584,7 +4583,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">import_materials</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
         <span class="n">create_lightweigth_part</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Import a CAD model.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Import a CAD model.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -4644,7 +4643,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">import_spaceclaim_document</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">SCFile</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Import a SpaceClaim document.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Import a SpaceClaim document.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -4865,7 +4864,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">modeler_variable</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Modeler variable.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Modeler variable.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -4883,7 +4882,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">break_spaceclaim_connection</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Break the connection with SpaceClaim.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Break the connection with SpaceClaim.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -4901,7 +4900,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">load_scdm_in_hfss</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">SpaceClaimFile</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Load a SpaceClaim file in HFSS.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Load a SpaceClaim file in HFSS.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -4926,7 +4925,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">load_hfss</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cadfile</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Load HFSS.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Load HFSS.</span>
 
 <span class="sd">        .. deprecated:: 0.4.41</span>
 <span class="sd">           Use :func:`import_3d_cad` property instead.</span>
@@ -4952,7 +4951,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">get_faces_from_materials</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mats</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Select all outer faces given a list of materials.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Select all outer faces given a list of materials.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -4989,8 +4988,39 @@ function checkPageExistsAndRedirect(event) {
         <span class="k">return</span> <span class="n">sel</span>
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">scale</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj_list</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mf">2.0</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Scale a list of objects.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        obj_list : list</span>
+<span class="sd">            List of objects IDs or names.</span>
+<span class="sd">        x : float, optional</span>
+<span class="sd">            Scale factor for X.</span>
+<span class="sd">        y : float, optional</span>
+<span class="sd">            Scale factor for Y.</span>
+<span class="sd">        z : float, optional</span>
+<span class="sd">            Scale factor for Z.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        bool</span>
+<span class="sd">            ``True`` when successful, ``False`` when failed.</span>
+
+<span class="sd">        References</span>
+<span class="sd">        ----------</span>
+
+<span class="sd">        &gt;&gt;&gt; oEditor.Scale</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">selections</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">convert_to_selections</span><span class="p">(</span><span class="n">obj_list</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+        <span class="n">arg1</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;NAME:Selections&quot;</span><span class="p">,</span> <span class="s2">&quot;Selections:=&quot;</span><span class="p">,</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">selections</span><span class="p">),</span> <span class="s2">&quot;NewPartsModelFlag:=&quot;</span><span class="p">,</span> <span class="s2">&quot;Model&quot;</span><span class="p">]</span>
+        <span class="n">arg2</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;NAME:ScaleParameters&quot;</span><span class="p">,</span> <span class="s2">&quot;ScaleX:=&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="s2">&quot;ScaleY:=&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">y</span><span class="p">),</span> <span class="s2">&quot;ScaleZ:=&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">z</span><span class="p">)]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">oeditor</span><span class="o">.</span><span class="n">Scale</span><span class="p">(</span><span class="n">arg1</span><span class="p">,</span> <span class="n">arg2</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">True</span>
+
+    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">select_allfaces_fromobjects</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">elements</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Select all outer faces given a list of objects.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Select all outer faces given a list of objects.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -5021,7 +5051,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">setunassigned_mats</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Find unassagned objects and set them to non-model.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Find unassagned objects and set them to non-model.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -5042,7 +5072,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">automatic_thicken_sheets</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputlist</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">internalExtr</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">internalvalue</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create thickened sheets for a list of input faces.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create thickened sheets for a list of input faces.</span>
 
 <span class="sd">        This method automatically checks the direction in which to thicken the sheets.</span>
 
@@ -5146,7 +5176,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">move_face</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">faces</span><span class="p">,</span> <span class="n">offset</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Move an input face or a list of input faces of a specific object.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Move an input face or a list of input faces of a specific object.</span>
 
 <span class="sd">        This method moves a face or a list of faces which belong to the same solid.</span>
 
@@ -5208,7 +5238,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">move_edge</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">edges</span><span class="p">,</span> <span class="n">offset</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Move an input edge or a list of input edges of a specific object.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Move an input edge or a list of input edges of a specific object.</span>
 
 <span class="sd">        This method moves an edge or a list of edges which belong to the same solid.</span>
 
@@ -5269,7 +5299,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="k">return</span> <span class="kc">True</span>
 
     <span class="k">class</span> <span class="nc">Position</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Position.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Position.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -5333,7 +5363,7 @@ function checkPageExistsAndRedirect(event) {
                     <span class="bp">self</span><span class="o">.</span><span class="n">Z</span> <span class="o">=</span> <span class="mi">0</span>
 
     <span class="k">class</span> <span class="nc">SweepOptions</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Manages sweep options.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Manages sweep options.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -5355,7 +5385,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">create_group</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">objects</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">components</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">group_name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Group objects or groups into one group.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Group objects or groups into one group.</span>
 
 <span class="sd">        At least one between ``objects``, ``components``, ``groups`` has to be defined.</span>
 
@@ -5429,7 +5459,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">ungroup</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">groups</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Ungroup one or more groups.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Ungroup one or more groups.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -5453,7 +5483,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">flatten_assembly</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Flatten the assembly, removing all group trees.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Flatten the assembly, removing all group trees.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -5470,7 +5500,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">wrap_sheet</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sheet_name</span><span class="p">,</span> <span class="n">object_name</span><span class="p">,</span> <span class="n">imprinted</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Execute the sheet wrapping around an object.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Execute the sheet wrapping around an object.</span>
 <span class="sd">        If wrapping produces an unclassified operation it will be reverted.</span>
 
 <span class="sd">        Parameters</span>
@@ -5529,13 +5559,13 @@ function checkPageExistsAndRedirect(event) {
   
   <div class="footer-item">
     <p class="copyright">
-    &copy; Copyright (c) 2022 ANSYS, Inc. All rights reserved.<br>
+    &copy; Copyright (c) 2023 ANSYS, Inc. All rights reserved.<br>
 </p>
   </div>
   
   <div class="footer-item">
     <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 6.1.3.<br>
 </p>
   </div>
   

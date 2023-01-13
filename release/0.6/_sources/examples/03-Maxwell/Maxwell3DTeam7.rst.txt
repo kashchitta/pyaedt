@@ -72,11 +72,11 @@ You can set ``non_graphical`` either to ``True`` or ``False``.
 .. GENERATED FROM PYTHON SOURCE LINES 28-32
 
 Launch AEDT and Maxwell 3D
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 Launch AEDT and Maxwell 3D. The following code sets up the project and design names, the solver, and
 the version. It also creates an instance of the ``Maxwell3d`` class named ``M3D``. 
 
-.. GENERATED FROM PYTHON SOURCE LINES 32-46
+.. GENERATED FROM PYTHON SOURCE LINES 32-49
 
 .. code-block:: default
 
@@ -87,7 +87,11 @@ the version. It also creates an instance of the ``Maxwell3d`` class named ``M3D`
     DesktopVersion = "2022.2"
 
     M3D = Maxwell3d(
-        projectname=generate_unique_project_name(), designname=Design_Name, solution_type=Solver, specified_version=DesktopVersion, non_graphical=non_graphical
+        projectname=generate_unique_project_name(),
+        designname=Design_Name,
+        solution_type=Solver,
+        specified_version=DesktopVersion,
+        non_graphical=non_graphical
     )
     M3D.modeler.model_units = "mm"
     modeler = M3D.modeler
@@ -100,8 +104,7 @@ the version. It also creates an instance of the ``Maxwell3d`` class named ``M3D`
 
 
 
-
-.. GENERATED FROM PYTHON SOURCE LINES 47-53
+.. GENERATED FROM PYTHON SOURCE LINES 50-56
 
 Add Maxwell 3D setup
 ~~~~~~~~~~~~~~~~~~~~
@@ -110,7 +113,7 @@ Otherwise, the default PyAEDT setup values are used. To approximate a DC field i
 Eddy Current solver, use a low frequency value. Second-order shape functions improve
 the smoothness of the induced currents in the plate.
 
-.. GENERATED FROM PYTHON SOURCE LINES 53-64
+.. GENERATED FROM PYTHON SOURCE LINES 56-67
 
 .. code-block:: default
 
@@ -132,13 +135,13 @@ the smoothness of the induced currents in the plate.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 65-68
+.. GENERATED FROM PYTHON SOURCE LINES 68-71
 
 Define coil dimensions
 ~~~~~~~~~~~~~~~~~~~~~~
 Define coil dimensions as shown on the TEAM7 drawing of the coil.
 
-.. GENERATED FROM PYTHON SOURCE LINES 68-90
+.. GENERATED FROM PYTHON SOURCE LINES 71-93
 
 .. code-block:: default
 
@@ -171,13 +174,13 @@ Define coil dimensions as shown on the TEAM7 drawing of the coil.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 91-94
+.. GENERATED FROM PYTHON SOURCE LINES 94-97
 
 Create coordinate system for positioning coil
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Create a coordinate system for positioning the coil.
 
-.. GENERATED FROM PYTHON SOURCE LINES 94-97
+.. GENERATED FROM PYTHON SOURCE LINES 97-100
 
 .. code-block:: default
 
@@ -193,17 +196,17 @@ Create a coordinate system for positioning the coil.
  .. code-block:: none
 
 
-    <pyaedt.modeler.cad.Modeler.CoordinateSystem object at 0x000002812C4F46D0>
+    <pyaedt.modeler.cad.Modeler.CoordinateSystem object at 0x000001E081083F70>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 98-101
+.. GENERATED FROM PYTHON SOURCE LINES 101-104
 
 Create polyline
 ~~~~~~~~~~~~~~~
 Create a polyline. One quarter of the coil is modeled by sweeping a 2D sheet along a polyline.
 
-.. GENERATED FROM PYTHON SOURCE LINES 101-105
+.. GENERATED FROM PYTHON SOURCE LINES 104-108
 
 .. code-block:: default
 
@@ -224,13 +227,13 @@ Create a polyline. One quarter of the coil is modeled by sweeping a 2D sheet alo
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 106-109
+.. GENERATED FROM PYTHON SOURCE LINES 109-112
 
 Duplicate and unite polyline to create full coil
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Duplicate and unit the polyline to create a full coil.
 
-.. GENERATED FROM PYTHON SOURCE LINES 109-117
+.. GENERATED FROM PYTHON SOURCE LINES 112-120
 
 .. code-block:: default
 
@@ -249,14 +252,14 @@ Duplicate and unit the polyline to create a full coil.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 118-122
+.. GENERATED FROM PYTHON SOURCE LINES 121-125
 
 Assign material and if solution is allowed inside coil
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Assign the material ``Cooper`` from the Maxwell internal library to the coil and
 allow a solution inside the coil.
 
-.. GENERATED FROM PYTHON SOURCE LINES 122-126
+.. GENERATED FROM PYTHON SOURCE LINES 125-129
 
 .. code-block:: default
 
@@ -277,13 +280,13 @@ allow a solution inside the coil.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 127-130
+.. GENERATED FROM PYTHON SOURCE LINES 130-133
 
 Create terminal
 ~~~~~~~~~~~~~~~
 Create a terminal for the coil from a cross section that is split and one half deleted.
 
-.. GENERATED FROM PYTHON SOURCE LINES 130-144
+.. GENERATED FROM PYTHON SOURCE LINES 133-147
 
 .. code-block:: default
 
@@ -314,13 +317,13 @@ Create a terminal for the coil from a cross section that is split and one half d
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 145-148
+.. GENERATED FROM PYTHON SOURCE LINES 148-151
 
 Add a material
 ~~~~~~~~~~~~~~
 Add a material named ``team3_aluminium``.
 
-.. GENERATED FROM PYTHON SOURCE LINES 148-152
+.. GENERATED FROM PYTHON SOURCE LINES 151-155
 
 .. code-block:: default
 
@@ -335,20 +338,21 @@ Add a material named ``team3_aluminium``.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 153-156
+.. GENERATED FROM PYTHON SOURCE LINES 156-159
 
 Model aluminium plate with a hole
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Model the aluminium plate with a hole by subtracting two rectangular cuboids.
 
-.. GENERATED FROM PYTHON SOURCE LINES 156-162
+.. GENERATED FROM PYTHON SOURCE LINES 159-166
 
 .. code-block:: default
 
 
-    plate = M3D.modeler.create_box([0, 0, 0], [294, 294, 19], name="Plate", matname="team7_aluminium")
+    plate = M3D.modeler.create_box(position=[0, 0, 0], dimensions_list=[294, 294, 19], name="Plate",
+                                   matname="team7_aluminium")
     M3D.modeler.fit_all()
-    hole = M3D.modeler.create_box([18, 18, 0], [108, 108, 19], name="Hole")
+    hole = M3D.modeler.create_box(position=[18, 18, 0], dimensions_list=[108, 108, 19], name="Hole")
     M3D.modeler.subtract("Plate", ["Hole"], keep_originals=False)
 
 
@@ -364,13 +368,13 @@ Model the aluminium plate with a hole by subtracting two rectangular cuboids.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 163-166
+.. GENERATED FROM PYTHON SOURCE LINES 167-170
 
 Draw a background region
 ~~~~~~~~~~~~~~~~~~~~~~~~
 Draw a background region that uses the default properties for an air region.
 
-.. GENERATED FROM PYTHON SOURCE LINES 166-169
+.. GENERATED FROM PYTHON SOURCE LINES 170-173
 
 .. code-block:: default
 
@@ -386,11 +390,11 @@ Draw a background region that uses the default properties for an air region.
  .. code-block:: none
 
 
-    <pyaedt.modeler.cad.object3d.Object3d object at 0x000002812A067D30>
+    <pyaedt.modeler.cad.object3d.Object3d object at 0x000001E0E59A5A60>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 170-175
+.. GENERATED FROM PYTHON SOURCE LINES 174-179
 
 Adjust eddy effects for plate and coil
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -398,13 +402,13 @@ Adjust the eddy effects for the plate and coil by turning off displacement curre
 for all parts. The setting for eddy effect is ignored for the stranded conductor type
 used in the coil.
 
-.. GENERATED FROM PYTHON SOURCE LINES 175-181
+.. GENERATED FROM PYTHON SOURCE LINES 179-185
 
 .. code-block:: default
 
 
-    M3D.eddy_effects_on("Plate")
-    M3D.eddy_effects_on(["Coil", "Region", "Line_A1_B1mesh", "Line_A2_B2mesh"],
+    M3D.eddy_effects_on(object_list="Plate")
+    M3D.eddy_effects_on(object_list=["Coil", "Region", "Line_A1_B1mesh", "Line_A2_B2mesh"],
                         activate_eddy_effects=False,
                         activate_displacement_current=False)
 
@@ -421,13 +425,13 @@ used in the coil.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 182-185
+.. GENERATED FROM PYTHON SOURCE LINES 186-189
 
 Create expression for Z component of B in Gauss
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Create an expression for the Z component of B in Gauss using the fields calculator.
 
-.. GENERATED FROM PYTHON SOURCE LINES 185-196
+.. GENERATED FROM PYTHON SOURCE LINES 189-200
 
 .. code-block:: default
 
@@ -449,14 +453,14 @@ Create an expression for the Z component of B in Gauss using the fields calculat
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 197-201
+.. GENERATED FROM PYTHON SOURCE LINES 201-205
 
 Draw two lines along which to plot Bz
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Draw two lines along which to plot Bz. The following code also adds a small cylinder
 to refine the mesh locally around each line.
 
-.. GENERATED FROM PYTHON SOURCE LINES 201-215
+.. GENERATED FROM PYTHON SOURCE LINES 205-219
 
 .. code-block:: default
 
@@ -465,13 +469,13 @@ to refine the mesh locally around each line.
     mesh_diameter = "2mm"
 
     line_points_1 = [["0mm", "72mm", "34mm"], ["288mm", "72mm", "34mm"]]
-    polyline = modeler.create_polyline(line_points_1, name=lines[0])
-    L1Mesh = modeler.create_polyline(line_points_1, name=lines[0] + "mesh")
+    polyline = modeler.create_polyline(position_list=line_points_1, name=lines[0])
+    L1Mesh = modeler.create_polyline(position_list=line_points_1, name=lines[0] + "mesh")
     L1Mesh.set_crosssection_properties(type="Circle", width=mesh_diameter)
 
     line_points_2 = [["0mm", "144mm", "34mm"], ["288mm", "144mm", "34mm"]]
-    polyline2 = modeler.create_polyline(line_points_2, name=lines[1])
-    polyline2_mesh = modeler.create_polyline(line_points_2, name=lines[1] + "mesh")
+    polyline2 = modeler.create_polyline(position_list=line_points_2, name=lines[1])
+    polyline2_mesh = modeler.create_polyline(position_list=line_points_2, name=lines[1] + "mesh")
     polyline2_mesh.set_crosssection_properties(type="Circle", width=mesh_diameter)
 
 
@@ -487,19 +491,18 @@ to refine the mesh locally around each line.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 216-219
+.. GENERATED FROM PYTHON SOURCE LINES 220-223
 
 Plot model
 ~~~~~~~~~~
 Plot the model.
 
-.. GENERATED FROM PYTHON SOURCE LINES 219-223
+.. GENERATED FROM PYTHON SOURCE LINES 223-226
 
 .. code-block:: default
 
 
     M3D.plot(show=False, export_path=os.path.join(M3D.working_directory, "Image.jpg"), plot_air_objects=False)
-
 
 
 
@@ -515,17 +518,17 @@ Plot the model.
  .. code-block:: none
 
 
-    <pyaedt.generic.plot.ModelPlotter object at 0x000002812CA988E0>
+    <pyaedt.generic.plot.ModelPlotter object at 0x000001E0D134E220>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 224-227
+.. GENERATED FROM PYTHON SOURCE LINES 227-230
 
 Published measurement results are included with this script via the list below.
 Test results are used to create text files for import into a rectangular plot
 and to overlay simulation results.
 
-.. GENERATED FROM PYTHON SOURCE LINES 227-414
+.. GENERATED FROM PYTHON SOURCE LINES 230-417
 
 .. code-block:: default
 
@@ -724,19 +727,19 @@ and to overlay simulation results.
 
  .. code-block:: none
 
-    project_dir D:/Temp/pyaedt_prj_2MX/Project_KQ6.pyaedt\TEAM 7 Asymmetric Conductor
+    project_dir D:/Temp/pyaedt_prj_7WU/Project_OP1.pyaedt\TEAM 7 Asymmetric Conductor
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 415-419
+.. GENERATED FROM PYTHON SOURCE LINES 418-422
 
 Create plots of induced current and flux density on surface of plate
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Create two plots of the induced current (``Mag_J``) and the flux density (``Mag_B``) on the
 surface of the plate.
 
-.. GENERATED FROM PYTHON SOURCE LINES 419-425
+.. GENERATED FROM PYTHON SOURCE LINES 422-428
 
 .. code-block:: default
 
@@ -755,17 +758,17 @@ surface of the plate.
  .. code-block:: none
 
 
-    <pyaedt.modules.solutions.FieldPlot object at 0x000002812C6A9E80>
+    <pyaedt.modules.solutions.FieldPlot object at 0x000001E0817DF520>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 426-429
+.. GENERATED FROM PYTHON SOURCE LINES 429-432
 
 Save project and solve
 ~~~~~~~~~~~~~~~~~~~~~~
 Save the project and solve it.
 
-.. GENERATED FROM PYTHON SOURCE LINES 429-433
+.. GENERATED FROM PYTHON SOURCE LINES 432-436
 
 .. code-block:: default
 
@@ -786,14 +789,14 @@ Save the project and solve it.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 434-438
+.. GENERATED FROM PYTHON SOURCE LINES 437-441
 
 Release AEDT from PyAEDT scripting
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Release AEDT from PyAEDT scripting. If you wanted to leave AEDT and the project open
 after running the above script, in the following command, you would set ``(False, False)``.
 
-.. GENERATED FROM PYTHON SOURCE LINES 438-440
+.. GENERATED FROM PYTHON SOURCE LINES 441-443
 
 .. code-block:: default
 
@@ -815,7 +818,7 @@ after running the above script, in the following command, you would set ``(False
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 5 minutes  30.455 seconds)
+   **Total running time of the script:** ( 5 minutes  24.333 seconds)
 
 
 .. _sphx_glr_download_examples_03-Maxwell_Maxwell3DTeam7.py:

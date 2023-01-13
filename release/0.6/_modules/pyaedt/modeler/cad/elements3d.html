@@ -41,14 +41,11 @@
         <link href="../../../../_static/css/breadcrumbs.css" rel="stylesheet">
     
     <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
-    <script src="../../../../_static/jquery.js"></script>
-    <script src="../../../../_static/underscore.js"></script>
-    <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../../_static/doctools.js"></script>
     <script src="../../../../_static/sphinx_highlight.js"></script>
     <script src="../../../../_static/clipboard.min.js"></script>
     <script src="../../../../_static/copybutton.js"></script>
-    <link rel="shortcut icon" href="../../../../_static/ansys-favicon.png"/>
+    <link rel="icon" href="../../../../_static/ansys-favicon.png"/>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -77,9 +74,8 @@
   
   
   
-    <img src="../../../../_static/pyansys-logo-black-cropped.png" class="logo__image only-light" alt="Logo image">
-    <img src="../../../../_static/pyansys-logo-black-cropped.png" class="logo__image only-dark" alt="Logo image">
   
+    <p class="title logo__title">PyAEDT</p>
   
 </a>
     
@@ -207,7 +203,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.42 variable.
+            // this version, rather than using sphinx's 0.6.43 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -339,7 +335,7 @@ function checkPageExistsAndRedirect(event) {
 
 <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
 <span class="k">def</span> <span class="nf">_dict2arg</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">arg_out</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -392,11 +388,11 @@ function checkPageExistsAndRedirect(event) {
 
 
 <span class="k">class</span> <span class="nc">EdgeTypePrimitive</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Provides common methods for EdgePrimitive and FacePrimitive.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Provides common methods for EdgePrimitive and FacePrimitive.&quot;&quot;&quot;</span>
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">fillet</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">setback</span><span class="o">=</span><span class="mf">0.0</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Add a fillet to the selected edge.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add a fillet to the selected edge.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -443,7 +439,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">chamfer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">left_distance</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">right_distance</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">angle</span><span class="o">=</span><span class="mi">45</span><span class="p">,</span> <span class="n">chamfer_type</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Add a chamfer to the selected edge.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add a chamfer to the selected edge.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -516,7 +512,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <div class="viewcode-block" id="VertexPrimitive"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.modeler.cad.elements3d.VertexPrimitive.html#pyaedt.modeler.cad.elements3d.VertexPrimitive">[docs]</a><span class="k">class</span> <span class="nc">VertexPrimitive</span><span class="p">(</span><span class="n">EdgeTypePrimitive</span><span class="p">,</span> <span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Contains the vertex object within the AEDT Desktop Modeler.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Contains the vertex object within the AEDT Desktop Modeler.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -534,7 +530,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">position</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Position of the vertex.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Position of the vertex.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -563,7 +559,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <div class="viewcode-block" id="EdgePrimitive"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.modeler.cad.elements3d.EdgePrimitive.html#pyaedt.modeler.cad.elements3d.EdgePrimitive">[docs]</a><span class="k">class</span> <span class="nc">EdgePrimitive</span><span class="p">(</span><span class="n">EdgeTypePrimitive</span><span class="p">,</span> <span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Contains the edge object within the AEDT Desktop Modeler.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Contains the edge object within the AEDT Desktop Modeler.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -581,7 +577,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">segment_info</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Compute segment information using the object-oriented method (from AEDT 2021 R2</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Compute segment information using the object-oriented method (from AEDT 2021 R2</span>
 <span class="sd">        with beta options). The method manages segment info for lines, circles and ellipse</span>
 <span class="sd">        providing information about all of those.</span>
 
@@ -623,7 +619,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">vertices</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Vertices list.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Vertices list.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -647,7 +643,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">midpoint</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Midpoint coordinates of the edge.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Midpoint coordinates of the edge.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -672,7 +668,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">length</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Length of the edge.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Length of the edge.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -698,7 +694,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="EdgePrimitive.create_object"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.modeler.cad.elements3d.EdgePrimitive.create_object.html#pyaedt.modeler.cad.elements3d.EdgePrimitive.create_object">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">create_object</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">non_model</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">create_group_for_new_objects</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Return a new object from the selected edge.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return a new object from the selected edge.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -716,7 +712,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="EdgePrimitive.move_along_normal"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.modeler.cad.elements3d.EdgePrimitive.move_along_normal.html#pyaedt.modeler.cad.elements3d.EdgePrimitive.move_along_normal">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">move_along_normal</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">offset</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Move this edge.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Move this edge.</span>
 <span class="sd">        This method moves an edge which belong to the same solid.</span>
 
 <span class="sd">        Parameters</span>
@@ -742,7 +738,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <div class="viewcode-block" id="FacePrimitive"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.modeler.cad.elements3d.FacePrimitive.html#pyaedt.modeler.cad.elements3d.FacePrimitive">[docs]</a><span class="k">class</span> <span class="nc">FacePrimitive</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Contains the face object within the AEDT Desktop Modeler.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Contains the face object within the AEDT Desktop Modeler.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="s2">&quot;FaceId &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
@@ -751,7 +747,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="k">return</span> <span class="s2">&quot;FaceId &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">object3d</span><span class="p">,</span> <span class="n">obj_id</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -763,12 +759,12 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">oeditor</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Oeditor Module.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Oeditor Module.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_object3d</span><span class="o">.</span><span class="n">m_Editor</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">logger</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Logger.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Logger.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_object3d</span><span class="o">.</span><span class="n">logger</span>
 
     <span class="nd">@property</span>
@@ -777,7 +773,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">touching_objects</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Get the objects that touch one of the vertex, edge midpoint or the actual face.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the objects that touch one of the vertex, edge midpoint or the actual face.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -805,7 +801,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">edges</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Edges lists.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Edges lists.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -825,7 +821,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">vertices</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Vertices lists.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Vertices lists.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -849,12 +845,12 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">id</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Face ID.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Face ID.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_id</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">center_from_aedt</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Face center for a planar face in model units.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Face center for a planar face in model units.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -877,7 +873,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">is_planar</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Check if a face is planar or not.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Check if a face is planar or not.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -892,7 +888,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">center</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Face center in model units.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Face center in model units.</span>
 
 <span class="sd">        .. note::</span>
 <span class="sd">           It returns the face centroid if number of face vertex is &gt;1.</span>
@@ -921,7 +917,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">area</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Face area.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Face area.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -939,7 +935,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">top_edge_z</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Top edge in the Z direction of the object. Midpoint is used as criteria to find the edge.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Top edge in the Z direction of the object. Midpoint is used as criteria to find the edge.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -960,7 +956,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">bottom_edge_z</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Bottom edge in the Z direction of the object. Midpoint is used as criteria to find the edge.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Bottom edge in the Z direction of the object. Midpoint is used as criteria to find the edge.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -976,7 +972,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">top_edge_x</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Top edge in the X direction of the object. Midpoint is used as criteria to find the edge.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Top edge in the X direction of the object. Midpoint is used as criteria to find the edge.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -992,7 +988,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">bottom_edge_x</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Bottom edge in the X direction of the object. Midpoint is used as criteria to find the edge.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Bottom edge in the X direction of the object. Midpoint is used as criteria to find the edge.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1008,7 +1004,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">top_edge_y</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Top edge in the Y direction of the object. Midpoint is used as criteria to find the edge.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Top edge in the Y direction of the object. Midpoint is used as criteria to find the edge.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1024,7 +1020,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">bottom_edge_y</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Bottom edge in the X direction of the object. Midpoint is used as criteria to find the edge.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Bottom edge in the X direction of the object. Midpoint is used as criteria to find the edge.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1040,7 +1036,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="FacePrimitive.is_on_bounding"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.modeler.cad.elements3d.FacePrimitive.is_on_bounding.html#pyaedt.modeler.cad.elements3d.FacePrimitive.is_on_bounding">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">is_on_bounding</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1e-9</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Check if the face is on bounding box or Not.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Check if the face is on bounding box or Not.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1067,7 +1063,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="FacePrimitive.move_with_offset"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.modeler.cad.elements3d.FacePrimitive.move_with_offset.html#pyaedt.modeler.cad.elements3d.FacePrimitive.move_with_offset">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">move_with_offset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">offset</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Move the face along the normal.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Move the face along the normal.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1110,7 +1106,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="FacePrimitive.move_with_vector"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.modeler.cad.elements3d.FacePrimitive.move_with_vector.html#pyaedt.modeler.cad.elements3d.FacePrimitive.move_with_vector">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">move_with_vector</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vector</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Move the face along a vector.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Move the face along a vector.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1153,7 +1149,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">normal</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Face normal.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Face normal.</span>
 
 <span class="sd">        Limitations:</span>
 <span class="sd">        #. The face must be planar.</span>
@@ -1198,7 +1194,7 @@ function checkPageExistsAndRedirect(event) {
             <span class="n">n</span> <span class="o">=</span> <span class="n">GeometryOperators</span><span class="o">.</span><span class="n">v_cross</span><span class="p">(</span><span class="n">cv1</span><span class="p">,</span> <span class="n">cv2</span><span class="p">)</span>
         <span class="n">normal</span> <span class="o">=</span> <span class="n">GeometryOperators</span><span class="o">.</span><span class="n">normalize_vector</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
 
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Try to move the face center twice, the first with the normal vector, and the second with its inverse.</span>
 <span class="sd">        Measures which is closer to the center point of the bounding box.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -1215,7 +1211,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="FacePrimitive.create_object"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.modeler.cad.elements3d.FacePrimitive.create_object.html#pyaedt.modeler.cad.elements3d.FacePrimitive.create_object">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">create_object</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">non_model</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Return a new object from the selected face.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return a new object from the selected face.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1233,7 +1229,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <div class="viewcode-block" id="Point"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.modeler.cad.elements3d.Point.html#pyaedt.modeler.cad.elements3d.Point">[docs]</a><span class="k">class</span> <span class="nc">Point</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Manages point attributes for the AEDT 3D Modeler.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Manages point attributes for the AEDT 3D Modeler.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -1266,7 +1262,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">m_Editor</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Pointer to the oEditor object in the AEDT API. This property is</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Pointer to the oEditor object in the AEDT API. This property is</span>
 <span class="sd">        intended primarily for use by FacePrimitive, EdgePrimitive, and</span>
 <span class="sd">        VertexPrimitive child objects.</span>
 
@@ -1279,12 +1275,12 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">logger</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Logger.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Logger.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_primitives</span><span class="o">.</span><span class="n">logger</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Name of the point as a string value.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Name of the point as a string value.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1321,7 +1317,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">valid_properties</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Valid properties.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Valid properties.</span>
 
 <span class="sd">        References</span>
 <span class="sd">        ----------</span>
@@ -1337,7 +1333,7 @@ function checkPageExistsAndRedirect(event) {
     <span class="c1"># Following is the line that we would use but it currently returns &#39;edit&#39;.</span>
     <span class="c1"># color = _retry_ntimes(10, self.m_Editor.GetPropertyValue, &quot;Geometry3DPointTab&quot;, self._name, &quot;Color&quot;)</span>
 <div class="viewcode-block" id="Point.set_color"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.modeler.cad.elements3d.Point.set_color.html#pyaedt.modeler.cad.elements3d.Point.set_color">[docs]</a>    <span class="k">def</span> <span class="nf">set_color</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">color_value</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Set symbol color.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set symbol color.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1385,7 +1381,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">coordinate_system</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Coordinate system of the point.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Coordinate system of the point.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1417,7 +1413,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Point.delete"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.modeler.cad.elements3d.Point.delete.html#pyaedt.modeler.cad.elements3d.Point.delete">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Delete the point.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Delete the point.</span>
 
 <span class="sd">        References</span>
 <span class="sd">        ----------</span>
@@ -1435,7 +1431,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <div class="viewcode-block" id="Plane"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.modeler.cad.elements3d.Plane.html#pyaedt.modeler.cad.elements3d.Plane">[docs]</a><span class="k">class</span> <span class="nc">Plane</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Manages plane attributes for the AEDT 3D Modeler.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Manages plane attributes for the AEDT 3D Modeler.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -1469,7 +1465,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">m_Editor</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Pointer to the oEditor object in the AEDT API. This property is</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Pointer to the oEditor object in the AEDT API. This property is</span>
 <span class="sd">        intended primarily for use by FacePrimitive, EdgePrimitive, and</span>
 <span class="sd">        VertexPrimitive child objects.</span>
 
@@ -1482,12 +1478,12 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">logger</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Logger.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Logger.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_primitives</span><span class="o">.</span><span class="n">logger</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Name of the plane as a string value.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Name of the plane as a string value.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1527,7 +1523,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">valid_properties</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Valid properties.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Valid properties.</span>
 
 <span class="sd">        References</span>
 <span class="sd">        ----------</span>
@@ -1544,7 +1540,7 @@ function checkPageExistsAndRedirect(event) {
     <span class="c1"># color = _retry_ntimes(10, self.m_Editor.GetPropertyValue, &quot;Geometry3DPlaneTab&quot;, self._name, &quot;Color&quot;)</span>
 <div class="viewcode-block" id="Plane.set_color"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.modeler.cad.elements3d.Plane.set_color.html#pyaedt.modeler.cad.elements3d.Plane.set_color">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">set_color</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">color_value</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Set symbol color.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set symbol color.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1592,7 +1588,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">coordinate_system</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Coordinate system of the plane.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Coordinate system of the plane.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1623,7 +1619,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Plane.delete"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.modeler.cad.elements3d.Plane.delete.html#pyaedt.modeler.cad.elements3d.Plane.delete">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Delete the plane.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Delete the plane.</span>
 
 <span class="sd">        References</span>
 <span class="sd">        ----------</span>
@@ -1658,13 +1654,13 @@ function checkPageExistsAndRedirect(event) {
   
   <div class="footer-item">
     <p class="copyright">
-    &copy; Copyright (c) 2022 ANSYS, Inc. All rights reserved.<br>
+    &copy; Copyright (c) 2023 ANSYS, Inc. All rights reserved.<br>
 </p>
   </div>
   
   <div class="footer-item">
     <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 6.1.3.<br>
 </p>
   </div>
   

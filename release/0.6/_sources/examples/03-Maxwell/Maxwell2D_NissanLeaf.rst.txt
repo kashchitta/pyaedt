@@ -29,7 +29,7 @@ Perform required imports
 ~~~~~~~~~~~~~~~~~~~~~~~~
 Perform required imports.
 
-.. GENERATED FROM PYTHON SOURCE LINES 12-19
+.. GENERATED FROM PYTHON SOURCE LINES 12-18
 
 .. code-block:: default
 
@@ -46,15 +46,14 @@ Perform required imports.
 
 
 
-
-.. GENERATED FROM PYTHON SOURCE LINES 20-24
+.. GENERATED FROM PYTHON SOURCE LINES 19-23
 
 Initialize Maxwell 2D
 ~~~~~~~~~~~~~~~~~~~~~
 Initialize Maxwell 2D, providing the version, path to the project, and the design
 name and type.
 
-.. GENERATED FROM PYTHON SOURCE LINES 24-33
+.. GENERATED FROM PYTHON SOURCE LINES 23-32
 
 .. code-block:: default
 
@@ -74,21 +73,21 @@ name and type.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 34-38
+.. GENERATED FROM PYTHON SOURCE LINES 33-37
 
 Initialize dictionaries
 ~~~~~~~~~~~~~~~~~~~~~~~
 Initialize dictionaries that contain all the definitions for the design
 variables and output variables.
 
-.. GENERATED FROM PYTHON SOURCE LINES 40-44
+.. GENERATED FROM PYTHON SOURCE LINES 39-43
 
 Initialize definitions for stator, rotor, and shaft 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Initialize geometry parameter definitions for the stator, rotor, and shaft.
 The naming refers to RMxprt primitives.
 
-.. GENERATED FROM PYTHON SOURCE LINES 44-57
+.. GENERATED FROM PYTHON SOURCE LINES 43-56
 
 .. code-block:: default
 
@@ -112,14 +111,14 @@ The naming refers to RMxprt primitives.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 58-62
+.. GENERATED FROM PYTHON SOURCE LINES 57-61
 
 Initialize definitions for stator windings
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Initialize geometry parameter definitions for the stator windings. The naming
 refers to RMxprt primitives.
 
-.. GENERATED FROM PYTHON SOURCE LINES 62-77
+.. GENERATED FROM PYTHON SOURCE LINES 61-76
 
 .. code-block:: default
 
@@ -145,13 +144,13 @@ refers to RMxprt primitives.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 78-81
+.. GENERATED FROM PYTHON SOURCE LINES 77-80
 
 Initialize definitions for model setup
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Initialize geometry parameter definitions for the model setup.
 
-.. GENERATED FROM PYTHON SOURCE LINES 81-95
+.. GENERATED FROM PYTHON SOURCE LINES 80-94
 
 .. code-block:: default
 
@@ -176,14 +175,14 @@ Initialize geometry parameter definitions for the model setup.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 96-100
+.. GENERATED FROM PYTHON SOURCE LINES 95-99
 
 Initialize definitions for operational machine
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Initialize geometry parameter definitions for the operational machine. This
 identifies the operating point for the transient setup.
 
-.. GENERATED FROM PYTHON SOURCE LINES 100-113
+.. GENERATED FROM PYTHON SOURCE LINES 99-112
 
 .. code-block:: default
 
@@ -207,7 +206,7 @@ identifies the operating point for the transient setup.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 114-119
+.. GENERATED FROM PYTHON SOURCE LINES 113-118
 
 Set non-graphical mode
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -215,7 +214,7 @@ Set non-graphical mode. ``"PYAEDT_NON_GRAPHICAL"`` is needed to
 generate documentation only.
 You can set ``non_graphical`` either to ``True`` or ``False``.
 
-.. GENERATED FROM PYTHON SOURCE LINES 119-122
+.. GENERATED FROM PYTHON SOURCE LINES 118-121
 
 .. code-block:: default
 
@@ -229,13 +228,13 @@ You can set ``non_graphical`` either to ``True`` or ``False``.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 123-126
+.. GENERATED FROM PYTHON SOURCE LINES 122-125
 
 Launch Maxwell 2D
 ~~~~~~~~~~~~~~~~~
 Launch Maxwell 2D and save the project.
 
-.. GENERATED FROM PYTHON SOURCE LINES 126-135
+.. GENERATED FROM PYTHON SOURCE LINES 125-134
 
 .. code-block:: default
 
@@ -255,13 +254,13 @@ Launch Maxwell 2D and save the project.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 136-139
+.. GENERATED FROM PYTHON SOURCE LINES 135-138
 
 Create object to access 2D modeler
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Create the object ``mod2D`` to access the 2D modeler easily.
 
-.. GENERATED FROM PYTHON SOURCE LINES 139-144
+.. GENERATED FROM PYTHON SOURCE LINES 138-143
 
 .. code-block:: default
 
@@ -277,13 +276,13 @@ Create the object ``mod2D`` to access the 2D modeler easily.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 145-148
+.. GENERATED FROM PYTHON SOURCE LINES 144-147
 
 Define variables from dictionaries
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Define design variables from the created dictionaries.
 
-.. GENERATED FROM PYTHON SOURCE LINES 148-158
+.. GENERATED FROM PYTHON SOURCE LINES 147-157
 
 .. code-block:: default
 
@@ -304,14 +303,14 @@ Define design variables from the created dictionaries.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 159-163
+.. GENERATED FROM PYTHON SOURCE LINES 158-162
 
 Define path for non-linear material properties
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Define the path for non-linear material properties.
 Materials are stored in text files.
 
-.. GENERATED FROM PYTHON SOURCE LINES 163-166
+.. GENERATED FROM PYTHON SOURCE LINES 162-165
 
 .. code-block:: default
 
@@ -325,13 +324,13 @@ Materials are stored in text files.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 167-170
+.. GENERATED FROM PYTHON SOURCE LINES 166-169
 
 Create first material
 ~~~~~~~~~~~~~~~~~~~~~
 Create the material ``"Copper (Annealed)_65C"``.
 
-.. GENERATED FROM PYTHON SOURCE LINES 170-176
+.. GENERATED FROM PYTHON SOURCE LINES 169-175
 
 .. code-block:: default
 
@@ -348,7 +347,7 @@ Create the material ``"Copper (Annealed)_65C"``.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 177-183
+.. GENERATED FROM PYTHON SOURCE LINES 176-182
 
 Create second material
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -357,7 +356,7 @@ The BH curve is read from a tabbed CSV file, and a list (``BH_List_PM``)
 is created. This list is passed to the ``mat_PM.permeability.set_non_linear``
 method.
 
-.. GENERATED FROM PYTHON SOURCE LINES 183-197
+.. GENERATED FROM PYTHON SOURCE LINES 182-196
 
 .. code-block:: default
 
@@ -365,7 +364,7 @@ method.
     mat_PM = M2D.materials.add_material("Arnold_Magnetics_N30UH_80C_new")
     mat_PM.update()
     mat_PM.conductivity = "555555.5556"
-    mat_PM.set_magnetic_coercitivity(-800146.66287534, 1, 0, 0)
+    mat_PM.set_magnetic_coercitivity(value=-800146.66287534, x=1, y=0, z=0)
     mat_PM.mass_density = "7500"
     BH_List_PM = []
     with open(filename_PM) as f:
@@ -373,7 +372,7 @@ method.
         next(reader)
         for row in reader:
             BH_List_PM.append([float(row[0]), float(row[1])])
-    mat_PM.permeability.set_non_linear(BH_List_PM)
+    mat_PM.permeability.set_non_linear(point_list=BH_List_PM)
 
 
 
@@ -388,7 +387,7 @@ method.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 198-203
+.. GENERATED FROM PYTHON SOURCE LINES 197-202
 
 Create third material
 ~~~~~~~~~~~~~~~~~~~~~
@@ -396,7 +395,7 @@ Create the laminated material ``30DH_20C_smooth``.
 This material has a BH curve and a core loss model,
 which is set to electrical steel.
 
-.. GENERATED FROM PYTHON SOURCE LINES 203-222
+.. GENERATED FROM PYTHON SOURCE LINES 202-221
 
 .. code-block:: default
 
@@ -432,15 +431,15 @@ which is set to electrical steel.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 223-228
+.. GENERATED FROM PYTHON SOURCE LINES 222-227
 
 Create geometry for stator
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 Create the geometry for the stator. It is created via
 the RMxprt user-defined primitive. A list of lists is
-created with the proper UDP paramters.
+created with the proper UDP parameters.
 
-.. GENERATED FROM PYTHON SOURCE LINES 228-244
+.. GENERATED FROM PYTHON SOURCE LINES 227-243
 
 .. code-block:: default
 
@@ -467,19 +466,19 @@ created with the proper UDP paramters.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 245-249
+.. GENERATED FROM PYTHON SOURCE LINES 244-248
 
 Assign properties to stator
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Assign properties to the stator. The following code assigns
 the material, name, color, and  ``solve_inside`` properties.
 
-.. GENERATED FROM PYTHON SOURCE LINES 249-256
+.. GENERATED FROM PYTHON SOURCE LINES 248-255
 
 .. code-block:: default
 
 
-    M2D.assign_material(stator_id, "30DH_20C_smooth")
+    M2D.assign_material(obj=stator_id, mat="30DH_20C_smooth")
     stator_id.name = "Stator"
     stator_id.color = (0, 0, 255)  # rgb
     stator_id.solve_inside = True  # to be reassigned: M2D.assign material puts False if not dielectric
@@ -492,7 +491,7 @@ the material, name, color, and  ``solve_inside`` properties.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 257-264
+.. GENERATED FROM PYTHON SOURCE LINES 256-263
 
 Create geometry for PMs
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -502,7 +501,7 @@ system in the face center, auxiliary functions are created. Here, you use the au
 function ``find_elements(lst1, lst2)`` to find the elements in list ``lst1`` with indexes
 in list ``lst2``.
 
-.. GENERATED FROM PYTHON SOURCE LINES 264-269
+.. GENERATED FROM PYTHON SOURCE LINES 263-268
 
 .. code-block:: default
 
@@ -518,14 +517,14 @@ in list ``lst2``.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 270-274
+.. GENERATED FROM PYTHON SOURCE LINES 269-273
 
 Find largest elements in list
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Use the auxiliary function ``find_n_largest (input_len_list, n_largest_edges)``
 to find the ``n`` largest elements in the list ``input_len_list``.
 
-.. GENERATED FROM PYTHON SOURCE LINES 274-286
+.. GENERATED FROM PYTHON SOURCE LINES 273-285
 
 .. code-block:: default
 
@@ -548,7 +547,7 @@ to find the ``n`` largest elements in the list ``input_len_list``.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 287-293
+.. GENERATED FROM PYTHON SOURCE LINES 286-292
 
 Create coordinate system for PMs
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -557,7 +556,7 @@ system name, and inner or outer magnetization. Find the two longest edges of the
 and get the midpoint of the outer edge. You must have this point to create the face
 coordinate systems in case of outer magnetization.
 
-.. GENERATED FROM PYTHON SOURCE LINES 293-318
+.. GENERATED FROM PYTHON SOURCE LINES 292-317
 
 .. code-block:: default
 
@@ -593,13 +592,13 @@ coordinate systems in case of outer magnetization.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 319-322
+.. GENERATED FROM PYTHON SOURCE LINES 318-321
 
 Create outer and inner PMs
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
-Create the outter and inner PMs and assign color to them.
+Create the outer and inner PMs and assign color to them.
 
-.. GENERATED FROM PYTHON SOURCE LINES 322-334
+.. GENERATED FROM PYTHON SOURCE LINES 321-333
 
 .. code-block:: default
 
@@ -622,13 +621,13 @@ Create the outter and inner PMs and assign color to them.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 335-338
+.. GENERATED FROM PYTHON SOURCE LINES 334-337
 
 Create coordinate system for PMs in face center
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Create the coordinate system for PMs in the face center.
 
-.. GENERATED FROM PYTHON SOURCE LINES 338-342
+.. GENERATED FROM PYTHON SOURCE LINES 337-341
 
 .. code-block:: default
 
@@ -643,13 +642,13 @@ Create the coordinate system for PMs in the face center.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 343-346
+.. GENERATED FROM PYTHON SOURCE LINES 342-345
 
 Duplicate and mirror PMs
 ~~~~~~~~~~~~~~~~~~~~~~~~
 Duplicate and mirror the PMs along with the local coordinate system.
 
-.. GENERATED FROM PYTHON SOURCE LINES 346-351
+.. GENERATED FROM PYTHON SOURCE LINES 345-350
 
 .. code-block:: default
 
@@ -665,13 +664,13 @@ Duplicate and mirror the PMs along with the local coordinate system.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 352-355
+.. GENERATED FROM PYTHON SOURCE LINES 351-354
 
 Create coils
 ~~~~~~~~~~~~
 Create the coils.
 
-.. GENERATED FROM PYTHON SOURCE LINES 355-365
+.. GENERATED FROM PYTHON SOURCE LINES 354-364
 
 .. code-block:: default
 
@@ -692,13 +691,13 @@ Create the coils.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 366-369
+.. GENERATED FROM PYTHON SOURCE LINES 365-368
 
 Create shaft and region
 ~~~~~~~~~~~~~~~~~~~~~~~
 Create the shaft and region.
 
-.. GENERATED FROM PYTHON SOURCE LINES 369-375
+.. GENERATED FROM PYTHON SOURCE LINES 368-374
 
 .. code-block:: default
 
@@ -715,13 +714,13 @@ Create the shaft and region.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 376-379
+.. GENERATED FROM PYTHON SOURCE LINES 375-378
 
 Create bands
 ~~~~~~~~~~~~
 Create the inner band, band, and outer band.
 
-.. GENERATED FROM PYTHON SOURCE LINES 379-387
+.. GENERATED FROM PYTHON SOURCE LINES 378-386
 
 .. code-block:: default
 
@@ -740,18 +739,18 @@ Create the inner band, band, and outer band.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 388-391
+.. GENERATED FROM PYTHON SOURCE LINES 387-390
 
 Assign motion setup to object
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Assign a motion setup to a ``Band`` object named ``RotatingBand_mid``.
 
-.. GENERATED FROM PYTHON SOURCE LINES 391-395
+.. GENERATED FROM PYTHON SOURCE LINES 390-394
 
 .. code-block:: default
 
 
-    M2D.assign_rotate_motion('Band', coordinate_system="Global", axis="Z", positive_movement=True,
+    M2D.assign_rotate_motion(band_object='Band', coordinate_system="Global", axis="Z", positive_movement=True,
                              start_position="InitialPositionMD", angular_velocity="MachineRPM")
 
 
@@ -763,17 +762,17 @@ Assign a motion setup to a ``Band`` object named ``RotatingBand_mid``.
  .. code-block:: none
 
 
-    <pyaedt.modules.Boundary.BoundaryObject object at 0x000002812C261550>
+    <pyaedt.modules.Boundary.BoundaryObject object at 0x000001E0E5FE53A0>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 396-399
+.. GENERATED FROM PYTHON SOURCE LINES 395-398
 
 Create list of vacuum objects
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Create a list of vaccum objects and assign color.
+Create a list of vacuum objects and assign color.
 
-.. GENERATED FROM PYTHON SOURCE LINES 399-404
+.. GENERATED FROM PYTHON SOURCE LINES 398-403
 
 .. code-block:: default
 
@@ -789,14 +788,14 @@ Create a list of vaccum objects and assign color.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 405-409
+.. GENERATED FROM PYTHON SOURCE LINES 404-408
 
 Create rotor
 ~~~~~~~~~~~~
 Create the rotor. Holes are specific to the lamination.
 Allocated PMs are created.
 
-.. GENERATED FROM PYTHON SOURCE LINES 409-438
+.. GENERATED FROM PYTHON SOURCE LINES 408-437
 
 .. code-block:: default
 
@@ -822,7 +821,7 @@ Allocated PMs are created.
     slot_OM_id = mod2D.create_polyline(position_list=slot_OM1_points, cover_surface=True, name="slot_OM1",
                                        matname="vacuum")
 
-    M2D.modeler.duplicate_and_mirror([slot_IM_id, slot_OM_id], position=[0, 0, 0],
+    M2D.modeler.duplicate_and_mirror(objid=[slot_IM_id, slot_OM_id], position=[0, 0, 0],
                                      vector=["cos((360deg/SymmetryFactor/2)+90deg)",
                                              "sin((360deg/SymmetryFactor/2)+90deg)", 0])
 
@@ -842,14 +841,14 @@ Allocated PMs are created.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 439-443
+.. GENERATED FROM PYTHON SOURCE LINES 438-442
 
 Create section of machine
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 Create a section of the machine. This allows you to take
 advantage of symmetries.
 
-.. GENERATED FROM PYTHON SOURCE LINES 443-457
+.. GENERATED FROM PYTHON SOURCE LINES 442-456
 
 .. code-block:: default
 
@@ -880,7 +879,7 @@ advantage of symmetries.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 458-463
+.. GENERATED FROM PYTHON SOURCE LINES 457-462
 
 Create boundary conditions
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -888,15 +887,15 @@ Create independent and dependent boundary conditions.
 Edges for assignment are picked by position.
 The points for edge picking are in the airgap.
 
-.. GENERATED FROM PYTHON SOURCE LINES 463-475
+.. GENERATED FROM PYTHON SOURCE LINES 462-474
 
 .. code-block:: default
 
 
     pos_1 = "((DiaGap - (1.0 * Airgap))/4)"
-    id_bc_1 = mod2D.get_edgeid_from_position([pos_1, 0, 0], obj_name='Region')
+    id_bc_1 = mod2D.get_edgeid_from_position(position=[pos_1, 0, 0], obj_name='Region')
     id_bc_2 = mod2D.get_edgeid_from_position(
-        [pos_1 + "*cos((360deg/SymmetryFactor))", pos_1 + "*sin((360deg/SymmetryFactor))", 0],
+        position=[pos_1 + "*cos((360deg/SymmetryFactor))", pos_1 + "*sin((360deg/SymmetryFactor))", 0],
         obj_name='Region')
     M2D.assign_master_slave(master_edge=id_bc_1, slave_edge=id_bc_2,
                             reverse_master=False,
@@ -913,24 +912,24 @@ The points for edge picking are in the airgap.
  .. code-block:: none
 
 
-    (<pyaedt.modules.Boundary.BoundaryObject object at 0x000002812CDD60D0>, <pyaedt.modules.Boundary.BoundaryObject object at 0x000002812C650D30>)
+    (<pyaedt.modules.Boundary.BoundaryObject object at 0x000001E0E5FE5310>, <pyaedt.modules.Boundary.BoundaryObject object at 0x000001E083DDA610>)
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 476-479
+.. GENERATED FROM PYTHON SOURCE LINES 475-478
 
 Assign vector potential
 ~~~~~~~~~~~~~~~~~~~~~~~
 Assign a vector potential of ``0`` to the second position.
 
-.. GENERATED FROM PYTHON SOURCE LINES 479-486
+.. GENERATED FROM PYTHON SOURCE LINES 478-485
 
 .. code-block:: default
 
 
     pos_2 = "(DiaOuter/2)"
     id_bc_az = mod2D.get_edgeid_from_position(
-        [pos_2 + "*cos((360deg/SymmetryFactor/2))", pos_2 + "*sin((360deg/SymmetryFactor)/2)", 0],
+        position=[pos_2 + "*cos((360deg/SymmetryFactor/2))", pos_2 + "*sin((360deg/SymmetryFactor)/2)", 0],
         obj_name='Region')
     M2D.assign_vector_potential(id_bc_az, vectorvalue=0, bound_name="VectorPotentialZero")
 
@@ -943,17 +942,17 @@ Assign a vector potential of ``0`` to the second position.
  .. code-block:: none
 
 
-    <pyaedt.modules.Boundary.BoundaryObject object at 0x000002812CDF3B50>
+    <pyaedt.modules.Boundary.BoundaryObject object at 0x000001E0E739E3D0>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 487-490
+.. GENERATED FROM PYTHON SOURCE LINES 486-489
 
 Create excitations
 ~~~~~~~~~~~~~~~~~~
 Create excitations, defining phase currents for the windings.
 
-.. GENERATED FROM PYTHON SOURCE LINES 490-495
+.. GENERATED FROM PYTHON SOURCE LINES 489-494
 
 .. code-block:: default
 
@@ -969,22 +968,22 @@ Create excitations, defining phase currents for the windings.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 496-499
+.. GENERATED FROM PYTHON SOURCE LINES 495-498
 
 Define windings in phase A
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 Define windings in phase A.
 
-.. GENERATED FROM PYTHON SOURCE LINES 499-506
+.. GENERATED FROM PYTHON SOURCE LINES 498-505
 
 .. code-block:: default
 
 
-    M2D.assign_coil(["Coil"], conductor_number=6, polarity="Positive", name="CT_Ph1_P2_C1_Go")
-    M2D.assign_coil(["Coil_5"], conductor_number=6, polarity="Negative", name="CT_Ph1_P2_C1_Ret")
+    M2D.assign_coil(input_object=["Coil"], conductor_number=6, polarity="Positive", name="CT_Ph1_P2_C1_Go")
+    M2D.assign_coil(input_object=["Coil_5"], conductor_number=6, polarity="Negative", name="CT_Ph1_P2_C1_Ret")
     M2D.assign_winding(coil_terminals=None, winding_type="Current", is_solid=False,
                        current_value=PhA_current, parallel_branches=1, name="Phase_A")
-    M2D.add_winding_coils("Phase_A", ["CT_Ph1_P2_C1_Go", "CT_Ph1_P2_C1_Ret"])
+    M2D.add_winding_coils(windingname="Phase_A", coil_names=["CT_Ph1_P2_C1_Go", "CT_Ph1_P2_C1_Ret"])
 
 
 
@@ -999,23 +998,23 @@ Define windings in phase A.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 507-510
+.. GENERATED FROM PYTHON SOURCE LINES 506-509
 
 Define windings in phase B
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 Define windings in phase B.
 
-.. GENERATED FROM PYTHON SOURCE LINES 510-518
+.. GENERATED FROM PYTHON SOURCE LINES 509-517
 
 .. code-block:: default
 
 
-    M2D.assign_coil("Coil_3", conductor_number=6, polarity="Positive", name="CT_Ph3_P1_C2_Go")
-    M2D.assign_coil("Coil_4", conductor_number=6, polarity="Positive", name="CT_Ph3_P1_C1_Go")
+    M2D.assign_coil(input_object="Coil_3", conductor_number=6, polarity="Positive", name="CT_Ph3_P1_C2_Go")
+    M2D.assign_coil(input_object="Coil_4", conductor_number=6, polarity="Positive", name="CT_Ph3_P1_C1_Go")
     M2D.assign_winding(coil_terminals=None, winding_type="Current", is_solid=False,
                        current_value=PhB_current, parallel_branches=1,
                        name="Phase_B")
-    M2D.add_winding_coils("Phase_B", ["CT_Ph3_P1_C2_Go", "CT_Ph3_P1_C1_Go"])
+    M2D.add_winding_coils(windingname="Phase_B", coil_names=["CT_Ph3_P1_C2_Go", "CT_Ph3_P1_C1_Go"])
 
 
 
@@ -1030,23 +1029,23 @@ Define windings in phase B.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 519-522
+.. GENERATED FROM PYTHON SOURCE LINES 518-521
 
 Define windings in phase C
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 Define windings in phase C.
 
-.. GENERATED FROM PYTHON SOURCE LINES 522-530
+.. GENERATED FROM PYTHON SOURCE LINES 521-529
 
 .. code-block:: default
 
 
-    M2D.assign_coil("Coil_1", conductor_number=6, polarity="Negative", name="CT_Ph2_P2_C2_Ret")
-    M2D.assign_coil("Coil_2", conductor_number=6, polarity="Negative", name="CT_Ph2_P2_C1_Ret")
+    M2D.assign_coil(input_object="Coil_1", conductor_number=6, polarity="Negative", name="CT_Ph2_P2_C2_Ret")
+    M2D.assign_coil(input_object="Coil_2", conductor_number=6, polarity="Negative", name="CT_Ph2_P2_C1_Ret")
     M2D.assign_winding(coil_terminals=None, winding_type="Current", is_solid=False,
                        current_value=PhC_current, parallel_branches=1,
                        name="Phase_C")
-    M2D.add_winding_coils("Phase_C", ["CT_Ph2_P2_C2_Ret", "CT_Ph2_P2_C1_Ret"])
+    M2D.add_winding_coils(windingname="Phase_C", coil_names=["CT_Ph2_P2_C2_Ret", "CT_Ph2_P2_C1_Ret"])
 
 
 
@@ -1061,13 +1060,13 @@ Define windings in phase C.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 531-534
+.. GENERATED FROM PYTHON SOURCE LINES 530-533
 
 Assign total current on PMs
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Assign a total current of ``0`` on the PMs.
 
-.. GENERATED FROM PYTHON SOURCE LINES 534-539
+.. GENERATED FROM PYTHON SOURCE LINES 533-538
 
 .. code-block:: default
 
@@ -1083,13 +1082,13 @@ Assign a total current of ``0`` on the PMs.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 540-543
+.. GENERATED FROM PYTHON SOURCE LINES 539-542
 
 Create mesh operations
 ~~~~~~~~~~~~~~~~~~~~~~
 Create the mesh operations.
 
-.. GENERATED FROM PYTHON SOURCE LINES 543-548
+.. GENERATED FROM PYTHON SOURCE LINES 542-547
 
 .. code-block:: default
 
@@ -1107,17 +1106,17 @@ Create the mesh operations.
  .. code-block:: none
 
 
-    <pyaedt.modules.Mesh.MeshOperation object at 0x000002812C6650D0>
+    <pyaedt.modules.Mesh.MeshOperation object at 0x000001E0B58683D0>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 549-552
+.. GENERATED FROM PYTHON SOURCE LINES 548-551
 
 Turn on eddy effects
 ~~~~~~~~~~~~~~~~~~~~
 Turn on eddy effects.
 
-.. GENERATED FROM PYTHON SOURCE LINES 552-555
+.. GENERATED FROM PYTHON SOURCE LINES 551-554
 
 .. code-block:: default
 
@@ -1131,13 +1130,13 @@ Turn on eddy effects.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 556-559
+.. GENERATED FROM PYTHON SOURCE LINES 555-558
 
 Turn on core loss
 ~~~~~~~~~~~~~~~~~
 Turn on core loss.
 
-.. GENERATED FROM PYTHON SOURCE LINES 559-563
+.. GENERATED FROM PYTHON SOURCE LINES 558-562
 
 .. code-block:: default
 
@@ -1158,13 +1157,13 @@ Turn on core loss.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 564-567
+.. GENERATED FROM PYTHON SOURCE LINES 563-566
 
 Compute transient inductance
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Compute the transient inducatance.
+Compute the transient inductance.
 
-.. GENERATED FROM PYTHON SOURCE LINES 567-570
+.. GENERATED FROM PYTHON SOURCE LINES 566-569
 
 .. code-block:: default
 
@@ -1184,13 +1183,13 @@ Compute the transient inducatance.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 571-574
+.. GENERATED FROM PYTHON SOURCE LINES 570-573
 
 Set model depth
 ~~~~~~~~~~~~~~~
 Set the model depth.
 
-.. GENERATED FROM PYTHON SOURCE LINES 574-577
+.. GENERATED FROM PYTHON SOURCE LINES 573-576
 
 .. code-block:: default
 
@@ -1204,13 +1203,13 @@ Set the model depth.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 578-581
+.. GENERATED FROM PYTHON SOURCE LINES 577-580
 
 Set symmetry factor
 ~~~~~~~~~~~~~~~~~~~
 Set the symmetry factor.
 
-.. GENERATED FROM PYTHON SOURCE LINES 581-584
+.. GENERATED FROM PYTHON SOURCE LINES 580-583
 
 .. code-block:: default
 
@@ -1230,13 +1229,13 @@ Set the symmetry factor.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 585-588
+.. GENERATED FROM PYTHON SOURCE LINES 584-587
 
 Create setup and validate
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 Create the setup and validate it.
 
-.. GENERATED FROM PYTHON SOURCE LINES 588-602
+.. GENERATED FROM PYTHON SOURCE LINES 587-601
 
 .. code-block:: default
 
@@ -1272,14 +1271,14 @@ Create the setup and validate it.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 603-607
+.. GENERATED FROM PYTHON SOURCE LINES 602-606
 
 Initialize definitions for output variables
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Initialize the definitions for the needed output variables. You use these
-output variables later to generate reports.
+Initialize the definitions for the output variables.
+These will be used later to generate reports.
 
-.. GENERATED FROM PYTHON SOURCE LINES 607-649
+.. GENERATED FROM PYTHON SOURCE LINES 606-648
 
 .. code-block:: default
 
@@ -1332,13 +1331,13 @@ output variables later to generate reports.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 650-653
+.. GENERATED FROM PYTHON SOURCE LINES 649-652
 
 Create output variables for postprocessing
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Create output variables for postprocessing.
 
-.. GENERATED FROM PYTHON SOURCE LINES 653-657
+.. GENERATED FROM PYTHON SOURCE LINES 652-656
 
 .. code-block:: default
 
@@ -1353,13 +1352,13 @@ Create output variables for postprocessing.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 658-661
+.. GENERATED FROM PYTHON SOURCE LINES 657-660
 
 Initialize definition for postprocessing plots
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Initialize the definition for postprocessing plots.
 
-.. GENERATED FROM PYTHON SOURCE LINES 661-665
+.. GENERATED FROM PYTHON SOURCE LINES 660-664
 
 .. code-block:: default
 
@@ -1374,13 +1373,13 @@ Initialize the definition for postprocessing plots.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 666-669
+.. GENERATED FROM PYTHON SOURCE LINES 665-668
 
 Initialize definition for postprocessing multiplots
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Initialize the definition for postprocessing multiplots.
 
-.. GENERATED FROM PYTHON SOURCE LINES 669-690
+.. GENERATED FROM PYTHON SOURCE LINES 668-688
 
 .. code-block:: default
 
@@ -1411,14 +1410,13 @@ Initialize the definition for postprocessing multiplots.
 
 
 
-
-.. GENERATED FROM PYTHON SOURCE LINES 691-694
+.. GENERATED FROM PYTHON SOURCE LINES 689-692
 
 Create report
 ~~~~~~~~~~~~~
 Create a report.
 
-.. GENERATED FROM PYTHON SOURCE LINES 694-701
+.. GENERATED FROM PYTHON SOURCE LINES 692-699
 
 .. code-block:: default
 
@@ -1436,13 +1434,13 @@ Create a report.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 702-705
+.. GENERATED FROM PYTHON SOURCE LINES 700-703
 
 Create multiplot report
 ~~~~~~~~~~~~~~~~~~~~~~~
 Create a multiplot report.
 
-.. GENERATED FROM PYTHON SOURCE LINES 705-712
+.. GENERATED FROM PYTHON SOURCE LINES 703-710
 
 .. code-block:: default
 
@@ -1460,14 +1458,14 @@ Create a multiplot report.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 713-717
+.. GENERATED FROM PYTHON SOURCE LINES 711-715
 
 Create flux lines plot on region
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Create a flux lines plot on a region. The ``object_list`` is
 formerly created when the section is applied.
 
-.. GENERATED FROM PYTHON SOURCE LINES 717-723
+.. GENERATED FROM PYTHON SOURCE LINES 715-722
 
 .. code-block:: default
 
@@ -1475,7 +1473,8 @@ formerly created when the section is applied.
     faces_reg = mod2D.get_object_faces(object_list[1].name)  # Region
     # Maxwell Transient needs time specified in a dictionary
     # "IntrinsicVar:="	, "Time=\'0\'",
-    M2D.post.create_fieldplot_surface(faces_reg, 'Flux_Lines', intrinsincDict={"Time": "0.000"}, plot_name="Flux_Lines")
+    M2D.post.create_fieldplot_surface(objlist=faces_reg, quantityName='Flux_Lines', intrinsincDict={"Time": "0.000"},
+                                      plot_name="Flux_Lines")
 
 
 
@@ -1486,17 +1485,17 @@ formerly created when the section is applied.
  .. code-block:: none
 
 
-    <pyaedt.modules.solutions.FieldPlot object at 0x000002812CAA14C0>
+    <pyaedt.modules.solutions.FieldPlot object at 0x000001E0E73B8AC0>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 724-727
+.. GENERATED FROM PYTHON SOURCE LINES 723-726
 
 Analyze and save project
 ~~~~~~~~~~~~~~~~~~~~~~~~
 Analyze and save the project.
 
-.. GENERATED FROM PYTHON SOURCE LINES 727-731
+.. GENERATED FROM PYTHON SOURCE LINES 726-730
 
 .. code-block:: default
 
@@ -1517,13 +1516,13 @@ Analyze and save the project.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 732-735
+.. GENERATED FROM PYTHON SOURCE LINES 731-734
 
 Close AEDT
 ~~~~~~~~~~
 Close AEDT.
 
-.. GENERATED FROM PYTHON SOURCE LINES 735-737
+.. GENERATED FROM PYTHON SOURCE LINES 734-736
 
 .. code-block:: default
 
@@ -1545,7 +1544,7 @@ Close AEDT.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 2 minutes  45.502 seconds)
+   **Total running time of the script:** ( 2 minutes  39.267 seconds)
 
 
 .. _sphx_glr_download_examples_03-Maxwell_Maxwell2D_NissanLeaf.py:

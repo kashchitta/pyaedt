@@ -42,14 +42,11 @@
         <link href="../../_static/css/breadcrumbs.css" rel="stylesheet">
     
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/sphinx_highlight.js"></script>
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
-    <link rel="shortcut icon" href="../../_static/ansys-favicon.png"/>
+    <link rel="icon" href="../../_static/ansys-favicon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Maxwell 3D: choke setup" href="Maxwell3D_Choke.html" />
@@ -80,9 +77,8 @@
   
   
   
-    <img src="../../_static/pyansys-logo-black-cropped.png" class="logo__image only-light" alt="Logo image">
-    <img src="../../_static/pyansys-logo-black-cropped.png" class="logo__image only-dark" alt="Logo image">
   
+    <p class="title logo__title">PyAEDT</p>
   
 </a>
     
@@ -210,7 +206,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.42 variable.
+            // this version, rather than using sphinx's 0.6.43 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -903,7 +899,11 @@ the version. It also creates an instance of the <code class="docutils literal no
 <a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">DesktopVersion</span></a> <span class="o">=</span> <span class="s2">&quot;2022.2&quot;</span>
 
 <span class="n">M3D</span> <span class="o">=</span> <span class="n">Maxwell3d</span><span class="p">(</span>
-    <span class="n">projectname</span><span class="o">=</span><span class="n">generate_unique_project_name</span><span class="p">(),</span> <span class="n">designname</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">Design_Name</span></a><span class="p">,</span> <span class="n">solution_type</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">Solver</span></a><span class="p">,</span> <span class="n">specified_version</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">DesktopVersion</span></a><span class="p">,</span> <a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a><span class="o">=</span><a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a>
+    <span class="n">projectname</span><span class="o">=</span><span class="n">generate_unique_project_name</span><span class="p">(),</span>
+    <span class="n">designname</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">Design_Name</span></a><span class="p">,</span>
+    <span class="n">solution_type</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">Solver</span></a><span class="p">,</span>
+    <span class="n">specified_version</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">DesktopVersion</span></a><span class="p">,</span>
+    <a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a><span class="o">=</span><a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a>
 <span class="p">)</span>
 <span class="n">M3D</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">model_units</span> <span class="o">=</span> <span class="s2">&quot;mm&quot;</span>
 <span class="n">modeler</span> <span class="o">=</span> <span class="n">M3D</span><span class="o">.</span><span class="n">modeler</span>
@@ -961,7 +961,7 @@ the smoothness of the induced currents in the plate.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">M3D</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">create_coordinate_system</span><span class="p">(</span><span class="n">origin</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">coil_centre</span></a><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;view&quot;</span><span class="p">,</span> <span class="n">view</span><span class="o">=</span><span class="s2">&quot;XY&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Coil_CS&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modeler.cad.Modeler.CoordinateSystem object at 0x000002812C4F46D0&gt;
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modeler.cad.Modeler.CoordinateSystem object at 0x000001E081083F70&gt;
 </pre></div>
 </div>
 </section>
@@ -1032,9 +1032,10 @@ allow a solution inside the coil.</p>
 <section id="model-aluminium-plate-with-a-hole">
 <h2>Model aluminium plate with a hole<a class="headerlink" href="#model-aluminium-plate-with-a-hole" title="Permalink to this heading">#</a></h2>
 <p>Model the aluminium plate with a hole by subtracting two rectangular cuboids.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">plate</span> <span class="o">=</span> <span class="n">M3D</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">create_box</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">294</span><span class="p">,</span> <span class="mi">294</span><span class="p">,</span> <span class="mi">19</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Plate&quot;</span><span class="p">,</span> <span class="n">matname</span><span class="o">=</span><span class="s2">&quot;team7_aluminium&quot;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">plate</span> <span class="o">=</span> <span class="n">M3D</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">create_box</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">dimensions_list</span><span class="o">=</span><span class="p">[</span><span class="mi">294</span><span class="p">,</span> <span class="mi">294</span><span class="p">,</span> <span class="mi">19</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Plate&quot;</span><span class="p">,</span>
+                               <span class="n">matname</span><span class="o">=</span><span class="s2">&quot;team7_aluminium&quot;</span><span class="p">)</span>
 <span class="n">M3D</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">fit_all</span><span class="p">()</span>
-<span class="n">hole</span> <span class="o">=</span> <span class="n">M3D</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">create_box</span><span class="p">([</span><span class="mi">18</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">108</span><span class="p">,</span> <span class="mi">108</span><span class="p">,</span> <span class="mi">19</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Hole&quot;</span><span class="p">)</span>
+<span class="n">hole</span> <span class="o">=</span> <span class="n">M3D</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">create_box</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="p">[</span><span class="mi">18</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">dimensions_list</span><span class="o">=</span><span class="p">[</span><span class="mi">108</span><span class="p">,</span> <span class="mi">108</span><span class="p">,</span> <span class="mi">19</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Hole&quot;</span><span class="p">)</span>
 <span class="n">M3D</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">subtract</span><span class="p">(</span><span class="s2">&quot;Plate&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;Hole&quot;</span><span class="p">],</span> <span class="n">keep_originals</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1048,7 +1049,7 @@ allow a solution inside the coil.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">M3D</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">create_air_region</span><span class="p">(</span><span class="n">x_pos</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">y_pos</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">z_pos</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">x_neg</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">y_neg</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">z_neg</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modeler.cad.object3d.Object3d object at 0x000002812A067D30&gt;
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modeler.cad.object3d.Object3d object at 0x000001E0E59A5A60&gt;
 </pre></div>
 </div>
 </section>
@@ -1057,8 +1058,8 @@ allow a solution inside the coil.</p>
 <p>Adjust the eddy effects for the plate and coil by turning off displacement currents
 for all parts. The setting for eddy effect is ignored for the stranded conductor type
 used in the coil.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">M3D</span><span class="o">.</span><span class="n">eddy_effects_on</span><span class="p">(</span><span class="s2">&quot;Plate&quot;</span><span class="p">)</span>
-<span class="n">M3D</span><span class="o">.</span><span class="n">eddy_effects_on</span><span class="p">([</span><span class="s2">&quot;Coil&quot;</span><span class="p">,</span> <span class="s2">&quot;Region&quot;</span><span class="p">,</span> <span class="s2">&quot;Line_A1_B1mesh&quot;</span><span class="p">,</span> <span class="s2">&quot;Line_A2_B2mesh&quot;</span><span class="p">],</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">M3D</span><span class="o">.</span><span class="n">eddy_effects_on</span><span class="p">(</span><span class="n">object_list</span><span class="o">=</span><span class="s2">&quot;Plate&quot;</span><span class="p">)</span>
+<span class="n">M3D</span><span class="o">.</span><span class="n">eddy_effects_on</span><span class="p">(</span><span class="n">object_list</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Coil&quot;</span><span class="p">,</span> <span class="s2">&quot;Region&quot;</span><span class="p">,</span> <span class="s2">&quot;Line_A1_B1mesh&quot;</span><span class="p">,</span> <span class="s2">&quot;Line_A2_B2mesh&quot;</span><span class="p">],</span>
                     <span class="n">activate_eddy_effects</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                     <span class="n">activate_displacement_current</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
@@ -1090,13 +1091,13 @@ to refine the mesh locally around each line.</p>
 <a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">mesh_diameter</span></a> <span class="o">=</span> <span class="s2">&quot;2mm&quot;</span>
 
 <a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">line_points_1</span></a> <span class="o">=</span> <span class="p">[[</span><span class="s2">&quot;0mm&quot;</span><span class="p">,</span> <span class="s2">&quot;72mm&quot;</span><span class="p">,</span> <span class="s2">&quot;34mm&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;288mm&quot;</span><span class="p">,</span> <span class="s2">&quot;72mm&quot;</span><span class="p">,</span> <span class="s2">&quot;34mm&quot;</span><span class="p">]]</span>
-<span class="n">polyline</span> <span class="o">=</span> <span class="n">modeler</span><span class="o">.</span><span class="n">create_polyline</span><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">line_points_1</span></a><span class="p">,</span> <span class="n">name</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">lines</span></a><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-<span class="n">L1Mesh</span> <span class="o">=</span> <span class="n">modeler</span><span class="o">.</span><span class="n">create_polyline</span><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">line_points_1</span></a><span class="p">,</span> <span class="n">name</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">lines</span></a><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;mesh&quot;</span><span class="p">)</span>
+<span class="n">polyline</span> <span class="o">=</span> <span class="n">modeler</span><span class="o">.</span><span class="n">create_polyline</span><span class="p">(</span><span class="n">position_list</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">line_points_1</span></a><span class="p">,</span> <span class="n">name</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">lines</span></a><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">L1Mesh</span> <span class="o">=</span> <span class="n">modeler</span><span class="o">.</span><span class="n">create_polyline</span><span class="p">(</span><span class="n">position_list</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">line_points_1</span></a><span class="p">,</span> <span class="n">name</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">lines</span></a><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;mesh&quot;</span><span class="p">)</span>
 <span class="n">L1Mesh</span><span class="o">.</span><span class="n">set_crosssection_properties</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Circle&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">mesh_diameter</span></a><span class="p">)</span>
 
 <a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">line_points_2</span></a> <span class="o">=</span> <span class="p">[[</span><span class="s2">&quot;0mm&quot;</span><span class="p">,</span> <span class="s2">&quot;144mm&quot;</span><span class="p">,</span> <span class="s2">&quot;34mm&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;288mm&quot;</span><span class="p">,</span> <span class="s2">&quot;144mm&quot;</span><span class="p">,</span> <span class="s2">&quot;34mm&quot;</span><span class="p">]]</span>
-<span class="n">polyline2</span> <span class="o">=</span> <span class="n">modeler</span><span class="o">.</span><span class="n">create_polyline</span><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">line_points_2</span></a><span class="p">,</span> <span class="n">name</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">lines</span></a><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-<span class="n">polyline2_mesh</span> <span class="o">=</span> <span class="n">modeler</span><span class="o">.</span><span class="n">create_polyline</span><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">line_points_2</span></a><span class="p">,</span> <span class="n">name</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">lines</span></a><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;mesh&quot;</span><span class="p">)</span>
+<span class="n">polyline2</span> <span class="o">=</span> <span class="n">modeler</span><span class="o">.</span><span class="n">create_polyline</span><span class="p">(</span><span class="n">position_list</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">line_points_2</span></a><span class="p">,</span> <span class="n">name</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">lines</span></a><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">polyline2_mesh</span> <span class="o">=</span> <span class="n">modeler</span><span class="o">.</span><span class="n">create_polyline</span><span class="p">(</span><span class="n">position_list</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">line_points_2</span></a><span class="p">,</span> <span class="n">name</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">lines</span></a><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;mesh&quot;</span><span class="p">)</span>
 <span class="n">polyline2_mesh</span><span class="o">.</span><span class="n">set_crosssection_properties</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Circle&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">mesh_diameter</span></a><span class="p">)</span>
 </pre></div>
 </div>
@@ -1110,7 +1111,7 @@ to refine the mesh locally around each line.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">M3D</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">export_path</span><span class="o">=</span><a href="https://docs.python.org/dev/library/os.path.html#os.path.join" title="os.path.join" class="sphx-glr-backref-module-os-path sphx-glr-backref-type-py-function"><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span></a><span class="p">(</span><span class="n">M3D</span><span class="o">.</span><span class="n">working_directory</span><span class="p">,</span> <span class="s2">&quot;Image.jpg&quot;</span><span class="p">),</span> <span class="n">plot_air_objects</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_Maxwell3DTeam7_001.png" srcset="../../_images/sphx_glr_Maxwell3DTeam7_001.png" alt="Maxwell3DTeam7" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.generic.plot.ModelPlotter object at 0x000002812CA988E0&gt;
+<img src="../../_images/sphx_glr_Maxwell3DTeam7_001.png" srcset="../../_images/sphx_glr_Maxwell3DTeam7_001.png" alt="Maxwell3DTeam7" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.generic.plot.ModelPlotter object at 0x000001E0D134E220&gt;
 </pre></div>
 </div>
 <p>Published measurement results are included with this script via the list below.
@@ -1303,7 +1304,7 @@ and to overlay simulation results.</p>
     <span class="n">Plot</span><span class="o">.</span><span class="n">ImportIntoReport</span><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">plotname</span></a><span class="p">,</span> <a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">project_dir</span></a> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\\</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">dataset</span></a><span class="p">[</span><a href="https://docs.python.org/dev/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">item</span></a><span class="p">])</span> <span class="o">+</span> <span class="s2">&quot;.csv&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>project_dir D:/Temp/pyaedt_prj_2MX/Project_KQ6.pyaedt\TEAM 7 Asymmetric Conductor
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>project_dir D:/Temp/pyaedt_prj_7WU/Project_OP1.pyaedt\TEAM 7 Asymmetric Conductor
 </pre></div>
 </div>
 </section>
@@ -1317,7 +1318,7 @@ surface of the plate.</p>
 <span class="n">M3D</span><span class="o">.</span><span class="n">post</span><span class="o">.</span><span class="n">create_fieldplot_surface</span><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">surflist</span></a><span class="p">,</span> <span class="s2">&quot;Mag_B&quot;</span><span class="p">,</span> <span class="n">intrinsincDict</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#dict" title="builtins.dict" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">intrinsic_dict</span></a><span class="p">,</span> <span class="n">plot_name</span><span class="o">=</span><span class="s2">&quot;Mag_B&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modules.solutions.FieldPlot object at 0x000002812C6A9E80&gt;
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modules.solutions.FieldPlot object at 0x000001E0817DF520&gt;
 </pre></div>
 </div>
 </section>
@@ -1342,7 +1343,7 @@ after running the above script, in the following command, you would set <code cl
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>True
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 5 minutes  30.455 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 5 minutes  24.333 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-03-maxwell-maxwell3dteam7-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/8b986a64b6ba596a3c13633bd7ddcc1c/Maxwell3DTeam7.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">Maxwell3DTeam7.py</span></code></a></p>
@@ -1374,13 +1375,13 @@ after running the above script, in the following command, you would set <code cl
   
   <div class="footer-item">
     <p class="copyright">
-    &copy; Copyright (c) 2022 ANSYS, Inc. All rights reserved.<br>
+    &copy; Copyright (c) 2023 ANSYS, Inc. All rights reserved.<br>
 </p>
   </div>
   
   <div class="footer-item">
     <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 6.1.3.<br>
 </p>
   </div>
   

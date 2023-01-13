@@ -29,7 +29,7 @@ Perform required imports
 ~~~~~~~~~~~~~~~~~~~~~~~~
 Perform required imports.
 
-.. GENERATED FROM PYTHON SOURCE LINES 11-17
+.. GENERATED FROM PYTHON SOURCE LINES 11-15
 
 .. code-block:: default
 
@@ -44,17 +44,15 @@ Perform required imports.
 
 
 
-
-
-.. GENERATED FROM PYTHON SOURCE LINES 18-23
+.. GENERATED FROM PYTHON SOURCE LINES 16-21
 
 Set non-graphical mode
 ~~~~~~~~~~~~~~~~~~~~~~
-Set non-graphical mode. ``"PYAEDT_NON_GRAPHICAL"``` is needed to generate
+Set non-graphical mode. ``"PYAEDT_NON_GRAPHICAL"`` is needed to generate
 documentation only.
 You can set ``non_graphical`` either to ``True`` or ``False``.
 
-.. GENERATED FROM PYTHON SOURCE LINES 23-26
+.. GENERATED FROM PYTHON SOURCE LINES 21-24
 
 .. code-block:: default
 
@@ -68,7 +66,7 @@ You can set ``non_graphical`` either to ``True`` or ``False``.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 27-32
+.. GENERATED FROM PYTHON SOURCE LINES 25-30
 
 Launch AEDT and Maxwell 3D
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -76,7 +74,7 @@ Launch AEDT and Maxwell 3D after first setting up the project and design names,
 the solver, and the version. The following code also creates an instance of the
 ``Maxwell3d`` class named ``M3D``. 
 
-.. GENERATED FROM PYTHON SOURCE LINES 32-49
+.. GENERATED FROM PYTHON SOURCE LINES 30-47
 
 .. code-block:: default
 
@@ -104,14 +102,14 @@ the solver, and the version. The following code also creates an instance of the
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 50-54
+.. GENERATED FROM PYTHON SOURCE LINES 48-52
 
 Add variable
 ~~~~~~~~~~~~
 Add a design variable named ``Coil_Position`` that you use later to adjust the
 position of the coil.
 
-.. GENERATED FROM PYTHON SOURCE LINES 54-58
+.. GENERATED FROM PYTHON SOURCE LINES 52-56
 
 .. code-block:: default
 
@@ -126,13 +124,13 @@ position of the coil.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 59-62
+.. GENERATED FROM PYTHON SOURCE LINES 57-60
 
 Add material
 ~~~~~~~~~~~~
 Add a material named ``team3_aluminium`` for the ladder plate.
 
-.. GENERATED FROM PYTHON SOURCE LINES 62-66
+.. GENERATED FROM PYTHON SOURCE LINES 60-64
 
 .. code-block:: default
 
@@ -147,13 +145,13 @@ Add a material named ``team3_aluminium`` for the ladder plate.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 67-70
+.. GENERATED FROM PYTHON SOURCE LINES 65-68
 
 Draw background region
 ~~~~~~~~~~~~~~~~~~~~~~
 Draw a background region that uses the default properties for an air region.
 
-.. GENERATED FROM PYTHON SOURCE LINES 70-73
+.. GENERATED FROM PYTHON SOURCE LINES 68-71
 
 .. code-block:: default
 
@@ -169,24 +167,25 @@ Draw a background region that uses the default properties for an air region.
  .. code-block:: none
 
 
-    <pyaedt.modeler.cad.object3d.Object3d object at 0x000002812C57E2E0>
+    <pyaedt.modeler.cad.object3d.Object3d object at 0x000001E0E59A5040>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 74-77
+.. GENERATED FROM PYTHON SOURCE LINES 72-75
 
 Draw ladder plate and assign material
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Draw a ladder plate and assign it the newly created material ``team3_aluminium``.
 
-.. GENERATED FROM PYTHON SOURCE LINES 77-83
+.. GENERATED FROM PYTHON SOURCE LINES 75-82
 
 .. code-block:: default
 
 
-    M3D.modeler.create_box([-30, -55, 0], [60, 110, -6.35], name="LadderPlate", matname="team3_aluminium")
-    M3D.modeler.create_box([-20, -35, 0], [40, 30, -6.35], name="CutoutTool1")
-    M3D.modeler.create_box([-20, 5, 0], [40, 30, -6.35], name="CutoutTool2")
+    M3D.modeler.create_box(position=[-30, -55, 0], dimensions_list=[60, 110, -6.35], name="LadderPlate",
+                           matname="team3_aluminium")
+    M3D.modeler.create_box(position=[-20, -35, 0], dimensions_list=[40, 30, -6.35], name="CutoutTool1")
+    M3D.modeler.create_box(position=[-20, 5, 0], dimensions_list=[40, 30, -6.35], name="CutoutTool2")
     M3D.modeler.subtract("LadderPlate", ["CutoutTool1", "CutoutTool2"], keep_originals=False)
 
 
@@ -202,13 +201,13 @@ Draw a ladder plate and assign it the newly created material ``team3_aluminium``
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 84-87
+.. GENERATED FROM PYTHON SOURCE LINES 83-86
 
 Add mesh refinement to ladder plate
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Add a mesh refinement to the ladder plate.
 
-.. GENERATED FROM PYTHON SOURCE LINES 87-90
+.. GENERATED FROM PYTHON SOURCE LINES 86-89
 
 .. code-block:: default
 
@@ -224,18 +223,18 @@ Add a mesh refinement to the ladder plate.
  .. code-block:: none
 
 
-    <pyaedt.modules.Mesh.MeshOperation object at 0x000002817DA37C10>
+    <pyaedt.modules.Mesh.MeshOperation object at 0x000001E0E993C6A0>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 91-95
+.. GENERATED FROM PYTHON SOURCE LINES 90-94
 
 Draw search coil and assign excitation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Draw a search coil and assign it a ``stranded`` current excitation. 
 The stranded type forces the current density to be constant in the coil.
 
-.. GENERATED FROM PYTHON SOURCE LINES 95-108
+.. GENERATED FROM PYTHON SOURCE LINES 94-107
 
 .. code-block:: default
 
@@ -250,7 +249,7 @@ The stranded type forces the current density to be constant in the coil.
     M3D.modeler.section("SearchCoil", "YZ")
     M3D.modeler.separate_bodies("SearchCoil_Section1")
     M3D.modeler.delete("SearchCoil_Section1_Separate1")
-    M3D.assign_current(["SearchCoil_Section1"], amplitude=1260, solid=False, name="SearchCoil_Excitation")
+    M3D.assign_current(object_list=["SearchCoil_Section1"], amplitude=1260, solid=False, name="SearchCoil_Excitation")
 
 
 
@@ -261,11 +260,11 @@ The stranded type forces the current density to be constant in the coil.
  .. code-block:: none
 
 
-    <pyaedt.modules.Boundary.BoundaryObject object at 0x000002817E2B1F40>
+    <pyaedt.modules.Boundary.BoundaryObject object at 0x000001E0B58EAE50>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 109-114
+.. GENERATED FROM PYTHON SOURCE LINES 108-113
 
 Draw a line for plotting Bz
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -273,16 +272,15 @@ Draw a line for plotting Bz later. Bz is the Z component of the flux
 density. The following code also adds a small diameter cylinder to refine the
 mesh locally around the line.
 
-.. GENERATED FROM PYTHON SOURCE LINES 114-121
+.. GENERATED FROM PYTHON SOURCE LINES 113-119
 
 .. code-block:: default
 
 
     Line_Points = [["0mm", "-55mm", "0.5mm"], ["0mm", "55mm", "0.5mm"]]
-    P1 = modeler.create_polyline(Line_Points, name="Line_AB")
-    P2 = modeler.create_polyline(Line_Points, name="Line_AB_MeshRefinement")
+    P1 = modeler.create_polyline(position_list=Line_Points, name="Line_AB")
+    P2 = modeler.create_polyline(position_list=Line_Points, name="Line_AB_MeshRefinement")
     P2.set_crosssection_properties(type="Circle", width="0.5mm")
-
 
 
 
@@ -297,19 +295,18 @@ mesh locally around the line.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 122-125
+.. GENERATED FROM PYTHON SOURCE LINES 120-123
 
 Plot model
 ~~~~~~~~~~
 Plot the model.
 
-.. GENERATED FROM PYTHON SOURCE LINES 125-129
+.. GENERATED FROM PYTHON SOURCE LINES 123-126
 
 .. code-block:: default
 
 
     M3D.plot(show=False, export_path=os.path.join(M3D.working_directory, "Image.jpg"), plot_air_objects=False)
-
 
 
 
@@ -325,17 +322,17 @@ Plot the model.
  .. code-block:: none
 
 
-    <pyaedt.generic.plot.ModelPlotter object at 0x0000028120329E80>
+    <pyaedt.generic.plot.ModelPlotter object at 0x000001E0E5FBE520>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 130-133
+.. GENERATED FROM PYTHON SOURCE LINES 127-130
 
 Add Maxwell 3D setup
 ~~~~~~~~~~~~~~~~~~~~
 Add a Maxwell 3D setup with frequency points at 50 Hz and 200 Hz.
 
-.. GENERATED FROM PYTHON SOURCE LINES 133-140
+.. GENERATED FROM PYTHON SOURCE LINES 130-136
 
 .. code-block:: default
 
@@ -343,8 +340,7 @@ Add a Maxwell 3D setup with frequency points at 50 Hz and 200 Hz.
     Setup = M3D.create_setup(setupname="Setup1")
     Setup.props["Frequency"] = "200Hz"
     Setup.props["HasSweepSetup"] = True
-    Setup.add_eddy_current_sweep("LinearStep", 50, 200, 150, clear=True)
-
+    Setup.add_eddy_current_sweep(range_type="LinearStep", start=50, end=200, count=150, clear=True)
 
 
 
@@ -359,14 +355,14 @@ Add a Maxwell 3D setup with frequency points at 50 Hz and 200 Hz.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 141-145
+.. GENERATED FROM PYTHON SOURCE LINES 137-141
 
 Adjust eddy effects
 ~~~~~~~~~~~~~~~~~~~
 Adjust eddy effects for the ladder plate and the search coil. The setting for
 eddy effect is ignored for the stranded conductor type used in the search coil.
 
-.. GENERATED FROM PYTHON SOURCE LINES 145-149
+.. GENERATED FROM PYTHON SOURCE LINES 141-145
 
 .. code-block:: default
 
@@ -387,13 +383,13 @@ eddy effect is ignored for the stranded conductor type used in the search coil.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 150-153
+.. GENERATED FROM PYTHON SOURCE LINES 146-149
 
 Add linear parametric sweep
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Add a linear parametric sweep for the two coil positions.
 
-.. GENERATED FROM PYTHON SOURCE LINES 153-166
+.. GENERATED FROM PYTHON SOURCE LINES 149-162
 
 .. code-block:: default
 
@@ -423,13 +419,13 @@ Add a linear parametric sweep for the two coil positions.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 167-170
+.. GENERATED FROM PYTHON SOURCE LINES 163-166
 
 Create expression for Bz
 ~~~~~~~~~~~~~~~~~~~~~~~~
 Create an expression for Bz using the fields calculator.
 
-.. GENERATED FROM PYTHON SOURCE LINES 170-179
+.. GENERATED FROM PYTHON SOURCE LINES 166-175
 
 .. code-block:: default
 
@@ -449,13 +445,13 @@ Create an expression for Bz using the fields calculator.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 180-183
+.. GENERATED FROM PYTHON SOURCE LINES 176-179
 
 Plot mag(Bz) as a function of frequency
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Plot mag(Bz) as a function of frequency for both coil positions.
 
-.. GENERATED FROM PYTHON SOURCE LINES 183-205
+.. GENERATED FROM PYTHON SOURCE LINES 179-200
 
 .. code-block:: default
 
@@ -484,23 +480,22 @@ Plot mag(Bz) as a function of frequency for both coil positions.
 
 
 
-
 .. rst-class:: sphx-glr-script-out
 
  .. code-block:: none
 
 
-    <pyaedt.modules.report_templates.Fields object at 0x000002817DA37CA0>
+    <pyaedt.modules.report_templates.Fields object at 0x000001E0B57FD850>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 206-209
+.. GENERATED FROM PYTHON SOURCE LINES 201-204
 
 Generate plot outside of AEDT
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Generate the same plot outside of AEDT.
+Generate the same plot outside AEDT.
 
-.. GENERATED FROM PYTHON SOURCE LINES 209-220
+.. GENERATED FROM PYTHON SOURCE LINES 204-215
 
 .. code-block:: default
 
@@ -522,13 +517,13 @@ Generate the same plot outside of AEDT.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 221-224
+.. GENERATED FROM PYTHON SOURCE LINES 216-219
 
 Set up sweep value and plot solution
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Set up a sweep value and plot the solution.
 
-.. GENERATED FROM PYTHON SOURCE LINES 224-228
+.. GENERATED FROM PYTHON SOURCE LINES 219-223
 
 .. code-block:: default
 
@@ -554,20 +549,19 @@ Set up a sweep value and plot the solution.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 229-232
+.. GENERATED FROM PYTHON SOURCE LINES 224-227
 
 Change sweep value and plot solution
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Change the sweep value and plot the solution again.
 
-.. GENERATED FROM PYTHON SOURCE LINES 232-237
+.. GENERATED FROM PYTHON SOURCE LINES 227-231
 
 .. code-block:: default
 
 
     solutions.active_variation["Coil_Position"] = 0
     solutions.plot()
-
 
 
 
@@ -587,13 +581,13 @@ Change the sweep value and plot the solution again.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 238-241
+.. GENERATED FROM PYTHON SOURCE LINES 232-235
 
 Plot induced current density on surface of ladder plate
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Plot the induced current density, ``"Mag_J"``, on the surface of the ladder plate.
 
-.. GENERATED FROM PYTHON SOURCE LINES 241-246
+.. GENERATED FROM PYTHON SOURCE LINES 235-240
 
 .. code-block:: default
 
@@ -611,17 +605,17 @@ Plot the induced current density, ``"Mag_J"``, on the surface of the ladder plat
  .. code-block:: none
 
 
-    <pyaedt.modules.solutions.FieldPlot object at 0x000002812C9EA250>
+    <pyaedt.modules.solutions.FieldPlot object at 0x000001E0E598A100>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 247-250
+.. GENERATED FROM PYTHON SOURCE LINES 241-244
 
 Release AEDT
 ~~~~~~~~~~~~
 Release AEDT from the script engine, leaving both AEDT and the project open.
 
-.. GENERATED FROM PYTHON SOURCE LINES 250-252
+.. GENERATED FROM PYTHON SOURCE LINES 244-246
 
 .. code-block:: default
 
@@ -643,7 +637,7 @@ Release AEDT from the script engine, leaving both AEDT and the project open.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 12 minutes  9.648 seconds)
+   **Total running time of the script:** ( 12 minutes  1.117 seconds)
 
 
 .. _sphx_glr_download_examples_03-Maxwell_Maxwell3DTeam3.py:

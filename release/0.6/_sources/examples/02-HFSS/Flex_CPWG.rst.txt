@@ -24,7 +24,7 @@ This example shows how you can use PyAEDT to create a flex cable CPWG (coplanar 
 
 .. GENERATED FROM PYTHON SOURCE LINES 8-11
 
-Perform required immoprts
+Perform required imports
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 Perform required imports.
 
@@ -72,7 +72,7 @@ Launch AEDT
 ~~~~~~~~~~~
 Launch AEDT 2022 R2 in graphical mode.
 
-.. GENERATED FROM PYTHON SOURCE LINES 29-41
+.. GENERATED FROM PYTHON SOURCE LINES 29-40
 
 .. code-block:: default
 
@@ -91,7 +91,6 @@ Launch AEDT 2022 R2 in graphical mode.
 
 
 
-
 .. rst-class:: sphx-glr-script-out
 
  .. code-block:: none
@@ -101,13 +100,13 @@ Launch AEDT 2022 R2 in graphical mode.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 42-45
+.. GENERATED FROM PYTHON SOURCE LINES 41-44
 
 Create variables
 ~~~~~~~~~~~~~~~~
 Create input variables for creating the flex cable CPWG.
 
-.. GENERATED FROM PYTHON SOURCE LINES 45-58
+.. GENERATED FROM PYTHON SOURCE LINES 44-57
 
 .. code-block:: default
 
@@ -131,14 +130,14 @@ Create input variables for creating the flex cable CPWG.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 59-63
+.. GENERATED FROM PYTHON SOURCE LINES 58-62
 
 Create bend
 ~~~~~~~~~~~
 Create the bend. The ``create_bending`` method creates a list of points for
 the bend based on the curvature radius and extension.
 
-.. GENERATED FROM PYTHON SOURCE LINES 63-80
+.. GENERATED FROM PYTHON SOURCE LINES 62-79
 
 .. code-block:: default
 
@@ -166,13 +165,13 @@ the bend based on the curvature radius and extension.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 81-84
+.. GENERATED FROM PYTHON SOURCE LINES 80-83
 
 Draw signal line
 ~~~~~~~~~~~~~~~~
-Draw a signal line to create a bended signal wire.
+Draw a signal line to create a bent signal wire.
 
-.. GENERATED FROM PYTHON SOURCE LINES 84-94
+.. GENERATED FROM PYTHON SOURCE LINES 83-93
 
 .. code-block:: default
 
@@ -193,13 +192,13 @@ Draw a signal line to create a bended signal wire.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 95-98
+.. GENERATED FROM PYTHON SOURCE LINES 94-97
 
 Draw ground line
 ~~~~~~~~~~~~~~~~
-Draw a ground line to create two bended ground wires.
+Draw a ground line to create two bent ground wires.
 
-.. GENERATED FROM PYTHON SOURCE LINES 98-110
+.. GENERATED FROM PYTHON SOURCE LINES 97-109
 
 .. code-block:: default
 
@@ -222,13 +221,13 @@ Draw a ground line to create two bended ground wires.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 111-114
+.. GENERATED FROM PYTHON SOURCE LINES 110-113
 
 Draw dielectric
 ~~~~~~~~~~~~~~~
 Draw a dielectric to create a dielectric cable.
 
-.. GENERATED FROM PYTHON SOURCE LINES 114-125
+.. GENERATED FROM PYTHON SOURCE LINES 113-124
 
 .. code-block:: default
 
@@ -250,13 +249,13 @@ Draw a dielectric to create a dielectric cable.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 126-129
+.. GENERATED FROM PYTHON SOURCE LINES 125-128
 
 Create bottom metals
 ~~~~~~~~~~~~~~~~~~~~
 Create the bottom metals.
 
-.. GENERATED FROM PYTHON SOURCE LINES 129-141
+.. GENERATED FROM PYTHON SOURCE LINES 128-139
 
 .. code-block:: default
 
@@ -278,14 +277,13 @@ Create the bottom metals.
 
 
 
-
-.. GENERATED FROM PYTHON SOURCE LINES 142-145
+.. GENERATED FROM PYTHON SOURCE LINES 140-143
 
 Create port interfaces
 ~~~~~~~~~~~~~~~~~~~~~~
 Create port interfaces (PEC enclosures).
 
-.. GENERATED FROM PYTHON SOURCE LINES 145-169
+.. GENERATED FROM PYTHON SOURCE LINES 143-167
 
 .. code-block:: default
 
@@ -327,13 +325,13 @@ Create port interfaces (PEC enclosures).
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 170-173
+.. GENERATED FROM PYTHON SOURCE LINES 168-171
 
 Create boundary condition
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 Creates a Perfect E boundary condition.
 
-.. GENERATED FROM PYTHON SOURCE LINES 173-180
+.. GENERATED FROM PYTHON SOURCE LINES 171-178
 
 .. code-block:: default
 
@@ -351,13 +349,13 @@ Creates a Perfect E boundary condition.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 181-184
+.. GENERATED FROM PYTHON SOURCE LINES 179-182
 
 Create ports
 ~~~~~~~~~~~~
 Creates ports.
 
-.. GENERATED FROM PYTHON SOURCE LINES 184-191
+.. GENERATED FROM PYTHON SOURCE LINES 182-188
 
 .. code-block:: default
 
@@ -374,14 +372,13 @@ Creates ports.
 
 
 
-
-.. GENERATED FROM PYTHON SOURCE LINES 192-195
+.. GENERATED FROM PYTHON SOURCE LINES 189-192
 
 Create setup and sweep
 ~~~~~~~~~~~~~~~~~~~~~~
 Create the setup and sweep.
 
-.. GENERATED FROM PYTHON SOURCE LINES 195-211
+.. GENERATED FROM PYTHON SOURCE LINES 192-208
 
 .. code-block:: default
 
@@ -410,17 +407,17 @@ Create the setup and sweep.
  .. code-block:: none
 
 
-    <pyaedt.modules.SetupTemplates.SweepHFSS object at 0x000002811FF2ABB0>
+    <pyaedt.modules.SetupTemplates.SweepHFSS object at 0x000001E0DACAEC70>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 212-215
+.. GENERATED FROM PYTHON SOURCE LINES 209-212
 
 Plot model
 ~~~~~~~~~~
 Plot the model.
 
-.. GENERATED FROM PYTHON SOURCE LINES 215-222
+.. GENERATED FROM PYTHON SOURCE LINES 212-219
 
 .. code-block:: default
 
@@ -449,20 +446,19 @@ Plot the model.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 223-227
+.. GENERATED FROM PYTHON SOURCE LINES 220-224
 
 Analyze and release
 ~~~~~~~~~~~~~~~~~~~~
 Uncomment the ``hfss.analyze_nominal`` command if you want to analyze the
 model and release AEDT.
 
-.. GENERATED FROM PYTHON SOURCE LINES 227-230
+.. GENERATED FROM PYTHON SOURCE LINES 224-226
 
 .. code-block:: default
 
 
     hfss.release_desktop()
-    # hfss.analyze_nominal(num_cores=4)
 
 
 
@@ -479,7 +475,7 @@ model and release AEDT.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  27.642 seconds)
+   **Total running time of the script:** ( 0 minutes  25.876 seconds)
 
 
 .. _sphx_glr_download_examples_02-HFSS_Flex_CPWG.py:

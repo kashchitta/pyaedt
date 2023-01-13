@@ -41,14 +41,11 @@
         <link href="../../../_static/css/breadcrumbs.css" rel="stylesheet">
     
     <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-    <script src="../../../_static/jquery.js"></script>
-    <script src="../../../_static/underscore.js"></script>
-    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../_static/doctools.js"></script>
     <script src="../../../_static/sphinx_highlight.js"></script>
     <script src="../../../_static/clipboard.min.js"></script>
     <script src="../../../_static/copybutton.js"></script>
-    <link rel="shortcut icon" href="../../../_static/ansys-favicon.png"/>
+    <link rel="icon" href="../../../_static/ansys-favicon.png"/>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -77,9 +74,8 @@
   
   
   
-    <img src="../../../_static/pyansys-logo-black-cropped.png" class="logo__image only-light" alt="Logo image">
-    <img src="../../../_static/pyansys-logo-black-cropped.png" class="logo__image only-dark" alt="Logo image">
   
+    <p class="title logo__title">PyAEDT</p>
   
 </a>
     
@@ -207,7 +203,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.42 variable.
+            // this version, rather than using sphinx's 0.6.43 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -351,7 +347,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <div class="viewcode-block" id="EdbSiwave"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.siwave.EdbSiwave.html#pyaedt.edb_core.siwave.EdbSiwave">[docs]</a><span class="k">class</span> <span class="nc">EdbSiwave</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Manages EDB methods related to Siwave Setup accessible from `Edb.core_siwave` property.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Manages EDB methods related to Siwave Setup accessible from `Edb.core_siwave` property.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -370,56 +366,56 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">_builder</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Builder.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Builder.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span><span class="o">.</span><span class="n">builder</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">_edb</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;EDB.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;EDB.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span><span class="o">.</span><span class="n">edb</span>
 
     <span class="k">def</span> <span class="nf">_get_edb_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Get the Edb value.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the Edb value.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span><span class="o">.</span><span class="n">edb_value</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">_logger</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;EDB.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;EDB.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span><span class="o">.</span><span class="n">logger</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">_active_layout</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Active layout.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Active layout.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span><span class="o">.</span><span class="n">active_layout</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">_cell</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Cell.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Cell.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span><span class="o">.</span><span class="n">active_cell</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">_db</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot; &quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span><span class="o">.</span><span class="n">db</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">excitations</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Get all excitations.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get all excitations.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span><span class="o">.</span><span class="n">excitations</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">sources</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Get all sources.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get all sources.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span><span class="o">.</span><span class="n">sources</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">probes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Get all probes.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get all probes.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span><span class="o">.</span><span class="n">probes</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">pin_groups</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;All Layout Pin groups.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;All Layout Pin groups.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -433,7 +429,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">_create_terminal_on_pins</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a terminal on pins.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a terminal on pins.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -529,7 +525,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="EdbSiwave.create_circuit_port_on_pin"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.siwave.EdbSiwave.create_circuit_port_on_pin.html#pyaedt.edb_core.siwave.EdbSiwave.create_circuit_port_on_pin">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">create_circuit_port_on_pin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos_pin</span><span class="p">,</span> <span class="n">neg_pin</span><span class="p">,</span> <span class="n">impedance</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">port_name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a circuit port on a pin.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a circuit port on a pin.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -574,7 +570,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="EdbSiwave.create_voltage_source_on_pin"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.siwave.EdbSiwave.create_voltage_source_on_pin.html#pyaedt.edb_core.siwave.EdbSiwave.create_voltage_source_on_pin">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">create_voltage_source_on_pin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos_pin</span><span class="p">,</span> <span class="n">neg_pin</span><span class="p">,</span> <span class="n">voltage_value</span><span class="o">=</span><span class="mf">3.3</span><span class="p">,</span> <span class="n">phase_value</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">source_name</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a voltage source.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a voltage source.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -592,7 +588,7 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
 <span class="sd">        str</span>
-<span class="sd">            Source Name</span>
+<span class="sd">            Source Name.</span>
 
 <span class="sd">        Examples</span>
 <span class="sd">        --------</span>
@@ -624,7 +620,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="EdbSiwave.create_current_source_on_pin"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.siwave.EdbSiwave.create_current_source_on_pin.html#pyaedt.edb_core.siwave.EdbSiwave.create_current_source_on_pin">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">create_current_source_on_pin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos_pin</span><span class="p">,</span> <span class="n">neg_pin</span><span class="p">,</span> <span class="n">current_value</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">phase_value</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">source_name</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a current source.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a current source.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -673,7 +669,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="EdbSiwave.create_resistor_on_pin"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.siwave.EdbSiwave.create_resistor_on_pin.html#pyaedt.edb_core.siwave.EdbSiwave.create_resistor_on_pin">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">create_resistor_on_pin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos_pin</span><span class="p">,</span> <span class="n">neg_pin</span><span class="p">,</span> <span class="n">rvalue</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">resistor_name</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a Resistor boundary between two given pins..</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a Resistor boundary between two given pins..</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -742,7 +738,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">impedance_value</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
         <span class="n">port_name</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a circuit port on a NET.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a circuit port on a NET.</span>
 
 <span class="sd">        It groups all pins belonging to the specified net and then applies the port on PinGroups.</span>
 
@@ -811,7 +807,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">phase_value</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
         <span class="n">source_name</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a voltage source.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a voltage source.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -882,7 +878,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">phase_value</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
         <span class="n">source_name</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a current source.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a current source.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -949,7 +945,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">net_name</span><span class="p">,</span>
         <span class="n">source_name</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a dc terminal.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a dc terminal.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -991,7 +987,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="EdbSiwave.create_exec_file"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.siwave.EdbSiwave.create_exec_file.html#pyaedt.edb_core.siwave.EdbSiwave.create_exec_file">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">create_exec_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">add_dc</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">add_ac</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">add_syz</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create an executable file.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create an executable file.&quot;&quot;&quot;</span>
         <span class="n">workdir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span><span class="o">.</span><span class="n">edbpath</span><span class="p">)</span>
         <span class="n">file_name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">workdir</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span><span class="o">.</span><span class="n">edbpath</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;.exec&quot;</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">file_name</span><span class="p">):</span>
@@ -1018,7 +1014,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">step_freq</span><span class="o">=</span><span class="mf">1e6</span><span class="p">,</span>
         <span class="n">discrete_sweep</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Add a SIwave AC analysis to EDB.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add a SIwave AC analysis to EDB.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1073,7 +1069,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="EdbSiwave.add_siwave_dc_analysis"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.siwave.EdbSiwave.add_siwave_dc_analysis.html#pyaedt.edb_core.siwave.EdbSiwave.add_siwave_dc_analysis">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">add_siwave_dc_analysis</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Add a Siwave DC analysis in EDB.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add a Siwave DC analysis in EDB.</span>
 
 <span class="sd">        If a setup is present, it is deleted and replaced with</span>
 <span class="sd">        actual settings.</span>
@@ -1105,7 +1101,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="EdbSiwave.create_pin_group_terminal"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.siwave.EdbSiwave.create_pin_group_terminal.html#pyaedt.edb_core.siwave.EdbSiwave.create_pin_group_terminal">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">create_pin_group_terminal</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a pin group terminal.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a pin group terminal.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1204,7 +1200,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="EdbSiwave.configure_siw_analysis_setup"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.siwave.EdbSiwave.configure_siw_analysis_setup.html#pyaedt.edb_core.siwave.EdbSiwave.configure_siw_analysis_setup">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">configure_siw_analysis_setup</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">simulation_setup</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">delete_existing_setup</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Configure Siwave analysis setup.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Configure Siwave analysis setup.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1369,7 +1365,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">l_value</span><span class="o">=</span><span class="mf">1e-9</span><span class="p">,</span>
         <span class="n">is_parallel</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create physical Rlc component.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create physical Rlc component.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1393,7 +1389,7 @@ function checkPageExistsAndRedirect(event) {
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        Component</span>
+<span class="sd">        class:`pyaedt.edb_core.components.Components`</span>
 <span class="sd">            Created EDB component.</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -1408,7 +1404,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="EdbSiwave.create_pin_group"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.siwave.EdbSiwave.create_pin_group.html#pyaedt.edb_core.siwave.EdbSiwave.create_pin_group">[docs]</a>    <span class="nd">@pyaedt_function_handler</span>
     <span class="k">def</span> <span class="nf">create_pin_group</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">reference_designator</span><span class="p">,</span> <span class="n">pin_numbers</span><span class="p">,</span> <span class="n">group_name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create pin group on the component.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create pin group on the component.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1418,6 +1414,7 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">            List of pin names.</span>
 <span class="sd">        group_name : str, optional</span>
 <span class="sd">            Name of the pin group.</span>
+
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
 <span class="sd">        PinGroup</span>
@@ -1441,7 +1438,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="EdbSiwave.create_pin_group_on_net"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.siwave.EdbSiwave.create_pin_group_on_net.html#pyaedt.edb_core.siwave.EdbSiwave.create_pin_group_on_net">[docs]</a>    <span class="nd">@pyaedt_function_handler</span>
     <span class="k">def</span> <span class="nf">create_pin_group_on_net</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">reference_designator</span><span class="p">,</span> <span class="n">net_name</span><span class="p">,</span> <span class="n">group_name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create pin group on component by net name.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create pin group on component by net name.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1451,6 +1448,7 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">            Name of the net.</span>
 <span class="sd">        group_name : str, optional</span>
 <span class="sd">            Name of the pin group. The default value is ``None``.</span>
+
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
 <span class="sd">        PinGroup</span>
@@ -1463,7 +1461,7 @@ function checkPageExistsAndRedirect(event) {
     <span class="k">def</span> <span class="nf">create_current_source_on_pin_group</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">pos_pin_group_name</span><span class="p">,</span> <span class="n">neg_pin_group_name</span><span class="p">,</span> <span class="n">magnitude</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">phase</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create current source between two pin groups.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create current source between two pin groups.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1475,8 +1473,10 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">            Magnitude of the source.</span>
 <span class="sd">        phase : int, float, optional</span>
 <span class="sd">            Phase of the source</span>
+
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
+<span class="sd">        bool</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">pos_pin_group</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pin_groups</span><span class="p">[</span><span class="n">pos_pin_group_name</span><span class="p">]</span>
@@ -1496,7 +1496,7 @@ function checkPageExistsAndRedirect(event) {
     <span class="k">def</span> <span class="nf">create_voltage_source_on_pin_group</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">pos_pin_group_name</span><span class="p">,</span> <span class="n">neg_pin_group_name</span><span class="p">,</span> <span class="n">magnitude</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">phase</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create voltage source between two pin groups.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create voltage source between two pin groups.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1508,8 +1508,10 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">            Magnitude of the source.</span>
 <span class="sd">        phase : int, float, optional</span>
 <span class="sd">            Phase of the source</span>
+
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
+<span class="sd">        bool</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">pos_pin_group</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pin_groups</span><span class="p">[</span><span class="n">pos_pin_group_name</span><span class="p">]</span>
@@ -1527,7 +1529,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="EdbSiwave.create_circuit_port_on_pin_group"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.siwave.EdbSiwave.create_circuit_port_on_pin_group.html#pyaedt.edb_core.siwave.EdbSiwave.create_circuit_port_on_pin_group">[docs]</a>    <span class="nd">@pyaedt_function_handler</span>
     <span class="k">def</span> <span class="nf">create_circuit_port_on_pin_group</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos_pin_group_name</span><span class="p">,</span> <span class="n">neg_pin_group_name</span><span class="p">,</span> <span class="n">impedance</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a port between two pin groups.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a port between two pin groups.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1537,16 +1539,18 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">            Name of the negative pin group.</span>
 <span class="sd">        impedance : int, float, optional</span>
 <span class="sd">            Impedance of the source.</span>
+
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
+<span class="sd">        bool</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">pos_pin_group</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pin_groups</span><span class="p">[</span><span class="n">pos_pin_group_name</span><span class="p">]</span>
         <span class="n">pos_terminal</span> <span class="o">=</span> <span class="n">pos_pin_group</span><span class="o">.</span><span class="n">create_port_terminal</span><span class="p">(</span><span class="n">impedance</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">name</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">name</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
             <span class="n">pos_terminal</span><span class="o">.</span><span class="n">SetName</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">name</span> <span class="o">=</span> <span class="n">generate_unique_name</span><span class="p">(</span><span class="s2">&quot;vsource&quot;</span><span class="p">)</span>
+            <span class="n">name</span> <span class="o">=</span> <span class="n">generate_unique_name</span><span class="p">(</span><span class="s2">&quot;port&quot;</span><span class="p">)</span>
             <span class="n">pos_terminal</span><span class="o">.</span><span class="n">SetName</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
         <span class="n">neg_pin_group_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pin_groups</span><span class="p">[</span><span class="n">neg_pin_group_name</span><span class="p">]</span>
         <span class="n">neg_terminal</span> <span class="o">=</span> <span class="n">neg_pin_group_name</span><span class="o">.</span><span class="n">create_port_terminal</span><span class="p">(</span><span class="n">impedance</span><span class="p">)</span>
@@ -1573,13 +1577,13 @@ function checkPageExistsAndRedirect(event) {
   
   <div class="footer-item">
     <p class="copyright">
-    &copy; Copyright (c) 2022 ANSYS, Inc. All rights reserved.<br>
+    &copy; Copyright (c) 2023 ANSYS, Inc. All rights reserved.<br>
 </p>
   </div>
   
   <div class="footer-item">
     <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 6.1.3.<br>
 </p>
   </div>
   

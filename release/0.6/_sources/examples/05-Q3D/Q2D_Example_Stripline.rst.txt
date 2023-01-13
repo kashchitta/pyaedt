@@ -52,13 +52,12 @@ Set non-graphical mode. ``"PYAEDT_NON_GRAPHICAL"`` is needed to generate
 documentation only.
 You can set ``non_graphical`` either to ``True`` or ``False``.
 
-.. GENERATED FROM PYTHON SOURCE LINES 21-26
+.. GENERATED FROM PYTHON SOURCE LINES 21-25
 
 .. code-block:: default
 
 
     non_graphical = os.getenv("PYAEDT_NON_GRAPHICAL", "False").lower() in ("true", "1", "t")
-
     project_path = pyaedt.generate_unique_project_name()
 
 
@@ -68,14 +67,14 @@ You can set ``non_graphical`` either to ``True`` or ``False``.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 27-31
+.. GENERATED FROM PYTHON SOURCE LINES 26-30
 
 Launch AEDT and 2D Extractor
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Launch AEDT 2022 R2 in graphical mode and launch 2D Extractor. This example
 uses SI units.
 
-.. GENERATED FROM PYTHON SOURCE LINES 31-39
+.. GENERATED FROM PYTHON SOURCE LINES 30-38
 
 .. code-block:: default
 
@@ -94,13 +93,13 @@ uses SI units.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 40-43
+.. GENERATED FROM PYTHON SOURCE LINES 39-42
 
 Define variables
 ~~~~~~~~~~~~~~~~
 Define variables.
 
-.. GENERATED FROM PYTHON SOURCE LINES 43-71
+.. GENERATED FROM PYTHON SOURCE LINES 42-70
 
 .. code-block:: default
 
@@ -139,13 +138,13 @@ Define variables.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 72-75
+.. GENERATED FROM PYTHON SOURCE LINES 71-74
 
 Create primitives
 ~~~~~~~~~~~~~~~~~
 Create primitives and define the layer heights.
 
-.. GENERATED FROM PYTHON SOURCE LINES 75-83
+.. GENERATED FROM PYTHON SOURCE LINES 74-82
 
 .. code-block:: default
 
@@ -164,13 +163,13 @@ Create primitives and define the layer heights.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 84-87
+.. GENERATED FROM PYTHON SOURCE LINES 83-86
 
 Create positive signal
 ~~~~~~~~~~~~~~~~~~~~~~
 Create a positive signal.
 
-.. GENERATED FROM PYTHON SOURCE LINES 87-104
+.. GENERATED FROM PYTHON SOURCE LINES 86-103
 
 .. code-block:: default
 
@@ -185,11 +184,11 @@ Create a positive signal.
     # ~~~~~~~~~~~~~~~~~~~~~~
     # Create a negative signal.
 
-    base_line_obj = q.modeler.create_polyline([[0, layer_2_lh, 0], [sig_w, layer_2_lh, 0]], name="signal_n")
-    top_line_obj = q.modeler.create_polyline([[0, layer_2_uh, 0], [sig_top_w, layer_2_uh, 0]])
-    q.modeler.move([top_line_obj], [delta_w_half, 0, 0])
+    base_line_obj = q.modeler.create_polyline(position_list=[[0, layer_2_lh, 0], [sig_w, layer_2_lh, 0]], name="signal_n")
+    top_line_obj = q.modeler.create_polyline(position_list=[[0, layer_2_uh, 0], [sig_top_w, layer_2_uh, 0]])
+    q.modeler.move(objid=[top_line_obj], vector=[delta_w_half, 0, 0])
     q.modeler.connect([base_line_obj, top_line_obj])
-    q.modeler.move([base_line_obj], ["{}+{}+{}+{}".format(co_gnd_w, clearance, sig_w, sig_gap), 0, 0])
+    q.modeler.move(objid=[base_line_obj], vector=["{}+{}+{}+{}".format(co_gnd_w, clearance, sig_w, sig_gap), 0, 0])
 
 
 
@@ -204,27 +203,30 @@ Create a positive signal.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 105-108
+.. GENERATED FROM PYTHON SOURCE LINES 104-107
 
 Create coplanar ground
 ~~~~~~~~~~~~~~~~~~~~~~
 Create a coplanar ground.
 
-.. GENERATED FROM PYTHON SOURCE LINES 108-120
+.. GENERATED FROM PYTHON SOURCE LINES 107-122
 
 .. code-block:: default
 
 
-    base_line_obj = q.modeler.create_polyline([[0, layer_2_lh, 0], [co_gnd_w, layer_2_lh, 0]], name="co_gnd_left")
-    top_line_obj = q.modeler.create_polyline([[0, layer_2_uh, 0], [co_gnd_top_w, layer_2_uh, 0]])
+    base_line_obj = q.modeler.create_polyline(position_list=[[0, layer_2_lh, 0], [co_gnd_w, layer_2_lh, 0]],
+                                              name="co_gnd_left")
+    top_line_obj = q.modeler.create_polyline(position_list=[[0, layer_2_uh, 0], [co_gnd_top_w, layer_2_uh, 0]])
     q.modeler.move([top_line_obj], [delta_w_half, 0, 0])
     q.modeler.connect([base_line_obj, top_line_obj])
 
-    base_line_obj = q.modeler.create_polyline([[0, layer_2_lh, 0], [co_gnd_w, layer_2_lh, 0]], name="co_gnd_right")
-    top_line_obj = q.modeler.create_polyline([[0, layer_2_uh, 0], [co_gnd_top_w, layer_2_uh, 0]])
-    q.modeler.move([top_line_obj], [delta_w_half, 0, 0])
+    base_line_obj = q.modeler.create_polyline(position_list=[[0, layer_2_lh, 0], [co_gnd_w, layer_2_lh, 0]],
+                                              name="co_gnd_right")
+    top_line_obj = q.modeler.create_polyline(position_list=[[0, layer_2_uh, 0], [co_gnd_top_w, layer_2_uh, 0]])
+    q.modeler.move(objid=[top_line_obj], vector=[delta_w_half, 0, 0])
     q.modeler.connect([base_line_obj, top_line_obj])
-    q.modeler.move([base_line_obj], ["{}+{}*2+{}*2+{}".format(co_gnd_w, clearance, sig_w, sig_gap), 0, 0])
+    q.modeler.move(objid=[base_line_obj],
+                   vector=["{}+{}*2+{}*2+{}".format(co_gnd_w, clearance, sig_w, sig_gap), 0, 0])
 
 
 
@@ -239,13 +241,13 @@ Create a coplanar ground.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 121-124
+.. GENERATED FROM PYTHON SOURCE LINES 123-126
 
 Create reference ground plane
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Create a reference ground plane.
 
-.. GENERATED FROM PYTHON SOURCE LINES 124-128
+.. GENERATED FROM PYTHON SOURCE LINES 126-130
 
 .. code-block:: default
 
@@ -262,17 +264,17 @@ Create a reference ground plane.
  .. code-block:: none
 
 
-    <pyaedt.modeler.cad.object3d.Object3d object at 0x000002812C4AB910>
+    <pyaedt.modeler.cad.object3d.Object3d object at 0x000001E0B58EA730>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 129-132
+.. GENERATED FROM PYTHON SOURCE LINES 131-134
 
 Create dielectric
 ~~~~~~~~~~~~~~~~~
 Create a dielectric.
 
-.. GENERATED FROM PYTHON SOURCE LINES 132-143
+.. GENERATED FROM PYTHON SOURCE LINES 134-145
 
 .. code-block:: default
 
@@ -296,17 +298,17 @@ Create a dielectric.
  .. code-block:: none
 
 
-    <pyaedt.modeler.cad.object3d.Object3d object at 0x000002812D2290D0>
+    <pyaedt.modeler.cad.object3d.Object3d object at 0x000001E0817DFB80>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 144-147
+.. GENERATED FROM PYTHON SOURCE LINES 146-149
 
 Assign conductors
 ~~~~~~~~~~~~~~~~~
 Assign conductors to the signal.
 
-.. GENERATED FROM PYTHON SOURCE LINES 147-158
+.. GENERATED FROM PYTHON SOURCE LINES 149-160
 
 .. code-block:: default
 
@@ -330,17 +332,17 @@ Assign conductors to the signal.
  .. code-block:: none
 
 
-    <pyaedt.modules.Boundary.BoundaryObject object at 0x000002812324AD00>
+    <pyaedt.modules.Boundary.BoundaryObject object at 0x000001E0B58EACD0>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 159-162
+.. GENERATED FROM PYTHON SOURCE LINES 161-164
 
 Create reference ground
 ~~~~~~~~~~~~~~~~~~~~~~~
 Create a reference ground.
 
-.. GENERATED FROM PYTHON SOURCE LINES 162-168
+.. GENERATED FROM PYTHON SOURCE LINES 164-170
 
 .. code-block:: default
 
@@ -359,17 +361,17 @@ Create a reference ground.
  .. code-block:: none
 
 
-    <pyaedt.modules.Boundary.BoundaryObject object at 0x000002812C4AB460>
+    <pyaedt.modules.Boundary.BoundaryObject object at 0x000001E0817DF310>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 169-172
+.. GENERATED FROM PYTHON SOURCE LINES 171-174
 
 Assign Huray model on signals
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Assign the Huray model on the signals.
 
-.. GENERATED FROM PYTHON SOURCE LINES 172-179
+.. GENERATED FROM PYTHON SOURCE LINES 174-181
 
 .. code-block:: default
 
@@ -389,22 +391,23 @@ Assign the Huray model on the signals.
  .. code-block:: none
 
 
-    <pyaedt.modules.Boundary.BoundaryObject object at 0x000002812C4F48B0>
+    <pyaedt.modules.Boundary.BoundaryObject object at 0x000001E0E5970BB0>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 180-183
+.. GENERATED FROM PYTHON SOURCE LINES 182-185
 
 Define differential pair
 ~~~~~~~~~~~~~~~~~~~~~~~~
 Define the differential pair.
 
-.. GENERATED FROM PYTHON SOURCE LINES 183-186
+.. GENERATED FROM PYTHON SOURCE LINES 185-189
 
 .. code-block:: default
 
 
-    matrix = q.insert_reduced_matrix(q.MATRIXOPERATIONS.DiffPair, ["signal_p", "signal_n"], rm_name="diff_pair")
+    matrix = q.insert_reduced_matrix(operation_name=q.MATRIXOPERATIONS.DiffPair, source_names=["signal_p", "signal_n"],
+                                     rm_name="diff_pair")
 
 
 
@@ -413,13 +416,13 @@ Define the differential pair.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 187-190
+.. GENERATED FROM PYTHON SOURCE LINES 190-193
 
 Create setup, analyze, and plot
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Create a setup, analyze, and plot solution data.
 
-.. GENERATED FROM PYTHON SOURCE LINES 190-216
+.. GENERATED FROM PYTHON SOURCE LINES 193-221
 
 .. code-block:: default
 
@@ -445,8 +448,10 @@ Create a setup, analyze, and plot solution data.
     a.plot(snapshot_path=os.path.join(q.working_directory, "plot.jpg")) # Save plot as jpg
 
     # Add a parametric sweep and analyze.
-    parametric = q.parametrics.add("sig_bot_w", 75, 100, 5, "LinearStep")
-    parametric.add_variation("sig_gap", "100um", "200um", 5,variation_type="LinearCount")
+    parametric = q.parametrics.add(sweep_var="sig_bot_w", start_point=75, end_point=100, step=5,
+                                   variation_type="LinearStep")
+    parametric.add_variation(sweep_var="sig_gap", start_point="100um", end_point="200um", step=5,
+                             variation_type="LinearCount")
     q.analyze_setup(name=parametric.name)
 
 
@@ -467,13 +472,13 @@ Create a setup, analyze, and plot solution data.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 217-220
+.. GENERATED FROM PYTHON SOURCE LINES 222-225
 
 Save project and release AEDT
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Save the project and release AEDT.
 
-.. GENERATED FROM PYTHON SOURCE LINES 220-222
+.. GENERATED FROM PYTHON SOURCE LINES 225-227
 
 .. code-block:: default
 
@@ -495,7 +500,7 @@ Save the project and release AEDT.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 3 minutes  19.947 seconds)
+   **Total running time of the script:** ( 3 minutes  21.193 seconds)
 
 
 .. _sphx_glr_download_examples_05-Q3D_Q2D_Example_Stripline.py:

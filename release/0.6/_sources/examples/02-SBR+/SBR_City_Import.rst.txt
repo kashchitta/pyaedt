@@ -30,7 +30,7 @@ Perform required imports
 Perform required imports and set up the local path to the PyAEDT
 directory path.
 
-.. GENERATED FROM PYTHON SOURCE LINES 12-17
+.. GENERATED FROM PYTHON SOURCE LINES 12-16
 
 .. code-block:: default
 
@@ -45,8 +45,7 @@ directory path.
 
 
 
-
-.. GENERATED FROM PYTHON SOURCE LINES 18-23
+.. GENERATED FROM PYTHON SOURCE LINES 17-22
 
 Set non-graphical mode
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -54,7 +53,7 @@ Set non-graphical mode. ``"PYAEDT_NON_GRAPHICAL"`` is needed to generate
 documentation only.
 You can set ``non_graphical`` either to ``True`` or ``False``.
 
-.. GENERATED FROM PYTHON SOURCE LINES 23-26
+.. GENERATED FROM PYTHON SOURCE LINES 22-25
 
 .. code-block:: default
 
@@ -68,14 +67,14 @@ You can set ``non_graphical`` either to ``True`` or ``False``.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 27-31
+.. GENERATED FROM PYTHON SOURCE LINES 26-30
 
 Define designs
 ~~~~~~~~~~~~~~
 Define two designs, one source and one target.
 Each design is connected to a different object.
 
-.. GENERATED FROM PYTHON SOURCE LINES 31-40
+.. GENERATED FROM PYTHON SOURCE LINES 30-39
 
 .. code-block:: default
 
@@ -95,13 +94,13 @@ Each design is connected to a different object.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 41-44
+.. GENERATED FROM PYTHON SOURCE LINES 40-43
 
 Define Location to import
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 Define latitude and longitude to import.
 
-.. GENERATED FROM PYTHON SOURCE LINES 44-49
+.. GENERATED FROM PYTHON SOURCE LINES 43-45
 
 .. code-block:: default
 
@@ -114,16 +113,13 @@ Define latitude and longitude to import.
 
 
 
-
-
-
-.. GENERATED FROM PYTHON SOURCE LINES 50-53
+.. GENERATED FROM PYTHON SOURCE LINES 46-49
 
 Generate map and import
 ~~~~~~~~~~~~~~~~~~~~~~~
 Assign boundaries.
 
-.. GENERATED FROM PYTHON SOURCE LINES 53-63
+.. GENERATED FROM PYTHON SOURCE LINES 49-56
 
 .. code-block:: default
 
@@ -133,9 +129,6 @@ Assign boundaries.
                                            road_step=3,
                                            plot_before_importing=False,
                                            import_in_aedt=True)
-
-
-
 
 
 
@@ -163,7 +156,7 @@ Assign boundaries.
     INFO:Global:    Percent Complete:####################################.... 90% 
     INFO:Global:100% - Done
     INFO:Global:Processing Geometry
-    INFO:Global:saving STL as D:/Project/Project1169.pyaedt\Ansys/terrain.stl
+    INFO:Global:saving STL as D:/Project/Project1300.pyaedt\Ansys/terrain.stl
     INFO:Global:Generating Building Geometry
     DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): overpass-api.de:443
     DEBUG:urllib3.connectionpool:https://overpass-api.de:443 "GET /api/status HTTP/1.1" 200 179
@@ -176,7 +169,7 @@ Assign boundaries.
     INFO:Global:    Percent Complete:######################################## 100.0% 
     INFO:Global:Generating Road Geometry
     DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): overpass-api.de:443
-    DEBUG:urllib3.connectionpool:https://overpass-api.de:443 "GET /api/status HTTP/1.1" 200 205
+    DEBUG:urllib3.connectionpool:https://overpass-api.de:443 "GET /api/status HTTP/1.1" 200 207
     DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): overpass-api.de:443
     DEBUG:urllib3.connectionpool:https://overpass-api.de:443 "POST /api/interpreter HTTP/1.1" 200 29457
     INFO:Global:    Percent Complete:########................................ 20.0% 
@@ -186,21 +179,21 @@ Assign boundaries.
     INFO:Global:    Percent Complete:################################........ 80.0% 
     INFO:Global:    Percent Complete:######################################## 100.0% 
     INFO:Global:Done...
-    INFO:Global:Step file D:/Project/Project1169.pyaedt\Ansys/terrain.stl imported
-    INFO:Global:Step file D:/Project/Project1169.pyaedt\Ansys\buildings.stl imported
-    INFO:Global:Step file D:/Project/Project1169.pyaedt\Ansys\roads.stl imported
+    INFO:Global:Step file D:/Project/Project1300.pyaedt\Ansys/terrain.stl imported
+    INFO:Global:Step file D:/Project/Project1300.pyaedt\Ansys\buildings.stl imported
+    INFO:Global:Step file D:/Project/Project1300.pyaedt\Ansys\roads.stl imported
 
-    {'name': 'default', 'version': 1, 'type': 'environment', 'center_lat_lon': [40.273726, -80.168269], 'radius': 250, 'include_buildings': True, 'include_roads': True, 'parts': {'terrain': {'file_name': 'D:/Project/Project1169.pyaedt\\Ansys/terrain.stl', 'color': 'brown', 'material': 'earth'}, 'buildings': {'file_name': 'D:/Project/Project1169.pyaedt\\Ansys\\buildings.stl', 'color': 'grey', 'material': 'concrete'}, 'roads': {'file_name': 'D:/Project/Project1169.pyaedt\\Ansys\\roads.stl', 'color': 'black', 'material': 'asphalt'}}}
+    {'name': 'default', 'version': 1, 'type': 'environment', 'center_lat_lon': [40.273726, -80.168269], 'radius': 250, 'include_buildings': True, 'include_roads': True, 'parts': {'terrain': {'file_name': 'D:/Project/Project1300.pyaedt\\Ansys/terrain.stl', 'color': 'brown', 'material': 'earth'}, 'buildings': {'file_name': 'D:/Project/Project1300.pyaedt\\Ansys\\buildings.stl', 'color': 'grey', 'material': 'concrete'}, 'roads': {'file_name': 'D:/Project/Project1300.pyaedt\\Ansys\\roads.stl', 'color': 'black', 'material': 'asphalt'}}}
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 64-67
+.. GENERATED FROM PYTHON SOURCE LINES 57-60
 
 Plot model
 ~~~~~~~~~~
 Plot the model.
 
-.. GENERATED FROM PYTHON SOURCE LINES 67-77
+.. GENERATED FROM PYTHON SOURCE LINES 60-69
 
 .. code-block:: default
 
@@ -212,7 +205,6 @@ Plot the model.
     plot_obj.show_axes = False
     plot_obj.bounding_box = False
     plot_obj.plot(os.path.join(app.working_directory, "Source.jpg"))
-
 
 
 
@@ -232,13 +224,13 @@ Plot the model.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 78-81
+.. GENERATED FROM PYTHON SOURCE LINES 70-73
 
 Release AEDT
 ~~~~~~~~~~~~
 Release AEDT and close the example.
 
-.. GENERATED FROM PYTHON SOURCE LINES 81-83
+.. GENERATED FROM PYTHON SOURCE LINES 73-75
 
 .. code-block:: default
 
@@ -261,7 +253,7 @@ Release AEDT and close the example.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  47.707 seconds)
+   **Total running time of the script:** ( 0 minutes  46.139 seconds)
 
 
 .. _sphx_glr_download_examples_02-SBR+_SBR_City_Import.py:

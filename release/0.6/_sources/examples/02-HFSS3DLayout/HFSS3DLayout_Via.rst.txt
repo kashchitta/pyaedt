@@ -27,7 +27,7 @@ parametric via analysis.
 
 Perform required imports
 ~~~~~~~~~~~~~~~~~~~~~~~~
-Perform required inports.
+Perform required imports.
 
 .. GENERATED FROM PYTHON SOURCE LINES 12-15
 
@@ -120,9 +120,9 @@ Add stackup layers.
 .. code-block:: default
 
 
-    h3d.modeler.layers.add_layer("GND", "signal", thickness="0", isnegative=True)
-    h3d.modeler.layers.add_layer("diel", "dielectric", thickness="0.2mm", material="FR4_epoxy")
-    h3d.modeler.layers.add_layer("TOP", "signal", thickness="0.035mm", elevation="0.2mm")
+    h3d.modeler.layers.add_layer(layername="GND", layertype="signal", thickness="0", isnegative=True)
+    h3d.modeler.layers.add_layer(layername="diel", layertype="dielectric", thickness="0.2mm", material="FR4_epoxy")
+    h3d.modeler.layers.add_layer(layername="TOP", layertype="signal", thickness="0.035mm", elevation="0.2mm")
 
 
 
@@ -133,7 +133,7 @@ Add stackup layers.
  .. code-block:: none
 
 
-    <pyaedt.modules.LayerStackup.Layer object at 0x000002817DF30C40>
+    <pyaedt.modules.LayerStackup.Layer object at 0x000001E0D16723D0>
 
 
 
@@ -148,9 +148,9 @@ Create a signal net and ground planes.
 .. code-block:: default
 
 
-    h3d.modeler.create_line("TOP", [[0, 0], ["len", 0]], lw="w1", netname="microstrip", name="microstrip")
-    h3d.modeler.create_rectangle("TOP", [0, "-w1/2-sp"], ["len", "-w1/2-sp-20mm"])
-    h3d.modeler.create_rectangle("TOP", [0, "w1/2+sp"], ["len", "w1/2+sp+20mm"])
+    h3d.modeler.create_line(layername="TOP", center_line_list=[[0, 0], ["len", 0]], lw="w1", netname="microstrip", name="microstrip")
+    h3d.modeler.create_rectangle(layername="TOP", origin=[0, "-w1/2-sp"], dimensions=["len", "-w1/2-sp-20mm"])
+    h3d.modeler.create_rectangle(layername="TOP", origin=[0, "w1/2+sp"], dimensions=["len", "w1/2+sp+20mm"])
 
 
 
@@ -161,7 +161,7 @@ Create a signal net and ground planes.
  .. code-block:: none
 
 
-    <pyaedt.modeler.pcb.object3dlayout.Rect3dLayout object at 0x000002817E12EE80>
+    <pyaedt.modeler.pcb.object3dlayout.Rect3dLayout object at 0x000001E0D19476A0>
 
 
 
@@ -192,7 +192,7 @@ Create vias with parametric positions.
  .. code-block:: none
 
 
-    <pyaedt.modeler.pcb.object3dlayout.Pins3DLayout object at 0x000002817E2818E0>
+    <pyaedt.modeler.pcb.object3dlayout.Pins3DLayout object at 0x000001E0D1A72A30>
 
 
 
@@ -219,7 +219,7 @@ Create circuit ports.
  .. code-block:: none
 
 
-    <pyaedt.modules.Boundary.BoundaryObject3dLayout object at 0x0000028120DC5700>
+    <pyaedt.modules.Boundary.BoundaryObject3dLayout object at 0x000001E0D1D32EE0>
 
 
 
@@ -258,7 +258,7 @@ Create a setup and a sweep.
  .. code-block:: none
 
 
-    <pyaedt.modules.SetupTemplates.SweepHFSS3DLayout object at 0x000002817E281FD0>
+    <pyaedt.modules.SetupTemplates.SweepHFSS3DLayout object at 0x000001E0D13F51C0>
 
 
 
@@ -286,7 +286,7 @@ Solve and plot the results.
  .. code-block:: none
 
 
-    <pyaedt.modules.report_templates.Standard object at 0x000002817E2C1220>
+    <pyaedt.modules.report_templates.Standard object at 0x000001E0D1947D90>
 
 
 
@@ -296,7 +296,7 @@ Create report outside AEDT
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 Create a report using Matplotlib.
 
-.. GENERATED FROM PYTHON SOURCE LINES 113-120
+.. GENERATED FROM PYTHON SOURCE LINES 113-119
 
 .. code-block:: default
 
@@ -305,7 +305,6 @@ Create a report using Matplotlib.
 
     solutions = h3d.post.get_solution_data(expressions=traces)
     solutions.plot(math_formula="db20")
-
 
 
 
@@ -325,7 +324,7 @@ Create a report using Matplotlib.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 121-126
+.. GENERATED FROM PYTHON SOURCE LINES 120-125
 
 Close AEDT
 ~~~~~~~~~~
@@ -333,7 +332,7 @@ After the simulation completes, you can close AEDT or release it using the
 :func:`pyaedt.Desktop.release_desktop` method.
 All methods provide for saving the project before closing.
 
-.. GENERATED FROM PYTHON SOURCE LINES 126-128
+.. GENERATED FROM PYTHON SOURCE LINES 125-127
 
 .. code-block:: default
 
@@ -355,7 +354,7 @@ All methods provide for saving the project before closing.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 2 minutes  16.349 seconds)
+   **Total running time of the script:** ( 2 minutes  8.227 seconds)
 
 
 .. _sphx_glr_download_examples_02-HFSS3DLayout_HFSS3DLayout_Via.py:

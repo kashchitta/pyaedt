@@ -41,14 +41,11 @@
         <link href="../../_static/css/breadcrumbs.css" rel="stylesheet">
     
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/sphinx_highlight.js"></script>
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
-    <link rel="shortcut icon" href="../../_static/ansys-favicon.png"/>
+    <link rel="icon" href="../../_static/ansys-favicon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -77,9 +74,8 @@
   
   
   
-    <img src="../../_static/pyansys-logo-black-cropped.png" class="logo__image only-light" alt="Logo image">
-    <img src="../../_static/pyansys-logo-black-cropped.png" class="logo__image only-dark" alt="Logo image">
   
+    <p class="title logo__title">PyAEDT</p>
   
 </a>
     
@@ -207,7 +203,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.42 variable.
+            // this version, rather than using sphinx's 0.6.43 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -388,7 +384,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <div class="viewcode-block" id="Edb"><a class="viewcode-back" href="../../EDBAPI/_autosummary/pyaedt.edb.Edb.html#pyaedt.edb.Edb">[docs]</a><span class="k">class</span> <span class="nc">Edb</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Provides the EDB application interface.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Provides the EDB application interface.</span>
 
 <span class="sd">    This module inherits all objects that belong to EDB.</span>
 
@@ -526,7 +522,7 @@ function checkPageExistsAndRedirect(event) {
             <span class="bp">self</span><span class="o">.</span><span class="n">edb_exception</span><span class="p">(</span><span class="n">ex_value</span><span class="p">,</span> <span class="n">ex_traceback</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">_clean_variables</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Initialize internal variables and perform garbage collection.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialize internal variables and perform garbage collection.&quot;&quot;&quot;</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_components</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_core_primitives</span> <span class="o">=</span> <span class="kc">None</span>
@@ -563,7 +559,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">logger</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Logger for EDB.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Logger for EDB.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -573,7 +569,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">cell_names</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Cell name container.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Cell name container.</span>
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
 <span class="sd">        list of str, cell names.</span>
@@ -585,7 +581,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">_init_dlls</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Initialize DLLs.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialize DLLs.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;posix&quot;</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">env_value</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">edbversion</span><span class="p">)</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">base_path</span> <span class="o">=</span> <span class="n">env_path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">edbversion</span><span class="p">)</span>
@@ -632,7 +628,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">excitations</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Get all layout excitations.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get all layout excitations.&quot;&quot;&quot;</span>
         <span class="n">terms</span> <span class="o">=</span> <span class="p">[</span><span class="n">term</span> <span class="k">for</span> <span class="n">term</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_active_layout</span><span class="o">.</span><span class="n">Terminals</span><span class="p">)</span> <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">term</span><span class="o">.</span><span class="n">GetBoundaryType</span><span class="p">())</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span>
         <span class="n">terms</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">terms</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">i</span><span class="o">.</span><span class="n">IsReferenceTerminal</span><span class="p">()]</span>
         <span class="n">temp</span> <span class="o">=</span> <span class="p">{}</span>
@@ -645,24 +641,24 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">excitations_nets</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Get all excitations net names.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get all excitations net names.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">([</span><span class="n">i</span><span class="o">.</span><span class="n">GetNet</span><span class="p">()</span><span class="o">.</span><span class="n">GetName</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_active_layout</span><span class="o">.</span><span class="n">Terminals</span><span class="p">)]))</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">sources</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Get all layout sources.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get all layout sources.&quot;&quot;&quot;</span>
         <span class="n">terms</span> <span class="o">=</span> <span class="p">[</span><span class="n">term</span> <span class="k">for</span> <span class="n">term</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_active_layout</span><span class="o">.</span><span class="n">Terminals</span><span class="p">)</span> <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">term</span><span class="o">.</span><span class="n">GetBoundaryType</span><span class="p">())</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">]]</span>
         <span class="k">return</span> <span class="p">{</span><span class="n">ter</span><span class="o">.</span><span class="n">GetName</span><span class="p">():</span> <span class="n">ExcitationSources</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ter</span><span class="p">)</span> <span class="k">for</span> <span class="n">ter</span> <span class="ow">in</span> <span class="n">terms</span><span class="p">}</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">probes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Get all layout sources.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get all layout sources.&quot;&quot;&quot;</span>
         <span class="n">terms</span> <span class="o">=</span> <span class="p">[</span><span class="n">term</span> <span class="k">for</span> <span class="n">term</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_active_layout</span><span class="o">.</span><span class="n">Terminals</span><span class="p">)</span> <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">term</span><span class="o">.</span><span class="n">GetBoundaryType</span><span class="p">())</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">8</span><span class="p">]]</span>
         <span class="k">return</span> <span class="p">{</span><span class="n">ter</span><span class="o">.</span><span class="n">GetName</span><span class="p">():</span> <span class="n">ExcitationProbes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ter</span><span class="p">)</span> <span class="k">for</span> <span class="n">ter</span> <span class="ow">in</span> <span class="n">terms</span><span class="p">}</span>
 
 <div class="viewcode-block" id="Edb.open_edb"><a class="viewcode-back" href="../../EDBAPI/_autosummary/pyaedt.edb.Edb.open_edb.html#pyaedt.edb.Edb.open_edb">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">open_edb</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">init_dlls</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Open EDB.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Open EDB.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -714,7 +710,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Edb.open_edb_inside_aedt"><a class="viewcode-back" href="../../EDBAPI/_autosummary/pyaedt.edb.Edb.open_edb_inside_aedt.html#pyaedt.edb.Edb.open_edb_inside_aedt">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">open_edb_inside_aedt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">init_dlls</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Open EDB inside of AEDT.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Open EDB inside of AEDT.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -762,7 +758,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Edb.create_edb"><a class="viewcode-back" href="../../EDBAPI/_autosummary/pyaedt.edb.Edb.create_edb.html#pyaedt.edb.Edb.create_edb">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">create_edb</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">init_dlls</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create EDB.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create EDB.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -795,7 +791,7 @@ function checkPageExistsAndRedirect(event) {
     <span class="k">def</span> <span class="nf">import_layout_pcb</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">input_file</span><span class="p">,</span> <span class="n">working_dir</span><span class="p">,</span> <span class="n">init_dlls</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">anstranslator_full_path</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">use_ppe</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">control_file</span><span class="o">=</span><span class="kc">None</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Import a board file and generate an ``edb.def`` file in the working directory.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Import a board file and generate an ``edb.def`` file in the working directory.</span>
 
 <span class="sd">        This function supports all AEDT formats, including DXF, GDS, SML (IPC2581), BRD, and TGZ.</span>
 
@@ -865,10 +861,10 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Edb.export_to_ipc2581"><a class="viewcode-back" href="../../EDBAPI/_autosummary/pyaedt.edb.Edb.export_to_ipc2581.html#pyaedt.edb.Edb.export_to_ipc2581">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">export_to_ipc2581</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ipc_path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="s2">&quot;MILLIMETER&quot;</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create an XML IPC2581 file from the active EDB.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create an XML IPC2581 file from the active EDB.</span>
 
 <span class="sd">        .. note::</span>
-<span class="sd">            The method works only in CPython because of some limitations on Ironpython in XML parsing and</span>
+<span class="sd">           The method works only in CPython because of some limitations on Ironpython in XML parsing and</span>
 <span class="sd">           because it&#39;s time-consuming.</span>
 <span class="sd">           This method is still being tested and may need further debugging.</span>
 <span class="sd">           Any feedback is welcome. Backdrills and custom pads are not supported yet.</span>
@@ -913,7 +909,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="k">return</span> <span class="kc">False</span></div>
 
 <div class="viewcode-block" id="Edb.edb_exception"><a class="viewcode-back" href="../../EDBAPI/_autosummary/pyaedt.edb.Edb.edb_exception.html#pyaedt.edb.Edb.edb_exception">[docs]</a>    <span class="k">def</span> <span class="nf">edb_exception</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ex_value</span><span class="p">,</span> <span class="n">tb_data</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Write the trace stack to AEDT when a Python error occurs.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Write the trace stack to AEDT when a Python error occurs.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -934,24 +930,24 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">db</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Database object.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Database object.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_db</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">active_cell</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Active cell.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Active cell.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_active_cell</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">core_components</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Core components.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Core components.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_components</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_components</span> <span class="o">=</span> <span class="n">Components</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_components</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">core_stackup</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Core stackup.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Core stackup.</span>
 
 <span class="sd">        .. deprecated:: 0.6.5</span>
 <span class="sd">            There is no need to use the ``core_stackup`` property anymore.</span>
@@ -966,56 +962,56 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">stackup</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Stackup.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Stackup.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_stackup2</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_stackup2</span> <span class="o">=</span> <span class="n">Stackup</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_stackup2</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">materials</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Material Database.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Material Database.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_materials</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_materials</span> <span class="o">=</span> <span class="n">Materials</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_materials</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">core_padstack</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Core padstack.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Core padstack.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_padstack</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_padstack</span> <span class="o">=</span> <span class="n">EdbPadstacks</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_padstack</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">core_siwave</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Core SI Wave.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Core SI Wave.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_siwave</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_siwave</span> <span class="o">=</span> <span class="n">EdbSiwave</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_siwave</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">core_hfss</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Core HFSS.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Core HFSS.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hfss</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_hfss</span> <span class="o">=</span> <span class="n">EdbHfss</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hfss</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">core_nets</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Core nets.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Core nets.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nets</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_nets</span> <span class="o">=</span> <span class="n">EdbNets</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nets</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">core_primitives</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Core primitives.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Core primitives.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core_primitives</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_core_primitives</span> <span class="o">=</span> <span class="n">EdbLayout</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core_primitives</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">active_layout</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Active layout.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Active layout.&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_active_layout</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_active_cell</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_active_layout</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">active_cell</span><span class="o">.</span><span class="n">GetLayout</span><span class="p">()</span>
@@ -1023,14 +1019,14 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">layout_instance</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Edb Layout Instance.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Edb Layout Instance.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_layout_instance</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_layout_instance</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">active_layout</span><span class="o">.</span><span class="n">GetLayoutInstance</span><span class="p">()</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_layout_instance</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">pins</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;EDBPadstackInstance of Component.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;EDBPadstackInstance of Component.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1051,7 +1047,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="k">return</span> <span class="n">pins</span>
 
     <span class="k">class</span> <span class="nc">Boundaries</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Boundaries.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Boundaries.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1079,7 +1075,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Edb.edb_value"><a class="viewcode-back" href="../../EDBAPI/_autosummary/pyaedt.edb.Edb.edb_value.html#pyaedt.edb.Edb.edb_value">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">edb_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;EDB value.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;EDB value.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1160,7 +1156,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Edb.close_edb"><a class="viewcode-back" href="../../EDBAPI/_autosummary/pyaedt.edb.Edb.close_edb.html#pyaedt.edb.Edb.close_edb">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">close_edb</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Close EDB.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Close EDB.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1187,7 +1183,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Edb.save_edb"><a class="viewcode-back" href="../../EDBAPI/_autosummary/pyaedt.edb.Edb.save_edb.html#pyaedt.edb.Edb.save_edb">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">save_edb</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Save the EDB file.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Save the EDB file.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1200,7 +1196,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Edb.save_edb_as"><a class="viewcode-back" href="../../EDBAPI/_autosummary/pyaedt.edb.Edb.save_edb_as.html#pyaedt.edb.Edb.save_edb_as">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">save_edb_as</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fname</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Save the EDB file as another file.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Save the EDB file as another file.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1228,7 +1224,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Edb.execute"><a class="viewcode-back" href="../../EDBAPI/_autosummary/pyaedt.edb.Edb.execute.html#pyaedt.edb.Edb.execute">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">execute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Execute a function.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Execute a function.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1246,7 +1242,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Edb.import_cadence_file"><a class="viewcode-back" href="../../EDBAPI/_autosummary/pyaedt.edb.Edb.import_cadence_file.html#pyaedt.edb.Edb.import_cadence_file">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">import_cadence_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputBrd</span><span class="p">,</span> <span class="n">WorkDir</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">anstranslator_full_path</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">use_ppe</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Import a board file and generate an ``edb.def`` file in the working directory.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Import a board file and generate an ``edb.def`` file in the working directory.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1276,7 +1272,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Edb.import_gds_file"><a class="viewcode-back" href="../../EDBAPI/_autosummary/pyaedt.edb.Edb.import_gds_file.html#pyaedt.edb.Edb.import_gds_file">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">import_gds_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputGDS</span><span class="p">,</span> <span class="n">WorkDir</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">anstranslator_full_path</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">use_ppe</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">control_file</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Import a GDS file and generate an ``edb.def`` file in the working directory.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Import a GDS file and generate an ``edb.def`` file in the working directory.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1384,7 +1380,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">open_cutout_at_end</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
         <span class="n">use_pyaedt_extent_computing</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a cutout and save it to a new AEDB file.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a cutout and save it to a new AEDB file.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1509,7 +1505,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">use_pyaedt_extent_computing</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
         <span class="n">extent_defeature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a cutout using an approach entirely based on pyaedt.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a cutout using an approach entirely based on pyaedt.</span>
 <span class="sd">        It does in sequence:</span>
 <span class="sd">        - delete all nets not in list,</span>
 <span class="sd">        - create a extent of the nets,</span>
@@ -1723,7 +1719,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Edb.get_conformal_polygon_from_netlist"><a class="viewcode-back" href="../../EDBAPI/_autosummary/pyaedt.edb.Edb.get_conformal_polygon_from_netlist.html#pyaedt.edb.Edb.get_conformal_polygon_from_netlist">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">get_conformal_polygon_from_netlist</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">netlist</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Return an EDB conformal polygon based on a netlist.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return an EDB conformal polygon based on a netlist.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1733,9 +1729,8 @@ function checkPageExistsAndRedirect(event) {
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-
-<span class="sd">        Edb polygon object</span>
-<span class="sd">            Edb.Cell.Primitive.Polygon object</span>
+<span class="sd">        :class:`Edb.Cell.Primitive.Polygon`</span>
+<span class="sd">            Edb polygon object.</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">temp_edb_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">edbpath</span><span class="p">[:</span><span class="o">-</span><span class="mi">5</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;_temp_aedb.aedb&quot;</span>
@@ -1765,7 +1760,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Edb.arg_with_dim"><a class="viewcode-back" href="../../EDBAPI/_autosummary/pyaedt.edb.Edb.arg_with_dim.html#pyaedt.edb.Edb.arg_with_dim">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">arg_with_dim</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Value</span><span class="p">,</span> <span class="n">sUnits</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Format arguments with dimensions.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Format arguments with dimensions.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1796,7 +1791,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">include_partial_instances</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
         <span class="n">keep_voids</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a cutout on a specified shape and save it to a new AEDB file.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a cutout on a specified shape and save it to a new AEDB file.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1991,7 +1986,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Edb.write_export3d_option_config_file"><a class="viewcode-back" href="../../EDBAPI/_autosummary/pyaedt.edb.Edb.write_export3d_option_config_file.html#pyaedt.edb.Edb.write_export3d_option_config_file">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">write_export3d_option_config_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path_to_output</span><span class="p">,</span> <span class="n">config_dictionaries</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Write the options for a 3D export to a configuration file.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Write the options for a 3D export to a configuration file.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2029,7 +2024,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Edb.export_hfss"><a class="viewcode-back" href="../../EDBAPI/_autosummary/pyaedt.edb.Edb.export_hfss.html#pyaedt.edb.Edb.export_hfss">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">export_hfss</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path_to_output</span><span class="p">,</span> <span class="n">net_list</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">num_cores</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">aedt_file_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">hidden</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Export EDB to HFSS.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Export EDB to HFSS.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2069,7 +2064,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Edb.export_q3d"><a class="viewcode-back" href="../../EDBAPI/_autosummary/pyaedt.edb.Edb.export_q3d.html#pyaedt.edb.Edb.export_q3d">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">export_q3d</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path_to_output</span><span class="p">,</span> <span class="n">net_list</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">num_cores</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">aedt_file_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">hidden</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Export EDB to Q3D.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Export EDB to Q3D.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2112,7 +2107,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Edb.export_maxwell"><a class="viewcode-back" href="../../EDBAPI/_autosummary/pyaedt.edb.Edb.export_maxwell.html#pyaedt.edb.Edb.export_maxwell">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">export_maxwell</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path_to_output</span><span class="p">,</span> <span class="n">net_list</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">num_cores</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">aedt_file_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">hidden</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Export EDB to Maxwell 3D.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Export EDB to Maxwell 3D.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2159,7 +2154,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Edb.solve_siwave"><a class="viewcode-back" href="../../EDBAPI/_autosummary/pyaedt.edb.Edb.solve_siwave.html#pyaedt.edb.Edb.solve_siwave">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">solve_siwave</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Close EDB and solve it with Siwave.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Close EDB and solve it with Siwave.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2188,7 +2183,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">power_tree</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
         <span class="n">loop_res</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Close EDB and solve it with Siwave.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Close EDB and solve it with Siwave.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2238,7 +2233,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Edb.add_design_variable"><a class="viewcode-back" href="../../EDBAPI/_autosummary/pyaedt.edb.Edb.add_design_variable.html#pyaedt.edb.Edb.add_design_variable">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">add_design_variable</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">variable_name</span><span class="p">,</span> <span class="n">variable_value</span><span class="p">,</span> <span class="n">is_parameter</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Add a design variable.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add a design variable.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2301,7 +2296,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Edb.change_design_variable_value"><a class="viewcode-back" href="../../EDBAPI/_autosummary/pyaedt.edb.Edb.change_design_variable_value.html#pyaedt.edb.Edb.change_design_variable_value">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">change_design_variable_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">variable_name</span><span class="p">,</span> <span class="n">variable_value</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Change a variable value.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Change a variable value.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2363,7 +2358,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Edb.get_bounding_box"><a class="viewcode-back" href="../../EDBAPI/_autosummary/pyaedt.edb.Edb.get_bounding_box.html#pyaedt.edb.Edb.get_bounding_box">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">get_bounding_box</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Get the layout bounding box.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the layout bounding box.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2375,7 +2370,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Edb.build_simulation_project"><a class="viewcode-back" href="../../EDBAPI/_autosummary/pyaedt.edb.Edb.build_simulation_project.html#pyaedt.edb.Edb.build_simulation_project">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">build_simulation_project</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">simulation_setup</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Build a ready-to-solve simulation project.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Build a ready-to-solve simulation project.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2500,7 +2495,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Edb.get_statistics"><a class="viewcode-back" href="../../EDBAPI/_autosummary/pyaedt.edb.Edb.get_statistics.html#pyaedt.edb.Edb.get_statistics">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">get_statistics</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">compute_area</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Get the EDBStatistics object.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the EDBStatistics object.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2510,7 +2505,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Edb.are_port_reference_terminals_connected"><a class="viewcode-back" href="../../EDBAPI/_autosummary/pyaedt.edb.Edb.are_port_reference_terminals_connected.html#pyaedt.edb.Edb.are_port_reference_terminals_connected">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">are_port_reference_terminals_connected</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">common_reference</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Check if all terminal references in design are connected.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Check if all terminal references in design are connected.</span>
 <span class="sd">        If the reference nets are different, there is no hope for the terminal references to be connected.</span>
 <span class="sd">        After we have identified a common reference net we need to loop the terminals again to get</span>
 <span class="sd">        the correct reference terminals that uses that net.</span>
@@ -2551,7 +2546,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Edb.new_simulation_configuration"><a class="viewcode-back" href="../../EDBAPI/_autosummary/pyaedt.edb.Edb.new_simulation_configuration.html#pyaedt.edb.Edb.new_simulation_configuration">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">new_simulation_configuration</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;New SimulationConfiguration Object.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;New SimulationConfiguration Object.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2566,7 +2561,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">setups</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Get the dictionary of all EDB HFSS and SIwave setups.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the dictionary of all EDB HFSS and SIwave setups.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2587,7 +2582,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">hfss_setups</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Active HFSS setup in EDB.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Active HFSS setup in EDB.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2598,7 +2593,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">siwave_dc_setups</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Active Siwave DC IR Setups.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Active Siwave DC IR Setups.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2608,7 +2603,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">siwave_ac_setups</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Active Siwave SYZ setups.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Active Siwave SYZ setups.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2617,7 +2612,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="k">return</span> <span class="p">{</span><span class="n">i</span><span class="o">.</span><span class="n">name</span><span class="p">:</span> <span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">setups</span> <span class="k">if</span> <span class="n">i</span><span class="o">.</span><span class="n">setup_type</span> <span class="o">==</span> <span class="s2">&quot;kSIWaveDCIR&quot;</span><span class="p">}</span>
 
 <div class="viewcode-block" id="Edb.create_hfss_setup"><a class="viewcode-back" href="../../EDBAPI/_autosummary/pyaedt.edb.Edb.create_hfss_setup.html#pyaedt.edb.Edb.create_hfss_setup">[docs]</a>    <span class="k">def</span> <span class="nf">create_hfss_setup</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a setup from a template.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a setup from a template.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2640,7 +2635,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="k">return</span> <span class="n">setup</span></div>
 
 <div class="viewcode-block" id="Edb.create_siwave_syz_setup"><a class="viewcode-back" href="../../EDBAPI/_autosummary/pyaedt.edb.Edb.create_siwave_syz_setup.html#pyaedt.edb.Edb.create_siwave_syz_setup">[docs]</a>    <span class="k">def</span> <span class="nf">create_siwave_syz_setup</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a setup from a template.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a setup from a template.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2669,7 +2664,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="k">return</span> <span class="n">setup</span></div>
 
 <div class="viewcode-block" id="Edb.create_siwave_dc_setup"><a class="viewcode-back" href="../../EDBAPI/_autosummary/pyaedt.edb.Edb.create_siwave_dc_setup.html#pyaedt.edb.Edb.create_siwave_dc_setup">[docs]</a>    <span class="k">def</span> <span class="nf">create_siwave_dc_setup</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a setup from a template.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a setup from a template.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2713,13 +2708,13 @@ function checkPageExistsAndRedirect(event) {
   
   <div class="footer-item">
     <p class="copyright">
-    &copy; Copyright (c) 2022 ANSYS, Inc. All rights reserved.<br>
+    &copy; Copyright (c) 2023 ANSYS, Inc. All rights reserved.<br>
 </p>
   </div>
   
   <div class="footer-item">
     <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 6.1.3.<br>
 </p>
   </div>
   

@@ -42,14 +42,11 @@
         <link href="../../_static/css/breadcrumbs.css" rel="stylesheet">
     
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/sphinx_highlight.js"></script>
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
-    <link rel="shortcut icon" href="../../_static/ansys-favicon.png"/>
+    <link rel="icon" href="../../_static/ansys-favicon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Circuit: transient analysis and eye plot" href="Circuit_Transient.html" />
@@ -80,9 +77,8 @@
   
   
   
-    <img src="../../_static/pyansys-logo-black-cropped.png" class="logo__image only-light" alt="Logo image">
-    <img src="../../_static/pyansys-logo-black-cropped.png" class="logo__image only-dark" alt="Logo image">
   
+    <p class="title logo__title">PyAEDT</p>
   
 </a>
     
@@ -210,7 +206,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.42 variable.
+            // this version, rather than using sphinx's 0.6.43 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -818,7 +814,7 @@ It pushes down the child subcircuit and pops up to the parent design.</p>
 </section>
 <section id="set-non-graphical-mode">
 <h2>Set non-graphical mode<a class="headerlink" href="#set-non-graphical-mode" title="Permalink to this heading">#</a></h2>
-<p>Set non-graphical mode. <code class="docutils literal notranslate"><span class="pre">&quot;PYAEDT_NON_GRAPHICAL&quot;`</span></code> is needed to generate
+<p>Set non-graphical mode. <code class="docutils literal notranslate"><span class="pre">&quot;PYAEDT_NON_GRAPHICAL&quot;</span></code> is needed to generate
 documentation only.
 You can set <code class="docutils literal notranslate"><span class="pre">non_graphical</span></code> either to <code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a> <span class="o">=</span> <a href="https://docs.python.org/dev/library/os.html#os.getenv" title="os.getenv" class="sphx-glr-backref-module-os sphx-glr-backref-type-py-function"><span class="n">os</span><span class="o">.</span><span class="n">getenv</span></a><span class="p">(</span><span class="s2">&quot;PYAEDT_NON_GRAPHICAL&quot;</span><span class="p">,</span> <span class="s2">&quot;False&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;true&quot;</span><span class="p">,</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="s2">&quot;t&quot;</span><span class="p">)</span>
@@ -840,7 +836,7 @@ You can set <code class="docutils literal notranslate"><span class="pre">non_gra
 <h2>Add subcircuit<a class="headerlink" href="#add-subcircuit" title="Permalink to this heading">#</a></h2>
 <p>Add a new subcircuit to the previously created circuit design, creating a
 child circuit. Push this child circuit down into the child subcircuit.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">subcircuit</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">schematic</span><span class="o">.</span><span class="n">create_subcircuit</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">])</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">subcircuit</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">schematic</span><span class="o">.</span><span class="n">create_subcircuit</span><span class="p">(</span><span class="n">location</span><span class="o">=</span><span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">])</span>
 <a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">subcircuit_name</span></a> <span class="o">=</span> <span class="n">subcircuit</span><span class="o">.</span><span class="n">composed_name</span>
 <span class="n">circuit</span><span class="o">.</span><span class="n">push_down</span><span class="p">(</span><span class="n">subcircuit</span><span class="p">)</span>
 </pre></div>
@@ -854,15 +850,15 @@ child circuit. Push this child circuit down into the child subcircuit.</p>
 <p>Parametrize the subcircuit and add a resistor, inductor, and a capacitor with
 the parameter values in the following code example. Connect them in series
 and then use the <code class="docutils literal notranslate"><span class="pre">pop_up</span></code> # method to get back to the parent design.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">circuit</span><span class="o">.</span><span class="n">variable_manager</span><span class="o">.</span><span class="n">set_variable</span><span class="p">(</span><span class="s2">&quot;R_val&quot;</span><span class="p">,</span> <span class="s2">&quot;35ohm&quot;</span><span class="p">)</span>
-<span class="n">circuit</span><span class="o">.</span><span class="n">variable_manager</span><span class="o">.</span><span class="n">set_variable</span><span class="p">(</span><span class="s2">&quot;L_val&quot;</span><span class="p">,</span> <span class="s2">&quot;1e-7H&quot;</span><span class="p">)</span>
-<span class="n">circuit</span><span class="o">.</span><span class="n">variable_manager</span><span class="o">.</span><span class="n">set_variable</span><span class="p">(</span><span class="s2">&quot;C_val&quot;</span><span class="p">,</span> <span class="s2">&quot;5e-10F&quot;</span><span class="p">)</span>
-<span class="n">p1</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">schematic</span><span class="o">.</span><span class="n">create_interface_port</span><span class="p">(</span><span class="s2">&quot;In&quot;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">circuit</span><span class="o">.</span><span class="n">variable_manager</span><span class="o">.</span><span class="n">set_variable</span><span class="p">(</span><span class="n">variable_name</span><span class="o">=</span><span class="s2">&quot;R_val&quot;</span><span class="p">,</span> <span class="n">expression</span><span class="o">=</span><span class="s2">&quot;35ohm&quot;</span><span class="p">)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">variable_manager</span><span class="o">.</span><span class="n">set_variable</span><span class="p">(</span><span class="n">variable_name</span><span class="o">=</span><span class="s2">&quot;L_val&quot;</span><span class="p">,</span> <span class="n">expression</span><span class="o">=</span><span class="s2">&quot;1e-7H&quot;</span><span class="p">)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">variable_manager</span><span class="o">.</span><span class="n">set_variable</span><span class="p">(</span><span class="n">variable_name</span><span class="o">=</span><span class="s2">&quot;C_val&quot;</span><span class="p">,</span> <span class="n">expression</span><span class="o">=</span><span class="s2">&quot;5e-10F&quot;</span><span class="p">)</span>
+<span class="n">p1</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">schematic</span><span class="o">.</span><span class="n">create_interface_port</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;In&quot;</span><span class="p">)</span>
 <span class="n">r1</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">schematic</span><span class="o">.</span><span class="n">create_resistor</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="s2">&quot;R_val&quot;</span><span class="p">)</span>
 <span class="n">l1</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">schematic</span><span class="o">.</span><span class="n">create_inductor</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="s2">&quot;L_val&quot;</span><span class="p">)</span>
 <span class="n">c1</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">schematic</span><span class="o">.</span><span class="n">create_capacitor</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="s2">&quot;C_val&quot;</span><span class="p">)</span>
-<span class="n">p2</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">schematic</span><span class="o">.</span><span class="n">create_interface_port</span><span class="p">(</span><span class="s2">&quot;Out&quot;</span><span class="p">)</span>
-<span class="n">circuit</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">schematic</span><span class="o">.</span><span class="n">connect_components_in_series</span><span class="p">([</span><span class="n">p1</span><span class="p">,</span> <span class="n">r1</span><span class="p">,</span> <span class="n">l1</span><span class="p">,</span> <span class="n">c1</span><span class="p">,</span> <span class="n">p2</span><span class="p">])</span>
+<span class="n">p2</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">schematic</span><span class="o">.</span><span class="n">create_interface_port</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Out&quot;</span><span class="p">)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">schematic</span><span class="o">.</span><span class="n">connect_components_in_series</span><span class="p">(</span><span class="n">components_to_connect</span><span class="o">=</span><span class="p">[</span><span class="n">p1</span><span class="p">,</span> <span class="n">r1</span><span class="p">,</span> <span class="n">l1</span><span class="p">,</span> <span class="n">c1</span><span class="p">,</span> <span class="n">p2</span><span class="p">])</span>
 <span class="n">circuit</span><span class="o">.</span><span class="n">pop_up</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -875,7 +871,7 @@ and then use the <code class="docutils literal notranslate"><span class="pre">po
 <p>Duplicate the previously created subcircuit and set a new parameter value.
 This works only in graphical mode.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="ow">not</span> <a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a><span class="p">:</span>
-    <span class="n">new_comp</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">schematic</span><span class="o">.</span><span class="n">duplicate</span><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">subcircuit_name</span></a><span class="p">,</span> <span class="p">[</span><span class="mf">0.0512</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+    <span class="n">new_comp</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">schematic</span><span class="o">.</span><span class="n">duplicate</span><span class="p">(</span><span class="n">component</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">subcircuit_name</span></a><span class="p">,</span> <span class="n">location</span><span class="o">=</span><span class="p">[</span><span class="mf">0.0512</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
     <span class="n">new_comp</span><span class="o">.</span><span class="n">parameters</span><span class="p">[</span><span class="s2">&quot;R_val&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;75ohm&quot;</span>
 </pre></div>
 </div>
@@ -889,7 +885,7 @@ This works only in graphical mode.</p>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>True
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  9.335 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  9.287 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-07-circuit-circuit-subcircuit-example-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/17b875cf44c190f4df2c5e435eabe140/Circuit_Subcircuit_Example.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">Circuit_Subcircuit_Example.py</span></code></a></p>
@@ -921,13 +917,13 @@ This works only in graphical mode.</p>
   
   <div class="footer-item">
     <p class="copyright">
-    &copy; Copyright (c) 2022 ANSYS, Inc. All rights reserved.<br>
+    &copy; Copyright (c) 2023 ANSYS, Inc. All rights reserved.<br>
 </p>
   </div>
   
   <div class="footer-item">
     <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 6.1.3.<br>
 </p>
   </div>
   

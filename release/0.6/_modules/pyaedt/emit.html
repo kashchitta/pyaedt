@@ -41,14 +41,11 @@
         <link href="../../_static/css/breadcrumbs.css" rel="stylesheet">
     
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/sphinx_highlight.js"></script>
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
-    <link rel="shortcut icon" href="../../_static/ansys-favicon.png"/>
+    <link rel="icon" href="../../_static/ansys-favicon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -77,9 +74,8 @@
   
   
   
-    <img src="../../_static/pyansys-logo-black-cropped.png" class="logo__image only-light" alt="Logo image">
-    <img src="../../_static/pyansys-logo-black-cropped.png" class="logo__image only-dark" alt="Logo image">
   
+    <p class="title logo__title">PyAEDT</p>
   
 </a>
     
@@ -207,7 +203,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.42 variable.
+            // this version, rather than using sphinx's 0.6.43 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -339,7 +335,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <span class="k">class</span> <span class="nc">Interaction_Domain</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Provides the ``Interaction_Domain`` object.</span>
 
 <span class="sd">    Examples</span>
@@ -361,7 +357,7 @@ function checkPageExistsAndRedirect(event) {
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;An Emit object must be initialized before an Interaction_Domain object is generated.&quot;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">set_receiver</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">radioname</span><span class="p">,</span> <span class="n">bandname</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">frequency</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Set the receiver, with optionality to specify the following:</span>
 <span class="sd">            &gt; radio name</span>
 <span class="sd">            &gt; radio name and a band name</span>
@@ -375,7 +371,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">set_interferers</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">radionames</span><span class="p">,</span> <span class="n">bandnames</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">frequencies</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Set the interferers, with optionality to specify the following:</span>
 <span class="sd">            &gt; radio name</span>
 <span class="sd">            &gt; radio name and a band name</span>
@@ -416,7 +412,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">receiver_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Get the receiver name from the ``Interaction_Domain`` object.</span>
 
 <span class="sd">        Returns</span>
@@ -432,7 +428,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">receiver_band_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Get the receiver band name from the ``Interaction_Domain`` object.</span>
 
 <span class="sd">        Returns</span>
@@ -448,7 +444,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">receiver_channel_frequency</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Get the receiver channel frequency from the ``Interaction_Domain`` object.</span>
 
 <span class="sd">        Returns</span>
@@ -464,7 +460,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">interferer_names</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Get the interferer names from the ``Interaction_Domain`` object.</span>
 
 <span class="sd">        Returns</span>
@@ -480,7 +476,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">interferer_band_names</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Get the interferer band names from the ``Interaction_Domain`` object.</span>
 
 <span class="sd">        Returns</span>
@@ -496,7 +492,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">interferer_channel_frequencies</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Get the interferer channel frequencies from the ``Interaction_Domain`` object.</span>
 
 <span class="sd">        Returns</span>
@@ -513,7 +509,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">instance_count</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Get the instance count from the ``Interaction_Domain`` object.</span>
 
 <span class="sd">        Returns</span>
@@ -529,7 +525,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <span class="k">class</span> <span class="nc">Result</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Provides the ``Result`` object.</span>
 
 <span class="sd">    Parameters</span>
@@ -555,7 +551,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">result_loaded</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Check whether the result is loaded.</span>
 
 <span class="sd">        Returns</span>
@@ -571,7 +567,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">result_mode_error</span><span class="p">():</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Print the function mode error message.</span>
 
 <span class="sd">        Returns</span>
@@ -581,7 +577,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">get_radio_names</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tx_rx</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Get a list of all ``tx&#39;&#39; or ``rx`` radios in the project.</span>
 
 <span class="sd">        Parameters</span>
@@ -607,7 +603,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">get_band_names</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">radio_name</span><span class="p">,</span> <span class="n">tx_rx_mode</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Get a list of all ``tx`` or ``rx`` bands in a given radio.</span>
 
 <span class="sd">        Parameters</span>
@@ -636,7 +632,7 @@ function checkPageExistsAndRedirect(event) {
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">get_active_frequencies</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">radio_name</span><span class="p">,</span> <span class="n">band_name</span><span class="p">,</span> <span class="n">tx_rx_mode</span><span class="p">):</span>
 
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Get a list of active frequencies for a ``tx`` or ``rx`` band in a radio.</span>
 
 <span class="sd">        Parameters</span>
@@ -666,7 +662,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <span class="k">class</span> <span class="nc">Revision</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Provides the ``Revision`` object.</span>
 
 <span class="sd">    Parameters</span>
@@ -707,7 +703,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">domain</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Load the revision and then analyze along the given domain.</span>
 
 <span class="sd">        Parameters</span>
@@ -734,7 +730,7 @@ function checkPageExistsAndRedirect(event) {
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">get_max_simultaneous_frequencies</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Get the number of maximum simultaneous frequencies</span>
 
 <span class="sd">        Returns</span>
@@ -753,7 +749,7 @@ function checkPageExistsAndRedirect(event) {
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">set_max_simultaneous_frequencies</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
 
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Set the number of maximum simultaneous frequencies</span>
 
 <span class="sd">        Examples</span>
@@ -765,7 +761,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <div class="viewcode-block" id="Emit"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.emit.Emit.html#pyaedt.emit.Emit">[docs]</a><span class="k">class</span> <span class="nc">Emit</span><span class="p">(</span><span class="n">FieldAnalysisEmit</span><span class="p">,</span> <span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Provides the Emit application interface.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Provides the Emit application interface.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -871,7 +867,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="k">if</span> <span class="n">projectname</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">projectname</span> <span class="o">=</span> <span class="n">generate_unique_project_name</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__emit_api_enabled</span> <span class="o">=</span> <span class="kc">False</span>
-        <span class="sd">&quot;&quot;&quot;Constructor for the ``FieldAnalysisEmit`` class&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Constructor for the ``FieldAnalysisEmit`` class&quot;&quot;&quot;</span>
         <span class="n">FieldAnalysisEmit</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
             <span class="bp">self</span><span class="p">,</span>
             <span class="s2">&quot;EMIT&quot;</span><span class="p">,</span>
@@ -904,7 +900,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Emit.analyze"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.emit.Emit.analyze.html#pyaedt.emit.Emit.analyze">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">analyze</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">revision_num</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Analyze the active design.</span>
 
 <span class="sd">        Returns</span>
@@ -931,7 +927,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">_load_revision</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Load a specific revision.</span>
 
 <span class="sd">        Parameters</span>
@@ -951,13 +947,13 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Emit.result_type"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.emit.Emit.result_type.html#pyaedt.emit.Emit.result_type">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">result_type</span><span class="p">():</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Get a result type.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
 <span class="sd">        result :class:`result_type`</span>
-<span class="sd">            result type object which can later be assigned a status (emi, sensitivity, desense)</span>
+<span class="sd">            Result type object which can later be assigned a status (emi, sensitivity, desense).</span>
 
 <span class="sd">        Examples</span>
 <span class="sd">        --------</span>
@@ -974,13 +970,13 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Emit.tx_rx_mode"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.emit.Emit.tx_rx_mode.html#pyaedt.emit.Emit.tx_rx_mode">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">tx_rx_mode</span><span class="p">():</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Get a ``tx_rx_mode`` object.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        tx_rx :class:`Emit.tx_rx_mode`</span>
-<span class="sd">            mode status which can later be assigned a status (tx, rx)</span>
+<span class="sd">        :class:`Emit.tx_rx_mode`</span>
+<span class="sd">            Mode status which can later be assigned a status (tx, rx).</span>
 
 <span class="sd">        Examples</span>
 <span class="sd">        --------</span>
@@ -997,7 +993,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Emit.version"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.emit.Emit.version.html#pyaedt.emit.Emit.version">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">version</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">detailed</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Get version information.</span>
 
 <span class="sd">        Parameters</span>
@@ -1008,7 +1004,7 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
 <span class="sd">        ver : str</span>
-<span class="sd">            All of the version information</span>
+<span class="sd">            All of the version information.</span>
 
 <span class="sd">        Examples</span>
 <span class="sd">        --------</span>
@@ -1038,13 +1034,13 @@ function checkPageExistsAndRedirect(event) {
   
   <div class="footer-item">
     <p class="copyright">
-    &copy; Copyright (c) 2022 ANSYS, Inc. All rights reserved.<br>
+    &copy; Copyright (c) 2023 ANSYS, Inc. All rights reserved.<br>
 </p>
   </div>
   
   <div class="footer-item">
     <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 6.1.3.<br>
 </p>
   </div>
   

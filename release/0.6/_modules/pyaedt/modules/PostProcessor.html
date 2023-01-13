@@ -41,14 +41,11 @@
         <link href="../../../_static/css/breadcrumbs.css" rel="stylesheet">
     
     <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-    <script src="../../../_static/jquery.js"></script>
-    <script src="../../../_static/underscore.js"></script>
-    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../_static/doctools.js"></script>
     <script src="../../../_static/sphinx_highlight.js"></script>
     <script src="../../../_static/clipboard.min.js"></script>
     <script src="../../../_static/copybutton.js"></script>
-    <link rel="shortcut icon" href="../../../_static/ansys-favicon.png"/>
+    <link rel="icon" href="../../../_static/ansys-favicon.png"/>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -77,9 +74,8 @@
   
   
   
-    <img src="../../../_static/pyansys-logo-black-cropped.png" class="logo__image only-light" alt="Logo image">
-    <img src="../../../_static/pyansys-logo-black-cropped.png" class="logo__image only-dark" alt="Logo image">
   
+    <p class="title logo__title">PyAEDT</p>
   
 </a>
     
@@ -207,7 +203,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.42 variable.
+            // this version, rather than using sphinx's 0.6.43 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -421,7 +417,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <span class="k">class</span> <span class="nc">Reports</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Provides the names of default solution types.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Provides the names of default solution types.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">post_app</span><span class="p">,</span> <span class="n">design_type</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_post_app</span> <span class="o">=</span> <span class="n">post_app</span>
@@ -430,7 +426,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">standard</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expressions</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">setup_name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a Standard or Default Report object.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a Standard or Default Report object.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -466,7 +462,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">monitor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expressions</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">setup_name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create an Icepak Monitor Report object.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create an Icepak Monitor Report object.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -497,7 +493,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">fields</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expressions</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">setup_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">polyline</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a Field Report object.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a Field Report object.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -530,7 +526,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">cg_fields</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expressions</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">setup_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">polyline</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a CG Field Report object in Q3d and Q2D.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a CG Field Report object in Q3d and Q2D.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -563,7 +559,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">dc_fields</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expressions</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">setup_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">polyline</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a DC Field Report object in Q3d.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a DC Field Report object in Q3d.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -596,7 +592,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">rl_fields</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expressions</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">setup_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">polyline</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create an AC RL Field Report object in Q3d and Q2D.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create an AC RL Field Report object in Q3d and Q2D.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -632,7 +628,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">far_field</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expressions</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">setup_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">sphere_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">source_context</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a Far Field Report object.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a Far Field Report object.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -671,7 +667,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">antenna_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expressions</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">setup_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">sphere_name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create an Antenna Parameters Report object.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create an Antenna Parameters Report object.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -704,8 +700,8 @@ function checkPageExistsAndRedirect(event) {
         <span class="k">return</span>
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
-    <span class="k">def</span> <span class="nf">near_field</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expressions</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">setup_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">near_field_name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a Field Report object.</span>
+    <span class="k">def</span> <span class="nf">near_field</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expressions</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">setup_name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a Field Report object.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -738,7 +734,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">modal_solution</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expressions</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">setup_name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a Standard or Default Report object.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a Standard or Default Report object.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -770,7 +766,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">terminal_solution</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expressions</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">setup_name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a Standard or Default Report object.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a Standard or Default Report object.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -802,7 +798,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">eigenmode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expressions</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">setup_name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a Standard or Default Report object.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a Standard or Default Report object.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -834,7 +830,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">eye_diagram</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expressions</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">setup_name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a Standard or Default Report object.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a Standard or Default Report object.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -868,7 +864,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">spectral</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expressions</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">setup_name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a Spectral Report object.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a Spectral Report object.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -925,7 +921,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <span class="k">class</span> <span class="nc">PostProcessorCommon</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Manages the main AEDT postprocessing functions.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Manages the main AEDT postprocessing functions.</span>
 
 <span class="sd">    This class is inherited in the caller application and is accessible through the post variable( eg. ``hfss.post`` or</span>
 <span class="sd">    ``q3d.post``).</span>
@@ -956,7 +952,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">available_report_types</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Report types.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Report types.</span>
 
 <span class="sd">        References</span>
 <span class="sd">        ----------</span>
@@ -967,7 +963,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">update_report_dynamically</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Get/Set the boolean to automatically update reports on edits.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get/Set the boolean to automatically update reports on edits.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -995,7 +991,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">available_display_types</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">report_category</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve display types for a report categories.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve display types for a report categories.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1019,7 +1015,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">available_quantities_categories</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">report_category</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">display_type</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">solution</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Compute the list of all available report categories.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Compute the list of all available report categories.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1051,22 +1047,22 @@ function checkPageExistsAndRedirect(event) {
     <span class="k">def</span> <span class="nf">available_report_quantities</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">report_category</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">display_type</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">solution</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">quantities_category</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Compute the list of all available report quantities of a given report quantity category.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Compute the list of all available report quantities of a given report quantity category.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        report_category : str, optional</span>
-<span class="sd">            Report Category. Default is `None` which will take first default category.</span>
+<span class="sd">            Report Category. Default is ``None`` which will take first default category.</span>
 <span class="sd">        display_type : str, optional</span>
 <span class="sd">            Report Display Type.</span>
-<span class="sd">            Default is `None` which will take first default type which is in most of the case &quot;Rectangular Plot&quot;.</span>
+<span class="sd">            Default is ``None`` which will take first default type which is in most of the case &quot;Rectangular Plot&quot;.</span>
 <span class="sd">        solution : str, optional</span>
 <span class="sd">            Report Setup. Default is `None` which will take first nominal_adpative solution.</span>
 <span class="sd">        quantities_category : str, optional</span>
-<span class="sd">            The category to which quantities belong. It has to be one of `available_quantities_categories` method.</span>
-<span class="sd">            Default is `None` which will take first default quantity.&quot;.</span>
+<span class="sd">            The category to which quantities belong. It has to be one of ``available_quantities_categories`` method.</span>
+<span class="sd">            Default is ``None`` which will take first default quantity.&quot;.</span>
 <span class="sd">        context : str, optional</span>
-<span class="sd">            Report Category. Default is `&quot;&quot;` which will take first default context.</span>
+<span class="sd">            Report Category. Default is ``&quot;&quot;`` which will take first default context.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1114,7 +1110,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">oreportsetup</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Report setup.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Report setup.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1129,32 +1125,32 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">logger</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Logger.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Logger.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">logger</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">_desktop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Desktop.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Desktop.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">_desktop</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">_odesign</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Design.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Design.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">_odesign</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">_oproject</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Project.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Project.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">_oproject</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">modeler</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Modeler.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Modeler.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">_modeler</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">post_solution_type</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Design solution type.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Design solution type.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1165,7 +1161,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">all_report_names</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;List of all report names.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;List of all report names.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1180,7 +1176,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">copy_report_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">PlotName</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Copy report data as static data.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Copy report data as static data.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1203,12 +1199,12 @@ function checkPageExistsAndRedirect(event) {
         <span class="k">return</span> <span class="kc">True</span>
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
-    <span class="k">def</span> <span class="nf">delete_report</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">PlotName</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Delete all reports or specific report.</span>
+    <span class="k">def</span> <span class="nf">delete_report</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">plot_name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Delete all reports or specific report.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        PlotName : str, optional</span>
+<span class="sd">        plot_name : str, optional</span>
 <span class="sd">            Name of the plot to delete. The default  value is ``None`` and in this case, all reports will be deleted.</span>
 
 <span class="sd">        Returns</span>
@@ -1221,21 +1217,31 @@ function checkPageExistsAndRedirect(event) {
 
 <span class="sd">        &gt;&gt;&gt; oModule.DeleteReports</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="n">PlotName</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">oreportsetup</span><span class="o">.</span><span class="n">DeleteReports</span><span class="p">([</span><span class="n">PlotName</span><span class="p">])</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">oreportsetup</span><span class="o">.</span><span class="n">DeleteAllReports</span><span class="p">()</span>
-        <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">plot_name</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">oreportsetup</span><span class="o">.</span><span class="n">DeleteReports</span><span class="p">([</span><span class="n">plot_name</span><span class="p">])</span>
+                <span class="k">for</span> <span class="n">plot</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">plots</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">plot</span><span class="o">.</span><span class="n">plot_name</span> <span class="o">==</span> <span class="n">plot_name</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">plots</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">plot</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">oreportsetup</span><span class="o">.</span><span class="n">DeleteAllReports</span><span class="p">()</span>
+                <span class="k">if</span> <span class="n">is_ironpython</span><span class="p">:</span>
+                    <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">plots</span><span class="p">[:]</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">plots</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
-    <span class="k">def</span> <span class="nf">rename_report</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">PlotName</span><span class="p">,</span> <span class="n">newname</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Rename a plot.</span>
+    <span class="k">def</span> <span class="nf">rename_report</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">plot_name</span><span class="p">,</span> <span class="n">new_name</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Rename a plot.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        PlotName : str</span>
+<span class="sd">        plot_name : str</span>
 <span class="sd">            Name of the plot.</span>
-<span class="sd">        newname : str</span>
+<span class="sd">        new_name : str</span>
 <span class="sd">            New name of the plot.</span>
 
 <span class="sd">        Returns</span>
@@ -1248,14 +1254,20 @@ function checkPageExistsAndRedirect(event) {
 
 <span class="sd">        &gt;&gt;&gt; oModule.RenameReport</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">oreportsetup</span><span class="o">.</span><span class="n">RenameReport</span><span class="p">(</span><span class="n">PlotName</span><span class="p">,</span> <span class="n">newname</span><span class="p">)</span>
-        <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">oreportsetup</span><span class="o">.</span><span class="n">RenameReport</span><span class="p">(</span><span class="n">plot_name</span><span class="p">,</span> <span class="n">new_name</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">plot</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">plots</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">plot</span><span class="o">.</span><span class="n">plot_name</span> <span class="o">==</span> <span class="n">plot_name</span><span class="p">:</span>
+                    <span class="n">plot</span><span class="o">.</span><span class="n">plot_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">oreportsetup</span><span class="o">.</span><span class="n">GetChildObject</span><span class="p">(</span><span class="n">new_name</span><span class="p">)</span><span class="o">.</span><span class="n">GetPropValue</span><span class="p">(</span><span class="s2">&quot;Name&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">get_report_data</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">expression</span><span class="o">=</span><span class="s2">&quot;dB(S(1,1))&quot;</span><span class="p">,</span> <span class="n">setup_sweep_name</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="s2">&quot;Sweep&quot;</span><span class="p">,</span> <span class="n">families_dict</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">report_input_type</span><span class="o">=</span><span class="kc">None</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Generate report data.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Generate report data.</span>
 <span class="sd">        This method returns the data object and the arrays ``solData`` and</span>
 <span class="sd">        ``FreqVals``.</span>
 
@@ -1347,14 +1359,14 @@ function checkPageExistsAndRedirect(event) {
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">expression</span><span class="o">=</span><span class="s2">&quot;dB(S(1,1))&quot;</span><span class="p">,</span>
         <span class="n">setup_sweep_name</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
-        <span class="n">families_dict</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Freq&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;All&quot;</span><span class="p">]},</span>
+        <span class="n">families_dict</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">primary_sweep_variable</span><span class="o">=</span><span class="s2">&quot;Freq&quot;</span><span class="p">,</span>
         <span class="n">context</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">plotname</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">report_category</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">plot_type</span><span class="o">=</span><span class="s2">&quot;Rectangular Plot&quot;</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a 2D rectangular plot in AEDT.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a 2D rectangular plot in AEDT.</span>
 
 <span class="sd">        .. deprecated:: 0.4.41</span>
 <span class="sd">            Method deprecated. use `create_report` instead.</span>
@@ -1387,6 +1399,9 @@ function checkPageExistsAndRedirect(event) {
 
 <span class="sd">        &gt;&gt;&gt; oModule.CreateReport</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">families_dict</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">families_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Freq&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;All&quot;</span><span class="p">]}</span>
+
         <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
             <span class="s2">&quot;`create_rectangular_plot` is deprecated. Use `create_report` property instead.&quot;</span><span class="p">,</span> <span class="ne">DeprecationWarning</span>
         <span class="p">)</span>
@@ -1425,9 +1440,8 @@ function checkPageExistsAndRedirect(event) {
             <span class="n">modal_data</span> <span class="o">=</span> <span class="n">report_category</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">plotname</span><span class="p">:</span>
             <span class="n">plotname</span> <span class="o">=</span> <span class="n">generate_unique_name</span><span class="p">(</span><span class="s2">&quot;Plot&quot;</span><span class="p">)</span>
-        <span class="n">families_input</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="n">families_input</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">primary_sweep_variable</span> <span class="o">+</span> <span class="s2">&quot;:=&quot;</span><span class="p">)</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">primary_sweep_variable</span> <span class="ow">in</span> <span class="n">families_dict</span><span class="p">:</span>
+        <span class="n">families_input</span> <span class="o">=</span> <span class="p">[</span><span class="n">primary_sweep_variable</span> <span class="o">+</span> <span class="s2">&quot;:=&quot;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">primary_sweep_variable</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">families_dict</span><span class="p">:</span>
             <span class="n">families_input</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="s2">&quot;All&quot;</span><span class="p">])</span>
         <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">families_dict</span><span class="p">[</span><span class="n">primary_sweep_variable</span><span class="p">],</span> <span class="nb">list</span><span class="p">):</span>
             <span class="n">families_input</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">families_dict</span><span class="p">[</span><span class="n">primary_sweep_variable</span><span class="p">])</span>
@@ -1457,7 +1471,7 @@ function checkPageExistsAndRedirect(event) {
     <span class="k">def</span> <span class="nf">get_solution_data_per_variation</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">soltype</span><span class="o">=</span><span class="s2">&quot;Far Fields&quot;</span><span class="p">,</span> <span class="n">setup_sweep_name</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">ctxt</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">sweeps</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">expression</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve solution data for each variation.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve solution data for each variation.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1507,7 +1521,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">steal_focus_oneditor</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Remove the selection of an object that would prevent the image from exporting correctly.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Remove the selection of an object that would prevent the image from exporting correctly.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1528,7 +1542,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">export_report_to_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">,</span> <span class="n">plot_name</span><span class="p">,</span> <span class="n">extension</span><span class="p">,</span> <span class="n">unique_file</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Export the 2D Plot data to a file.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Export the 2D Plot data to a file.</span>
 
 <span class="sd">        This method leaves the data in the plot (as data) as a reference</span>
 <span class="sd">        for the Plot after the loops.</span>
@@ -1553,7 +1567,7 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
 <span class="sd">        str</span>
-<span class="sd">            path of exported file</span>
+<span class="sd">            Path of exported file.</span>
 
 <span class="sd">        References</span>
 <span class="sd">        ----------</span>
@@ -1586,7 +1600,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">export_report_to_csv</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project_dir</span><span class="p">,</span> <span class="n">plot_name</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Export the 2D Plot data to a CSV file.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Export the 2D Plot data to a CSV file.</span>
 
 <span class="sd">        This method leaves the data in the plot (as data) as a reference</span>
 <span class="sd">        for the Plot after the loops.</span>
@@ -1601,7 +1615,7 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
 <span class="sd">        str</span>
-<span class="sd">            path of exported file</span>
+<span class="sd">            Path of exported file.</span>
 
 <span class="sd">        References</span>
 <span class="sd">        ----------</span>
@@ -1613,7 +1627,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">export_report_to_jpg</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project_dir</span><span class="p">,</span> <span class="n">plot_name</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Export the SParameter plot to a JPG file.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Export the SParameter plot to a JPG file.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1813,7 +1827,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">polyline_points</span><span class="o">=</span><span class="mi">1001</span><span class="p">,</span>
         <span class="n">plotname</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a report in AEDT. It can be a 2D plot, 3D plot, polar plots or data tables.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a report in AEDT. It can be a 2D plot, 3D plot, polar plots or data tables.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1946,32 +1960,6 @@ function checkPageExistsAndRedirect(event) {
         <span class="k">if</span> <span class="n">result</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">report</span>
         <span class="k">return</span> <span class="kc">False</span>
-        <span class="c1"># out = self._get_report_inputs(</span>
-        <span class="c1">#     expressions=expressions,</span>
-        <span class="c1">#     setup_sweep_name=setup_sweep_name,</span>
-        <span class="c1">#     domain=domain,</span>
-        <span class="c1">#     variations=variations,</span>
-        <span class="c1">#     primary_sweep_variable=primary_sweep_variable,</span>
-        <span class="c1">#     secondary_sweep_variable=secondary_sweep_variable,</span>
-        <span class="c1">#     report_category=report_category,</span>
-        <span class="c1">#     plot_type=plot_type,</span>
-        <span class="c1">#     context=context,</span>
-        <span class="c1">#     subdesign_id=subdesign_id,</span>
-        <span class="c1">#     polyline_points=polyline_points,</span>
-        <span class="c1">#     plotname=plotname,</span>
-        <span class="c1"># )</span>
-        <span class="c1"># if not out:</span>
-        <span class="c1">#     return False</span>
-        <span class="c1"># self.oreportsetup.CreateReport(</span>
-        <span class="c1">#     out[0],</span>
-        <span class="c1">#     out[1],</span>
-        <span class="c1">#     out[2],</span>
-        <span class="c1">#     out[3],</span>
-        <span class="c1">#     out[4],</span>
-        <span class="c1">#     _convert_dict_to_report_sel(out[5]),</span>
-        <span class="c1">#     out[6],</span>
-        <span class="c1"># )</span>
-        <span class="c1"># return True</span>
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">get_solution_data</span><span class="p">(</span>
@@ -1987,7 +1975,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">polyline_points</span><span class="o">=</span><span class="mi">1001</span><span class="p">,</span>
         <span class="n">math_formula</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Get SolutionData of a report in AEDT. It can be a 2D plot, 3D solution data class.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get SolutionData of a report in AEDT. It can be a 2D plot, 3D solution data class.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2136,7 +2124,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">create_report_from_configuration</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">input_dict</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">solution_name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a new report based on json file or dictionary of properties.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a new report based on json file or dictionary of properties.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2187,7 +2175,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <span class="k">class</span> <span class="nc">PostProcessor</span><span class="p">(</span><span class="n">PostProcessorCommon</span><span class="p">,</span> <span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Manages the main AEDT postprocessing functions.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Manages the main AEDT postprocessing functions.</span>
 
 <span class="sd">    The inherited ``AEDTConfig`` class contains all ``_desktop``</span>
 <span class="sd">    hierarchical calls needed for the class initialization data</span>
@@ -2221,7 +2209,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">_primitives</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Primitives.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Primitives.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2233,7 +2221,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">model_units</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Model units.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Model units.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2244,7 +2232,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">post_osolution</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Solution.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Solution.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2255,7 +2243,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">ofieldsreporter</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Fields reporter.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Fields reporter.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2271,7 +2259,6 @@ function checkPageExistsAndRedirect(event) {
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">_get_base_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">setup</span><span class="p">):</span>
         <span class="n">setups_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">design_properties</span><span class="p">[</span><span class="s2">&quot;FieldsReporter&quot;</span><span class="p">][</span><span class="s2">&quot;FieldsPlotManagerID&quot;</span><span class="p">]</span>
-        <span class="n">base_name</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
         <span class="k">if</span> <span class="s2">&quot;SimDataExtractors&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">design_properties</span><span class="p">[</span><span class="s2">&quot;SolutionManager&quot;</span><span class="p">]:</span>
             <span class="n">sim_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">design_properties</span><span class="p">[</span><span class="s2">&quot;SolutionManager&quot;</span><span class="p">][</span><span class="s2">&quot;SimDataExtractors&quot;</span><span class="p">]</span>
         <span class="k">else</span><span class="p">:</span>
@@ -2300,7 +2287,6 @@ function checkPageExistsAndRedirect(event) {
                     <span class="k">if</span> <span class="n">sol</span><span class="p">[</span><span class="s2">&quot;ID&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">setups_data</span><span class="p">[</span><span class="n">setup</span><span class="p">][</span><span class="s2">&quot;SolutionId&quot;</span><span class="p">]:</span>
                         <span class="n">base_name</span> <span class="o">+=</span> <span class="s2">&quot; : &quot;</span> <span class="o">+</span> <span class="n">sol</span><span class="p">[</span><span class="s2">&quot;Name&quot;</span><span class="p">]</span>
                         <span class="k">return</span> <span class="n">base_name</span>
-
         <span class="k">return</span> <span class="s2">&quot;&quot;</span>
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
@@ -2422,7 +2408,7 @@ function checkPageExistsAndRedirect(event) {
     <span class="c1"># TODO: define a fields calculator module and make robust !!</span>
 <div class="viewcode-block" id="PostProcessor.volumetric_loss"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.AdvancedPostProcessing.PostProcessor.volumetric_loss.html#pyaedt.modules.AdvancedPostProcessing.PostProcessor.volumetric_loss">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">volumetric_loss</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">object_name</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Use the field calculator to create a variable for volumetric losses.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Use the field calculator to create a variable for volumetric losses.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2452,7 +2438,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="PostProcessor.change_field_property"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.AdvancedPostProcessing.PostProcessor.change_field_property.html#pyaedt.modules.AdvancedPostProcessing.PostProcessor.change_field_property">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">change_field_property</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">plotname</span><span class="p">,</span> <span class="n">propertyname</span><span class="p">,</span> <span class="n">propertyval</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Modify a field plot property.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Modify a field plot property.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2495,7 +2481,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">intrinsics</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">phase</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Use the field calculator to Compute Scalar of a Field.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Use the field calculator to Compute Scalar of a Field.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2594,7 +2580,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">intrinsics</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">phase</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Use the field calculator to create a field file on a grid based on a solution and variation.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Use the field calculator to create a field file on a grid based on a solution and variation.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2741,7 +2727,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">sample_points_lists</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">export_with_sample_points</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Use the field calculator to create a field file based on a solution and variation.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Use the field calculator to create a field file based on a solution and variation.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2868,7 +2854,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="PostProcessor.export_field_plot"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.AdvancedPostProcessing.PostProcessor.export_field_plot.html#pyaedt.modules.AdvancedPostProcessing.PostProcessor.export_field_plot">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">export_field_plot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">plotname</span><span class="p">,</span> <span class="n">filepath</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">file_format</span><span class="o">=</span><span class="s2">&quot;aedtplt&quot;</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Export a field plot.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Export a field plot.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2901,7 +2887,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="PostProcessor.change_field_plot_scale"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.AdvancedPostProcessing.PostProcessor.change_field_plot_scale.html#pyaedt.modules.AdvancedPostProcessing.PostProcessor.change_field_plot_scale">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">change_field_plot_scale</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">plot_name</span><span class="p">,</span> <span class="n">minimum_value</span><span class="p">,</span> <span class="n">maximum_value</span><span class="p">,</span> <span class="n">is_log</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">is_db</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Change Field Plot Scale.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Change Field Plot Scale.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2992,7 +2978,11 @@ function checkPageExistsAndRedirect(event) {
             <span class="p">)</span>
         <span class="k">elif</span> <span class="n">listtype</span> <span class="o">==</span> <span class="s2">&quot;ObjList&quot;</span><span class="p">:</span>
             <span class="n">plot</span> <span class="o">=</span> <span class="n">FieldPlot</span><span class="p">(</span>
-                <span class="bp">self</span><span class="p">,</span> <span class="n">objlist</span><span class="o">=</span><span class="n">objlist</span><span class="p">,</span> <span class="n">solutionName</span><span class="o">=</span><span class="n">setup_name</span><span class="p">,</span> <span class="n">quantityName</span><span class="o">=</span><span class="n">quantityName</span><span class="p">,</span> <span class="n">intrinsincList</span><span class="o">=</span><span class="n">intrinsincList</span>
+                <span class="bp">self</span><span class="p">,</span>
+                <span class="n">objlist</span><span class="o">=</span><span class="n">objlist</span><span class="p">,</span>
+                <span class="n">solutionName</span><span class="o">=</span><span class="n">setup_name</span><span class="p">,</span>
+                <span class="n">quantityName</span><span class="o">=</span><span class="n">quantityName</span><span class="p">,</span>
+                <span class="n">intrinsincList</span><span class="o">=</span><span class="n">intrinsincList</span><span class="p">,</span>
             <span class="p">)</span>
         <span class="k">elif</span> <span class="n">listtype</span> <span class="o">==</span> <span class="s2">&quot;Line&quot;</span><span class="p">:</span>
             <span class="n">plot</span> <span class="o">=</span> <span class="n">FieldPlot</span><span class="p">(</span>
@@ -3015,8 +3005,8 @@ function checkPageExistsAndRedirect(event) {
             <span class="k">return</span> <span class="kc">False</span>
 
 <div class="viewcode-block" id="PostProcessor.create_fieldplot_line"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.AdvancedPostProcessing.PostProcessor.create_fieldplot_line.html#pyaedt.modules.AdvancedPostProcessing.PostProcessor.create_fieldplot_line">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
-    <span class="k">def</span> <span class="nf">create_fieldplot_line</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">objlist</span><span class="p">,</span> <span class="n">quantityName</span><span class="p">,</span> <span class="n">setup_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">intrinsincDict</span><span class="o">=</span><span class="p">{},</span> <span class="n">plot_name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a field plot of line.</span>
+    <span class="k">def</span> <span class="nf">create_fieldplot_line</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">objlist</span><span class="p">,</span> <span class="n">quantityName</span><span class="p">,</span> <span class="n">setup_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">intrinsincDict</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">plot_name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a field plot of line.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -3043,14 +3033,16 @@ function checkPageExistsAndRedirect(event) {
 
 <span class="sd">        &gt;&gt;&gt; oModule.CreateFieldPlot</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">intrinsincDict</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">intrinsincDict</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="k">if</span> <span class="n">plot_name</span> <span class="ow">and</span> <span class="n">plot_name</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">field_plots</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Plot </span><span class="si">{}</span><span class="s2"> exists. returning the object.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">plot_name</span><span class="p">))</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">field_plots</span><span class="p">[</span><span class="n">plot_name</span><span class="p">]</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_fieldplot</span><span class="p">(</span><span class="n">objlist</span><span class="p">,</span> <span class="n">quantityName</span><span class="p">,</span> <span class="n">setup_name</span><span class="p">,</span> <span class="n">intrinsincDict</span><span class="p">,</span> <span class="s2">&quot;Line&quot;</span><span class="p">,</span> <span class="n">plot_name</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="PostProcessor.create_fieldplot_surface"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.AdvancedPostProcessing.PostProcessor.create_fieldplot_surface.html#pyaedt.modules.AdvancedPostProcessing.PostProcessor.create_fieldplot_surface">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
-    <span class="k">def</span> <span class="nf">create_fieldplot_surface</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">objlist</span><span class="p">,</span> <span class="n">quantityName</span><span class="p">,</span> <span class="n">setup_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">intrinsincDict</span><span class="o">=</span><span class="p">{},</span> <span class="n">plot_name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a field plot of surfaces.</span>
+    <span class="k">def</span> <span class="nf">create_fieldplot_surface</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">objlist</span><span class="p">,</span> <span class="n">quantityName</span><span class="p">,</span> <span class="n">setup_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">intrinsincDict</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">plot_name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a field plot of surfaces.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -3077,6 +3069,8 @@ function checkPageExistsAndRedirect(event) {
 
 <span class="sd">        &gt;&gt;&gt; oModule.CreateFieldPlot</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">intrinsincDict</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">intrinsincDict</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="k">if</span> <span class="n">plot_name</span> <span class="ow">and</span> <span class="n">plot_name</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">field_plots</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Plot </span><span class="si">{}</span><span class="s2"> exists. returning the object.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">plot_name</span><span class="p">))</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">field_plots</span><span class="p">[</span><span class="n">plot_name</span><span class="p">]</span>
@@ -3091,8 +3085,8 @@ function checkPageExistsAndRedirect(event) {
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_fieldplot</span><span class="p">(</span><span class="n">new_obj_list</span><span class="p">,</span> <span class="n">quantityName</span><span class="p">,</span> <span class="n">setup_name</span><span class="p">,</span> <span class="n">intrinsincDict</span><span class="p">,</span> <span class="s2">&quot;FacesList&quot;</span><span class="p">,</span> <span class="n">plot_name</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="PostProcessor.create_fieldplot_cutplane"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.AdvancedPostProcessing.PostProcessor.create_fieldplot_cutplane.html#pyaedt.modules.AdvancedPostProcessing.PostProcessor.create_fieldplot_cutplane">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
-    <span class="k">def</span> <span class="nf">create_fieldplot_cutplane</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">objlist</span><span class="p">,</span> <span class="n">quantityName</span><span class="p">,</span> <span class="n">setup_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">intrinsincDict</span><span class="o">=</span><span class="p">{},</span> <span class="n">plot_name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a field plot of cut planes.</span>
+    <span class="k">def</span> <span class="nf">create_fieldplot_cutplane</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">objlist</span><span class="p">,</span> <span class="n">quantityName</span><span class="p">,</span> <span class="n">setup_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">intrinsincDict</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">plot_name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a field plot of cut planes.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -3120,14 +3114,16 @@ function checkPageExistsAndRedirect(event) {
 
 <span class="sd">        &gt;&gt;&gt; oModule.CreateFieldPlot</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">intrinsincDict</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">intrinsincDict</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="k">if</span> <span class="n">plot_name</span> <span class="ow">and</span> <span class="n">plot_name</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">field_plots</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Plot </span><span class="si">{}</span><span class="s2"> exists. returning the object.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">plot_name</span><span class="p">))</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">field_plots</span><span class="p">[</span><span class="n">plot_name</span><span class="p">]</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_fieldplot</span><span class="p">(</span><span class="n">objlist</span><span class="p">,</span> <span class="n">quantityName</span><span class="p">,</span> <span class="n">setup_name</span><span class="p">,</span> <span class="n">intrinsincDict</span><span class="p">,</span> <span class="s2">&quot;CutPlane&quot;</span><span class="p">,</span> <span class="n">plot_name</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="PostProcessor.create_fieldplot_volume"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.AdvancedPostProcessing.PostProcessor.create_fieldplot_volume.html#pyaedt.modules.AdvancedPostProcessing.PostProcessor.create_fieldplot_volume">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
-    <span class="k">def</span> <span class="nf">create_fieldplot_volume</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">objlist</span><span class="p">,</span> <span class="n">quantityName</span><span class="p">,</span> <span class="n">setup_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">intrinsincDict</span><span class="o">=</span><span class="p">{},</span> <span class="n">plot_name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a field plot of volumes.</span>
+    <span class="k">def</span> <span class="nf">create_fieldplot_volume</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">objlist</span><span class="p">,</span> <span class="n">quantityName</span><span class="p">,</span> <span class="n">setup_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">intrinsincDict</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">plot_name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a field plot of volumes.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -3148,13 +3144,15 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
 <span class="sd">        :class:``pyaedt.modules.solutions.FieldPlot``</span>
-<span class="sd">            Plot object</span>
+<span class="sd">            Plot object.</span>
 
 <span class="sd">        References</span>
 <span class="sd">        ----------</span>
 
 <span class="sd">        &gt;&gt;&gt; oModule.CreateFieldPlot</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">intrinsincDict</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">intrinsincDict</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="k">if</span> <span class="n">plot_name</span> <span class="ow">and</span> <span class="n">plot_name</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">field_plots</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Plot </span><span class="si">{}</span><span class="s2"> exists. returning the object.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">plot_name</span><span class="p">))</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">field_plots</span><span class="p">[</span><span class="n">plot_name</span><span class="p">]</span>
@@ -3162,9 +3160,16 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="PostProcessor.export_field_jpg"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.AdvancedPostProcessing.PostProcessor.export_field_jpg.html#pyaedt.modules.AdvancedPostProcessing.PostProcessor.export_field_jpg">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">export_field_jpg</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span> <span class="n">fileName</span><span class="p">,</span> <span class="n">plotName</span><span class="p">,</span> <span class="n">foldername</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="s2">&quot;isometric&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">1920</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">1080</span><span class="p">,</span> <span class="n">display_wireframe</span><span class="o">=</span><span class="kc">True</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">fileName</span><span class="p">,</span>
+        <span class="n">plotName</span><span class="p">,</span>
+        <span class="n">foldername</span><span class="p">,</span>
+        <span class="n">orientation</span><span class="o">=</span><span class="s2">&quot;isometric&quot;</span><span class="p">,</span>
+        <span class="n">width</span><span class="o">=</span><span class="mi">1920</span><span class="p">,</span>
+        <span class="n">height</span><span class="o">=</span><span class="mi">1080</span><span class="p">,</span>
+        <span class="n">display_wireframe</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Export a field plot and coordinate system to a JPG file.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Export a field plot and coordinate system to a JPG file.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -3180,6 +3185,9 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">            Plot Width.</span>
 <span class="sd">        height : int</span>
 <span class="sd">            Plot Height.</span>
+<span class="sd">        display_wireframe : bool</span>
+<span class="sd">            Display wireframe.</span>
+
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
 <span class="sd">        bool</span>
@@ -3215,9 +3223,6 @@ function checkPageExistsAndRedirect(event) {
                 <span class="bp">self</span><span class="o">.</span><span class="n">export_model_picture</span><span class="p">(</span>
                     <span class="n">full_name</span><span class="o">=</span><span class="n">fileName</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="n">height</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="n">orientation</span><span class="p">,</span> <span class="n">field_selections</span><span class="o">=</span><span class="n">plotName</span>
                 <span class="p">)</span>
-                <span class="c1"># self.ofieldsreporter.ExportPlotImageWithViewToFile(</span>
-                <span class="c1">#     fileName, foldername, plotName, width, height, orientation</span>
-                <span class="c1"># )</span>
 
             <span class="k">for</span> <span class="n">solid</span> <span class="ow">in</span> <span class="n">wireframes</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_primitives</span><span class="p">[</span><span class="n">solid</span><span class="p">]</span><span class="o">.</span><span class="n">display_wireframe</span> <span class="o">=</span> <span class="kc">False</span>
@@ -3225,12 +3230,11 @@ function checkPageExistsAndRedirect(event) {
             <span class="bp">self</span><span class="o">.</span><span class="n">ofieldsreporter</span><span class="o">.</span><span class="n">ExportPlotImageWithViewToFile</span><span class="p">(</span>
                 <span class="n">fileName</span><span class="p">,</span> <span class="n">foldername</span><span class="p">,</span> <span class="n">plotName</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">orientation</span>
             <span class="p">)</span>
-        <span class="c1"># self.oeditor.ExportImage(fileName, 1920, 1080)</span>
         <span class="k">return</span> <span class="kc">True</span></div>
 
 <div class="viewcode-block" id="PostProcessor.export_field_image_with_view"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.AdvancedPostProcessing.PostProcessor.export_field_image_with_view.html#pyaedt.modules.AdvancedPostProcessing.PostProcessor.export_field_image_with_view">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">export_field_image_with_view</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">plotName</span><span class="p">,</span> <span class="n">foldername</span><span class="p">,</span> <span class="n">exportFilePath</span><span class="p">,</span> <span class="n">view</span><span class="o">=</span><span class="s2">&quot;isometric&quot;</span><span class="p">,</span> <span class="n">wireframe</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Export a field plot image with a view.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Export a field plot image with a view.</span>
 
 <span class="sd">        .. deprecated:: 0.5.0</span>
 <span class="sd">           Use :func:`export_field_jpg` method instead.</span>
@@ -3243,6 +3247,8 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        ----------</span>
 <span class="sd">        plotName : str</span>
 <span class="sd">            Name of the plot.</span>
+<span class="sd">        foldername : str</span>
+<span class="sd">            Path to folder.</span>
 <span class="sd">        exportFilePath :</span>
 <span class="sd">            Path for exporting the image file.</span>
 <span class="sd">        view : str, optional</span>
@@ -3272,7 +3278,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="PostProcessor.delete_field_plot"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.AdvancedPostProcessing.PostProcessor.delete_field_plot.html#pyaedt.modules.AdvancedPostProcessing.PostProcessor.delete_field_plot">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">delete_field_plot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Delete a field plot.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Delete a field plot.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -3307,7 +3313,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">width</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
         <span class="n">height</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Export a snapshot of the model to a JPG file.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Export a snapshot of the model to a JPG file.</span>
 
 <span class="sd">        .. note::</span>
 <span class="sd">           This method works only when AEDT is running in the graphical mode.</span>
@@ -3401,7 +3407,7 @@ function checkPageExistsAndRedirect(event) {
     <span class="k">def</span> <span class="nf">get_far_field_data</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">expression</span><span class="o">=</span><span class="s2">&quot;GainTotal&quot;</span><span class="p">,</span> <span class="n">setup_sweep_name</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="s2">&quot;Infinite Sphere1&quot;</span><span class="p">,</span> <span class="n">families_dict</span><span class="o">=</span><span class="kc">None</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Generate far field data using ``GetSolutionDataPerVariation``.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Generate far field data using ``GetSolutionDataPerVariation``.</span>
 
 <span class="sd">        This method returns the data ``solData``, ``ThetaVals``,</span>
 <span class="sd">        ``PhiVals``, ``ScanPhiVals``, ``ScanThetaVals``, and</span>
@@ -3449,7 +3455,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="PostProcessor.export_model_obj"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.AdvancedPostProcessing.PostProcessor.export_model_obj.html#pyaedt.modules.AdvancedPostProcessing.PostProcessor.export_model_obj">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">export_model_obj</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj_list</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">export_path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">export_as_single_objects</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">air_objects</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Export the model.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Export the model.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -3508,14 +3514,14 @@ function checkPageExistsAndRedirect(event) {
             <span class="k">return</span> <span class="p">[[</span><span class="n">fname</span><span class="p">,</span> <span class="s2">&quot;grey&quot;</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">]]</span></div>
 
 <div class="viewcode-block" id="PostProcessor.export_mesh_obj"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.AdvancedPostProcessing.PostProcessor.export_mesh_obj.html#pyaedt.modules.AdvancedPostProcessing.PostProcessor.export_mesh_obj">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
-    <span class="k">def</span> <span class="nf">export_mesh_obj</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">setup_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">intrinsic_dict</span><span class="o">=</span><span class="p">{}):</span>
-        <span class="sd">&quot;&quot;&quot;Export the mesh.</span>
+    <span class="k">def</span> <span class="nf">export_mesh_obj</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">setup_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">intrinsic_dict</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Export the mesh.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        setup_name : str, optional</span>
 <span class="sd">            Name of the setup. The default is ``None``.</span>
-<span class="sd">        intrinsic_dict : dict, optipnal.</span>
+<span class="sd">        intrinsic_dict : dict, optional.</span>
 <span class="sd">            Intrinsic dictionary that is needed for the export.</span>
 <span class="sd">            The default is ``{}``.</span>
 
@@ -3523,6 +3529,8 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        -------</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">intrinsic_dict</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">intrinsic_dict</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="n">project_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">working_directory</span>
 
         <span class="k">if</span> <span class="ow">not</span> <span class="n">setup_name</span><span class="p">:</span>
@@ -3545,7 +3553,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="PostProcessor.power_budget"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.AdvancedPostProcessing.PostProcessor.power_budget.html#pyaedt.modules.AdvancedPostProcessing.PostProcessor.power_budget">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">power_budget</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="s2">&quot;W&quot;</span><span class="p">,</span> <span class="n">temperature</span><span class="o">=</span><span class="mi">22</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Power budget calculation.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Power budget calculation.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -3831,7 +3839,7 @@ function checkPageExistsAndRedirect(event) {
 
 
 <span class="k">class</span> <span class="nc">CircuitPostProcessor</span><span class="p">(</span><span class="n">PostProcessorCommon</span><span class="p">,</span> <span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Manages the main AEDT Nexxim postprocessing functions.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Manages the main AEDT Nexxim postprocessing functions.</span>
 
 
 <span class="sd">    .. note::</span>
@@ -3859,7 +3867,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">plot_final_response</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
         <span class="n">plotname</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create an AMI initial response plot.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create an AMI initial response plot.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -3958,19 +3966,16 @@ function checkPageExistsAndRedirect(event) {
     <span class="k">def</span> <span class="nf">create_ami_statistical_eye_plot</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">setupname</span><span class="p">,</span> <span class="n">ami_name</span><span class="p">,</span> <span class="n">variation_list_w_value</span><span class="p">,</span> <span class="n">ami_plot_type</span><span class="o">=</span><span class="s2">&quot;InitialEye&quot;</span><span class="p">,</span> <span class="n">plotname</span><span class="o">=</span><span class="kc">None</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create an AMI statistical eye plot.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create an AMI statistical eye plot.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        setupname : str</span>
 <span class="sd">            Name of the setup.</span>
-<span class="sd">        probe_id : str</span>
+<span class="sd">        ami_name : str</span>
 <span class="sd">            AMI probe name to use.</span>
 <span class="sd">        variation_list_w_value : list</span>
-<span class="sd">            List of variations with relative values.</span>
-<span class="sd">        plot_type : str, optional</span>
-<span class="sd">            String containing the report type. Default is ``&quot;Rectangular Plot&quot;``. It can be ``&quot;Data Table&quot;``,</span>
-<span class="sd">            ``&quot;Rectangular Stacked Plot&quot;``, or any other valid AEDT report types.</span>
+<span class="sd">            Variations with relative values.</span>
 <span class="sd">        ami_plot_type : str, optional</span>
 <span class="sd">            String containing the report AMI type. Default is ``&quot;InitialEye&quot;``. It can be ``&quot;EyeAfterSource&quot;``,</span>
 <span class="sd">            ``&quot;EyeAfterChannel&quot;`` or ``&quot;EyeAfterProbe&quot;``.</span>
@@ -4064,10 +4069,8 @@ function checkPageExistsAndRedirect(event) {
         <span class="p">)</span>
         <span class="k">return</span> <span class="n">plotname</span>
 
-    <span class="k">def</span> <span class="nf">create_statistical_eye_plot</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span> <span class="n">setupname</span><span class="p">,</span> <span class="n">probe_names</span><span class="p">,</span> <span class="n">variation_list_w_value</span><span class="p">,</span> <span class="n">ami_plot_type</span><span class="o">=</span><span class="s2">&quot;InitialEye&quot;</span><span class="p">,</span> <span class="n">plotname</span><span class="o">=</span><span class="kc">None</span>
-    <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a statistical QuickEye, VerifEye, and/or Statistical Eye plot.</span>
+    <span class="k">def</span> <span class="nf">create_statistical_eye_plot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">setupname</span><span class="p">,</span> <span class="n">probe_names</span><span class="p">,</span> <span class="n">variation_list_w_value</span><span class="p">,</span> <span class="n">plotname</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a statistical QuickEye, VerifEye, and/or Statistical Eye plot.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -4168,7 +4171,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">clock_tics</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">pandas_enabled</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Sampling a waveform at clock times plus half unit interval.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sampling a waveform at clock times plus half unit interval.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -4256,7 +4259,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">plot_type</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">clock_tics</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Sampling a waveform at clock times plus half unit interval.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sampling a waveform at clock times plus half unit interval.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -4288,7 +4291,7 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        Examples</span>
 <span class="sd">        --------</span>
 <span class="sd">        &gt;&gt;&gt; aedtapp = Circuit()</span>
-<span class="sd">        &gt;&gt;&gt; aedtapp.post.sample_ami_waveform(setup_name, probe_name, source_name, aedtapp.available_variations.nominal)</span>
+<span class="sd">        &gt;&gt;&gt; aedtapp.post.sample_ami_waveform(setupname, probe_name, source_name, aedtapp.available_variations.nominal)</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">initial_solution_type</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">post_solution_type</span>
@@ -4375,13 +4378,13 @@ function checkPageExistsAndRedirect(event) {
   
   <div class="footer-item">
     <p class="copyright">
-    &copy; Copyright (c) 2022 ANSYS, Inc. All rights reserved.<br>
+    &copy; Copyright (c) 2023 ANSYS, Inc. All rights reserved.<br>
 </p>
   </div>
   
   <div class="footer-item">
     <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 6.1.3.<br>
 </p>
   </div>
   

@@ -57,7 +57,7 @@ Perform required imports.
 
  .. code-block:: none
 
-    D:\Temp\pyaedt_prj_8JJ\edb/Galileo.aedb
+    D:\Temp\pyaedt_prj_2O7\edb/Galileo.aedb
 
 
 
@@ -227,7 +227,7 @@ connected to a ground through an inductor.
 
  .. code-block:: none
 
-    [{'V1P5_S5', 'BST_V1P5_S5'}, {'V3P3_S5', 'BST_V3P3_S5'}, {'V1P0_S0', 'BST_V1P0_S0'}]
+    [{'V1P5_S5', 'BST_V1P5_S5'}, {'BST_V3P3_S5', 'V3P3_S5'}, {'BST_V1P0_S0', 'V1P0_S0'}]
 
 
 
@@ -257,6 +257,10 @@ Get the power tree based on a specific net.
 
  .. code-block:: none
 
+    ['C4A2', '1', 'BST_V1P0_S0', 'Capacitor', '602433-057', '1']
+    ['L4B1', '1', 'BST_V1P0_S0', 'Inductor', 'A32422-019', '1']
+    ['U3A1', '36', 'BST_V1P0_S0', 'IC', 'G43225-001', '36-37']
+    ['U3A1', '37', 'BST_V1P0_S0', 'IC', 'G43225-001', '36-37']
     ['U2A5', 'Y14', 'V1P0_S0', 'IC', 'IPD031-201', 'Y14-AB14-AD14-V14-Y20-Y18-Y16-AB20-AB18-T18-V20-V18-V16']
     ['U2A5', 'AB14', 'V1P0_S0', 'IC', 'IPD031-201', 'Y14-AB14-AD14-V14-Y20-Y18-Y16-AB20-AB18-T18-V20-V18-V16']
     ['U2A5', 'AD14', 'V1P0_S0', 'IC', 'IPD031-201', 'Y14-AB14-AD14-V14-Y20-Y18-Y16-AB20-AB18-T18-V20-V18-V16']
@@ -289,10 +293,6 @@ Get the power tree based on a specific net.
     ['L4B1', '2', 'V1P0_S0', 'Inductor', 'A32422-019', '2']
     ['C2B12', '1', 'V1P0_S0', 'Capacitor', 'E16347-001', '1']
     ['C3B17', '1', 'V1P0_S0', 'Capacitor', 'E16347-001', '1']
-    ['C4A2', '1', 'BST_V1P0_S0', 'Capacitor', '602433-057', '1']
-    ['L4B1', '1', 'BST_V1P0_S0', 'Inductor', 'A32422-019', '1']
-    ['U3A1', '36', 'BST_V1P0_S0', 'IC', 'G43225-001', '36-37']
-    ['U3A1', '37', 'BST_V1P0_S0', 'IC', 'G43225-001', '36-37']
 
 
 
@@ -457,7 +457,7 @@ properties with assignment and create materials and assign them to layers.
  .. code-block:: none
 
 
-    <Ansys.Ansoft.Edb.Definition.MaterialDef object at 0x000001E0D1B0D6C0>
+    <Ansys.Ansoft.Edb.Definition.MaterialDef object at 0x000001E346B30400>
 
 
 
@@ -542,7 +542,7 @@ Export all DC Reports quantities.
 
  .. code-block:: none
 
-    ['"C:\\Program Files\\AnsysEM\\v222\\Win64\\siwave.exe"', '-embedding', '-RunScriptAndExit', '"D:\\Temp\\pyaedt_prj_8JJ\\edb\\export_results.py"']
+    ['"C:\\Program Files\\AnsysEM\\v222\\Win64\\siwave.exe"', '-embedding', '-RunScriptAndExit', '"D:\\Temp\\pyaedt_prj_2O7\\edb\\export_results.py"']
 
 
 
@@ -602,7 +602,7 @@ Open Siwave and generate a report. This works on Window only.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  59.254 seconds)
+   **Total running time of the script:** ( 0 minutes  52.604 seconds)
 
 
 .. _sphx_glr_download_examples_00-EDB_01_edb_example.py:

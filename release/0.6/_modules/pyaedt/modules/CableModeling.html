@@ -41,11 +41,14 @@
         <link href="../../../_static/css/breadcrumbs.css" rel="stylesheet">
     
     <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../_static/doctools.js"></script>
     <script src="../../../_static/sphinx_highlight.js"></script>
     <script src="../../../_static/clipboard.min.js"></script>
     <script src="../../../_static/copybutton.js"></script>
-    <link rel="icon" href="../../../_static/ansys-favicon.png"/>
+    <link rel="shortcut icon" href="../../../_static/ansys-favicon.png"/>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -74,8 +77,9 @@
   
   
   
+    <img src="../../../_static/pyansys-logo-black-cropped.png" class="logo__image only-light" alt="Logo image">
+    <img src="../../../_static/pyansys-logo-black-cropped.png" class="logo__image only-dark" alt="Logo image">
   
-    <p class="title logo__title">PyAEDT</p>
   
 </a>
     
@@ -203,7 +207,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.43 variable.
+            // this version, rather than using sphinx's 0.6.44 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -1604,8 +1608,23 @@ function checkPageExistsAndRedirect(event) {
 
                 <span class="k">if</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">json_dict</span><span class="p">[</span><span class="s2">&quot;CableHarness_prop&quot;</span><span class="p">][</span><span class="s2">&quot;CableTerminationsToInclude&quot;</span><span class="p">]]:</span>
                     <span class="n">cable_terminations_to_include</span> <span class="o">=</span> <span class="n">json_dict</span><span class="p">[</span><span class="s2">&quot;CableHarness_prop&quot;</span><span class="p">][</span><span class="s2">&quot;CableTerminationsToInclude&quot;</span><span class="p">]</span>
-                    <span class="c1"># check if cable to include in harness exists in current project</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">args</span> <span class="o">=</span> <span class="p">[]</span>
+                    <span class="n">terminations</span> <span class="o">=</span> <span class="p">[]</span>
+                    <span class="n">input_terminations</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;NAME:InputTerminations&quot;</span><span class="p">]</span>
+                    <span class="n">output_terminations</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;NAME:OutputTerminations&quot;</span><span class="p">]</span>
+                    <span class="n">assignment_type</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Imped:=&quot;</span><span class="p">,</span> <span class="s2">&quot;50ohm&quot;</span><span class="p">]</span>
+                    <span class="c1"># Default values for input and output terminations set to [&quot;Imped:=&quot;, &quot;50ohm&quot;]</span>
+                    <span class="k">for</span> <span class="n">cable</span> <span class="ow">in</span> <span class="p">[</span>
+                        <span class="n">x</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cable_harness_bundle</span><span class="p">)</span>
+                        <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">cables_in_bundle_list_dict</span>
+                        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">cable_harness_bundle</span> <span class="ow">in</span> <span class="n">x</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+                    <span class="p">][</span><span class="mi">0</span><span class="p">]:</span>
+                        <span class="n">input_terminations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2">:=&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">cable</span><span class="p">))</span>
+                        <span class="n">input_terminations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">assignment_type</span><span class="p">)</span>
+                        <span class="n">output_terminations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2">:=&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">cable</span><span class="p">))</span>
+                        <span class="n">output_terminations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">assignment_type</span><span class="p">)</span>
+                    <span class="n">terminations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">input_terminations</span><span class="p">)</span>
+                    <span class="n">terminations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">output_terminations</span><span class="p">)</span>
                     <span class="k">for</span> <span class="n">cable_termination</span> <span class="ow">in</span> <span class="n">cable_terminations_to_include</span><span class="p">:</span>
                         <span class="k">if</span> <span class="p">(</span>
                             <span class="n">cable_termination</span><span class="p">[</span><span class="s2">&quot;CableName&quot;</span><span class="p">]</span>
@@ -1629,13 +1648,19 @@ function checkPageExistsAndRedirect(event) {
                                 <span class="n">cable_termination</span><span class="p">[</span><span class="s2">&quot;Assignment&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Input Terminations&quot;</span>
                                 <span class="ow">or</span> <span class="n">cable_termination</span><span class="p">[</span><span class="s2">&quot;Assignment&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Output Terminations&quot;</span>
                             <span class="p">):</span>
-                                <span class="n">terminations</span> <span class="o">=</span> <span class="p">[]</span>
-                                <span class="k">if</span> <span class="n">cable_termination</span><span class="p">[</span><span class="s2">&quot;Assignment&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Input Terminations&quot;</span><span class="p">:</span>
-                                    <span class="n">terminations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;NAME:InputTerminations&quot;</span><span class="p">)</span>
-                                <span class="k">elif</span> <span class="n">cable_termination</span><span class="p">[</span><span class="s2">&quot;Assignment&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Output Terminations&quot;</span><span class="p">:</span>
-                                    <span class="n">terminations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;NAME:OutputTerminations&quot;</span><span class="p">)</span>
-                                <span class="n">terminations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2">:=&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">cable_termination</span><span class="p">[</span><span class="s2">&quot;CableName&quot;</span><span class="p">]))</span>
-                                <span class="n">assignment_type</span> <span class="o">=</span> <span class="p">[]</span>
+                                <span class="k">if</span> <span class="n">cable_termination</span><span class="p">[</span><span class="s2">&quot;Assignment&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Input Terminations&quot;</span> <span class="ow">and</span> <span class="n">terminations</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">(</span>
+                                    <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">:=&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">cable_termination</span><span class="p">[</span><span class="s2">&quot;CableName&quot;</span><span class="p">])</span>
+                                <span class="p">):</span>
+                                    <span class="n">cable_index</span> <span class="o">=</span> <span class="n">terminations</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2">:=&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">cable_termination</span><span class="p">[</span><span class="s2">&quot;CableName&quot;</span><span class="p">]))</span>
+                                    <span class="n">input_output</span> <span class="o">=</span> <span class="mi">0</span>
+                                <span class="k">elif</span> <span class="n">cable_termination</span><span class="p">[</span><span class="s2">&quot;Assignment&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Output Terminations&quot;</span> <span class="ow">and</span> <span class="n">terminations</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">(</span>
+                                    <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">:=&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">cable_termination</span><span class="p">[</span><span class="s2">&quot;CableName&quot;</span><span class="p">])</span>
+                                <span class="p">):</span>
+                                    <span class="n">cable_index</span> <span class="o">=</span> <span class="n">terminations</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2">:=&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">cable_termination</span><span class="p">[</span><span class="s2">&quot;CableName&quot;</span><span class="p">]))</span>
+                                    <span class="n">input_output</span> <span class="o">=</span> <span class="mi">1</span>
+                                <span class="k">else</span><span class="p">:</span>
+                                    <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;Invalid cable name.&quot;</span>
+                                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
                                 <span class="k">if</span> <span class="n">cable_termination</span><span class="p">[</span><span class="s2">&quot;AssignmentType&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Impedance&quot;</span><span class="p">:</span>
                                     <span class="k">if</span> <span class="n">decompose_variable_value</span><span class="p">(</span><span class="n">cable_termination</span><span class="p">[</span><span class="s2">&quot;Impedance&quot;</span><span class="p">])[</span><span class="mi">1</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span>
                                         <span class="s2">&quot;GOhm&quot;</span><span class="p">,</span>
@@ -1648,10 +1673,17 @@ function checkPageExistsAndRedirect(event) {
                                         <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;Invalid impedance unit.&quot;</span>
                                         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
                                     <span class="k">else</span><span class="p">:</span>
-                                        <span class="n">assignment_type</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;Imped:=&quot;</span><span class="p">)</span>
-                                        <span class="n">assignment_type</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cable_termination</span><span class="p">[</span><span class="s2">&quot;Impedance&quot;</span><span class="p">])</span>
+                                        <span class="n">terminations</span><span class="p">[</span><span class="n">input_output</span><span class="p">][</span><span class="n">cable_index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
+                                            <span class="s2">&quot;Imped:=&quot;</span><span class="p">,</span>
+                                            <span class="n">cable_termination</span><span class="p">[</span><span class="s2">&quot;Impedance&quot;</span><span class="p">],</span>
+                                        <span class="p">]</span>
                                 <span class="k">elif</span> <span class="n">cable_termination</span><span class="p">[</span><span class="s2">&quot;AssignmentType&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Source&quot;</span><span class="p">:</span>
-                                    <span class="n">assignment_type</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;Source:=&quot;</span><span class="p">)</span>
+                                    <span class="n">terminations</span><span class="p">[</span><span class="n">input_output</span><span class="p">][</span><span class="n">cable_index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
+                                        <span class="s2">&quot;Source:=&quot;</span><span class="p">,</span>
+                                        <span class="s1">&#39;&quot;</span><span class="si">{}</span><span class="s1">&quot;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">cable_termination</span><span class="p">[</span><span class="s2">&quot;Source&quot;</span><span class="p">][</span><span class="s2">&quot;Signal&quot;</span><span class="p">]),</span>
+                                        <span class="s2">&quot;Imped:=&quot;</span><span class="p">,</span>
+                                        <span class="n">cable_termination</span><span class="p">[</span><span class="s2">&quot;Source&quot;</span><span class="p">][</span><span class="s2">&quot;ImpedanceValue&quot;</span><span class="p">],</span>
+                                    <span class="p">]</span>
                                     <span class="k">if</span> <span class="n">cable_termination</span><span class="p">[</span><span class="s2">&quot;Source&quot;</span><span class="p">][</span><span class="s2">&quot;Type&quot;</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;Single Value&quot;</span><span class="p">,</span> <span class="s2">&quot;Transient&quot;</span><span class="p">]:</span>
                                         <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;Invalid source type value.&quot;</span>
                                         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
@@ -1659,10 +1691,6 @@ function checkPageExistsAndRedirect(event) {
                                         <span class="k">if</span> <span class="n">cable_termination</span><span class="p">[</span><span class="s2">&quot;Source&quot;</span><span class="p">][</span><span class="s2">&quot;Signal&quot;</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">existing_sources_names</span><span class="p">:</span>
                                             <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;Source name doesn&#39;t exist in current project.&quot;</span>
                                             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
-                                        <span class="k">else</span><span class="p">:</span>
-                                            <span class="n">assignment_type</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;&quot;</span><span class="si">{}</span><span class="s1">&quot;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">cable_termination</span><span class="p">[</span><span class="s2">&quot;Source&quot;</span><span class="p">][</span><span class="s2">&quot;Signal&quot;</span><span class="p">]))</span>
-                                            <span class="n">assignment_type</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;Imped:=&quot;</span><span class="p">)</span>
-                                            <span class="n">assignment_type</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cable_termination</span><span class="p">[</span><span class="s2">&quot;Source&quot;</span><span class="p">][</span><span class="s2">&quot;ImpedanceValue&quot;</span><span class="p">])</span>
                                     <span class="k">elif</span> <span class="n">cable_termination</span><span class="p">[</span><span class="s2">&quot;Source&quot;</span><span class="p">][</span><span class="s2">&quot;Type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Single Value&quot;</span><span class="p">:</span>
                                         <span class="k">if</span> <span class="n">decompose_variable_value</span><span class="p">(</span><span class="n">cable_termination</span><span class="p">[</span><span class="s2">&quot;Source&quot;</span><span class="p">][</span><span class="s2">&quot;Signal&quot;</span><span class="p">])[</span><span class="mi">1</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span>
                                             <span class="s2">&quot;fV&quot;</span><span class="p">,</span>
@@ -1688,20 +1716,14 @@ function checkPageExistsAndRedirect(event) {
                                             <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;Invalid source signal units.&quot;</span>
                                             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
                                         <span class="k">else</span><span class="p">:</span>
-                                            <span class="n">assignment_type</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cable_termination</span><span class="p">[</span><span class="s2">&quot;Source&quot;</span><span class="p">][</span><span class="s2">&quot;Signal&quot;</span><span class="p">])</span>
-                                            <span class="n">assignment_type</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;Imped:=&quot;</span><span class="p">)</span>
-                                            <span class="n">assignment_type</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cable_termination</span><span class="p">[</span><span class="s2">&quot;Source&quot;</span><span class="p">][</span><span class="s2">&quot;ImpedanceValue&quot;</span><span class="p">])</span>
-                                <span class="n">terminations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">assignment_type</span><span class="p">)</span>
-                                <span class="n">assignment_type</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Imped:=&quot;</span><span class="p">,</span> <span class="s2">&quot;50ohm&quot;</span><span class="p">]</span>
-                                <span class="k">for</span> <span class="n">cable</span> <span class="ow">in</span> <span class="p">[</span>
-                                    <span class="n">x</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cable_harness_bundle</span><span class="p">)</span>
-                                    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">cables_in_bundle_list_dict</span>
-                                    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">cable_harness_bundle</span> <span class="ow">in</span> <span class="n">x</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
-                                <span class="p">][</span><span class="mi">0</span><span class="p">]:</span>
-                                    <span class="k">if</span> <span class="n">cable</span> <span class="o">!=</span> <span class="n">cable_termination</span><span class="p">[</span><span class="s2">&quot;CableName&quot;</span><span class="p">]:</span>
-                                        <span class="n">terminations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2">:=&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">cable</span><span class="p">))</span>
-                                        <span class="n">terminations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">assignment_type</span><span class="p">)</span>
-                                <span class="bp">self</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">terminations</span><span class="p">)</span>
+                                            <span class="n">terminations</span><span class="p">[</span><span class="n">input_output</span><span class="p">][</span><span class="n">cable_index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
+                                                <span class="s2">&quot;Source:=&quot;</span><span class="p">,</span>
+                                                <span class="n">cable_termination</span><span class="p">[</span><span class="s2">&quot;Source&quot;</span><span class="p">][</span><span class="s2">&quot;Signal&quot;</span><span class="p">],</span>
+                                                <span class="s2">&quot;Imped:=&quot;</span><span class="p">,</span>
+                                                <span class="n">cable_termination</span><span class="p">[</span><span class="s2">&quot;Source&quot;</span><span class="p">][</span><span class="s2">&quot;ImpedanceValue&quot;</span><span class="p">],</span>
+                                            <span class="p">]</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">terminations</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">terminations</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
                 <span class="k">else</span><span class="p">:</span>
                     <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;Provide at least one cable to include when creating cable harness.&quot;</span>
                     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
@@ -1742,7 +1764,7 @@ function checkPageExistsAndRedirect(event) {
   
   <div class="footer-item">
     <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 6.1.3.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.<br>
 </p>
   </div>
   

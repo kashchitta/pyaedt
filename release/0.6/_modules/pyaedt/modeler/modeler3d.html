@@ -41,11 +41,14 @@
         <link href="../../../_static/css/breadcrumbs.css" rel="stylesheet">
     
     <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../_static/doctools.js"></script>
     <script src="../../../_static/sphinx_highlight.js"></script>
     <script src="../../../_static/clipboard.min.js"></script>
     <script src="../../../_static/copybutton.js"></script>
-    <link rel="icon" href="../../../_static/ansys-favicon.png"/>
+    <link rel="shortcut icon" href="../../../_static/ansys-favicon.png"/>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -74,8 +77,9 @@
   
   
   
+    <img src="../../../_static/pyansys-logo-black-cropped.png" class="logo__image only-light" alt="Logo image">
+    <img src="../../../_static/pyansys-logo-black-cropped.png" class="logo__image only-dark" alt="Logo image">
   
-    <p class="title logo__title">PyAEDT</p>
   
 </a>
     
@@ -203,7 +207,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.43 variable.
+            // this version, rather than using sphinx's 0.6.44 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -411,9 +415,9 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        component_name : str, optional</span>
 <span class="sd">            Name of the component. The default is ``None``.</span>
 <span class="sd">        variables_to_include : list, optional</span>
-<span class="sd">             List of variables to include. The default is ``[]``.</span>
+<span class="sd">            List of variables to include. The default is ``[]``.</span>
 <span class="sd">        object_list : list, optional</span>
-<span class="sd">            List of Objects names to export. The default is all objects.</span>
+<span class="sd">            List of object names to export. The default is all object names.</span>
 <span class="sd">        boundaries_list : list, optional</span>
 <span class="sd">            List of Boundaries names to export. The default is all boundaries.</span>
 <span class="sd">        excitation_list : list, optional</span>
@@ -437,24 +441,23 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">            Edit password.</span>
 <span class="sd">            The default value is an empty string.</span>
 <span class="sd">        password_type : str, optional</span>
-<span class="sd">            Password type. Value can either be ``UserSuppliedPassword`` or ``InternalPassword``.</span>
-<span class="sd">            The default value is ``UserSuppliedPassword``.</span>
-<span class="sd">        hide_contents : bool, optionale</span>
-<span class="sd">            Whether to hide contents.</span>
-<span class="sd">            The default is ``False``.</span>
+<span class="sd">            Password type. Options are ``UserSuppliedPassword`` and ``InternalPassword``.</span>
+<span class="sd">            The default is ``UserSuppliedPassword``.</span>
+<span class="sd">        hide_contents : bool, optional</span>
+<span class="sd">            Whether to hide contents. The default is ``False``.</span>
 <span class="sd">        replace_names : bool, optional</span>
-<span class="sd">            Whether to replace objects and materials names.</span>
+<span class="sd">            Whether to replace objects and material names.</span>
 <span class="sd">            The default is ``False``.</span>
 <span class="sd">        component_outline : str, optional</span>
 <span class="sd">            Component outline. Value can either be ``BoundingBox`` or ``None``.</span>
 <span class="sd">            The default is ``BoundingBox``.</span>
 <span class="sd">        auxiliary_dict_file : bool or str, optional</span>
-<span class="sd">            Whether to export or not the auxiliary file containing information about defined datasets and Icepak monitor</span>
-<span class="sd">             objects. A destination file can be specified using a string.</span>
+<span class="sd">            Whether to export the auxiliary file containing information about defined datasets and Icepak monitor</span>
+<span class="sd">            objects. A destination file can be specified using a string.</span>
 <span class="sd">            The default is ``False``.</span>
 <span class="sd">        monitor_objects : list, optional</span>
-<span class="sd">            List of monitor objects names to export. The default is all monitor objects. This argument is relevant only</span>
-<span class="sd">            if ``auxiliary_dict_file`` is not set to ``False``.</span>
+<span class="sd">            List of monitor objects&#39; names to export. The default is the names of all monitor objects. This argument is</span>
+<span class="sd">            relevant only if ``auxiliary_dict_file`` is not set to ``False``.</span>
 <span class="sd">        datasets : list, optional</span>
 <span class="sd">            List of dataset names to export. The default is all datasets. This argument is relevant only if</span>
 <span class="sd">            ``auxiliary_dict_file`` is not set to ``False``.</span>
@@ -469,7 +472,6 @@ function checkPageExistsAndRedirect(event) {
 
 <span class="sd">        References</span>
 <span class="sd">        ----------</span>
-
 <span class="sd">        &gt;&gt;&gt; oEditor.Create3DComponent</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">component_name</span><span class="p">:</span>
@@ -1305,7 +1307,7 @@ function checkPageExistsAndRedirect(event) {
   
   <div class="footer-item">
     <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 6.1.3.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.<br>
 </p>
   </div>
   

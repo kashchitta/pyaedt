@@ -41,11 +41,14 @@
         <link href="../../../../_static/css/breadcrumbs.css" rel="stylesheet">
     
     <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../../_static/doctools.js"></script>
     <script src="../../../../_static/sphinx_highlight.js"></script>
     <script src="../../../../_static/clipboard.min.js"></script>
     <script src="../../../../_static/copybutton.js"></script>
-    <link rel="icon" href="../../../../_static/ansys-favicon.png"/>
+    <link rel="shortcut icon" href="../../../../_static/ansys-favicon.png"/>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -74,8 +77,9 @@
   
   
   
+    <img src="../../../../_static/pyansys-logo-black-cropped.png" class="logo__image only-light" alt="Logo image">
+    <img src="../../../../_static/pyansys-logo-black-cropped.png" class="logo__image only-dark" alt="Logo image">
   
-    <p class="title logo__title">PyAEDT</p>
   
 </a>
     
@@ -203,7 +207,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.43 variable.
+            // this version, rather than using sphinx's 0.6.44 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -883,6 +887,7 @@ function checkPageExistsAndRedirect(event) {
             <span class="n">props</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="s2">&quot;NAME:Psi&quot;</span><span class="p">,</span> <span class="s2">&quot;Value:=&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dim_arg</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">props</span><span class="p">[</span><span class="s2">&quot;Psi&quot;</span><span class="p">],</span> <span class="s2">&quot;deg&quot;</span><span class="p">)])</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_change_property</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">props</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_quaternion</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="k">return</span> <span class="kc">True</span></div>
 
 <div class="viewcode-block" id="CoordinateSystem.change_cs_mode"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.modeler.cad.Modeler.CoordinateSystem.change_cs_mode.html#pyaedt.modeler.cad.Modeler.CoordinateSystem.change_cs_mode">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
@@ -1168,6 +1173,8 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        -------</span>
 <span class="sd">        list</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_quaternion</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_quaternion</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_modeler</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">variable_manager</span><span class="p">[</span><span class="s2">&quot;temp_var&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;axis&quot;</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;view&quot;</span><span class="p">:</span>
             <span class="n">x1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">props</span><span class="p">[</span><span class="s2">&quot;XAxisXvec&quot;</span><span class="p">]</span>
@@ -1188,8 +1195,12 @@ function checkPageExistsAndRedirect(event) {
             <span class="n">y_pointing_num</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_modeler</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">variable_manager</span><span class="p">[</span><span class="s2">&quot;temp_var&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">numeric_value</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_modeler</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">variable_manager</span><span class="p">[</span><span class="s2">&quot;temp_var&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">y3</span>
             <span class="n">y_pointing_num</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_modeler</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">variable_manager</span><span class="p">[</span><span class="s2">&quot;temp_var&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">numeric_value</span><span class="p">)</span>
-            <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">GeometryOperators</span><span class="o">.</span><span class="n">pointing_to_axis</span><span class="p">(</span><span class="n">x_pointing_num</span><span class="p">,</span> <span class="n">y_pointing_num</span><span class="p">)</span>
-            <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">g</span> <span class="o">=</span> <span class="n">GeometryOperators</span><span class="o">.</span><span class="n">axis_to_euler_zyz</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
+            <span class="n">yn</span> <span class="o">=</span> <span class="n">GeometryOperators</span><span class="o">.</span><span class="n">v_norm</span><span class="p">(</span><span class="n">y_pointing_num</span><span class="p">)</span>
+            <span class="n">y_pointing_num</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="o">/</span> <span class="n">yn</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">y_pointing_num</span><span class="p">]</span>
+            <span class="n">xn</span> <span class="o">=</span> <span class="n">GeometryOperators</span><span class="o">.</span><span class="n">v_norm</span><span class="p">(</span><span class="n">x_pointing_num</span><span class="p">)</span>
+            <span class="n">x_pointing_num</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="o">/</span> <span class="n">xn</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">x_pointing_num</span><span class="p">]</span>
+            <span class="n">z</span> <span class="o">=</span> <span class="n">GeometryOperators</span><span class="o">.</span><span class="n">v_cross</span><span class="p">(</span><span class="n">x_pointing_num</span><span class="p">,</span> <span class="n">y_pointing_num</span><span class="p">)</span>
+            <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">g</span> <span class="o">=</span> <span class="n">GeometryOperators</span><span class="o">.</span><span class="n">axis_to_euler_zyz</span><span class="p">(</span><span class="n">x_pointing_num</span><span class="p">,</span> <span class="n">y_pointing_num</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_quaternion</span> <span class="o">=</span> <span class="n">GeometryOperators</span><span class="o">.</span><span class="n">euler_zyz_to_quaternion</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">g</span><span class="p">)</span>
             <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">_modeler</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">variable_manager</span><span class="p">[</span><span class="s2">&quot;temp_var&quot;</span><span class="p">]</span>
         <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;zxz&quot;</span><span class="p">:</span>
@@ -1211,6 +1222,37 @@ function checkPageExistsAndRedirect(event) {
             <span class="bp">self</span><span class="o">.</span><span class="n">_quaternion</span> <span class="o">=</span> <span class="n">GeometryOperators</span><span class="o">.</span><span class="n">euler_zyz_to_quaternion</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">g</span><span class="p">)</span>
             <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">_modeler</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">variable_manager</span><span class="p">[</span><span class="s2">&quot;temp_var&quot;</span><span class="p">]</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_quaternion</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">origin</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Coordinate system origin in model units.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        list</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_modeler</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">variable_manager</span><span class="p">[</span><span class="s2">&quot;temp_var&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">props</span><span class="p">[</span><span class="s2">&quot;OriginX&quot;</span><span class="p">]</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_modeler</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">variable_manager</span><span class="p">[</span><span class="s2">&quot;temp_var&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">numeric_value</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_modeler</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">variable_manager</span><span class="p">[</span><span class="s2">&quot;temp_var&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">props</span><span class="p">[</span><span class="s2">&quot;OriginY&quot;</span><span class="p">]</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_modeler</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">variable_manager</span><span class="p">[</span><span class="s2">&quot;temp_var&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">numeric_value</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_modeler</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">variable_manager</span><span class="p">[</span><span class="s2">&quot;temp_var&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">props</span><span class="p">[</span><span class="s2">&quot;OriginZ&quot;</span><span class="p">]</span>
+        <span class="n">z</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_modeler</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">variable_manager</span><span class="p">[</span><span class="s2">&quot;temp_var&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">numeric_value</span>
+        <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">_modeler</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">variable_manager</span><span class="p">[</span><span class="s2">&quot;temp_var&quot;</span><span class="p">]</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">]</span>
+
+    <span class="nd">@origin</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">origin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">origin</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set the coordinate system origin in model units.&quot;&quot;&quot;</span>
+        <span class="n">legacy_update</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">auto_update</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">auto_update</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="n">origin_x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dim_arg</span><span class="p">(</span><span class="n">origin</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_units</span><span class="p">)</span>
+        <span class="n">origin_y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dim_arg</span><span class="p">(</span><span class="n">origin</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_units</span><span class="p">)</span>
+        <span class="n">origin_z</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dim_arg</span><span class="p">(</span><span class="n">origin</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_units</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">props</span><span class="p">[</span><span class="s2">&quot;OriginX&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">origin_x</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">props</span><span class="p">[</span><span class="s2">&quot;OriginY&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">origin_y</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">props</span><span class="p">[</span><span class="s2">&quot;OriginZ&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">origin_z</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">auto_update</span> <span class="o">=</span> <span class="n">legacy_update</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">_orientation</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -1935,10 +1977,8 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">            * If ``mode=&quot;axisrotation&quot;``, specify ``theta`` and ``u``.</span>
 
 <span class="sd">            Parameters not needed by the specified mode are ignored.</span>
-<span class="sd">            For back compatibility, ``view=&quot;rotate&quot;`` is the same as</span>
-<span class="sd">            ``mode=&quot;axis&quot;``.  The default mode, ``&quot;axisrotation&quot;``, is</span>
-<span class="sd">            a coordinate system parallel to the global coordinate</span>
-<span class="sd">            system centered in the global origin.</span>
+<span class="sd">            The default mode, ``&quot;axis&quot;``, is a coordinate system parallel to the</span>
+<span class="sd">            global coordinate system centered in the global origin.</span>
 
 <span class="sd">        view : str, int optional</span>
 <span class="sd">            View for the coordinate system if ``mode=&quot;view&quot;``. Options</span>
@@ -1947,8 +1987,9 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">            Enumerator ``pyaedt.generic.constants.VIEW`` can be used.</span>
 
 <span class="sd">            .. note::</span>
-<span class="sd">               Because the ``&quot;rotate&quot;`` option is obsolete, use</span>
-<span class="sd">               ``mode=&quot;axis&quot;`` instead.</span>
+<span class="sd">              For backward compatibility, ``mode=&quot;view&quot;`` and ``view=&quot;rotate&quot;`` are the same as</span>
+<span class="sd">              ``mode=&quot;axis&quot;``. Because the &quot;rotate&quot; option in the &quot;view&quot; mode is obsolete, use</span>
+<span class="sd">              ``mode=&quot;axis&quot;`` instead.</span>
 
 <span class="sd">        x_pointing : list, optional</span>
 <span class="sd">            List of the ``[x, y, z]`` coordinates specifying the X axis</span>
@@ -1974,7 +2015,7 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
 <span class="sd">        :class:`pyaedt.modeler.Modeler.CoordinateSystem`</span>
-<span class="sd">            Coordinate System Object.</span>
+<span class="sd">            Created coordinate system.</span>
 
 <span class="sd">        References</span>
 <span class="sd">        ----------</span>
@@ -2083,8 +2124,9 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        ----------</span>
 <span class="sd">        point : list</span>
 <span class="sd">            List of the ``[x, y, z]`` coordinates to transform.</span>
-<span class="sd">        ref_cs : str</span>
-<span class="sd">            Name of the destination reference system.</span>
+<span class="sd">        ref_cs : str, CoordinateSystem</span>
+<span class="sd">            Name of the destination reference system. The ``CoordinateSystem`` object can also be</span>
+<span class="sd">            used.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2098,10 +2140,16 @@ function checkPageExistsAndRedirect(event) {
             <span class="n">point</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">point</span><span class="p">]</span>
         <span class="k">except</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="s2">&quot;Point must be in format [x, y, z].&quot;</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">ref_cs</span> <span class="o">==</span> <span class="s2">&quot;Global&quot;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">ref_cs</span><span class="p">,</span> <span class="n">BaseCoordinateSystem</span><span class="p">):</span>
+            <span class="n">ref_cs_name</span> <span class="o">=</span> <span class="n">ref_cs</span><span class="o">.</span><span class="n">name</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">ref_cs</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="n">ref_cs_name</span> <span class="o">=</span> <span class="n">ref_cs</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="s2">&quot;ref_cs must be either a string or a CoordinateSystem object.&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">ref_cs_name</span> <span class="o">==</span> <span class="s2">&quot;Global&quot;</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">point</span>
         <span class="n">cs_names</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">coordinate_systems</span><span class="p">]</span>
-        <span class="k">if</span> <span class="n">ref_cs</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">cs_names</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">ref_cs_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">cs_names</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="s2">&quot;Specified coordinate system does not exist in the design.&quot;</span><span class="p">)</span>
 
         <span class="k">def</span> <span class="nf">get_total_transformation</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">cs</span><span class="p">):</span>
@@ -2131,7 +2179,8 @@ function checkPageExistsAndRedirect(event) {
             <span class="n">p2</span> <span class="o">=</span> <span class="n">GeometryOperators</span><span class="o">.</span><span class="n">q_rotation_inv</span><span class="p">(</span><span class="n">GeometryOperators</span><span class="o">.</span><span class="n">v_sub</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span> <span class="n">o</span><span class="p">),</span> <span class="n">q</span><span class="p">)</span>
             <span class="k">return</span> <span class="n">p2</span>
 
-        <span class="k">return</span> <span class="n">get_total_transformation</span><span class="p">(</span><span class="n">point</span><span class="p">,</span> <span class="n">ref_cs</span><span class="p">)</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">get_total_transformation</span><span class="p">(</span><span class="n">point</span><span class="p">,</span> <span class="n">ref_cs_name</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">[</span><span class="nb">round</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="mi">13</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)]</span>
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">set_working_coordinate_system</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
@@ -2140,7 +2189,8 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        name : str, FaceCoordinateSystem, CoordinateSystem</span>
-<span class="sd">            Name of the coordinate system to set as the working coordinate system.</span>
+<span class="sd">            Name of the coordinate system or ``CoordinateSystem`` object to set as the working</span>
+<span class="sd">            coordinate system.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2161,6 +2211,137 @@ function checkPageExistsAndRedirect(event) {
                 <span class="p">[</span><span class="s2">&quot;NAME:SetWCS Parameter&quot;</span><span class="p">,</span> <span class="s2">&quot;Working Coordinate System:=&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="s2">&quot;RegionDepCSOk:=&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">]</span>
             <span class="p">)</span>
         <span class="k">return</span> <span class="kc">True</span>
+
+    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">invert_cs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">coordinate_system</span><span class="p">,</span> <span class="n">to_global</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the inverse translation and the conjugate quaternion of the input coordinate system.</span>
+
+<span class="sd">        By defining a new coordinate system with this information, the reference coordinate system</span>
+<span class="sd">        of the input coordinate system is obtained.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        coordinate_system : str, CoordinateSystem</span>
+<span class="sd">            Name of the destination reference system. A ``CoordinateSystem`` object can also be</span>
+<span class="sd">            used.</span>
+<span class="sd">        to_global : bool, optional</span>
+<span class="sd">            Whether to compute the inverse transformation of the input coordinate system with</span>
+<span class="sd">            respect to the global coordinate system. The default is ``False``.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        list</span>
+<span class="sd">            Origin coordinates.</span>
+<span class="sd">        list</span>
+<span class="sd">            Quaternion.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">cs_names</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">coordinate_systems</span><span class="p">]</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">coordinate_system</span><span class="p">,</span> <span class="n">BaseCoordinateSystem</span><span class="p">):</span>
+            <span class="n">cs</span> <span class="o">=</span> <span class="n">coordinate_system</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">coordinate_system</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">coordinate_system</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">cs_names</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
+                <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="s2">&quot;Specified coordinate system does not exist in the design.&quot;</span><span class="p">)</span>
+            <span class="n">cs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">coordinate_systems</span><span class="p">[</span><span class="n">cs_names</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">coordinate_system</span><span class="p">)]</span>
+        <span class="k">else</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
+            <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="s2">&quot;coordinate_system must either be a string or a CoordinateSystem object.&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">to_global</span><span class="p">:</span>
+            <span class="n">o</span><span class="p">,</span> <span class="n">q</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">reference_cs_to_global</span><span class="p">(</span><span class="n">coordinate_system</span><span class="p">)</span>
+            <span class="n">o</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">GeometryOperators</span><span class="o">.</span><span class="n">q_rotation</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">q</span><span class="p">)]</span>
+            <span class="n">q</span> <span class="o">=</span> <span class="p">[</span><span class="n">q</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">+</span> <span class="p">[</span><span class="o">-</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">q</span><span class="p">[</span><span class="mi">1</span><span class="p">:]]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">q</span> <span class="o">=</span> <span class="n">cs</span><span class="o">.</span><span class="n">quaternion</span>
+            <span class="n">q</span> <span class="o">=</span> <span class="p">[</span><span class="n">q</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">+</span> <span class="p">[</span><span class="o">-</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">q</span><span class="p">[</span><span class="mi">1</span><span class="p">:]]</span>
+            <span class="n">o</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">GeometryOperators</span><span class="o">.</span><span class="n">q_rotation</span><span class="p">(</span><span class="n">cs</span><span class="o">.</span><span class="n">origin</span><span class="p">,</span> <span class="n">q</span><span class="p">)]</span>
+        <span class="k">return</span> <span class="n">o</span><span class="p">,</span> <span class="n">q</span>
+
+    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">reference_cs_to_global</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">coordinate_system</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the origin and quaternion defining the coordinate system in the global coordinates.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        coordinate_system : str, CoordinateSystem</span>
+<span class="sd">            Name of the destination reference system. The ``CoordinateSystem`` object can also be used.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        list</span>
+<span class="sd">            Origin coordinates.</span>
+<span class="sd">        list</span>
+<span class="sd">            Quaternion.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">cs_names</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">coordinate_systems</span><span class="p">]</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">coordinate_system</span><span class="p">,</span> <span class="n">BaseCoordinateSystem</span><span class="p">):</span>
+            <span class="n">cs</span> <span class="o">=</span> <span class="n">coordinate_system</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">coordinate_system</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">coordinate_system</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">cs_names</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
+                <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="s2">&quot;Specified coordinate system does not exist in the design.&quot;</span><span class="p">)</span>
+            <span class="n">cs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">coordinate_systems</span><span class="p">[</span><span class="n">cs_names</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">coordinate_system</span><span class="p">)]</span>
+        <span class="k">else</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
+            <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="s2">&quot;coordinate_system must either be a string or a CoordinateSystem object.&quot;</span><span class="p">)</span>
+        <span class="n">quaternion</span> <span class="o">=</span> <span class="n">cs</span><span class="o">.</span><span class="n">quaternion</span>
+        <span class="n">origin</span> <span class="o">=</span> <span class="n">cs</span><span class="o">.</span><span class="n">origin</span>
+        <span class="n">ref_cs_name</span> <span class="o">=</span> <span class="n">cs</span><span class="o">.</span><span class="n">ref_cs</span>
+        <span class="k">while</span> <span class="n">ref_cs_name</span> <span class="o">!=</span> <span class="s2">&quot;Global&quot;</span><span class="p">:</span>
+            <span class="n">ref_cs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">coordinate_systems</span><span class="p">[</span><span class="n">cs_names</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">ref_cs_name</span><span class="p">)]</span>
+            <span class="n">quaternion_ref</span> <span class="o">=</span> <span class="n">ref_cs</span><span class="o">.</span><span class="n">quaternion</span>
+            <span class="n">quaternion</span> <span class="o">=</span> <span class="n">GeometryOperators</span><span class="o">.</span><span class="n">q_prod</span><span class="p">(</span><span class="n">quaternion_ref</span><span class="p">,</span> <span class="n">quaternion</span><span class="p">)</span>
+            <span class="n">origin_ref</span> <span class="o">=</span> <span class="n">ref_cs</span><span class="o">.</span><span class="n">origin</span>
+            <span class="n">origin</span> <span class="o">=</span> <span class="n">GeometryOperators</span><span class="o">.</span><span class="n">v_sum</span><span class="p">(</span><span class="n">origin_ref</span><span class="p">,</span> <span class="n">GeometryOperators</span><span class="o">.</span><span class="n">q_rotation</span><span class="p">(</span><span class="n">origin</span><span class="p">,</span> <span class="n">quaternion_ref</span><span class="p">))</span>
+            <span class="n">ref_cs_name</span> <span class="o">=</span> <span class="n">ref_cs</span><span class="o">.</span><span class="n">ref_cs</span>
+        <span class="k">return</span> <span class="n">origin</span><span class="p">,</span> <span class="n">quaternion</span>
+
+    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">duplicate_coordinate_system_to_global</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">coordinate_system</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a duplicate coordinate system referenced to the global coordinate system.</span>
+
+<span class="sd">        Having this coordinate system referenced to the global coordinate</span>
+<span class="sd">        system removes all nested coordinate system dependencies.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        coordinate_system : str, CoordinateSystem</span>
+<span class="sd">            Name of the destination reference system. The ``CoordinateSystem`` object can also be used.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        :class:`pyaedt.modeler.Modeler.CoordinateSystem`</span>
+<span class="sd">            Created coordinate system.</span>
+
+<span class="sd">        References</span>
+<span class="sd">        ----------</span>
+
+<span class="sd">        &gt;&gt;&gt; oEditor.CreateRelativeCS</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">cs_names</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">coordinate_systems</span><span class="p">]</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">coordinate_system</span><span class="p">,</span> <span class="n">BaseCoordinateSystem</span><span class="p">):</span>
+            <span class="n">cs</span> <span class="o">=</span> <span class="n">coordinate_system</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">coordinate_system</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">coordinate_system</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">cs_names</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
+                <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="s2">&quot;Specified coordinate system does not exist in the design.&quot;</span><span class="p">)</span>
+            <span class="n">cs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">coordinate_systems</span><span class="p">[</span><span class="n">cs_names</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">coordinate_system</span><span class="p">)]</span>
+        <span class="k">else</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
+            <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="s2">&quot;coordinate_system must either be a string or a CoordinateSystem object.&quot;</span><span class="p">)</span>
+        <span class="n">o</span><span class="p">,</span> <span class="n">q</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">reference_cs_to_global</span><span class="p">(</span><span class="n">coordinate_system</span><span class="p">)</span>
+        <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">GeometryOperators</span><span class="o">.</span><span class="n">quaternion_to_axis</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
+        <span class="n">reference_cs</span> <span class="o">=</span> <span class="s2">&quot;Global&quot;</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="n">cs</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s2">&quot;_RefToGlobal&quot;</span>
+        <span class="k">if</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">cs_names</span><span class="p">:</span>
+            <span class="n">name</span> <span class="o">=</span> <span class="n">cs</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="n">generate_unique_name</span><span class="p">(</span><span class="s2">&quot;_RefToGlobal&quot;</span><span class="p">)</span>
+        <span class="n">cs</span> <span class="o">=</span> <span class="n">CoordinateSystem</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">cs</span><span class="p">:</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">cs</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+                <span class="n">origin</span><span class="o">=</span><span class="n">o</span><span class="p">,</span>
+                <span class="n">reference_cs</span><span class="o">=</span><span class="n">reference_cs</span><span class="p">,</span>
+                <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span>
+                <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;axis&quot;</span><span class="p">,</span>
+                <span class="n">x_pointing</span><span class="o">=</span><span class="n">x</span><span class="p">,</span>
+                <span class="n">y_pointing</span><span class="o">=</span><span class="n">y</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="k">if</span> <span class="n">result</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">cs</span>
+        <span class="k">return</span> <span class="kc">False</span>
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">set_objects_deformation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">objects</span><span class="p">):</span>
@@ -5565,7 +5746,7 @@ function checkPageExistsAndRedirect(event) {
   
   <div class="footer-item">
     <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 6.1.3.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.<br>
 </p>
   </div>
   

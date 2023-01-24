@@ -42,11 +42,14 @@
         <link href="../../_static/css/breadcrumbs.css" rel="stylesheet">
     
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/sphinx_highlight.js"></script>
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
-    <link rel="icon" href="../../_static/ansys-favicon.png"/>
+    <link rel="shortcut icon" href="../../_static/ansys-favicon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="add_layer" href="pyaedt.edb_core.stackup.Stackup.add_layer.html" />
@@ -77,8 +80,9 @@
   
   
   
+    <img src="../../_static/pyansys-logo-black-cropped.png" class="logo__image only-light" alt="Logo image">
+    <img src="../../_static/pyansys-logo-black-cropped.png" class="logo__image only-dark" alt="Logo image">
   
-    <p class="title logo__title">PyAEDT</p>
   
 </a>
     
@@ -206,7 +210,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.43 variable.
+            // this version, rather than using sphinx's 0.6.44 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -1211,6 +1215,11 @@ function checkPageExistsAndRedirect(event) {
     </label>
     <ul>
      <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.padstack.EdbPadstacks.check_and_fix_via_plating.html">
+       check_and_fix_via_plating
+      </a>
+     </li>
+     <li class="toctree-l3">
       <a class="reference internal" href="pyaedt.edb_core.padstack.EdbPadstacks.create_circular_padstack.html">
        create_circular_padstack
       </a>
@@ -1994,6 +2003,11 @@ function checkPageExistsAndRedirect(event) {
      <li class="toctree-l3">
       <a class="reference internal" href="pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.area.html">
        area
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.clone.html">
+       clone
       </a>
      </li>
      <li class="toctree-l3">
@@ -4727,6 +4741,11 @@ function checkPageExistsAndRedirect(event) {
       </a>
      </li>
      <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationBatch.do_pingroup.html">
+       do_pingroup
+      </a>
+     </li>
+     <li class="toctree-l3">
       <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationBatch.etching_factor_instances.html">
        etching_factor_instances
       </a>
@@ -4982,8 +5001,8 @@ function checkPageExistsAndRedirect(event) {
 <tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.edb_core.stackup.Stackup.create_symmetric_stackup.html#pyaedt.edb_core.stackup.Stackup.create_symmetric_stackup" title="pyaedt.edb_core.stackup.Stackup.create_symmetric_stackup"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Stackup.create_symmetric_stackup</span></code></a>(layer_count)</p></td>
 <td><p>Create a symmetric stackup.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.edb_core.stackup.Stackup.export_stackup.html#pyaedt.edb_core.stackup.Stackup.export_stackup" title="pyaedt.edb_core.stackup.Stackup.export_stackup"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Stackup.export_stackup</span></code></a>(fpath[, file_format])</p></td>
-<td><p>Export stackup definition to csv file.</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.edb_core.stackup.Stackup.export_stackup.html#pyaedt.edb_core.stackup.Stackup.export_stackup" title="pyaedt.edb_core.stackup.Stackup.export_stackup"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Stackup.export_stackup</span></code></a>(fpath[, file_format, ...])</p></td>
+<td><p>Export stackup definition to a CSV or JSON file.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.edb_core.stackup.Stackup.flip_design.html#pyaedt.edb_core.stackup.Stackup.flip_design" title="pyaedt.edb_core.stackup.Stackup.flip_design"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Stackup.flip_design</span></code></a>()</p></td>
 <td><p>Flip the current design of a layout.</p></td>
@@ -5007,7 +5026,7 @@ function checkPageExistsAndRedirect(event) {
 <td><p>Remove a layer from stackup.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="pyaedt.edb_core.stackup.Stackup.residual_copper_area_per_layer.html#pyaedt.edb_core.stackup.Stackup.residual_copper_area_per_layer" title="pyaedt.edb_core.stackup.Stackup.residual_copper_area_per_layer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Stackup.residual_copper_area_per_layer</span></code></a>()</p></td>
-<td><p>Report residual copper are per layer in percentage.</p></td>
+<td><p>Report residual copper area per layer in percentage.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.edb_core.stackup.Stackup.stackup_limits.html#pyaedt.edb_core.stackup.Stackup.stackup_limits" title="pyaedt.edb_core.stackup.Stackup.stackup_limits"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Stackup.stackup_limits</span></code></a>([only_metals])</p></td>
 <td><p>Retrieve stackup limits.</p></td>
@@ -5063,7 +5082,7 @@ function checkPageExistsAndRedirect(event) {
   
   <div class="footer-item">
     <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 6.1.3.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.<br>
 </p>
   </div>
   

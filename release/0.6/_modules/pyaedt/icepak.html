@@ -41,11 +41,14 @@
         <link href="../../_static/css/breadcrumbs.css" rel="stylesheet">
     
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/sphinx_highlight.js"></script>
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
-    <link rel="icon" href="../../_static/ansys-favicon.png"/>
+    <link rel="shortcut icon" href="../../_static/ansys-favicon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -74,8 +77,9 @@
   
   
   
+    <img src="../../_static/pyansys-logo-black-cropped.png" class="logo__image only-light" alt="Logo image">
+    <img src="../../_static/pyansys-logo-black-cropped.png" class="logo__image only-dark" alt="Logo image">
   
-    <p class="title logo__title">PyAEDT</p>
   
 </a>
     
@@ -203,7 +207,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.43 variable.
+            // this version, rather than using sphinx's 0.6.44 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -350,7 +354,7 @@ function checkPageExistsAndRedirect(event) {
 <span class="kn">from</span> <span class="nn">pyaedt.modeler.geometry_operators</span> <span class="kn">import</span> <span class="n">GeometryOperators</span>
 <span class="kn">from</span> <span class="nn">pyaedt.modules.Boundary</span> <span class="kn">import</span> <span class="n">BoundaryObject</span>
 <span class="kn">from</span> <span class="nn">pyaedt.modules.Boundary</span> <span class="kn">import</span> <span class="n">NativeComponentObject</span>
-<span class="kn">from</span> <span class="nn">pyaedt.modules.MonitorIcepak</span> <span class="kn">import</span> <span class="n">Monitor</span>
+<span class="kn">from</span> <span class="nn">pyaedt.modules.monitor_icepak</span> <span class="kn">import</span> <span class="n">Monitor</span>
 
 
 <div class="viewcode-block" id="Icepak"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.icepak.Icepak.html#pyaedt.icepak.Icepak">[docs]</a><span class="k">class</span> <span class="nc">Icepak</span><span class="p">(</span><span class="n">FieldAnalysis3D</span><span class="p">):</span>
@@ -520,7 +524,7 @@ function checkPageExistsAndRedirect(event) {
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        :class:`pyaedt.modules.MonitorIcepak.Monitor`</span>
+<span class="sd">        :class:`pyaedt.modules.monitor_icepak.Monitor`</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_monitor</span><span class="o">.</span><span class="n">_delete_removed_monitors</span><span class="p">()</span>  <span class="c1"># force update. some operations may delete monitors</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_monitor</span>
@@ -3503,7 +3507,490 @@ function checkPageExistsAndRedirect(event) {
             <span class="bp">self</span><span class="o">.</span><span class="n">boundaries</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">boundary</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">primitives</span><span class="p">[</span><span class="n">object_name</span><span class="p">]</span><span class="o">.</span><span class="n">solve_inside</span> <span class="o">=</span> <span class="kc">False</span>
             <span class="k">return</span> <span class="n">boundary</span>
-        <span class="k">return</span> <span class="kc">None</span></div></div>
+        <span class="k">return</span> <span class="kc">None</span></div>
+
+<div class="viewcode-block" id="Icepak.assign_stationary_wall"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.icepak.Icepak.assign_stationary_wall.html#pyaedt.icepak.Icepak.assign_stationary_wall">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">assign_stationary_wall</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">geometry</span><span class="p">,</span>
+        <span class="n">boundary_condition</span><span class="p">,</span>
+        <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">temperature</span><span class="o">=</span><span class="s2">&quot;0cel&quot;</span><span class="p">,</span>
+        <span class="n">heat_flux</span><span class="o">=</span><span class="s2">&quot;0irrad_W_per_m2&quot;</span><span class="p">,</span>
+        <span class="n">thickness</span><span class="o">=</span><span class="s2">&quot;0mm&quot;</span><span class="p">,</span>
+        <span class="n">htc</span><span class="o">=</span><span class="s2">&quot;0w_per_m2kel&quot;</span><span class="p">,</span>
+        <span class="n">htc_dataset</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">ref_temperature</span><span class="o">=</span><span class="s2">&quot;AmbientTemp&quot;</span><span class="p">,</span>
+        <span class="n">material</span><span class="o">=</span><span class="s2">&quot;Al-Extruded&quot;</span><span class="p">,</span>  <span class="c1"># relevant if th&gt;0</span>
+        <span class="n">radiate</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">radiate_surf_mat</span><span class="o">=</span><span class="s2">&quot;Steel-oxidised-surface&quot;</span><span class="p">,</span>  <span class="c1"># relevant if radiate = False</span>
+        <span class="n">ht_correlation</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">ht_correlation_type</span><span class="o">=</span><span class="s2">&quot;Natural Convection&quot;</span><span class="p">,</span>
+        <span class="n">ht_correlation_fluid</span><span class="o">=</span><span class="s2">&quot;air&quot;</span><span class="p">,</span>
+        <span class="n">ht_correlation_flow_type</span><span class="o">=</span><span class="s2">&quot;Turbulent&quot;</span><span class="p">,</span>
+        <span class="n">ht_correlation_flow_direction</span><span class="o">=</span><span class="s2">&quot;X&quot;</span><span class="p">,</span>
+        <span class="n">ht_correlation_value_type</span><span class="o">=</span><span class="s2">&quot;Average Values&quot;</span><span class="p">,</span>  <span class="c1"># &quot;Local Values&quot;</span>
+        <span class="n">ht_correlation_free_stream_velocity</span><span class="o">=</span><span class="s2">&quot;1m_per_sec&quot;</span><span class="p">,</span>
+        <span class="n">ht_correlation_surface</span><span class="o">=</span><span class="s2">&quot;Vertical&quot;</span><span class="p">,</span>  <span class="c1"># Top, Bottom, Vertical</span>
+        <span class="n">ht_correlation_amb_temperature</span><span class="o">=</span><span class="s2">&quot;AmbientTemp&quot;</span><span class="p">,</span>
+        <span class="n">shell_conduction</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">ext_surf_rad</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">ext_surf_rad_material</span><span class="o">=</span><span class="s2">&quot;Stainless-steel-cleaned&quot;</span><span class="p">,</span>
+        <span class="n">ext_surf_rad_ref_temp</span><span class="o">=</span><span class="s2">&quot;AmbientTemp&quot;</span><span class="p">,</span>
+        <span class="n">ext_surf_rad_view_factor</span><span class="o">=</span><span class="s2">&quot;1&quot;</span><span class="p">,</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Assign surface wall boundary condition.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        geometry : str or int</span>
+<span class="sd">            Name of the surface object or ID of the face.</span>
+<span class="sd">        boundary_condition : str</span>
+<span class="sd">            Type of the boundary condition. Options are ``&quot;Temperature&quot;``, ``&quot;Heat Flux&quot;``,</span>
+<span class="sd">            or ``&quot;Heat Transfer Coefficient&quot;``.</span>
+<span class="sd">        name : str, optional</span>
+<span class="sd">            Name of the boundary condition. The default is ``None``.</span>
+<span class="sd">        temperature : str or float, optional</span>
+<span class="sd">            Temperature to assign to the wall. This parameter is relevant if</span>
+<span class="sd">            ``ext_condition=&quot;Temperature&quot;``. If a float value is specified, the</span>
+<span class="sd">            unit is degrees Celsius. The default is ``&quot;0cel&quot;``.</span>
+<span class="sd">        heat_flux : str or float, optional</span>
+<span class="sd">            Heat flux to assign to the wall. This parameter is relevant if</span>
+<span class="sd">            ``ext_condition=&quot;Temperature&quot;``. If a float value is specified,</span>
+<span class="sd">            the unit is irrad_W_per_m2. The default is ``&quot;0irrad_W_per_m2&quot;``.</span>
+<span class="sd">        htc : str or float, optional</span>
+<span class="sd">            Heat transfer coefficient to assign to the wall. This parameter</span>
+<span class="sd">            is relevant if ``ext_condition=&quot;Heat Transfer Coefficient&quot;``. If a</span>
+<span class="sd">            float value is specified, the unit is w_per_m2kel. The default</span>
+<span class="sd">            is ``&quot;0w_per_m2kel&quot;``.</span>
+<span class="sd">        thickness : str or float, optional</span>
+<span class="sd">            Thickness of the wall. If a float value is specified, the unit is</span>
+<span class="sd">            the current unit system set in Icepak. The default is ``&quot;0mm&quot;``.</span>
+<span class="sd">        htc_dataset : str, optional</span>
+<span class="sd">            Dataset that represents the dependency of the heat transfer</span>
+<span class="sd">            coefficient on temperature. This parameter is relevant if</span>
+<span class="sd">            ``ext_condition=&quot;Heat Transfer Coefficient&quot;``. The default is ``None``.</span>
+<span class="sd">        ref_temperature : str or float, optional</span>
+<span class="sd">            Reference temperature for the definition of the heat transfer</span>
+<span class="sd">            coefficient. This parameter is relevant if</span>
+<span class="sd">            ``ext_condition=&quot;Heat Transfer Coefficient&quot;``. The default</span>
+<span class="sd">            is ``&quot;AmbientTemp&quot;``.</span>
+<span class="sd">        material : str, optional</span>
+<span class="sd">            Solid material of the wall. This parameter is relevant if</span>
+<span class="sd">            the thickness is a non-zero value. The default is ``&quot;Al-Extruded&quot;``.</span>
+<span class="sd">        radiate : bool, optional</span>
+<span class="sd">            Whether to enable the inner surface radiation option. The default is ``False``.</span>
+<span class="sd">        radiate_surf_mat : str, optional</span>
+<span class="sd">            Surface material used for inner surface radiation. Relevant if it is enabled.</span>
+<span class="sd">            The default is ``&quot;Steel-oxidised-surface``.</span>
+<span class="sd">        ht_correlation : bool, optional</span>
+<span class="sd">            Whether to use the correlation option to compute the heat transfer coefficient.</span>
+<span class="sd">            The default is ``False``.</span>
+<span class="sd">        ht_correlation_type : str, optional</span>
+<span class="sd">            The correlation type for the heat transfer coefficient. Options are</span>
+<span class="sd">            &quot;Natural Convection&quot; and &quot;Forced Convection&quot;. This parameter is</span>
+<span class="sd">            relevant if ``ht_correlation=True``. The default is ``&quot;Natural Convection&quot;``.</span>
+<span class="sd">        ht_correlation_fluid : str, optional</span>
+<span class="sd">            Fluid for the correlation option. This parameter is relevant if</span>
+<span class="sd">            ``ht_correlation=True``. The default is ``&quot;air&quot;``.</span>
+<span class="sd">        ht_correlation_flow_type : str, optional</span>
+<span class="sd">            Type of flow for the correlation option. This parameter</span>
+<span class="sd">            is relevant if ``ht_correlation=True``. Options are ``&quot;Turbulent&quot;``</span>
+<span class="sd">            and ``&quot;Laminar&quot;``. The default is ``&quot;Turbulent&quot;``.</span>
+<span class="sd">        ht_correlation_flow_direction : str, optional</span>
+<span class="sd">            Flow direction for the correlation option. This parameter is relevant if</span>
+<span class="sd">            ``ht_correlation_type=&quot;Forced Convection&quot;``. The default is ``&quot;X&quot;``.</span>
+<span class="sd">        ht_correlation_value_type : str, optional</span>
+<span class="sd">             Value type for the forced convection correlation option.</span>
+<span class="sd">             This parameter is relevant if ``ht_correlation_type=&quot;Forced Convection&quot;``.</span>
+<span class="sd">             Options are &quot;Average Values&quot; and &quot;Local Values&quot;. The default is</span>
+<span class="sd">             ``&quot;Average Values&quot;``.</span>
+<span class="sd">        ht_correlation_free_stream_velocity : str or float, optional</span>
+<span class="sd">             Free stream flow velocity. This parameter is relevant if</span>
+<span class="sd">             ``ht_correlation_type=&quot;Forced Convection&quot;``. If a float value</span>
+<span class="sd">             is specified, the default unit is ``m_per_sec``. The default is</span>
+<span class="sd">             ``&quot;1m_per_sec&quot;``.</span>
+<span class="sd">        ht_correlation_surface : str, optional</span>
+<span class="sd">            Surface type for the natural convection correlation option.</span>
+<span class="sd">            This parameter is relevant if ``ht_correlation_type=&quot;Natural Convection&quot;``.</span>
+<span class="sd">            Options are &quot;Top&quot;, &quot;Bottom&quot;, and &quot;Vertical&quot;. The default is ``&quot;Vertical&quot;``.</span>
+<span class="sd">        ht_correlation_amb_temperature : str or float, optional</span>
+<span class="sd">            Ambient temperature for the natural convection correlation option.</span>
+<span class="sd">            This parameter is relevant if ``ht_correlation_type=&quot;Natural Convection&quot;``.</span>
+<span class="sd">            If a float value is specified, the default unit is degrees Celsius.</span>
+<span class="sd">            The default is ``&quot;AmbientTemp&quot;``.</span>
+<span class="sd">        shell_conduction : bool, optional</span>
+<span class="sd">            Whether to use the shell conduction option. The default is ``False``.</span>
+<span class="sd">        ext_surf_rad : bool, optional</span>
+<span class="sd">            Whether to use the external surface radiation option. This parameter</span>
+<span class="sd">            is relevant if ``ext_condition=&quot;Heat Transfer Coefficient&quot;``. The</span>
+<span class="sd">            default is ``False``.</span>
+<span class="sd">        ext_surf_rad_material : str, optional</span>
+<span class="sd">            Surface material for the external surface radiation option. This parameter</span>
+<span class="sd">            is relevant if ``ext_surf_rad=True``. The default is ``&quot;Stainless-steel-cleaned&quot;``.</span>
+<span class="sd">        ext_surf_rad_ref_temp : str or float, optional</span>
+<span class="sd">             Reference temperature for the external surface radiation option. This parameter</span>
+<span class="sd">             is relevant if  ``ext_surf_rad=True``.  If a float value is specified, the default</span>
+<span class="sd">             unit is degrees Celsius. The default is ``&quot;AmbientTemp&quot;``.</span>
+<span class="sd">        ext_surf_rad_view_factor : str or float, optional</span>
+<span class="sd">            View factor for the external surface radiation option. The default is ``&quot;1&quot;``.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        :class:`pyaedt.modules.Boundary.BoundaryObject`</span>
+<span class="sd">            Boundary object.</span>
+
+<span class="sd">        References</span>
+<span class="sd">        ----------</span>
+
+<span class="sd">        &gt;&gt;&gt; oModule.AssignStationaryWallBoundary</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">name</span><span class="p">:</span>
+            <span class="n">name</span> <span class="o">=</span> <span class="n">generate_unique_name</span><span class="p">(</span><span class="s2">&quot;StationaryWall&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">geometry</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="n">geometry</span> <span class="o">=</span> <span class="p">[</span><span class="n">geometry</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">geometry</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+            <span class="n">geometry</span> <span class="o">=</span> <span class="p">[</span><span class="n">geometry</span><span class="p">]</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">thickness</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="n">thickness</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">thickness</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">model_units</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">heat_flux</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="n">heat_flux</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">irrad_W_per_m2&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">heat_flux</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">temperature</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="n">temperature</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">cel&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">temperature</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">htc</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="n">htc</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">w_per_m2kel&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">htc</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">ref_temperature</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="n">ref_temperature</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">cel&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ref_temperature</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">ht_correlation_free_stream_velocity</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="n">ht_correlation_free_stream_velocity</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">m_per_sec&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ht_correlation_free_stream_velocity</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">ht_correlation_amb_temperature</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="n">ht_correlation_amb_temperature</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">cel&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ht_correlation_amb_temperature</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">ext_surf_rad_view_factor</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="n">ext_surf_rad_view_factor</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">ext_surf_rad_view_factor</span><span class="p">)</span>
+
+        <span class="n">props</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">geometry</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">int</span><span class="p">):</span>
+            <span class="n">props</span><span class="p">[</span><span class="s2">&quot;Faces&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">geometry</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">props</span><span class="p">[</span><span class="s2">&quot;Objects&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">geometry</span>
+        <span class="n">props</span><span class="p">[</span><span class="s2">&quot;Thickness&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">thickness</span><span class="p">,)</span>
+        <span class="n">props</span><span class="p">[</span><span class="s2">&quot;Solid Material&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">material</span>
+        <span class="n">props</span><span class="p">[</span><span class="s2">&quot;External Condition&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">boundary_condition</span>
+        <span class="n">props</span><span class="p">[</span><span class="s2">&quot;Heat Flux&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">heat_flux</span>
+        <span class="n">props</span><span class="p">[</span><span class="s2">&quot;Temperature&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">temperature</span>
+        <span class="k">if</span> <span class="n">htc_dataset</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">props</span><span class="p">[</span><span class="s2">&quot;Heat Transfer Coefficient&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">htc</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">props</span><span class="p">[</span><span class="s2">&quot;Heat Transfer Coefficient Variation Data&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s2">&quot;Variation Type&quot;</span><span class="p">:</span> <span class="s2">&quot;Temp Dep&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;Variation Function&quot;</span><span class="p">:</span> <span class="s2">&quot;Piecewise Linear&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;Variation Value&quot;</span><span class="p">:</span> <span class="s1">&#39;[&quot;1w_per_m2kel&quot;, &quot;pwl(</span><span class="si">{}</span><span class="s1">,Temp)&quot;]&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">htc_dataset</span><span class="p">),</span>
+            <span class="p">}</span>
+        <span class="n">props</span><span class="p">[</span><span class="s2">&quot;Reference Temperature&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ref_temperature</span>
+        <span class="n">props</span><span class="p">[</span><span class="s2">&quot;Heat Transfer Data&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;Heat Transfer Correlation&quot;</span><span class="p">:</span> <span class="n">ht_correlation</span><span class="p">,</span>
+            <span class="s2">&quot;Heat Transfer Convection Type&quot;</span><span class="p">:</span> <span class="s2">&quot;Forced Convection&quot;</span><span class="p">,</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="n">ht_correlation</span><span class="p">:</span>
+            <span class="n">props</span><span class="p">[</span><span class="s2">&quot;Heat Transfer Data&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;Heat Transfer Correlation&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+                    <span class="s2">&quot;Heat Transfer Convection Type&quot;</span><span class="p">:</span> <span class="n">ht_correlation_type</span><span class="p">,</span>
+                    <span class="s2">&quot;Heat Transfer Convection Fluid Material&quot;</span><span class="p">:</span> <span class="n">ht_correlation_fluid</span><span class="p">,</span>
+                <span class="p">}</span>
+            <span class="p">)</span>
+            <span class="k">if</span> <span class="n">ht_correlation_type</span> <span class="o">==</span> <span class="s2">&quot;Forced Convection&quot;</span><span class="p">:</span>
+                <span class="n">props</span><span class="p">[</span><span class="s2">&quot;Heat Transfer Data&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
+                    <span class="p">{</span>
+                        <span class="s2">&quot;Flow Type&quot;</span><span class="p">:</span> <span class="n">ht_correlation_flow_type</span><span class="p">,</span>
+                        <span class="s2">&quot;Flow Direction&quot;</span><span class="p">:</span> <span class="n">ht_correlation_flow_direction</span><span class="p">,</span>
+                        <span class="s2">&quot;Heat Transfer Coeff Value Type&quot;</span><span class="p">:</span> <span class="n">ht_correlation_value_type</span><span class="p">,</span>
+                        <span class="s2">&quot;Stream Velocity&quot;</span><span class="p">:</span> <span class="n">ht_correlation_free_stream_velocity</span><span class="p">,</span>
+                    <span class="p">}</span>
+                <span class="p">)</span>
+            <span class="k">elif</span> <span class="n">ht_correlation_type</span> <span class="o">==</span> <span class="s2">&quot;Natural Convection&quot;</span><span class="p">:</span>
+                <span class="n">props</span><span class="p">[</span><span class="s2">&quot;Heat Transfer Data&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
+                    <span class="p">{</span><span class="s2">&quot;Surface&quot;</span><span class="p">:</span> <span class="n">ht_correlation_surface</span><span class="p">,</span> <span class="s2">&quot;Ambient Temperature&quot;</span><span class="p">:</span> <span class="n">ht_correlation_amb_temperature</span><span class="p">}</span>
+                <span class="p">)</span>
+        <span class="n">props</span><span class="p">[</span><span class="s2">&quot;Radiation&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Radiate&quot;</span><span class="p">:</span> <span class="n">radiate</span><span class="p">,</span> <span class="s2">&quot;RadiateTo&quot;</span><span class="p">:</span> <span class="s2">&quot;AllObjects&quot;</span><span class="p">,</span> <span class="s2">&quot;Surface Material&quot;</span><span class="p">:</span> <span class="n">radiate_surf_mat</span><span class="p">}</span>
+        <span class="n">props</span><span class="p">[</span><span class="s2">&quot;Shell Conduction&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">shell_conduction</span>
+        <span class="n">props</span><span class="p">[</span><span class="s2">&quot;External Surface Radiation&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ext_surf_rad</span>
+        <span class="n">props</span><span class="p">[</span><span class="s2">&quot;External Material&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ext_surf_rad_material</span>
+        <span class="n">props</span><span class="p">[</span><span class="s2">&quot;External Radiation Reference Temperature&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ext_surf_rad_ref_temp</span>
+        <span class="n">props</span><span class="p">[</span><span class="s2">&quot;External Radiation View Factor&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ext_surf_rad_view_factor</span>
+        <span class="n">bound</span> <span class="o">=</span> <span class="n">BoundaryObject</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">props</span><span class="p">,</span> <span class="s2">&quot;Stationary Wall&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">bound</span><span class="o">.</span><span class="n">create</span><span class="p">():</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">boundaries</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">bound</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">bound</span></div>
+
+<div class="viewcode-block" id="Icepak.assign_stationary_wall_with_heat_flux"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.icepak.Icepak.assign_stationary_wall_with_heat_flux.html#pyaedt.icepak.Icepak.assign_stationary_wall_with_heat_flux">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">assign_stationary_wall_with_heat_flux</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">geometry</span><span class="p">,</span>
+        <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">heat_flux</span><span class="o">=</span><span class="s2">&quot;0irrad_W_per_m2&quot;</span><span class="p">,</span>
+        <span class="n">thickness</span><span class="o">=</span><span class="s2">&quot;0mm&quot;</span><span class="p">,</span>
+        <span class="n">material</span><span class="o">=</span><span class="s2">&quot;Al-Extruded&quot;</span><span class="p">,</span>
+        <span class="n">radiate</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">radiate_surf_mat</span><span class="o">=</span><span class="s2">&quot;Steel-oxidised-surface&quot;</span><span class="p">,</span>
+        <span class="n">shell_conduction</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Assign a surface wall boundary condition with specified heat flux.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        geometry : str or int</span>
+<span class="sd">            Name of the surface object or ID of the face.</span>
+<span class="sd">        name : str, optional</span>
+<span class="sd">            Name of the boundary condition. The default is ``None``.</span>
+<span class="sd">        heat_flux : str or float, optional</span>
+<span class="sd">            Heat flux to assign to the wall. If a float value is</span>
+<span class="sd">            specified, the unit is ``irrad_W_per_m2``. The default is</span>
+<span class="sd">            ``&quot;0irrad_W_per_m2&quot;``.</span>
+<span class="sd">        thickness : str or float, optional</span>
+<span class="sd">            Thickness of the wall. If a float value is specified, the unit is the</span>
+<span class="sd">            current unit system set in Icepak. The default is ``&quot;0mm&quot;``.</span>
+<span class="sd">        material : str, optional</span>
+<span class="sd">            Solid material of the wall. This parameter is relevant if the thickness</span>
+<span class="sd">            is non-zero. The default is ``&quot;Al-Extruded&quot;``.</span>
+<span class="sd">        radiate : bool, optional</span>
+<span class="sd">            Whether to enable the inner surface radiation option. The default is ``False``.</span>
+<span class="sd">        radiate_surf_mat : str, optional</span>
+<span class="sd">            Surface material for the inner surface radiation. This parameter is</span>
+<span class="sd">            relevant if ``radiate`` is enabled. The default is ``&quot;Steel-oxidised-surface``.</span>
+<span class="sd">        shell_conduction : bool, optional</span>
+<span class="sd">            Whether to use the shell conduction option. The default is ``False``.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        :class:`pyaedt.modules.Boundary.BoundaryObject`</span>
+<span class="sd">            Boundary object.</span>
+
+<span class="sd">        References</span>
+<span class="sd">        ----------</span>
+
+<span class="sd">        &gt;&gt;&gt; oModule.AssignStationaryWallBoundary</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">assign_stationary_wall</span><span class="p">(</span>
+            <span class="n">geometry</span><span class="p">,</span>
+            <span class="s2">&quot;Heat Flux&quot;</span><span class="p">,</span>
+            <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span>
+            <span class="n">heat_flux</span><span class="o">=</span><span class="n">heat_flux</span><span class="p">,</span>
+            <span class="n">thickness</span><span class="o">=</span><span class="n">thickness</span><span class="p">,</span>
+            <span class="n">material</span><span class="o">=</span><span class="n">material</span><span class="p">,</span>
+            <span class="n">radiate</span><span class="o">=</span><span class="n">radiate</span><span class="p">,</span>
+            <span class="n">radiate_surf_mat</span><span class="o">=</span><span class="n">radiate_surf_mat</span><span class="p">,</span>
+            <span class="n">shell_conduction</span><span class="o">=</span><span class="n">shell_conduction</span><span class="p">,</span>
+        <span class="p">)</span></div>
+
+<div class="viewcode-block" id="Icepak.assign_stationary_wall_with_temperature"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.icepak.Icepak.assign_stationary_wall_with_temperature.html#pyaedt.icepak.Icepak.assign_stationary_wall_with_temperature">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">assign_stationary_wall_with_temperature</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">geometry</span><span class="p">,</span>
+        <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">temperature</span><span class="o">=</span><span class="s2">&quot;0cel&quot;</span><span class="p">,</span>
+        <span class="n">thickness</span><span class="o">=</span><span class="s2">&quot;0mm&quot;</span><span class="p">,</span>
+        <span class="n">material</span><span class="o">=</span><span class="s2">&quot;Al-Extruded&quot;</span><span class="p">,</span>
+        <span class="n">radiate</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">radiate_surf_mat</span><span class="o">=</span><span class="s2">&quot;Steel-oxidised-surface&quot;</span><span class="p">,</span>
+        <span class="n">shell_conduction</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Assign a surface wall boundary condition with specified temperature.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        geometry : str or int</span>
+<span class="sd">            Name of the surface object or ID of the face.</span>
+<span class="sd">        name : str, optional</span>
+<span class="sd">            Name of the boundary condition. The default is ``None``.</span>
+<span class="sd">        temperature : str or float, optional</span>
+<span class="sd">            Temperature to assign to the wall. If a float value is specified,</span>
+<span class="sd">            the unit is degrees Celsius. The default is ``&quot;0cel&quot;``.</span>
+<span class="sd">        thickness : str or float, optional</span>
+<span class="sd">            Thickness of the wall. If a float value is specified used, the unit is the</span>
+<span class="sd">            current unit system set in Icepak. The default is ``&quot;0mm&quot;``.</span>
+<span class="sd">        material : str, optional</span>
+<span class="sd">            Solid material of the wall. This parameter is relevant if the</span>
+<span class="sd">            thickness is a non-zero value. The default is ``&quot;Al-Extruded&quot;``.</span>
+<span class="sd">        radiate : bool, optional</span>
+<span class="sd">            Whether to enable the inner surface radiation option. The default is ``False``.</span>
+<span class="sd">        radiate_surf_mat : str, optional</span>
+<span class="sd">            Surface material to use for inner surface radiation. This parameter is relevant</span>
+<span class="sd">            if ``radiate`` is enabled. The default is ``&quot;Steel-oxidised-surface``.</span>
+<span class="sd">        shell_conduction : bool, optional</span>
+<span class="sd">            Whether to use the shell conduction option. The default is ``False``.</span>
+
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        :class:`pyaedt.modules.Boundary.BoundaryObject`</span>
+<span class="sd">            Boundary object.</span>
+
+<span class="sd">        References</span>
+<span class="sd">        ----------</span>
+
+<span class="sd">        &gt;&gt;&gt; oModule.AssignStationaryWallBoundary</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">assign_stationary_wall</span><span class="p">(</span>
+            <span class="n">geometry</span><span class="p">,</span>
+            <span class="s2">&quot;Temperature&quot;</span><span class="p">,</span>
+            <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span>
+            <span class="n">temperature</span><span class="o">=</span><span class="n">temperature</span><span class="p">,</span>
+            <span class="n">thickness</span><span class="o">=</span><span class="n">thickness</span><span class="p">,</span>
+            <span class="n">material</span><span class="o">=</span><span class="n">material</span><span class="p">,</span>
+            <span class="n">radiate</span><span class="o">=</span><span class="n">radiate</span><span class="p">,</span>
+            <span class="n">radiate_surf_mat</span><span class="o">=</span><span class="n">radiate_surf_mat</span><span class="p">,</span>
+            <span class="n">shell_conduction</span><span class="o">=</span><span class="n">shell_conduction</span><span class="p">,</span>
+        <span class="p">)</span></div>
+
+<div class="viewcode-block" id="Icepak.assign_stationary_wall_with_htc"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.icepak.Icepak.assign_stationary_wall_with_htc.html#pyaedt.icepak.Icepak.assign_stationary_wall_with_htc">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">assign_stationary_wall_with_htc</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">geometry</span><span class="p">,</span>
+        <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">thickness</span><span class="o">=</span><span class="s2">&quot;0mm&quot;</span><span class="p">,</span>
+        <span class="n">material</span><span class="o">=</span><span class="s2">&quot;Al-Extruded&quot;</span><span class="p">,</span>
+        <span class="n">htc</span><span class="o">=</span><span class="s2">&quot;0w_per_m2kel&quot;</span><span class="p">,</span>
+        <span class="n">htc_dataset</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">ref_temperature</span><span class="o">=</span><span class="s2">&quot;AmbientTemp&quot;</span><span class="p">,</span>
+        <span class="n">ht_correlation</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">ht_correlation_type</span><span class="o">=</span><span class="s2">&quot;Natural Convection&quot;</span><span class="p">,</span>
+        <span class="n">ht_correlation_fluid</span><span class="o">=</span><span class="s2">&quot;air&quot;</span><span class="p">,</span>
+        <span class="n">ht_correlation_flow_type</span><span class="o">=</span><span class="s2">&quot;Turbulent&quot;</span><span class="p">,</span>
+        <span class="n">ht_correlation_flow_direction</span><span class="o">=</span><span class="s2">&quot;X&quot;</span><span class="p">,</span>
+        <span class="n">ht_correlation_value_type</span><span class="o">=</span><span class="s2">&quot;Average Values&quot;</span><span class="p">,</span>
+        <span class="n">ht_correlation_free_stream_velocity</span><span class="o">=</span><span class="s2">&quot;1m_per_sec&quot;</span><span class="p">,</span>
+        <span class="n">ht_correlation_surface</span><span class="o">=</span><span class="s2">&quot;Vertical&quot;</span><span class="p">,</span>
+        <span class="n">ht_correlation_amb_temperature</span><span class="o">=</span><span class="s2">&quot;AmbientTemp&quot;</span><span class="p">,</span>
+        <span class="n">ext_surf_rad</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">ext_surf_rad_material</span><span class="o">=</span><span class="s2">&quot;Stainless-steel-cleaned&quot;</span><span class="p">,</span>
+        <span class="n">ext_surf_rad_ref_temp</span><span class="o">=</span><span class="s2">&quot;AmbientTemp&quot;</span><span class="p">,</span>
+        <span class="n">ext_surf_rad_view_factor</span><span class="o">=</span><span class="s2">&quot;1&quot;</span><span class="p">,</span>
+        <span class="n">radiate</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">radiate_surf_mat</span><span class="o">=</span><span class="s2">&quot;Steel-oxidised-surface&quot;</span><span class="p">,</span>
+        <span class="n">shell_conduction</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Assign a surface wall boundary condition with specified heat transfer coefficient.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        geometry : str or int</span>
+<span class="sd">            Name of the surface object or id of the face.</span>
+<span class="sd">        name : str, optional</span>
+<span class="sd">            Name of the boundary condition. The default is ``None``.</span>
+<span class="sd">        htc : str or float, optional</span>
+<span class="sd">            Heat transfer coefficient to assign to the wall. If a float value</span>
+<span class="sd">            is specified, the unit is ``w_per_m2kel``. The default is</span>
+<span class="sd">            ``&quot;0w_per_m2kel&quot;``.</span>
+<span class="sd">        thickness : str or float, optional</span>
+<span class="sd">            Thickness of the wall. If a float value is specified, the unit is the</span>
+<span class="sd">            current unit system set in Icepak. The default is ``&quot;0mm&quot;``.</span>
+<span class="sd">        htc_dataset : str, optional</span>
+<span class="sd">            Dataset that represents the dependency of the heat transfer</span>
+<span class="sd">            coefficient on temperature. This parameter is relevant if</span>
+<span class="sd">            ``ext_condition=&quot;Heat Transfer Coefficient&quot;``. The default is ``None``.</span>
+<span class="sd">        ref_temperature : str or float, optional</span>
+<span class="sd">            Reference temperature for the definition of the heat transfer</span>
+<span class="sd">            coefficient. This parameter is relevant if</span>
+<span class="sd">            ``ext_condition=&quot;Heat Transfer Coefficient&quot;``. The default is ``&quot;AmbientTemp&quot;``.</span>
+<span class="sd">        material : str, optional</span>
+<span class="sd">            Solid material of the wall. This parameter is relevant if the thickness</span>
+<span class="sd">            is non-zero. The default is ``&quot;Al-Extruded&quot;``.</span>
+<span class="sd">        radiate : bool, optional</span>
+<span class="sd">            Whether to enable the inner surface radiation option. The default is ``False``.</span>
+<span class="sd">        radiate_surf_mat : str, optional</span>
+<span class="sd">            Surface material for inner surface radiation. This parameter is relevant</span>
+<span class="sd">            if ``radiate`` is enabled. The default is ``&quot;Steel-oxidised-surface``.</span>
+<span class="sd">        ht_correlation : bool, optional</span>
+<span class="sd">            Whether to use the correlation option to compute the heat transfer</span>
+<span class="sd">            coefficient. The default is ``False``.</span>
+<span class="sd">        ht_correlation_type : str, optional</span>
+<span class="sd">            Correlation type for the correlation option. This parameter is</span>
+<span class="sd">            relevant if ``ht_correlation=True``. Options are &quot;Natural Convection&quot;</span>
+<span class="sd">            and &quot;Forced Convection&quot;. The default is ``&quot;Natural Convection&quot;``.</span>
+<span class="sd">        ht_correlation_fluid : str, optional</span>
+<span class="sd">            Fluid for the correlation option. This parameter is relevant if</span>
+<span class="sd">            ``ht_correlation=True``. The default is ``&quot;air&quot;``.</span>
+<span class="sd">        ht_correlation_flow_type : str, optional</span>
+<span class="sd">            Type of flow for the correlation option. This parameter is relevant</span>
+<span class="sd">            if ``ht_correlation=True``. Options are ``&quot;Turbulent&quot;`` and ``&quot;Laminar&quot;``.</span>
+<span class="sd">            The default is ``&quot;Turbulent&quot;``.</span>
+<span class="sd">        ht_correlation_flow_direction : str, optional</span>
+<span class="sd">            Flow direction for the correlation option. This parameter is relevant</span>
+<span class="sd">            if ``ht_correlation_type=&quot;Forced Convection&quot;``. The default is ``&quot;X&quot;``.</span>
+<span class="sd">        ht_correlation_value_type : str, optional</span>
+<span class="sd">             Value type for the forced convection correlation option. This</span>
+<span class="sd">             parameter is relevant if ``ht_correlation_type=&quot;Forced Convection&quot;``.</span>
+<span class="sd">             Options are &quot;Average Values&quot; and &quot;Local Values&quot;. The default</span>
+<span class="sd">             is ``&quot;Average Values&quot;``.</span>
+<span class="sd">        ht_correlation_free_stream_velocity : str or float, optional</span>
+<span class="sd">             Free stream flow velocity. This parameter is relevant if</span>
+<span class="sd">             ``ht_correlation_type=&quot;Forced Convection&quot;``.  If a float</span>
+<span class="sd">             value is specified, ``m_per_sec`` is the unit. The default</span>
+<span class="sd">             is ``&quot;1m_per_sec&quot;``.</span>
+<span class="sd">        ht_correlation_surface : str, optional</span>
+<span class="sd">            Surface for the natural convection correlation option. This parameter is</span>
+<span class="sd">            relevant if ``ht_correlation_type=&quot;Natural Convection&quot;``. Options are &quot;Top&quot;,</span>
+<span class="sd">            &quot;Bottom&quot;, and &quot;Vertical&quot;. The default is ``&quot;Vertical&quot;``.</span>
+<span class="sd">        ht_correlation_amb_temperature : str or float, optional</span>
+<span class="sd">            Ambient temperature for the natural convection correlation option.</span>
+<span class="sd">            This parameter is relevant if ``ht_correlation_type=&quot;Natural Convection&quot;``.</span>
+<span class="sd">            If a float value is specified, the default unit is degrees Celsius. The</span>
+<span class="sd">            default is ``&quot;AmbientTemp&quot;``.</span>
+<span class="sd">        shell_conduction : bool, optional</span>
+<span class="sd">            Whether to use the shell conduction option. The default is ``False``.</span>
+<span class="sd">        ext_surf_rad : bool, optional</span>
+<span class="sd">            Whether to use the external surface radiation option. This parameter</span>
+<span class="sd">            is relevant if ``ext_condition=&quot;Heat Transfer Coefficient&quot;``. The default</span>
+<span class="sd">            is ``False``.</span>
+<span class="sd">        ext_surf_rad_material : str, optional</span>
+<span class="sd">            Surface material for the external surface radiation option. This parameter is</span>
+<span class="sd">            relevant if ``ext_surf_rad=True``. The default is ``&quot;Stainless-steel-cleaned&quot;``.</span>
+<span class="sd">        ext_surf_rad_ref_temp : str or float, optional</span>
+<span class="sd">             Reference temperature for the external surface radiation option. This</span>
+<span class="sd">             parameter is relevant if ``ext_surf_rad=True``. If a float value is</span>
+<span class="sd">             specified, the default unit is degrees Celsius. The default is</span>
+<span class="sd">             ``&quot;AmbientTemp&quot;``.</span>
+<span class="sd">        ext_surf_rad_view_factor : str or float, optional</span>
+<span class="sd">            View factor for the external surface radiation option. The default is ``&quot;1&quot;``.</span>
+
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        :class:`pyaedt.modules.Boundary.BoundaryObject`</span>
+<span class="sd">            Boundary object.</span>
+
+<span class="sd">        References</span>
+<span class="sd">        ----------</span>
+
+<span class="sd">        &gt;&gt;&gt; oModule.AssignStationaryWallBoundary</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">assign_stationary_wall</span><span class="p">(</span>
+            <span class="n">geometry</span><span class="p">,</span>
+            <span class="s2">&quot;Heat Transfer Coefficient&quot;</span><span class="p">,</span>
+            <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span>
+            <span class="n">thickness</span><span class="o">=</span><span class="n">thickness</span><span class="p">,</span>
+            <span class="n">material</span><span class="o">=</span><span class="n">material</span><span class="p">,</span>
+            <span class="n">htc</span><span class="o">=</span><span class="n">htc</span><span class="p">,</span>
+            <span class="n">htc_dataset</span><span class="o">=</span><span class="n">htc_dataset</span><span class="p">,</span>
+            <span class="n">ref_temperature</span><span class="o">=</span><span class="n">ref_temperature</span><span class="p">,</span>
+            <span class="n">ht_correlation</span><span class="o">=</span><span class="n">ht_correlation</span><span class="p">,</span>
+            <span class="n">ht_correlation_type</span><span class="o">=</span><span class="n">ht_correlation_type</span><span class="p">,</span>
+            <span class="n">ht_correlation_fluid</span><span class="o">=</span><span class="n">ht_correlation_fluid</span><span class="p">,</span>
+            <span class="n">ht_correlation_flow_type</span><span class="o">=</span><span class="n">ht_correlation_flow_type</span><span class="p">,</span>
+            <span class="n">ht_correlation_flow_direction</span><span class="o">=</span><span class="n">ht_correlation_flow_direction</span><span class="p">,</span>
+            <span class="n">ht_correlation_value_type</span><span class="o">=</span><span class="n">ht_correlation_value_type</span><span class="p">,</span>
+            <span class="n">ht_correlation_free_stream_velocity</span><span class="o">=</span><span class="n">ht_correlation_free_stream_velocity</span><span class="p">,</span>
+            <span class="n">ht_correlation_surface</span><span class="o">=</span><span class="n">ht_correlation_amb_temperature</span><span class="p">,</span>
+            <span class="n">ht_correlation_amb_temperature</span><span class="o">=</span><span class="n">ht_correlation_surface</span><span class="p">,</span>
+            <span class="n">ext_surf_rad</span><span class="o">=</span><span class="n">ext_surf_rad</span><span class="p">,</span>
+            <span class="n">ext_surf_rad_material</span><span class="o">=</span><span class="n">ext_surf_rad_material</span><span class="p">,</span>
+            <span class="n">ext_surf_rad_ref_temp</span><span class="o">=</span><span class="n">ext_surf_rad_ref_temp</span><span class="p">,</span>
+            <span class="n">ext_surf_rad_view_factor</span><span class="o">=</span><span class="n">ext_surf_rad_view_factor</span><span class="p">,</span>
+            <span class="n">radiate</span><span class="o">=</span><span class="n">radiate</span><span class="p">,</span>
+            <span class="n">radiate_surf_mat</span><span class="o">=</span><span class="n">radiate_surf_mat</span><span class="p">,</span>
+            <span class="n">shell_conduction</span><span class="o">=</span><span class="n">shell_conduction</span><span class="p">,</span>
+        <span class="p">)</span></div></div>
 </pre></div>
 
               </article>
@@ -3530,7 +4017,7 @@ function checkPageExistsAndRedirect(event) {
   
   <div class="footer-item">
     <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 6.1.3.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.<br>
 </p>
   </div>
   

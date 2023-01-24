@@ -42,14 +42,17 @@
         <link href="../../_static/css/breadcrumbs.css" rel="stylesheet">
     
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/sphinx_highlight.js"></script>
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
-    <link rel="icon" href="../../_static/ansys-favicon.png"/>
+    <link rel="shortcut icon" href="../../_static/ansys-favicon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="create_circular_padstack" href="pyaedt.edb_core.padstack.EdbPadstacks.create_circular_padstack.html" />
+    <link rel="next" title="check_and_fix_via_plating" href="pyaedt.edb_core.padstack.EdbPadstacks.check_and_fix_via_plating.html" />
     <link rel="prev" title="signal_nets" href="pyaedt.edb_core.nets.EdbNets.signal_nets.html" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="docsearch:language" content="en">
@@ -77,8 +80,9 @@
   
   
   
+    <img src="../../_static/pyansys-logo-black-cropped.png" class="logo__image only-light" alt="Logo image">
+    <img src="../../_static/pyansys-logo-black-cropped.png" class="logo__image only-dark" alt="Logo image">
   
-    <p class="title logo__title">PyAEDT</p>
   
 </a>
     
@@ -206,7 +210,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.43 variable.
+            // this version, rather than using sphinx's 0.6.44 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -1211,6 +1215,11 @@ function checkPageExistsAndRedirect(event) {
     </label>
     <ul>
      <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.padstack.EdbPadstacks.check_and_fix_via_plating.html">
+       check_and_fix_via_plating
+      </a>
+     </li>
+     <li class="toctree-l3">
       <a class="reference internal" href="pyaedt.edb_core.padstack.EdbPadstacks.create_circular_padstack.html">
        create_circular_padstack
       </a>
@@ -1994,6 +2003,11 @@ function checkPageExistsAndRedirect(event) {
      <li class="toctree-l3">
       <a class="reference internal" href="pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.area.html">
        area
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.clone.html">
+       clone
       </a>
      </li>
      <li class="toctree-l3">
@@ -4727,6 +4741,11 @@ function checkPageExistsAndRedirect(event) {
       </a>
      </li>
      <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationBatch.do_pingroup.html">
+       do_pingroup
+      </a>
+     </li>
+     <li class="toctree-l3">
       <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationBatch.etching_factor_instances.html">
        etching_factor_instances
       </a>
@@ -4979,52 +4998,55 @@ function checkPageExistsAndRedirect(event) {
 <p class="rubric">Methods</p>
 <table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.edb_core.padstack.EdbPadstacks.create_circular_padstack.html#pyaedt.edb_core.padstack.EdbPadstacks.create_circular_padstack" title="pyaedt.edb_core.padstack.EdbPadstacks.create_circular_padstack"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EdbPadstacks.create_circular_padstack</span></code></a>([...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.edb_core.padstack.EdbPadstacks.check_and_fix_via_plating.html#pyaedt.edb_core.padstack.EdbPadstacks.check_and_fix_via_plating" title="pyaedt.edb_core.padstack.EdbPadstacks.check_and_fix_via_plating"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EdbPadstacks.check_and_fix_via_plating</span></code></a>([...])</p></td>
+<td><p>Check for minimum via plating ration value, values found below the minimum one are replaced by default plating ratio.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.edb_core.padstack.EdbPadstacks.create_circular_padstack.html#pyaedt.edb_core.padstack.EdbPadstacks.create_circular_padstack" title="pyaedt.edb_core.padstack.EdbPadstacks.create_circular_padstack"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EdbPadstacks.create_circular_padstack</span></code></a>([...])</p></td>
 <td><p>Create a circular padstack.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.edb_core.padstack.EdbPadstacks.create_coax_port.html#pyaedt.edb_core.padstack.EdbPadstacks.create_coax_port" title="pyaedt.edb_core.padstack.EdbPadstacks.create_coax_port"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EdbPadstacks.create_coax_port</span></code></a>(padstackinstance)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.edb_core.padstack.EdbPadstacks.create_coax_port.html#pyaedt.edb_core.padstack.EdbPadstacks.create_coax_port" title="pyaedt.edb_core.padstack.EdbPadstacks.create_coax_port"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EdbPadstacks.create_coax_port</span></code></a>(padstackinstance)</p></td>
 <td><p>Create HFSS 3Dlayout coaxial lumped port on a pastack Requires to have solder ball defined before calling this method.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.edb_core.padstack.EdbPadstacks.create_padstack.html#pyaedt.edb_core.padstack.EdbPadstacks.create_padstack" title="pyaedt.edb_core.padstack.EdbPadstacks.create_padstack"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EdbPadstacks.create_padstack</span></code></a>([padstackname, ...])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.edb_core.padstack.EdbPadstacks.create_padstack.html#pyaedt.edb_core.padstack.EdbPadstacks.create_padstack" title="pyaedt.edb_core.padstack.EdbPadstacks.create_padstack"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EdbPadstacks.create_padstack</span></code></a>([padstackname, ...])</p></td>
 <td><p>Create a padstack.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.edb_core.padstack.EdbPadstacks.delete_padstack_instances.html#pyaedt.edb_core.padstack.EdbPadstacks.delete_padstack_instances" title="pyaedt.edb_core.padstack.EdbPadstacks.delete_padstack_instances"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EdbPadstacks.delete_padstack_instances</span></code></a>(net_names)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.edb_core.padstack.EdbPadstacks.delete_padstack_instances.html#pyaedt.edb_core.padstack.EdbPadstacks.delete_padstack_instances" title="pyaedt.edb_core.padstack.EdbPadstacks.delete_padstack_instances"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EdbPadstacks.delete_padstack_instances</span></code></a>(net_names)</p></td>
 <td><p>Delete padstack instances by net names.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.edb_core.padstack.EdbPadstacks.duplicate_padstack.html#pyaedt.edb_core.padstack.EdbPadstacks.duplicate_padstack" title="pyaedt.edb_core.padstack.EdbPadstacks.duplicate_padstack"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EdbPadstacks.duplicate_padstack</span></code></a>(...[, ...])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.edb_core.padstack.EdbPadstacks.duplicate_padstack.html#pyaedt.edb_core.padstack.EdbPadstacks.duplicate_padstack" title="pyaedt.edb_core.padstack.EdbPadstacks.duplicate_padstack"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EdbPadstacks.duplicate_padstack</span></code></a>(...[, ...])</p></td>
 <td><p>Duplicate a padstack.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.edb_core.padstack.EdbPadstacks.get_pad_parameters.html#pyaedt.edb_core.padstack.EdbPadstacks.get_pad_parameters" title="pyaedt.edb_core.padstack.EdbPadstacks.get_pad_parameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EdbPadstacks.get_pad_parameters</span></code></a>(pin, layername)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.edb_core.padstack.EdbPadstacks.get_pad_parameters.html#pyaedt.edb_core.padstack.EdbPadstacks.get_pad_parameters" title="pyaedt.edb_core.padstack.EdbPadstacks.get_pad_parameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EdbPadstacks.get_pad_parameters</span></code></a>(pin, layername)</p></td>
 <td><p>Get Padstack Parameters from Pin or Padstack Definition.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.edb_core.padstack.EdbPadstacks.get_padstack_instance_by_net_name.html#pyaedt.edb_core.padstack.EdbPadstacks.get_padstack_instance_by_net_name" title="pyaedt.edb_core.padstack.EdbPadstacks.get_padstack_instance_by_net_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EdbPadstacks.get_padstack_instance_by_net_name</span></code></a>(...)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.edb_core.padstack.EdbPadstacks.get_padstack_instance_by_net_name.html#pyaedt.edb_core.padstack.EdbPadstacks.get_padstack_instance_by_net_name" title="pyaedt.edb_core.padstack.EdbPadstacks.get_padstack_instance_by_net_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EdbPadstacks.get_padstack_instance_by_net_name</span></code></a>(...)</p></td>
 <td><p>Get a list of padstack instances by net name.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.edb_core.padstack.EdbPadstacks.get_pinlist_from_component_and_net.html#pyaedt.edb_core.padstack.EdbPadstacks.get_pinlist_from_component_and_net" title="pyaedt.edb_core.padstack.EdbPadstacks.get_pinlist_from_component_and_net"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EdbPadstacks.get_pinlist_from_component_and_net</span></code></a>([...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.edb_core.padstack.EdbPadstacks.get_pinlist_from_component_and_net.html#pyaedt.edb_core.padstack.EdbPadstacks.get_pinlist_from_component_and_net" title="pyaedt.edb_core.padstack.EdbPadstacks.get_pinlist_from_component_and_net"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EdbPadstacks.get_pinlist_from_component_and_net</span></code></a>([...])</p></td>
 <td><p>Retrieve pins given a component's reference designator and net name.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.edb_core.padstack.EdbPadstacks.get_via_instance_from_net.html#pyaedt.edb_core.padstack.EdbPadstacks.get_via_instance_from_net" title="pyaedt.edb_core.padstack.EdbPadstacks.get_via_instance_from_net"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EdbPadstacks.get_via_instance_from_net</span></code></a>([...])</p></td>
-<td><p>Get the list for Edb vias from net name list.</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.edb_core.padstack.EdbPadstacks.get_via_instance_from_net.html#pyaedt.edb_core.padstack.EdbPadstacks.get_via_instance_from_net" title="pyaedt.edb_core.padstack.EdbPadstacks.get_via_instance_from_net"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EdbPadstacks.get_via_instance_from_net</span></code></a>([...])</p></td>
+<td><p>Get the list for EDB vias from a net name list.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.edb_core.padstack.EdbPadstacks.int_to_geometry_type.html#pyaedt.edb_core.padstack.EdbPadstacks.int_to_geometry_type" title="pyaedt.edb_core.padstack.EdbPadstacks.int_to_geometry_type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EdbPadstacks.int_to_geometry_type</span></code></a>([val])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.edb_core.padstack.EdbPadstacks.int_to_geometry_type.html#pyaedt.edb_core.padstack.EdbPadstacks.int_to_geometry_type" title="pyaedt.edb_core.padstack.EdbPadstacks.int_to_geometry_type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EdbPadstacks.int_to_geometry_type</span></code></a>([val])</p></td>
 <td><p>Convert an integer to an EDB.PadGeometryType.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.edb_core.padstack.EdbPadstacks.int_to_pad_type.html#pyaedt.edb_core.padstack.EdbPadstacks.int_to_pad_type" title="pyaedt.edb_core.padstack.EdbPadstacks.int_to_pad_type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EdbPadstacks.int_to_pad_type</span></code></a>([val])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.edb_core.padstack.EdbPadstacks.int_to_pad_type.html#pyaedt.edb_core.padstack.EdbPadstacks.int_to_pad_type" title="pyaedt.edb_core.padstack.EdbPadstacks.int_to_pad_type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EdbPadstacks.int_to_pad_type</span></code></a>([val])</p></td>
 <td><p>Convert an integer to an EDB.PadGeometryType.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.edb_core.padstack.EdbPadstacks.place_padstack.html#pyaedt.edb_core.padstack.EdbPadstacks.place_padstack" title="pyaedt.edb_core.padstack.EdbPadstacks.place_padstack"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EdbPadstacks.place_padstack</span></code></a>(position, ...[, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.edb_core.padstack.EdbPadstacks.place_padstack.html#pyaedt.edb_core.padstack.EdbPadstacks.place_padstack" title="pyaedt.edb_core.padstack.EdbPadstacks.place_padstack"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EdbPadstacks.place_padstack</span></code></a>(position, ...[, ...])</p></td>
 <td><p>Place the padstack.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.edb_core.padstack.EdbPadstacks.remove_pads_from_padstack.html#pyaedt.edb_core.padstack.EdbPadstacks.remove_pads_from_padstack" title="pyaedt.edb_core.padstack.EdbPadstacks.remove_pads_from_padstack"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EdbPadstacks.remove_pads_from_padstack</span></code></a>(...)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.edb_core.padstack.EdbPadstacks.remove_pads_from_padstack.html#pyaedt.edb_core.padstack.EdbPadstacks.remove_pads_from_padstack" title="pyaedt.edb_core.padstack.EdbPadstacks.remove_pads_from_padstack"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EdbPadstacks.remove_pads_from_padstack</span></code></a>(...)</p></td>
 <td><p>Remove the Pad from a padstack on a specific layer by setting it as a 0 thickness circle.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.edb_core.padstack.EdbPadstacks.set_all_antipad_value.html#pyaedt.edb_core.padstack.EdbPadstacks.set_all_antipad_value" title="pyaedt.edb_core.padstack.EdbPadstacks.set_all_antipad_value"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EdbPadstacks.set_all_antipad_value</span></code></a>(value)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.edb_core.padstack.EdbPadstacks.set_all_antipad_value.html#pyaedt.edb_core.padstack.EdbPadstacks.set_all_antipad_value" title="pyaedt.edb_core.padstack.EdbPadstacks.set_all_antipad_value"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EdbPadstacks.set_all_antipad_value</span></code></a>(value)</p></td>
 <td><p>Set all anti-pads from all pad-stack definition to the given value.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.edb_core.padstack.EdbPadstacks.set_pad_property.html#pyaedt.edb_core.padstack.EdbPadstacks.set_pad_property" title="pyaedt.edb_core.padstack.EdbPadstacks.set_pad_property"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EdbPadstacks.set_pad_property</span></code></a>(padstack_name)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.edb_core.padstack.EdbPadstacks.set_pad_property.html#pyaedt.edb_core.padstack.EdbPadstacks.set_pad_property" title="pyaedt.edb_core.padstack.EdbPadstacks.set_pad_property"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EdbPadstacks.set_pad_property</span></code></a>(padstack_name)</p></td>
 <td><p>Set pad and antipad properties of the padstack.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.edb_core.padstack.EdbPadstacks.set_solderball.html#pyaedt.edb_core.padstack.EdbPadstacks.set_solderball" title="pyaedt.edb_core.padstack.EdbPadstacks.set_solderball"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EdbPadstacks.set_solderball</span></code></a>(padstackInst, ...)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.edb_core.padstack.EdbPadstacks.set_solderball.html#pyaedt.edb_core.padstack.EdbPadstacks.set_solderball" title="pyaedt.edb_core.padstack.EdbPadstacks.set_solderball"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EdbPadstacks.set_solderball</span></code></a>(padstackInst, ...)</p></td>
 <td><p>Set solderball for the given PadstackInstance.</p></td>
 </tr>
 </tbody>
@@ -5078,7 +5100,7 @@ function checkPageExistsAndRedirect(event) {
   
   <div class="footer-item">
     <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 6.1.3.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.<br>
 </p>
   </div>
   

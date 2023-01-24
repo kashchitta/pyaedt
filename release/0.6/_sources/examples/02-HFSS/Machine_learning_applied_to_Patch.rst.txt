@@ -92,7 +92,7 @@ This section describes the first step, which is for generating the database.
 Generate input
 ~~~~~~~~~~~~~~
 Generate input randomly by creating a function with four inputs: frequency,
-substrate permittivity, substrate thickness, and patch width. Frequency is
+substrate permittivity, substrate thickness, and patch width. Frequency ranges
 from 0.1 GHz to 1 GHz. Permittivity is from 1 to 12.
 
 The following code generates a database of 1 frequency x 2 permittivity
@@ -196,7 +196,7 @@ dictionary.
 
  .. code-block:: none
 
-    List of data: [{'frequency': 150000000.0, 'permittivity': 1.33, 'thickness': 0.04123817860641942, 'width': 0.9999374210065994, 'length': 0.8241921542709967, 'previous_impedance': 0}, {'frequency': 150000000.0, 'permittivity': 1.33, 'thickness': 0.10664369947433534, 'width': 0.9999374210065994, 'length': 0.7548050293942519, 'previous_impedance': 0}, {'frequency': 150000000.0, 'permittivity': 1.33, 'thickness': 0.04123817860641942, 'width': 0.8148611079367295, 'length': 0.8258428001378825, 'previous_impedance': 0}, {'frequency': 150000000.0, 'permittivity': 1.33, 'thickness': 0.10664369947433534, 'width': 0.8148611079367295, 'length': 0.7581777446721178, 'previous_impedance': 0}, {'frequency': 150000000.0, 'permittivity': 11.89, 'thickness': 0.06290813873022112, 'width': 0.4901773082018286, 'length': 0.2639524084665101, 'previous_impedance': 0}, {'frequency': 150000000.0, 'permittivity': 11.89, 'thickness': 0.00852101289610508, 'width': 0.4901773082018286, 'length': 0.2877549934544704, 'previous_impedance': 0}, {'frequency': 150000000.0, 'permittivity': 11.89, 'thickness': 0.06290813873022112, 'width': 0.4938458477926275, 'length': 0.2638127044372257, 'previous_impedance': 0}, {'frequency': 150000000.0, 'permittivity': 11.89, 'thickness': 0.00852101289610508, 'width': 0.4938458477926275, 'length': 0.2877189942316264, 'previous_impedance': 0}]
+    List of data: [{'frequency': 150000000.0, 'permittivity': 3.42, 'thickness': 0.08910526684974178, 'width': 0.45298072718496446, 'length': 0.504973416454237, 'previous_impedance': 0}, {'frequency': 150000000.0, 'permittivity': 3.42, 'thickness': 0.017926873745564332, 'width': 0.45298072718496446, 'length': 0.5384975323932606, 'previous_impedance': 0}, {'frequency': 150000000.0, 'permittivity': 3.42, 'thickness': 0.08910526684974178, 'width': 0.7339858372566055, 'length': 0.4918465134446687, 'previous_impedance': 0}, {'frequency': 150000000.0, 'permittivity': 3.42, 'thickness': 0.017926873745564332, 'width': 0.7339858372566055, 'length': 0.5332822736761288, 'previous_impedance': 0}, {'frequency': 150000000.0, 'permittivity': 2.76, 'thickness': 0.007840970716016776, 'width': 0.7793068077492611, 'length': 0.5981692909567934, 'previous_impedance': 0}, {'frequency': 150000000.0, 'permittivity': 2.76, 'thickness': 0.012430918410453934, 'width': 0.7793068077492611, 'length': 0.5959941853635685, 'previous_impedance': 0}, {'frequency': 150000000.0, 'permittivity': 2.76, 'thickness': 0.007840970716016776, 'width': 0.44259962635382777, 'length': 0.6012997609052133, 'previous_impedance': 0}, {'frequency': 150000000.0, 'permittivity': 2.76, 'thickness': 0.012430918410453934, 'width': 0.44259962635382777, 'length': 0.6005621483444301, 'previous_impedance': 0}]
     Its length is: 8
 
 
@@ -283,7 +283,7 @@ Create a lumped port that is parametrized with the function of the patch.
  .. code-block:: none
 
 
-    <pyaedt.modules.Boundary.BoundaryObject object at 0x000001E34A235580>
+    <pyaedt.modules.Boundary.BoundaryObject object at 0x0000028A2FC44730>
 
 
 
@@ -317,7 +317,7 @@ ensures that the air box is large enough in the normal direction of the patch.
  .. code-block:: none
 
 
-    <pyaedt.modules.Boundary.BoundaryObject object at 0x000001E3590914C0>
+    <pyaedt.modules.Boundary.BoundaryObject object at 0x0000028A316B47C0>
 
 
 
@@ -348,7 +348,7 @@ Plot patch
  .. code-block:: none
 
 
-    <pyaedt.generic.plot.ModelPlotter object at 0x000001E35907F520>
+    <pyaedt.generic.plot.ModelPlotter object at 0x0000028A33D9B610>
 
 
 
@@ -536,30 +536,30 @@ of each case using the analytic formula.
 
  .. code-block:: none
 
-    minimum_imaginary: 0.11930630202523504
-    previous_impedance: 212.0411124297435
-    0.142777211088444
-    minimum_imaginary: 0.025456929237974314
-    previous_impedance: 189.32400200274174
-    0.140647125885035
-    minimum_imaginary: 0.11722566764473065
-    previous_impedance: 284.10247702150383
-    0.144067262690508
-    minimum_imaginary: 0.03526618872301771
-    previous_impedance: 246.66331422950756
-    0.141829173166927
-    minimum_imaginary: -0.10673914356591814
-    previous_impedance: 264.2391557821015
-    0.135981939277571
-    minimum_imaginary: 0.4234852505817954
-    previous_impedance: 265.16020817251933
-    0.140035101404056
-    minimum_imaginary: 0.07781955638243324
-    previous_impedance: 263.63045478176554
-    0.13572392895715799
-    minimum_imaginary: -0.14144581359952632
-    previous_impedance: 264.0602994703007
-    0.139570082803312
+    minimum_imaginary: 0.0017736841498196426
+    previous_impedance: 271.27293704402746
+    0.138337033481339
+    minimum_imaginary: -0.39909112814601494
+    previous_impedance: 344.7346266773852
+    0.146107344293772
+    minimum_imaginary: -0.0734075729806587
+    previous_impedance: 201.4600493865467
+    0.134337873514941
+    minimum_imaginary: -0.08898914202813346
+    previous_impedance: 211.2781524560904
+    0.14489229569182802
+    minimum_imaginary: 0.3329354636284167
+    previous_impedance: 195.56577906358686
+    0.138421036841474
+    minimum_imaginary: 0.23409427949684156
+    previous_impedance: 201.84309134622134
+    0.14648535941437701
+    minimum_imaginary: 0.5230957699367914
+    previous_impedance: 388.65339354902824
+    0.145444317772711
+    minimum_imaginary: -0.4872593525650671
+    previous_impedance: 402.93473971124877
+    0.147259390375615
 
 
 
@@ -866,7 +866,7 @@ for the JSON file.
  .. code-block:: none
 
 
-    ['D:/Projects/Project3324.pyaedt\\HFSS_ISB\\svr_model.joblib']
+    ['D:/Project/Project2060.pyaedt\\HFSS_3Y5\\svr_model.joblib']
 
 
 
@@ -1003,14 +1003,14 @@ Measure the model efficiency.
 
  .. code-block:: none
 
-    value: [142777211.088444, 999.9374210065994, 1.33, 41.238178606419424], prediction: 843063.0055305165, reality: 824192.1542709967
-    value: [140647125.885035, 999.9374210065994, 1.33, 106.64369947433535], prediction: 783564.3431966414, reality: 754805.0293942519
-    value: [144067262.690508, 814.8611079367295, 1.33, 41.238178606419424], prediction: 806201.6601741157, reality: 825842.8001378825
-    value: [141829173.166927, 814.8611079367295, 1.33, 106.64369947433535], prediction: 823372.7841545254, reality: 758177.7446721178
-    value: [135981939.277571, 490.17730820182857, 11.89, 62.908138730221125], prediction: 254899.71340828858, reality: 263952.40846651007
-    value: [140035101.404056, 490.17730820182857, 11.89, 8.52101289610508], prediction: 301163.03082317265, reality: 287754.9934544704
-    value: [135723928.957158, 493.8458477926275, 11.89, 62.908138730221125], prediction: 255125.3478815312, reality: 263812.7044372257
-    value: [139570082.803312, 493.8458477926275, 11.89, 8.52101289610508], prediction: 302366.29673595395, reality: 287718.9942316264
+    value: [138337033.481339, 452.98072718496445, 3.42, 89.10526684974178], prediction: 517814.9015621292, reality: 504973.416454237
+    value: [146107344.293772, 452.98072718496445, 3.42, 17.926873745564333], prediction: 534101.5786988871, reality: 538497.5323932606
+    value: [134337873.514941, 733.9858372566055, 3.42, 89.10526684974178], prediction: 520418.0353039418, reality: 491846.5134446687
+    value: [144892295.691828, 733.9858372566055, 3.42, 17.926873745564333], prediction: 541936.7155013875, reality: 533282.2736761287
+    value: [138421036.841474, 779.3068077492611, 2.76, 7.840970716016776], prediction: 626796.0068133567, reality: 598169.2909567934
+    value: [146485359.414377, 779.3068077492611, 2.76, 12.430918410453934], prediction: 599197.2370771158, reality: 595994.1853635685
+    value: [145444317.772711, 442.5996263538278, 2.76, 7.840970716016776], prediction: 599138.4554129923, reality: 601299.7609052133
+    value: [147259390.375615, 442.5996263538278, 2.76, 12.430918410453934], prediction: 592626.8788876375, reality: 600562.1483444301
 
 
 
@@ -1076,21 +1076,21 @@ the relative gap ``((prediction - real)/real)``.
     <0.5 : 0
     <1 : 0
     <2 : 0
-    <5 : 0
+    <5 : 3
     <10 : 2
-    >10 : 6
+    >10 : 3
 
     sum : 8
     -------------------------------------------
 
-    <0.01 : 0
-    <0.02 : 0
-    <0.05 : 6
-    <0.1 : 2
+    <0.01 : 3
+    <0.02 : 2
+    <0.05 : 2
+    <0.1 : 1
     <0.2 : 0
     >0.2 : 0
     sum : 8
-    average is : 0.041937561299930995
+    average is : 0.0222439146118746
 
 
 
@@ -1123,7 +1123,7 @@ Release AEDT.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 11 minutes  43.138 seconds)
+   **Total running time of the script:** ( 13 minutes  20.509 seconds)
 
 
 .. _sphx_glr_download_examples_02-HFSS_Machine_learning_applied_to_Patch.py:

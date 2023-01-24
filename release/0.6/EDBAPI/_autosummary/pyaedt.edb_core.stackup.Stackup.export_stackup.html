@@ -42,11 +42,14 @@
         <link href="../../_static/css/breadcrumbs.css" rel="stylesheet">
     
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/sphinx_highlight.js"></script>
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
-    <link rel="icon" href="../../_static/ansys-favicon.png"/>
+    <link rel="shortcut icon" href="../../_static/ansys-favicon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="flip_design" href="pyaedt.edb_core.stackup.Stackup.flip_design.html" />
@@ -77,8 +80,9 @@
   
   
   
+    <img src="../../_static/pyansys-logo-black-cropped.png" class="logo__image only-light" alt="Logo image">
+    <img src="../../_static/pyansys-logo-black-cropped.png" class="logo__image only-dark" alt="Logo image">
   
-    <p class="title logo__title">PyAEDT</p>
   
 </a>
     
@@ -206,7 +210,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.43 variable.
+            // this version, rather than using sphinx's 0.6.44 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -1212,6 +1216,11 @@ function checkPageExistsAndRedirect(event) {
     </label>
     <ul>
      <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.padstack.EdbPadstacks.check_and_fix_via_plating.html">
+       check_and_fix_via_plating
+      </a>
+     </li>
+     <li class="toctree-l3">
       <a class="reference internal" href="pyaedt.edb_core.padstack.EdbPadstacks.create_circular_padstack.html">
        create_circular_padstack
       </a>
@@ -1995,6 +2004,11 @@ function checkPageExistsAndRedirect(event) {
      <li class="toctree-l3">
       <a class="reference internal" href="pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.area.html">
        area
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.clone.html">
+       clone
       </a>
      </li>
      <li class="toctree-l3">
@@ -4728,6 +4742,11 @@ function checkPageExistsAndRedirect(event) {
       </a>
      </li>
      <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationBatch.do_pingroup.html">
+       do_pingroup
+      </a>
+     </li>
+     <li class="toctree-l3">
       <a class="reference internal" href="pyaedt.edb_core.edb_data.simulation_configuration.SimulationConfigurationBatch.etching_factor_instances.html">
        etching_factor_instances
       </a>
@@ -4969,14 +4988,19 @@ function checkPageExistsAndRedirect(event) {
 <h1>export_stackup<a class="headerlink" href="#export-stackup" title="Permalink to this heading">#</a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="pyaedt.edb_core.stackup.Stackup.export_stackup">
-<span class="sig-prename descclassname"><span class="pre">Stackup.</span></span><span class="sig-name descname"><span class="pre">export_stackup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fpath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'csv'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pyaedt/edb_core/stackup.html#Stackup.export_stackup"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyaedt.edb_core.stackup.Stackup.export_stackup" title="Permalink to this definition">#</a></dt>
-<dd><p>Export stackup definition to csv file.</p>
+<span class="sig-prename descclassname"><span class="pre">Stackup.</span></span><span class="sig-name descname"><span class="pre">export_stackup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fpath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'csv'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_material_with_layer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pyaedt/edb_core/stackup.html#Stackup.export_stackup"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyaedt.edb_core.stackup.Stackup.export_stackup" title="Permalink to this definition">#</a></dt>
+<dd><p>Export stackup definition to a CSV or JSON file.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
-<dt><strong>fpath</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#str" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a></span></dt><dd><p>File path to csv file.</p>
+<dt><strong>fpath</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#str" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a></span></dt><dd><p>File path to csv or json file.</p>
 </dd>
-<dt><strong>file_format</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#str" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>The format of the file to be exported. The default is <code class="docutils literal notranslate"><span class="pre">&quot;csv&quot;</span></code>. Options are <code class="docutils literal notranslate"><span class="pre">&quot;csv&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;xlsx&quot;</span></code>.</p>
+<dt><strong>file_format</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#str" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Format of the file to export. The default is <code class="docutils literal notranslate"><span class="pre">&quot;csv&quot;</span></code>. Options are <code class="docutils literal notranslate"><span class="pre">&quot;csv&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;xlsx&quot;</span></code>,
+<code class="docutils literal notranslate"><span class="pre">&quot;json&quot;</span></code>.</p>
+</dd>
+<dt><strong>include_material_with_layer</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#bltin-boolean-values" title="(in Python v3.12)"><span class="xref std std-ref">bool</span></a>, optional.</span></dt><dd><p>Whether to include the material definition inside layer ones. This parameter is only used
+when a JSON file is exported. The default is <code class="docutils literal notranslate"><span class="pre">False</span></code>, which keeps the material definition
+section in the JSON file. If <code class="docutils literal notranslate"><span class="pre">True</span></code>, the material definition is included inside the layer ones.</p>
 </dd>
 </dl>
 </dd>
@@ -5010,7 +5034,7 @@ function checkPageExistsAndRedirect(event) {
   
   <div class="footer-item">
     <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 6.1.3.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.<br>
 </p>
   </div>
   

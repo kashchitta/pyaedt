@@ -210,7 +210,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.44 variable.
+            // this version, rather than using sphinx's 0.6.45 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -440,6 +440,11 @@ function checkPageExistsAndRedirect(event) {
        schematic
       </a>
      </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.schematic.ModelerNexxim.schematic_units.html">
+       schematic_units
+      </a>
+     </li>
     </ul>
    </li>
    <li class="toctree-l2">
@@ -583,8 +588,8 @@ function checkPageExistsAndRedirect(event) {
 <h1>move<a class="headerlink" href="#move" title="Permalink to this heading">#</a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="pyaedt.modeler.schematic.ModelerNexxim.move">
-<span class="sig-prename descclassname"><span class="pre">ModelerNexxim.</span></span><span class="sig-name descname"><span class="pre">move</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">selections</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pos</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">units</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'meter'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pyaedt/modeler/schematic.html#ModelerNexxim.move"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyaedt.modeler.schematic.ModelerNexxim.move" title="Permalink to this definition">#</a></dt>
-<dd><p>Move the selections by <code class="docutils literal notranslate"><span class="pre">[x,</span> <span class="pre">y]</span></code>.</p>
+<span class="sig-prename descclassname"><span class="pre">ModelerNexxim.</span></span><span class="sig-name descname"><span class="pre">move</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">selections</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pos</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">units</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pyaedt/modeler/schematic.html#ModelerNexxim.move"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyaedt.modeler.schematic.ModelerNexxim.move" title="Permalink to this definition">#</a></dt>
+<dd><p>Move the selections by the specified <code class="docutils literal notranslate"><span class="pre">[x,</span> <span class="pre">y]</span></code> coordinates.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
@@ -592,7 +597,8 @@ function checkPageExistsAndRedirect(event) {
 </dd>
 <dt><strong>pos</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#list" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">list</span></code></a></span></dt><dd><p>Offset for the <code class="docutils literal notranslate"><span class="pre">[x,</span> <span class="pre">y]</span></code> axis.</p>
 </dd>
-<dt><strong>units</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#str" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a></span></dt><dd><p>Offset for the Y axis.</p>
+<dt><strong>units</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#str" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a></span></dt><dd><p>Units of the movement. The default is <code class="docutils literal notranslate"><span class="pre">&quot;meter&quot;</span></code>. If <code class="docutils literal notranslate"><span class="pre">None</span></code>,
+<a href="#id1"><span class="problematic" id="id2">``</span></a>schematic_units` are used.</p>
 </dd>
 </dl>
 </dd>

@@ -207,7 +207,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.44 variable.
+            // this version, rather than using sphinx's 0.6.45 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -337,8 +337,8 @@ function checkPageExistsAndRedirect(event) {
 <span class="n">V2PI</span> <span class="o">=</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span>
 <span class="n">METER2IN</span> <span class="o">=</span> <span class="mf">0.0254</span>
 <span class="n">METER2MILES</span> <span class="o">=</span> <span class="mf">1609.344051499</span>
-
 <span class="n">MILS2METER</span> <span class="o">=</span> <span class="mf">39370.078740157</span>
+<span class="n">SpeedOfLight</span> <span class="o">=</span> <span class="mf">299792458.0</span>
 
 
 <div class="viewcode-block" id="db20"><a class="viewcode-back" href="../../../API/Constants.html#pyaedt.generic.constants.db20">[docs]</a><span class="k">def</span> <span class="nf">db20</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">inverse</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
@@ -476,15 +476,20 @@ function checkPageExistsAndRedirect(event) {
             <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;No units found&quot;</span><span class="p">)</span>
             <span class="k">return</span> <span class="n">values</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
-                <span class="n">converted_values</span> <span class="o">=</span> <span class="p">[]</span>
-                <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">values</span><span class="p">:</span>
-                    <span class="n">converted_values</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
-                        <span class="n">value</span> <span class="o">*</span> <span class="n">AEDT_UNITS</span><span class="p">[</span><span class="n">unit_system</span><span class="p">][</span><span class="n">input_units</span><span class="p">]</span> <span class="o">/</span> <span class="n">AEDT_UNITS</span><span class="p">[</span><span class="n">unit_system</span><span class="p">][</span><span class="n">output_units</span><span class="p">]</span>
-                    <span class="p">)</span>
-                <span class="k">return</span> <span class="n">converted_values</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+                <span class="n">values</span> <span class="o">=</span> <span class="p">[</span><span class="n">values</span><span class="p">]</span>
+            <span class="n">converted_values</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">values</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">unit_system</span> <span class="o">==</span> <span class="s2">&quot;Temperature&quot;</span><span class="p">:</span>
+                    <span class="n">value</span> <span class="o">=</span> <span class="n">AEDT_UNITS</span><span class="p">[</span><span class="n">unit_system</span><span class="p">][</span><span class="n">input_units</span><span class="p">][</span><span class="mi">0</span><span class="p">](</span><span class="n">value</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+                    <span class="n">value</span> <span class="o">=</span> <span class="n">AEDT_UNITS</span><span class="p">[</span><span class="n">unit_system</span><span class="p">][</span><span class="n">output_units</span><span class="p">][</span><span class="mi">0</span><span class="p">](</span><span class="n">value</span><span class="p">,</span> <span class="n">output_units</span> <span class="o">!=</span> <span class="s2">&quot;kel&quot;</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">value</span> <span class="o">=</span> <span class="n">value</span> <span class="o">*</span> <span class="n">AEDT_UNITS</span><span class="p">[</span><span class="n">unit_system</span><span class="p">][</span><span class="n">input_units</span><span class="p">]</span> <span class="o">/</span> <span class="n">AEDT_UNITS</span><span class="p">[</span><span class="n">unit_system</span><span class="p">][</span><span class="n">output_units</span><span class="p">]</span>
+                <span class="n">converted_values</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">converted_values</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">converted_values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="k">return</span> <span class="n">values</span> <span class="o">*</span> <span class="n">AEDT_UNITS</span><span class="p">[</span><span class="n">unit_system</span><span class="p">][</span><span class="n">input_units</span><span class="p">]</span> <span class="o">/</span> <span class="n">AEDT_UNITS</span><span class="p">[</span><span class="n">unit_system</span><span class="p">][</span><span class="n">output_units</span><span class="p">]</span>
+                <span class="k">return</span> <span class="n">converted_values</span>
     <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;No system unit found&quot;</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">values</span></div>
 
@@ -673,7 +678,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="s2">&quot;gV&quot;</span><span class="p">:</span> <span class="mf">1e9</span><span class="p">,</span>
         <span class="s2">&quot;dBV&quot;</span><span class="p">:</span> <span class="p">(</span><span class="n">db20</span><span class="p">,),</span>
     <span class="p">},</span>
-    <span class="s2">&quot;Temperature&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;kel&quot;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span> <span class="s2">&quot;cel&quot;</span><span class="p">:</span> <span class="p">(</span><span class="n">cel2kel</span><span class="p">,),</span> <span class="s2">&quot;fah&quot;</span><span class="p">:</span> <span class="p">(</span><span class="n">fah2kel</span><span class="p">,)},</span>
+    <span class="s2">&quot;Temperature&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;kel&quot;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">x</span><span class="p">,</span> <span class="s2">&quot;cel&quot;</span><span class="p">:</span> <span class="p">(</span><span class="n">cel2kel</span><span class="p">,),</span> <span class="s2">&quot;fah&quot;</span><span class="p">:</span> <span class="p">(</span><span class="n">fah2kel</span><span class="p">,)},</span>
     <span class="s2">&quot;Power&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="s2">&quot;fW&quot;</span><span class="p">:</span> <span class="mf">1e-15</span><span class="p">,</span>
         <span class="s2">&quot;pW&quot;</span><span class="p">:</span> <span class="mf">1e-12</span><span class="p">,</span>

@@ -210,7 +210,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.44 variable.
+            // this version, rather than using sphinx's 0.6.45 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -653,16 +653,6 @@ function checkPageExistsAndRedirect(event) {
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="EMIT_Example.html">
-     EMIT: antenna
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="EMIT_HFSS_Example.html">
-     EMIT: HFSS to EMIT coupling
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="Reports.html">
      Circuit: automatic report creation
     </a>
@@ -675,11 +665,43 @@ function checkPageExistsAndRedirect(event) {
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../07-TwinBuilder/index.html">
-   Twin Builder examples
+  <a class="reference internal" href="../07-EMIT/index.html">
+   EMIT examples
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
   <label for="toctree-checkbox-11">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../07-EMIT/ComputeChannelSeparation.html">
+     EMIT: Compute required channel separation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../07-EMIT/ComputeProtectionLevels.html">
+     EMIT: Compute receiver protection levels
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../07-EMIT/EMIT_Example.html">
+     EMIT: antenna
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../07-EMIT/EMIT_HFSS_Example.html">
+     EMIT: HFSS to EMIT coupling
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../07-TwinBuilder/index.html">
+   Twin Builder examples
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+  <label for="toctree-checkbox-12">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -700,8 +722,8 @@ function checkPageExistsAndRedirect(event) {
   <a class="reference internal" href="../08-CableModeling/index.html">
    Cable Modeling examples
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
-  <label for="toctree-checkbox-12">
+  <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
+  <label for="toctree-checkbox-13">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -878,6 +900,7 @@ of AEDT or try to connect to an existing instance of it.</p>
 starts the specified version in the specified mode.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">desktop</span> <span class="o">=</span> <span class="n">pyaedt</span><span class="o">.</span><span class="n">launch_desktop</span><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">desktop_version</span></a><span class="p">,</span> <a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a><span class="p">,</span> <a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">new_thread</span></a><span class="p">)</span>
 <span class="n">aedt_app</span> <span class="o">=</span> <span class="n">pyaedt</span><span class="o">.</span><span class="n">Circuit</span><span class="p">(</span><span class="n">projectname</span><span class="o">=</span><span class="n">pyaedt</span><span class="o">.</span><span class="n">generate_unique_project_name</span><span class="p">())</span>
+<span class="n">aedt_app</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">schematic</span><span class="o">.</span><span class="n">schematic_units</span> <span class="o">=</span> <span class="s2">&quot;mil&quot;</span>
 </pre></div>
 </div>
 </section>
@@ -893,8 +916,8 @@ starts the specified version in the specified mode.</p>
 <h2>Create components<a class="headerlink" href="#create-components" title="Permalink to this heading">#</a></h2>
 <p>Create components, such as an inductor, resistor, and capacitor.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">inductor</span> <span class="o">=</span> <span class="n">aedt_app</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">schematic</span><span class="o">.</span><span class="n">create_inductor</span><span class="p">(</span><span class="n">compname</span><span class="o">=</span><span class="s2">&quot;L1&quot;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mf">1e-9</span><span class="p">,</span> <span class="n">location</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
-<span class="n">resistor</span> <span class="o">=</span> <span class="n">aedt_app</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">schematic</span><span class="o">.</span><span class="n">create_resistor</span><span class="p">(</span><span class="n">compname</span><span class="o">=</span><span class="s2">&quot;R1&quot;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">location</span><span class="o">=</span><span class="p">[</span><span class="mf">0.0254</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
-<span class="n">capacitor</span> <span class="o">=</span> <span class="n">aedt_app</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">schematic</span><span class="o">.</span><span class="n">create_capacitor</span><span class="p">(</span><span class="n">compname</span><span class="o">=</span><span class="s2">&quot;C1&quot;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mf">1e-12</span><span class="p">)</span>
+<span class="n">resistor</span> <span class="o">=</span> <span class="n">aedt_app</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">schematic</span><span class="o">.</span><span class="n">create_resistor</span><span class="p">(</span><span class="n">compname</span><span class="o">=</span><span class="s2">&quot;R1&quot;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">location</span><span class="o">=</span><span class="p">[</span><span class="mi">500</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="n">capacitor</span> <span class="o">=</span> <span class="n">aedt_app</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">schematic</span><span class="o">.</span><span class="n">create_capacitor</span><span class="p">(</span><span class="n">compname</span><span class="o">=</span><span class="s2">&quot;C1&quot;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mf">1e-12</span><span class="p">,</span> <span class="n">location</span><span class="o">=</span><span class="p">[</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
 </pre></div>
 </div>
 </section>
@@ -908,18 +931,18 @@ starts the specified version in the specified mode.</p>
 <section id="create-port-and-ground">
 <h2>Create port and ground<a class="headerlink" href="#create-port-and-ground" title="Permalink to this heading">#</a></h2>
 <p>Create a port and a ground, which are needed for the circuit analysis.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">port</span> <span class="o">=</span> <span class="n">aedt_app</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">components</span><span class="o">.</span><span class="n">create_interface_port</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;myport&quot;</span><span class="p">)</span>
-<span class="n">gnd</span> <span class="o">=</span> <span class="n">aedt_app</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">components</span><span class="o">.</span><span class="n">create_gnd</span><span class="p">()</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">port</span> <span class="o">=</span> <span class="n">aedt_app</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">components</span><span class="o">.</span><span class="n">create_interface_port</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;myport&quot;</span><span class="p">,</span> <span class="n">location</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">200</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="p">)</span>
+<span class="n">gnd</span> <span class="o">=</span> <span class="n">aedt_app</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">components</span><span class="o">.</span><span class="n">create_gnd</span><span class="p">(</span><span class="n">location</span><span class="o">=</span><span class="p">[</span><span class="mi">1200</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">])</span>
 </pre></div>
 </div>
 </section>
 <section id="connect-components">
 <h2>Connect components<a class="headerlink" href="#connect-components" title="Permalink to this heading">#</a></h2>
 <p>Connect components with wires.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">port</span><span class="o">.</span><span class="n">pins</span></a><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">connect_to_component</span><span class="p">(</span><span class="n">component_pin</span><span class="o">=</span><span class="n">inductor</span><span class="o">.</span><span class="n">pins</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-<span class="n">inductor</span><span class="o">.</span><span class="n">pins</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">connect_to_component</span><span class="p">(</span><span class="n">component_pin</span><span class="o">=</span><span class="n">resistor</span><span class="o">.</span><span class="n">pins</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-<span class="n">resistor</span><span class="o">.</span><span class="n">pins</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">connect_to_component</span><span class="p">(</span><span class="n">component_pin</span><span class="o">=</span><span class="n">capacitor</span><span class="o">.</span><span class="n">pins</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-<span class="n">capacitor</span><span class="o">.</span><span class="n">pins</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">connect_to_component</span><span class="p">(</span><span class="n">component_pin</span><span class="o">=</span><span class="n">gnd</span><span class="o">.</span><span class="n">pins</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">port</span><span class="o">.</span><span class="n">pins</span></a><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">connect_to_component</span><span class="p">(</span><span class="n">component_pin</span><span class="o">=</span><span class="n">inductor</span><span class="o">.</span><span class="n">pins</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">use_wire</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">inductor</span><span class="o">.</span><span class="n">pins</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">connect_to_component</span><span class="p">(</span><span class="n">component_pin</span><span class="o">=</span><span class="n">resistor</span><span class="o">.</span><span class="n">pins</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">use_wire</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">resistor</span><span class="o">.</span><span class="n">pins</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">connect_to_component</span><span class="p">(</span><span class="n">component_pin</span><span class="o">=</span><span class="n">capacitor</span><span class="o">.</span><span class="n">pins</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">use_wire</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">capacitor</span><span class="o">.</span><span class="n">pins</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">connect_to_component</span><span class="p">(</span><span class="n">component_pin</span><span class="o">=</span><span class="n">gnd</span><span class="o">.</span><span class="n">pins</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">use_wire</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>True
@@ -942,7 +965,7 @@ starts the specified version in the specified mode.</p>
 <span class="n">aedt_app</span><span class="o">.</span><span class="n">export_fullwave_spice</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&#39;D:/Temp/pyaedt_prj_6BU/Project_X5T.pyaedt\\Circuit Design_1QE\\Circuit Design_1QE.sp&#39;
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&#39;D:/Temp/pyaedt_prj_FO4/Project_STK.pyaedt\\Circuit Design_7KB\\Circuit Design_7KB.sp&#39;
 </pre></div>
 </div>
 </section>
@@ -992,7 +1015,7 @@ All methods provide for saving the project before closing.</p>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>True
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  35.461 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  35.294 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-07-circuit-circuit-example-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/5b1b639b4dc016f123422eedf0082f4e/Circuit_Example.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">Circuit_Example.py</span></code></a></p>

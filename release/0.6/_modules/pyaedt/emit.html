@@ -207,7 +207,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.44 variable.
+            // this version, rather than using sphinx's 0.6.45 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -328,10 +328,13 @@ function checkPageExistsAndRedirect(event) {
 
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
 <span class="kn">from</span> <span class="nn">importlib</span> <span class="kn">import</span> <span class="n">import_module</span>
 
+<span class="kn">import</span> <span class="nn">pyaedt.generic.constants</span> <span class="k">as</span> <span class="nn">consts</span>
 <span class="kn">from</span> <span class="nn">pyaedt</span> <span class="kn">import</span> <span class="n">generate_unique_project_name</span>
 <span class="kn">from</span> <span class="nn">pyaedt.application.AnalysisEmit</span> <span class="kn">import</span> <span class="n">FieldAnalysisEmit</span>
+<span class="kn">from</span> <span class="nn">pyaedt.emit_core</span> <span class="kn">import</span> <span class="n">EmitConstants</span>
 <span class="kn">from</span> <span class="nn">pyaedt.generic.general_methods</span> <span class="kn">import</span> <span class="n">pyaedt_function_handler</span>
 
 <span class="c1"># global variable used to store module import</span>
@@ -358,10 +361,22 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">emit_obj</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_result_loaded</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;``True`` if the results are loaded and ``False`` if they are not.&quot;&quot;&quot;</span>
+
         <span class="bp">self</span><span class="o">.</span><span class="n">emit_api</span> <span class="o">=</span> <span class="n">mod</span><span class="o">.</span><span class="n">EmitApi</span><span class="p">()</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Instance of the Emit api.&quot;&quot;&quot;</span>
+
         <span class="bp">self</span><span class="o">.</span><span class="n">revisions_list</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;List of all loaded result revisions.&quot;&quot;&quot;</span>
+
         <span class="bp">self</span><span class="o">.</span><span class="n">location</span> <span class="o">=</span> <span class="n">emit_obj</span><span class="o">.</span><span class="n">oproject</span><span class="o">.</span><span class="n">GetPath</span><span class="p">()</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Path to the current project.&quot;&quot;&quot;</span>
+
         <span class="bp">self</span><span class="o">.</span><span class="n">current_design</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Initial revision of the Emit design.&quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">units</span> <span class="o">=</span> <span class="n">emit_obj</span><span class="o">.</span><span class="n">units</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Project units.&quot;&quot;&quot;</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">result_loaded</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -412,7 +427,7 @@ function checkPageExistsAndRedirect(event) {
             <span class="n">radios</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">emit_api</span><span class="o">.</span><span class="n">get_radio_names</span><span class="p">(</span><span class="n">tx_rx</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">radios</span> <span class="o">=</span> <span class="kc">None</span>
-            <span class="n">Result</span><span class="o">.</span><span class="n">result_mode_error</span><span class="p">()</span>
+            <span class="n">Results</span><span class="o">.</span><span class="n">result_mode_error</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">radios</span>
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
@@ -440,11 +455,11 @@ function checkPageExistsAndRedirect(event) {
             <span class="n">bands</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">emit_api</span><span class="o">.</span><span class="n">get_band_names</span><span class="p">(</span><span class="n">radio_name</span><span class="p">,</span> <span class="n">tx_rx_mode</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">bands</span> <span class="o">=</span> <span class="kc">None</span>
-            <span class="n">Result</span><span class="o">.</span><span class="n">result_mode_error</span><span class="p">()</span>
+            <span class="n">Results</span><span class="o">.</span><span class="n">result_mode_error</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">bands</span>
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
-    <span class="k">def</span> <span class="nf">get_active_frequencies</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">radio_name</span><span class="p">,</span> <span class="n">band_name</span><span class="p">,</span> <span class="n">tx_rx_mode</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">get_active_frequencies</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">radio_name</span><span class="p">,</span> <span class="n">band_name</span><span class="p">,</span> <span class="n">tx_rx_mode</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
 
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Get a list of active frequencies for a ``tx`` or ``rx`` band in a radio.</span>
@@ -457,11 +472,13 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">           Name of the band.</span>
 <span class="sd">        tx_rx : tx_rx_mode object</span>
 <span class="sd">            Used for determining whether to get ``rx`` or ``tx`` radio names.</span>
+<span class="sd">        units : str</span>
+<span class="sd">            Units for the frequencies.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
 <span class="sd">        freq:class:`list of float`</span>
-<span class="sd">            list of tx or or rx radio frequencies</span>
+<span class="sd">            List of tx or or rx radio frequencies.</span>
 
 <span class="sd">        Examples</span>
 <span class="sd">        ----------</span>
@@ -469,9 +486,13 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">result_loaded</span><span class="p">:</span>
             <span class="n">freq</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">emit_api</span><span class="o">.</span><span class="n">get_active_frequencies</span><span class="p">(</span><span class="n">radio_name</span><span class="p">,</span> <span class="n">band_name</span><span class="p">,</span> <span class="n">tx_rx_mode</span><span class="p">)</span>
+            <span class="c1"># Emit api returns freqs in Hz, convert to user&#39;s desired units.</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">units</span> <span class="ow">or</span> <span class="n">units</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">EmitConstants</span><span class="o">.</span><span class="n">EMIT_VALID_UNITS</span><span class="p">[</span><span class="s2">&quot;Frequency&quot;</span><span class="p">]:</span>
+                <span class="n">units</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">units</span><span class="p">[</span><span class="s2">&quot;Frequency&quot;</span><span class="p">]</span>
+            <span class="n">freq</span> <span class="o">=</span> <span class="n">consts</span><span class="o">.</span><span class="n">unit_converter</span><span class="p">(</span><span class="n">freq</span><span class="p">,</span> <span class="s2">&quot;Freq&quot;</span><span class="p">,</span> <span class="s2">&quot;Hz&quot;</span><span class="p">,</span> <span class="n">units</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">freq</span> <span class="o">=</span> <span class="kc">None</span>
-            <span class="n">Result</span><span class="o">.</span><span class="n">result_mode_error</span><span class="p">()</span>
+            <span class="n">Results</span><span class="o">.</span><span class="n">result_mode_error</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">freq</span>
 
 
@@ -512,8 +533,13 @@ function checkPageExistsAndRedirect(event) {
         <span class="k">else</span><span class="p">:</span>
             <span class="n">full</span> <span class="o">=</span> <span class="n">subfolder</span> <span class="o">+</span> <span class="s2">&quot;/</span><span class="si">{}</span><span class="s2">.emit&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Name of the revision.&quot;&quot;&quot;</span>
+
         <span class="bp">self</span><span class="o">.</span><span class="n">path</span> <span class="o">=</span> <span class="n">full</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Full path of the revision.&quot;&quot;&quot;</span>
+
         <span class="bp">self</span><span class="o">.</span><span class="n">emit_obj</span> <span class="o">=</span> <span class="n">emit_obj</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;&#39;&#39;Emit&#39;&#39; object associated with the revision.&quot;&quot;&quot;</span>
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">domain</span><span class="p">):</span>
@@ -721,11 +747,26 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">desktop_path</span><span class="p">,</span> <span class="s2">&quot;Delcross&quot;</span><span class="p">)</span>
         <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
 
+        <span class="bp">self</span><span class="o">.</span><span class="n">units</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;Power&quot;</span><span class="p">:</span> <span class="s2">&quot;dBm&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Frequency&quot;</span><span class="p">:</span> <span class="s2">&quot;MHz&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Length&quot;</span><span class="p">:</span> <span class="s2">&quot;meter&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Time&quot;</span><span class="p">:</span> <span class="s2">&quot;ns&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Voltage&quot;</span><span class="p">:</span> <span class="s2">&quot;mV&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Data Rate&quot;</span><span class="p">:</span> <span class="s2">&quot;bps&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Resistance&quot;</span><span class="p">:</span> <span class="s2">&quot;ohm&quot;</span><span class="p">,</span>
+        <span class="p">}</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Default Emit units.&quot;&quot;&quot;</span>
+
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_aedt_version</span> <span class="o">&gt;=</span> <span class="s2">&quot;2023.1&quot;</span><span class="p">:</span>
             <span class="k">global</span> <span class="n">mod</span>
             <span class="n">mod</span> <span class="o">=</span> <span class="n">import_module</span><span class="p">(</span><span class="s2">&quot;EmitApiPython&quot;</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_emit_api</span> <span class="o">=</span> <span class="n">mod</span><span class="o">.</span><span class="n">EmitApi</span><span class="p">()</span>
+<span class="w">            </span><span class="sd">&quot;&quot;&quot;Instance of the Emit api.&quot;&quot;&quot;</span>
+
             <span class="bp">self</span><span class="o">.</span><span class="n">results</span> <span class="o">=</span> <span class="n">Results</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+<span class="w">            </span><span class="sd">&quot;&quot;&quot;&#39;&#39;Result&#39;&#39; object for the selected design.&quot;&quot;&quot;</span>
+
             <span class="bp">self</span><span class="o">.</span><span class="n">__emit_api_enabled</span> <span class="o">=</span> <span class="kc">True</span>
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
@@ -870,7 +911,86 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__emit_api_enabled</span><span class="p">:</span>
             <span class="n">ver</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_emit_api</span><span class="o">.</span><span class="n">get_version</span><span class="p">(</span><span class="n">detailed</span><span class="p">)</span>
-            <span class="k">return</span> <span class="n">ver</span></div></div>
+            <span class="k">return</span> <span class="n">ver</span></div>
+
+<div class="viewcode-block" id="Emit.set_units"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.emit.Emit.set_units.html#pyaedt.emit.Emit.set_units">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">set_units</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">unit_type</span><span class="p">,</span> <span class="n">unit_value</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set units for the component.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        unit_type : str</span>
+<span class="sd">            System of units.</span>
+<span class="sd">        unit_value : str</span>
+<span class="sd">            Units to use.</span>
+
+<span class="sd">        Power : mW, W, kW, dBm, dBW</span>
+<span class="sd">        Frequency : Hz, kHz, MHz, GHz, THz</span>
+<span class="sd">        Length : pm, nm, um, mm, cm, dm, meter, km, mil, in, ft, yd, mile</span>
+<span class="sd">        Time : ps, ns, us, ms, s</span>
+<span class="sd">        Voltage : mV, V</span>
+<span class="sd">        Data Rate : bps, kbps, Mbps, Gbps</span>
+<span class="sd">        Resistance : uOhm, mOhm, Ohm, kOhm, megOhm, GOhm</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Bool</span>
+<span class="sd">            ``True`` if the units were successfully changed and ``False``</span>
+<span class="sd">            if there was an error.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">valid_type</span> <span class="o">=</span> <span class="n">EmitConstants</span><span class="o">.</span><span class="n">EMIT_UNIT_TYPE</span>
+        <span class="n">valid_units</span> <span class="o">=</span> <span class="n">EmitConstants</span><span class="o">.</span><span class="n">EMIT_VALID_UNITS</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">unit_type</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">t</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">unit_type</span><span class="p">,</span> <span class="n">unit_value</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">t</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">valid_type</span><span class="p">:</span>
+                    <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;[</span><span class="si">{}</span><span class="s2">] units are not supported by EMIT. The options are: </span><span class="si">{}</span><span class="s2">: &quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">valid_type</span><span class="p">))</span>
+                    <span class="k">return</span> <span class="kc">False</span>
+                <span class="k">if</span> <span class="n">v</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">valid_units</span><span class="p">[</span><span class="n">t</span><span class="p">]:</span>
+                    <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;[</span><span class="si">{}</span><span class="s2">] are not supported by EMIT. The options are: </span><span class="si">{}</span><span class="s2">: &quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">valid_units</span><span class="p">[</span><span class="n">t</span><span class="p">]))</span>
+                    <span class="k">return</span> <span class="kc">False</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">units</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">unit_type</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">valid_type</span><span class="p">:</span>
+                <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+                    <span class="s2">&quot;[</span><span class="si">{}</span><span class="s2">] units are not supported by EMIT. The options are: </span><span class="si">{}</span><span class="s2">: &quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">unit_type</span><span class="p">,</span> <span class="n">valid_type</span><span class="p">)</span>
+                <span class="p">)</span>
+                <span class="k">return</span> <span class="kc">False</span>
+            <span class="k">if</span> <span class="n">unit_value</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">valid_units</span><span class="p">[</span><span class="n">unit_type</span><span class="p">]:</span>
+                <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+                    <span class="s2">&quot;[</span><span class="si">{}</span><span class="s2">] are not supported by EMIT. The options are: </span><span class="si">{}</span><span class="s2">: &quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">unit_value</span><span class="p">,</span> <span class="n">valid_units</span><span class="p">[</span><span class="n">unit_type</span><span class="p">])</span>
+                <span class="p">)</span>
+                <span class="k">return</span> <span class="kc">False</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">units</span><span class="p">[</span><span class="n">unit_type</span><span class="p">]</span> <span class="o">=</span> <span class="n">unit_value</span>
+        <span class="k">return</span> <span class="kc">True</span></div>
+
+<div class="viewcode-block" id="Emit.get_units"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.emit.Emit.get_units.html#pyaedt.emit.Emit.get_units">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">get_units</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">unit_type</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get units for the component.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        unit_type : str</span>
+<span class="sd">            System of units: options are power, frequency,</span>
+<span class="sd">                length, time, voltage, data rate, or resistance.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Str or Tuple</span>
+<span class="sd">            If unit_type is specified returns the units for that type</span>
+<span class="sd">            and if unit_type=&quot;&quot;, returns a Tuple of all units.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">unit_type</span><span class="p">:</span>
+            <span class="n">units</span> <span class="o">=</span> <span class="p">[(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">units</span><span class="o">.</span><span class="n">items</span><span class="p">()]</span>
+            <span class="k">return</span> <span class="n">units</span>
+        <span class="k">if</span> <span class="n">unit_type</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">EmitConstants</span><span class="o">.</span><span class="n">EMIT_UNIT_TYPE</span><span class="p">:</span>
+            <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+                <span class="s2">&quot;[</span><span class="si">{}</span><span class="s2">] units are not supported by EMIT. The options are: </span><span class="si">{}</span><span class="s2">: &quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                    <span class="n">unit_type</span><span class="p">,</span> <span class="n">EmitConstants</span><span class="o">.</span><span class="n">EMIT_UNIT_TYPE</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+            <span class="k">return</span> <span class="kc">None</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">units</span><span class="p">[</span><span class="n">unit_type</span><span class="p">]</span></div></div>
 </pre></div>
 
               </article>

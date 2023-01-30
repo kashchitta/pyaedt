@@ -210,7 +210,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.44 variable.
+            // this version, rather than using sphinx's 0.6.45 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -653,16 +653,6 @@ function checkPageExistsAndRedirect(event) {
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../07-Circuit/EMIT_Example.html">
-     EMIT: antenna
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../07-Circuit/EMIT_HFSS_Example.html">
-     EMIT: HFSS to EMIT coupling
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../07-Circuit/Reports.html">
      Circuit: automatic report creation
     </a>
@@ -675,11 +665,43 @@ function checkPageExistsAndRedirect(event) {
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../07-TwinBuilder/index.html">
-   Twin Builder examples
+  <a class="reference internal" href="../07-EMIT/index.html">
+   EMIT examples
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
   <label for="toctree-checkbox-11">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../07-EMIT/ComputeChannelSeparation.html">
+     EMIT: Compute required channel separation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../07-EMIT/ComputeProtectionLevels.html">
+     EMIT: Compute receiver protection levels
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../07-EMIT/EMIT_Example.html">
+     EMIT: antenna
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../07-EMIT/EMIT_HFSS_Example.html">
+     EMIT: HFSS to EMIT coupling
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../07-TwinBuilder/index.html">
+   Twin Builder examples
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+  <label for="toctree-checkbox-12">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -700,8 +722,8 @@ function checkPageExistsAndRedirect(event) {
   <a class="reference internal" href="../08-CableModeling/index.html">
    Cable Modeling examples
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
-  <label for="toctree-checkbox-12">
+  <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
+  <label for="toctree-checkbox-13">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -886,7 +908,7 @@ to download the full example code</p>
 <a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">aedt_file</span></a> <span class="o">=</span> <a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">targetfile</span></a><span class="p">[:</span><span class="o">-</span><span class="mi">4</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;aedt&quot;</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>D:\Temp\pyaedt_prj_07T\edb/Galileo.aedb
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>D:\Temp\pyaedt_prj_1CT\edb/Galileo.aedb
 </pre></div>
 </div>
 </section>
@@ -966,7 +988,7 @@ connected to a ground through an inductor.</p>
 <span class="nb">print</span><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">dc_connected_net_list</span></a><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[{&#39;BST_V1P5_S5&#39;, &#39;V1P5_S5&#39;}, {&#39;BST_V3P3_S5&#39;, &#39;V3P3_S5&#39;}, {&#39;BST_V1P0_S0&#39;, &#39;V1P0_S0&#39;}]
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[{&#39;V1P5_S5&#39;, &#39;BST_V1P5_S5&#39;}, {&#39;V3P3_S5&#39;, &#39;BST_V3P3_S5&#39;}, {&#39;V1P0_S0&#39;, &#39;BST_V1P0_S0&#39;}]
 </pre></div>
 </div>
 </section>
@@ -980,11 +1002,7 @@ connected to a ground through an inductor.</p>
     <span class="nb">print</span><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">el</span></a><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[&#39;C4A2&#39;, &#39;1&#39;, &#39;BST_V1P0_S0&#39;, &#39;Capacitor&#39;, &#39;602433-057&#39;, &#39;1&#39;]
-[&#39;L4B1&#39;, &#39;1&#39;, &#39;BST_V1P0_S0&#39;, &#39;Inductor&#39;, &#39;A32422-019&#39;, &#39;1&#39;]
-[&#39;U3A1&#39;, &#39;36&#39;, &#39;BST_V1P0_S0&#39;, &#39;IC&#39;, &#39;G43225-001&#39;, &#39;36-37&#39;]
-[&#39;U3A1&#39;, &#39;37&#39;, &#39;BST_V1P0_S0&#39;, &#39;IC&#39;, &#39;G43225-001&#39;, &#39;36-37&#39;]
-[&#39;U2A5&#39;, &#39;Y14&#39;, &#39;V1P0_S0&#39;, &#39;IC&#39;, &#39;IPD031-201&#39;, &#39;Y14-AB14-AD14-V14-Y20-Y18-Y16-AB20-AB18-T18-V20-V18-V16&#39;]
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[&#39;U2A5&#39;, &#39;Y14&#39;, &#39;V1P0_S0&#39;, &#39;IC&#39;, &#39;IPD031-201&#39;, &#39;Y14-AB14-AD14-V14-Y20-Y18-Y16-AB20-AB18-T18-V20-V18-V16&#39;]
 [&#39;U2A5&#39;, &#39;AB14&#39;, &#39;V1P0_S0&#39;, &#39;IC&#39;, &#39;IPD031-201&#39;, &#39;Y14-AB14-AD14-V14-Y20-Y18-Y16-AB20-AB18-T18-V20-V18-V16&#39;]
 [&#39;U2A5&#39;, &#39;AD14&#39;, &#39;V1P0_S0&#39;, &#39;IC&#39;, &#39;IPD031-201&#39;, &#39;Y14-AB14-AD14-V14-Y20-Y18-Y16-AB20-AB18-T18-V20-V18-V16&#39;]
 [&#39;U2A5&#39;, &#39;V14&#39;, &#39;V1P0_S0&#39;, &#39;IC&#39;, &#39;IPD031-201&#39;, &#39;Y14-AB14-AD14-V14-Y20-Y18-Y16-AB20-AB18-T18-V20-V18-V16&#39;]
@@ -1016,6 +1034,10 @@ connected to a ground through an inductor.</p>
 [&#39;L4B1&#39;, &#39;2&#39;, &#39;V1P0_S0&#39;, &#39;Inductor&#39;, &#39;A32422-019&#39;, &#39;2&#39;]
 [&#39;C2B12&#39;, &#39;1&#39;, &#39;V1P0_S0&#39;, &#39;Capacitor&#39;, &#39;E16347-001&#39;, &#39;1&#39;]
 [&#39;C3B17&#39;, &#39;1&#39;, &#39;V1P0_S0&#39;, &#39;Capacitor&#39;, &#39;E16347-001&#39;, &#39;1&#39;]
+[&#39;C4A2&#39;, &#39;1&#39;, &#39;BST_V1P0_S0&#39;, &#39;Capacitor&#39;, &#39;602433-057&#39;, &#39;1&#39;]
+[&#39;L4B1&#39;, &#39;1&#39;, &#39;BST_V1P0_S0&#39;, &#39;Inductor&#39;, &#39;A32422-019&#39;, &#39;1&#39;]
+[&#39;U3A1&#39;, &#39;36&#39;, &#39;BST_V1P0_S0&#39;, &#39;IC&#39;, &#39;G43225-001&#39;, &#39;36-37&#39;]
+[&#39;U3A1&#39;, &#39;37&#39;, &#39;BST_V1P0_S0&#39;, &#39;IC&#39;, &#39;G43225-001&#39;, &#39;36-37&#39;]
 </pre></div>
 </div>
 </section>
@@ -1082,7 +1104,7 @@ properties with assignment and create materials and assign them to layers.</p>
 <span class="c1"># edb.core_stackup.stackup_layers.remove_layer(&quot;Signal1&quot;)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;Ansys.Ansoft.Edb.Definition.MaterialDef object at 0x0000028A2770ACC0&gt;
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;Ansys.Ansoft.Edb.Definition.MaterialDef object at 0x000001C044B8A780&gt;
 </pre></div>
 </div>
 </section>
@@ -1117,7 +1139,7 @@ properties with assignment and create materials and assign them to layers.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">outputs</span></a> <span class="o">=</span> <span class="n">edb</span><span class="o">.</span><span class="n">export_siwave_dc_results</span><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">siw_file</span></a><span class="p">,</span> <span class="n">setup</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[&#39;&quot;C:\\Program Files\\AnsysEM\\v222\\Win64\\siwave.exe&quot;&#39;, &#39;-embedding&#39;, &#39;-RunScriptAndExit&#39;, &#39;&quot;D:\\Temp\\pyaedt_prj_07T\\edb\\export_results.py&quot;&#39;]
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[&#39;&quot;C:\\Program Files\\AnsysEM\\v222\\Win64\\siwave.exe&quot;&#39;, &#39;-embedding&#39;, &#39;-RunScriptAndExit&#39;, &#39;&quot;D:\\Temp\\pyaedt_prj_1CT\\edb\\export_results.py&quot;&#39;]
 </pre></div>
 </div>
 </section>
@@ -1144,7 +1166,7 @@ properties with assignment and create materials and assign them to layers.</p>
 <span class="c1"># siwave.quit_application()</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 1 minutes  1.768 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 1 minutes  0.535 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-00-edb-01-edb-example-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/5774d0d0329aed798c6bb385cb43883d/01_edb_example.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">01_edb_example.py</span></code></a></p>

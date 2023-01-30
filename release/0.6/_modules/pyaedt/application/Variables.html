@@ -207,7 +207,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.44 variable.
+            // this version, rather than using sphinx's 0.6.45 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -602,11 +602,8 @@ function checkPageExistsAndRedirect(event) {
             <span class="n">float_value</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">variable_value</span><span class="p">)</span>
         <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
             <span class="c1"># search for a valid units string at the end of the variable_value</span>
-            <span class="n">loc</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;[\d.]+[e][-\d.]+&quot;</span><span class="p">,</span> <span class="n">variable_value</span><span class="p">)</span>
-            <span class="k">if</span> <span class="ow">not</span> <span class="n">loc</span><span class="p">:</span>
-                <span class="n">loc</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;[\d.]+&quot;</span><span class="p">,</span> <span class="n">variable_value</span><span class="p">)</span>
+            <span class="n">loc</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;[-+]?(\d+(\.\d*)?|\.\d+)([eE][-+]?\d+)?&quot;</span><span class="p">,</span> <span class="n">variable_value</span><span class="p">)</span>
             <span class="n">units</span> <span class="o">=</span> <span class="n">_find_units_in_dependent_variables</span><span class="p">(</span><span class="n">variable_value</span><span class="p">,</span> <span class="n">full_variables</span><span class="p">)</span>
-
             <span class="k">if</span> <span class="n">loc</span><span class="p">:</span>
                 <span class="n">loc_units</span> <span class="o">=</span> <span class="n">loc</span><span class="o">.</span><span class="n">span</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span>
                 <span class="n">extract_units</span> <span class="o">=</span> <span class="n">variable_value</span><span class="p">[</span><span class="n">loc_units</span><span class="p">:]</span>

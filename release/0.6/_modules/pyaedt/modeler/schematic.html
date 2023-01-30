@@ -207,7 +207,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.44 variable.
+            // this version, rather than using sphinx's 0.6.45 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -325,6 +325,8 @@ function checkPageExistsAndRedirect(event) {
                 
   <h1>Source code for pyaedt.modeler.schematic</h1><div class="highlight"><pre>
 <span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="kn">import</span> <span class="nn">re</span>
+
 <span class="kn">from</span> <span class="nn">pyaedt.generic.constants</span> <span class="kn">import</span> <span class="n">AEDT_UNITS</span>
 <span class="kn">from</span> <span class="nn">pyaedt.generic.general_methods</span> <span class="kn">import</span> <span class="n">_retry_ntimes</span>
 <span class="kn">from</span> <span class="nn">pyaedt.generic.general_methods</span> <span class="kn">import</span> <span class="n">pyaedt_function_handler</span>
@@ -355,8 +357,22 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">app</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_app</span> <span class="o">=</span> <span class="n">app</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_schematic_units</span> <span class="o">=</span> <span class="s2">&quot;meter&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">o_def_manager</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">odefinition_manager</span>
         <span class="n">Modeler</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">app</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">schematic_units</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Schematic units. Options are ``&quot;mm&quot;``, ``&quot;mil&quot;``, ``&quot;cm&quot;`` and all other metric and imperial units.</span>
+<span class="sd">        The default is ``&quot;meter&quot;``.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_schematic_units</span>
+
+    <span class="nd">@schematic_units</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">schematic_units</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">value</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">AEDT_UNITS</span><span class="p">[</span><span class="s2">&quot;Length&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_schematic_units</span> <span class="o">=</span> <span class="n">value</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;The unit </span><span class="si">%s</span><span class="s2"> is not supported.&quot;</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">o_component_manager</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -426,16 +442,24 @@ function checkPageExistsAndRedirect(event) {
 
 <span class="sd">        &gt;&gt;&gt; oEditor.CreateWire</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">obj1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">components</span><span class="p">[</span><span class="n">firstcomponent</span><span class="p">]</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">design_type</span> <span class="o">==</span> <span class="s2">&quot;Maxwell Circuit&quot;</span><span class="p">:</span>
+            <span class="n">components</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">schematic</span><span class="o">.</span><span class="n">components</span>
+            <span class="n">obj1</span> <span class="o">=</span> <span class="n">components</span><span class="p">[</span><span class="n">firstcomponent</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">components</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">components</span>
+            <span class="n">obj1</span> <span class="o">=</span> <span class="n">components</span><span class="p">[</span><span class="n">firstcomponent</span><span class="p">]</span>
         <span class="k">if</span> <span class="s2">&quot;Port&quot;</span> <span class="ow">in</span> <span class="n">obj1</span><span class="o">.</span><span class="n">composed_name</span><span class="p">:</span>
             <span class="n">pos1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">oeditor</span><span class="o">.</span><span class="n">GetPropertyValue</span><span class="p">(</span><span class="s2">&quot;BaseElementTab&quot;</span><span class="p">,</span> <span class="n">obj1</span><span class="o">.</span><span class="n">composed_name</span><span class="p">,</span> <span class="s2">&quot;Component Location&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;, &quot;</span><span class="p">)</span>
             <span class="n">pos1</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">strip</span><span class="p">()[:</span><span class="o">-</span><span class="mi">3</span><span class="p">])</span> <span class="o">*</span> <span class="mf">0.0000254</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">pos1</span><span class="p">]</span>
             <span class="k">if</span> <span class="s2">&quot;GPort&quot;</span> <span class="ow">in</span> <span class="n">obj1</span><span class="o">.</span><span class="n">composed_name</span><span class="p">:</span>
                 <span class="n">pos1</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="mf">0.00254</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">pins1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">components</span><span class="o">.</span><span class="n">get_pins</span><span class="p">(</span><span class="n">firstcomponent</span><span class="p">)</span>
-            <span class="n">pos1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">components</span><span class="o">.</span><span class="n">get_pin_location</span><span class="p">(</span><span class="n">firstcomponent</span><span class="p">,</span> <span class="n">pins1</span><span class="p">[</span><span class="n">pinnum_first</span> <span class="o">-</span> <span class="mi">1</span><span class="p">])</span>
-        <span class="n">obj2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">components</span><span class="p">[</span><span class="n">secondcomponent</span><span class="p">]</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">design_type</span> <span class="o">==</span> <span class="s2">&quot;Maxwell Circuit&quot;</span><span class="p">:</span>
+                <span class="n">pos1</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;[^0-9.\-]&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">))</span> <span class="o">*</span> <span class="mf">0.0000254</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">obj1</span><span class="o">.</span><span class="n">location</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">pins1</span> <span class="o">=</span> <span class="n">components</span><span class="o">.</span><span class="n">get_pins</span><span class="p">(</span><span class="n">firstcomponent</span><span class="p">)</span>
+                <span class="n">pos1</span> <span class="o">=</span> <span class="n">components</span><span class="o">.</span><span class="n">get_pin_location</span><span class="p">(</span><span class="n">firstcomponent</span><span class="p">,</span> <span class="n">pins1</span><span class="p">[</span><span class="n">pinnum_first</span> <span class="o">-</span> <span class="mi">1</span><span class="p">])</span>
+        <span class="n">obj2</span> <span class="o">=</span> <span class="n">components</span><span class="p">[</span><span class="n">secondcomponent</span><span class="p">]</span>
         <span class="k">if</span> <span class="s2">&quot;Port&quot;</span> <span class="ow">in</span> <span class="n">obj2</span><span class="o">.</span><span class="n">composed_name</span><span class="p">:</span>
             <span class="n">pos2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">oeditor</span><span class="o">.</span><span class="n">GetPropertyValue</span><span class="p">(</span><span class="s2">&quot;BaseElementTab&quot;</span><span class="p">,</span> <span class="n">obj2</span><span class="o">.</span><span class="n">composed_name</span><span class="p">,</span> <span class="s2">&quot;Component Location&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;, &quot;</span><span class="p">)</span>
             <span class="n">pos2</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">strip</span><span class="p">()[:</span><span class="o">-</span><span class="mi">3</span><span class="p">])</span> <span class="o">*</span> <span class="mf">0.0000254</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">pos2</span><span class="p">]</span>
@@ -443,10 +467,19 @@ function checkPageExistsAndRedirect(event) {
                 <span class="n">pos2</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="mf">0.00254</span>
 
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">pins2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">components</span><span class="o">.</span><span class="n">get_pins</span><span class="p">(</span><span class="n">secondcomponent</span><span class="p">)</span>
-            <span class="n">pos2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">components</span><span class="o">.</span><span class="n">get_pin_location</span><span class="p">(</span><span class="n">secondcomponent</span><span class="p">,</span> <span class="n">pins2</span><span class="p">[</span><span class="n">pinnum_second</span> <span class="o">-</span> <span class="mi">1</span><span class="p">])</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">components</span><span class="o">.</span><span class="n">create_wire</span><span class="p">([</span><span class="n">pos1</span><span class="p">,</span> <span class="n">pos2</span><span class="p">])</span>
-        <span class="k">return</span> <span class="kc">True</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">design_type</span> <span class="o">==</span> <span class="s2">&quot;Maxwell Circuit&quot;</span><span class="p">:</span>
+                <span class="n">pos2</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;[^0-9.\-]&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">))</span> <span class="o">*</span> <span class="mf">0.0000254</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">obj2</span><span class="o">.</span><span class="n">location</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">pins2</span> <span class="o">=</span> <span class="n">components</span><span class="o">.</span><span class="n">get_pins</span><span class="p">(</span><span class="n">secondcomponent</span><span class="p">)</span>
+                <span class="n">pos2</span> <span class="o">=</span> <span class="n">components</span><span class="o">.</span><span class="n">get_pin_location</span><span class="p">(</span><span class="n">secondcomponent</span><span class="p">,</span> <span class="n">pins2</span><span class="p">[</span><span class="n">pinnum_second</span> <span class="o">-</span> <span class="mi">1</span><span class="p">])</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">design_type</span> <span class="o">==</span> <span class="s2">&quot;Maxwell Circuit&quot;</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">schematic</span><span class="o">.</span><span class="n">create_wire</span><span class="p">([</span><span class="n">pos1</span><span class="p">,</span> <span class="n">pos2</span><span class="p">])</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">components</span><span class="o">.</span><span class="n">create_wire</span><span class="p">([</span><span class="n">pos1</span><span class="p">,</span> <span class="n">pos2</span><span class="p">])</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">_get_components_selections</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">selections</span><span class="p">,</span> <span class="n">return_as_list</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
@@ -501,7 +534,7 @@ function checkPageExistsAndRedirect(event) {
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        :class:`pyaedt.modeler.PrimitivesNexxim.NexximComponents`</span>
+<span class="sd">        :class:`pyaedt.modeler.circuits.PrimitivesNexxim.NexximComponents`</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_schematic</span>
 
@@ -514,7 +547,7 @@ function checkPageExistsAndRedirect(event) {
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        :class:`pyaedt.modeler.PrimitivesNexxim.NexximComponents`</span>
+<span class="sd">        :class:`pyaedt.modeler.circuits.PrimitivesNexxim.NexximComponents`</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_schematic</span>
 
@@ -533,7 +566,7 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">model_units</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Model units.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Layout model units.</span>
 
 <span class="sd">        References</span>
 <span class="sd">        ----------</span>
@@ -577,8 +610,8 @@ function checkPageExistsAndRedirect(event) {
         <span class="bp">self</span><span class="o">.</span><span class="n">oeditor</span><span class="o">.</span><span class="n">SetActivelUnits</span><span class="p">([</span><span class="s2">&quot;NAME:Units Parameter&quot;</span><span class="p">,</span> <span class="s2">&quot;Units:=&quot;</span><span class="p">,</span> <span class="n">units</span><span class="p">,</span> <span class="s2">&quot;Rescale:=&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">])</span>
 
 <div class="viewcode-block" id="ModelerNexxim.move"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modeler.schematic.ModelerNexxim.move.html#pyaedt.modeler.schematic.ModelerNexxim.move">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
-    <span class="k">def</span> <span class="nf">move</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">selections</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="s2">&quot;meter&quot;</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Move the selections by ``[x, y]``.</span>
+    <span class="k">def</span> <span class="nf">move</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">selections</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Move the selections by the specified ``[x, y]`` coordinates.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -587,7 +620,8 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        pos : list</span>
 <span class="sd">            Offset for the ``[x, y]`` axis.</span>
 <span class="sd">        units : str</span>
-<span class="sd">            Offset for the Y axis.</span>
+<span class="sd">            Units of the movement. The default is ``&quot;meter&quot;``. If ``None``,</span>
+<span class="sd">            ``schematic_units` are used.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -603,9 +637,12 @@ function checkPageExistsAndRedirect(event) {
         <span class="k">if</span> <span class="ow">not</span> <span class="n">sels</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;No Component Found.&quot;</span><span class="p">)</span>
             <span class="k">return</span> <span class="kc">False</span>
-        <span class="n">x_location</span> <span class="o">=</span> <span class="n">AEDT_UNITS</span><span class="p">[</span><span class="s2">&quot;Length&quot;</span><span class="p">][</span><span class="n">units</span><span class="p">]</span> <span class="o">*</span> <span class="nb">float</span><span class="p">(</span><span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-        <span class="n">y_location</span> <span class="o">=</span> <span class="n">AEDT_UNITS</span><span class="p">[</span><span class="s2">&quot;Length&quot;</span><span class="p">][</span><span class="n">units</span><span class="p">]</span> <span class="o">*</span> <span class="nb">float</span><span class="p">(</span><span class="n">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-
+        <span class="k">if</span> <span class="n">units</span><span class="p">:</span>
+            <span class="n">x_location</span> <span class="o">=</span> <span class="n">AEDT_UNITS</span><span class="p">[</span><span class="s2">&quot;Length&quot;</span><span class="p">][</span><span class="n">units</span><span class="p">]</span> <span class="o">*</span> <span class="nb">float</span><span class="p">(</span><span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+            <span class="n">y_location</span> <span class="o">=</span> <span class="n">AEDT_UNITS</span><span class="p">[</span><span class="s2">&quot;Length&quot;</span><span class="p">][</span><span class="n">units</span><span class="p">]</span> <span class="o">*</span> <span class="nb">float</span><span class="p">(</span><span class="n">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">x_location</span> <span class="o">=</span> <span class="n">AEDT_UNITS</span><span class="p">[</span><span class="s2">&quot;Length&quot;</span><span class="p">][</span><span class="bp">self</span><span class="o">.</span><span class="n">schematic_units</span><span class="p">]</span> <span class="o">*</span> <span class="nb">float</span><span class="p">(</span><span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+            <span class="n">y_location</span> <span class="o">=</span> <span class="n">AEDT_UNITS</span><span class="p">[</span><span class="s2">&quot;Length&quot;</span><span class="p">][</span><span class="bp">self</span><span class="o">.</span><span class="n">schematic_units</span><span class="p">]</span> <span class="o">*</span> <span class="nb">float</span><span class="p">(</span><span class="n">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">oeditor</span><span class="o">.</span><span class="n">Move</span><span class="p">(</span>
             <span class="p">[</span><span class="s2">&quot;NAME:Selections&quot;</span><span class="p">,</span> <span class="s2">&quot;Selections:=&quot;</span><span class="p">,</span> <span class="n">sels</span><span class="p">],</span>
             <span class="p">[</span>

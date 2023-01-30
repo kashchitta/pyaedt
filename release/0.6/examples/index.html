@@ -210,7 +210,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.44 variable.
+            // this version, rather than using sphinx's 0.6.45 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -651,16 +651,6 @@ function checkPageExistsAndRedirect(event) {
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="07-Circuit/EMIT_Example.html">
-     EMIT: antenna
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="07-Circuit/EMIT_HFSS_Example.html">
-     EMIT: HFSS to EMIT coupling
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="07-Circuit/Reports.html">
      Circuit: automatic report creation
     </a>
@@ -673,11 +663,43 @@ function checkPageExistsAndRedirect(event) {
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="07-TwinBuilder/index.html">
-   Twin Builder examples
+  <a class="reference internal" href="07-EMIT/index.html">
+   EMIT examples
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
   <label for="toctree-checkbox-11">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="07-EMIT/ComputeChannelSeparation.html">
+     EMIT: Compute required channel separation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="07-EMIT/ComputeProtectionLevels.html">
+     EMIT: Compute receiver protection levels
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="07-EMIT/EMIT_Example.html">
+     EMIT: antenna
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="07-EMIT/EMIT_HFSS_Example.html">
+     EMIT: HFSS to EMIT coupling
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="07-TwinBuilder/index.html">
+   Twin Builder examples
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+  <label for="toctree-checkbox-12">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -698,8 +720,8 @@ function checkPageExistsAndRedirect(event) {
   <a class="reference internal" href="08-CableModeling/index.html">
    Cable Modeling examples
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
-  <label for="toctree-checkbox-12">
+  <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
+  <label for="toctree-checkbox-13">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -784,6 +806,11 @@ function checkPageExistsAndRedirect(event) {
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#circuit-examples">
    Circuit examples
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#emit-examples">
+   EMIT examples
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -1005,7 +1032,7 @@ like Icepak or Mechanical.</p>
 </div></div></section>
 <section id="circuit-examples">
 <h2>Circuit examples<a class="headerlink" href="#circuit-examples" title="Permalink to this heading">#</a></h2>
-<p>These examples use PyAEDT to show some end-to-end workflows for Circuit and EMIT.
+<p>These examples use PyAEDT to show some end-to-end workflows for Circuit.
 This includes schematic generation, setup, and postprocessing.</p>
 <div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Circuit: AMI PostProcessing"><img alt="Circuit: AMI PostProcessing" src="../_images/sphx_glr_Circuit_AMI_thumb.png" />
 <p><a class="reference internal" href="07-Circuit/Circuit_AMI.html#sphx-glr-examples-07-circuit-circuit-ami-py"><span class="std std-ref">Circuit: AMI PostProcessing</span></a></p>
@@ -1022,18 +1049,29 @@ This includes schematic generation, setup, and postprocessing.</p>
 </div><div class="sphx-glr-thumbcontainer" tooltip="Circuit: netlist to schematic import"><img alt="Circuit: netlist to schematic import" src="../_images/sphx_glr_Create_Netlist_thumb.png" />
 <p><a class="reference internal" href="07-Circuit/Create_Netlist.html#sphx-glr-examples-07-circuit-create-netlist-py"><span class="std std-ref">Circuit: netlist to schematic import</span></a></p>
   <div class="sphx-glr-thumbnail-title">Circuit: netlist to schematic import</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="EMIT: antenna"><img alt="EMIT: antenna" src="../_images/sphx_glr_EMIT_Example_thumb.png" />
-<p><a class="reference internal" href="07-Circuit/EMIT_Example.html#sphx-glr-examples-07-circuit-emit-example-py"><span class="std std-ref">EMIT: antenna</span></a></p>
-  <div class="sphx-glr-thumbnail-title">EMIT: antenna</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="EMIT: HFSS to EMIT coupling"><img alt="EMIT: HFSS to EMIT coupling" src="../_images/sphx_glr_EMIT_HFSS_Example_thumb.png" />
-<p><a class="reference internal" href="07-Circuit/EMIT_HFSS_Example.html#sphx-glr-examples-07-circuit-emit-hfss-example-py"><span class="std std-ref">EMIT: HFSS to EMIT coupling</span></a></p>
-  <div class="sphx-glr-thumbnail-title">EMIT: HFSS to EMIT coupling</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="Circuit: automatic report creation"><img alt="Circuit: automatic report creation" src="../_images/sphx_glr_Reports_thumb.png" />
 <p><a class="reference internal" href="07-Circuit/Reports.html#sphx-glr-examples-07-circuit-reports-py"><span class="std std-ref">Circuit: automatic report creation</span></a></p>
   <div class="sphx-glr-thumbnail-title">Circuit: automatic report creation</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="To provide the advanced postprocessing features needed for this example, Matplotlib and NumPy m..."><img alt="Circuit: Touchstone file management" src="../_images/sphx_glr_Touchstone_Management_thumb.png" />
 <p><a class="reference internal" href="07-Circuit/Touchstone_Management.html#sphx-glr-examples-07-circuit-touchstone-management-py"><span class="std std-ref">Circuit: Touchstone file management</span></a></p>
   <div class="sphx-glr-thumbnail-title">Circuit: Touchstone file management</div>
+</div></div></section>
+<section id="emit-examples">
+<h2>EMIT examples<a class="headerlink" href="#emit-examples" title="Permalink to this heading">#</a></h2>
+<p>These examples use PyAEDT to show some end-to-end workflows for EMIT.
+This includes schematic generation, setup, and postprocessing.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="EMIT: Compute required channel separation"><img alt="EMIT: Compute required channel separation" src="../_images/sphx_glr_ComputeChannelSeparation_thumb.png" />
+<p><a class="reference internal" href="07-EMIT/ComputeChannelSeparation.html#sphx-glr-examples-07-emit-computechannelseparation-py"><span class="std std-ref">EMIT: Compute required channel separation</span></a></p>
+  <div class="sphx-glr-thumbnail-title">EMIT: Compute required channel separation</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example requires Ansys AEDT 2023 R2 or later. Uncomment it and run on correct version."><img alt="EMIT: Compute receiver protection levels" src="../_images/sphx_glr_ComputeProtectionLevels_thumb.png" />
+<p><a class="reference internal" href="07-EMIT/ComputeProtectionLevels.html#sphx-glr-examples-07-emit-computeprotectionlevels-py"><span class="std std-ref">EMIT: Compute receiver protection levels</span></a></p>
+  <div class="sphx-glr-thumbnail-title">EMIT: Compute receiver protection levels</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="EMIT: antenna"><img alt="EMIT: antenna" src="../_images/sphx_glr_EMIT_Example_thumb.png" />
+<p><a class="reference internal" href="07-EMIT/EMIT_Example.html#sphx-glr-examples-07-emit-emit-example-py"><span class="std std-ref">EMIT: antenna</span></a></p>
+  <div class="sphx-glr-thumbnail-title">EMIT: antenna</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="EMIT: HFSS to EMIT coupling"><img alt="EMIT: HFSS to EMIT coupling" src="../_images/sphx_glr_EMIT_HFSS_Example_thumb.png" />
+<p><a class="reference internal" href="07-EMIT/EMIT_HFSS_Example.html#sphx-glr-examples-07-emit-emit-hfss-example-py"><span class="std std-ref">EMIT: HFSS to EMIT coupling</span></a></p>
+  <div class="sphx-glr-thumbnail-title">EMIT: HFSS to EMIT coupling</div>
 </div></div></section>
 <section id="twin-builder-examples">
 <h2>Twin Builder examples<a class="headerlink" href="#twin-builder-examples" title="Permalink to this heading">#</a></h2>

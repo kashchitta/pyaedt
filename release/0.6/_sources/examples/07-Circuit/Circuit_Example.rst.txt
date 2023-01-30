@@ -105,7 +105,7 @@ starts the specified version in the specified mode.
 
     desktop = pyaedt.launch_desktop(desktop_version, non_graphical, new_thread)
     aedt_app = pyaedt.Circuit(projectname=pyaedt.generate_unique_project_name())
-
+    aedt_app.modeler.schematic.schematic_units = "mil"
 
 
 
@@ -146,8 +146,8 @@ Create components, such as an inductor, resistor, and capacitor.
 
 
     inductor = aedt_app.modeler.schematic.create_inductor(compname="L1", value=1e-9, location=[0, 0])
-    resistor = aedt_app.modeler.schematic.create_resistor(compname="R1", value=50, location=[0.0254, 0])
-    capacitor = aedt_app.modeler.schematic.create_capacitor(compname="C1", value=1e-12)
+    resistor = aedt_app.modeler.schematic.create_resistor(compname="R1", value=50, location=[500, 0])
+    capacitor = aedt_app.modeler.schematic.create_capacitor(compname="C1", value=1e-12, location=[1000, 0])
 
 
 
@@ -187,8 +187,8 @@ Create a port and a ground, which are needed for the circuit analysis.
 .. code-block:: default
 
 
-    port = aedt_app.modeler.components.create_interface_port(name="myport")
-    gnd = aedt_app.modeler.components.create_gnd()
+    port = aedt_app.modeler.components.create_interface_port(name="myport", location=[-200, 0] )
+    gnd = aedt_app.modeler.components.create_gnd(location=[1200, -100])
 
 
 
@@ -208,10 +208,10 @@ Connect components with wires.
 .. code-block:: default
 
 
-    port.pins[0].connect_to_component(component_pin=inductor.pins[0])
-    inductor.pins[1].connect_to_component(component_pin=resistor.pins[0])
-    resistor.pins[1].connect_to_component(component_pin=capacitor.pins[0])
-    capacitor.pins[1].connect_to_component(component_pin=gnd.pins[0])
+    port.pins[0].connect_to_component(component_pin=inductor.pins[0], use_wire=True)
+    inductor.pins[1].connect_to_component(component_pin=resistor.pins[1], use_wire=True)
+    resistor.pins[0].connect_to_component(component_pin=capacitor.pins[0], use_wire=True)
+    capacitor.pins[1].connect_to_component(component_pin=gnd.pins[0], use_wire=True)
 
 
 
@@ -271,7 +271,7 @@ Solve the transient setup.
  .. code-block:: none
 
 
-    'D:/Temp/pyaedt_prj_6BU/Project_X5T.pyaedt\\Circuit Design_1QE\\Circuit Design_1QE.sp'
+    'D:/Temp/pyaedt_prj_FO4/Project_STK.pyaedt\\Circuit Design_7KB\\Circuit Design_7KB.sp'
 
 
 
@@ -374,7 +374,7 @@ All methods provide for saving the project before closing.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  35.461 seconds)
+   **Total running time of the script:** ( 0 minutes  35.294 seconds)
 
 
 .. _sphx_glr_download_examples_07-Circuit_Circuit_Example.py:

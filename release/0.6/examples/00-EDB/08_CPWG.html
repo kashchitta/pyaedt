@@ -210,7 +210,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.44 variable.
+            // this version, rather than using sphinx's 0.6.45 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -653,16 +653,6 @@ function checkPageExistsAndRedirect(event) {
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../07-Circuit/EMIT_Example.html">
-     EMIT: antenna
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../07-Circuit/EMIT_HFSS_Example.html">
-     EMIT: HFSS to EMIT coupling
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../07-Circuit/Reports.html">
      Circuit: automatic report creation
     </a>
@@ -675,11 +665,43 @@ function checkPageExistsAndRedirect(event) {
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../07-TwinBuilder/index.html">
-   Twin Builder examples
+  <a class="reference internal" href="../07-EMIT/index.html">
+   EMIT examples
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
   <label for="toctree-checkbox-11">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../07-EMIT/ComputeChannelSeparation.html">
+     EMIT: Compute required channel separation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../07-EMIT/ComputeProtectionLevels.html">
+     EMIT: Compute receiver protection levels
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../07-EMIT/EMIT_Example.html">
+     EMIT: antenna
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../07-EMIT/EMIT_HFSS_Example.html">
+     EMIT: HFSS to EMIT coupling
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../07-TwinBuilder/index.html">
+   Twin Builder examples
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+  <label for="toctree-checkbox-12">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -700,8 +722,8 @@ function checkPageExistsAndRedirect(event) {
   <a class="reference internal" href="../08-CableModeling/index.html">
    Cable Modeling examples
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
-  <label for="toctree-checkbox-12">
+  <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
+  <label for="toctree-checkbox-13">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -878,7 +900,7 @@ on version 2022 R2.</p>
 <span class="n">edbapp</span> <span class="o">=</span> <span class="n">pyaedt</span><span class="o">.</span><span class="n">Edb</span><span class="p">(</span><span class="n">edbpath</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">aedb_path</span></a><span class="p">,</span> <span class="n">edbversion</span><span class="o">=</span><span class="s2">&quot;2022.2&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>D:\Temp\pyaedt_prj_V0I\pcb_9UU9LD.aedb
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>D:\Temp\pyaedt_prj_YWR\pcb_2I1H9D.aedb
 </pre></div>
 </div>
 </section>
@@ -934,7 +956,7 @@ on version 2022 R2.</p>
                                     <span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives object at 0x0000028A30A4FDC0&gt;
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives object at 0x000001C04DEB78B0&gt;
 </pre></div>
 </div>
 </section>
@@ -995,7 +1017,7 @@ on version 2022 R2.</p>
 <span class="n">h3d</span><span class="o">.</span><span class="n">create_edge_port</span><span class="p">(</span><span class="s2">&quot;line_3&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">iswave</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">wave_vertical_extension</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">wave_horizontal_extension</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modules.Boundary.BoundaryObject3dLayout object at 0x0000028A300F7A00&gt;
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modules.Boundary.BoundaryObject3dLayout object at 0x000001C044EE0640&gt;
 </pre></div>
 </div>
 </section>
@@ -1029,7 +1051,7 @@ on version 2022 R2.</p>
 <span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modules.SetupTemplates.SweepHFSS3DLayout object at 0x0000028A278E9DC0&gt;
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modules.SetupTemplates.SweepHFSS3DLayout object at 0x000001C044EE0610&gt;
 </pre></div>
 </div>
 </section>
@@ -1039,7 +1061,7 @@ on version 2022 R2.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">h3d</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">edb</span><span class="o">.</span><span class="n">core_nets</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">color_by_net</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_08_CPWG_001.png" srcset="../../_images/sphx_glr_08_CPWG_001.png" alt="Cell_TE27XS" class = "sphx-glr-single-img"/></section>
+<img src="../../_images/sphx_glr_08_CPWG_001.png" srcset="../../_images/sphx_glr_08_CPWG_001.png" alt="Cell_4E6RX3" class = "sphx-glr-single-img"/></section>
 <section id="start-hfss-solver">
 <h2>Start HFSS solver<a class="headerlink" href="#start-hfss-solver" title="Permalink to this heading">#</a></h2>
 <p>Start the HFSS solver by uncommenting the <code class="docutils literal notranslate"><span class="pre">h3d.analyze_nominal()</span></code> command.</p>
@@ -1059,11 +1081,11 @@ on version 2022 R2.</p>
 </pre></div>
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>****************************************
-***Your AEDT project is save to D:\Temp\pyaedt_prj_V0I\pcb_9UU9LD.aedt
+***Your AEDT project is save to D:\Temp\pyaedt_prj_YWR\pcb_2I1H9D.aedt
 ****************************************
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  28.941 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  28.554 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-00-edb-08-cpwg-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/4540bcaff5cc8af6bb0e6fa8a528c2d4/08_CPWG.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">08_CPWG.py</span></code></a></p>

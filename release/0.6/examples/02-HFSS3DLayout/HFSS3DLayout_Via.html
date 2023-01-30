@@ -210,7 +210,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.44 variable.
+            // this version, rather than using sphinx's 0.6.45 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -653,16 +653,6 @@ function checkPageExistsAndRedirect(event) {
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../07-Circuit/EMIT_Example.html">
-     EMIT: antenna
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../07-Circuit/EMIT_HFSS_Example.html">
-     EMIT: HFSS to EMIT coupling
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../07-Circuit/Reports.html">
      Circuit: automatic report creation
     </a>
@@ -675,11 +665,43 @@ function checkPageExistsAndRedirect(event) {
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../07-TwinBuilder/index.html">
-   Twin Builder examples
+  <a class="reference internal" href="../07-EMIT/index.html">
+   EMIT examples
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
   <label for="toctree-checkbox-11">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../07-EMIT/ComputeChannelSeparation.html">
+     EMIT: Compute required channel separation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../07-EMIT/ComputeProtectionLevels.html">
+     EMIT: Compute receiver protection levels
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../07-EMIT/EMIT_Example.html">
+     EMIT: antenna
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../07-EMIT/EMIT_HFSS_Example.html">
+     EMIT: HFSS to EMIT coupling
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../07-TwinBuilder/index.html">
+   Twin Builder examples
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+  <label for="toctree-checkbox-12">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -700,8 +722,8 @@ function checkPageExistsAndRedirect(event) {
   <a class="reference internal" href="../08-CableModeling/index.html">
    Cable Modeling examples
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
-  <label for="toctree-checkbox-12">
+  <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
+  <label for="toctree-checkbox-13">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -876,7 +898,7 @@ You can set <code class="docutils literal notranslate"><span class="pre">non_gra
 <span class="n">h3d</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">add_layer</span><span class="p">(</span><span class="n">layername</span><span class="o">=</span><span class="s2">&quot;TOP&quot;</span><span class="p">,</span> <span class="n">layertype</span><span class="o">=</span><span class="s2">&quot;signal&quot;</span><span class="p">,</span> <span class="n">thickness</span><span class="o">=</span><span class="s2">&quot;0.035mm&quot;</span><span class="p">,</span> <span class="n">elevation</span><span class="o">=</span><span class="s2">&quot;0.2mm&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modules.LayerStackup.Layer object at 0x0000028A307F46D0&gt;
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modules.LayerStackup.Layer object at 0x000001C04970FD00&gt;
 </pre></div>
 </div>
 </section>
@@ -888,7 +910,7 @@ You can set <code class="docutils literal notranslate"><span class="pre">non_gra
 <span class="n">h3d</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">create_rectangle</span><span class="p">(</span><span class="n">layername</span><span class="o">=</span><span class="s2">&quot;TOP&quot;</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;w1/2+sp&quot;</span><span class="p">],</span> <span class="n">dimensions</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;len&quot;</span><span class="p">,</span> <span class="s2">&quot;w1/2+sp+20mm&quot;</span><span class="p">])</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modeler.pcb.object3dlayout.Rect3dLayout object at 0x0000028A2FC45280&gt;
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modeler.pcb.object3dlayout.Rect3dLayout object at 0x000001C044F56EE0&gt;
 </pre></div>
 </div>
 </section>
@@ -903,7 +925,7 @@ You can set <code class="docutils literal notranslate"><span class="pre">non_gra
 <span class="n">h3d</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">create_via</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;3*viatovia&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;viatotrace&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modeler.pcb.object3dlayout.Pins3DLayout object at 0x0000028A303716A0&gt;
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modeler.pcb.object3dlayout.Pins3DLayout object at 0x000001C044F56F70&gt;
 </pre></div>
 </div>
 </section>
@@ -914,7 +936,7 @@ You can set <code class="docutils literal notranslate"><span class="pre">non_gra
 <span class="n">h3d</span><span class="o">.</span><span class="n">create_edge_port</span><span class="p">(</span><span class="s2">&quot;microstrip&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modules.Boundary.BoundaryObject3dLayout object at 0x0000028A0BB11C70&gt;
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modules.Boundary.BoundaryObject3dLayout object at 0x000001C044F568B0&gt;
 </pre></div>
 </div>
 </section>
@@ -937,7 +959,7 @@ You can set <code class="docutils literal notranslate"><span class="pre">non_gra
 <span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modules.SetupTemplates.SweepHFSS3DLayout object at 0x0000028A27734850&gt;
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modules.SetupTemplates.SweepHFSS3DLayout object at 0x000001C057397EE0&gt;
 </pre></div>
 </div>
 </section>
@@ -949,7 +971,7 @@ You can set <code class="docutils literal notranslate"><span class="pre">non_gra
 <span class="n">h3d</span><span class="o">.</span><span class="n">post</span><span class="o">.</span><span class="n">create_report</span><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">traces</span></a><span class="p">,</span> <span class="n">variations</span><span class="o">=</span><span class="n">h3d</span><span class="o">.</span><span class="n">available_variations</span><span class="o">.</span><span class="n">nominal_w_values_dict</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modules.report_templates.Standard object at 0x0000028A0BB11F70&gt;
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modules.report_templates.Standard object at 0x000001C0450F25B0&gt;
 </pre></div>
 </div>
 </section>
@@ -977,7 +999,7 @@ All methods provide for saving the project before closing.</p>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>True
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 2 minutes  6.129 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 2 minutes  6.027 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-02-hfss3dlayout-hfss3dlayout-via-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/05ba9252d315ccc286e4c2ff0cf77196/HFSS3DLayout_Via.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">HFSS3DLayout_Via.py</span></code></a></p>

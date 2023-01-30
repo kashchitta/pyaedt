@@ -440,15 +440,17 @@ for writing PyAEDT scripts in Windows with a simple batch file.</p>
 <p>This batch file executes these steps:</p>
 <ol class="arabic simple">
 <li><p>Creates a Python virtual environment in your <code class="docutils literal notranslate"><span class="pre">%APPDATA%</span></code> folder. To accomplish
-this, it uses CPython in the latest installed version of AEDT on your machine.</p></li>
+this, it uses CPython in the selected version of AEDT available on your machine.</p></li>
 <li><p>Installs PyAEDT.</p></li>
 <li><p>Optionally installs <a class="reference external" href="https://www.spyder-ide.org/">Spyder</a> with -s flag.</p></li>
 <li><p>Installs <a class="reference external" href="https://jupyter.org/">Jupyter Lab</a>.</p></li>
 <li><p>Creates a symbolic link from your PyAEDT installation to AEDT <code class="docutils literal notranslate"><span class="pre">PersonalLib</span></code> so
 that scripts can also be run within AEDT.</p></li>
 <li><p>Updates PyAEDT.</p></li>
+<li><p>Install PyAEDT toolkit in AEDT to enable PyAEDT Console and PyAEDT Run Script.</p></li>
 <li><p>Runs the tool that you choose (Spyder, Jupyter Lab, or a simple console).</p></li>
 </ol>
+<a class="reference internal image-reference" href="../_images/toolkits.png"><img alt="PyAEDT toolkit installed after batch run" src="../_images/toolkits.png" style="width: 800px;" /></a>
 <p>Steps 1 through 5 are executed only the first time that you run the batch file or when <code class="docutils literal notranslate"><span class="pre">-f</span></code> is used:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pyaedt_with_IDE</span><span class="o">.</span><span class="n">bat</span> <span class="o">--</span><span class="n">force</span><span class="o">-</span><span class="n">install</span>
 

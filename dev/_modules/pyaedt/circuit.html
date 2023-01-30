@@ -500,6 +500,8 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">            ``True`` when successful, ``False`` when failed.</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">units</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">schematic_units</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">schematic_units</span> <span class="o">=</span> <span class="s2">&quot;meter&quot;</span>
         <span class="n">xpos</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="n">ypos</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="n">delta</span> <span class="o">=</span> <span class="mf">0.0508</span>
@@ -717,6 +719,7 @@ function checkPageExistsAndRedirect(event) {
                         <span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="k">if</span> <span class="n">autosave</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_desktop</span><span class="o">.</span><span class="n">EnableAutoSave</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">schematic_units</span> <span class="o">=</span> <span class="n">units</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Netlist was correctly imported into </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">design_name</span><span class="p">)</span>
         <span class="k">return</span> <span class="kc">True</span></div>
 
@@ -763,6 +766,8 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">            ``True`` when successful, ``False`` when failed.</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">units</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">schematic_units</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">schematic_units</span> <span class="o">=</span> <span class="s2">&quot;meter&quot;</span>
         <span class="n">xpos</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="n">ypos</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="n">delta</span> <span class="o">=</span> <span class="mf">0.0508</span>
@@ -868,14 +873,14 @@ function checkPageExistsAndRedirect(event) {
             <span class="k">if</span> <span class="s2">&quot;GND&quot;</span> <span class="ow">in</span> <span class="n">netname</span><span class="o">.</span><span class="n">upper</span><span class="p">():</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">schematic</span><span class="o">.</span><span class="n">create_gnd</span><span class="p">([</span><span class="n">xpos</span><span class="p">,</span> <span class="n">ypos</span><span class="p">])</span>
                 <span class="n">page_pos</span> <span class="o">=</span> <span class="n">ypos</span> <span class="o">+</span> <span class="mf">0.00254</span>
-                <span class="n">mod1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">schematic</span><span class="o">.</span><span class="n">create_page_port</span><span class="p">(</span><span class="n">netname</span><span class="p">,</span> <span class="p">[</span><span class="n">xpos</span><span class="p">,</span> <span class="n">ypos</span><span class="p">],</span> <span class="mf">0.0</span><span class="p">)</span>
-                <span class="n">mod1</span><span class="o">.</span><span class="n">location</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">xpos</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;meter&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">page_pos</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;meter&quot;</span><span class="p">]</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">schematic</span><span class="o">.</span><span class="n">create_page_port</span><span class="p">(</span><span class="n">netname</span><span class="p">,</span> <span class="p">[</span><span class="n">xpos</span><span class="p">,</span> <span class="n">page_pos</span><span class="p">],</span> <span class="mf">0.0</span><span class="p">)</span>
                 <span class="n">ypos</span> <span class="o">+=</span> <span class="n">delta</span>
                 <span class="k">if</span> <span class="n">ypos</span> <span class="o">&gt;</span> <span class="n">delta</span> <span class="o">*</span> <span class="n">column_number</span><span class="p">:</span>
                     <span class="n">xpos</span> <span class="o">+=</span> <span class="n">delta</span>
                     <span class="n">ypos</span> <span class="o">=</span> <span class="mi">0</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Netlist was correctly imported into </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">design_name</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">schematic_units</span> <span class="o">=</span> <span class="n">units</span>
         <span class="k">return</span> <span class="kc">True</span></div>
 
 <div class="viewcode-block" id="Circuit.retrieve_mentor_comp"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.circuit.Circuit.retrieve_mentor_comp.html#pyaedt.circuit.Circuit.retrieve_mentor_comp">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>

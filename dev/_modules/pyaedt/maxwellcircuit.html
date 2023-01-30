@@ -318,6 +318,7 @@ function checkPageExistsAndRedirect(event) {
 <span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">absolute_import</span>  <span class="c1"># noreorder</span>
 
 <span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">os</span>
 
 <span class="kn">from</span> <span class="nn">pyaedt.application.AnalysisMaxwellCircuit</span> <span class="kn">import</span> <span class="n">AnalysisMaxwellCircuit</span>
 <span class="kn">from</span> <span class="nn">pyaedt.generic.general_methods</span> <span class="kn">import</span> <span class="n">open_file</span>
@@ -491,6 +492,31 @@ function checkPageExistsAndRedirect(event) {
                         <span class="n">xpos</span> <span class="o">+=</span> <span class="n">delta</span>
                         <span class="n">ypos</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="k">return</span> <span class="kc">True</span></div>
+
+<div class="viewcode-block" id="MaxwellCircuit.export_netlist_from_schematic"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.maxwellcircuit.MaxwellCircuit.export_netlist_from_schematic.html#pyaedt.maxwellcircuit.MaxwellCircuit.export_netlist_from_schematic">[docs]</a>    <span class="nd">@pyaedt_function_handler</span>
+    <span class="k">def</span> <span class="nf">export_netlist_from_schematic</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file_to_export</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Create netlist from schematic circuit.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        file_to_export : str</span>
+<span class="sd">            File path to export the netlist to.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        str</span>
+<span class="sd">            Netlist file path when successful, ``False`` when failed.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">file_to_export</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&quot;.sph&quot;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Invalid file extension. It must be ``.sph``.&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">odesign</span><span class="o">.</span><span class="n">ExportNetlist</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">file_to_export</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">file_to_export</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span></div>
 
     <span class="k">def</span> <span class="fm">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span></div>

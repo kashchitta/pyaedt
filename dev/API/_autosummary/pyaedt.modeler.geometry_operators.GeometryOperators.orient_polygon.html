@@ -371,6 +371,16 @@ function checkPageExistsAndRedirect(event) {
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modeler.cad.elements3d.HistoryProps.html">
+     pyaedt.modeler.cad.elements3d.HistoryProps
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modeler.cad.elements3d.BinaryTreeNode.html">
+     pyaedt.modeler.cad.elements3d.BinaryTreeNode
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="pyaedt.modeler.cad.Modeler.CoordinateSystem.html">
      pyaedt.modeler.cad.Modeler.CoordinateSystem
     </a>
@@ -473,6 +483,11 @@ function checkPageExistsAndRedirect(event) {
      <li class="toctree-l3">
       <a class="reference internal" href="pyaedt.modeler.geometry_operators.GeometryOperators.euler_zyz_to_quaternion.html">
        euler_zyz_to_quaternion
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.geometry_operators.GeometryOperators.find_closest_points.html">
+       find_closest_points
       </a>
      </li>
      <li class="toctree-l3">
@@ -845,18 +860,19 @@ The polygon is represented by its vertices coordinates.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
-<dt><strong>x</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#list" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">list</span></code></a></span></dt><dd><p>List of x coordinates of the vertices. Length must be &gt;= 3.</p>
+<dt><strong>x</strong><span class="classifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">List</span></code></span></dt><dd><p>List of x coordinates of the vertices. Length must be &gt;= 1.
+Degenerate polygon with only 2 points is also accepted, in this case the points are returned unchanged.</p>
 </dd>
-<dt><strong>y</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#list" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">list</span></code></a></span></dt><dd><p>List of y coordinates of the vertices. Must be of the same length as x.</p>
+<dt><strong>y</strong><span class="classifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">List</span></code></span></dt><dd><p>List of y coordinates of the vertices. Must be of the same length as x.</p>
 </dd>
-<dt><strong>clockwise</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#bltin-boolean-values" title="(in Python v3.12)"><span class="xref std std-ref">bool</span></a></span></dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">True</span></code> the polygon is oriented colckwise, if <code class="docutils literal notranslate"><span class="pre">False</span></code> it is oriented counterclockwise.
+<dt><strong>clockwise</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#bltin-boolean-values" title="(in Python v3.12)"><span class="xref std std-ref">bool</span></a></span></dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">True</span></code> the polygon is oriented clockwise, if <code class="docutils literal notranslate"><span class="pre">False</span></code> it is oriented counterclockwise.
 Default is <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#list" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">list</span></code></a> <code class="xref py py-obj docutils literal notranslate"><span class="pre">of</span></code> <a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#list" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">list</span></code></a></dt><dd><p>Lists of oriented vertices.</p>
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">List</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">of</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">List</span></code></dt><dd><p>Lists of oriented vertices.</p>
 </dd>
 </dl>
 </dd>

@@ -405,9 +405,9 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        component_name : str, optional</span>
 <span class="sd">            Name of the component. The default is ``None``.</span>
 <span class="sd">        variables_to_include : list, optional</span>
-<span class="sd">             List of variables to include. The default is ``[]``.</span>
+<span class="sd">            List of variables to include. The default is ``[]``.</span>
 <span class="sd">        object_list : list, optional</span>
-<span class="sd">            List of Objects names to export. The default is all objects.</span>
+<span class="sd">            List of object names to export. The default is all object names.</span>
 <span class="sd">        boundaries_list : list, optional</span>
 <span class="sd">            List of Boundaries names to export. The default is all boundaries.</span>
 <span class="sd">        excitation_list : list, optional</span>
@@ -431,24 +431,23 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">            Edit password.</span>
 <span class="sd">            The default value is an empty string.</span>
 <span class="sd">        password_type : str, optional</span>
-<span class="sd">            Password type. Value can either be ``UserSuppliedPassword`` or ``InternalPassword``.</span>
-<span class="sd">            The default value is ``UserSuppliedPassword``.</span>
-<span class="sd">        hide_contents : bool, optionale</span>
-<span class="sd">            Whether to hide contents.</span>
-<span class="sd">            The default is ``False``.</span>
+<span class="sd">            Password type. Options are ``UserSuppliedPassword`` and ``InternalPassword``.</span>
+<span class="sd">            The default is ``UserSuppliedPassword``.</span>
+<span class="sd">        hide_contents : bool, optional</span>
+<span class="sd">            Whether to hide contents. The default is ``False``.</span>
 <span class="sd">        replace_names : bool, optional</span>
-<span class="sd">            Whether to replace objects and materials names.</span>
+<span class="sd">            Whether to replace objects and material names.</span>
 <span class="sd">            The default is ``False``.</span>
 <span class="sd">        component_outline : str, optional</span>
 <span class="sd">            Component outline. Value can either be ``BoundingBox`` or ``None``.</span>
 <span class="sd">            The default is ``BoundingBox``.</span>
 <span class="sd">        auxiliary_dict_file : bool or str, optional</span>
-<span class="sd">            Whether to export or not the auxiliary file containing information about defined datasets and Icepak monitor</span>
-<span class="sd">             objects. A destination file can be specified using a string.</span>
+<span class="sd">            Whether to export the auxiliary file containing information about defined datasets and Icepak monitor</span>
+<span class="sd">            objects. A destination file can be specified using a string.</span>
 <span class="sd">            The default is ``False``.</span>
 <span class="sd">        monitor_objects : list, optional</span>
-<span class="sd">            List of monitor objects names to export. The default is all monitor objects. This argument is relevant only</span>
-<span class="sd">            if ``auxiliary_dict_file`` is not set to ``False``.</span>
+<span class="sd">            List of monitor objects&#39; names to export. The default is the names of all monitor objects. This argument is</span>
+<span class="sd">            relevant only if ``auxiliary_dict_file`` is not set to ``False``.</span>
 <span class="sd">        datasets : list, optional</span>
 <span class="sd">            List of dataset names to export. The default is all datasets. This argument is relevant only if</span>
 <span class="sd">            ``auxiliary_dict_file`` is not set to ``False``.</span>
@@ -463,7 +462,6 @@ function checkPageExistsAndRedirect(event) {
 
 <span class="sd">        References</span>
 <span class="sd">        ----------</span>
-
 <span class="sd">        &gt;&gt;&gt; oEditor.Create3DComponent</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">component_name</span><span class="p">:</span>
@@ -542,16 +540,28 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">arg</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;IncludedCS:=&quot;</span><span class="p">),</span> <span class="n">arg</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">allcs</span><span class="p">)</span>
         <span class="n">arg</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;ReferenceCS:=&quot;</span><span class="p">),</span> <span class="n">arg</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">reference_cs</span><span class="p">)</span>
         <span class="n">par_description</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">variables</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">if</span> <span class="n">variables_to_include</span><span class="p">:</span>
-            <span class="n">variables</span> <span class="o">=</span> <span class="n">variables_to_include</span>
+            <span class="n">dependent_variables</span> <span class="o">=</span> <span class="p">[]</span>
+
+            <span class="n">ind_variables</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">_variable_manager</span><span class="o">.</span><span class="n">independent_variable_names</span><span class="p">]</span>
+            <span class="n">dep_variables</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">_variable_manager</span><span class="o">.</span><span class="n">dependent_variable_names</span><span class="p">]</span>
+            <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">variables_to_include</span><span class="p">:</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="p">[</span><span class="n">param</span><span class="p">]</span> <span class="ow">in</span> <span class="n">ind_variables</span><span class="p">:</span>
+                    <span class="n">variables</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="p">[</span><span class="n">param</span><span class="p">])</span>
+                    <span class="n">dependent_variables</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">param</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="p">[</span><span class="n">param</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">dep_variables</span><span class="p">:</span>
+                    <span class="n">variables</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">param</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">variables</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">_variable_manager</span><span class="o">.</span><span class="n">independent_variable_names</span>
+            <span class="n">dependent_variables</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">_variable_manager</span><span class="o">.</span><span class="n">dependent_variable_names</span>
+
         <span class="k">for</span> <span class="n">el</span> <span class="ow">in</span> <span class="n">variables</span><span class="p">:</span>
             <span class="n">par_description</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">el</span> <span class="o">+</span> <span class="s2">&quot;:=&quot;</span><span class="p">)</span>
             <span class="n">par_description</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
         <span class="n">arg</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;IncludedParameters:=&quot;</span><span class="p">),</span> <span class="n">arg</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">variables</span><span class="p">)</span>
-        <span class="n">variables</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">_variable_manager</span><span class="o">.</span><span class="n">dependent_variable_names</span>
-        <span class="n">arg</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;IncludedDependentParameters:=&quot;</span><span class="p">),</span> <span class="n">arg</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">variables</span><span class="p">)</span>
+
+        <span class="n">arg</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;IncludedDependentParameters:=&quot;</span><span class="p">),</span> <span class="n">arg</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">dependent_variables</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">el</span> <span class="ow">in</span> <span class="n">variables</span><span class="p">:</span>
             <span class="n">par_description</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">el</span> <span class="o">+</span> <span class="s2">&quot;:=&quot;</span><span class="p">)</span>
             <span class="n">par_description</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
@@ -588,7 +598,14 @@ function checkPageExistsAndRedirect(event) {
             <span class="k">if</span> <span class="n">excitations</span><span class="p">:</span>
                 <span class="n">arg2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;Excitations:=&quot;</span><span class="p">),</span> <span class="n">arg2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">excitations</span><span class="p">)</span>
         <span class="n">meshops</span> <span class="o">=</span> <span class="p">[</span><span class="n">el</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">el</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">meshoperations</span><span class="p">]</span>
-        <span class="n">arg2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;MeshOperations:=&quot;</span><span class="p">),</span> <span class="n">arg2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">meshops</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">meshops</span><span class="p">:</span>
+            <span class="n">used_mesh_ops</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">mesh</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">meshops</span><span class="p">)):</span>
+                <span class="k">if</span> <span class="nb">all</span><span class="p">(</span><span class="n">item</span> <span class="ow">in</span> <span class="n">object_list</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">meshoperations</span><span class="p">[</span><span class="n">mesh</span><span class="p">]</span><span class="o">.</span><span class="n">props</span><span class="p">[</span><span class="s2">&quot;Objects&quot;</span><span class="p">]):</span>
+                    <span class="n">used_mesh_ops</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">meshoperations</span><span class="p">[</span><span class="n">mesh</span><span class="p">]</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+            <span class="n">arg2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;MeshOperations:=&quot;</span><span class="p">),</span> <span class="n">arg2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">used_mesh_ops</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">arg2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;MeshOperations:=&quot;</span><span class="p">),</span> <span class="n">arg2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">meshops</span><span class="p">)</span>
         <span class="n">arg3</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;NAME:ImageFile&quot;</span><span class="p">,</span> <span class="s2">&quot;ImageFile:=&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">]</span>
         <span class="k">if</span> <span class="n">auxiliary_dict_file</span><span class="p">:</span>
             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">auxiliary_dict_file</span><span class="p">,</span> <span class="nb">bool</span><span class="p">):</span>
@@ -658,6 +675,168 @@ function checkPageExistsAndRedirect(event) {
             <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">auxiliary_dict_file</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">outfile</span><span class="p">:</span>
                 <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">out_dict</span><span class="p">,</span> <span class="n">outfile</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">_retry_ntimes</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">oeditor</span><span class="o">.</span><span class="n">Create3DComponent</span><span class="p">,</span> <span class="n">arg</span><span class="p">,</span> <span class="n">arg2</span><span class="p">,</span> <span class="n">component_file</span><span class="p">,</span> <span class="n">arg3</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Modeler3D.replace_3dcomponent"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modeler.modeler3d.Modeler3D.replace_3dcomponent.html#pyaedt.modeler.modeler3d.Modeler3D.replace_3dcomponent">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">replace_3dcomponent</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">component_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">variables_to_include</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">object_list</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">boundaries_list</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">excitation_list</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">included_cs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">reference_cs</span><span class="o">=</span><span class="s2">&quot;Global&quot;</span><span class="p">,</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Replace with 3D component.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        component_name : str, optional</span>
+<span class="sd">            Name of the component. The default is ``None``.</span>
+<span class="sd">        variables_to_include : list, optional</span>
+<span class="sd">            List of variables to include. The default is ``None``.</span>
+<span class="sd">        object_list : list, optional</span>
+<span class="sd">            List of object names to export. The default is all object names.</span>
+<span class="sd">        boundaries_list : list, optional</span>
+<span class="sd">            List of Boundaries names to export. The default is all boundaries.</span>
+<span class="sd">        excitation_list : list, optional</span>
+<span class="sd">            List of Excitation names to export. The default is all excitations.</span>
+<span class="sd">        included_cs : list, optional</span>
+<span class="sd">            List of Coordinate Systems to export. The default is all coordinate systems.</span>
+<span class="sd">        reference_cs : str, optional</span>
+<span class="sd">            The Coordinate System reference. The default is ``&quot;Global&quot;``.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        bool</span>
+<span class="sd">            ``True`` when successful, ``False`` when failed.</span>
+
+<span class="sd">        References</span>
+<span class="sd">        ----------</span>
+
+<span class="sd">        &gt;&gt;&gt; oEditor.ReplaceWith3DComponent</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">variables_to_include</span><span class="p">:</span>
+            <span class="n">variables_to_include</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">component_name</span><span class="p">:</span>
+            <span class="n">component_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">design_name</span>
+        <span class="n">dt_string</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%H:%M:%S %p %b </span><span class="si">%d</span><span class="s2">, %Y&quot;</span><span class="p">)</span>
+        <span class="n">arg</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="s2">&quot;NAME:CreateData&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;ComponentName:=&quot;</span><span class="p">,</span>
+            <span class="n">component_name</span><span class="p">,</span>
+            <span class="s2">&quot;Company:=&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Company URL:=&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Model Number:=&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Help URL:=&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Version:=&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;1.0&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Notes:=&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;IconType:=&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Owner:=&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;pyaedt&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Email:=&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Date:=&quot;</span><span class="p">,</span>
+            <span class="n">dt_string</span><span class="p">,</span>
+            <span class="s2">&quot;HasLabel:=&quot;</span><span class="p">,</span>
+            <span class="kc">False</span><span class="p">,</span>
+        <span class="p">]</span>
+        <span class="k">if</span> <span class="n">object_list</span><span class="p">:</span>
+            <span class="n">objs</span> <span class="o">=</span> <span class="n">object_list</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">native_objs</span> <span class="o">=</span> <span class="p">[</span>
+                <span class="n">obj</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">user_defined_components</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">v</span><span class="o">.</span><span class="n">parts</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+            <span class="p">]</span>
+            <span class="n">objs</span> <span class="o">=</span> <span class="p">[</span><span class="n">obj</span> <span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">object_names</span> <span class="k">if</span> <span class="n">obj</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">native_objs</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">native_objs</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                    <span class="s2">&quot;Native component objects cannot be exported. Use native_components argument to&quot;</span>
+                    <span class="s2">&quot; export an auxiliary dictionary file containing 3D components information&quot;</span>
+                <span class="p">)</span>
+        <span class="k">for</span> <span class="n">el</span> <span class="ow">in</span> <span class="n">objs</span><span class="p">:</span>
+            <span class="k">if</span> <span class="s2">&quot;CreateRegion:1&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">oeditor</span><span class="o">.</span><span class="n">GetChildObject</span><span class="p">(</span><span class="n">el</span><span class="p">)</span><span class="o">.</span><span class="n">GetChildNames</span><span class="p">():</span>
+                <span class="n">objs</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">el</span><span class="p">)</span>
+        <span class="n">arg</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;IncludedParts:=&quot;</span><span class="p">),</span> <span class="n">arg</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">objs</span><span class="p">)</span>
+        <span class="n">arg</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;HiddenParts:=&quot;</span><span class="p">),</span> <span class="n">arg</span><span class="o">.</span><span class="n">append</span><span class="p">([])</span>
+        <span class="k">if</span> <span class="n">included_cs</span><span class="p">:</span>
+            <span class="n">allcs</span> <span class="o">=</span> <span class="n">included_cs</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">allcs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">oeditor</span><span class="o">.</span><span class="n">GetCoordinateSystems</span><span class="p">()</span>
+        <span class="n">arg</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;IncludedCS:=&quot;</span><span class="p">),</span> <span class="n">arg</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">allcs</span><span class="p">)</span>
+        <span class="n">arg</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;ReferenceCS:=&quot;</span><span class="p">),</span> <span class="n">arg</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">reference_cs</span><span class="p">)</span>
+        <span class="n">par_description</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">variables</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">if</span> <span class="n">variables_to_include</span><span class="p">:</span>
+            <span class="n">dependent_variables</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="n">ind_variables</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">_variable_manager</span><span class="o">.</span><span class="n">independent_variable_names</span>
+            <span class="n">dep_variables</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">_variable_manager</span><span class="o">.</span><span class="n">dependent_variable_names</span>
+            <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">variables_to_include</span><span class="p">:</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="p">[</span><span class="n">param</span><span class="p">]</span> <span class="ow">in</span> <span class="n">ind_variables</span><span class="p">:</span>
+                    <span class="n">variables</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="p">[</span><span class="n">param</span><span class="p">])</span>
+                    <span class="n">dependent_variables</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">param</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="p">[</span><span class="n">param</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">dep_variables</span><span class="p">:</span>
+                    <span class="n">variables</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">param</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">variables</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">_variable_manager</span><span class="o">.</span><span class="n">independent_variable_names</span>
+            <span class="n">dependent_variables</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">_variable_manager</span><span class="o">.</span><span class="n">dependent_variable_names</span>
+
+        <span class="k">for</span> <span class="n">el</span> <span class="ow">in</span> <span class="n">variables</span><span class="p">:</span>
+            <span class="n">par_description</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">el</span> <span class="o">+</span> <span class="s2">&quot;:=&quot;</span><span class="p">)</span>
+            <span class="n">par_description</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="n">arg</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;IncludedParameters:=&quot;</span><span class="p">),</span> <span class="n">arg</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">variables</span><span class="p">)</span>
+
+        <span class="n">arg</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;IncludedDependentParameters:=&quot;</span><span class="p">),</span> <span class="n">arg</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">dependent_variables</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">el</span> <span class="ow">in</span> <span class="n">variables</span><span class="p">:</span>
+            <span class="n">par_description</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">el</span> <span class="o">+</span> <span class="s2">&quot;:=&quot;</span><span class="p">)</span>
+            <span class="n">par_description</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="n">arg</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;ParameterDescription:=&quot;</span><span class="p">),</span> <span class="n">arg</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">par_description</span><span class="p">)</span>
+
+        <span class="n">arg2</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;NAME:DesignData&quot;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">boundaries_list</span><span class="p">:</span>
+            <span class="n">boundaries</span> <span class="o">=</span> <span class="n">boundaries_list</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">boundaries</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_boundaries_name</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">boundaries</span><span class="p">:</span>
+            <span class="n">arg2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;Boundaries:=&quot;</span><span class="p">),</span> <span class="n">arg2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">boundaries</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">design_type</span> <span class="o">==</span> <span class="s2">&quot;Icepak&quot;</span><span class="p">:</span>
+            <span class="n">meshregions</span> <span class="o">=</span> <span class="p">[</span><span class="n">mr</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">mr</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">meshregions</span><span class="p">]</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">meshregions</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s2">&quot;Global&quot;</span><span class="p">)</span>
+            <span class="k">except</span><span class="p">:</span>
+                <span class="k">pass</span>
+            <span class="k">if</span> <span class="n">meshregions</span><span class="p">:</span>
+                <span class="n">arg2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;MeshRegions:=&quot;</span><span class="p">),</span> <span class="n">arg2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">meshregions</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">excitation_list</span><span class="p">:</span>
+                <span class="n">excitations</span> <span class="o">=</span> <span class="n">excitation_list</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">excitations</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">excitations</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">design_type</span> <span class="o">==</span> <span class="s2">&quot;HFSS&quot;</span><span class="p">:</span>
+                    <span class="n">exc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">get_oo_name</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">odesign</span><span class="p">,</span> <span class="s2">&quot;Excitations&quot;</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">exc</span> <span class="ow">and</span> <span class="n">exc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">excitations</span><span class="p">:</span>
+                        <span class="n">excitations</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">exc</span><span class="p">)</span>
+            <span class="n">excitations</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">([</span><span class="n">i</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;:&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">excitations</span><span class="p">]))</span>
+            <span class="k">if</span> <span class="n">excitations</span><span class="p">:</span>
+                <span class="n">arg2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;Excitations:=&quot;</span><span class="p">),</span> <span class="n">arg2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">excitations</span><span class="p">)</span>
+        <span class="n">meshops</span> <span class="o">=</span> <span class="p">[</span><span class="n">el</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">el</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">meshoperations</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">meshops</span><span class="p">:</span>
+            <span class="n">used_mesh_ops</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">mesh</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">meshops</span><span class="p">)):</span>
+                <span class="k">if</span> <span class="nb">all</span><span class="p">(</span><span class="n">item</span> <span class="ow">in</span> <span class="n">object_list</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">meshoperations</span><span class="p">[</span><span class="n">mesh</span><span class="p">]</span><span class="o">.</span><span class="n">props</span><span class="p">[</span><span class="s2">&quot;Objects&quot;</span><span class="p">]):</span>
+                    <span class="n">used_mesh_ops</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">meshoperations</span><span class="p">[</span><span class="n">mesh</span><span class="p">]</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+            <span class="n">arg2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;MeshOperations:=&quot;</span><span class="p">),</span> <span class="n">arg2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">used_mesh_ops</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">arg2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;MeshOperations:=&quot;</span><span class="p">),</span> <span class="n">arg2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">meshops</span><span class="p">)</span>
+        <span class="n">arg3</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;NAME:ImageFile&quot;</span><span class="p">,</span> <span class="s2">&quot;ImageFile:=&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">_retry_ntimes</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">oeditor</span><span class="o">.</span><span class="n">ReplaceWith3DComponent</span><span class="p">,</span> <span class="n">arg</span><span class="p">,</span> <span class="n">arg2</span><span class="p">,</span> <span class="n">arg3</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Modeler3D.create_coaxial"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modeler.modeler3d.Modeler3D.create_coaxial.html#pyaedt.modeler.modeler3d.Modeler3D.create_coaxial">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">create_coaxial</span><span class="p">(</span>

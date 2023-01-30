@@ -577,8 +577,11 @@ function checkPageExistsAndRedirect(event) {
     <span class="k">def</span> <span class="nf">_init_dlls</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialize DLLs.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;posix&quot;</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">env_value</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">edbversion</span><span class="p">)</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">base_path</span> <span class="o">=</span> <span class="n">env_path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">edbversion</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">env_value</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">edbversion</span><span class="p">)</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span> <span class="ow">or</span> <span class="n">settings</span><span class="o">.</span><span class="n">edb_dll_path</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">settings</span><span class="o">.</span><span class="n">edb_dll_path</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">base_path</span> <span class="o">=</span> <span class="n">settings</span><span class="o">.</span><span class="n">edb_dll_path</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">base_path</span> <span class="o">=</span> <span class="n">env_path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">edbversion</span><span class="p">)</span>
                 <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">base_path</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">main</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">[</span><span class="s2">&quot;__main__&quot;</span><span class="p">]</span>
@@ -601,7 +604,9 @@ function checkPageExistsAndRedirect(event) {
                 <span class="n">_clr</span><span class="o">.</span><span class="n">AddReference</span><span class="p">(</span><span class="s2">&quot;Ansys.Ansoft.EdbBuilderUtils&quot;</span><span class="p">)</span>
                 <span class="n">_clr</span><span class="o">.</span><span class="n">AddReference</span><span class="p">(</span><span class="s2">&quot;Ansys.Ansoft.SimSetupData&quot;</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">student_version</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">settings</span><span class="o">.</span><span class="n">edb_dll_path</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">base_path</span> <span class="o">=</span> <span class="n">settings</span><span class="o">.</span><span class="n">edb_dll_path</span>
+            <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">student_version</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">base_path</span> <span class="o">=</span> <span class="n">env_path_student</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">edbversion</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">base_path</span> <span class="o">=</span> <span class="n">env_path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">edbversion</span><span class="p">)</span>
@@ -2464,7 +2469,7 @@ function checkPageExistsAndRedirect(event) {
                     <span class="bp">self</span><span class="o">.</span><span class="n">core_components</span><span class="o">.</span><span class="n">create_port_on_component</span><span class="p">(</span>
                         <span class="n">cmp</span><span class="p">,</span>
                         <span class="n">net_list</span><span class="o">=</span><span class="n">simulation_setup</span><span class="o">.</span><span class="n">signal_nets</span><span class="p">,</span>
-                        <span class="n">do_pingroup</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                        <span class="n">do_pingroup</span><span class="o">=</span><span class="n">simulation_setup</span><span class="o">.</span><span class="n">do_pingroup</span><span class="p">,</span>
                         <span class="n">reference_net</span><span class="o">=</span><span class="n">simulation_setup</span><span class="o">.</span><span class="n">power_nets</span><span class="p">,</span>
                         <span class="n">port_type</span><span class="o">=</span><span class="n">SourceType</span><span class="o">.</span><span class="n">CircPort</span><span class="p">,</span>
                     <span class="p">)</span>
@@ -2476,7 +2481,7 @@ function checkPageExistsAndRedirect(event) {
                 <span class="bp">self</span><span class="o">.</span><span class="n">core_components</span><span class="o">.</span><span class="n">create_source_on_component</span><span class="p">(</span><span class="n">simulation_setup</span><span class="o">.</span><span class="n">sources</span><span class="p">)</span>
                 <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">core_siwave</span><span class="o">.</span><span class="n">configure_siw_analysis_setup</span><span class="p">(</span><span class="n">simulation_setup</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Failed to configure Siwave simulation setup.&quot;</span><span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">core_padstack</span><span class="o">.</span><span class="n">check_and_fix_via_pating</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">core_padstack</span><span class="o">.</span><span class="n">check_and_fix_via_plating</span><span class="p">()</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">save_edb</span><span class="p">()</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="n">simulation_setup</span><span class="o">.</span><span class="n">open_edb_after_build</span> <span class="ow">and</span> <span class="n">simulation_setup</span><span class="o">.</span><span class="n">output_aedb</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">close_edb</span><span class="p">()</span>

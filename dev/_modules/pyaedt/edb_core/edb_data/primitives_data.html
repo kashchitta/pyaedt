@@ -547,6 +547,32 @@ function checkPageExistsAndRedirect(event) {
         <span class="k">except</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">points</span></div>
 
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">bbox</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the primitive bounding box points. Lower left corner, upper right corner.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        list</span>
+<span class="sd">            [lower_left x, lower_left y, upper right x, upper right y]</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">bbox</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">polygon_data</span><span class="o">.</span><span class="n">GetBBox</span><span class="p">()</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">bbox</span><span class="o">.</span><span class="n">Item1</span><span class="o">.</span><span class="n">X</span><span class="o">.</span><span class="n">ToDouble</span><span class="p">(),</span> <span class="n">bbox</span><span class="o">.</span><span class="n">Item1</span><span class="o">.</span><span class="n">Y</span><span class="o">.</span><span class="n">ToDouble</span><span class="p">(),</span> <span class="n">bbox</span><span class="o">.</span><span class="n">Item2</span><span class="o">.</span><span class="n">X</span><span class="o">.</span><span class="n">ToDouble</span><span class="p">(),</span> <span class="n">bbox</span><span class="o">.</span><span class="n">Item2</span><span class="o">.</span><span class="n">Y</span><span class="o">.</span><span class="n">ToDouble</span><span class="p">()]</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">center</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the primitive bounding box center coordinate.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        list</span>
+<span class="sd">            [x, y]</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">bbox</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bbox</span>
+        <span class="k">return</span> <span class="p">[(</span><span class="n">bbox</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">bbox</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="p">(</span><span class="n">bbox</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">bbox</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span> <span class="o">/</span> <span class="mi">2</span><span class="p">]</span>
+
 <div class="viewcode-block" id="EDBPrimitives.is_arc"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.is_arc.html#pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.is_arc">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">is_arc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">point</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Either if a point is an arc or not.</span>
@@ -1063,7 +1089,44 @@ function checkPageExistsAndRedirect(event) {
         <span class="k">elif</span> <span class="n">int_val</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">True</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="kc">False</span></div></div>
+            <span class="k">return</span> <span class="kc">False</span></div>
+
+<div class="viewcode-block" id="EDBPrimitives.clone"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.clone.html#pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.clone">[docs]</a>    <span class="nd">@pyaedt_function_handler</span>
+    <span class="k">def</span> <span class="nf">clone</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Clone a primitive object with keeping same definition and location.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        bool</span>
+<span class="sd">            ``True`` when successful, ``False`` when failed.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s2">&quot;Path&quot;</span><span class="p">:</span>
+            <span class="n">center_line</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">primitive_object</span><span class="o">.</span><span class="n">GetCenterLine</span><span class="p">()</span>
+            <span class="n">width</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">primitive_object</span><span class="o">.</span><span class="n">GetWidthValue</span><span class="p">()</span>
+            <span class="n">corner_style</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">primitive_object</span><span class="o">.</span><span class="n">GetCornerStyle</span><span class="p">()</span>
+            <span class="n">end_cap_style</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">primitive_object</span><span class="o">.</span><span class="n">GetEndCapStyle</span><span class="p">()</span>
+            <span class="n">cloned_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">edb</span><span class="o">.</span><span class="n">Cell</span><span class="o">.</span><span class="n">Primitive</span><span class="o">.</span><span class="n">Path</span><span class="o">.</span><span class="n">Create</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">active_layout</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">layer_name</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">net</span><span class="p">,</span>
+                <span class="n">width</span><span class="p">,</span>
+                <span class="n">end_cap_style</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+                <span class="n">end_cap_style</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span>
+                <span class="n">corner_style</span><span class="p">,</span>
+                <span class="n">center_line</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="k">if</span> <span class="n">cloned_path</span><span class="p">:</span>
+                <span class="c1"># forcing primitives dictionary update</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">core_primitives</span><span class="o">.</span><span class="n">primitives</span>  <span class="c1"># pragma no cover</span>
+                <span class="k">return</span> <span class="n">cloned_path</span>
+        <span class="n">cloned_poly</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">edb</span><span class="o">.</span><span class="n">Cell</span><span class="o">.</span><span class="n">Primitive</span><span class="o">.</span><span class="n">Polygon</span><span class="o">.</span><span class="n">Create</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">active_layout</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">layer_name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">net</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">polygon_data</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="n">cloned_poly</span><span class="p">:</span>
+            <span class="c1"># forcing primitives dictionary update</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">core_primitives</span><span class="o">.</span><span class="n">primitives</span>  <span class="c1"># pragma no cover</span>
+            <span class="k">return</span> <span class="n">cloned_poly</span>
+        <span class="k">return</span> <span class="kc">False</span></div></div>
 
 
 <div class="viewcode-block" id="EDBArcs"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.primitives_data.EDBArcs.html#pyaedt.edb_core.edb_data.primitives_data.EDBArcs">[docs]</a><span class="k">class</span> <span class="nc">EDBArcs</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>

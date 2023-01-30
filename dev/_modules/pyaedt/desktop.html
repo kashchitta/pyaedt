@@ -746,7 +746,7 @@ function checkPageExistsAndRedirect(event) {
                 <span class="bp">self</span><span class="o">.</span><span class="n">_main</span><span class="o">.</span><span class="n">oDesktop</span> <span class="o">=</span> <span class="n">oAnsoftApp</span><span class="o">.</span><span class="n">GetAppDesktop</span><span class="p">()</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_main</span><span class="o">.</span><span class="n">isoutsideDesktop</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_set_logger_file</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_init_desktop</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_init_desktop</span><span class="p">(</span><span class="n">non_graphical</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;pyaedt v</span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_main</span><span class="o">.</span><span class="n">pyaedt_version</span><span class="p">)</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">settings</span><span class="o">.</span><span class="n">remote_api</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Python version </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">sys</span><span class="o">.</span><span class="n">version</span><span class="p">)</span>
@@ -768,7 +768,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="c1"># Write the trace stack to the log file if an exception occurred in the main script.</span>
         <span class="k">if</span> <span class="n">ex_type</span><span class="p">:</span>
             <span class="n">err</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_exception</span><span class="p">(</span><span class="n">ex_value</span><span class="p">,</span> <span class="n">ex_traceback</span><span class="p">)</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">close_on_exit</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">close_on_exit</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">is_ironpython</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">release_desktop</span><span class="p">(</span><span class="n">close_projects</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">close_on_exit</span><span class="p">,</span> <span class="n">close_on_exit</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">close_on_exit</span><span class="p">)</span>
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
@@ -867,12 +867,15 @@ function checkPageExistsAndRedirect(event) {
                 <span class="k">return</span> <span class="n">version_key</span>
         <span class="k">return</span> <span class="s2">&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">_init_desktop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_init_desktop</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">non_graphical</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_main</span><span class="o">.</span><span class="n">AEDTVersion</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_main</span><span class="o">.</span><span class="n">oDesktop</span><span class="o">.</span><span class="n">GetVersion</span><span class="p">()[</span><span class="mi">0</span><span class="p">:</span><span class="mi">6</span><span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_main</span><span class="o">.</span><span class="n">oDesktop</span><span class="o">.</span><span class="n">RestoreWindow</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_main</span><span class="o">.</span><span class="n">sDesktopinstallDirectory</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_main</span><span class="o">.</span><span class="n">oDesktop</span><span class="o">.</span><span class="n">GetExeDir</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_main</span><span class="o">.</span><span class="n">pyaedt_initialized</span> <span class="o">=</span> <span class="kc">True</span>
-        <span class="n">settings</span><span class="o">.</span><span class="n">enable_desktop_logs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_main</span><span class="o">.</span><span class="n">oDesktop</span><span class="o">.</span><span class="n">GetIsNonGraphical</span><span class="p">()</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">settings</span><span class="o">.</span><span class="n">enable_desktop_logs</span> <span class="o">=</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_main</span><span class="o">.</span><span class="n">oDesktop</span><span class="o">.</span><span class="n">GetIsNonGraphical</span><span class="p">()</span>
+        <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+            <span class="n">settings</span><span class="o">.</span><span class="n">enable_desktop_logs</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">non_graphical</span>
 
     <span class="k">def</span> <span class="nf">_set_version</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">specified_version</span><span class="p">,</span> <span class="n">student_version</span><span class="p">):</span>
         <span class="n">student_version_flag</span> <span class="o">=</span> <span class="kc">False</span>

@@ -497,6 +497,9 @@ function checkPageExistsAndRedirect(event) {
             <span class="n">aedt_process_id</span><span class="p">,</span>
         <span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_field_setups</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="kn">from</span> <span class="nn">pyaedt.toolkits.antennas</span> <span class="kn">import</span> <span class="n">Antennas</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">antennas</span> <span class="o">=</span> <span class="n">Antennas</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="fm">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span>
@@ -1406,7 +1409,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">thin_sources</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
         <span class="n">power_fraction</span><span class="o">=</span><span class="s2">&quot;0.95&quot;</span><span class="p">,</span>
     <span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a linked antenna.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a linked antennas.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1697,12 +1700,12 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">is_array</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
         <span class="n">antenna_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a parametric beam antenna in SBR+.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a parametric beam antennas in SBR+.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        antenna_type : str, `SbrAntennas.ConicalHorn`</span>
-<span class="sd">            Name of the antenna type. The enumerator ``SbrAntennas`` can also be used.</span>
+<span class="sd">            Name of the antennas type. The enumerator ``SbrAntennas`` can also be used.</span>
 <span class="sd">            The default is ``&quot;SbrAntennas.Conical Horn&quot;``.</span>
 <span class="sd">        target_cs : str, optional</span>
 <span class="sd">            Target coordinate system. The default is ``None``, in which case</span>
@@ -1718,7 +1721,7 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">            The default is ``False``.</span>
 <span class="sd">        antenna_name : str, optional</span>
 <span class="sd">            Name of the 3D component. The default is ``None``, in which case the</span>
-<span class="sd">            name is auto-generated based on the antenna type.</span>
+<span class="sd">            name is auto-generated based on the antennas type.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1811,7 +1814,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">model_units</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">antenna_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a linked antenna.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a linked antennas.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1822,7 +1825,7 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        antenna_impedance : str, optional</span>
 <span class="sd">            Antenna impedance with units. The default is ``&quot;50ohm&quot;``.</span>
 <span class="sd">        representation_type : str, optional</span>
-<span class="sd">            Type of the antenna. Options are ``&quot;Far Field&quot;`` and ``&quot;Near Field&quot;``.</span>
+<span class="sd">            Type of the antennas. Options are ``&quot;Far Field&quot;`` and ``&quot;Near Field&quot;``.</span>
 <span class="sd">            The default is ``&quot;Far Field&quot;``.</span>
 <span class="sd">        target_cs : str, optional</span>
 <span class="sd">            Target coordinate system. The default is ``None``, in which case the</span>
@@ -1832,7 +1835,7 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">            ``None``, in which case the active modeler units are applied.</span>
 <span class="sd">        antenna_name : str, optional</span>
 <span class="sd">            Name of the 3D component. The default is ``None``, in which case</span>
-<span class="sd">            the name is auto-generated based on the antenna type.</span>
+<span class="sd">            the name is auto-generated based on the antennas type.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1872,7 +1875,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Hfss.set_sbr_txrx_settings"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.hfss.Hfss.set_sbr_txrx_settings.html#pyaedt.hfss.Hfss.set_sbr_txrx_settings">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">set_sbr_txrx_settings</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">txrx_settings</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set SBR+ TX RX antenna settings.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set SBR+ TX RX antennas settings.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2056,11 +2059,20 @@ function checkPageExistsAndRedirect(event) {
 
 <span class="sd">        The two objects must have two adjacent, parallel, and identical faces.</span>
 <span class="sd">        The faces must be a polygon (not a circle).</span>
+<span class="sd">        The closest faces must be aligned with the main planes of the reference system.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        start_object : str or int or :class:`pyaedt.modeler.object3d.Object3d`</span>
+<span class="sd">            First solid connected to the spiral port.</span>
+
 <span class="sd">        end_object : str or int or :class:`pyaedt.modeler.object3d.Object3d`</span>
+<span class="sd">            Second object connected to the spiral port.</span>
+
+<span class="sd">        port_width : float, optional</span>
+<span class="sd">            Width of the spiral port.</span>
+<span class="sd">            If not specified the width will be calculated based on the object dimensions.</span>
+<span class="sd">            The default is ``None``.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2068,11 +2080,12 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">            Boundary object.</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="c1"># fmt: off</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="s2">&quot;Terminal&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">solution_type</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;This method can be used only in Terminal solutions.&quot;</span><span class="p">)</span>
         <span class="n">start_object</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">convert_to_selections</span><span class="p">(</span><span class="n">start_object</span><span class="p">)</span>
         <span class="n">end_object</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">convert_to_selections</span><span class="p">(</span><span class="n">end_object</span><span class="p">)</span>
+
+        <span class="c1"># find the closest faces (based on face center)</span>
         <span class="n">closest_distance</span> <span class="o">=</span> <span class="mf">1e9</span>
         <span class="n">closest_faces</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">face1</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">modeler</span><span class="p">[</span><span class="n">start_object</span><span class="p">]</span><span class="o">.</span><span class="n">faces</span><span class="p">:</span>
@@ -2082,20 +2095,29 @@ function checkPageExistsAndRedirect(event) {
                     <span class="n">closest_distance</span> <span class="o">=</span> <span class="n">facecenter_distance</span>
                     <span class="n">closest_faces</span> <span class="o">=</span> <span class="p">[</span><span class="n">face1</span><span class="p">,</span> <span class="n">face2</span><span class="p">]</span>
 
+        <span class="c1"># check if the faces are parallel</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">GeometryOperators</span><span class="o">.</span><span class="n">is_collinear</span><span class="p">(</span><span class="n">closest_faces</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">normal</span><span class="p">,</span> <span class="n">closest_faces</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">normal</span><span class="p">):</span>
-            <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="s1">&#39;The two objects must have parallel adjacent faces.&#39;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="s2">&quot;The two objects must have parallel adjacent faces.&quot;</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">GeometryOperators</span><span class="o">.</span><span class="n">is_collinear</span><span class="p">(</span><span class="n">closest_faces</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">normal</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]):</span>
-            <span class="n">plane</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="n">plane</span> <span class="o">=</span> <span class="s2">&quot;X&quot;</span>
         <span class="k">elif</span> <span class="n">GeometryOperators</span><span class="o">.</span><span class="n">is_collinear</span><span class="p">(</span><span class="n">closest_faces</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">normal</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]):</span>
-            <span class="n">plane</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="n">plane</span> <span class="o">=</span> <span class="s2">&quot;Y&quot;</span>
         <span class="k">elif</span> <span class="n">GeometryOperators</span><span class="o">.</span><span class="n">is_collinear</span><span class="p">(</span><span class="n">closest_faces</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">normal</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]):</span>
-            <span class="n">plane</span> <span class="o">=</span> <span class="mi">2</span>
+            <span class="n">plane</span> <span class="o">=</span> <span class="s2">&quot;Z&quot;</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="s1">&#39;The two object must have the adjacent faces aligned with the main planes.&#39;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span>
+                <span class="s2">&quot;The closest faces of the two objects must be aligned with the main planes of the reference system.&quot;</span>
+            <span class="p">)</span>
 
+        <span class="c1"># check if the faces are identical (actually checking only the area, not the shape)</span>
+        <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">closest_faces</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">area</span> <span class="o">-</span> <span class="n">closest_faces</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">area</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">1e-10</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="s2">&quot;The closest faces of the two objects must be identical in shape.&quot;</span><span class="p">)</span>
+
+        <span class="c1"># evaluate the vector to move from face0 to the middle distance between the faces</span>
         <span class="n">move_vector</span> <span class="o">=</span> <span class="n">GeometryOperators</span><span class="o">.</span><span class="n">v_sub</span><span class="p">(</span><span class="n">closest_faces</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">center</span><span class="p">,</span> <span class="n">closest_faces</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">center</span><span class="p">)</span>
-        <span class="n">move_vector</span> <span class="o">=</span> <span class="n">GeometryOperators</span><span class="o">.</span><span class="n">v_prod</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">move_vector</span><span class="p">)</span>
+        <span class="n">move_vector_mid</span> <span class="o">=</span> <span class="n">GeometryOperators</span><span class="o">.</span><span class="n">v_prod</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">move_vector</span><span class="p">)</span>
 
+        <span class="c1"># fmt: off</span>
         <span class="k">if</span> <span class="n">port_width</span><span class="p">:</span>
             <span class="n">spiral_width</span> <span class="o">=</span> <span class="n">port_width</span>
             <span class="n">filling</span> <span class="o">=</span> <span class="mf">1.5</span>
@@ -2122,135 +2144,86 @@ function checkPageExistsAndRedirect(event) {
                     <span class="n">segments_lengths</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">GeometryOperators</span><span class="o">.</span><span class="n">points_distance</span><span class="p">(</span><span class="n">vc</span><span class="p">,</span> <span class="n">closest_faces</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">center</span><span class="p">))</span>
                 <span class="n">spiral_width</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">segments_lengths</span><span class="p">)</span> <span class="o">/</span> <span class="mi">15</span>
                 <span class="n">filling</span> <span class="o">=</span> <span class="mf">1.5</span>
+        <span class="c1"># fmt: on</span>
 
         <span class="n">name</span> <span class="o">=</span> <span class="n">generate_unique_name</span><span class="p">(</span><span class="s2">&quot;P&quot;</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 
-        <span class="n">poly</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">create_spiral_on_face</span><span class="p">(</span><span class="n">closest_faces</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">spiral_width</span><span class="p">,</span> <span class="n">filling_factor</span><span class="o">=</span><span class="n">filling</span><span class="p">)</span>
-        <span class="n">poly</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
-        <span class="n">poly</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="n">move_vector</span><span class="p">)</span>
+        <span class="n">spiral</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">create_spiral_on_face</span><span class="p">(</span><span class="n">closest_faces</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">spiral_width</span><span class="p">,</span> <span class="n">filling_factor</span><span class="o">=</span><span class="n">filling</span><span class="p">)</span>
+        <span class="n">spiral</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="n">spiral</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="n">move_vector_mid</span><span class="p">)</span>
+        <span class="n">spiral_center</span> <span class="o">=</span> <span class="n">GeometryOperators</span><span class="o">.</span><span class="n">get_mid_point</span><span class="p">(</span><span class="n">closest_faces</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">center</span><span class="p">,</span> <span class="n">closest_faces</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">center</span><span class="p">)</span>
 
-        <span class="n">vert_position_x</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="n">vert_position_y</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="k">for</span> <span class="n">vert</span> <span class="ow">in</span> <span class="n">poly</span><span class="o">.</span><span class="n">vertices</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">plane</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-                <span class="n">vert_position_x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">vert</span><span class="o">.</span><span class="n">position</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-                <span class="n">vert_position_y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">vert</span><span class="o">.</span><span class="n">position</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
-            <span class="k">elif</span> <span class="n">plane</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-                <span class="n">vert_position_x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">vert</span><span class="o">.</span><span class="n">position</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-                <span class="n">vert_position_y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">vert</span><span class="o">.</span><span class="n">position</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
-            <span class="k">elif</span> <span class="n">plane</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
-                <span class="n">vert_position_x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">vert</span><span class="o">.</span><span class="n">position</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-                <span class="n">vert_position_y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">vert</span><span class="o">.</span><span class="n">position</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+        <span class="c1"># get the polyline center point (before width operation). They need to be moved as well.</span>
+        <span class="n">poly_points</span> <span class="o">=</span> <span class="p">[</span><span class="n">GeometryOperators</span><span class="o">.</span><span class="n">v_sum</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">move_vector_mid</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">spiral</span><span class="o">.</span><span class="n">points</span><span class="p">]</span>
 
-        <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">GeometryOperators</span><span class="o">.</span><span class="n">orient_polygon</span><span class="p">(</span><span class="n">vert_position_x</span><span class="p">,</span> <span class="n">vert_position_y</span><span class="p">)</span>
+        <span class="c1"># get the vertices of the spiral created. These need to be divided in two lists, one following the external</span>
+        <span class="c1"># contour (p1) and one following the internal contour (p2). We use poly_points to discern the points.</span>
+        <span class="n">poly_v</span> <span class="o">=</span> <span class="p">[[</span><span class="n">v</span><span class="o">.</span><span class="n">position</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">v</span><span class="o">.</span><span class="n">position</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">v</span><span class="o">.</span><span class="n">position</span><span class="p">[</span><span class="mi">2</span><span class="p">]]</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">spiral</span><span class="o">.</span><span class="n">vertices</span><span class="p">]</span>
 
-        <span class="n">list_a_val</span> <span class="o">=</span> <span class="kc">False</span>
-        <span class="n">x1</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="n">y1</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="n">x2</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="n">y2</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
-            <span class="n">dist</span> <span class="o">=</span> <span class="n">GeometryOperators</span><span class="o">.</span><span class="n">points_distance</span><span class="p">([</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">],</span> <span class="mi">0</span><span class="p">])</span>
-            <span class="k">if</span> <span class="n">list_a_val</span><span class="p">:</span>
-                <span class="n">x1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
-                <span class="n">y1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+        <span class="n">p1</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">p2</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">poly_points</span><span class="p">:</span>
+            <span class="n">cp</span> <span class="o">=</span> <span class="n">GeometryOperators</span><span class="o">.</span><span class="n">find_closest_points</span><span class="p">(</span><span class="n">poly_v</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">cp</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Internal error in spiral creation, please review the port_width parameter.&quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">GeometryOperators</span><span class="o">.</span><span class="n">points_distance</span><span class="p">(</span><span class="n">cp</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">spiral_center</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">GeometryOperators</span><span class="o">.</span><span class="n">points_distance</span><span class="p">(</span>
+                <span class="n">cp</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">spiral_center</span>
+            <span class="p">):</span>
+                <span class="n">p1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cp</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+                <span class="n">p2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cp</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="n">x2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
-                <span class="n">y2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
-            <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">dist</span> <span class="o">-</span> <span class="n">spiral_width</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">1e-6</span><span class="p">:</span>
-                <span class="n">list_a_val</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">list_a_val</span>
-        <span class="c1"># set the last point</span>
-        <span class="k">if</span> <span class="n">list_a_val</span><span class="p">:</span>
-            <span class="n">x1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
-            <span class="n">y1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+                <span class="n">p1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cp</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+                <span class="n">p2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cp</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+        <span class="c1"># move the p1 down and the p2 up</span>
+        <span class="n">move_vector_quarter</span> <span class="o">=</span> <span class="n">GeometryOperators</span><span class="o">.</span><span class="n">v_prod</span><span class="p">(</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">move_vector</span><span class="p">)</span>
+        <span class="n">p1_down</span> <span class="o">=</span> <span class="p">[</span><span class="n">GeometryOperators</span><span class="o">.</span><span class="n">v_sub</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">move_vector_quarter</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">p1</span><span class="p">]</span>
+        <span class="n">p2_up</span> <span class="o">=</span> <span class="p">[</span><span class="n">GeometryOperators</span><span class="o">.</span><span class="n">v_sum</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">move_vector_quarter</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">p2</span><span class="p">]</span>
+
+        <span class="c1"># create first polyline to join spiral with conductor face</span>
+        <span class="n">dx</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">p1_down</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">p1_down</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">dy</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">p1_down</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">p1_down</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
+        <span class="n">dz</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">p1_down</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="n">p1_down</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">2</span><span class="p">])</span>
+        <span class="k">if</span> <span class="n">plane</span> <span class="o">==</span> <span class="s2">&quot;X&quot;</span><span class="p">:</span>
+            <span class="n">orient</span> <span class="o">=</span> <span class="s2">&quot;Y&quot;</span> <span class="k">if</span> <span class="p">(</span><span class="n">dy</span> <span class="o">&lt;</span> <span class="n">dz</span><span class="p">)</span> <span class="k">else</span> <span class="s2">&quot;Z&quot;</span>
+        <span class="k">elif</span> <span class="n">plane</span> <span class="o">==</span> <span class="s2">&quot;Y&quot;</span><span class="p">:</span>
+            <span class="n">orient</span> <span class="o">=</span> <span class="s2">&quot;X&quot;</span> <span class="k">if</span> <span class="p">(</span><span class="n">dx</span> <span class="o">&lt;</span> <span class="n">dz</span><span class="p">)</span> <span class="k">else</span> <span class="s2">&quot;Z&quot;</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">x2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
-            <span class="n">y2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+            <span class="n">orient</span> <span class="o">=</span> <span class="s2">&quot;X&quot;</span> <span class="k">if</span> <span class="p">(</span><span class="n">dx</span> <span class="o">&lt;</span> <span class="n">dy</span><span class="p">)</span> <span class="k">else</span> <span class="s2">&quot;Y&quot;</span>
 
-        <span class="n">faces_mid_point</span> <span class="o">=</span> <span class="n">GeometryOperators</span><span class="o">.</span><span class="n">get_mid_point</span><span class="p">(</span><span class="n">closest_faces</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">center</span><span class="p">,</span> <span class="n">closest_faces</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">center</span><span class="p">)</span>
-
-        <span class="n">x1</span><span class="p">,</span> <span class="n">y1</span> <span class="o">=</span> <span class="n">GeometryOperators</span><span class="o">.</span><span class="n">orient_polygon</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">)</span>
-        <span class="n">coords</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">):</span>
-            <span class="k">if</span> <span class="n">plane</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-                <span class="n">coords</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">faces_mid_point</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">closest_distance</span><span class="o">/</span><span class="mi">4</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">])</span>
-            <span class="k">elif</span> <span class="n">plane</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-                <span class="n">coords</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">x</span><span class="p">,</span> <span class="n">faces_mid_point</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">closest_distance</span><span class="o">/</span><span class="mi">4</span><span class="p">,</span> <span class="n">y</span><span class="p">])</span>
-            <span class="k">elif</span> <span class="n">plane</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
-                <span class="n">coords</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">faces_mid_point</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="n">closest_distance</span><span class="o">/</span><span class="mi">4</span><span class="p">])</span>
-        <span class="n">dx</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">coords</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">coords</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
-        <span class="n">dy</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">coords</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">coords</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
-        <span class="n">dz</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">coords</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="n">coords</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">2</span><span class="p">])</span>
-        <span class="n">v1</span> <span class="o">=</span> <span class="n">GeometryOperators</span><span class="o">.</span><span class="n">v_points</span><span class="p">(</span><span class="n">coords</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">coords</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-        <span class="n">v2</span> <span class="o">=</span> <span class="n">GeometryOperators</span><span class="o">.</span><span class="n">v_points</span><span class="p">(</span><span class="n">coords</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">coords</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
-        <span class="n">norm</span> <span class="o">=</span> <span class="n">GeometryOperators</span><span class="o">.</span><span class="n">v_cross</span><span class="p">(</span><span class="n">v1</span><span class="p">,</span> <span class="n">v2</span><span class="p">)</span>
-
-        <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">norm</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mf">1e-12</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">dy</span> <span class="o">&lt;</span> <span class="n">dz</span><span class="p">:</span>
-                <span class="n">orient</span> <span class="o">=</span> <span class="s2">&quot;Y&quot;</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">orient</span> <span class="o">=</span> <span class="s2">&quot;Z&quot;</span>
-        <span class="k">elif</span> <span class="nb">abs</span><span class="p">(</span><span class="n">norm</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mf">1e-12</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">dx</span> <span class="o">&lt;</span> <span class="n">dz</span><span class="p">:</span>
-                <span class="n">orient</span> <span class="o">=</span> <span class="s2">&quot;X&quot;</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">orient</span> <span class="o">=</span> <span class="s2">&quot;Z&quot;</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">dx</span> <span class="o">&lt;</span> <span class="n">dy</span><span class="p">:</span>
-                <span class="n">orient</span> <span class="o">=</span> <span class="s2">&quot;X&quot;</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">orient</span> <span class="o">=</span> <span class="s2">&quot;Y&quot;</span>
         <span class="n">poly1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">create_polyline</span><span class="p">(</span>
-            <span class="n">coords</span><span class="p">,</span>
+            <span class="n">p1_down</span><span class="p">,</span>
             <span class="n">xsection_type</span><span class="o">=</span><span class="s2">&quot;Line&quot;</span><span class="p">,</span>
             <span class="n">xsection_orient</span><span class="o">=</span><span class="n">orient</span><span class="p">,</span>
             <span class="n">xsection_width</span><span class="o">=</span><span class="n">closest_distance</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span>
             <span class="n">name</span><span class="o">=</span><span class="n">start_object</span> <span class="o">+</span> <span class="s2">&quot;_sheet&quot;</span><span class="p">,</span>
         <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">assign_perfecte_to_sheets</span><span class="p">(</span><span class="n">poly1</span><span class="p">,</span> <span class="n">sourcename</span><span class="o">=</span><span class="n">start_object</span><span class="p">)</span>
 
-        <span class="n">x2</span><span class="p">,</span> <span class="n">y2</span> <span class="o">=</span> <span class="n">GeometryOperators</span><span class="o">.</span><span class="n">orient_polygon</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">y2</span><span class="p">)</span>
-        <span class="n">coords</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="n">faces_mid_point</span> <span class="o">=</span> <span class="n">GeometryOperators</span><span class="o">.</span><span class="n">get_mid_point</span><span class="p">(</span><span class="n">closest_faces</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">center</span><span class="p">,</span> <span class="n">closest_faces</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">center</span><span class="p">)</span>
-        <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">y2</span><span class="p">):</span>
-            <span class="k">if</span> <span class="n">plane</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-                <span class="n">coords</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">faces_mid_point</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">closest_distance</span><span class="o">/</span><span class="mi">4</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">])</span>
-            <span class="k">elif</span> <span class="n">plane</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-                <span class="n">coords</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">x</span><span class="p">,</span> <span class="n">faces_mid_point</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">closest_distance</span><span class="o">/</span><span class="mi">4</span><span class="p">,</span> <span class="n">y</span><span class="p">])</span>
-            <span class="k">elif</span> <span class="n">plane</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
-                <span class="n">coords</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">faces_mid_point</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">closest_distance</span><span class="o">/</span><span class="mi">4</span><span class="p">])</span>
-        <span class="n">dx</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">coords</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">coords</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
-        <span class="n">dy</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">coords</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">coords</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
-        <span class="n">dz</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">coords</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="n">coords</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">2</span><span class="p">])</span>
-        <span class="n">v1</span> <span class="o">=</span> <span class="n">GeometryOperators</span><span class="o">.</span><span class="n">v_points</span><span class="p">(</span><span class="n">coords</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">coords</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-        <span class="n">v2</span> <span class="o">=</span> <span class="n">GeometryOperators</span><span class="o">.</span><span class="n">v_points</span><span class="p">(</span><span class="n">coords</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">coords</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
-        <span class="n">norm</span> <span class="o">=</span> <span class="n">GeometryOperators</span><span class="o">.</span><span class="n">v_cross</span><span class="p">(</span><span class="n">v1</span><span class="p">,</span> <span class="n">v2</span><span class="p">)</span>
-        <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">norm</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mf">1e-12</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">dy</span> <span class="o">&lt;</span> <span class="n">dz</span><span class="p">:</span>
-                <span class="n">orient</span> <span class="o">=</span> <span class="s2">&quot;Y&quot;</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">orient</span> <span class="o">=</span> <span class="s2">&quot;Z&quot;</span>
-        <span class="k">elif</span> <span class="nb">abs</span><span class="p">(</span><span class="n">norm</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mf">1e-12</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">dx</span> <span class="o">&lt;</span> <span class="n">dz</span><span class="p">:</span>
-                <span class="n">orient</span> <span class="o">=</span> <span class="s2">&quot;X&quot;</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">orient</span> <span class="o">=</span> <span class="s2">&quot;Z&quot;</span>
+        <span class="c1"># create second polyline to join spiral with conductor face</span>
+        <span class="n">dx</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">p2_up</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">p2_up</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">dy</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">p2_up</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">p2_up</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
+        <span class="n">dz</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">p2_up</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="n">p2_up</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">2</span><span class="p">])</span>
+        <span class="k">if</span> <span class="n">plane</span> <span class="o">==</span> <span class="s2">&quot;X&quot;</span><span class="p">:</span>
+            <span class="n">orient</span> <span class="o">=</span> <span class="s2">&quot;Y&quot;</span> <span class="k">if</span> <span class="p">(</span><span class="n">dy</span> <span class="o">&lt;</span> <span class="n">dz</span><span class="p">)</span> <span class="k">else</span> <span class="s2">&quot;Z&quot;</span>
+        <span class="k">elif</span> <span class="n">plane</span> <span class="o">==</span> <span class="s2">&quot;Y&quot;</span><span class="p">:</span>
+            <span class="n">orient</span> <span class="o">=</span> <span class="s2">&quot;X&quot;</span> <span class="k">if</span> <span class="p">(</span><span class="n">dx</span> <span class="o">&lt;</span> <span class="n">dz</span><span class="p">)</span> <span class="k">else</span> <span class="s2">&quot;Z&quot;</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">dx</span> <span class="o">&lt;</span> <span class="n">dy</span><span class="p">:</span>
-                <span class="n">orient</span> <span class="o">=</span> <span class="s2">&quot;X&quot;</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">orient</span> <span class="o">=</span> <span class="s2">&quot;Y&quot;</span>
+            <span class="n">orient</span> <span class="o">=</span> <span class="s2">&quot;X&quot;</span> <span class="k">if</span> <span class="p">(</span><span class="n">dx</span> <span class="o">&lt;</span> <span class="n">dy</span><span class="p">)</span> <span class="k">else</span> <span class="s2">&quot;Y&quot;</span>
         <span class="n">poly2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">create_polyline</span><span class="p">(</span>
-            <span class="n">coords</span><span class="p">,</span>
+            <span class="n">p2_up</span><span class="p">,</span>
             <span class="n">xsection_type</span><span class="o">=</span><span class="s2">&quot;Line&quot;</span><span class="p">,</span>
             <span class="n">xsection_orient</span><span class="o">=</span><span class="n">orient</span><span class="p">,</span>
             <span class="n">xsection_width</span><span class="o">=</span><span class="n">closest_distance</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span>
             <span class="n">name</span><span class="o">=</span><span class="n">end_object</span> <span class="o">+</span> <span class="s2">&quot;_sheet&quot;</span><span class="p">,</span>
         <span class="p">)</span>
 
+        <span class="c1"># assign pec to created polylines</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assign_perfecte_to_sheets</span><span class="p">(</span><span class="n">poly1</span><span class="p">,</span> <span class="n">sourcename</span><span class="o">=</span><span class="n">start_object</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">assign_perfecte_to_sheets</span><span class="p">(</span><span class="n">poly2</span><span class="p">,</span> <span class="n">sourcename</span><span class="o">=</span><span class="n">end_object</span><span class="p">)</span>
-        <span class="n">port</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_lumped_port_to_sheet</span><span class="p">(</span><span class="n">poly</span><span class="p">,</span> <span class="n">reference_object_list</span><span class="o">=</span><span class="p">[</span><span class="n">poly2</span><span class="o">.</span><span class="n">name</span><span class="p">],</span> <span class="n">portname</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
-        <span class="c1"># fmt: on</span>
+
+        <span class="c1"># create lumped port on spiral</span>
+        <span class="n">port</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_lumped_port_to_sheet</span><span class="p">(</span><span class="n">spiral</span><span class="p">,</span> <span class="n">reference_object_list</span><span class="o">=</span><span class="p">[</span><span class="n">poly2</span><span class="o">.</span><span class="n">name</span><span class="p">],</span> <span class="n">portname</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+
         <span class="k">return</span> <span class="n">port</span></div>
 
 <div class="viewcode-block" id="Hfss.create_voltage_source_from_objects"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.hfss.Hfss.create_voltage_source_from_objects.html#pyaedt.hfss.Hfss.create_voltage_source_from_objects">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
@@ -6013,7 +5986,7 @@ function checkPageExistsAndRedirect(event) {
     <span class="k">def</span> <span class="nf">get_antenna_ffd_solution_data</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">frequencies</span><span class="p">,</span> <span class="n">setup_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">sphere_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">variations</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">taper</span><span class="o">=</span><span class="s2">&quot;flat&quot;</span>
     <span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Export antenna parameters to Far Field Data (FFD) files and return the ``FfdSolutionData`` object.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Export antennas parameters to Far Field Data (FFD) files and return the ``FfdSolutionData`` object.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>

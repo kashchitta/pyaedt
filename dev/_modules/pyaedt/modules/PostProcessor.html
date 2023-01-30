@@ -347,9 +347,8 @@ function checkPageExistsAndRedirect(event) {
     <span class="k">try</span><span class="p">:</span>
         <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
     <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
-        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
-            <span class="s2">&quot;The Pandas module is required to run some functionalities.</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="s2">&quot;Install with </span><span class="se">\n\n</span><span class="s2">pip install pandas</span><span class="se">\n</span><span class="s2">&quot;</span>
-        <span class="p">)</span>
+        <span class="n">pd</span> <span class="o">=</span> <span class="kc">None</span>
+
 
 <span class="n">TEMPLATES_BY_DESIGN</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s2">&quot;HFSS&quot;</span><span class="p">:</span> <span class="p">[</span>
@@ -1947,7 +1946,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="k">elif</span> <span class="n">report_category</span> <span class="o">==</span> <span class="s2">&quot;Near Fields&quot;</span><span class="p">:</span>
             <span class="n">report</span><span class="o">.</span><span class="n">near_field</span> <span class="o">=</span> <span class="n">context</span>
         <span class="k">elif</span> <span class="n">context</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">context</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">line_names</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">context</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">line_names</span> <span class="ow">or</span> <span class="n">context</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">point_names</span><span class="p">:</span>
                 <span class="n">report</span><span class="o">.</span><span class="n">polyline</span> <span class="o">=</span> <span class="n">context</span>
 
         <span class="n">result</span> <span class="o">=</span> <span class="n">report</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">plotname</span><span class="p">)</span>

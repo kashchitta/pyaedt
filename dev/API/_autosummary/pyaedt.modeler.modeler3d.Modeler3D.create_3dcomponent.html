@@ -626,6 +626,11 @@ function checkPageExistsAndRedirect(event) {
       </a>
      </li>
      <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.modeler3d.Modeler3D.duplicate_coordinate_system_to_global.html">
+       duplicate_coordinate_system_to_global
+      </a>
+     </li>
+     <li class="toctree-l3">
       <a class="reference internal" href="pyaedt.modeler.modeler3d.Modeler3D.edit_region_dimensions.html">
        edit_region_dimensions
       </a>
@@ -916,6 +921,11 @@ function checkPageExistsAndRedirect(event) {
       </a>
      </li>
      <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.modeler3d.Modeler3D.invert_cs.html">
+       invert_cs
+      </a>
+     </li>
+     <li class="toctree-l3">
       <a class="reference internal" href="pyaedt.modeler.modeler3d.Modeler3D.load_hfss.html">
        load_hfss
       </a>
@@ -971,6 +981,11 @@ function checkPageExistsAndRedirect(event) {
       </a>
      </li>
      <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.modeler3d.Modeler3D.reference_cs_to_global.html">
+       reference_cs_to_global
+      </a>
+     </li>
+     <li class="toctree-l3">
       <a class="reference internal" href="pyaedt.modeler.modeler3d.Modeler3D.refresh.html">
        refresh
       </a>
@@ -978,6 +993,11 @@ function checkPageExistsAndRedirect(event) {
      <li class="toctree-l3">
       <a class="reference internal" href="pyaedt.modeler.modeler3d.Modeler3D.refresh_all_ids.html">
        refresh_all_ids
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.modeler3d.Modeler3D.replace_3dcomponent.html">
+       replace_3dcomponent
       </a>
      </li>
      <li class="toctree-l3">
@@ -1434,7 +1454,7 @@ function checkPageExistsAndRedirect(event) {
 </dd>
 <dt><strong>variables_to_include</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#list" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">list</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>List of variables to include. The default is <code class="docutils literal notranslate"><span class="pre">[]</span></code>.</p>
 </dd>
-<dt><strong>object_list</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#list" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">list</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>List of Objects names to export. The default is all objects.</p>
+<dt><strong>object_list</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#list" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">list</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>List of object names to export. The default is all object names.</p>
 </dd>
 <dt><strong>boundaries_list</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#list" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">list</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>List of Boundaries names to export. The default is all boundaries.</p>
 </dd>
@@ -1458,26 +1478,23 @@ The default value is an empty string.</p>
 <dt><strong>edit_password</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#str" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Edit password.
 The default value is an empty string.</p>
 </dd>
-<dt><strong>password_type</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#str" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Password type. Value can either be <code class="docutils literal notranslate"><span class="pre">UserSuppliedPassword</span></code> or <code class="docutils literal notranslate"><span class="pre">InternalPassword</span></code>.
-The default value is <code class="docutils literal notranslate"><span class="pre">UserSuppliedPassword</span></code>.</p>
+<dt><strong>password_type</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#str" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Password type. Options are <code class="docutils literal notranslate"><span class="pre">UserSuppliedPassword</span></code> and <code class="docutils literal notranslate"><span class="pre">InternalPassword</span></code>.
+The default is <code class="docutils literal notranslate"><span class="pre">UserSuppliedPassword</span></code>.</p>
 </dd>
-<dt><strong>hide_contents</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#bltin-boolean-values" title="(in Python v3.12)"><span class="xref std std-ref">bool</span></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optionale</span></code></span></dt><dd><p>Whether to hide contents.
-The default is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+<dt><strong>hide_contents</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#bltin-boolean-values" title="(in Python v3.12)"><span class="xref std std-ref">bool</span></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Whether to hide contents. The default is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
 </dd>
-<dt><strong>replace_names</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#bltin-boolean-values" title="(in Python v3.12)"><span class="xref std std-ref">bool</span></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Whether to replace objects and materials names.
+<dt><strong>replace_names</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#bltin-boolean-values" title="(in Python v3.12)"><span class="xref std std-ref">bool</span></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Whether to replace objects and material names.
 The default is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
 </dd>
 <dt><strong>component_outline</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#str" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Component outline. Value can either be <code class="docutils literal notranslate"><span class="pre">BoundingBox</span></code> or <code class="docutils literal notranslate"><span class="pre">None</span></code>.
 The default is <code class="docutils literal notranslate"><span class="pre">BoundingBox</span></code>.</p>
 </dd>
-<dt><strong>auxiliary_dict_file</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#bltin-boolean-values" title="(in Python v3.12)"><span class="xref std std-ref">bool</span></a> or <a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#str" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><dl class="simple">
-<dt>Whether to export or not the auxiliary file containing information about defined datasets and Icepak monitor</dt><dd><p>objects. A destination file can be specified using a string.</p>
+<dt><strong>auxiliary_dict_file</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#bltin-boolean-values" title="(in Python v3.12)"><span class="xref std std-ref">bool</span></a> or <a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#str" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Whether to export the auxiliary file containing information about defined datasets and Icepak monitor
+objects. A destination file can be specified using a string.
+The default is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
 </dd>
-</dl>
-<p>The default is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
-</dd>
-<dt><strong>monitor_objects</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#list" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">list</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>List of monitor objects names to export. The default is all monitor objects. This argument is relevant only
-if <code class="docutils literal notranslate"><span class="pre">auxiliary_dict_file</span></code> is not set to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+<dt><strong>monitor_objects</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#list" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">list</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>List of monitor objects’ names to export. The default is the names of all monitor objects. This argument is
+relevant only if <code class="docutils literal notranslate"><span class="pre">auxiliary_dict_file</span></code> is not set to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
 </dd>
 <dt><strong>datasets</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#list" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">list</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>List of dataset names to export. The default is all datasets. This argument is relevant only if
 <code class="docutils literal notranslate"><span class="pre">auxiliary_dict_file</span></code> is not set to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>

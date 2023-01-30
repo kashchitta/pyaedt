@@ -626,6 +626,11 @@ function checkPageExistsAndRedirect(event) {
       </a>
      </li>
      <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.modeler3d.Modeler3D.duplicate_coordinate_system_to_global.html">
+       duplicate_coordinate_system_to_global
+      </a>
+     </li>
+     <li class="toctree-l3">
       <a class="reference internal" href="pyaedt.modeler.modeler3d.Modeler3D.edit_region_dimensions.html">
        edit_region_dimensions
       </a>
@@ -916,6 +921,11 @@ function checkPageExistsAndRedirect(event) {
       </a>
      </li>
      <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.modeler3d.Modeler3D.invert_cs.html">
+       invert_cs
+      </a>
+     </li>
+     <li class="toctree-l3">
       <a class="reference internal" href="pyaedt.modeler.modeler3d.Modeler3D.load_hfss.html">
        load_hfss
       </a>
@@ -971,6 +981,11 @@ function checkPageExistsAndRedirect(event) {
       </a>
      </li>
      <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.modeler3d.Modeler3D.reference_cs_to_global.html">
+       reference_cs_to_global
+      </a>
+     </li>
+     <li class="toctree-l3">
       <a class="reference internal" href="pyaedt.modeler.modeler3d.Modeler3D.refresh.html">
        refresh
       </a>
@@ -978,6 +993,11 @@ function checkPageExistsAndRedirect(event) {
      <li class="toctree-l3">
       <a class="reference internal" href="pyaedt.modeler.modeler3d.Modeler3D.refresh_all_ids.html">
        refresh_all_ids
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.modeler3d.Modeler3D.replace_3dcomponent.html">
+       replace_3dcomponent
       </a>
      </li>
      <li class="toctree-l3">
@@ -1447,10 +1467,8 @@ is <code class="docutils literal notranslate"><span class="pre">&quot;axis&quot;
 <li><p>If <code class="docutils literal notranslate"><span class="pre">mode=&quot;axisrotation&quot;</span></code>, specify <code class="docutils literal notranslate"><span class="pre">theta</span></code> and <code class="docutils literal notranslate"><span class="pre">u</span></code>.</p></li>
 </ul>
 <p>Parameters not needed by the specified mode are ignored.
-For back compatibility, <code class="docutils literal notranslate"><span class="pre">view=&quot;rotate&quot;</span></code> is the same as
-<code class="docutils literal notranslate"><span class="pre">mode=&quot;axis&quot;</span></code>.  The default mode, <code class="docutils literal notranslate"><span class="pre">&quot;axisrotation&quot;</span></code>, is
-a coordinate system parallel to the global coordinate
-system centered in the global origin.</p>
+The default mode, <code class="docutils literal notranslate"><span class="pre">&quot;axis&quot;</span></code>, is a coordinate system parallel to the
+global coordinate system centered in the global origin.</p>
 </dd>
 <dt><strong>view</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#str" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/dev/library/functions.html#int" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">int</span></code></a> <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>View for the coordinate system if <code class="docutils literal notranslate"><span class="pre">mode=&quot;view&quot;</span></code>. Options
 are <code class="docutils literal notranslate"><span class="pre">&quot;XY&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;XZ&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;XY&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;iso&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">None</span></code>, and
@@ -1458,7 +1476,8 @@ are <code class="docutils literal notranslate"><span class="pre">&quot;XY&quot;<
 Enumerator <code class="docutils literal notranslate"><span class="pre">pyaedt.generic.constants.VIEW</span></code> can be used.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Because the <code class="docutils literal notranslate"><span class="pre">&quot;rotate&quot;</span></code> option is obsolete, use
+<p>For backward compatibility, <code class="docutils literal notranslate"><span class="pre">mode=&quot;view&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">view=&quot;rotate&quot;</span></code> are the same as
+<code class="docutils literal notranslate"><span class="pre">mode=&quot;axis&quot;</span></code>. Because the “rotate” option in the “view” mode is obsolete, use
 <code class="docutils literal notranslate"><span class="pre">mode=&quot;axis&quot;</span></code> instead.</p>
 </div>
 </dd>
@@ -1486,7 +1505,7 @@ if <code class="docutils literal notranslate"><span class="pre">mode=&quot;zxz&q
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt><code class="xref py py-class docutils literal notranslate"><span class="pre">pyaedt.modeler.Modeler.CoordinateSystem</span></code></dt><dd><p>Coordinate System Object.</p>
+<dt><code class="xref py py-class docutils literal notranslate"><span class="pre">pyaedt.modeler.Modeler.CoordinateSystem</span></code></dt><dd><p>Created coordinate system.</p>
 </dd>
 </dl>
 </dd>

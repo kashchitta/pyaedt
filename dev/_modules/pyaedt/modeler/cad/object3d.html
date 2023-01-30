@@ -341,6 +341,7 @@ function checkPageExistsAndRedirect(event) {
 <span class="kn">from</span> <span class="nn">pyaedt.generic.general_methods</span> <span class="kn">import</span> <span class="n">pyaedt_function_handler</span>
 <span class="kn">from</span> <span class="nn">pyaedt.generic.general_methods</span> <span class="kn">import</span> <span class="n">rgb_color_codes</span>
 <span class="kn">from</span> <span class="nn">pyaedt.generic.general_methods</span> <span class="kn">import</span> <span class="n">settings</span>
+<span class="kn">from</span> <span class="nn">pyaedt.modeler.cad.elements3d</span> <span class="kn">import</span> <span class="n">BinaryTreeNode</span>
 <span class="kn">from</span> <span class="nn">pyaedt.modeler.cad.elements3d</span> <span class="kn">import</span> <span class="n">EdgePrimitive</span>
 <span class="kn">from</span> <span class="nn">pyaedt.modeler.cad.elements3d</span> <span class="kn">import</span> <span class="n">FacePrimitive</span>
 <span class="kn">from</span> <span class="nn">pyaedt.modeler.cad.elements3d</span> <span class="kn">import</span> <span class="n">VertexPrimitive</span>
@@ -1614,8 +1615,25 @@ function checkPageExistsAndRedirect(event) {
         <span class="bp">self</span><span class="o">.</span><span class="n">_wireframe</span> <span class="o">=</span> <span class="n">fWireframe</span>
 
     <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">history</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Object history.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">            :class:`pyaedt.modeler.cad.elements3d.BinaryTree` when successful,</span>
+<span class="sd">            ``False`` when failed.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">child_object</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">m_Editor</span><span class="o">.</span><span class="n">GetChildObject</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+            <span class="n">parent</span> <span class="o">=</span> <span class="n">BinaryTreeNode</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">child_object</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">parent</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">model</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Part Model/Non-model property.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Part model or non-model property.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>

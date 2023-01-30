@@ -522,7 +522,10 @@ function checkPageExistsAndRedirect(event) {
         <span class="bp">self</span><span class="o">.</span><span class="n">_mttime</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_design_type</span> <span class="o">=</span> <span class="n">design_type</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_desktop</span> <span class="o">=</span> <span class="n">main_module</span><span class="o">.</span><span class="n">oDesktop</span>
-        <span class="n">settings</span><span class="o">.</span><span class="n">enable_desktop_logs</span> <span class="o">=</span> <span class="n">main_module</span><span class="o">.</span><span class="n">oDesktop</span><span class="o">.</span><span class="n">GetIsNonGraphical</span><span class="p">()</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">settings</span><span class="o">.</span><span class="n">enable_desktop_logs</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">main_module</span><span class="o">.</span><span class="n">oDesktop</span><span class="o">.</span><span class="n">GetIsNonGraphical</span><span class="p">()</span>
+        <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+            <span class="n">settings</span><span class="o">.</span><span class="n">enable_desktop_logs</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">non_graphical</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_desktop_install_dir</span> <span class="o">=</span> <span class="n">main_module</span><span class="o">.</span><span class="n">sDesktopinstallDirectory</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_odesign</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_oproject</span> <span class="o">=</span> <span class="kc">None</span>

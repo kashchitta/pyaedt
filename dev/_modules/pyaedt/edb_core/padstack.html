@@ -845,18 +845,18 @@ function checkPageExistsAndRedirect(event) {
                 <span class="n">padstack</span><span class="o">.</span><span class="n">edb_padstack</span><span class="o">.</span><span class="n">SetData</span><span class="p">(</span><span class="n">cloned_padstack_data</span><span class="p">)</span>
             <span class="k">return</span> <span class="n">all_succeed</span></div>
 
-<div class="viewcode-block" id="EdbPadstacks.check_and_fix_via_pating"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.padstack.EdbPadstacks.check_and_fix_via_pating.html#pyaedt.edb_core.padstack.EdbPadstacks.check_and_fix_via_pating">[docs]</a>    <span class="nd">@pyaedt_function_handler</span>
-    <span class="k">def</span> <span class="nf">check_and_fix_via_pating</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">minimum_value_to_replace</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">default_plating_ratio</span><span class="o">=</span><span class="mf">0.2</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Check and fix zero value plating ratio via definition with assigning default value.</span>
+<div class="viewcode-block" id="EdbPadstacks.check_and_fix_via_plating"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.padstack.EdbPadstacks.check_and_fix_via_plating.html#pyaedt.edb_core.padstack.EdbPadstacks.check_and_fix_via_plating">[docs]</a>    <span class="nd">@pyaedt_function_handler</span>
+    <span class="k">def</span> <span class="nf">check_and_fix_via_plating</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">minimum_value_to_replace</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">default_plating_ratio</span><span class="o">=</span><span class="mf">0.2</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Check for minimum via plating ration value, values found below the minimum one are replaced by default</span>
+<span class="sd">        plating ratio.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        minimum_value_to_replace : float</span>
-<span class="sd">            Plating ratio below or equal to this value will be replaced by the default one.</span>
-
+<span class="sd">            Plating ratio that is below or equal to this value is to be replaced</span>
+<span class="sd">            with the value specified for the next parameter. Default value ``0.0``.</span>
 <span class="sd">        default_plating_ratio : float</span>
-<span class="sd">            Default value used for plating ratio. Fefault value is 0.2.</span>
-
+<span class="sd">            Default value to use for plating ratio. The default value is ``0.2``.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -873,7 +873,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="EdbPadstacks.get_via_instance_from_net"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.padstack.EdbPadstacks.get_via_instance_from_net.html#pyaedt.edb_core.padstack.EdbPadstacks.get_via_instance_from_net">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">get_via_instance_from_net</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">net_list</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the list for Edb vias from net name list.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the list for EDB vias from a net name list.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>

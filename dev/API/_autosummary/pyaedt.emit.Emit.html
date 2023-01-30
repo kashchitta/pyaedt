@@ -625,6 +625,11 @@ function checkPageExistsAndRedirect(event) {
       </a>
      </li>
      <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.emit.Emit.get_units.html">
+       get_units
+      </a>
+     </li>
+     <li class="toctree-l3">
       <a class="reference internal" href="pyaedt.emit.Emit.hidden_variable.html">
        hidden_variable
       </a>
@@ -642,6 +647,11 @@ function checkPageExistsAndRedirect(event) {
      <li class="toctree-l3">
       <a class="reference internal" href="pyaedt.emit.Emit.insert_design.html">
        insert_design
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.emit.Emit.interaction_domain.html">
+       interaction_domain
       </a>
      </li>
      <li class="toctree-l3">
@@ -702,6 +712,11 @@ function checkPageExistsAndRedirect(event) {
      <li class="toctree-l3">
       <a class="reference internal" href="pyaedt.emit.Emit.set_registry_key.html">
        set_registry_key
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.emit.Emit.set_units.html">
+       set_units
       </a>
      </li>
      <li class="toctree-l3">
@@ -1034,6 +1049,16 @@ function checkPageExistsAndRedirect(event) {
        working_directory
       </a>
      </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.emit.Emit.units.html">
+       units
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.emit.Emit.results.html">
+       results
+      </a>
+     </li>
     </ul>
    </li>
    <li class="toctree-l2">
@@ -1269,7 +1294,7 @@ revisions_list.</p>
 </div>
 <p>A revision within PyAEDT is analogous to a revision in AEDT. An interaction domain must
 be defined and then used as the input to the run command used on that revision.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">domain</span> <span class="o">=</span> <span class="n">Interaction_Domain</span><span class="p">()</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">domain</span> <span class="o">=</span> <span class="n">aedtapp</span><span class="o">.</span><span class="n">interaction_domain</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">domain</span><span class="o">.</span><span class="n">rx_radio_name</span> <span class="o">=</span> <span class="s2">&quot;UE - HandHeld&quot;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">interaction</span> <span class="o">=</span> <span class="n">aedtapp</span><span class="o">.</span><span class="n">revisions_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">domain</span><span class="p">)</span>
 </pre></div>
@@ -1434,17 +1459,23 @@ that is defined in the interaction domain.</p>
 <tr class="row-even"><td><p><a class="reference internal" href="pyaedt.emit.Emit.get_registry_key_string.html#pyaedt.emit.Emit.get_registry_key_string" title="pyaedt.emit.Emit.get_registry_key_string"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.get_registry_key_string</span></code></a>(key_full_name)</p></td>
 <td><p>Get the value for the AEDT registry key if one exists.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.emit.Emit.hidden_variable.html#pyaedt.emit.Emit.hidden_variable" title="pyaedt.emit.Emit.hidden_variable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.hidden_variable</span></code></a>(variable_name[, value])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.emit.Emit.get_units.html#pyaedt.emit.Emit.get_units" title="pyaedt.emit.Emit.get_units"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.get_units</span></code></a>([unit_type])</p></td>
+<td><p>Get units for the component.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.emit.Emit.hidden_variable.html#pyaedt.emit.Emit.hidden_variable" title="pyaedt.emit.Emit.hidden_variable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.hidden_variable</span></code></a>(variable_name[, value])</p></td>
 <td><p>Set the variable to a hidden or unhidden variable.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.emit.Emit.import_dataset1d.html#pyaedt.emit.Emit.import_dataset1d" title="pyaedt.emit.Emit.import_dataset1d"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.import_dataset1d</span></code></a>(filename[, dsname, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.emit.Emit.import_dataset1d.html#pyaedt.emit.Emit.import_dataset1d" title="pyaedt.emit.Emit.import_dataset1d"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.import_dataset1d</span></code></a>(filename[, dsname, ...])</p></td>
 <td><p>Import a 1D dataset.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.emit.Emit.import_dataset3d.html#pyaedt.emit.Emit.import_dataset3d" title="pyaedt.emit.Emit.import_dataset3d"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.import_dataset3d</span></code></a>(filename[, dsname, ...])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.emit.Emit.import_dataset3d.html#pyaedt.emit.Emit.import_dataset3d" title="pyaedt.emit.Emit.import_dataset3d"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.import_dataset3d</span></code></a>(filename[, dsname, ...])</p></td>
 <td><p>Import a 3D dataset.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.emit.Emit.insert_design.html#pyaedt.emit.Emit.insert_design" title="pyaedt.emit.Emit.insert_design"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.insert_design</span></code></a>([design_name, solution_type])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.emit.Emit.insert_design.html#pyaedt.emit.Emit.insert_design" title="pyaedt.emit.Emit.insert_design"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.insert_design</span></code></a>([design_name, solution_type])</p></td>
 <td><p>Add a design of a specified type.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.emit.Emit.interaction_domain.html#pyaedt.emit.Emit.interaction_domain" title="pyaedt.emit.Emit.interaction_domain"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.interaction_domain</span></code></a>()</p></td>
+<td><p>Get an <code class="docutils literal notranslate"><span class="pre">InteractionDomain</span></code> object.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.emit.Emit.load_project.html#pyaedt.emit.Emit.load_project" title="pyaedt.emit.Emit.load_project"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.load_project</span></code></a>(project_file[, ...])</p></td>
 <td><p>Open an AEDT project based on a project and optional design.</p></td>
@@ -1482,13 +1513,16 @@ that is defined in the interaction domain.</p>
 <tr class="row-even"><td><p><a class="reference internal" href="pyaedt.emit.Emit.set_registry_key.html#pyaedt.emit.Emit.set_registry_key" title="pyaedt.emit.Emit.set_registry_key"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.set_registry_key</span></code></a>(key_full_name, key_value)</p></td>
 <td><p>Change a specific registry key to a new value.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.emit.Emit.tx_rx_mode.html#pyaedt.emit.Emit.tx_rx_mode" title="pyaedt.emit.Emit.tx_rx_mode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.tx_rx_mode</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.emit.Emit.set_units.html#pyaedt.emit.Emit.set_units" title="pyaedt.emit.Emit.set_units"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.set_units</span></code></a>(unit_type, unit_value)</p></td>
+<td><p>Set units for the component.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.emit.Emit.tx_rx_mode.html#pyaedt.emit.Emit.tx_rx_mode" title="pyaedt.emit.Emit.tx_rx_mode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.tx_rx_mode</span></code></a>()</p></td>
 <td><p>Get a <code class="docutils literal notranslate"><span class="pre">tx_rx_mode</span></code> object.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.emit.Emit.validate_simple.html#pyaedt.emit.Emit.validate_simple" title="pyaedt.emit.Emit.validate_simple"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.validate_simple</span></code></a>([logfile])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.emit.Emit.validate_simple.html#pyaedt.emit.Emit.validate_simple" title="pyaedt.emit.Emit.validate_simple"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.validate_simple</span></code></a>([logfile])</p></td>
 <td><p>Validate a design.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.emit.Emit.version.html#pyaedt.emit.Emit.version" title="pyaedt.emit.Emit.version"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.version</span></code></a>([detailed])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.emit.Emit.version.html#pyaedt.emit.Emit.version" title="pyaedt.emit.Emit.version"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.version</span></code></a>([detailed])</p></td>
 <td><p>Get version information.</p></td>
 </tr>
 </tbody>
@@ -1684,6 +1718,12 @@ that is defined in the interaction domain.</p>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.emit.Emit.working_directory.html#pyaedt.emit.Emit.working_directory" title="pyaedt.emit.Emit.working_directory"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.working_directory</span></code></a></p></td>
 <td><p>Path to the working directory.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.emit.Emit.units.html#pyaedt.emit.Emit.units" title="pyaedt.emit.Emit.units"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.units</span></code></a></p></td>
+<td><p>Default Emit units.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.emit.Emit.results.html#pyaedt.emit.Emit.results" title="pyaedt.emit.Emit.results"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.results</span></code></a></p></td>
+<td><p>''Result'' object for the selected design.</p></td>
 </tr>
 </tbody>
 </table>

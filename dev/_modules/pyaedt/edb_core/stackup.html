@@ -335,14 +335,17 @@ function checkPageExistsAndRedirect(event) {
 <span class="kn">from</span> <span class="nn">pyaedt.generic.general_methods</span> <span class="kn">import</span> <span class="n">pyaedt_function_handler</span>
 
 <span class="n">pd</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">np</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="k">if</span> <span class="ow">not</span> <span class="n">is_ironpython</span><span class="p">:</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+    <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+        <span class="n">np</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">try</span><span class="p">:</span>
         <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
     <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
-        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
-            <span class="s2">&quot;The Pandas module is required to run some functionalities.</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="s2">&quot;Install with </span><span class="se">\n\n</span><span class="s2">pip install pandas</span><span class="se">\n</span><span class="s2">&quot;</span>
-        <span class="p">)</span>
+        <span class="n">pd</span> <span class="o">=</span> <span class="kc">None</span>
 
 
 <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
@@ -356,6 +359,10 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pedb</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span> <span class="o">=</span> <span class="n">pedb</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">_logger</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span><span class="o">.</span><span class="n">logger</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">layer_types</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -440,6 +447,9 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        -------</span>
 <span class="sd">        bool</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">np</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Numpy is needed. Please, install it first.&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">False</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">layer_count</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">False</span>
 
@@ -840,6 +850,9 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        fpath : str</span>
 <span class="sd">            File path to csv or json file.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">pd</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Pandas is needed. Please, install it first.&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">False</span>
         <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">fpath</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;.json&quot;</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_import_layer_stackup</span><span class="p">(</span><span class="n">fpath</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">is_ironpython</span><span class="p">:</span>
@@ -888,16 +901,35 @@ function checkPageExistsAndRedirect(event) {
         <span class="k">return</span> <span class="kc">True</span></div>
 
 <div class="viewcode-block" id="Stackup.export_stackup"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.stackup.Stackup.export_stackup.html#pyaedt.edb_core.stackup.Stackup.export_stackup">[docs]</a>    <span class="nd">@pyaedt_function_handler</span>
-    <span class="k">def</span> <span class="nf">export_stackup</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fpath</span><span class="p">,</span> <span class="n">file_format</span><span class="o">=</span><span class="s2">&quot;csv&quot;</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Export stackup definition to csv file.</span>
+    <span class="k">def</span> <span class="nf">export_stackup</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fpath</span><span class="p">,</span> <span class="n">file_format</span><span class="o">=</span><span class="s2">&quot;csv&quot;</span><span class="p">,</span> <span class="n">include_material_with_layer</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Export stackup definition to a CSV or JSON file.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        fpath : str</span>
-<span class="sd">            File path to csv file.</span>
+<span class="sd">            File path to csv or json file.</span>
 <span class="sd">        file_format : str, optional</span>
-<span class="sd">            The format of the file to be exported. The default is ``&quot;csv&quot;``. Options are ``&quot;csv&quot;``, ``&quot;xlsx&quot;``.</span>
+<span class="sd">            Format of the file to export. The default is ``&quot;csv&quot;``. Options are ``&quot;csv&quot;``, ``&quot;xlsx&quot;``,</span>
+<span class="sd">            ``&quot;json&quot;``.</span>
+<span class="sd">        include_material_with_layer : bool, optional.</span>
+<span class="sd">            Whether to include the material definition inside layer ones. This parameter is only used</span>
+<span class="sd">            when a JSON file is exported. The default is ``False``, which keeps the material definition</span>
+<span class="sd">            section in the JSON file. If ``True``, the material definition is included inside the layer ones.</span>
+
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">file_format</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;csv&quot;</span><span class="p">,</span> <span class="s2">&quot;xlsx&quot;</span><span class="p">]:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_export_layer_stackup_to_csv_xlsx</span><span class="p">(</span><span class="n">fpath</span><span class="p">,</span> <span class="n">file_format</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">file_format</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;json&quot;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_export_layer_stackup_to_json</span><span class="p">(</span><span class="n">fpath</span><span class="p">,</span> <span class="n">include_material_with_layer</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Layer stackup format is not supported. Skipping import.&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">False</span></div>
+
+    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">_export_layer_stackup_to_csv_xlsx</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fpath</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">file_format</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">pd</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Pandas is needed. Please, install it first.&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">False</span>
         <span class="k">if</span> <span class="n">is_ironpython</span><span class="p">:</span>
             <span class="k">return</span>
         <span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
@@ -922,7 +954,7 @@ function checkPageExistsAndRedirect(event) {
             <span class="k">if</span> <span class="ow">not</span> <span class="n">fpath</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;.xlsx&quot;</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
                 <span class="n">fpath</span> <span class="o">=</span> <span class="n">fpath</span> <span class="o">+</span> <span class="s2">&quot;.xlsx&quot;</span>
             <span class="n">df</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="n">fpath</span><span class="p">)</span>
-        <span class="k">return</span> <span class="kc">True</span></div>
+        <span class="k">return</span> <span class="kc">True</span>
 
     <span class="nd">@pyaedt_function_handler</span>
     <span class="k">def</span> <span class="nf">_export_layer_stackup_to_json</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">output_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">include_material_with_layer</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
@@ -966,7 +998,7 @@ function checkPageExistsAndRedirect(event) {
                         <span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span><span class="o">.</span><span class="n">materials</span><span class="o">.</span><span class="n">_load_materials</span><span class="p">(</span><span class="n">material</span><span class="p">)</span>
                 <span class="k">if</span> <span class="n">k</span> <span class="o">==</span> <span class="s2">&quot;layers&quot;</span><span class="p">:</span>
                     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">values</span><span class="p">()))</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">stackup_layers</span><span class="o">.</span><span class="n">values</span><span class="p">())):</span>
-                        <span class="n">imported_layers_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+                        <span class="n">imported_layers_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">l_dict</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">l_dict</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">values</span><span class="p">())]</span>
                         <span class="n">layout_layer_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">stackup_layers</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
                         <span class="k">for</span> <span class="n">layer_name</span> <span class="ow">in</span> <span class="n">imported_layers_list</span><span class="p">:</span>
                             <span class="n">layer_index</span> <span class="o">=</span> <span class="n">imported_layers_list</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">layer_name</span><span class="p">)</span>
@@ -974,7 +1006,7 @@ function checkPageExistsAndRedirect(event) {
                                 <span class="bp">self</span><span class="o">.</span><span class="n">stackup_layers</span><span class="p">[</span><span class="n">layout_layer_list</span><span class="p">[</span><span class="n">layer_index</span><span class="p">]]</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">layer_name</span>
                     <span class="n">prev_layer</span> <span class="o">=</span> <span class="kc">None</span>
                     <span class="k">for</span> <span class="n">layer_name</span><span class="p">,</span> <span class="n">layer</span> <span class="ow">in</span> <span class="n">v</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-                        <span class="k">if</span> <span class="n">layer_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">stackup_layers</span><span class="p">:</span>
+                        <span class="k">if</span> <span class="n">layer</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">stackup_layers</span><span class="p">:</span>
                             <span class="k">if</span> <span class="ow">not</span> <span class="n">prev_layer</span><span class="p">:</span>
                                 <span class="bp">self</span><span class="o">.</span><span class="n">add_layer</span><span class="p">(</span>
                                     <span class="n">layer_name</span><span class="p">,</span>

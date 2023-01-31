@@ -553,6 +553,7 @@ function checkPageExistsAndRedirect(event) {
 
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">emit_obj</span><span class="o">.</span><span class="n">_load_result_set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">emit_obj</span><span class="o">.</span><span class="n">_emit_api</span><span class="o">.</span><span class="n">get_project_path</span><span class="p">()</span>  <span class="c1"># making sure format matches</span>
         <span class="n">engine</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">emit_obj</span><span class="o">.</span><span class="n">_emit_api</span><span class="o">.</span><span class="n">get_engine</span><span class="p">()</span>
         <span class="n">interaction</span> <span class="o">=</span> <span class="n">engine</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">domain</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">interaction</span>
@@ -572,6 +573,7 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        ----------</span>
 <span class="sd">        &gt;&gt;&gt; max_num = aedtapp.results.get_max_simultaneous_interferers()</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">emit_obj</span><span class="o">.</span><span class="n">_load_result_set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
         <span class="n">engine</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">emit_obj</span><span class="o">.</span><span class="n">_emit_api</span><span class="o">.</span><span class="n">get_engine</span><span class="p">()</span>
         <span class="n">max_interferers</span> <span class="o">=</span> <span class="n">engine</span><span class="o">.</span><span class="n">max_simultaneous_interferers</span>
         <span class="k">return</span> <span class="n">max_interferers</span>
@@ -586,6 +588,7 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        ----------</span>
 <span class="sd">        &gt;&gt;&gt; max_num = aedtapp.results.get_max_simultaneous_interferers()</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">emit_obj</span><span class="o">.</span><span class="n">_load_result_set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
         <span class="n">engine</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">emit_obj</span><span class="o">.</span><span class="n">_emit_api</span><span class="o">.</span><span class="n">get_engine</span><span class="p">()</span>
         <span class="n">engine</span><span class="o">.</span><span class="n">max_simultaneous_interferers</span> <span class="o">=</span> <span class="n">val</span>
 
@@ -600,6 +603,7 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        &gt;&gt;&gt; aedtapp.results.is_domain_valid(domain)</span>
 <span class="sd">        True</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">emit_obj</span><span class="o">.</span><span class="n">_load_result_set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
         <span class="n">engine</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">emit_obj</span><span class="o">.</span><span class="n">_emit_api</span><span class="o">.</span><span class="n">get_engine</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">engine</span><span class="o">.</span><span class="n">is_domain_valid</span><span class="p">(</span><span class="n">domain</span><span class="p">)</span>
 
@@ -806,9 +810,10 @@ function checkPageExistsAndRedirect(event) {
 
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__emit_api_enabled</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_emit_api</span><span class="o">.</span><span class="n">load_project</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">results</span><span class="o">.</span><span class="n">result_loaded</span> <span class="o">=</span> <span class="kc">True</span>
-            <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">results</span><span class="o">.</span><span class="n">result_loaded</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">results</span><span class="o">.</span><span class="n">result_loaded</span> <span class="ow">or</span> <span class="n">path</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_emit_api</span><span class="o">.</span><span class="n">get_project_path</span><span class="p">():</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_emit_api</span><span class="o">.</span><span class="n">load_project</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">results</span><span class="o">.</span><span class="n">result_loaded</span> <span class="o">=</span> <span class="kc">True</span>
+                <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">results</span><span class="o">.</span><span class="n">result_loaded</span><span class="p">)</span>
 
 <div class="viewcode-block" id="Emit.result_type"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.emit.Emit.result_type.html#pyaedt.emit.Emit.result_type">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">result_type</span><span class="p">():</span>

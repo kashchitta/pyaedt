@@ -210,7 +210,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.45 variable.
+            // this version, rather than using sphinx's 0.6.46 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -815,21 +815,20 @@ levels.</p>
 <span class="c1"># # Check to see which Python libraries have been installed</span>
 <span class="c1"># reqs = subprocess.check_output([sys.executable, &#39;-m&#39;, &#39;pip&#39;, &#39;freeze&#39;])</span>
 <span class="c1"># installed_packages = [r.decode().split(&#39;==&#39;)[0] for r in reqs.split()]</span>
-<span class="c1">#</span>
-<span class="c1">#</span>
+
 <span class="c1"># # Install required packages if they are not installed</span>
 <span class="c1"># def install(package):</span>
 <span class="c1">#     subprocess.check_call([sys.executable, &#39;-m&#39;, &#39;pip&#39;, &#39;install&#39;, package])</span>
-<span class="c1">#</span>
+
 <span class="c1"># # Install any missing libraries</span>
 <span class="c1"># required_packages = [&#39;plotly&#39;]</span>
 <span class="c1"># for package in required_packages:</span>
 <span class="c1">#     if package not in installed_packages:</span>
 <span class="c1">#         install(package)</span>
-<span class="c1">#</span>
+
 <span class="c1"># # Import required modules</span>
 <span class="c1"># import plotly.graph_objects as go</span>
-<span class="c1">#</span>
+
 <span class="c1"># ###############################################################################</span>
 <span class="c1"># # Set non-graphical mode</span>
 <span class="c1"># # ~~~~~~~~~~~~~~~~~~~~~~</span>
@@ -848,10 +847,10 @@ levels.</p>
 <span class="c1"># # ~~~~~~~~~~~~~~~~~~~~~</span>
 <span class="c1"># # Launch AEDT with EMIT. The ``Desktop`` class initializes AEDT and starts it</span>
 <span class="c1"># # on the specified version and in the specified graphical mode.</span>
-<span class="c1">#</span>
+
 <span class="c1"># d = pyaedt.launch_desktop(desktop_version, non_graphical, new_thread)</span>
 <span class="c1"># emitapp = Emit(pyaedt.generate_unique_project_name())</span>
-<span class="c1">#</span>
+
 <span class="c1"># ###############################################################################</span>
 <span class="c1"># # Specify the protection levels</span>
 <span class="c1"># # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
@@ -897,25 +896,6 @@ levels.</p>
 <span class="c1"># for band in bands:</span>
 <span class="c1">#     band.set_band_power_level(-20)</span>
 
-<span class="c1"># # Configure the first Rx band in the GPS Rx to have 0 dBm Susc</span>
-<span class="c1"># def set_protection_band(radio):</span>
-<span class="c1">#     &quot;&quot;&quot;Set susceptibility of the Rx Band to 0 dBm</span>
-<span class="c1">#     for all frequencies.</span>
-<span class="c1">#     Arguments:</span>
-<span class="c1">#         radio: Radio to modify.</span>
-<span class="c1">#     &quot;&quot;&quot;</span>
-<span class="c1">#     bands = radio.bands()</span>
-<span class="c1">#     prop_list = {</span>
-<span class="c1">#                 &quot;InBandSensitivity&quot;: &quot;0&quot;,</span>
-<span class="c1">#                 &quot;SnrAtSensitivity&quot;: &quot;0&quot;,</span>
-<span class="c1">#                 &quot;RxMaxAttenuation&quot;: &quot;0&quot;</span>
-<span class="c1">#                 }</span>
-<span class="c1">#     for band in bands:</span>
-<span class="c1">#         for child in band.children:</span>
-<span class="c1">#             if child.props[&quot;Type&quot;] == &quot;RxSusceptibilityProfNode&quot;:</span>
-<span class="c1">#                 child._set_prop_value(prop_list)</span>
-<span class="c1">#                 break # only one Rx Spectral Profile per Band</span>
-
 <span class="c1"># def get_radio_node(radio_name):</span>
 <span class="c1">#     &quot;&quot;&quot;Get the radio node that matches the</span>
 <span class="c1">#     given radio name.</span>
@@ -930,10 +910,6 @@ levels.</p>
 <span class="c1">#     else:</span>
 <span class="c1">#         radio = wifi</span>
 <span class="c1">#     return radio</span>
-
-<span class="c1"># set_protection_band(bluetooth)</span>
-<span class="c1"># set_protection_band(gps)</span>
-<span class="c1"># set_protection_band(wifi)</span>
 
 <span class="c1"># bands = gps.bands()</span>
 <span class="c1"># for band in bands:</span>
@@ -951,7 +927,7 @@ levels.</p>
 <span class="c1"># rev = emitapp.analyze()</span>
 <span class="c1"># modeRx = emitapp.tx_rx_mode().rx</span>
 <span class="c1"># modeTx = emitapp.tx_rx_mode().tx</span>
-<span class="c1"># modeEmi = emitapp.result_type().emi</span>
+<span class="c1"># resultMode = emitapp.result_type().powerAtRx</span>
 
 <span class="c1"># ###############################################################################</span>
 <span class="c1"># # Generate a legend</span>
@@ -1089,15 +1065,15 @@ levels.</p>
 
 <span class="c1">#             # Find the highest power level at the Rx input due</span>
 <span class="c1">#             # to each Tx Radio</span>
-<span class="c1">#             domain.set_receiver(rx_radio, rx_band, -1)</span>
-<span class="c1">#             domain.set_interferers([tx_radio],[tx_band_shortname],[-1])</span>
+<span class="c1">#             domain.set_receiver(rx_radio, rx_band)</span>
+<span class="c1">#             domain.set_interferer(tx_radio,tx_band_shortname)</span>
 <span class="c1">#             interaction = rev.run(domain)</span>
-<span class="c1">#             worst = interaction.get_worst_instance(modeEmi)</span>
+<span class="c1">#             worst = interaction.get_worst_instance(resultMode)</span>
 
 <span class="c1">#             # If the worst case for the band-pair is below the EMI limit, then</span>
 <span class="c1">#             # there are no interference issues and no offset is required.</span>
 <span class="c1">#             if worst.has_valid_values():</span>
-<span class="c1">#                 emi = worst.get_value(modeEmi)</span>
+<span class="c1">#                 emi = worst.get_value(resultMode)</span>
 <span class="c1">#                 rx_emis.append(emi)</span>
 <span class="c1">#                 if (emi &gt; damage_threshold):</span>
 <span class="c1">#                     rx_colors.append(&#39;red&#39;)</span>
@@ -1134,7 +1110,7 @@ levels.</p>
 <span class="c1"># emitapp.release_desktop(close_projects=True, close_desktop=True)</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.000 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.016 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-07-emit-computeprotectionlevels-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/8812f0dbdf79d7d59366316f02f624e7/ComputeProtectionLevels.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">ComputeProtectionLevels.py</span></code></a></p>

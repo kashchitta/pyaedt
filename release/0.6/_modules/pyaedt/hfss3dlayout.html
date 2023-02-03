@@ -207,7 +207,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.45 variable.
+            // this version, rather than using sphinx's 0.6.46 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -1671,7 +1671,7 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Hfss3dLayout.import_brd"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.hfss3dlayout.Hfss3dLayout.import_brd.html#pyaedt.hfss3dlayout.Hfss3dLayout.import_brd">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">import_brd</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span> <span class="n">input_file</span><span class="p">,</span> <span class="n">aedb_path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">set_as_active</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">close_active_project</span><span class="o">=</span><span class="kc">False</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">input_file</span><span class="p">,</span> <span class="n">aedb_path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">set_as_active</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">close_active_project</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">control_file</span><span class="o">=</span><span class="kc">None</span>
     <span class="p">):</span>  <span class="c1"># pragma: no cover</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Import a board file into HFSS 3D Layout and assign the stackup from an XML file if present.</span>
 
@@ -1686,6 +1686,10 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        close_active_project : bool, optional</span>
 <span class="sd">            Whether to close the active project after loading the board file.</span>
 <span class="sd">            The default is &#39;&#39;False``.</span>
+<span class="sd">        control_file : str, optional</span>
+<span class="sd">            Path to the XML file with the stackup information. The default is ``None``, in</span>
+<span class="sd">            which case the stackup is not edited.</span>
+
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
 <span class="sd">        bool</span>
@@ -1696,7 +1700,7 @@ function checkPageExistsAndRedirect(event) {
 
 <span class="sd">        &gt;&gt;&gt; oModule.ImportExtracta</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_import_cad</span><span class="p">(</span><span class="n">input_file</span><span class="p">,</span> <span class="s2">&quot;brd&quot;</span><span class="p">,</span> <span class="n">aedb_path</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">set_as_active</span><span class="p">,</span> <span class="n">close_active_project</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_import_cad</span><span class="p">(</span><span class="n">input_file</span><span class="p">,</span> <span class="s2">&quot;brd&quot;</span><span class="p">,</span> <span class="n">aedb_path</span><span class="p">,</span> <span class="n">control_file</span><span class="p">,</span> <span class="n">set_as_active</span><span class="p">,</span> <span class="n">close_active_project</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Hfss3dLayout.import_awr"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.hfss3dlayout.Hfss3dLayout.import_awr.html#pyaedt.hfss3dlayout.Hfss3dLayout.import_awr">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">import_awr</span><span class="p">(</span>

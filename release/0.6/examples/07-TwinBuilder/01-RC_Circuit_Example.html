@@ -210,7 +210,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.45 variable.
+            // this version, rather than using sphinx's 0.6.46 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -877,27 +877,24 @@ a default setup.</p>
                         <a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a><span class="o">=</span><a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a><span class="p">,</span>
                         <span class="n">new_desktop_session</span><span class="o">=</span><a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">new_thread</span></a>
                         <span class="p">)</span>
+<span class="n">tb</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">schematic_units</span> <span class="o">=</span> <span class="s2">&quot;mil&quot;</span>
 </pre></div>
 </div>
 </section>
 <section id="create-components-for-rc-circuit">
 <h2>Create components for RC circuit<a class="headerlink" href="#create-components-for-rc-circuit" title="Permalink to this heading">#</a></h2>
-<p>Create components for an RC circuit driven by a pulse voltage source. Define
-the grid distance for ease in calculations.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/dev/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">G</span></a> <span class="o">=</span> <span class="mf">0.00254</span>
-
-<span class="c1"># Create components, such as a voltage source, resistor, and capacitor.</span>
-
-<span class="n">source</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">schematic</span><span class="o">.</span><span class="n">create_voltage_source</span><span class="p">(</span><span class="s2">&quot;E1&quot;</span><span class="p">,</span> <span class="s2">&quot;EPULSE&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
-<span class="n">resistor</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">schematic</span><span class="o">.</span><span class="n">create_resistor</span><span class="p">(</span><span class="s2">&quot;R1&quot;</span><span class="p">,</span> <span class="mi">10000</span><span class="p">,</span> <span class="p">[</span><span class="mi">10</span> <span class="o">*</span> <a href="https://docs.python.org/dev/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">G</span></a><span class="p">,</span> <span class="mi">10</span> <span class="o">*</span> <a href="https://docs.python.org/dev/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">G</span></a><span class="p">],</span> <span class="mi">90</span><span class="p">)</span>
-<span class="n">capacitor</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">schematic</span><span class="o">.</span><span class="n">create_capacitor</span><span class="p">(</span><span class="s2">&quot;C1&quot;</span><span class="p">,</span> <span class="mf">1e-6</span><span class="p">,</span> <span class="p">[</span><span class="mi">20</span> <span class="o">*</span> <a href="https://docs.python.org/dev/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">G</span></a><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+<p>Create components for an RC circuit driven by a pulse voltage source.
+Create components, such as a voltage source, resistor, and capacitor.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">schematic</span><span class="o">.</span><span class="n">create_voltage_source</span><span class="p">(</span><span class="s2">&quot;E1&quot;</span><span class="p">,</span> <span class="s2">&quot;EPULSE&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="n">resistor</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">schematic</span><span class="o">.</span><span class="n">create_resistor</span><span class="p">(</span><span class="s2">&quot;R1&quot;</span><span class="p">,</span> <span class="mi">10000</span><span class="p">,</span> <span class="p">[</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">1000</span><span class="p">],</span> <span class="mi">90</span><span class="p">)</span>
+<span class="n">capacitor</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">schematic</span><span class="o">.</span><span class="n">create_capacitor</span><span class="p">(</span><span class="s2">&quot;C1&quot;</span><span class="p">,</span> <span class="mf">1e-6</span><span class="p">,</span> <span class="p">[</span><span class="mi">2000</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
 </pre></div>
 </div>
 </section>
 <section id="create-ground">
 <h2>Create ground<a class="headerlink" href="#create-ground" title="Permalink to this heading">#</a></h2>
 <p>Create a ground, which is needed for an analog analysis.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gnd</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">components</span><span class="o">.</span><span class="n">create_gnd</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span> <span class="o">*</span> <a href="https://docs.python.org/dev/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">G</span></a><span class="p">])</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gnd</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">components</span><span class="o">.</span><span class="n">create_gnd</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1000</span><span class="p">])</span>
 </pre></div>
 </div>
 </section>
@@ -962,7 +959,7 @@ All methods provide for saving the project before closing.</p>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>True
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  15.750 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  16.052 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-07-twinbuilder-01-rc-circuit-example-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/9c6a85186daef62fda0577e34dc3f6ec/01-RC_Circuit_Example.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">01-RC_Circuit_Example.py</span></code></a></p>

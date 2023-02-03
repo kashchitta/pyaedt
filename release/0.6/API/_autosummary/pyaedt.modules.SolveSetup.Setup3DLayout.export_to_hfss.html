@@ -210,7 +210,7 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.45 variable.
+            // this version, rather than using sphinx's 0.6.46 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
             if (entry.version == "0.6") {
@@ -446,6 +446,11 @@ function checkPageExistsAndRedirect(event) {
       </a>
      </li>
      <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modules.SolveSetup.Setup3DLayout.default_intrinsics.html">
+       default_intrinsics
+      </a>
+     </li>
+     <li class="toctree-l3">
       <a class="reference internal" href="pyaedt.modules.SolveSetup.Setup3DLayout.is_solved.html">
        is_solved
       </a>
@@ -583,12 +588,14 @@ function checkPageExistsAndRedirect(event) {
 <h1>export_to_hfss<a class="headerlink" href="#export-to-hfss" title="Permalink to this heading">#</a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="pyaedt.modules.SolveSetup.Setup3DLayout.export_to_hfss">
-<span class="sig-prename descclassname"><span class="pre">Setup3DLayout.</span></span><span class="sig-name descname"><span class="pre">export_to_hfss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_fullname</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pyaedt/modules/SolveSetup.html#Setup3DLayout.export_to_hfss"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyaedt.modules.SolveSetup.Setup3DLayout.export_to_hfss" title="Permalink to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">Setup3DLayout.</span></span><span class="sig-name descname"><span class="pre">export_to_hfss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_fullname</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keep_net_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pyaedt/modules/SolveSetup.html#Setup3DLayout.export_to_hfss"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyaedt.modules.SolveSetup.Setup3DLayout.export_to_hfss" title="Permalink to this definition">#</a></dt>
 <dd><p>Export the HFSS 3DLayout design to HFSS 3D design.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
 <dt><strong>file_fullname</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#str" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a></span></dt><dd><p>Full path and file name for exporting the project.</p>
+</dd>
+<dt><strong>keep_net_name</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#bltin-boolean-values" title="(in Python v3.12)"><span class="xref std std-ref">bool</span></a></span></dt><dd><p>Keep net name in 3D export when <code class="docutils literal notranslate"><span class="pre">True</span></code> or by default when <code class="docutils literal notranslate"><span class="pre">False</span></code>. Default value is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
 </dd>
 </dl>
 </dd>

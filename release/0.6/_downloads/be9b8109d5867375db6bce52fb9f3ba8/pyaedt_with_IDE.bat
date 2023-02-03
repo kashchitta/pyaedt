@@ -112,10 +112,11 @@ if [%install_pyaedt%]==[y] (
         echo Installing PyAEDT from local wheels %arg1%.
         pip install --no-cache-dir --no-index --find-links=%wheelpyaedt% pyaedt
     ) ELSE (
+
         python -m pip install --upgrade pip
         pip --default-timeout=1000 install wheel
 
-		pip --default-timeout=1000 install pyaedt
+        pip --default-timeout=1000 install pyaedt
         pip --default-timeout=1000 install jupyterlab -I
         if [%install_spyder%]==[y] pip --default-timeout=1000 install spyder
         pip --default-timeout=1000 install ipython -U

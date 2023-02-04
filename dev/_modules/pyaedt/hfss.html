@@ -1408,6 +1408,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">current_conformance</span><span class="o">=</span><span class="s2">&quot;Disable&quot;</span><span class="p">,</span>
         <span class="n">thin_sources</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
         <span class="n">power_fraction</span><span class="o">=</span><span class="s2">&quot;0.95&quot;</span><span class="p">,</span>
+        <span class="n">visible</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
     <span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a linked antennas.</span>
 
@@ -1431,6 +1432,8 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">             The default is ``True``.</span>
 <span class="sd">        power_fraction : str, optional</span>
 <span class="sd">             The default is ``&quot;0.95&quot;``.</span>
+<span class="sd">        visible : bool, optional.</span>
+<span class="sd">            Visualize source objects in target design. The default is ``True``.</span>
 
 <span class="sd">        References</span>
 <span class="sd">        ----------</span>
@@ -1489,6 +1492,8 @@ function checkPageExistsAndRedirect(event) {
             <span class="n">native_props</span><span class="p">[</span><span class="s2">&quot;Current Source Conformance&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">current_conformance</span>
             <span class="n">native_props</span><span class="p">[</span><span class="s2">&quot;Thin Sources&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">thin_sources</span>
             <span class="n">native_props</span><span class="p">[</span><span class="s2">&quot;Power Fraction&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">power_fraction</span>
+        <span class="k">if</span> <span class="n">visible</span><span class="p">:</span>
+            <span class="n">native_props</span><span class="p">[</span><span class="s2">&quot;VisualizationObjects&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">source_object</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">solid_names</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_native_component</span><span class="p">(</span>
             <span class="s2">&quot;Linked Antenna&quot;</span><span class="p">,</span> <span class="n">target_cs</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">model_units</span><span class="p">,</span> <span class="n">native_props</span><span class="p">,</span> <span class="n">uniquename</span>
         <span class="p">)</span></div>
@@ -5984,9 +5989,16 @@ function checkPageExistsAndRedirect(event) {
 
 <div class="viewcode-block" id="Hfss.get_antenna_ffd_solution_data"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.hfss.Hfss.get_antenna_ffd_solution_data.html#pyaedt.hfss.Hfss.get_antenna_ffd_solution_data">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">get_antenna_ffd_solution_data</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span> <span class="n">frequencies</span><span class="p">,</span> <span class="n">setup_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">sphere_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">variations</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">taper</span><span class="o">=</span><span class="s2">&quot;flat&quot;</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">frequencies</span><span class="p">,</span>
+        <span class="n">setup_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">sphere_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">variations</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">taper</span><span class="o">=</span><span class="s2">&quot;flat&quot;</span><span class="p">,</span>
     <span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Export antennas parameters to Far Field Data (FFD) files and return the ``FfdSolutionData`` object.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Export antennas parameters to Far Field Data (FFD) files and return the ``FfdSolutionData`` object. For</span>
+<span class="sd">        phased array cases, only one phased array will be calculated.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -6034,6 +6046,12 @@ function checkPageExistsAndRedirect(event) {
             <span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Far field sphere </span><span class="si">%s</span><span class="s2"> is created.&quot;</span><span class="p">,</span> <span class="n">setup_name</span><span class="p">)</span>
 
+        <span class="n">component_name</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">solution_type</span> <span class="o">==</span> <span class="s2">&quot;SBR+&quot;</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">user_defined_component_names</span><span class="p">:</span>
+            <span class="n">antenna</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">user_defined_components</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">user_defined_component_names</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+            <span class="k">if</span> <span class="n">antenna</span><span class="o">.</span><span class="n">native_properties</span><span class="p">[</span><span class="s2">&quot;Type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Linked Antenna&quot;</span><span class="p">:</span>
+                <span class="n">component_name</span> <span class="o">=</span> <span class="n">antenna</span><span class="o">.</span><span class="n">name</span>
+
         <span class="k">return</span> <span class="n">FfdSolutionData</span><span class="p">(</span>
             <span class="bp">self</span><span class="p">,</span>
             <span class="n">sphere_name</span><span class="o">=</span><span class="n">sphere_name</span><span class="p">,</span>
@@ -6042,6 +6060,7 @@ function checkPageExistsAndRedirect(event) {
             <span class="n">variations</span><span class="o">=</span><span class="n">variations</span><span class="p">,</span>
             <span class="n">overwrite</span><span class="o">=</span><span class="n">overwrite</span><span class="p">,</span>
             <span class="n">taper</span><span class="o">=</span><span class="n">taper</span><span class="p">,</span>
+            <span class="n">sbr_3d_comp_name</span><span class="o">=</span><span class="n">component_name</span><span class="p">,</span>
         <span class="p">)</span></div>
 
 <div class="viewcode-block" id="Hfss.set_material_threshold"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.hfss.Hfss.set_material_threshold.html#pyaedt.hfss.Hfss.set_material_threshold">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>

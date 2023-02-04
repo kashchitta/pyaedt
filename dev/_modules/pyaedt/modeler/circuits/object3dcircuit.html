@@ -1131,6 +1131,91 @@ function checkPageExistsAndRedirect(event) {
                 <span class="n">_retry_ntimes</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">m_Editor</span><span class="o">.</span><span class="n">ChangeProperty</span><span class="p">,</span> <span class="n">vOut</span><span class="p">)</span>
             <span class="k">return</span> <span class="n">_retry_ntimes</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">m_Editor</span><span class="o">.</span><span class="n">ChangeProperty</span><span class="p">,</span> <span class="n">vOut</span><span class="p">)</span>
         <span class="k">return</span> <span class="kc">False</span></div></div>
+
+
+<span class="k">class</span> <span class="nc">Wire</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Creates and manipulates a wire.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">modeler</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_app</span> <span class="o">=</span> <span class="n">modeler</span><span class="o">.</span><span class="n">_app</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_modeler</span> <span class="o">=</span> <span class="n">modeler</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">_oeditor</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_modeler</span><span class="o">.</span><span class="n">oeditor</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">logger</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Logger.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">logger</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">wires</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;List of all schematic wires in the design.&quot;&quot;&quot;</span>
+        <span class="n">wire_names</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">wire</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_oeditor</span><span class="o">.</span><span class="n">GetAllElements</span><span class="p">():</span>
+            <span class="k">if</span> <span class="s2">&quot;Wire&quot;</span> <span class="ow">in</span> <span class="n">wire</span><span class="p">:</span>
+                <span class="n">wire_names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">wire</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">wire_names</span>
+
+    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">display_wire_properties</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">wire_name</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">property_to_display</span><span class="o">=</span><span class="s2">&quot;NetName&quot;</span><span class="p">,</span> <span class="n">visibility</span><span class="o">=</span><span class="s2">&quot;Name&quot;</span><span class="p">,</span> <span class="n">location</span><span class="o">=</span><span class="s2">&quot;Top&quot;</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Display wire properties.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        wire_name : str, optional</span>
+<span class="sd">            Wire name to display.</span>
+<span class="sd">            Default value is ``&quot;&quot;``.</span>
+<span class="sd">        property_to_display : str, optional</span>
+<span class="sd">            Property to display. Choices are: ``&quot;NetName&quot;``, ``&quot;PinCount&quot;``, ``&quot;AlignMicrowavePorts&quot;``,</span>
+<span class="sd">            ``&quot;SchematicID&quot;``, ``&quot;Segment0&quot;``.</span>
+<span class="sd">            Default value is ``&quot;NetName&quot;``.</span>
+<span class="sd">        visibility : str, optional</span>
+<span class="sd">            Visibility type. Choices are ``&quot;Name&quot;``, ``&quot;Value&quot;``, ``&quot;Both&quot;``, ``&quot;Evaluated Value&quot;``,</span>
+<span class="sd">            ``&quot;Evaluated Both&quot;``.</span>
+<span class="sd">            Default value is ``&quot;Name&quot;``.</span>
+<span class="sd">        location : str, optional</span>
+<span class="sd">            Wire name location. Choices are ``&quot;Left&quot;``, ``&quot;Top&quot;``, ``&quot;Right&quot;``, ``&quot;Bottom&quot;``, ``&quot;Center&quot;``.</span>
+<span class="sd">            Default value is ``&quot;Top&quot;``.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        bool</span>
+<span class="sd">            ``True`` when successful, ``False`` when failed.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">wire_exists</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="k">for</span> <span class="n">wire</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">wires</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">wire_name</span> <span class="o">==</span> <span class="n">wire</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;@&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;;&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]:</span>
+                    <span class="n">wire_id</span> <span class="o">=</span> <span class="n">wire</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;@&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;;&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;:&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+                    <span class="n">wire_exists</span> <span class="o">=</span> <span class="kc">True</span>
+                    <span class="k">break</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">continue</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">wire_exists</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Invalid wire name provided.&quot;</span><span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">_oeditor</span><span class="o">.</span><span class="n">ChangeProperty</span><span class="p">(</span>
+                <span class="p">[</span>
+                    <span class="s2">&quot;NAME:AllTabs&quot;</span><span class="p">,</span>
+                    <span class="p">[</span>
+                        <span class="s2">&quot;NAME:PropDisplayPropTab&quot;</span><span class="p">,</span>
+                        <span class="p">[</span><span class="s2">&quot;NAME:PropServers&quot;</span><span class="p">,</span> <span class="s2">&quot;Wire@</span><span class="si">{}</span><span class="s2">;</span><span class="si">{}</span><span class="s2">;</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">wire_name</span><span class="p">,</span> <span class="n">wire_id</span><span class="p">,</span> <span class="mi">1</span><span class="p">)],</span>
+                        <span class="p">[</span>
+                            <span class="s2">&quot;NAME:NewProps&quot;</span><span class="p">,</span>
+                            <span class="p">[</span><span class="s2">&quot;NAME:&quot;</span> <span class="o">+</span> <span class="n">property_to_display</span><span class="p">,</span> <span class="s2">&quot;Format:=&quot;</span><span class="p">,</span> <span class="n">visibility</span><span class="p">,</span> <span class="s2">&quot;Location:=&quot;</span><span class="p">,</span> <span class="n">location</span><span class="p">],</span>
+                        <span class="p">],</span>
+                    <span class="p">],</span>
+                <span class="p">]</span>
+            <span class="p">)</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+            <span class="k">return</span> <span class="kc">False</span>
 </pre></div>
 
               </article>

@@ -289,8 +289,6 @@ function checkPageExistsAndRedirect(event) {
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
   <div class="bd-toc-item active">
     
-    
-    
   </div>
 </nav>
   </div>
@@ -1123,23 +1121,18 @@ function checkPageExistsAndRedirect(event) {
                                 <span class="n">pin_group_term</span><span class="o">.</span><span class="n">SetReferenceTerminal</span><span class="p">(</span><span class="n">ref_pin_group_term</span><span class="p">)</span>
                     <span class="k">else</span><span class="p">:</span>
                         <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;No pins found on component </span><span class="si">{}</span><span class="s2"> for the net </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">component</span><span class="p">,</span> <span class="n">net</span><span class="p">))</span>
-
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">ref_pin_group</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_pingroup_from_pins</span><span class="p">(</span><span class="n">ref_pins</span><span class="p">)</span>
                 <span class="k">if</span> <span class="ow">not</span> <span class="n">ref_pin_group</span><span class="p">:</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;failed to create reference pin group&quot;</span><span class="p">)</span>
                     <span class="k">return</span> <span class="kc">False</span>
+                <span class="n">ref_pin_group_term</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_pin_group_terminal</span><span class="p">(</span><span class="n">ref_pin_group</span><span class="p">,</span> <span class="n">component</span><span class="p">,</span> <span class="n">isref</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
                 <span class="k">for</span> <span class="n">net</span> <span class="ow">in</span> <span class="n">net_list</span><span class="p">:</span>
                     <span class="n">pins</span> <span class="o">=</span> <span class="p">[</span><span class="n">pin</span> <span class="k">for</span> <span class="n">pin</span> <span class="ow">in</span> <span class="n">cmp_pins</span> <span class="k">if</span> <span class="n">pin</span><span class="o">.</span><span class="n">GetNet</span><span class="p">()</span><span class="o">.</span><span class="n">GetName</span><span class="p">()</span> <span class="o">==</span> <span class="n">net</span><span class="p">]</span>
                     <span class="k">for</span> <span class="n">pin</span> <span class="ow">in</span> <span class="n">pins</span><span class="p">:</span>
-                        <span class="n">ref_pin</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_closest_pin_from</span><span class="p">(</span><span class="n">pin</span><span class="p">,</span> <span class="n">ref_pins</span><span class="p">)</span>
-                        <span class="n">ref_pin_term</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_terminal</span><span class="p">(</span><span class="n">ref_pin</span><span class="p">)</span>
-                        <span class="n">term</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_terminal</span><span class="p">(</span><span class="n">pin</span><span class="p">)</span>
-                        <span class="n">ref_pin_term</span><span class="o">.</span><span class="n">SetBoundaryType</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Cell</span><span class="o">.</span><span class="n">Terminal</span><span class="o">.</span><span class="n">BoundaryType</span><span class="o">.</span><span class="n">PortBoundary</span><span class="p">)</span>
-                        <span class="n">ref_pin_term</span><span class="o">.</span><span class="n">SetIsCircuitPort</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
-                        <span class="n">term</span><span class="o">.</span><span class="n">SetBoundaryType</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Cell</span><span class="o">.</span><span class="n">Terminal</span><span class="o">.</span><span class="n">BoundaryType</span><span class="o">.</span><span class="n">PortBoundary</span><span class="p">)</span>
-                        <span class="n">term</span><span class="o">.</span><span class="n">SetIsCircuitPort</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
-                        <span class="n">term</span><span class="o">.</span><span class="n">SetReferenceTerminal</span><span class="p">(</span><span class="n">ref_pin_term</span><span class="p">)</span>
+                        <span class="n">pin_group</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_pingroup_from_pins</span><span class="p">([</span><span class="n">pin</span><span class="p">])</span>
+                        <span class="n">pin_group_term</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_pin_group_terminal</span><span class="p">(</span><span class="n">pin_group</span><span class="p">,</span> <span class="n">component</span><span class="p">,</span> <span class="n">isref</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+                        <span class="n">pin_group_term</span><span class="o">.</span><span class="n">SetReferenceTerminal</span><span class="p">(</span><span class="n">ref_pin_group_term</span><span class="p">)</span>
         <span class="k">return</span> <span class="kc">True</span></div>
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
@@ -1581,7 +1574,6 @@ function checkPageExistsAndRedirect(event) {
                 <span class="k">return</span> <span class="kc">False</span>
 
         <span class="k">elif</span> <span class="n">model_type</span> <span class="o">==</span> <span class="s2">&quot;Touchstone&quot;</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
-
             <span class="n">nPortModelName</span> <span class="o">=</span> <span class="n">modelname</span>
             <span class="n">edbComponentDef</span> <span class="o">=</span> <span class="n">edbComponent</span><span class="o">.</span><span class="n">GetComponentDef</span><span class="p">()</span>
             <span class="n">nPortModel</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Definition</span><span class="o">.</span><span class="n">NPortComponentModel</span><span class="o">.</span><span class="n">FindByName</span><span class="p">(</span><span class="n">edbComponentDef</span><span class="p">,</span> <span class="n">nPortModelName</span><span class="p">)</span>
@@ -2371,11 +2363,9 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">through_comp_list</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">refdes</span><span class="p">,</span> <span class="n">comp_obj</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">resistors</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-
             <span class="n">numpins</span> <span class="o">=</span> <span class="n">comp_obj</span><span class="o">.</span><span class="n">numpins</span>
 
             <span class="k">if</span> <span class="n">numpins</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
-
                 <span class="n">value</span> <span class="o">=</span> <span class="n">comp_obj</span><span class="o">.</span><span class="n">res_value</span>
                 <span class="n">value</span> <span class="o">=</span> <span class="n">resistor_value_parser</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
 

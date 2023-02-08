@@ -289,8 +289,6 @@ function checkPageExistsAndRedirect(event) {
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
   <div class="bd-toc-item active">
     
-    
-    
   </div>
 </nav>
   </div>
@@ -2339,7 +2337,6 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">_make_winding</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">material</span><span class="p">,</span> <span class="n">in_rad</span><span class="p">,</span> <span class="n">out_rad</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">teta</span><span class="p">,</span> <span class="n">turns</span><span class="p">,</span> <span class="n">chamf</span><span class="p">,</span> <span class="n">sep_layer</span><span class="p">):</span>
-
         <span class="n">teta_r</span> <span class="o">=</span> <span class="n">radians</span><span class="p">(</span><span class="n">teta</span><span class="p">)</span>
         <span class="n">points_list1</span> <span class="o">=</span> <span class="p">[</span>
             <span class="p">[</span><span class="n">in_rad</span> <span class="o">*</span> <span class="n">cos</span><span class="p">(</span><span class="n">teta_r</span><span class="p">),</span> <span class="o">-</span><span class="n">in_rad</span> <span class="o">*</span> <span class="n">sin</span><span class="p">(</span><span class="n">teta_r</span><span class="p">),</span> <span class="n">height</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">-</span> <span class="n">chamf</span><span class="p">],</span>
@@ -2530,7 +2527,6 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">sr</span><span class="p">,</span>
         <span class="n">sep_layer</span><span class="p">,</span>
     <span class="p">):</span>
-
         <span class="n">chamf</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_winding_follow_chamfer</span><span class="p">(</span><span class="n">chamfer</span><span class="p">,</span> <span class="n">sr</span><span class="p">,</span> <span class="n">w_dia</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
         <span class="n">in_rad_in_wind</span> <span class="o">=</span> <span class="n">in_rad</span> <span class="o">+</span> <span class="n">sr</span> <span class="o">*</span> <span class="n">w_dia</span>
         <span class="n">out_rad_in_wind</span> <span class="o">=</span> <span class="n">out_rad</span> <span class="o">-</span> <span class="n">sr</span> <span class="o">*</span> <span class="n">w_dia</span>
@@ -2571,7 +2567,6 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">sr</span><span class="p">,</span>
         <span class="n">sep_layer</span><span class="p">,</span>
     <span class="p">):</span>
-
         <span class="n">chamf</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_winding_follow_chamfer</span><span class="p">(</span><span class="n">chamfer</span><span class="p">,</span> <span class="n">sr</span><span class="p">,</span> <span class="n">w_dia</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
         <span class="n">chamf_mid_wind</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_winding_follow_chamfer</span><span class="p">(</span><span class="n">chamfer</span><span class="p">,</span> <span class="n">sr</span><span class="p">,</span> <span class="n">w_dia</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
         <span class="n">in_rad_in_wind</span> <span class="o">=</span> <span class="n">in_rad</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">sr</span> <span class="o">*</span> <span class="n">w_dia</span>
@@ -2949,7 +2944,6 @@ function checkPageExistsAndRedirect(event) {
 
             <span class="k">if</span> <span class="n">values</span><span class="p">[</span><span class="s2">&quot;Similar Layer&quot;</span><span class="p">][</span><span class="s2">&quot;Different&quot;</span><span class="p">]:</span>
                 <span class="k">if</span> <span class="n">values</span><span class="p">[</span><span class="s2">&quot;Layer&quot;</span><span class="p">][</span><span class="s2">&quot;Double&quot;</span><span class="p">]</span> <span class="ow">or</span> <span class="n">values</span><span class="p">[</span><span class="s2">&quot;Layer&quot;</span><span class="p">][</span><span class="s2">&quot;Triple&quot;</span><span class="p">]:</span>
-
                     <span class="k">if</span> <span class="n">asin</span><span class="p">((</span><span class="n">sr</span> <span class="o">*</span> <span class="n">dia_wire</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">in_rad_wind</span> <span class="o">+</span> <span class="n">sr</span> <span class="o">*</span> <span class="n">dia_wire</span><span class="p">))</span> <span class="o">&gt;</span> <span class="n">pi</span> <span class="o">/</span> <span class="n">nb_wind</span> <span class="o">/</span> <span class="n">turns2</span><span class="p">:</span>
                         <span class="n">turns2</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">pi</span> <span class="o">/</span> <span class="n">nb_wind</span> <span class="o">/</span> <span class="n">asin</span><span class="p">((</span><span class="n">sr</span> <span class="o">*</span> <span class="n">dia_wire</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">in_rad_wind</span> <span class="o">+</span> <span class="n">sr</span> <span class="o">*</span> <span class="n">dia_wire</span><span class="p">)))</span>
                         <span class="n">values</span><span class="p">[</span><span class="s2">&quot;Mid Winding&quot;</span><span class="p">][</span><span class="s2">&quot;Turns&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">turns2</span>
@@ -3002,7 +2996,6 @@ function checkPageExistsAndRedirect(event) {
                     <span class="c1"># TODO if occ2 == 100: method can be improve</span>
 
                 <span class="k">if</span> <span class="n">values</span><span class="p">[</span><span class="s2">&quot;Layer&quot;</span><span class="p">][</span><span class="s2">&quot;Triple&quot;</span><span class="p">]:</span>
-
                     <span class="k">if</span> <span class="n">asin</span><span class="p">((</span><span class="n">sr</span> <span class="o">*</span> <span class="n">dia_wire</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">in_rad_wind</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">sr</span> <span class="o">*</span> <span class="n">dia_wire</span><span class="p">))</span> <span class="o">&gt;</span> <span class="n">pi</span> <span class="o">/</span> <span class="n">nb_wind</span> <span class="o">/</span> <span class="n">turns3</span><span class="p">:</span>
                         <span class="n">turns3</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">pi</span> <span class="o">/</span> <span class="n">nb_wind</span> <span class="o">/</span> <span class="n">asin</span><span class="p">((</span><span class="n">sr</span> <span class="o">*</span> <span class="n">dia_wire</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">in_rad_wind</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">sr</span> <span class="o">*</span> <span class="n">dia_wire</span><span class="p">)))</span>
                         <span class="n">values</span><span class="p">[</span><span class="s2">&quot;Inner Winding&quot;</span><span class="p">][</span><span class="s2">&quot;Turns&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">turns3</span>

@@ -289,8 +289,6 @@ function checkPageExistsAndRedirect(event) {
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
   <div class="bd-toc-item active">
     
-    
-    
   </div>
 </nav>
   </div>
@@ -363,7 +361,6 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">type</span><span class="p">,</span> <span class="n">num_seg</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">num_points</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">arc_angle</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">arc_center</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">arc_plane</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-
         <span class="n">valid_types</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Line&quot;</span><span class="p">,</span> <span class="s2">&quot;Arc&quot;</span><span class="p">,</span> <span class="s2">&quot;Spline&quot;</span><span class="p">,</span> <span class="s2">&quot;AngularArc&quot;</span><span class="p">]</span>
         <span class="k">assert</span> <span class="nb">type</span> <span class="ow">in</span> <span class="n">valid_types</span><span class="p">,</span> <span class="s2">&quot;Segment type must be in </span><span class="si">{}</span><span class="s2">.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">valid_types</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="nb">type</span>
@@ -467,7 +464,6 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">xsection_bend_type</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">non_model</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
     <span class="p">):</span>
-
         <span class="bp">self</span><span class="o">.</span><span class="n">_primitives</span> <span class="o">=</span> <span class="n">primitives</span>
 
         <span class="k">if</span> <span class="n">src_object</span><span class="p">:</span>
@@ -478,7 +474,6 @@ function checkPageExistsAndRedirect(event) {
                 <span class="bp">self</span><span class="o">.</span><span class="n">_id</span> <span class="o">=</span> <span class="n">src_object</span><span class="o">.</span><span class="n">id</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_m_name</span> <span class="o">=</span> <span class="n">src_object</span><span class="o">.</span><span class="n">name</span>
         <span class="k">else</span><span class="p">:</span>
-
             <span class="bp">self</span><span class="o">.</span><span class="n">_xsection</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_primitives</span><span class="o">.</span><span class="n">_crosssection_arguments</span><span class="p">(</span>
                 <span class="nb">type</span><span class="o">=</span><span class="n">xsection_type</span><span class="p">,</span>
                 <span class="n">orient</span><span class="o">=</span><span class="n">xsection_orient</span><span class="p">,</span>
@@ -662,7 +657,6 @@ function checkPageExistsAndRedirect(event) {
 
                 <span class="n">pos_count_incr</span> <span class="o">=</span> <span class="mi">0</span>
                 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">current_segment</span><span class="o">.</span><span class="n">num_points</span><span class="p">):</span>
-
                     <span class="k">if</span> <span class="n">current_segment</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s2">&quot;AngularArc&quot;</span><span class="p">:</span>
                         <span class="n">points_str</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_pl_point</span><span class="p">(</span><span class="n">current_segment</span><span class="o">.</span><span class="n">extra_points</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]))</span>
                         <span class="n">index_count</span> <span class="o">+=</span> <span class="mi">1</span>
@@ -728,7 +722,6 @@ function checkPageExistsAndRedirect(event) {
             <span class="n">seg</span> <span class="o">+=</span> <span class="p">[</span><span class="s2">&quot;NoOfSegments:=&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">segment_data</span><span class="o">.</span><span class="n">num_seg</span><span class="p">)]</span>
 
         <span class="k">if</span> <span class="n">segment_data</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s2">&quot;AngularArc&quot;</span><span class="p">:</span>
-
             <span class="c1"># from start-point and angle, calculate the mid- and end-points</span>
             <span class="c1"># Also identify the plane of the arc (&quot;YZ&quot;, &quot;ZX&quot;, &quot;XY&quot;)</span>
             <span class="n">plane_axes</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;YZ&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="s2">&quot;ZX&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="s2">&quot;XY&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]}</span>

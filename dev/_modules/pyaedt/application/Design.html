@@ -3895,6 +3895,25 @@ function checkPageExistsAndRedirect(event) {
         <span class="k">if</span> <span class="n">destype</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_design_type</span><span class="p">:</span>
             <span class="n">consistent</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_check_solution_consistency</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">consistent</span>
+
+    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">add_from_toolkit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">toolkit_object</span><span class="p">,</span> <span class="n">draw</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add a new toolkit to the current application.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        toolkit_object :</span>
+<span class="sd">            Application object from ``&quot;ansys.aedt.toolkits&quot;``.</span>
+
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+
+<span class="sd">            Application-created object.&quot;&quot;&quot;</span>
+        <span class="n">app</span> <span class="o">=</span> <span class="n">toolkit_object</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">draw</span><span class="p">:</span>
+            <span class="n">app</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">app</span>
 </pre></div>
 
               </article>

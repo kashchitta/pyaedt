@@ -454,7 +454,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="k">return</span> <span class="n">deltax</span><span class="p">,</span> <span class="n">deltay</span>
 
 <div class="viewcode-block" id="CircuitPins.connect_to_component"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.modeler.circuits.object3dcircuit.CircuitPins.connect_to_component.html#pyaedt.modeler.circuits.object3dcircuit.CircuitPins.connect_to_component">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
-    <span class="k">def</span> <span class="nf">connect_to_component</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">component_pin</span><span class="p">,</span> <span class="n">page_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">use_wire</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">clearance_units</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">connect_to_component</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">component_pin</span><span class="p">,</span> <span class="n">page_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">use_wire</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">wire_name</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">clearance_units</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Connect schematic components.</span>
 
 <span class="sd">        Parameters</span>
@@ -468,6 +468,8 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">            Whether to use wires or a page port to connect the pins.</span>
 <span class="sd">            The default is ``False``, in which case a page port is used. Note</span>
 <span class="sd">            that if wires are used but not well placed, shorts can result.</span>
+<span class="sd">        wire_name : str, optional</span>
+<span class="sd">            Wire name used only when user_wire is ``True``. Default value is ``&quot;&quot;``.</span>
 <span class="sd">        clearance_units : int, optional</span>
 <span class="sd">            Number of snap units (100mil each) around the object to overcome pins and wires.</span>
 
@@ -563,7 +565,7 @@ function checkPageExistsAndRedirect(event) {
                         <span class="n">points</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">act</span><span class="p">)</span>
 
                 <span class="n">cangles</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cpin</span><span class="o">.</span><span class="n">_circuit_comp</span><span class="o">.</span><span class="n">angle</span><span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_circuit_comp</span><span class="o">.</span><span class="n">_circuit_components</span><span class="o">.</span><span class="n">create_wire</span><span class="p">(</span><span class="n">points</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_circuit_comp</span><span class="o">.</span><span class="n">_circuit_components</span><span class="o">.</span><span class="n">create_wire</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="n">wire_name</span><span class="o">=</span><span class="n">wire_name</span><span class="p">)</span>
             <span class="k">return</span> <span class="kc">True</span>
         <span class="n">comp_angle</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_circuit_comp</span><span class="o">.</span><span class="n">angle</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">180</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_circuit_comp</span><span class="o">.</span><span class="n">pins</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>

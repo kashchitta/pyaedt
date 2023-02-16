@@ -2800,13 +2800,13 @@ function checkPageExistsAndRedirect(event) {
         <span class="k">return</span> <span class="n">bounding</span>
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
-    <span class="k">def</span> <span class="nf">convert_to_selections</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">objtosplit</span><span class="p">,</span> <span class="n">return_list</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">convert_to_selections</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">object_id</span><span class="p">,</span> <span class="n">return_list</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Convert one or more object to selections.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        objtosplit : str, int, list</span>
-<span class="sd">            One or more objects to convert to selections. A list can contain</span>
+<span class="sd">        object_id : str, int, list</span>
+<span class="sd">            One or more object IDs whose name will be returned. A list can contain</span>
 <span class="sd">            both strings (object names) and integers (object IDs).</span>
 <span class="sd">        return_list : bool, option</span>
 <span class="sd">            Whether to return a list of the selections. The default is</span>
@@ -2816,17 +2816,17 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
 <span class="sd">        str or list</span>
-<span class="sd">           String or list of the selections.</span>
+<span class="sd">           Name of the objects corresponding to the one or more object IDs passed as arguments.</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="s2">&quot;netref.builtins.list&quot;</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">objtosplit</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="s2">&quot;netref.builtins.list&quot;</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">object_id</span><span class="p">)):</span>
             <span class="n">list_new</span> <span class="o">=</span> <span class="p">[]</span>
-            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">objtosplit</span><span class="p">)):</span>
-                <span class="n">list_new</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">objtosplit</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
-        <span class="k">elif</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">objtosplit</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
-            <span class="n">objtosplit</span> <span class="o">=</span> <span class="p">[</span><span class="n">objtosplit</span><span class="p">]</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">object_id</span><span class="p">)):</span>
+                <span class="n">list_new</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">object_id</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+        <span class="k">elif</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">object_id</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+            <span class="n">object_id</span> <span class="o">=</span> <span class="p">[</span><span class="n">object_id</span><span class="p">]</span>
         <span class="n">objnames</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="k">for</span> <span class="n">el</span> <span class="ow">in</span> <span class="n">objtosplit</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">el</span> <span class="ow">in</span> <span class="n">object_id</span><span class="p">:</span>
             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">el</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span> <span class="ow">and</span> <span class="n">el</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
                 <span class="n">objnames</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">objects</span><span class="p">[</span><span class="n">el</span><span class="p">]</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
             <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">el</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
@@ -2895,7 +2895,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="bp">self</span><span class="o">.</span><span class="n">refresh_all_ids</span><span class="p">()</span>
         <span class="k">return</span> <span class="p">[</span><span class="n">selections</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">object_names</span> <span class="k">if</span> <span class="n">i</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">all_objs</span><span class="p">]</span>
 
-    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>  <span class="c1"># TODO: Deprecate this and add duplicate as an option in the mirror method.</span>
     <span class="k">def</span> <span class="nf">duplicate_and_mirror</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">objid</span><span class="p">,</span>
@@ -2931,32 +2931,13 @@ function checkPageExistsAndRedirect(event) {
 
 <span class="sd">        &gt;&gt;&gt; oEditor.DuplicateMirror</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">selections</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">convert_to_selections</span><span class="p">(</span><span class="n">objid</span><span class="p">)</span>
-        <span class="n">Xpos</span><span class="p">,</span> <span class="n">Ypos</span><span class="p">,</span> <span class="n">Zpos</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pos_with_arg</span><span class="p">(</span><span class="n">position</span><span class="p">)</span>
-        <span class="n">Xnorm</span><span class="p">,</span> <span class="n">Ynorm</span><span class="p">,</span> <span class="n">Znorm</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pos_with_arg</span><span class="p">(</span><span class="n">vector</span><span class="p">)</span>
-
-        <span class="n">vArg1</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;NAME:Selections&quot;</span><span class="p">,</span> <span class="s2">&quot;Selections:=&quot;</span><span class="p">,</span> <span class="n">selections</span><span class="p">,</span> <span class="s2">&quot;NewPartsModelFlag:=&quot;</span><span class="p">,</span> <span class="s2">&quot;Model&quot;</span><span class="p">]</span>
-        <span class="n">vArg2</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;NAME:DuplicateToMirrorParameters&quot;</span><span class="p">]</span>
-        <span class="n">vArg2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;DuplicateMirrorBaseX:=&quot;</span><span class="p">),</span> <span class="n">vArg2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Xpos</span><span class="p">)</span>
-        <span class="n">vArg2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;DuplicateMirrorBaseY:=&quot;</span><span class="p">),</span> <span class="n">vArg2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Ypos</span><span class="p">)</span>
-        <span class="n">vArg2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;DuplicateMirrorBaseZ:=&quot;</span><span class="p">),</span> <span class="n">vArg2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Zpos</span><span class="p">)</span>
-        <span class="n">vArg2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;DuplicateMirrorNormalX:=&quot;</span><span class="p">),</span> <span class="n">vArg2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Xnorm</span><span class="p">)</span>
-        <span class="n">vArg2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;DuplicateMirrorNormalY:=&quot;</span><span class="p">),</span> <span class="n">vArg2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Ynorm</span><span class="p">)</span>
-        <span class="n">vArg2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;DuplicateMirrorNormalZ:=&quot;</span><span class="p">),</span> <span class="n">vArg2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Znorm</span><span class="p">)</span>
-        <span class="n">vArg3</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;NAME:Options&quot;</span><span class="p">,</span> <span class="s2">&quot;DuplicateAssignments:=&quot;</span><span class="p">,</span> <span class="n">duplicate_assignment</span><span class="p">]</span>
-        <span class="k">if</span> <span class="n">is_3d_comp</span><span class="p">:</span>
-            <span class="n">orig_3d</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">user_defined_component_names</span><span class="p">]</span>
-        <span class="n">added_objs</span> <span class="o">=</span> <span class="n">_retry_ntimes</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">oeditor</span><span class="o">.</span><span class="n">DuplicateMirror</span><span class="p">,</span> <span class="n">vArg1</span><span class="p">,</span> <span class="n">vArg2</span><span class="p">,</span> <span class="n">vArg3</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">add_new_objects</span><span class="p">()</span>
-        <span class="k">if</span> <span class="n">is_3d_comp</span><span class="p">:</span>
-            <span class="n">added_3d_comps</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">user_defined_component_names</span> <span class="k">if</span> <span class="n">i</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">orig_3d</span><span class="p">]</span>
-            <span class="k">if</span> <span class="n">added_3d_comps</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Found 3D Components Duplication&quot;</span><span class="p">)</span>
-                <span class="k">return</span> <span class="n">added_3d_comps</span>
-        <span class="k">return</span> <span class="n">added_objs</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">mirror</span><span class="p">(</span>
+            <span class="n">objid</span><span class="p">,</span> <span class="n">position</span><span class="p">,</span> <span class="n">vector</span><span class="p">,</span> <span class="n">duplicate</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">is_3d_comp</span><span class="o">=</span><span class="n">is_3d_comp</span><span class="p">,</span> <span class="n">duplicate_assignment</span><span class="o">=</span><span class="n">duplicate_assignment</span>
+        <span class="p">)</span>
+        <span class="c1"># selections = self.convert_to_selections(objid)</span>
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
-    <span class="k">def</span> <span class="nf">mirror</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">objid</span><span class="p">,</span> <span class="n">position</span><span class="p">,</span> <span class="n">vector</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">mirror</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">objid</span><span class="p">,</span> <span class="n">position</span><span class="p">,</span> <span class="n">vector</span><span class="p">,</span> <span class="n">duplicate</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">is_3d_comp</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">duplicate_assignment</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Mirror a selection.</span>
 
 <span class="sd">        Parameters</span>
@@ -2965,37 +2946,65 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">            Name or ID of the object.</span>
 <span class="sd">        position : int or float</span>
 <span class="sd">            List of the ``[x, y, z]`` coordinates or the</span>
-<span class="sd">            Application.Position object for the selection.</span>
+<span class="sd">            ``Application.Position`` object for the selection.</span>
+<span class="sd">        duplicate : bool, optional</span>
+<span class="sd">            Whether if duplicate the object before mirror or not. Default is ``False``.</span>
+<span class="sd">        is_3d_comp : bool, optional</span>
+<span class="sd">            Whether the component is 3D. The default is ``False``. If ``True``, the method</span>
+<span class="sd">            tries to return the duplicated list of 3D components.</span>
 <span class="sd">        vector : float</span>
 <span class="sd">            List of the ``[x1, y1, z1]`` coordinates or</span>
-<span class="sd">            the Application.Position object for the vector.</span>
+<span class="sd">            the ``Application.Position`` object for the vector.</span>
+<span class="sd">        duplicate_assignment : bool, optional</span>
+<span class="sd">            Whether to duplicate selection assignments. The default is ``True``.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        bool</span>
-<span class="sd">            ``True`` when successful, ``False`` when failed.</span>
+<span class="sd">        bool, list</span>
+<span class="sd">            List of objects created or ``True`` when successful, ``False`` when failed.</span>
 
 <span class="sd">        References</span>
 <span class="sd">        ----------</span>
 
 <span class="sd">        &gt;&gt;&gt; oEditor.Mirror</span>
+<span class="sd">        &gt;&gt;&gt; oEditor.DuplicateMirror</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+
         <span class="n">selections</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">convert_to_selections</span><span class="p">(</span><span class="n">objid</span><span class="p">)</span>
         <span class="n">Xpos</span><span class="p">,</span> <span class="n">Ypos</span><span class="p">,</span> <span class="n">Zpos</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pos_with_arg</span><span class="p">(</span><span class="n">position</span><span class="p">)</span>
         <span class="n">Xnorm</span><span class="p">,</span> <span class="n">Ynorm</span><span class="p">,</span> <span class="n">Znorm</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pos_with_arg</span><span class="p">(</span><span class="n">vector</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">duplicate</span><span class="p">:</span>
+            <span class="n">vArg1</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;NAME:Selections&quot;</span><span class="p">,</span> <span class="s2">&quot;Selections:=&quot;</span><span class="p">,</span> <span class="n">selections</span><span class="p">,</span> <span class="s2">&quot;NewPartsModelFlag:=&quot;</span><span class="p">,</span> <span class="s2">&quot;Model&quot;</span><span class="p">]</span>
+            <span class="n">vArg2</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;NAME:DuplicateToMirrorParameters&quot;</span><span class="p">]</span>
+            <span class="n">vArg2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;DuplicateMirrorBaseX:=&quot;</span><span class="p">),</span> <span class="n">vArg2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Xpos</span><span class="p">)</span>
+            <span class="n">vArg2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;DuplicateMirrorBaseY:=&quot;</span><span class="p">),</span> <span class="n">vArg2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Ypos</span><span class="p">)</span>
+            <span class="n">vArg2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;DuplicateMirrorBaseZ:=&quot;</span><span class="p">),</span> <span class="n">vArg2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Zpos</span><span class="p">)</span>
+            <span class="n">vArg2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;DuplicateMirrorNormalX:=&quot;</span><span class="p">),</span> <span class="n">vArg2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Xnorm</span><span class="p">)</span>
+            <span class="n">vArg2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;DuplicateMirrorNormalY:=&quot;</span><span class="p">),</span> <span class="n">vArg2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Ynorm</span><span class="p">)</span>
+            <span class="n">vArg2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;DuplicateMirrorNormalZ:=&quot;</span><span class="p">),</span> <span class="n">vArg2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Znorm</span><span class="p">)</span>
+            <span class="n">vArg3</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;NAME:Options&quot;</span><span class="p">,</span> <span class="s2">&quot;DuplicateAssignments:=&quot;</span><span class="p">,</span> <span class="n">duplicate_assignment</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">is_3d_comp</span><span class="p">:</span>
+                <span class="n">orig_3d</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">user_defined_component_names</span><span class="p">]</span>
+            <span class="n">added_objs</span> <span class="o">=</span> <span class="n">_retry_ntimes</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">oeditor</span><span class="o">.</span><span class="n">DuplicateMirror</span><span class="p">,</span> <span class="n">vArg1</span><span class="p">,</span> <span class="n">vArg2</span><span class="p">,</span> <span class="n">vArg3</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">add_new_objects</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">is_3d_comp</span><span class="p">:</span>
+                <span class="n">added_3d_comps</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">user_defined_component_names</span> <span class="k">if</span> <span class="n">i</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">orig_3d</span><span class="p">]</span>
+                <span class="k">if</span> <span class="n">added_3d_comps</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Found 3D Components Duplication&quot;</span><span class="p">)</span>
+                    <span class="k">return</span> <span class="n">added_3d_comps</span>
+            <span class="k">return</span> <span class="n">added_objs</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">vArg1</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;NAME:Selections&quot;</span><span class="p">,</span> <span class="s2">&quot;Selections:=&quot;</span><span class="p">,</span> <span class="n">selections</span><span class="p">,</span> <span class="s2">&quot;NewPartsModelFlag:=&quot;</span><span class="p">,</span> <span class="s2">&quot;Model&quot;</span><span class="p">]</span>
+            <span class="n">vArg2</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;NAME:MirrorParameters&quot;</span><span class="p">]</span>
+            <span class="n">vArg2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;MirrorBaseX:=&quot;</span><span class="p">),</span> <span class="n">vArg2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Xpos</span><span class="p">)</span>
+            <span class="n">vArg2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;MirrorBaseY:=&quot;</span><span class="p">),</span> <span class="n">vArg2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Ypos</span><span class="p">)</span>
+            <span class="n">vArg2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;MirrorBaseZ:=&quot;</span><span class="p">),</span> <span class="n">vArg2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Zpos</span><span class="p">)</span>
+            <span class="n">vArg2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;MirrorNormalX:=&quot;</span><span class="p">),</span> <span class="n">vArg2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Xnorm</span><span class="p">)</span>
+            <span class="n">vArg2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;MirrorNormalY:=&quot;</span><span class="p">),</span> <span class="n">vArg2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Ynorm</span><span class="p">)</span>
+            <span class="n">vArg2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;MirrorNormalZ:=&quot;</span><span class="p">),</span> <span class="n">vArg2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Znorm</span><span class="p">)</span>
 
-        <span class="n">vArg1</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;NAME:Selections&quot;</span><span class="p">,</span> <span class="s2">&quot;Selections:=&quot;</span><span class="p">,</span> <span class="n">selections</span><span class="p">,</span> <span class="s2">&quot;NewPartsModelFlag:=&quot;</span><span class="p">,</span> <span class="s2">&quot;Model&quot;</span><span class="p">]</span>
-        <span class="n">vArg2</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;NAME:MirrorParameters&quot;</span><span class="p">]</span>
-        <span class="n">vArg2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;MirrorBaseX:=&quot;</span><span class="p">),</span> <span class="n">vArg2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Xpos</span><span class="p">)</span>
-        <span class="n">vArg2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;MirrorBaseY:=&quot;</span><span class="p">),</span> <span class="n">vArg2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Ypos</span><span class="p">)</span>
-        <span class="n">vArg2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;MirrorBaseZ:=&quot;</span><span class="p">),</span> <span class="n">vArg2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Zpos</span><span class="p">)</span>
-        <span class="n">vArg2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;MirrorNormalX:=&quot;</span><span class="p">),</span> <span class="n">vArg2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Xnorm</span><span class="p">)</span>
-        <span class="n">vArg2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;MirrorNormalY:=&quot;</span><span class="p">),</span> <span class="n">vArg2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Ynorm</span><span class="p">)</span>
-        <span class="n">vArg2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;MirrorNormalZ:=&quot;</span><span class="p">),</span> <span class="n">vArg2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Znorm</span><span class="p">)</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">oeditor</span><span class="o">.</span><span class="n">Mirror</span><span class="p">(</span><span class="n">vArg1</span><span class="p">,</span> <span class="n">vArg2</span><span class="p">)</span>
-
-        <span class="k">return</span> <span class="kc">True</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">oeditor</span><span class="o">.</span><span class="n">Mirror</span><span class="p">(</span><span class="n">vArg1</span><span class="p">,</span> <span class="n">vArg2</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">True</span>
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">move</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">objid</span><span class="p">,</span> <span class="n">vector</span><span class="p">):</span>
@@ -5044,8 +5053,8 @@ function checkPageExistsAndRedirect(event) {
             <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_units</span>
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
-    <span class="k">def</span> <span class="nf">break_spaceclaim_connection</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Break the connection with SpaceClaim.</span>
+    <span class="k">def</span> <span class="nf">break_spaceclaim_connection</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># TODO: Need to change this name. Don&#39;t use &quot;break&quot;.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Disconnect from the running SpaceClaim instance.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>

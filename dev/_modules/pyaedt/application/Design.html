@@ -488,6 +488,8 @@ function checkPageExistsAndRedirect(event) {
             <span class="n">t</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">load_aedt_thread</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">project_name</span><span class="p">,))</span>
             <span class="n">t</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_init_variables</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">last_run_log</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">last_run_job</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_design_dictionary</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="c1"># Get Desktop from global Desktop Environment</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_project_dictionary</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">()</span>

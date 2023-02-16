@@ -331,16 +331,15 @@ function checkPageExistsAndRedirect(event) {
 <span class="kn">from</span> <span class="nn">pyaedt</span> <span class="kn">import</span> <span class="n">Hfss</span>
 <span class="kn">from</span> <span class="nn">pyaedt.generic.constants</span> <span class="kn">import</span> <span class="n">AEDT_UNITS</span>
 <span class="kn">from</span> <span class="nn">pyaedt.generic.DataHandlers</span> <span class="kn">import</span> <span class="n">_dict2arg</span>
-<span class="kn">from</span> <span class="nn">pyaedt.generic.DataHandlers</span> <span class="kn">import</span> <span class="n">_tuple2dict</span>
 <span class="kn">from</span> <span class="nn">pyaedt.generic.general_methods</span> <span class="kn">import</span> <span class="n">PropsManager</span>
 <span class="kn">from</span> <span class="nn">pyaedt.generic.general_methods</span> <span class="kn">import</span> <span class="n">generate_unique_name</span>
 <span class="kn">from</span> <span class="nn">pyaedt.generic.general_methods</span> <span class="kn">import</span> <span class="n">pyaedt_function_handler</span>
-<span class="kn">from</span> <span class="nn">pyaedt.modules.SetupTemplates</span> <span class="kn">import</span> <span class="n">SetupKeys</span>
-<span class="kn">from</span> <span class="nn">pyaedt.modules.SetupTemplates</span> <span class="kn">import</span> <span class="n">SetupProps</span>
-<span class="kn">from</span> <span class="nn">pyaedt.modules.SetupTemplates</span> <span class="kn">import</span> <span class="n">SweepHFSS</span>
-<span class="kn">from</span> <span class="nn">pyaedt.modules.SetupTemplates</span> <span class="kn">import</span> <span class="n">SweepHFSS3DLayout</span>
-<span class="kn">from</span> <span class="nn">pyaedt.modules.SetupTemplates</span> <span class="kn">import</span> <span class="n">SweepMatrix</span>
-<span class="kn">from</span> <span class="nn">pyaedt.modules.SetupTemplates</span> <span class="kn">import</span> <span class="n">identify_setup</span>
+<span class="kn">from</span> <span class="nn">pyaedt.modules.SolveSweeps</span> <span class="kn">import</span> <span class="n">SetupKeys</span>
+<span class="kn">from</span> <span class="nn">pyaedt.modules.SolveSweeps</span> <span class="kn">import</span> <span class="n">SetupProps</span>
+<span class="kn">from</span> <span class="nn">pyaedt.modules.SolveSweeps</span> <span class="kn">import</span> <span class="n">SweepHFSS</span>
+<span class="kn">from</span> <span class="nn">pyaedt.modules.SolveSweeps</span> <span class="kn">import</span> <span class="n">SweepHFSS3DLayout</span>
+<span class="kn">from</span> <span class="nn">pyaedt.modules.SolveSweeps</span> <span class="kn">import</span> <span class="n">SweepMatrix</span>
+<span class="kn">from</span> <span class="nn">pyaedt.modules.SolveSweeps</span> <span class="kn">import</span> <span class="n">identify_setup</span>
 
 
 <span class="k">class</span> <span class="nc">CommonSetup</span><span class="p">(</span><span class="n">PropsManager</span><span class="p">,</span> <span class="nb">object</span><span class="p">):</span>
@@ -387,9 +386,9 @@ function checkPageExistsAndRedirect(event) {
     <span class="k">def</span> <span class="nf">_init_props</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">isnewsetup</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">isnewsetup</span><span class="p">:</span>
             <span class="n">setup_template</span> <span class="o">=</span> <span class="n">SetupKeys</span><span class="o">.</span><span class="n">SetupTemplates</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">setuptype</span><span class="p">]</span>
-            <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">setup_template</span><span class="p">:</span>
-                <span class="n">_tuple2dict</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">props</span><span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">props</span> <span class="o">=</span> <span class="n">SetupProps</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">props</span><span class="p">)</span>
+            <span class="c1"># for t in setup_template:</span>
+            <span class="c1">#    _tuple2dict(t, self.props)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">props</span> <span class="o">=</span> <span class="n">SetupProps</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">setup_template</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">try</span><span class="p">:</span>
                 <span class="n">setups_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">p_app</span><span class="o">.</span><span class="n">design_properties</span><span class="p">[</span><span class="s2">&quot;AnalysisSetup&quot;</span><span class="p">][</span><span class="s2">&quot;SolveSetups&quot;</span><span class="p">]</span>
@@ -881,7 +880,35 @@ function checkPageExistsAndRedirect(event) {
             <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
             <span class="k">return</span> <span class="kc">True</span>
         <span class="k">except</span><span class="p">:</span>
-            <span class="k">return</span> <span class="kc">False</span></div></div>
+            <span class="k">return</span> <span class="kc">False</span></div>
+
+<div class="viewcode-block" id="Setup.analyze"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.SolveSetup.Setup.analyze.html#pyaedt.modules.SolveSetup.Setup.analyze">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">analyze</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_cores</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">num_tasks</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">num_gpu</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">acf_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">use_auto_settings</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Analyze a design setup.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        num_cores : int, optional</span>
+<span class="sd">            Number of simulation cores. The default is ``None.``</span>
+<span class="sd">        num_tasks : int, optional</span>
+<span class="sd">            Number of simulation tasks. The default is ``None.``</span>
+<span class="sd">        num_gpu : int, optional</span>
+<span class="sd">            Number of simulation graphics processing units. The default is ``None.``</span>
+<span class="sd">        acf_file : str, optional</span>
+<span class="sd">            Full path to custom ACF file. The default is ``None.``</span>
+<span class="sd">        use_auto_settings : bool, optional</span>
+<span class="sd">            Whether to use automatic settings in tasks or cores. This parameter</span>
+<span class="sd">            is not supported by all setup types.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        bool</span>
+<span class="sd">           ``True`` when successful, ``False`` when failed.</span>
+
+<span class="sd">        References</span>
+<span class="sd">        ----------</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">analyze_setup</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">num_cores</span><span class="p">,</span> <span class="n">num_tasks</span><span class="p">,</span> <span class="n">num_gpu</span><span class="p">,</span> <span class="n">acf_file</span><span class="p">,</span> <span class="n">use_auto_settings</span><span class="p">)</span></div></div>
 
 
 <div class="viewcode-block" id="SetupCircuit"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.SolveSetup.SetupCircuit.html#pyaedt.modules.SolveSetup.SetupCircuit">[docs]</a><span class="k">class</span> <span class="nc">SetupCircuit</span><span class="p">(</span><span class="n">CommonSetup</span><span class="p">):</span>
@@ -909,9 +936,9 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">props</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="k">if</span> <span class="n">isnewsetup</span><span class="p">:</span>
             <span class="n">setup_template</span> <span class="o">=</span> <span class="n">SetupKeys</span><span class="o">.</span><span class="n">SetupTemplates</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">setuptype</span><span class="p">]</span>
-            <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">setup_template</span><span class="p">:</span>
-                <span class="n">_tuple2dict</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">props</span><span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">props</span> <span class="o">=</span> <span class="n">SetupProps</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">props</span><span class="p">)</span>
+            <span class="c1"># for t in setup_template:</span>
+            <span class="c1">#    _tuple2dict(t, props)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">props</span> <span class="o">=</span> <span class="n">SetupProps</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">setup_template</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">props</span> <span class="o">=</span> <span class="n">SetupProps</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">OrderedDict</span><span class="p">())</span>
             <span class="k">try</span><span class="p">:</span>
@@ -1438,9 +1465,9 @@ function checkPageExistsAndRedirect(event) {
     <span class="k">def</span> <span class="nf">_init_props</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">isnewsetup</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">isnewsetup</span><span class="p">:</span>
             <span class="n">setup_template</span> <span class="o">=</span> <span class="n">SetupKeys</span><span class="o">.</span><span class="n">SetupTemplates</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">setuptype</span><span class="p">]</span>
-            <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">setup_template</span><span class="p">:</span>
-                <span class="n">_tuple2dict</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">props</span><span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">props</span> <span class="o">=</span> <span class="n">SetupProps</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">props</span><span class="p">)</span>
+            <span class="c1"># for t in setup_template:</span>
+            <span class="c1">#    _tuple2dict(t, self.props)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">props</span> <span class="o">=</span> <span class="n">SetupProps</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">setup_template</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">try</span><span class="p">:</span>
                 <span class="n">setups_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">design_properties</span><span class="p">[</span><span class="s2">&quot;Setup&quot;</span><span class="p">][</span><span class="s2">&quot;Data&quot;</span><span class="p">]</span>
@@ -1779,7 +1806,7 @@ function checkPageExistsAndRedirect(event) {
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        :class:`pyaedt.modules.SetupTemplates.SweepHFSS3DLayout`</span>
+<span class="sd">        :class:`pyaedt.modules.SolveSweeps.SweepHFSS3DLayout`</span>
 <span class="sd">            Sweep object.</span>
 
 <span class="sd">        References</span>
@@ -1890,13 +1917,13 @@ function checkPageExistsAndRedirect(event) {
         <span class="bp">self</span><span class="o">.</span><span class="n">auto_update</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="SetupHFSS.create_linear_count_sweep"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.SolveSetup.SetupHFSS.create_linear_count_sweep.html#pyaedt.modules.SolveSetup.SetupHFSS.create_linear_count_sweep">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
-    <span class="k">def</span> <span class="nf">create_linear_count_sweep</span><span class="p">(</span>
+<div class="viewcode-block" id="SetupHFSS.create_frequency_sweep"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.SolveSetup.SetupHFSS.create_frequency_sweep.html#pyaedt.modules.SolveSetup.SetupHFSS.create_frequency_sweep">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">create_frequency_sweep</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">unit</span><span class="p">,</span>
         <span class="n">freqstart</span><span class="p">,</span>
         <span class="n">freqstop</span><span class="p">,</span>
-        <span class="n">num_of_freq_points</span><span class="p">,</span>
+        <span class="n">num_of_freq_points</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">sweepname</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">save_fields</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
         <span class="n">save_rad_fields</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
@@ -1915,7 +1942,9 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        freqstop : float</span>
 <span class="sd">            Stopping frequency of the sweep.</span>
 <span class="sd">        num_of_freq_points : int</span>
-<span class="sd">            Number of frequency points in the range.</span>
+<span class="sd">            Number of frequency points in the range. The default is ``401`` for</span>
+<span class="sd">            a sweep type of ``&quot;Interpolating&quot;`` or ``&quot;Fast&quot;``. The default is ``5`` for a sweep</span>
+<span class="sd">            type of ``&quot;Discrete&quot;``.</span>
 <span class="sd">        sweepname : str, optional</span>
 <span class="sd">            Name of the sweep. The default is ``None``.</span>
 <span class="sd">        save_fields : bool, optional</span>
@@ -1934,7 +1963,7 @@ function checkPageExistsAndRedirect(event) {
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        :class:`pyaedt.modules.SetupTemplates.SweepHFSS` or bool</span>
+<span class="sd">        :class:`pyaedt.modules.SolveSweeps.SweepHFSS` or bool</span>
 <span class="sd">            Sweep object if successful, ``False`` otherwise.</span>
 
 <span class="sd">        References</span>
@@ -1957,7 +1986,16 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        &lt;class &#39;pyaedt.modules.SetupTemplates.SweepHFSS&#39;&gt;</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="n">sweep_type</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;Discrete&quot;</span><span class="p">,</span> <span class="s2">&quot;Interpolating&quot;</span><span class="p">,</span> <span class="s2">&quot;Fast&quot;</span><span class="p">]:</span>
+
+        <span class="c1"># Set default values for num_of_freq_points if a value was not passed. Also,</span>
+        <span class="c1"># check that sweep_type is valid.</span>
+        <span class="k">if</span> <span class="n">sweep_type</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;Interpolating&quot;</span><span class="p">,</span> <span class="s2">&quot;Fast&quot;</span><span class="p">]:</span>
+            <span class="k">if</span> <span class="n">num_of_freq_points</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">num_of_freq_points</span> <span class="o">=</span> <span class="mi">401</span>
+        <span class="k">elif</span> <span class="n">sweep_type</span> <span class="o">==</span> <span class="s2">&quot;Discrete&quot;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">num_of_freq_points</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">num_of_freq_points</span> <span class="o">=</span> <span class="mi">5</span>
+        <span class="k">else</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="s2">&quot;Invalid in `sweep_type`. It has to be either &#39;Discrete&#39;, &#39;Interpolating&#39;, or &#39;Fast&#39;&quot;</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">sweepname</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -1966,7 +2004,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="k">if</span> <span class="n">sweepname</span> <span class="ow">in</span> <span class="p">[</span><span class="n">sweep</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">sweep</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">sweeps</span><span class="p">]:</span>
             <span class="n">oldname</span> <span class="o">=</span> <span class="n">sweepname</span>
             <span class="n">sweepname</span> <span class="o">=</span> <span class="n">generate_unique_name</span><span class="p">(</span><span class="n">oldname</span><span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Sweep </span><span class="si">%s</span><span class="s2"> is already present. Sweep has been renamed in </span><span class="si">%s</span><span class="s2">.&quot;</span><span class="p">,</span> <span class="n">oldname</span><span class="p">,</span> <span class="n">sweepname</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Sweep </span><span class="si">%s</span><span class="s2"> is already present. Sweep has been renamed in </span><span class="si">%s</span><span class="s2">.&quot;</span><span class="p">,</span> <span class="n">oldname</span><span class="p">,</span> <span class="n">sweepname</span><span class="p">)</span>
         <span class="n">sweepdata</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_sweep</span><span class="p">(</span><span class="n">sweepname</span><span class="p">,</span> <span class="n">sweep_type</span><span class="p">)</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">sweepdata</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">False</span>
@@ -1983,7 +2021,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">sweepdata</span><span class="o">.</span><span class="n">props</span><span class="p">[</span><span class="s2">&quot;SaveFields&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">save_fields</span>
         <span class="n">sweepdata</span><span class="o">.</span><span class="n">props</span><span class="p">[</span><span class="s2">&quot;SaveRadFields&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">save_rad_fields</span>
         <span class="n">sweepdata</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Linear count sweep </span><span class="si">{}</span><span class="s2"> has been correctly created&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sweepname</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Linear count sweep </span><span class="si">{}</span><span class="s2"> has been correctly created&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sweepname</span><span class="p">))</span>
         <span class="k">return</span> <span class="n">sweepdata</span></div>
 
 <div class="viewcode-block" id="SetupHFSS.create_linear_step_sweep"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.SolveSetup.SetupHFSS.create_linear_step_sweep.html#pyaedt.modules.SolveSetup.SetupHFSS.create_linear_step_sweep">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
@@ -2025,7 +2063,7 @@ function checkPageExistsAndRedirect(event) {
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        :class:`pyaedt.modules.SetupTemplates.SweepHFSS` or bool</span>
+<span class="sd">        :class:`pyaedt.modules.SolveSweeps.SweepHFSS` or bool</span>
 <span class="sd">            Sweep object if successful, ``False`` otherwise.</span>
 
 <span class="sd">        References</span>
@@ -2053,15 +2091,15 @@ function checkPageExistsAndRedirect(event) {
         <span class="k">if</span> <span class="n">sweepname</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">sweepname</span> <span class="o">=</span> <span class="n">generate_unique_name</span><span class="p">(</span><span class="s2">&quot;Sweep&quot;</span><span class="p">)</span>
 
-        <span class="k">if</span> <span class="n">setupname</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">setup_names</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">setupname</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">setup_names</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">False</span>
-        <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">setups</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">setups</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">s</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="n">setupname</span><span class="p">:</span>
                 <span class="n">setupdata</span> <span class="o">=</span> <span class="n">s</span>
                 <span class="k">if</span> <span class="n">sweepname</span> <span class="ow">in</span> <span class="p">[</span><span class="n">sweep</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">sweep</span> <span class="ow">in</span> <span class="n">setupdata</span><span class="o">.</span><span class="n">sweeps</span><span class="p">]:</span>
                     <span class="n">oldname</span> <span class="o">=</span> <span class="n">sweepname</span>
                     <span class="n">sweepname</span> <span class="o">=</span> <span class="n">generate_unique_name</span><span class="p">(</span><span class="n">oldname</span><span class="p">)</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
                         <span class="s2">&quot;Sweep </span><span class="si">%s</span><span class="s2"> is already present. Sweep has been renamed in </span><span class="si">%s</span><span class="s2">.&quot;</span><span class="p">,</span> <span class="n">oldname</span><span class="p">,</span> <span class="n">sweepname</span>
                     <span class="p">)</span>
                 <span class="n">sweepdata</span> <span class="o">=</span> <span class="n">setupdata</span><span class="o">.</span><span class="n">add_sweep</span><span class="p">(</span><span class="n">sweepname</span><span class="p">,</span> <span class="n">sweep_type</span><span class="p">)</span>
@@ -2081,7 +2119,7 @@ function checkPageExistsAndRedirect(event) {
                     <span class="n">sweepdata</span><span class="o">.</span><span class="n">props</span><span class="p">[</span><span class="s2">&quot;InterpMinSolns&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
                     <span class="n">sweepdata</span><span class="o">.</span><span class="n">props</span><span class="p">[</span><span class="s2">&quot;InterpMinSubranges&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
                 <span class="n">sweepdata</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Linear step sweep </span><span class="si">{}</span><span class="s2"> has been correctly created&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sweepname</span><span class="p">))</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Linear step sweep </span><span class="si">{}</span><span class="s2"> has been correctly created&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sweepname</span><span class="p">))</span>
                 <span class="k">return</span> <span class="n">sweepdata</span>
         <span class="k">return</span> <span class="kc">False</span></div>
 
@@ -2118,7 +2156,7 @@ function checkPageExistsAndRedirect(event) {
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        :class:`pyaedt.modules.SetupTemplates.SweepHFSS` or bool</span>
+<span class="sd">        :class:`pyaedt.modules.SolveSweeps.SweepHFSS` or bool</span>
 <span class="sd">            Sweep object if successful, ``False`` otherwise.</span>
 
 <span class="sd">        References</span>
@@ -2164,15 +2202,15 @@ function checkPageExistsAndRedirect(event) {
             <span class="k">if</span> <span class="n">add_subranges</span><span class="p">:</span>
                 <span class="n">save_single_field</span> <span class="o">=</span> <span class="p">[</span><span class="n">save0</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">freq</span><span class="p">)</span>
 
-        <span class="k">if</span> <span class="n">setupname</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">setup_names</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">setupname</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">setup_names</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">False</span>
-        <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">setups</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">setups</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">s</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="n">setupname</span><span class="p">:</span>
                 <span class="n">setupdata</span> <span class="o">=</span> <span class="n">s</span>
                 <span class="k">if</span> <span class="n">sweepname</span> <span class="ow">in</span> <span class="p">[</span><span class="n">sweep</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">sweep</span> <span class="ow">in</span> <span class="n">setupdata</span><span class="o">.</span><span class="n">sweeps</span><span class="p">]:</span>
                     <span class="n">oldname</span> <span class="o">=</span> <span class="n">sweepname</span>
                     <span class="n">sweepname</span> <span class="o">=</span> <span class="n">generate_unique_name</span><span class="p">(</span><span class="n">oldname</span><span class="p">)</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
                         <span class="s2">&quot;Sweep </span><span class="si">%s</span><span class="s2"> is already present. Sweep has been renamed in </span><span class="si">%s</span><span class="s2">.&quot;</span><span class="p">,</span> <span class="n">oldname</span><span class="p">,</span> <span class="n">sweepname</span>
                     <span class="p">)</span>
                 <span class="n">sweepdata</span> <span class="o">=</span> <span class="n">setupdata</span><span class="o">.</span><span class="n">add_sweep</span><span class="p">(</span><span class="n">sweepname</span><span class="p">,</span> <span class="s2">&quot;Discrete&quot;</span><span class="p">)</span>
@@ -2187,7 +2225,7 @@ function checkPageExistsAndRedirect(event) {
                     <span class="k">for</span> <span class="n">f</span><span class="p">,</span> <span class="n">s</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">freq</span><span class="p">,</span> <span class="n">save_single_field</span><span class="p">):</span>
                         <span class="n">sweepdata</span><span class="o">.</span><span class="n">add_subrange</span><span class="p">(</span><span class="n">rangetype</span><span class="o">=</span><span class="s2">&quot;SinglePoints&quot;</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="n">f</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="n">unit</span><span class="p">,</span> <span class="n">save_single_fields</span><span class="o">=</span><span class="n">s</span><span class="p">)</span>
                 <span class="n">sweepdata</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Single point sweep </span><span class="si">{}</span><span class="s2"> has been correctly created&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sweepname</span><span class="p">))</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Single point sweep </span><span class="si">{}</span><span class="s2"> has been correctly created&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sweepname</span><span class="p">))</span>
                 <span class="k">return</span> <span class="n">sweepdata</span>
         <span class="k">return</span> <span class="kc">False</span></div>
 
@@ -2204,7 +2242,7 @@ function checkPageExistsAndRedirect(event) {
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        :class:`pyaedt.modules.SetupTemplates.SweepHFSS` or :class:`pyaedt.modules.SetupTemplates.SweepMatrix`</span>
+<span class="sd">        :class:`pyaedt.modules.SolveSweeps.SweepHFSS` or :class:`pyaedt.modules.SolveSweeps.SweepMatrix`</span>
 <span class="sd">            Sweep object.</span>
 
 <span class="sd">        References</span>

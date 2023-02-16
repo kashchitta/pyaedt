@@ -1712,7 +1712,8 @@ function checkPageExistsAndRedirect(event) {
 <dl class="py method">
 <dt class="sig sig-object py" id="pyaedt.icepak.Icepak.value_with_units">
 <span class="sig-prename descclassname"><span class="pre">Icepak.</span></span><span class="sig-name descname"><span class="pre">value_with_units</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">units</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyaedt.icepak.Icepak.value_with_units" title="Permalink to this definition">#</a></dt>
-<dd><p>Combine a number and a string containing the unit in a single string e.g. “1.2mm”.
+<dd><p>Combine a number and a string containing the modeler length unit in a single
+string e.g. “1.2mm”.
 If the units are not specified, the model units are used.
 If value is a string (like containing an expression), it is returned as is.</p>
 <dl class="field-list">
@@ -1720,7 +1721,16 @@ If value is a string (like containing an expression), it is returned as is.</p>
 <dd class="field-odd"><dl>
 <dt><strong>value</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/functions.html#float" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">float</span></code></a>, <a class="reference external" href="https://docs.python.org/dev/library/functions.html#int" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">int</span></code></a>, <a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#str" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a></span></dt><dd><p>Value of the number or string containing an expression.</p>
 </dd>
-<dt><strong>units</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#str" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Units to combine with value.</p>
+<dt><strong>units</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#str" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Units to combine with value. Valid values are defined in the native API documentation.
+Some common examples are:
+“in”: inches
+“cm”: centimeter
+“um”:  micron
+“mm”: millimeter
+“meter”: meters
+“mil”: 0.001 inches (mils)
+“km”: kilometer
+“ft”: feet</p>
 </dd>
 </dl>
 </dd>

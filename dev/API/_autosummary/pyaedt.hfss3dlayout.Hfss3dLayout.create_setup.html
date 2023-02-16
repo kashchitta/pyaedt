@@ -1601,7 +1601,7 @@ function checkPageExistsAndRedirect(event) {
 <h1>create_setup<a class="headerlink" href="#create-setup" title="Permalink to this heading">#</a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="pyaedt.hfss3dlayout.Hfss3dLayout.create_setup">
-<span class="sig-prename descclassname"><span class="pre">Hfss3dLayout.</span></span><span class="sig-name descname"><span class="pre">create_setup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">setupname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'MySetupAuto'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">setuptype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">props</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{}</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyaedt.hfss3dlayout.Hfss3dLayout.create_setup" title="Permalink to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">Hfss3dLayout.</span></span><span class="sig-name descname"><span class="pre">create_setup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">setupname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'MySetupAuto'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">setuptype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyaedt.hfss3dlayout.Hfss3dLayout.create_setup" title="Permalink to this definition">#</a></dt>
 <dd><p>Create a setup.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1611,7 +1611,9 @@ function checkPageExistsAndRedirect(event) {
 <dt><strong>setuptype</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#str" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Type of the setup. The default is <code class="docutils literal notranslate"><span class="pre">None</span></code>, in which case
 the default type is applied.</p>
 </dd>
-<dt><strong>props</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#dict" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">dict</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Dictionary of properties with values. The default is <code class="docutils literal notranslate"><span class="pre">{}</span></code>.</p>
+<dt><strong>**kwargs</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#dict" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">dict</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Extra arguments for setup settings.
+Available keys depend on the setup chosen. For more
+information, see <a class="reference internal" href="../SetupTemplates3DLayout.html"><span class="doc">HFSS 3D Layout and arguments</span></a>.</p>
 </dd>
 </dl>
 </dd>
@@ -1623,6 +1625,12 @@ the default type is applied.</p>
 </dl>
 <p class="rubric">References</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">oModule</span><span class="o">.</span><span class="n">Add</span>
+</pre></div>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyaedt</span> <span class="kn">import</span> <span class="n">Hfss3dLayout</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">app</span> <span class="o">=</span> <span class="n">Hfss3dLayout</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">app</span><span class="o">.</span><span class="n">create_setup</span><span class="p">(</span><span class="n">setupname</span><span class="o">=</span><span class="s2">&quot;Setup1&quot;</span><span class="p">,</span> <span class="n">MeshSizeFactor</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">SingleFrequencyDataList__AdaptiveFrequency</span><span class="o">=</span><span class="s2">&quot;5GHZ&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>

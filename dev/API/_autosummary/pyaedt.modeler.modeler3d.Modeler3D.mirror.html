@@ -1441,7 +1441,7 @@ function checkPageExistsAndRedirect(event) {
 <h1>mirror<a class="headerlink" href="#mirror" title="Permalink to this heading">#</a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="pyaedt.modeler.modeler3d.Modeler3D.mirror">
-<span class="sig-prename descclassname"><span class="pre">Modeler3D.</span></span><span class="sig-name descname"><span class="pre">mirror</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">objid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">position</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vector</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyaedt.modeler.modeler3d.Modeler3D.mirror" title="Permalink to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">Modeler3D.</span></span><span class="sig-name descname"><span class="pre">mirror</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">objid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">position</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vector</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">duplicate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_3d_comp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">duplicate_assignment</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyaedt.modeler.modeler3d.Modeler3D.mirror" title="Permalink to this definition">#</a></dt>
 <dd><p>Mirror a selection.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1449,22 +1449,30 @@ function checkPageExistsAndRedirect(event) {
 <dt><strong>objid</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#str" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/dev/library/functions.html#int" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">int</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">or</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">Object3d</span></code></span></dt><dd><p>Name or ID of the object.</p>
 </dd>
 <dt><strong>position</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/functions.html#int" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">int</span></code></a> or <a class="reference external" href="https://docs.python.org/dev/library/functions.html#float" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">float</span></code></a></span></dt><dd><p>List of the <code class="docutils literal notranslate"><span class="pre">[x,</span> <span class="pre">y,</span> <span class="pre">z]</span></code> coordinates or the
-Application.Position object for the selection.</p>
+<code class="docutils literal notranslate"><span class="pre">Application.Position</span></code> object for the selection.</p>
+</dd>
+<dt><strong>duplicate</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#bltin-boolean-values" title="(in Python v3.12)"><span class="xref std std-ref">bool</span></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Whether if duplicate the object before mirror or not. Default is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+</dd>
+<dt><strong>is_3d_comp</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#bltin-boolean-values" title="(in Python v3.12)"><span class="xref std std-ref">bool</span></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Whether the component is 3D. The default is <code class="docutils literal notranslate"><span class="pre">False</span></code>. If <code class="docutils literal notranslate"><span class="pre">True</span></code>, the method
+tries to return the duplicated list of 3D components.</p>
 </dd>
 <dt><strong>vector</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/functions.html#float" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">float</span></code></a></span></dt><dd><p>List of the <code class="docutils literal notranslate"><span class="pre">[x1,</span> <span class="pre">y1,</span> <span class="pre">z1]</span></code> coordinates or
-the Application.Position object for the vector.</p>
+the <code class="docutils literal notranslate"><span class="pre">Application.Position</span></code> object for the vector.</p>
+</dd>
+<dt><strong>duplicate_assignment</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#bltin-boolean-values" title="(in Python v3.12)"><span class="xref std std-ref">bool</span></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Whether to duplicate selection assignments. The default is <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#bltin-boolean-values" title="(in Python v3.12)"><span class="xref std std-ref">bool</span></a></dt><dd><p><code class="docutils literal notranslate"><span class="pre">True</span></code> when successful, <code class="docutils literal notranslate"><span class="pre">False</span></code> when failed.</p>
+<dt><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#bltin-boolean-values" title="(in Python v3.12)"><span class="xref std std-ref">bool</span></a>, <a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#list" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">list</span></code></a></dt><dd><p>List of objects created or <code class="docutils literal notranslate"><span class="pre">True</span></code> when successful, <code class="docutils literal notranslate"><span class="pre">False</span></code> when failed.</p>
 </dd>
 </dl>
 </dd>
 </dl>
 <p class="rubric">References</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">oEditor</span><span class="o">.</span><span class="n">Mirror</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">oEditor</span><span class="o">.</span><span class="n">DuplicateMirror</span>
 </pre></div>
 </div>
 </dd></dl>

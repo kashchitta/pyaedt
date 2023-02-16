@@ -324,11 +324,11 @@ function checkPageExistsAndRedirect(event) {
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">shutil</span>
 <span class="kn">import</span> <span class="nn">tempfile</span>
-<span class="kn">import</span> <span class="nn">threading</span>
 <span class="kn">import</span> <span class="nn">time</span>
 <span class="kn">import</span> <span class="nn">warnings</span>
 <span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">OrderedDict</span>
 
+<span class="kn">from</span> <span class="nn">pyaedt</span> <span class="kn">import</span> <span class="n">is_ironpython</span>
 <span class="kn">from</span> <span class="nn">pyaedt</span> <span class="kn">import</span> <span class="n">settings</span>
 <span class="kn">from</span> <span class="nn">pyaedt.application.Design</span> <span class="kn">import</span> <span class="n">Design</span>
 <span class="kn">from</span> <span class="nn">pyaedt.application.JobManager</span> <span class="kn">import</span> <span class="n">update_hpc_option</span>
@@ -353,12 +353,17 @@ function checkPageExistsAndRedirect(event) {
 <span class="kn">from</span> <span class="nn">pyaedt.modules.DesignXPloration</span> <span class="kn">import</span> <span class="n">OptimizationSetups</span>
 <span class="kn">from</span> <span class="nn">pyaedt.modules.DesignXPloration</span> <span class="kn">import</span> <span class="n">ParametricSetups</span>
 <span class="kn">from</span> <span class="nn">pyaedt.modules.MaterialLib</span> <span class="kn">import</span> <span class="n">Materials</span>
-<span class="kn">from</span> <span class="nn">pyaedt.modules.SetupTemplates</span> <span class="kn">import</span> <span class="n">SetupProps</span>
 <span class="kn">from</span> <span class="nn">pyaedt.modules.SolveSetup</span> <span class="kn">import</span> <span class="n">Setup</span>
 <span class="kn">from</span> <span class="nn">pyaedt.modules.SolveSetup</span> <span class="kn">import</span> <span class="n">SetupHFSS</span>
 <span class="kn">from</span> <span class="nn">pyaedt.modules.SolveSetup</span> <span class="kn">import</span> <span class="n">SetupHFSSAuto</span>
 <span class="kn">from</span> <span class="nn">pyaedt.modules.SolveSetup</span> <span class="kn">import</span> <span class="n">SetupMaxwell</span>
 <span class="kn">from</span> <span class="nn">pyaedt.modules.SolveSetup</span> <span class="kn">import</span> <span class="n">SetupSBR</span>
+<span class="kn">from</span> <span class="nn">pyaedt.modules.SolveSweeps</span> <span class="kn">import</span> <span class="n">SetupProps</span>
+
+<span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;posix&quot;</span> <span class="ow">and</span> <span class="n">is_ironpython</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">subprocessdotnet</span> <span class="k">as</span> <span class="nn">subprocess</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">subprocess</span>
 
 
 <span class="k">class</span> <span class="nc">Analysis</span><span class="p">(</span><span class="n">Design</span><span class="p">,</span> <span class="nb">object</span><span class="p">):</span>
@@ -1550,7 +1555,8 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        acf_file : str, optional</span>
 <span class="sd">            Full path to the custom ACF file.</span>
 <span class="sd">        use_auto_settings : bool, optional</span>
-<span class="sd">            Either if use or not auto settings in task/cores. It is not supported by all Setup.</span>
+<span class="sd">            Set ``True`` to use automatic settings for HPC. The option is only considered for setups</span>
+<span class="sd">            that support automatic settings.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1589,64 +1595,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="k">return</span> <span class="n">setup_name</span>
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
-    <span class="k">def</span> <span class="nf">create_setup</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">setupname</span><span class="o">=</span><span class="s2">&quot;MySetupAuto&quot;</span><span class="p">,</span> <span class="n">setuptype</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">props</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a setup.</span>
-
-<span class="sd">        Parameters</span>
-<span class="sd">        ----------</span>
-<span class="sd">        setupname : str, optional</span>
-<span class="sd">            Name of the setup. The default is ``&quot;MySetupAuto&quot;``.</span>
-<span class="sd">        setuptype : optional</span>
-<span class="sd">            Type of the setup. The default is ``None``, in which case</span>
-<span class="sd">            the default type is applied.</span>
-<span class="sd">        props : dict, optional</span>
-<span class="sd">            Dictionary of analysis properties appropriate for the design and analysis.</span>
-<span class="sd">            If no values are passed, default values are used.</span>
-
-<span class="sd">        Returns</span>
-<span class="sd">        -------</span>
-<span class="sd">        :class:`pyaedt.modules.SolveSetup.SetupHFSS` or :class:`pyaedt.modules.SolveSetup.SetupHFSSAuto`</span>
-
-<span class="sd">        References</span>
-<span class="sd">        ----------</span>
-
-<span class="sd">        &gt;&gt;&gt; oModule.InsertSetup</span>
-
-<span class="sd">        Examples</span>
-<span class="sd">        --------</span>
-<span class="sd">        Create a setup for SBR+ setup using advanced Doppler</span>
-<span class="sd">        processing for automotive radar.</span>
-
-<span class="sd">        &gt;&gt;&gt; import pyaedt</span>
-<span class="sd">        &gt;&gt;&gt; hfss = pyaedt.Hfss(solution_type=&#39;SBR+&#39;)</span>
-<span class="sd">        &gt;&gt;&gt; setup1 = hfss.create_setup(setupname=&#39;Setup1&#39;)</span>
-<span class="sd">        &gt;&gt;&gt; setup1.props[&quot;IsSbrRangeDoppler&quot;] = True</span>
-<span class="sd">        &gt;&gt;&gt; setup1.props[&quot;SbrRangeDopplerTimeVariable&quot;] = &quot;time_var&quot;</span>
-<span class="sd">        &gt;&gt;&gt; setup1.props[&quot;SbrRangeDopplerCenterFreq&quot;] = &quot;76.5GHz&quot;</span>
-<span class="sd">        &gt;&gt;&gt; setup1.props[&quot;SbrRangeDopplerRangeResolution&quot;] = &quot;0.15meter&quot;</span>
-<span class="sd">        &gt;&gt;&gt; setup1.props[&quot;SbrRangeDopplerRangePeriod&quot;] = &quot;100meter&quot;</span>
-<span class="sd">        &gt;&gt;&gt; setup1.props[&quot;SbrRangeDopplerVelocityResolution&quot;] = &quot;0.2m_per_sec&quot;</span>
-<span class="sd">        &gt;&gt;&gt; setup1.props[&quot;SbrRangeDopplerVelocityMin&quot;] = &quot;-30m_per_sec&quot;</span>
-<span class="sd">        &gt;&gt;&gt; setup1.props[&quot;SbrRangeDopplerVelocityMax&quot;] = &quot;30m_per_sec&quot;</span>
-<span class="sd">        &gt;&gt;&gt; setup1.props[&quot;DopplerRayDensityPerWavelength&quot;] = &quot;0.2&quot;</span>
-<span class="sd">        &gt;&gt;&gt; setup1.props[&quot;MaxNumberOfBounces&quot;] = &quot;3&quot;</span>
-<span class="sd">        ...</span>
-<span class="sd">        pyaedt INFO: Sweep was created correctly.</span>
-<span class="sd">        &gt;&gt;&gt; setup1.add_subrange(&quot;LinearStep&quot;, 1, 10, 0.1, clear=True)</span>
-<span class="sd">        &gt;&gt;&gt; setup1.add_subrange(&quot;LinearCount&quot;, 10, 20, 10, clear=False)</span>
-
-
-<span class="sd">        Create a setup for Q3d and add a sweep on it.</span>
-
-<span class="sd">        &gt;&gt;&gt; import pyaedt</span>
-<span class="sd">        &gt;&gt;&gt; q = pyaedt.Q3d()</span>
-<span class="sd">        &gt;&gt;&gt; setup1 = q.create_setup(props={&quot;AdaptiveFreq&quot;: &quot;100MHz&quot;})</span>
-<span class="sd">        &gt;&gt;&gt; sw1 = setup1.add_sweep()</span>
-<span class="sd">        &gt;&gt;&gt; sw1.props[&quot;RangeStart&quot;] = &quot;1MHz&quot;</span>
-<span class="sd">        &gt;&gt;&gt; sw1.props[&quot;RangeEnd&quot;] = &quot;100MHz&quot;</span>
-<span class="sd">        &gt;&gt;&gt; sw1.props[&quot;RangeStep&quot;] = &quot;5MHz&quot;</span>
-<span class="sd">        &gt;&gt;&gt; sw1.update()</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">_create_setup</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">setupname</span><span class="o">=</span><span class="s2">&quot;MySetupAuto&quot;</span><span class="p">,</span> <span class="n">setuptype</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">props</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">props</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">props</span> <span class="o">=</span> <span class="p">{}</span>
 
@@ -1663,6 +1612,8 @@ function checkPageExistsAndRedirect(event) {
             <span class="n">setup</span> <span class="o">=</span> <span class="n">SetupHFSS</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">setuptype</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">design_type</span> <span class="o">==</span> <span class="s2">&quot;HFSS&quot;</span><span class="p">:</span>
+            <span class="c1"># Handle the situation when ports have not been defined.</span>
+
             <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">excitations</span> <span class="ow">and</span> <span class="s2">&quot;MaxDeltaS&quot;</span> <span class="ow">in</span> <span class="n">setup</span><span class="o">.</span><span class="n">props</span><span class="p">:</span>
                 <span class="n">new_dict</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">()</span>
                 <span class="n">setup</span><span class="o">.</span><span class="n">auto_update</span> <span class="o">=</span> <span class="kc">False</span>
@@ -2090,43 +2041,59 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">         bool</span>
 <span class="sd">           ``True`` when successful, ``False`` when failed.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">inst_dir</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">desktop_install_dir</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">last_run_log</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">last_run_job</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">filename</span><span class="p">:</span>
             <span class="n">filename</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">project_file</span>
+            <span class="n">project_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">project_name</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">close_project</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">project_name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">filename</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">queue_file</span> <span class="o">=</span> <span class="n">filename</span> <span class="o">+</span> <span class="s2">&quot;.q&quot;</span>
+        <span class="n">queue_file_completed</span> <span class="o">=</span> <span class="n">filename</span> <span class="o">+</span> <span class="s2">&quot;.q.completed&quot;</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">queue_file</span><span class="p">):</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">unlink</span><span class="p">(</span><span class="n">queue_file</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">queue_file_completed</span><span class="p">):</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">unlink</span><span class="p">(</span><span class="n">queue_file_completed</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">machine</span> <span class="o">==</span> <span class="s2">&quot;local&quot;</span><span class="p">:</span>
             <span class="c1"># -Monitor option used as workaround for R2 BatchSolve not exiting properly at the end of the Batch job</span>
-            <span class="n">options</span> <span class="o">=</span> <span class="s2">&quot; -ng -BatchSolve -Monitor &quot;</span>
+            <span class="n">options</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;-ng&quot;</span><span class="p">,</span> <span class="s2">&quot;-BatchSolve&quot;</span><span class="p">,</span> <span class="s2">&quot;-Monitor&quot;</span><span class="p">]</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">options</span> <span class="o">=</span> <span class="s2">&quot; -ng -distribute -machinelist list=&quot;</span> <span class="o">+</span> <span class="n">machine</span> <span class="o">+</span> <span class="s2">&quot; -Batchsolve &quot;</span>
+            <span class="n">options</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;-ng&quot;</span><span class="p">,</span> <span class="s2">&quot;-BatchSolve&quot;</span><span class="p">,</span> <span class="s2">&quot;-machinelist&quot;</span><span class="p">,</span> <span class="s2">&quot;list=&quot;</span> <span class="o">+</span> <span class="n">machine</span><span class="p">,</span> <span class="s2">&quot;-Monitor&quot;</span><span class="p">]</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Batch Solve Options: &quot;</span> <span class="o">+</span> <span class="n">options</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;posix&quot;</span><span class="p">:</span>
-            <span class="n">batch_run</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">desktop_install_dir</span> <span class="o">+</span> <span class="s2">&quot;/ansysedt&quot;</span> <span class="o">+</span> <span class="nb">chr</span><span class="p">(</span><span class="mi">34</span><span class="p">)</span> <span class="o">+</span> <span class="n">options</span> <span class="o">+</span> <span class="nb">chr</span><span class="p">(</span><span class="mi">34</span><span class="p">)</span> <span class="o">+</span> <span class="n">filename</span> <span class="o">+</span> <span class="nb">chr</span><span class="p">(</span><span class="mi">34</span><span class="p">)</span>
-            <span class="p">)</span>
+            <span class="n">batch_run</span> <span class="o">=</span> <span class="p">[</span><span class="n">inst_dir</span> <span class="o">+</span> <span class="s2">&quot;/ansysedt&quot;</span><span class="p">]</span>
+
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">batch_run</span> <span class="o">=</span> <span class="p">(</span>
-                <span class="nb">chr</span><span class="p">(</span><span class="mi">34</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">desktop_install_dir</span> <span class="o">+</span> <span class="s2">&quot;/ansysedt.exe&quot;</span> <span class="o">+</span> <span class="nb">chr</span><span class="p">(</span><span class="mi">34</span><span class="p">)</span> <span class="o">+</span> <span class="n">options</span> <span class="o">+</span> <span class="nb">chr</span><span class="p">(</span><span class="mi">34</span><span class="p">)</span> <span class="o">+</span> <span class="n">filename</span> <span class="o">+</span> <span class="nb">chr</span><span class="p">(</span><span class="mi">34</span><span class="p">)</span>
-            <span class="p">)</span>
+            <span class="n">batch_run</span> <span class="o">=</span> <span class="p">[</span><span class="n">inst_dir</span> <span class="o">+</span> <span class="s2">&quot;/ansysedt.exe&quot;</span><span class="p">]</span>
+        <span class="n">batch_run</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">options</span><span class="p">)</span>
+        <span class="n">batch_run</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
 
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        check for existing solution directory and delete if present so we</span>
 <span class="sd">        dont have old .asol files etc</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-
         <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Solving model in batch mode on &quot;</span> <span class="o">+</span> <span class="n">machine</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Batch Job command:&quot;</span> <span class="o">+</span> <span class="n">batch_run</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">run_in_thread</span><span class="p">:</span>
+            <span class="n">DETACHED_PROCESS</span> <span class="o">=</span> <span class="mh">0x00000008</span>
+            <span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">(</span><span class="n">batch_run</span><span class="p">,</span> <span class="n">creationflags</span><span class="o">=</span><span class="n">DETACHED_PROCESS</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Batch job launched.&quot;</span><span class="p">)</span>
 
-            <span class="k">def</span> <span class="nf">thread_run</span><span class="p">():</span>
-<span class="w">                </span><span class="sd">&quot;&quot;&quot; &quot;&quot;&quot;</span>
-                <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="n">batch_run</span><span class="p">)</span>
-
-            <span class="n">x</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">thread_run</span><span class="p">)</span>
-            <span class="n">x</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="n">batch_run</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Batch job finished.&quot;</span><span class="p">)</span>
+            <span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">(</span><span class="n">batch_run</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Batch job finished.&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">machine</span> <span class="o">==</span> <span class="s2">&quot;local&quot;</span><span class="p">:</span>
+            <span class="k">while</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">queue_file</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">queue_file_completed</span><span class="p">):</span>
+                <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">queue_file</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+                <span class="n">lines</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+                <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="s2">&quot;JobID&quot;</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
+                        <span class="n">ls</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;=&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s2">&quot;&#39;&quot;</span><span class="p">)</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">last_run_job</span> <span class="o">=</span> <span class="n">ls</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">last_run_log</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">filename</span> <span class="o">+</span> <span class="s2">&quot;.batchinfo&quot;</span><span class="p">,</span> <span class="n">project_name</span> <span class="o">+</span> <span class="s2">&quot;-&quot;</span> <span class="o">+</span> <span class="n">ls</span> <span class="o">+</span> <span class="s2">&quot;.log&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="kc">True</span>
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
@@ -2339,7 +2306,8 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">value_with_units</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Combine a number and a string containing the unit in a single string e.g. &quot;1.2mm&quot;.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Combine a number and a string containing the modeler length unit in a single</span>
+<span class="sd">        string e.g. &quot;1.2mm&quot;.</span>
 <span class="sd">        If the units are not specified, the model units are used.</span>
 <span class="sd">        If value is a string (like containing an expression), it is returned as is.</span>
 
@@ -2348,7 +2316,17 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        value : float, int, str</span>
 <span class="sd">            Value of the number or string containing an expression.</span>
 <span class="sd">        units : str, optional</span>
-<span class="sd">            Units to combine with value.</span>
+<span class="sd">            Units to combine with value. Valid values are defined in the native API documentation.</span>
+<span class="sd">            Some common examples are:</span>
+<span class="sd">            &quot;in&quot;: inches</span>
+<span class="sd">            &quot;cm&quot;: centimeter</span>
+<span class="sd">            &quot;um&quot;:  micron</span>
+<span class="sd">            &quot;mm&quot;: millimeter</span>
+<span class="sd">            &quot;meter&quot;: meters</span>
+<span class="sd">            &quot;mil&quot;: 0.001 inches (mils)</span>
+<span class="sd">            &quot;km&quot;: kilometer</span>
+<span class="sd">            &quot;ft&quot;: feet</span>
+
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>

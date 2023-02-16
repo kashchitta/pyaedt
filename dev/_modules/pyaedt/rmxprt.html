@@ -560,7 +560,62 @@ function checkPageExistsAndRedirect(event) {
     <span class="nd">@design_type</span><span class="o">.</span><span class="n">setter</span>
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">design_type</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">design_solutions</span><span class="o">.</span><span class="n">design_type</span> <span class="o">=</span> <span class="n">value</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">design_solutions</span><span class="o">.</span><span class="n">design_type</span> <span class="o">=</span> <span class="n">value</span>
+
+<div class="viewcode-block" id="Rmxprt.create_setup"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.rmxprt.Rmxprt.create_setup.html#pyaedt.rmxprt.Rmxprt.create_setup">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">create_setup</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">setupname</span><span class="o">=</span><span class="s2">&quot;MySetupAuto&quot;</span><span class="p">,</span> <span class="n">setuptype</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create an analysis setup for RmXport.</span>
+
+<span class="sd">        Optional arguments are passed along with the ``setuptype`` and ``setupname``</span>
+<span class="sd">        parameters. Keyword names correspond to the ``setuptype``</span>
+<span class="sd">        corresponding to the native AEDT API.  The list of</span>
+<span class="sd">        keywords here is not exhaustive.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        setuptype : int, str, optional</span>
+<span class="sd">            Type of the setup. Options are &quot;IcepakSteadyState&quot;</span>
+<span class="sd">            and &quot;IcepakTransient&quot;. The default is &quot;IcepakSteadyState&quot;.</span>
+<span class="sd">        setupname : str, optional</span>
+<span class="sd">            Name of the setup. The default is &quot;Setup1&quot;.</span>
+<span class="sd">        **kwargs : dict, optional</span>
+<span class="sd">            Available keys depend on the setup chosen.</span>
+<span class="sd">            For more information, see :doc:`../SetupTemplatesRmxprt`.</span>
+
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        :class:`pyaedt.modules.SolveSetup.SetupHFSS`</span>
+<span class="sd">            Solver Setup object.</span>
+
+<span class="sd">        References</span>
+<span class="sd">        ----------</span>
+
+<span class="sd">        &gt;&gt;&gt; oModule.InsertSetup</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+
+<span class="sd">        &gt;&gt;&gt; from pyaedt import Hfss</span>
+<span class="sd">        &gt;&gt;&gt; hfss = Hfss()</span>
+<span class="sd">        &gt;&gt;&gt; hfss.create_setup(setupname=&quot;Setup1&quot;, setuptype=&quot;HFSSDriven&quot;, Frequency=&quot;10GHz&quot;)</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">setuptype</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">setuptype</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">design_solutions</span><span class="o">.</span><span class="n">default_setup</span>
+        <span class="k">elif</span> <span class="n">setuptype</span> <span class="ow">in</span> <span class="n">SetupKeys</span><span class="o">.</span><span class="n">SetupNames</span><span class="p">:</span>
+            <span class="n">setuptype</span> <span class="o">=</span> <span class="n">SetupKeys</span><span class="o">.</span><span class="n">SetupNames</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">setuptype</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s2">&quot;props&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_setup</span><span class="p">(</span><span class="n">setupname</span><span class="o">=</span><span class="n">setupname</span><span class="p">,</span> <span class="n">setuptype</span><span class="o">=</span><span class="n">setuptype</span><span class="p">,</span> <span class="n">props</span><span class="o">=</span><span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;props&quot;</span><span class="p">])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">setup</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_setup</span><span class="p">(</span><span class="n">setupname</span><span class="o">=</span><span class="n">setupname</span><span class="p">,</span> <span class="n">setuptype</span><span class="o">=</span><span class="n">setuptype</span><span class="p">)</span>
+        <span class="n">setup</span><span class="o">.</span><span class="n">auto_update</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">for</span> <span class="n">arg_name</span><span class="p">,</span> <span class="n">arg_value</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">setup</span><span class="p">[</span><span class="n">arg_name</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">setup</span><span class="p">[</span><span class="n">arg_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">arg_value</span>
+        <span class="n">setup</span><span class="o">.</span><span class="n">auto_update</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">setup</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">setup</span></div></div>
 </pre></div>
 
               </article>

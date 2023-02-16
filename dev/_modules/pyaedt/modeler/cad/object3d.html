@@ -1736,17 +1736,17 @@ function checkPageExistsAndRedirect(event) {
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_primitives</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">plane</span><span class="p">,</span> <span class="n">sides</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Object3d.mirror"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.modeler.cad.object3d.Object3d.mirror.html#pyaedt.modeler.cad.polylines.Object3d.mirror">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
-    <span class="k">def</span> <span class="nf">mirror</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">position</span><span class="p">,</span> <span class="n">vector</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">mirror</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">position</span><span class="p">,</span> <span class="n">vector</span><span class="p">,</span> <span class="n">duplicate</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Mirror a selection.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        position : int or float</span>
-<span class="sd">            List of the ``[x, y, z]`` coordinates or</span>
-<span class="sd">            the Application.Position object for the selection.</span>
-<span class="sd">        vector : float</span>
-<span class="sd">            List of the ``[x1, y1, z1]`` coordinates or</span>
-<span class="sd">            the Application.Position object for the vector.</span>
+<span class="sd">        position : list of int or float</span>
+<span class="sd">            Cartesian ``[x, y, z]`` coordinates or</span>
+<span class="sd">            the ``Application.Position`` object of a point in the plane used for the mirror operation.</span>
+<span class="sd">        vector : list of float</span>
+<span class="sd">            Vector in Cartesian coordinates ``[x1, y1, z1]``  or</span>
+<span class="sd">            the ``Application.Position`` object for the vector normal to the plane used for the mirror operation.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1759,7 +1759,7 @@ function checkPageExistsAndRedirect(event) {
 
 <span class="sd">        &gt;&gt;&gt; oEditor.Mirror</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_primitives</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">mirror</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">position</span><span class="o">=</span><span class="n">position</span><span class="p">,</span> <span class="n">vector</span><span class="o">=</span><span class="n">vector</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_primitives</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">mirror</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">position</span><span class="o">=</span><span class="n">position</span><span class="p">,</span> <span class="n">vector</span><span class="o">=</span><span class="n">vector</span><span class="p">,</span> <span class="n">duplicate</span><span class="o">=</span><span class="n">duplicate</span><span class="p">):</span>
             <span class="k">return</span> <span class="bp">self</span>
         <span class="k">return</span> <span class="kc">False</span></div>
 

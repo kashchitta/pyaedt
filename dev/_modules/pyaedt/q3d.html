@@ -331,6 +331,7 @@ function checkPageExistsAndRedirect(event) {
 <span class="kn">from</span> <span class="nn">pyaedt.modeler.geometry_operators</span> <span class="kn">import</span> <span class="n">GeometryOperators</span> <span class="k">as</span> <span class="n">go</span>
 <span class="kn">from</span> <span class="nn">pyaedt.modules.Boundary</span> <span class="kn">import</span> <span class="n">BoundaryObject</span>
 <span class="kn">from</span> <span class="nn">pyaedt.modules.Boundary</span> <span class="kn">import</span> <span class="n">Matrix</span>
+<span class="kn">from</span> <span class="nn">pyaedt.modules.SolveSweeps</span> <span class="kn">import</span> <span class="n">SetupKeys</span>
 
 <span class="k">if</span> <span class="ow">not</span> <span class="n">is_ironpython</span><span class="p">:</span>
     <span class="k">try</span><span class="p">:</span>
@@ -2152,7 +2153,55 @@ function checkPageExistsAndRedirect(event) {
             <span class="bp">self</span><span class="o">.</span><span class="n">oboundary</span><span class="o">.</span><span class="n">SetMaterialThresholds</span><span class="p">(</span><span class="n">insulator_threshold</span><span class="p">,</span> <span class="n">perfect_conductor_threshold</span><span class="p">,</span> <span class="n">magnetic_threshold</span><span class="p">)</span>
             <span class="k">return</span> <span class="kc">True</span>
         <span class="k">except</span><span class="p">:</span>
-            <span class="k">return</span> <span class="kc">False</span></div></div>
+            <span class="k">return</span> <span class="kc">False</span></div>
+
+<div class="viewcode-block" id="Q3d.create_setup"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.q3d.Q3d.create_setup.html#pyaedt.q3d.Q3d.create_setup">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">create_setup</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">setupname</span><span class="o">=</span><span class="s2">&quot;MySetupAuto&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create an analysis setup for Q3D Extractor.</span>
+
+<span class="sd">        Optional arguments are passed along with the ``setupname`` parameter.</span>
+
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+
+<span class="sd">        setupname : str, optional</span>
+<span class="sd">            Name of the setup. The default is &quot;Setup1&quot;.</span>
+<span class="sd">        **kwargs : dict, optional</span>
+<span class="sd">            Available keys depend on the setup chosen.</span>
+<span class="sd">            For more information, see :doc:`../SetupTemplatesQ3D`.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        :class:`pyaedt.modules.SolveSetup.SetupHFSS`</span>
+<span class="sd">            3D Solver Setup object.</span>
+
+<span class="sd">        References</span>
+<span class="sd">        ----------</span>
+
+<span class="sd">        &gt;&gt;&gt; oModule.InsertSetup</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+
+<span class="sd">        &gt;&gt;&gt; from pyaedt import Q3d</span>
+<span class="sd">        &gt;&gt;&gt; app = Q3d()</span>
+<span class="sd">        &gt;&gt;&gt; app.create_setup(setupname=&quot;Setup1&quot;, DC__MinPass=2)</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">setuptype</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">design_solutions</span><span class="o">.</span><span class="n">default_setup</span>
+
+        <span class="k">if</span> <span class="s2">&quot;props&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_setup</span><span class="p">(</span><span class="n">setupname</span><span class="o">=</span><span class="n">setupname</span><span class="p">,</span> <span class="n">setuptype</span><span class="o">=</span><span class="n">setuptype</span><span class="p">,</span> <span class="n">props</span><span class="o">=</span><span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;props&quot;</span><span class="p">])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">setup</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_setup</span><span class="p">(</span><span class="n">setupname</span><span class="o">=</span><span class="n">setupname</span><span class="p">,</span> <span class="n">setuptype</span><span class="o">=</span><span class="n">setuptype</span><span class="p">)</span>
+        <span class="n">setup</span><span class="o">.</span><span class="n">auto_update</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">for</span> <span class="n">arg_name</span><span class="p">,</span> <span class="n">arg_value</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">setup</span><span class="p">[</span><span class="n">arg_name</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">setup</span><span class="p">[</span><span class="n">arg_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">arg_value</span>
+        <span class="n">setup</span><span class="o">.</span><span class="n">auto_update</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">setup</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">setup</span></div></div>
 
 
 <div class="viewcode-block" id="Q2d"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.q3d.Q2d.html#pyaedt.q3d.Q2d">[docs]</a><span class="k">class</span> <span class="nc">Q2d</span><span class="p">(</span><span class="n">QExtractor</span><span class="p">,</span> <span class="nb">object</span><span class="p">):</span>
@@ -2617,7 +2666,63 @@ function checkPageExistsAndRedirect(event) {
             <span class="k">return</span> <span class="kc">True</span>
         <span class="k">except</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Error in updating conductor type&quot;</span><span class="p">)</span>
-            <span class="k">return</span> <span class="kc">False</span></div></div>
+            <span class="k">return</span> <span class="kc">False</span></div>
+
+<div class="viewcode-block" id="Q2d.create_setup"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.q3d.Q2d.create_setup.html#pyaedt.q3d.Q2d.create_setup">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">create_setup</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">setupname</span><span class="o">=</span><span class="s2">&quot;MySetupAuto&quot;</span><span class="p">,</span> <span class="n">setuptype</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create an analysis setup for 2D Extractor.</span>
+
+<span class="sd">        Optional arguments are passed along with the ``setuptype`` and ``setupname``</span>
+<span class="sd">        parameters.  Keyword names correspond to the ``setuptype``</span>
+<span class="sd">        corresponding to the native AEDT API.  The list of</span>
+<span class="sd">        keywords here is not exhaustive.</span>
+
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        setuptype : int, str, optional</span>
+<span class="sd">            Type of the setup. Options are &quot;IcepakSteadyState&quot;</span>
+<span class="sd">            and &quot;IcepakTransient&quot;. The default is &quot;IcepakSteadyState&quot;.</span>
+<span class="sd">        setupname : str, optional</span>
+<span class="sd">            Name of the setup. The default is &quot;Setup1&quot;.</span>
+<span class="sd">        **kwargs : dict, optional</span>
+<span class="sd">            Available keys depend on the setup chosen.</span>
+<span class="sd">            For more information, see :doc:`../SetupTemplatesQ3D`.</span>
+
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        :class:`pyaedt.modules.SolveSetup.SetupHFSS`</span>
+<span class="sd">            Solver Setup object.</span>
+
+<span class="sd">        References</span>
+<span class="sd">        ----------</span>
+
+<span class="sd">        &gt;&gt;&gt; oModule.InsertSetup</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+
+<span class="sd">        &gt;&gt;&gt; from pyaedt import Q2d</span>
+<span class="sd">        &gt;&gt;&gt; app = Q2d()</span>
+<span class="sd">        &gt;&gt;&gt; app.create_setup(setupname=&quot;Setup1&quot;, RLDataBlock__MinPass=2))</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">setuptype</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">setuptype</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">design_solutions</span><span class="o">.</span><span class="n">default_setup</span>
+        <span class="k">elif</span> <span class="n">setuptype</span> <span class="ow">in</span> <span class="n">SetupKeys</span><span class="o">.</span><span class="n">SetupNames</span><span class="p">:</span>
+            <span class="n">setuptype</span> <span class="o">=</span> <span class="n">SetupKeys</span><span class="o">.</span><span class="n">SetupNames</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">setuptype</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s2">&quot;props&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_setup</span><span class="p">(</span><span class="n">setupname</span><span class="o">=</span><span class="n">setupname</span><span class="p">,</span> <span class="n">setuptype</span><span class="o">=</span><span class="n">setuptype</span><span class="p">,</span> <span class="n">props</span><span class="o">=</span><span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;props&quot;</span><span class="p">])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">setup</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_setup</span><span class="p">(</span><span class="n">setupname</span><span class="o">=</span><span class="n">setupname</span><span class="p">,</span> <span class="n">setuptype</span><span class="o">=</span><span class="n">setuptype</span><span class="p">)</span>
+        <span class="n">setup</span><span class="o">.</span><span class="n">auto_update</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">for</span> <span class="n">arg_name</span><span class="p">,</span> <span class="n">arg_value</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">setup</span><span class="p">[</span><span class="n">arg_name</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">setup</span><span class="p">[</span><span class="n">arg_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">arg_value</span>
+        <span class="n">setup</span><span class="o">.</span><span class="n">auto_update</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">setup</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">setup</span></div></div>
 </pre></div>
 
               </article>

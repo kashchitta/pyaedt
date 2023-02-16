@@ -371,9 +371,9 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        position : list</span>
-<span class="sd">            Anchor point for the box in Cartesian ``[x, y, z]`` coordinates.</span>
+<span class="sd">            Anchor point for the box in Cartesian``[x, y, z]`` coordinates.</span>
 <span class="sd">        dimensions_list : list</span>
-<span class="sd">           Length of the box edges in Cartesian ``[x, y, z]`` coordinates.</span>
+<span class="sd">           Length of the box edges in Cartesian``[x, y, z]`` coordinates.</span>
 <span class="sd">        name : str, optional</span>
 <span class="sd">            Name of the box. The default is ``None``, in which case the</span>
 <span class="sd">            default name is assigned.</span>
@@ -825,7 +825,7 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        &gt;&gt;&gt; origin = [0,0,0]</span>
 <span class="sd">        &gt;&gt;&gt; endpos = [10,5,20]</span>
 <span class="sd">        &gt;&gt;&gt; #Material and name are not mandatory fields</span>
-<span class="sd">        &gt;&gt;&gt; object_id = hfss.modeler.create_bondwire(origin, endpos,h1=0.5, h2=0.1, alpha=75, beta=4,</span>
+<span class="sd">        &gt;&gt;&gt; object_id = hfss.modeler.primivites.create_bondwire(origin, endpos,h1=0.5, h2=0.1, alpha=75, beta=4,</span>
 <span class="sd">        ...                                                     bond_type=0, name=&quot;mybox&quot;, matname=&quot;copper&quot;)</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">x_position</span><span class="p">,</span> <span class="n">y_position</span><span class="p">,</span> <span class="n">z_position</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pos_with_arg</span><span class="p">(</span><span class="n">start_position</span><span class="p">)</span>
@@ -898,15 +898,6 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        ----------</span>
 
 <span class="sd">        &gt;&gt;&gt; oEditor.CreateRectangle</span>
-
-<span class="sd">        Examples</span>
-<span class="sd">        --------</span>
-<span class="sd">        &gt;&gt;&gt; from pyaedt import Hfss</span>
-<span class="sd">        &gt;&gt;&gt; hfss = Hfss()</span>
-<span class="sd">        &gt;&gt;&gt; plane = 0</span>
-<span class="sd">        &gt;&gt;&gt; position = [0,0,0]</span>
-<span class="sd">        &gt;&gt;&gt; dimension = [10,5]</span>
-<span class="sd">        &gt;&gt;&gt; rect_obj = hfss.modeler.create_rectangle(plane, position, dimension)</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">szAxis</span> <span class="o">=</span> <span class="n">GeometryOperators</span><span class="o">.</span><span class="n">cs_plane_to_axis_str</span><span class="p">(</span><span class="n">csPlane</span><span class="p">)</span>
@@ -2110,17 +2101,16 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">create_choke</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">json_file</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create an inductive choke using parameters defined in a json file.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a choke from a JSON setting file.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        json_file : str</span>
-<span class="sd">            Full path of the json file. The file is returned by the function ``check_choke_values``.</span>
+<span class="sd">            Full path of the JSON file with the choke settings.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        List</span>
-<span class="sd">            Three parameters output</span>
+<span class="sd">        List of</span>
 <span class="sd">            bool</span>
 <span class="sd">                ``True`` when successful, ``False`` when failed.</span>
 <span class="sd">            :class:`pyaedt.modeler.cad.object3d.Object3d`</span>
@@ -2141,7 +2131,7 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        &gt;&gt;&gt; from pyaedt import Hfss</span>
 <span class="sd">        &gt;&gt;&gt; hfss = Hfss()</span>
 <span class="sd">        &gt;&gt;&gt; dictionary_values = hfss.modeler.check_choke_values(&quot;C:/Example/Of/Path/myJsonFile.json&quot;)</span>
-<span class="sd">        &gt;&gt;&gt; my_choke = hfss.modeler.create_choke(&quot;C:/Example/Of/Path/myJsonFile_Corrected.json&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; mychoke = hfss.modeler.create_choke(&quot;C:/Example/Of/Path/myJsonFile_Corrected.json&quot;)</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="k">with</span> <span class="n">open_file</span><span class="p">(</span><span class="n">json_file</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">read_file</span><span class="p">:</span>

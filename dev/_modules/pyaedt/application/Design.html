@@ -3331,13 +3331,16 @@ function checkPageExistsAndRedirect(event) {
         <span class="k">return</span> <span class="n">proj_name</span>
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
-    <span class="k">def</span> <span class="nf">rename_design</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">new_name</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">rename_design</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">new_name</span><span class="p">,</span> <span class="n">save_after_duplicate</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Rename the active design.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        new_name : str</span>
 <span class="sd">            New name of the design.</span>
+<span class="sd">        save_after_duplicate : bool, optional</span>
+<span class="sd">            Save project after the duplication is completed. If ``False``, pyaedt objects like boundaries will not be</span>
+<span class="sd">            available.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -3349,7 +3352,11 @@ function checkPageExistsAndRedirect(event) {
 
 <span class="sd">        &gt;&gt;&gt; oDesign.RenameDesignInstance</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">_retry_ntimes</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_odesign</span><span class="o">.</span><span class="n">RenameDesignInstance</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">design_name</span><span class="p">,</span> <span class="n">new_name</span><span class="p">)</span>
+        <span class="n">_retry_ntimes</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_odesign</span><span class="o">.</span><span class="n">RenameDesignInstance</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">design_name</span><span class="p">,</span> <span class="n">new_name</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">save_after_duplicate</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">oproject</span><span class="o">.</span><span class="n">Save</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_project_dictionary</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">return</span> <span class="kc">True</span>
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">copy_design_from</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project_fullname</span><span class="p">,</span> <span class="n">design_name</span><span class="p">,</span> <span class="n">save_project</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">set_active_design</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>

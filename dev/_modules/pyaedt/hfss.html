@@ -3686,7 +3686,7 @@ function checkPageExistsAndRedirect(event) {
             <span class="n">terminal_references</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">convert_to_selections</span><span class="p">(</span><span class="n">terminal_references</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">port_item</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
             <span class="k">try</span><span class="p">:</span>
-                <span class="n">oname</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">oeditor</span><span class="o">.</span><span class="n">GetObjectNameByFaceID</span><span class="p">(</span><span class="n">sheet</span><span class="p">)</span>
+                <span class="n">oname</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">oeditor</span><span class="o">.</span><span class="n">GetObjectNameByFaceID</span><span class="p">(</span><span class="n">port_item</span><span class="p">)</span>
             <span class="k">except</span><span class="p">:</span>
                 <span class="n">oname</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
         <span class="k">else</span><span class="p">:</span>
@@ -3699,10 +3699,10 @@ function checkPageExistsAndRedirect(event) {
                 <span class="n">port_item</span><span class="p">,</span> <span class="n">int_start</span><span class="p">,</span> <span class="n">int_stop</span><span class="p">,</span> <span class="n">impedance</span><span class="p">,</span> <span class="n">portname</span><span class="p">,</span> <span class="n">renorm</span><span class="p">,</span> <span class="n">nummodes</span><span class="p">,</span> <span class="n">deemb</span>
             <span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">sheet</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
-                <span class="n">faces</span> <span class="o">=</span> <span class="n">sheet</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">port_item</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+                <span class="n">faces</span> <span class="o">=</span> <span class="n">port_item</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="n">faces</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">get_object_faces</span><span class="p">(</span><span class="n">sheet</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="n">faces</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">get_object_faces</span><span class="p">(</span><span class="n">port_item</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="n">faces</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Input object is wrong. It must be a face ID or a sheet.&quot;</span><span class="p">)</span>
                 <span class="k">return</span> <span class="kc">False</span>

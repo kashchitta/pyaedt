@@ -647,7 +647,9 @@ function checkPageExistsAndRedirect(event) {
 <p class="admonition-title">Note</p>
 <p>It returns the face centroid if number of face vertex is &gt;1.
 It tries to get AEDT Face Center in case of single vertex face
-and returns the vertex position otherwise.</p>
+and returns the vertex position otherwise. If the face has no
+vertices, and it is not planar, the function returns the centroid
+of the face edges.</p>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>

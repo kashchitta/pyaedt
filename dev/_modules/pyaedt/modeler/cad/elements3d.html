@@ -885,7 +885,9 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        .. note::</span>
 <span class="sd">           It returns the face centroid if number of face vertex is &gt;1.</span>
 <span class="sd">           It tries to get AEDT Face Center in case of single vertex face</span>
-<span class="sd">           and returns the vertex position otherwise.</span>
+<span class="sd">           and returns the vertex position otherwise. If the face has no</span>
+<span class="sd">           vertices, and it is not planar, the function returns the centroid</span>
+<span class="sd">           of the face edges.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -905,7 +907,27 @@ function checkPageExistsAndRedirect(event) {
             <span class="k">if</span> <span class="n">center</span><span class="p">:</span>
                 <span class="k">return</span> <span class="n">center</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">vertices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">position</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">vertices</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">vertices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">position</span>
+                <span class="k">else</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
+                    <span class="n">centroid</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+                    <span class="n">eval_points</span> <span class="o">=</span> <span class="mi">4</span>
+                    <span class="k">for</span> <span class="n">edge</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">edges</span><span class="p">:</span>
+                        <span class="n">centroid</span> <span class="o">=</span> <span class="n">GeometryOperators</span><span class="o">.</span><span class="n">v_sum</span><span class="p">(</span>
+                            <span class="n">centroid</span><span class="p">,</span>
+                            <span class="n">GeometryOperators</span><span class="o">.</span><span class="n">get_polygon_centroid</span><span class="p">(</span>
+                                <span class="p">[</span>
+                                    <span class="p">[</span>
+                                        <span class="nb">float</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+                                        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">oeditor</span><span class="o">.</span><span class="n">GetEdgePositionAtNormalizedParameter</span><span class="p">(</span>
+                                            <span class="n">edge</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">pos</span> <span class="o">/</span> <span class="n">eval_points</span>
+                                        <span class="p">)</span>
+                                    <span class="p">]</span>
+                                    <span class="k">for</span> <span class="n">pos</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">eval_points</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+                                <span class="p">]</span>
+                            <span class="p">),</span>
+                        <span class="p">)</span>
+                    <span class="k">return</span> <span class="n">GeometryOperators</span><span class="o">.</span><span class="n">v_prod</span><span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">edges</span><span class="p">),</span> <span class="n">centroid</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">area</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -1695,8 +1717,76 @@ function checkPageExistsAndRedirect(event) {
         <span class="k">try</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">child_object</span><span class="o">.</span><span class="n">SetPropValue</span><span class="p">(</span><span class="n">prop_name</span><span class="p">,</span> <span class="n">prop_value</span><span class="p">)</span>
             <span class="k">return</span> <span class="kc">True</span>
-        <span class="k">except</span><span class="p">:</span>
-            <span class="k">return</span> <span class="kc">False</span></div></div>
+        <span class="k">except</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
+            <span class="k">return</span> <span class="kc">False</span></div>
+
+    <span class="nd">@pyaedt_function_handler</span>
+    <span class="k">def</span> <span class="nf">_jsonalize_tree</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">binary_tree_node</span><span class="p">):</span>
+        <span class="n">childrend_dict</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">binary_tree_node</span><span class="o">.</span><span class="n">children</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">childrend_dict</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_jsonalize_tree</span><span class="p">(</span><span class="n">node</span><span class="p">))</span>
+        <span class="k">return</span> <span class="p">{</span><span class="n">binary_tree_node</span><span class="o">.</span><span class="n">node</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;Props&quot;</span><span class="p">:</span> <span class="n">binary_tree_node</span><span class="o">.</span><span class="n">props</span><span class="p">,</span> <span class="s2">&quot;Children&quot;</span><span class="p">:</span> <span class="n">childrend_dict</span><span class="p">}}</span>
+
+<div class="viewcode-block" id="BinaryTreeNode.jsonalize_tree"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.modeler.cad.elements3d.BinaryTreeNode.jsonalize_tree.html#pyaedt.modeler.cad.elements3d.BinaryTreeNode.jsonalize_tree">[docs]</a>    <span class="nd">@pyaedt_function_handler</span>
+    <span class="k">def</span> <span class="nf">jsonalize_tree</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create dictionary from the Binary Tree.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        dict</span>
+<span class="sd">            Dictionary containing the information of the Binary Three.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_jsonalize_tree</span><span class="p">(</span><span class="n">binary_tree_node</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span></div>
+
+    <span class="nd">@pyaedt_function_handler</span>
+    <span class="k">def</span> <span class="nf">_suppress</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">app</span><span class="p">,</span> <span class="n">suppress</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">node</span><span class="o">.</span><span class="n">command</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;Duplicate&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="s2">&quot;Suppress Command&quot;</span> <span class="ow">in</span> <span class="n">node</span><span class="o">.</span><span class="n">props</span><span class="p">:</span>
+            <span class="n">app</span><span class="o">.</span><span class="n">oeditor</span><span class="o">.</span><span class="n">ChangeProperty</span><span class="p">(</span>
+                <span class="p">[</span>
+                    <span class="s2">&quot;NAME:AllTabs&quot;</span><span class="p">,</span>
+                    <span class="p">[</span>
+                        <span class="s2">&quot;NAME:Geometry3DCmdTab&quot;</span><span class="p">,</span>
+                        <span class="p">[</span><span class="s2">&quot;NAME:PropServers&quot;</span><span class="p">,</span> <span class="n">node</span><span class="o">.</span><span class="n">child_object</span><span class="o">.</span><span class="n">GetObjPath</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)[</span><span class="mi">3</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;:&quot;</span> <span class="o">+</span> <span class="n">node</span><span class="o">.</span><span class="n">node</span><span class="p">],</span>
+                        <span class="p">[</span><span class="s2">&quot;NAME:ChangedProps&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;NAME:Suppress Command&quot;</span><span class="p">,</span> <span class="s2">&quot;Value:=&quot;</span><span class="p">,</span> <span class="n">suppress</span><span class="p">]],</span>
+                    <span class="p">],</span>
+                <span class="p">]</span>
+            <span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">node</span><span class="o">.</span><span class="n">children</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_suppress</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">app</span><span class="p">,</span> <span class="n">suppress</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">True</span>
+
+<div class="viewcode-block" id="BinaryTreeNode.suppress_all"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.modeler.cad.elements3d.BinaryTreeNode.suppress_all.html#pyaedt.modeler.cad.elements3d.BinaryTreeNode.suppress_all">[docs]</a>    <span class="nd">@pyaedt_function_handler</span>
+    <span class="k">def</span> <span class="nf">suppress_all</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">app</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Activate suppress option for all the operations contained in the binary tree node.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        app : object</span>
+<span class="sd">            An AEDT application from ``pyaedt.application``.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        bool</span>
+<span class="sd">            ``True`` when successful.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_suppress</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">app</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="BinaryTreeNode.unsuppress_all"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.modeler.cad.elements3d.BinaryTreeNode.unsuppress_all.html#pyaedt.modeler.cad.elements3d.BinaryTreeNode.unsuppress_all">[docs]</a>    <span class="nd">@pyaedt_function_handler</span>
+    <span class="k">def</span> <span class="nf">unsuppress_all</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">app</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Disable suppress option for all the operations contained in the binary tree node.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        app : object</span>
+<span class="sd">            An AEDT application from ``pyaedt.application``.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        bool</span>
+<span class="sd">            ``True`` when successful.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_suppress</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">app</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span></div></div>
 </pre></div>
 
               </article>

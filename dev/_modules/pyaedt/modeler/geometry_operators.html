@@ -654,6 +654,48 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">r</span> <span class="o">=</span> <span class="p">[</span><span class="n">s</span> <span class="o">*</span> <span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">v</span><span class="p">]</span>
         <span class="k">return</span> <span class="n">r</span></div>
 
+<div class="viewcode-block" id="GeometryOperators.v_rotate_about_axis"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modeler.geometry_operators.GeometryOperators.v_rotate_about_axis.html#pyaedt.modeler.geometry_operators.GeometryOperators.v_rotate_about_axis">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">v_rotate_about_axis</span><span class="p">(</span><span class="n">vector</span><span class="p">,</span> <span class="n">angle</span><span class="p">,</span> <span class="n">radians</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s2">&quot;z&quot;</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Evaluate rotation of a vector around an axis.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        vector : list</span>
+<span class="sd">            List of the three component of the vector.</span>
+<span class="sd">        angle : float</span>
+<span class="sd">            Angle by which the vector is to be rotated (radians or degree).</span>
+<span class="sd">        radians : bool, optional</span>
+<span class="sd">            Whether the angle is expressed in radians. Default is ``False``.</span>
+<span class="sd">        axis : str, optional</span>
+<span class="sd">            Axis about which to rotate the vector. Default is ``&quot;z&quot;``.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        list</span>
+<span class="sd">            List of values for the result vector.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">radians</span><span class="p">:</span>
+            <span class="n">angle</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span>
+        <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">vector</span>
+        <span class="n">axis</span> <span class="o">=</span> <span class="n">axis</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">axis</span> <span class="o">==</span> <span class="s2">&quot;z&quot;</span><span class="p">:</span>
+            <span class="n">rotated_x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span> <span class="o">-</span> <span class="n">y</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span>
+            <span class="n">rotated_y</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span> <span class="o">+</span> <span class="n">y</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span>
+            <span class="n">rotated_z</span> <span class="o">=</span> <span class="n">z</span>
+        <span class="k">elif</span> <span class="n">axis</span> <span class="o">==</span> <span class="s2">&quot;y&quot;</span><span class="p">:</span>
+            <span class="n">rotated_x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span> <span class="o">+</span> <span class="n">z</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span>
+            <span class="n">rotated_y</span> <span class="o">=</span> <span class="n">y</span>
+            <span class="n">rotated_z</span> <span class="o">=</span> <span class="o">-</span><span class="n">x</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span> <span class="o">+</span> <span class="n">z</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">axis</span> <span class="o">==</span> <span class="s2">&quot;x&quot;</span><span class="p">:</span>
+            <span class="n">rotated_x</span> <span class="o">=</span> <span class="n">x</span>
+            <span class="n">rotated_y</span> <span class="o">=</span> <span class="n">y</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span> <span class="o">-</span> <span class="n">z</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span>
+            <span class="n">rotated_z</span> <span class="o">=</span> <span class="n">y</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span> <span class="o">+</span> <span class="n">z</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Invalid axis. Choose &#39;x&#39;, &#39;y&#39;, or &#39;z&#39;.&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">rotated_x</span><span class="p">,</span> <span class="n">rotated_y</span><span class="p">,</span> <span class="n">rotated_z</span></div>
+
 <div class="viewcode-block" id="GeometryOperators.v_sub"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modeler.geometry_operators.GeometryOperators.v_sub.html#pyaedt.modeler.geometry_operators.GeometryOperators.v_sub">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">v_sub</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
@@ -2325,9 +2367,36 @@ function checkPageExistsAndRedirect(event) {
                 <span class="n">close_points</span> <span class="o">=</span> <span class="p">[</span><span class="n">p</span><span class="p">]</span>
         <span class="k">if</span> <span class="n">close_points</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">close_points</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="kc">False</span></div></div>
+        <span class="k">else</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
+            <span class="k">return</span> <span class="kc">False</span></div>
         <span class="c1"># fmt: on</span>
+
+<div class="viewcode-block" id="GeometryOperators.mirror_point"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modeler.geometry_operators.GeometryOperators.mirror_point.html#pyaedt.modeler.geometry_operators.GeometryOperators.mirror_point">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="nd">@pyaedt_function_handler</span>
+    <span class="k">def</span> <span class="nf">mirror_point</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">reference</span><span class="p">,</span> <span class="n">vector</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Mirror point about a plane defining by a point on the plane and a normal point.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        start : list</span>
+<span class="sd">            Point to be mirrored</span>
+<span class="sd">        reference : list</span>
+<span class="sd">            The reference point. Point on the plane around which you want to mirror the object.</span>
+<span class="sd">        vector : list</span>
+<span class="sd">            Normalized vector used for the mirroring.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        List</span>
+<span class="sd">            List of the reflected point.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">distance</span> <span class="o">=</span> <span class="p">[</span><span class="n">start</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">reference</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)]</span>
+        <span class="n">vector_norm</span> <span class="o">=</span> <span class="n">GeometryOperators</span><span class="o">.</span><span class="n">v_norm</span><span class="p">(</span><span class="n">vector</span><span class="p">)</span>
+        <span class="n">vector</span> <span class="o">=</span> <span class="p">[</span><span class="n">vector</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">/</span> <span class="n">vector_norm</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)]</span>
+        <span class="n">dot_product</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([</span><span class="n">distance</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">vector</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)])</span>
+        <span class="n">reflection</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="n">dot_product</span> <span class="o">*</span> <span class="n">vector</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">start</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)]</span>
+        <span class="k">return</span> <span class="n">reflection</span></div></div>
 </pre></div>
 
               </article>

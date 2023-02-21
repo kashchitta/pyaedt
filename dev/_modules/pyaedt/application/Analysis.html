@@ -469,7 +469,7 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_native_components</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_native_components</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_native_data</span><span class="p">()</span>
-        <span class="k">return</span> <span class="p">{</span><span class="n">nc</span><span class="o">.</span><span class="n">props</span><span class="p">[</span><span class="s2">&quot;SubmodelDefinitionName&quot;</span><span class="p">]:</span> <span class="n">nc</span> <span class="k">for</span> <span class="n">nc</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_native_components</span><span class="p">}</span>
+        <span class="k">return</span> <span class="p">{</span><span class="n">nc</span><span class="o">.</span><span class="n">component_name</span><span class="p">:</span> <span class="n">nc</span> <span class="k">for</span> <span class="n">nc</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_native_components</span><span class="p">}</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">output_variables</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>

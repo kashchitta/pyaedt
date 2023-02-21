@@ -2218,10 +2218,10 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        list</span>
 <span class="sd">            Quaternion.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">cs_names</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">coordinate_systems</span><span class="p">]</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">coordinate_system</span><span class="p">,</span> <span class="n">BaseCoordinateSystem</span><span class="p">):</span>
             <span class="n">cs</span> <span class="o">=</span> <span class="n">coordinate_system</span>
         <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">coordinate_system</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="n">cs_names</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">coordinate_systems</span><span class="p">]</span>
             <span class="k">if</span> <span class="n">coordinate_system</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">cs_names</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
                 <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="s2">&quot;Specified coordinate system does not exist in the design.&quot;</span><span class="p">)</span>
             <span class="n">cs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">coordinate_systems</span><span class="p">[</span><span class="n">cs_names</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">coordinate_system</span><span class="p">)]</span>

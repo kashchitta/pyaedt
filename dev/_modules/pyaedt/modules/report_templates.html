@@ -623,6 +623,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="k">if</span> <span class="n">expressions</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">expressions</span> <span class="o">=</span> <span class="n">expressions</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_is_created</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">siwave_dc_category</span> <span class="o">=</span> <span class="mi">0</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">differential_pairs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -2228,7 +2229,34 @@ function checkPageExistsAndRedirect(event) {
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">ctxt</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Context:=&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">matrix</span><span class="p">]</span>
         <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_post</span><span class="o">.</span><span class="n">post_solution_type</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;HFSS3DLayout&quot;</span><span class="p">]:</span>
-            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">differential_pairs</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">domain</span> <span class="o">==</span> <span class="s2">&quot;DCIR&quot;</span><span class="p">:</span>
+                <span class="n">ctxt</span> <span class="o">=</span> <span class="p">[</span>
+                    <span class="s2">&quot;NAME:Context&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;SimValueContext:=&quot;</span><span class="p">,</span>
+                    <span class="p">[</span>
+                        <span class="mi">37010</span><span class="p">,</span>
+                        <span class="mi">0</span><span class="p">,</span>
+                        <span class="mi">2</span><span class="p">,</span>
+                        <span class="mi">0</span><span class="p">,</span>
+                        <span class="kc">False</span><span class="p">,</span>
+                        <span class="kc">False</span><span class="p">,</span>
+                        <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+                        <span class="mi">1</span><span class="p">,</span>
+                        <span class="mi">0</span><span class="p">,</span>
+                        <span class="mi">1</span><span class="p">,</span>
+                        <span class="mi">1</span><span class="p">,</span>
+                        <span class="s2">&quot;&quot;</span><span class="p">,</span>
+                        <span class="mi">0</span><span class="p">,</span>
+                        <span class="mi">0</span><span class="p">,</span>
+                        <span class="s2">&quot;DCIRID&quot;</span><span class="p">,</span>
+                        <span class="kc">False</span><span class="p">,</span>
+                        <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">siwave_dc_category</span><span class="p">),</span>
+                        <span class="s2">&quot;IDIID&quot;</span><span class="p">,</span>
+                        <span class="kc">False</span><span class="p">,</span>
+                        <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+                    <span class="p">],</span>
+                <span class="p">]</span>
+            <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">differential_pairs</span><span class="p">:</span>
                 <span class="n">ctxt</span> <span class="o">=</span> <span class="p">[</span>
                     <span class="s2">&quot;NAME:Context&quot;</span><span class="p">,</span>
                     <span class="s2">&quot;SimValueContext:=&quot;</span><span class="p">,</span>

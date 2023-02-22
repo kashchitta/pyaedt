@@ -343,9 +343,14 @@ function checkPageExistsAndRedirect(event) {
 
 <span class="k">if</span> <span class="ow">not</span> <span class="n">is_ironpython</span><span class="p">:</span>
     <span class="k">try</span><span class="p">:</span>
+        <span class="kn">from</span> <span class="nn">enum</span> <span class="kn">import</span> <span class="n">Enum</span>
+
         <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
     <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
         <span class="n">pd</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">Enum</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">Enum</span> <span class="o">=</span> <span class="nb">object</span>
 
 
 <span class="n">TEMPLATES_BY_DESIGN</span> <span class="o">=</span> <span class="p">{</span>
@@ -405,6 +410,28 @@ function checkPageExistsAndRedirect(event) {
     <span class="s2">&quot;Eigenmode Parameters&quot;</span><span class="p">:</span> <span class="n">rt</span><span class="o">.</span><span class="n">Standard</span><span class="p">,</span>
     <span class="s2">&quot;Spectrum&quot;</span><span class="p">:</span> <span class="n">rt</span><span class="o">.</span><span class="n">Spectral</span><span class="p">,</span>
 <span class="p">}</span>
+
+
+<span class="k">class</span> <span class="nc">ReportDcirShow</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+    <span class="n">RL</span> <span class="o">=</span> <span class="s2">&quot;0&quot;</span>
+    <span class="n">Sources</span> <span class="o">=</span> <span class="s2">&quot;1&quot;</span>
+    <span class="n">Vias</span> <span class="o">=</span> <span class="s2">&quot;2&quot;</span>
+    <span class="n">Bondwires</span> <span class="o">=</span> <span class="s2">&quot;3&quot;</span>
+    <span class="n">Probes</span> <span class="o">=</span> <span class="s2">&quot;4&quot;</span>
+
+
+<span class="k">class</span> <span class="nc">ReportDcirCategory</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+    <span class="n">Voltage</span> <span class="o">=</span> <span class="s2">&quot;Voltage&quot;</span>
+    <span class="n">Current</span> <span class="o">=</span> <span class="s2">&quot;Current&quot;</span>
+    <span class="n">Power</span> <span class="o">=</span> <span class="s2">&quot;Power&quot;</span>
+    <span class="n">Loop_Resistance</span> <span class="o">=</span> <span class="s2">&quot;Loop Resistance&quot;</span>
+    <span class="n">Path_Resistance</span> <span class="o">=</span> <span class="s2">&quot;Path Resistance&quot;</span>
+    <span class="n">Resistance</span> <span class="o">=</span> <span class="s2">&quot;Resistance&quot;</span>
+    <span class="n">Inductor</span> <span class="o">=</span> <span class="s2">&quot;Inductance&quot;</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="s2">&quot;X&quot;</span>
+    <span class="n">Y</span> <span class="o">=</span> <span class="s2">&quot;Y&quot;</span>
+    <span class="n">Limit</span> <span class="o">=</span> <span class="s2">&quot;Limit&quot;</span>
+    <span class="n">IR_Drop</span> <span class="o">=</span> <span class="s2">&quot;IR Drop&quot;</span>
 
 
 <span class="k">class</span> <span class="nc">Reports</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
@@ -1005,7 +1032,9 @@ function checkPageExistsAndRedirect(event) {
         <span class="k">return</span> <span class="p">[]</span>
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
-    <span class="k">def</span> <span class="nf">available_quantities_categories</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">report_category</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">display_type</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">solution</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">available_quantities_categories</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">report_category</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">display_type</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">solution</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">is_siwave_dc</span><span class="o">=</span><span class="kc">False</span>
+    <span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Compute the list of all available report categories.</span>
 
 <span class="sd">        Parameters</span>
@@ -1019,7 +1048,8 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">            Report Setup. Default is `None` which will take first nominal_adpative solution.</span>
 <span class="sd">        context : str, optional</span>
 <span class="sd">            Report Category. Default is `&quot;&quot;` which will take first default context.</span>
-
+<span class="sd">        is_siwave_dc : bool, optional</span>
+<span class="sd">            Whether if the setup is Siwave DCIR or not. Default is ``False``.</span>
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
 <span class="sd">        list</span>
@@ -1030,13 +1060,40 @@ function checkPageExistsAndRedirect(event) {
             <span class="n">display_type</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">available_display_types</span><span class="p">(</span><span class="n">report_category</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">solution</span><span class="p">:</span>
             <span class="n">solution</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">nominal_adaptive</span>
+        <span class="k">if</span> <span class="n">is_siwave_dc</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
+            <span class="nb">id</span> <span class="o">=</span> <span class="s2">&quot;0&quot;</span>
+            <span class="k">if</span> <span class="n">context</span><span class="p">:</span>
+                <span class="nb">id</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span>
+                    <span class="p">[</span>
+                        <span class="s2">&quot;RL&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;Sources&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;Vias&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;Bondwires&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;Probes&quot;</span><span class="p">,</span>
+                    <span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">context</span><span class="p">)</span>
+                <span class="p">)</span>
+            <span class="n">context</span> <span class="o">=</span> <span class="p">[</span>
+                <span class="s2">&quot;NAME:Context&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;SimValueContext:=&quot;</span><span class="p">,</span>
+                <span class="p">[</span><span class="mi">37010</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;DCIRID&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="s2">&quot;IDIID&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">&quot;1&quot;</span><span class="p">],</span>
+            <span class="p">]</span>
+
+        <span class="k">elif</span> <span class="ow">not</span> <span class="n">context</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
+            <span class="n">context</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+
         <span class="k">if</span> <span class="n">solution</span> <span class="ow">and</span> <span class="n">report_category</span> <span class="ow">and</span> <span class="n">display_type</span><span class="p">:</span>
             <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">oreportsetup</span><span class="o">.</span><span class="n">GetAllCategories</span><span class="p">(</span><span class="n">report_category</span><span class="p">,</span> <span class="n">display_type</span><span class="p">,</span> <span class="n">solution</span><span class="p">,</span> <span class="n">context</span><span class="p">))</span>
         <span class="k">return</span> <span class="p">[]</span>
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">available_report_quantities</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span> <span class="n">report_category</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">display_type</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">solution</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">quantities_category</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">report_category</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">display_type</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">solution</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">quantities_category</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">context</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="n">is_siwave_dc</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
     <span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Compute the list of all available report quantities of a given report quantity category.</span>
 
@@ -1053,7 +1110,9 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">            The category to which quantities belong. It has to be one of ``available_quantities_categories`` method.</span>
 <span class="sd">            Default is ``None`` which will take first default quantity.&quot;.</span>
 <span class="sd">        context : str, optional</span>
-<span class="sd">            Report Category. Default is ``&quot;&quot;`` which will take first default context.</span>
+<span class="sd">            Report Context. Default is ``&quot;&quot;`` which will take first default context.</span>
+<span class="sd">        is_siwave_dc : bool, optional</span>
+<span class="sd">            Whether if the setup is Siwave DCIR or not. Default is ``False``.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1065,7 +1124,25 @@ function checkPageExistsAndRedirect(event) {
             <span class="n">display_type</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">available_display_types</span><span class="p">(</span><span class="n">report_category</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">solution</span><span class="p">:</span>
             <span class="n">solution</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">nominal_adaptive</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">context</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">is_siwave_dc</span><span class="p">:</span>
+            <span class="nb">id</span> <span class="o">=</span> <span class="s2">&quot;0&quot;</span>
+            <span class="k">if</span> <span class="n">context</span><span class="p">:</span>
+                <span class="nb">id</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span>
+                    <span class="p">[</span>
+                        <span class="s2">&quot;RL&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;Sources&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;Vias&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;Bondwires&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;Probes&quot;</span><span class="p">,</span>
+                    <span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">context</span><span class="p">)</span>
+                <span class="p">)</span>
+            <span class="n">context</span> <span class="o">=</span> <span class="p">[</span>
+                <span class="s2">&quot;NAME:Context&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;SimValueContext:=&quot;</span><span class="p">,</span>
+                <span class="p">[</span><span class="mi">37010</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;DCIRID&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="s2">&quot;IDIID&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">&quot;1&quot;</span><span class="p">],</span>
+            <span class="p">]</span>
+
+        <span class="k">elif</span> <span class="ow">not</span> <span class="n">context</span><span class="p">:</span>
             <span class="n">context</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">quantities_category</span><span class="p">:</span>
             <span class="n">categories</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">available_quantities_categories</span><span class="p">(</span><span class="n">report_category</span><span class="p">,</span> <span class="n">display_type</span><span class="p">,</span> <span class="n">solution</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
@@ -1827,7 +1904,7 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        setup_sweep_name : str, optional</span>
 <span class="sd">            Setup name with the sweep. The default is ``&quot;&quot;``.</span>
 <span class="sd">        domain : str, optional</span>
-<span class="sd">            Plot Domain. Options are &quot;Sweep&quot; and &quot;Time&quot;.</span>
+<span class="sd">            Plot Domain. Options are &quot;Sweep&quot;, &quot;Time&quot;, &quot;DCIR&quot;.</span>
 <span class="sd">        variations : dict, optional</span>
 <span class="sd">            Dictionary of all families including the primary sweep. The default is ``{&quot;Freq&quot;: [&quot;All&quot;]}``.</span>
 <span class="sd">        primary_sweep_variable : str, optional</span>
@@ -1844,7 +1921,8 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        plot_type : str, optional</span>
 <span class="sd">            The format of Data Visualization. Default is ``Rectangular Plot``.</span>
 <span class="sd">        context : str, optional</span>
-<span class="sd">            The default is ``None``. It can be `None`, `&quot;Differential Pairs&quot;` or</span>
+<span class="sd">            The default is ``None``. It can be `None`, `&quot;Differential Pairs&quot;`,`&quot;RL&quot;`,</span>
+<span class="sd">            `&quot;Sources&quot;`, `&quot;Vias&quot;`,`&quot;Bondwires&quot;`, `&quot;Probes&quot;` for Hfss3dLayout or</span>
 <span class="sd">            Reduce Matrix Name for Q2d/Q3d solution or Infinite Sphere name for Far Fields Plot.</span>
 <span class="sd">        plotname : str, optional</span>
 <span class="sd">            Name of the plot. The default is ``None``.</span>
@@ -1924,6 +2002,12 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">report</span><span class="o">.</span><span class="n">domain</span> <span class="o">=</span> <span class="n">domain</span>
         <span class="k">if</span> <span class="n">primary_sweep_variable</span><span class="p">:</span>
             <span class="n">report</span><span class="o">.</span><span class="n">primary_sweep</span> <span class="o">=</span> <span class="n">primary_sweep_variable</span>
+        <span class="k">elif</span> <span class="n">domain</span> <span class="o">==</span> <span class="s2">&quot;DCIR&quot;</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
+            <span class="n">report</span><span class="o">.</span><span class="n">primary_sweep</span> <span class="o">=</span> <span class="s2">&quot;Index&quot;</span>
+            <span class="k">if</span> <span class="n">variations</span><span class="p">:</span>
+                <span class="n">variations</span><span class="p">[</span><span class="s2">&quot;Index&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;All&quot;</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
+                <span class="n">variations</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Index&quot;</span><span class="p">:</span> <span class="s2">&quot;All&quot;</span><span class="p">}</span>
         <span class="k">if</span> <span class="n">secondary_sweep_variable</span><span class="p">:</span>
             <span class="n">report</span><span class="o">.</span><span class="n">secondary_sweep</span> <span class="o">=</span> <span class="n">secondary_sweep_variable</span>
         <span class="k">if</span> <span class="n">variations</span><span class="p">:</span>
@@ -1933,6 +2017,20 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">report</span><span class="o">.</span><span class="n">point_number</span> <span class="o">=</span> <span class="n">polyline_points</span>
         <span class="k">if</span> <span class="n">context</span> <span class="o">==</span> <span class="s2">&quot;Differential Pairs&quot;</span><span class="p">:</span>
             <span class="n">report</span><span class="o">.</span><span class="n">differential_pairs</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">elif</span> <span class="n">context</span> <span class="ow">in</span> <span class="p">[</span>
+            <span class="s2">&quot;RL&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Sources&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Vias&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Bondwires&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Probes&quot;</span><span class="p">,</span>
+        <span class="p">]:</span>
+            <span class="n">report</span><span class="o">.</span><span class="n">siwave_dc_category</span> <span class="o">=</span> <span class="p">[</span>
+                <span class="s2">&quot;RL&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;Sources&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;Vias&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;Bondwires&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;Probes&quot;</span><span class="p">,</span>
+            <span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">context</span><span class="p">)</span>
         <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">design_type</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;Q3D Extractor&quot;</span><span class="p">,</span> <span class="s2">&quot;2D Extractor&quot;</span><span class="p">]</span> <span class="ow">and</span> <span class="n">context</span><span class="p">:</span>
             <span class="n">report</span><span class="o">.</span><span class="n">matrix</span> <span class="o">=</span> <span class="n">context</span>
         <span class="k">elif</span> <span class="n">report_category</span> <span class="o">==</span> <span class="s2">&quot;Far Fields&quot;</span><span class="p">:</span>

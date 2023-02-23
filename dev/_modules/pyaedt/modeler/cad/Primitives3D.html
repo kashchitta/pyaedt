@@ -920,7 +920,9 @@ function checkPageExistsAndRedirect(event) {
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_object</span><span class="p">(</span><span class="n">new_object_name</span><span class="p">)</span>
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
-    <span class="k">def</span> <span class="nf">create_circle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cs_plane</span><span class="p">,</span> <span class="n">position</span><span class="p">,</span> <span class="n">radius</span><span class="p">,</span> <span class="n">numSides</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">is_covered</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">matname</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">create_circle</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">cs_plane</span><span class="p">,</span> <span class="n">position</span><span class="p">,</span> <span class="n">radius</span><span class="p">,</span> <span class="n">numSides</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">is_covered</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">matname</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">non_model</span><span class="o">=</span><span class="kc">False</span>
+    <span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a circle.</span>
 
 <span class="sd">        Parameters</span>
@@ -940,6 +942,8 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        matname : str, optional</span>
 <span class="sd">            Name of the material. The default is ``None``, in which case the</span>
 <span class="sd">            default material is assigned.</span>
+<span class="sd">        non_model : bool, optional</span>
+<span class="sd">             Either if create the new object as model or non-model. The default is ``False``.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -952,6 +956,9 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        &gt;&gt;&gt; oEditor.CreateCircle</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">non_model_flag</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">non_model</span><span class="p">:</span>
+            <span class="n">non_model_flag</span> <span class="o">=</span> <span class="s2">&quot;NonModel#&quot;</span>
         <span class="n">szAxis</span> <span class="o">=</span> <span class="n">GeometryOperators</span><span class="o">.</span><span class="n">cs_plane_to_axis_str</span><span class="p">(</span><span class="n">cs_plane</span><span class="p">)</span>
         <span class="n">XCenter</span><span class="p">,</span> <span class="n">YCenter</span><span class="p">,</span> <span class="n">ZCenter</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pos_with_arg</span><span class="p">(</span><span class="n">position</span><span class="p">)</span>
         <span class="n">Radius</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_arg_with_dim</span><span class="p">(</span><span class="n">radius</span><span class="p">)</span>
@@ -963,7 +970,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">vArg1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;Radius:=&quot;</span><span class="p">),</span> <span class="n">vArg1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Radius</span><span class="p">)</span>
         <span class="n">vArg1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;WhichAxis:=&quot;</span><span class="p">),</span> <span class="n">vArg1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">szAxis</span><span class="p">)</span>
         <span class="n">vArg1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;NumSegments:=&quot;</span><span class="p">),</span> <span class="n">vArg1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">numSides</span><span class="p">))</span>
-        <span class="n">vArg2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_default_object_attributes</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">matname</span><span class="o">=</span><span class="n">matname</span><span class="p">)</span>
+        <span class="n">vArg2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_default_object_attributes</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">matname</span><span class="o">=</span><span class="n">matname</span><span class="p">,</span> <span class="n">flags</span><span class="o">=</span><span class="n">non_model_flag</span><span class="p">)</span>
         <span class="n">new_object_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">oeditor</span><span class="o">.</span><span class="n">CreateCircle</span><span class="p">(</span><span class="n">vArg1</span><span class="p">,</span> <span class="n">vArg2</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_object</span><span class="p">(</span><span class="n">new_object_name</span><span class="p">)</span>
 

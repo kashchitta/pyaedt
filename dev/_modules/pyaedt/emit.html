@@ -317,14 +317,16 @@ function checkPageExistsAndRedirect(event) {
 <span class="kn">import</span> <span class="nn">warnings</span>
 
 <span class="kn">from</span> <span class="nn">pyaedt</span> <span class="kn">import</span> <span class="n">generate_unique_project_name</span>
-<span class="kn">from</span> <span class="nn">pyaedt.application.AnalysisEmit</span> <span class="kn">import</span> <span class="n">FieldAnalysisEmit</span>
+<span class="kn">from</span> <span class="nn">pyaedt.application.Design</span> <span class="kn">import</span> <span class="n">Design</span>
 <span class="kn">from</span> <span class="nn">pyaedt.emit_core</span> <span class="kn">import</span> <span class="n">EMIT_MODULE</span>
 <span class="kn">from</span> <span class="nn">pyaedt.emit_core</span> <span class="kn">import</span> <span class="n">EmitConstants</span>
+<span class="kn">from</span> <span class="nn">pyaedt.emit_core.Couplings</span> <span class="kn">import</span> <span class="n">CouplingsEmit</span>
 <span class="kn">from</span> <span class="nn">pyaedt.emit_core.results.results</span> <span class="kn">import</span> <span class="n">Results</span>
 <span class="kn">from</span> <span class="nn">pyaedt.generic.general_methods</span> <span class="kn">import</span> <span class="n">pyaedt_function_handler</span>
+<span class="kn">from</span> <span class="nn">pyaedt.modeler.schematic</span> <span class="kn">import</span> <span class="n">ModelerEmit</span>
 
 
-<div class="viewcode-block" id="Emit"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.emit.Emit.html#pyaedt.emit.Emit">[docs]</a><span class="k">class</span> <span class="nc">Emit</span><span class="p">(</span><span class="n">FieldAnalysisEmit</span><span class="p">,</span> <span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="Emit"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.emit.Emit.html#pyaedt.emit.Emit">[docs]</a><span class="k">class</span> <span class="nc">Emit</span><span class="p">(</span><span class="n">Design</span><span class="p">,</span> <span class="nb">object</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Provides the Emit application interface.</span>
 
 <span class="sd">    Parameters</span>
@@ -432,22 +434,7 @@ function checkPageExistsAndRedirect(event) {
             <span class="n">projectname</span> <span class="o">=</span> <span class="n">generate_unique_project_name</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__emit_api_enabled</span> <span class="o">=</span> <span class="kc">False</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Constructor for the ``FieldAnalysisEmit`` class&quot;&quot;&quot;</span>
-        <span class="n">FieldAnalysisEmit</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
-            <span class="bp">self</span><span class="p">,</span>
-            <span class="s2">&quot;EMIT&quot;</span><span class="p">,</span>
-            <span class="n">projectname</span><span class="p">,</span>
-            <span class="n">designname</span><span class="p">,</span>
-            <span class="n">solution_type</span><span class="p">,</span>
-            <span class="n">setup_name</span><span class="p">,</span>
-            <span class="n">specified_version</span><span class="p">,</span>
-            <span class="n">non_graphical</span><span class="p">,</span>
-            <span class="n">new_desktop_session</span><span class="p">,</span>
-            <span class="n">close_on_exit</span><span class="p">,</span>
-            <span class="n">student_version</span><span class="p">,</span>
-            <span class="n">machine</span><span class="o">=</span><span class="n">machine</span><span class="p">,</span>
-            <span class="n">port</span><span class="o">=</span><span class="n">port</span><span class="p">,</span>
-            <span class="n">aedt_process_id</span><span class="o">=</span><span class="n">aedt_process_id</span><span class="p">,</span>
-        <span class="p">)</span>
+
         <span class="bp">self</span><span class="o">.</span><span class="n">_units</span> <span class="o">=</span> <span class="p">{</span>
             <span class="s2">&quot;Power&quot;</span><span class="p">:</span> <span class="s2">&quot;dBm&quot;</span><span class="p">,</span>
             <span class="s2">&quot;Frequency&quot;</span><span class="p">:</span> <span class="s2">&quot;MHz&quot;</span><span class="p">,</span>
@@ -459,6 +446,24 @@ function checkPageExistsAndRedirect(event) {
         <span class="p">}</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Default Emit units.&quot;&quot;&quot;</span>
 
+        <span class="n">Design</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span>
+            <span class="s2">&quot;EMIT&quot;</span><span class="p">,</span>
+            <span class="n">projectname</span><span class="p">,</span>
+            <span class="n">designname</span><span class="p">,</span>
+            <span class="n">solution_type</span><span class="p">,</span>
+            <span class="n">specified_version</span><span class="p">,</span>
+            <span class="n">non_graphical</span><span class="p">,</span>
+            <span class="n">new_desktop_session</span><span class="p">,</span>
+            <span class="n">close_on_exit</span><span class="p">,</span>
+            <span class="n">student_version</span><span class="p">,</span>
+            <span class="n">machine</span><span class="o">=</span><span class="n">machine</span><span class="p">,</span>
+            <span class="n">port</span><span class="o">=</span><span class="n">port</span><span class="p">,</span>
+            <span class="n">aedt_process_id</span><span class="o">=</span><span class="n">aedt_process_id</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_modeler</span> <span class="o">=</span> <span class="n">ModelerEmit</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_couplings</span> <span class="o">=</span> <span class="n">CouplingsEmit</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_aedt_version</span> <span class="o">&gt;=</span> <span class="s2">&quot;2023.1&quot;</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_emit_api</span> <span class="o">=</span> <span class="n">EMIT_MODULE</span><span class="o">.</span><span class="n">EmitApi</span><span class="p">()</span>
 <span class="w">            </span><span class="sd">&quot;&quot;&quot;Instance of the Emit api.&quot;&quot;&quot;</span>
@@ -467,6 +472,28 @@ function checkPageExistsAndRedirect(event) {
 <span class="w">            </span><span class="sd">&quot;&quot;&quot;&#39;&#39;Result&#39;&#39; object for the selected design.&quot;&quot;&quot;</span>
 
             <span class="bp">self</span><span class="o">.</span><span class="n">__emit_api_enabled</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">modeler</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Modeler.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        pyaedt.modeler.schematic.ModelerEmit</span>
+<span class="sd">            Design oModeler</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_modeler</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">couplings</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Emit Couplings.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        pyaedt.emit_core.Couplings.CouplingsEmit</span>
+<span class="sd">            Couplings within the EMIT Design</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_couplings</span>
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="fm">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>

@@ -59,7 +59,7 @@ of AEDT or try to connect to existing instance of it if one is available.
 .. code-block:: default
 
 
-    non_graphical = os.getenv("PYAEDT_NON_GRAPHICAL", "False").lower() in ("true", "1", "t")
+    non_graphical = False
     NewThread = False
     desktop_version = "2022.2"
 
@@ -128,34 +128,34 @@ Define coupling among RF systems
 Define the coupling among the RF systems. This portion of the EMIT API is not
 yet implemented.
 
-.. GENERATED FROM PYTHON SOURCE LINES 61-67
+.. GENERATED FROM PYTHON SOURCE LINES 61-66
 
 Run EMIT simulation
 ~~~~~~~~~~~~~~~~~~~
 Run the EMIT simulation. 
 
 This part of the example requires Ansys AEDT 2023 R2. 
-Uncomment it and run on correct version.
 
-.. GENERATED FROM PYTHON SOURCE LINES 67-83
+.. GENERATED FROM PYTHON SOURCE LINES 66-83
 
 .. code-block:: default
 
 
-    # rev = aedtapp.analyze()
-    # modeRx = aedtapp.tx_rx_mode().rx
-    # modeTx = aedtapp.tx_rx_mode().tx
-    # modeEmi = aedtapp.result_type().emi
-    # rx_bands = aedtapp.results.get_band_names(rad2.name, modeRx) 
-    # tx_bands = aedtapp.results.get_band_names(rad3.name, modeTx) 
-    # domain = aedtapp.interaction_domain()
-    # domain.set_receiver(rad2.name, rx_bands[0], -1)
-    # domain.set_interferers([rad3.name],[tx_bands[0]],[-1])
-    # interaction = rev.run(domain)
-    # worst = interaction.get_worst_instance(modeEmi)
-    # if worst.has_valid_values():
-    #     emi = worst.get_value(modeEmi)
-    #     print("Worst case interference is: {} dB".format(emi))
+    if desktop_version > "2023.1":
+        rev = aedtapp.analyze()
+        modeRx = aedtapp.tx_rx_mode().rx
+        modeTx = aedtapp.tx_rx_mode().tx
+        modeEmi = aedtapp.result_type().emi
+        rx_bands = aedtapp.results.get_band_names(rad2.name, modeRx) 
+        tx_bands = aedtapp.results.get_band_names(rad3.name, modeTx) 
+        domain = aedtapp.interaction_domain()
+        domain.set_receiver(rad2.name, rx_bands[0], -1)
+        domain.set_interferers([rad3.name],[tx_bands[0]],[-1])
+        interaction = rev.run(domain)
+        worst = interaction.get_worst_instance(modeEmi)
+        if worst.has_valid_values():
+            emi = worst.get_value(modeEmi)
+            print("Worst case interference is: {} dB".format(emi))
 
 
 
@@ -195,7 +195,7 @@ All methods provide for saving the project before closing.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  9.641 seconds)
+   **Total running time of the script:** ( 0 minutes  9.291 seconds)
 
 
 .. _sphx_glr_download_examples_07-EMIT_EMIT_Example.py:

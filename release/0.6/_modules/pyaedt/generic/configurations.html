@@ -7,35 +7,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>pyaedt.generic.configurations &#8212; PyAEDT</title>
     
-<script>
-  document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-  document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"
-</script>
-
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../_static/styles/theme.css?digest=92025949c220c2e29695" rel="stylesheet">
-<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+  <link href="../../../_static/styles/theme.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+<link href="../../../_static/styles/bootstrap.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=796348d33e8b1d947c94" rel="stylesheet">
 
-
-  <link rel="stylesheet"
-    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2">
 
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/css\ansys_sphinx_theme.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-binder.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-dataframe.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-rendered-html.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css" />
-
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=796348d33e8b1d947c94">
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=796348d33e8b1d947c94">
 
     
         <link href="../../../_static/css/breadcrumbs.css" rel="stylesheet">
@@ -48,24 +52,56 @@
     <script src="../../../_static/sphinx_highlight.js"></script>
     <script src="../../../_static/clipboard.min.js"></script>
     <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/js\table.js"></script>
+    <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/pyaedt/generic/configurations';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://aedt.docs.pyansys.com/release/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.6';
+        </script>
     <link rel="shortcut icon" href="../../../_static/ansys-favicon.png"/>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="docsearch:language" content="en">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="docsearch:language" content="en">
   </head>
   
   
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
-    <div class="bd-header-announcement container-fluid" id="banner">
-      
 
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  
+  <input type="checkbox" class="sidebar-toggle" name="__primary" id="__primary">
+  <label class="overlay overlay-primary" for="__primary"></label>
+
+  
+  <input type="checkbox" class="sidebar-toggle" name="__secondary" id="__secondary">
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+      <!-- Debugging: html_theme_options =  -->
+
+  <!-- If there is no MiliSearch enabled, use the PyData search -->
+<form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
     </div>
+  </div>
 
+  
     
-    
-    <nav class="bd-header navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="bd-header__inner container-xl">
-
+  <nav class="bd-header navbar navbar-expand-lg bd-navbar" id="navbar-main"><div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+      <span class="fa-solid fa-bars"></span>
+  </label>
   <div id="navbar-start">
     
     
@@ -73,9 +109,15 @@
 
 
 <a class="navbar-brand logo" href="../../../index.html">
+
   
   
   
+  
+  
+  
+  
+
   
     <img src="../../../_static/pyansys-logo-black-cropped.png" class="logo__image only-light" alt="Logo image">
     <img src="../../../_static/pyansys-logo-black-cropped.png" class="logo__image only-dark" alt="Logo image">
@@ -85,158 +127,124 @@
     
   </div>
 
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="fas fa-bars"></span>
-  </button>
-
   
-  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+  <div class="col-lg-9 navbar-header-items">
     <div id="navbar-center" class="mr-auto">
       
       <div class="navbar-center-item">
-        <ul id="navbar-main-elements" class="navbar-nav">
-    <li class="toctree-l1 nav-item">
- <a class="reference internal nav-link" href="../../../Getting_started/index.html">
-  Getting started
- </a>
-</li>
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
+        
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../Getting_started/index.html">
+                        Getting started
+                      </a>
+                    </li>
+                
 
-<li class="toctree-l1 nav-item">
- <a class="reference internal nav-link" href="../../../User_guide/index.html">
-  User guide
- </a>
-</li>
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../User_guide/index.html">
+                        User guide
+                      </a>
+                    </li>
+                
 
-<li class="toctree-l1 nav-item">
- <a class="reference internal nav-link" href="../../../API/index.html">
-  API AEDT reference
- </a>
-</li>
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../API/index.html">
+                        API AEDT reference
+                      </a>
+                    </li>
+                
 
-<li class="toctree-l1 nav-item">
- <a class="reference internal nav-link" href="../../../EDBAPI/index.html">
-  API EDB reference
- </a>
-</li>
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../EDBAPI/index.html">
+                        API EDB reference
+                      </a>
+                    </li>
+                
 
-<li class="toctree-l1 nav-item">
- <a class="reference internal nav-link" href="../../../examples/index.html">
-  Examples
- </a>
-</li>
-
-<li class="toctree-l1 nav-item">
- <a class="reference internal nav-link" href="../../../Contributing.html">
-  Contribute
- </a>
-</li>
-
-    
-</ul>
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../examples/index.html">
+                        Examples
+                      </a>
+                    </li>
+                
+            <div class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    More
+                </button>
+                <div class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../Contributing.html">
+                        Contribute
+                      </a>
+                    </li>
+                
+                </div>
+            </div>
+            
+    </ul>
+</nav>
       </div>
       
     </div>
 
     <div id="navbar-end">
       
+        <div class="navbar-end-item navbar-persistent--container">
+          
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+        </div>
+      
+      
       <div class="navbar-end-item">
-        <div class="dropdown" id="version_switcher">
-    <button type="button" class="btn btn-sm navbar-btn dropdown-toggle" id="version_switcher_button" data-toggle="dropdown">
+        <div class="version-switcher__container dropdown">
+    <button type="button" class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle" data-toggle="dropdown">
         0.6  <!-- this text may get changed later by javascript -->
         <span class="caret"></span>
     </button>
-    <div id="version_switcher_menu" class="dropdown-menu list-group-flush py-0" aria-labelledby="version_switcher_button">
+    <div class="version-switcher__menu dropdown-menu list-group-flush py-0">
     <!-- dropdown will be populated by javascript on page load -->
     </div>
 </div>
-
-<!-- NOTE: this JS must live here (not in our global JS file) because it relies
-     on being processed by Jinja before it is run (specifically for replacing
-     variables _modules/pyaedt/generic/configurations and {'json_url': 'https://aedt.docs.pyansys.com/release/versions.json', 'version_match': '0.6'}.
--->
-
-<script type="text/javascript">
-// Check if corresponding page path exists in other version of docs
-// and, if so, go there instead of the homepage of the other docs version
-function checkPageExistsAndRedirect(event) {
-    const currentFilePath = "_modules/pyaedt/generic/configurations.html",
-          tryUrl = event.target.getAttribute("href");
-    let otherDocsHomepage = tryUrl.replace(currentFilePath, "");
-    $.ajax({
-        type: 'HEAD',
-        url: tryUrl,
-        // if the page exists, go there
-        success: function() {
-            location.href = tryUrl;
-        }
-    }).fail(function() {
-        location.href = otherDocsHomepage;
-    });
-    // this prevents the browser from following the href of the clicked node
-    // (which is fine because this function takes care of redirecting)
-    return false;
-}
-
-// Populate the version switcher from the JSON config file
-(function () {
-    $.getJSON("https://aedt.docs.pyansys.com/release/versions.json", function(data, textStatus, jqXHR) {
-        const currentFilePath = "_modules/pyaedt/generic/configurations.html";
-        let btn = document.getElementById("version_switcher_button");
-        // Set empty strings by default so that these attributes exist and can be used in CSS selectors
-        btn.dataset["activeVersionName"] = "";
-        btn.dataset["activeVersion"] = "";
-        // create links to the corresponding page in the other docs versions
-        $.each(data, function(index, entry) {
-            // if no custom name specified (e.g., "latest"), use version string
-            if (!("name" in entry)) {
-                entry.name = entry.version;
-            }
-            // create the node
-            const node = document.createElement("a");
-            node.setAttribute("class", "list-group-item list-group-item-action py-1");
-            node.textContent = `${entry.name}`;
-            node.setAttribute("href", `${entry.url}${currentFilePath}`);
-            // on click, AJAX calls will check if the linked page exists before
-            // trying to redirect, and if not, will redirect to the homepage
-            // for that version of the docs.
-            node.onclick = checkPageExistsAndRedirect;
-            // Add dataset values for the version and name in case people want
-            // to apply CSS styling based on this information.
-            node.dataset["versionName"] = entry.name;
-            node.dataset["version"] = entry.version;
-
-            $("#version_switcher_menu").append(node);
-            // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.46 variable.
-            // also highlight the dropdown entry for the currently-viewed
-            // version's entry
-            if (entry.version == "0.6") {
-                node.classList.add("active");
-                btn.innerText = btn.dataset["activeVersionName"] = entry.name;
-                btn.dataset["activeVersion"] = entry.version;
-            }
-        });
-    });
-})();
-</script>
       </div>
       
       <div class="navbar-end-item">
-        <span id="theme-switch" class="btn btn-sm btn-outline-primary navbar-btn rounded-circle">
-    <a class="theme-switch" data-mode="light"><i class="fas fa-sun"></i></a>
-    <a class="theme-switch" data-mode="dark"><i class="far fa-moon"></i></a>
-    <a class="theme-switch" data-mode="auto"><i class="fas fa-adjust"></i></a>
-</span>
+        <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+</button>
       </div>
       
       <div class="navbar-end-item">
         <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
         <li class="nav-item">
-          <a class="nav-link" href="https://github.com/pyansys/pyaedt" rel="noopener" target="_blank" title="GitHub"><span><i class="fab fa-github-square"></i></span>
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pyansys/pyaedt" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa-brands fa-square-github"></i></span>
             <label class="sr-only">GitHub</label></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="https://github.com/pyansys/pyaedt/discussions" rel="noopener" target="_blank" title="Support"><span><i class="fa fa-comment fa-fw"></i></span>
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pyansys/pyaedt/discussions" title="Support" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa fa-comment fa-fw"></i></span>
             <label class="sr-only">Support</label></a>
         </li>
       </ul>
@@ -244,11 +252,29 @@ function checkPageExistsAndRedirect(event) {
       
     </div>
   </div>
+
+
+  
+  
+    <div class="navbar-persistent--mobile">
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+    </div>
+  
+
+  
+  <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+  </label>
+  
+
 </div>
-    </nav>
+  </nav>
+  
+
     
-     
-<div id="announcement_msg"></div>
+    <div id="announcement_msg"></div>
 <script>
   fetch("announcement.html")
     .then((response) => {
@@ -260,9 +286,10 @@ function checkPageExistsAndRedirect(event) {
     .then(text => document.getElementById("announcement_msg").innerHTML = text)
     .catch((error) => console.error(`Fetch problem: ${error.message}`));
 </script>
+    
 
     
-        <div class="container-xl">
+    <div class="container-xl">
     <div class="row">
         <div class="col-12 col-md-3" id="breadcrumbs-spacer"></div>
         <div class="col-12 col-md-11 col-xl-9" id="breadcrumbs">
@@ -287,42 +314,160 @@ function checkPageExistsAndRedirect(event) {
     
 
 
-    <div class="bd-container container-xl">
-      <div class="bd-container__inner row">
-          
-
-<!-- Only show if we have sidebars configured, else just a small margin  -->
-<div class="bd-sidebar-primary col-12 col-md-3 bd-sidebar">
-  <div class="sidebar-start-items"><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-  <div class="bd-toc-item active">
-    
-    
-    
-  </div>
-</nav>
-  </div>
-  <div class="sidebar-end-items">
-  </div>
-</div>
-
-
-          
-
-
-<div class="bd-sidebar-secondary d-none d-xl-block col-xl-2 bd-toc">
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
   
-</div>
-
-
-          
-          
-          <div class="bd-content col-12 col-md-9 col-xl-7">
-              
-              <article class="bd-article" role="main">
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+      
+      <div class="navbar-center-item">
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
+        
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../Getting_started/index.html">
+                        Getting started
+                      </a>
+                    </li>
                 
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../User_guide/index.html">
+                        User guide
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../API/index.html">
+                        API AEDT reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../EDBAPI/index.html">
+                        API EDB reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../examples/index.html">
+                        Examples
+                      </a>
+                    </li>
+                
+            <div class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    More
+                </button>
+                <div class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../Contributing.html">
+                        Contribute
+                      </a>
+                    </li>
+                
+                </div>
+            </div>
+            
+    </ul>
+</nav>
+      </div>
+      
+      </div>
+    
+
+    
+    
+    <div class="sidebar-header-items__end">
+      
+      <div class="navbar-end-item">
+        <div class="version-switcher__container dropdown">
+    <button type="button" class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle" data-toggle="dropdown">
+        0.6  <!-- this text may get changed later by javascript -->
+        <span class="caret"></span>
+    </button>
+    <div class="version-switcher__menu dropdown-menu list-group-flush py-0">
+    <!-- dropdown will be populated by javascript on page load -->
+    </div>
+</div>
+      </div>
+      
+      <div class="navbar-end-item">
+        <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+</button>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pyansys/pyaedt" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa-brands fa-square-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pyansys/pyaedt/discussions" title="Support" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa fa-comment fa-fw"></i></span>
+            <label class="sr-only">Support</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+    
+  </div>
+
+  
+
+  
+  <div class="sidebar-end-items sidebar-primary__section">
+    <div class="sidebar-end-items__item">
+    </div>
+  </div>
+
+  
+  <div id="rtd-footer-container"></div>
+
+      </div>
+      <main id="main-content" class="bd-main">
+        
+        
+        <div class="bd-content">
+          <div class="bd-article-container">
+            
+            <div class="bd-header-article">
+                
+            </div>
+            
+            
+            <article class="bd-article" role="main">
+              
   <h1>Source code for pyaedt.generic.configurations</h1><div class="highlight"><pre>
 <span></span><span class="kn">import</span> <span class="nn">copy</span>
 <span class="kn">import</span> <span class="nn">json</span>
@@ -330,15 +475,22 @@ function checkPageExistsAndRedirect(event) {
 <span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">OrderedDict</span>
 <span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
 
+<span class="kn">from</span> <span class="nn">pyaedt</span> <span class="kn">import</span> <span class="n">Icepak</span>
 <span class="kn">from</span> <span class="nn">pyaedt</span> <span class="kn">import</span> <span class="n">__version__</span>
+<span class="kn">from</span> <span class="nn">pyaedt</span> <span class="kn">import</span> <span class="n">generate_unique_folder_name</span>
+<span class="kn">from</span> <span class="nn">pyaedt</span> <span class="kn">import</span> <span class="n">get_pyaedt_app</span>
+<span class="kn">from</span> <span class="nn">pyaedt.application.Variables</span> <span class="kn">import</span> <span class="n">decompose_variable_value</span>
 <span class="kn">from</span> <span class="nn">pyaedt.generic.DataHandlers</span> <span class="kn">import</span> <span class="n">_arg2dict</span>
 <span class="kn">from</span> <span class="nn">pyaedt.generic.general_methods</span> <span class="kn">import</span> <span class="n">_create_json_file</span>
 <span class="kn">from</span> <span class="nn">pyaedt.generic.general_methods</span> <span class="kn">import</span> <span class="n">generate_unique_name</span>
 <span class="kn">from</span> <span class="nn">pyaedt.generic.general_methods</span> <span class="kn">import</span> <span class="n">pyaedt_function_handler</span>
+<span class="kn">from</span> <span class="nn">pyaedt.generic.LoadAEDTFile</span> <span class="kn">import</span> <span class="n">load_keyword_in_aedt_file</span>
+<span class="kn">from</span> <span class="nn">pyaedt.modeler.cad.components_3d</span> <span class="kn">import</span> <span class="n">UserDefinedComponent</span>
 <span class="kn">from</span> <span class="nn">pyaedt.modeler.cad.Modeler</span> <span class="kn">import</span> <span class="n">CoordinateSystem</span>
 <span class="kn">from</span> <span class="nn">pyaedt.modeler.geometry_operators</span> <span class="kn">import</span> <span class="n">GeometryOperators</span>
 <span class="kn">from</span> <span class="nn">pyaedt.modules.Boundary</span> <span class="kn">import</span> <span class="n">BoundaryObject</span>
 <span class="kn">from</span> <span class="nn">pyaedt.modules.Boundary</span> <span class="kn">import</span> <span class="n">BoundaryProps</span>
+<span class="kn">from</span> <span class="nn">pyaedt.modules.Boundary</span> <span class="kn">import</span> <span class="n">NativeComponentObject</span>
 <span class="kn">from</span> <span class="nn">pyaedt.modules.DesignXPloration</span> <span class="kn">import</span> <span class="n">SetupOpti</span>
 <span class="kn">from</span> <span class="nn">pyaedt.modules.DesignXPloration</span> <span class="kn">import</span> <span class="n">SetupParam</span>
 <span class="kn">from</span> <span class="nn">pyaedt.modules.MaterialLib</span> <span class="kn">import</span> <span class="n">Material</span>
@@ -1215,7 +1367,11 @@ function checkPageExistsAndRedirect(event) {
                     <span class="n">setup_el</span><span class="o">.</span><span class="n">props</span> <span class="o">=</span> <span class="n">props</span>
                     <span class="n">setup_el</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
                 <span class="k">return</span> <span class="kc">True</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">create_setup</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">props</span><span class="p">[</span><span class="s2">&quot;SetupType&quot;</span><span class="p">],</span> <span class="n">props</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">design_type</span> <span class="o">==</span> <span class="s2">&quot;Q3D Extractor&quot;</span><span class="p">:</span>
+            <span class="n">setup</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">create_setup</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">props</span><span class="o">=</span><span class="n">props</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">setup</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">create_setup</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">setuptype</span><span class="o">=</span><span class="n">props</span><span class="p">[</span><span class="s2">&quot;SetupType&quot;</span><span class="p">],</span> <span class="n">props</span><span class="o">=</span><span class="n">props</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">setup</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Setup </span><span class="si">{}</span><span class="s2"> added.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="p">))</span>
             <span class="k">return</span> <span class="kc">True</span>
         <span class="k">else</span><span class="p">:</span>
@@ -1276,7 +1432,7 @@ function checkPageExistsAndRedirect(event) {
             <span class="p">)</span>
 
 <div class="viewcode-block" id="Configurations.import_config"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.generic.configurations.Configurations.import_config.html#pyaedt.generic.configurations.Configurations.import_config">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
-    <span class="k">def</span> <span class="nf">import_config</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config_file</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">import_config</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config_file</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Import configuration settings from a json file and apply it to the current design.</span>
 <span class="sd">        The sections to be applied are defined with ``configuration.options`` class.</span>
 <span class="sd">        The import operation result is saved in the ``configuration.results`` class.</span>
@@ -1291,6 +1447,8 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        dict, bool</span>
 <span class="sd">            Config dictionary.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;import_config expected at most 1 arguments, got </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">results</span><span class="o">.</span><span class="n">_reset_results</span><span class="p">()</span>
         <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">config_file</span><span class="p">)</span> <span class="k">as</span> <span class="n">json_file</span><span class="p">:</span>
             <span class="n">dict_in</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">json_file</span><span class="p">)</span>
@@ -1353,13 +1511,13 @@ function checkPageExistsAndRedirect(event) {
                 <span class="n">newmat</span> <span class="o">=</span> <span class="n">Material</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="p">,</span> <span class="n">el</span><span class="p">,</span> <span class="n">val</span><span class="p">)</span>
                 <span class="k">if</span> <span class="n">newmat</span><span class="o">.</span><span class="n">update</span><span class="p">():</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">materials</span><span class="o">.</span><span class="n">material_keys</span><span class="p">[</span><span class="n">newname</span><span class="p">]</span> <span class="o">=</span> <span class="n">newmat</span>
-                <span class="k">else</span><span class="p">:</span>
+                <span class="k">else</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">results</span><span class="o">.</span><span class="n">import_materials</span> <span class="o">=</span> <span class="kc">False</span>
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">import_coordinate_systems</span> <span class="ow">and</span> <span class="n">dict_in</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;coordinatesystems&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">results</span><span class="o">.</span><span class="n">import_coordinate_systems</span> <span class="o">=</span> <span class="kc">True</span>
             <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">props</span> <span class="ow">in</span> <span class="n">dict_in</span><span class="p">[</span><span class="s2">&quot;coordinatesystems&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-                <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_update_coordinate_systems</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">props</span><span class="p">):</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_update_coordinate_systems</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">props</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">results</span><span class="o">.</span><span class="n">import_coordinate_systems</span> <span class="o">=</span> <span class="kc">False</span>
 
         <span class="c1"># if self.options.import_face_coordinate_systems and dict_in.get(&quot;facecoordinatesystems&quot;, None):</span>
@@ -1510,6 +1668,10 @@ function checkPageExistsAndRedirect(event) {
             <span class="n">dict_out</span><span class="p">[</span><span class="s2">&quot;objects&quot;</span><span class="p">][</span><span class="n">val</span><span class="o">.</span><span class="n">name</span><span class="p">][</span><span class="s2">&quot;CoordinateSystem&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">val</span><span class="o">.</span><span class="n">part_coordinate_system</span>
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">_export_object_properties</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dict_out</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_export_objects_properties</span><span class="p">(</span><span class="n">dict_out</span><span class="p">)</span>
+
+    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">_export_mesh_operations</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dict_out</span><span class="p">):</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">meshoperations</span><span class="p">:</span>
             <span class="n">dict_out</span><span class="p">[</span><span class="s2">&quot;mesh&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
@@ -1539,6 +1701,12 @@ function checkPageExistsAndRedirect(event) {
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">_export_monitor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dict_out</span><span class="p">):</span>
         <span class="n">dict_monitor</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">native_parts</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="n">part</span><span class="o">.</span><span class="n">name</span>
+            <span class="k">for</span> <span class="n">udc_name</span><span class="p">,</span> <span class="n">udc</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">user_defined_components</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+            <span class="k">for</span> <span class="n">part_name</span><span class="p">,</span> <span class="n">part</span> <span class="ow">in</span> <span class="n">udc</span><span class="o">.</span><span class="n">parts</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">user_defined_components</span><span class="p">[</span><span class="n">udc_name</span><span class="p">]</span><span class="o">.</span><span class="n">definition_name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">native_components</span>
+        <span class="p">]</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">monitor</span><span class="o">.</span><span class="n">all_monitors</span> <span class="o">!=</span> <span class="p">{}:</span>
             <span class="k">for</span> <span class="n">mon_name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">monitor</span><span class="o">.</span><span class="n">all_monitors</span><span class="p">:</span>
                 <span class="n">dict_monitor</span><span class="p">[</span><span class="n">mon_name</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
@@ -1546,6 +1714,27 @@ function checkPageExistsAndRedirect(event) {
                     <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">monitor</span><span class="o">.</span><span class="n">all_monitors</span><span class="p">[</span><span class="n">mon_name</span><span class="p">]</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
                     <span class="k">if</span> <span class="n">key</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;Name&quot;</span><span class="p">,</span> <span class="s2">&quot;Object&quot;</span><span class="p">]</span>
                 <span class="p">}</span>
+                <span class="k">if</span> <span class="n">dict_monitor</span><span class="p">[</span><span class="n">mon_name</span><span class="p">][</span><span class="s2">&quot;Geometry Assignment&quot;</span><span class="p">]</span> <span class="ow">in</span> <span class="n">native_parts</span><span class="p">:</span>
+                    <span class="n">dict_monitor</span><span class="p">[</span><span class="n">mon_name</span><span class="p">][</span><span class="s2">&quot;Native Assignment&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
+                        <span class="n">name</span>
+                        <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">dict_comp</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">user_defined_components</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+                        <span class="k">if</span> <span class="n">dict_monitor</span><span class="p">[</span><span class="n">mon_name</span><span class="p">][</span><span class="s2">&quot;Geometry Assignment&quot;</span><span class="p">]</span>
+                        <span class="ow">in</span> <span class="p">[</span><span class="n">part</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">part_id</span><span class="p">,</span> <span class="n">part</span> <span class="ow">in</span> <span class="n">dict_comp</span><span class="o">.</span><span class="n">parts</span><span class="o">.</span><span class="n">items</span><span class="p">()]</span>
+                    <span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+                    <span class="k">if</span> <span class="n">dict_monitor</span><span class="p">[</span><span class="n">mon_name</span><span class="p">][</span><span class="s2">&quot;Type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Face&quot;</span><span class="p">:</span>
+                        <span class="n">dict_monitor</span><span class="p">[</span><span class="n">mon_name</span><span class="p">][</span><span class="s2">&quot;Area Assignment&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">get_face_area</span><span class="p">(</span>
+                            <span class="n">dict_monitor</span><span class="p">[</span><span class="n">mon_name</span><span class="p">][</span><span class="s2">&quot;ID&quot;</span><span class="p">]</span>
+                        <span class="p">)</span>
+                    <span class="k">elif</span> <span class="n">dict_monitor</span><span class="p">[</span><span class="n">mon_name</span><span class="p">][</span><span class="s2">&quot;Type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Surface&quot;</span><span class="p">:</span>
+                        <span class="n">dict_monitor</span><span class="p">[</span><span class="n">mon_name</span><span class="p">][</span><span class="s2">&quot;Area Assignment&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">get_face_area</span><span class="p">(</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">get_object_from_name</span><span class="p">(</span><span class="n">dict_monitor</span><span class="p">[</span><span class="n">mon_name</span><span class="p">][</span><span class="s2">&quot;ID&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">faces</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">id</span>
+                        <span class="p">)</span>
+                    <span class="k">elif</span> <span class="n">dict_monitor</span><span class="p">[</span><span class="n">mon_name</span><span class="p">][</span><span class="s2">&quot;Type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Object&quot;</span><span class="p">:</span>
+                        <span class="n">bb</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">get_object_from_name</span><span class="p">([</span><span class="n">dict_monitor</span><span class="p">[</span><span class="n">mon_name</span><span class="p">][</span><span class="s2">&quot;ID&quot;</span><span class="p">]][</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">bounding_box</span>
+                        <span class="n">dict_monitor</span><span class="p">[</span><span class="n">mon_name</span><span class="p">][</span><span class="s2">&quot;Location&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[(</span><span class="n">bb</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">bb</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">3</span><span class="p">])</span> <span class="o">/</span> <span class="mi">2</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)]</span>
+                        <span class="n">dict_monitor</span><span class="p">[</span><span class="n">mon_name</span><span class="p">][</span><span class="s2">&quot;Volume Assignment&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">get_object_from_name</span><span class="p">(</span>
+                            <span class="n">dict_monitor</span><span class="p">[</span><span class="n">mon_name</span><span class="p">][</span><span class="s2">&quot;ID&quot;</span><span class="p">]</span>
+                        <span class="p">)</span><span class="o">.</span><span class="n">volume</span>
         <span class="n">dict_out</span><span class="p">[</span><span class="s2">&quot;monitor&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dict_monitor</span>
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
@@ -1606,31 +1795,10 @@ function checkPageExistsAndRedirect(event) {
             <span class="p">)</span>
         <span class="n">dict_out</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_export_general</span><span class="p">(</span><span class="n">dict_out</span><span class="p">)</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">export_variables</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_export_variables</span><span class="p">(</span><span class="n">dict_out</span><span class="p">)</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">export_setups</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_export_setups</span><span class="p">(</span><span class="n">dict_out</span><span class="p">)</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">export_optimizations</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_export_optimizations</span><span class="p">(</span><span class="n">dict_out</span><span class="p">)</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">export_parametrics</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_export_parametrics</span><span class="p">(</span><span class="n">dict_out</span><span class="p">)</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">export_boundaries</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_export_boundaries</span><span class="p">(</span><span class="n">dict_out</span><span class="p">)</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">export_coordinate_systems</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_export_coordinate_systems</span><span class="p">(</span><span class="n">dict_out</span><span class="p">)</span>
-        <span class="c1"># if self.options.export_face_coordinate_systems:</span>
-        <span class="c1">#     self._export_face_coordinate_systems(dict_out)</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">export_object_properties</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_export_objects_properties</span><span class="p">(</span><span class="n">dict_out</span><span class="p">)</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">export_mesh_operations</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_export_mesh_operations</span><span class="p">(</span><span class="n">dict_out</span><span class="p">)</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">export_materials</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_export_materials</span><span class="p">(</span><span class="n">dict_out</span><span class="p">)</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">export_datasets</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_export_datasets</span><span class="p">(</span><span class="n">dict_out</span><span class="p">)</span>
-        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">,</span> <span class="s2">&quot;export_monitor&quot;</span><span class="p">):</span>
-            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">export_monitor</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">_export_monitor</span><span class="p">(</span><span class="n">dict_out</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="nb">vars</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">)</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">key</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;_export_&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">value</span><span class="p">:</span>
+                <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">)(</span><span class="n">dict_out</span><span class="p">)</span>
+
         <span class="c1"># update the json if it exists already</span>
 
         <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">config_file</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">overwrite</span><span class="p">:</span>
@@ -1663,6 +1831,8 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">ConfigurationsOptions</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_export_monitor</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_import_monitor</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_export_native_components</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_import_native_components</span> <span class="o">=</span> <span class="kc">True</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">import_monitor</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -1679,6 +1849,22 @@ function checkPageExistsAndRedirect(event) {
     <span class="nd">@export_monitor</span><span class="o">.</span><span class="n">setter</span>
     <span class="k">def</span> <span class="nf">export_monitor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_export_monitor</span> <span class="o">=</span> <span class="n">val</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">import_native_components</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_import_native_components</span>
+
+    <span class="nd">@import_native_components</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">import_native_components</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_import_native_components</span> <span class="o">=</span> <span class="n">val</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">export_native_components</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_export_native_components</span>
+
+    <span class="nd">@export_native_components</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">export_native_components</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_export_native_components</span> <span class="o">=</span> <span class="n">val</span>
 
 
 <span class="k">class</span> <span class="nc">ConfigurationsIcepak</span><span class="p">(</span><span class="n">Configurations</span><span class="p">):</span>
@@ -1699,13 +1885,22 @@ function checkPageExistsAndRedirect(event) {
                 <span class="n">arg2</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="s2">&quot;NAME:Material&quot;</span><span class="p">,</span> <span class="s2">&quot;Value:=&quot;</span><span class="p">,</span> <span class="nb">chr</span><span class="p">(</span><span class="mi">34</span><span class="p">)</span> <span class="o">+</span> <span class="n">val</span><span class="p">[</span><span class="s2">&quot;Material&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="nb">chr</span><span class="p">(</span><span class="mi">34</span><span class="p">)])</span>
             <span class="k">if</span> <span class="n">val</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;SolveInside&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">):</span>
                 <span class="n">arg2</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="s2">&quot;NAME:Solve Inside&quot;</span><span class="p">,</span> <span class="s2">&quot;Value:=&quot;</span><span class="p">,</span> <span class="n">val</span><span class="p">[</span><span class="s2">&quot;SolveInside&quot;</span><span class="p">]])</span>
-            <span class="n">arg2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
-                <span class="p">[</span>
-                    <span class="s2">&quot;NAME:Surface Material&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;Value:=&quot;</span><span class="p">,</span>
-                    <span class="nb">chr</span><span class="p">(</span><span class="mi">34</span><span class="p">)</span> <span class="o">+</span> <span class="n">val</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;SurfaceMaterial&quot;</span><span class="p">,</span> <span class="s2">&quot;Steel-oxidised-surface&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="nb">chr</span><span class="p">(</span><span class="mi">34</span><span class="p">),</span>
-                <span class="p">]</span>
-            <span class="p">)</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">arg2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                    <span class="p">[</span>
+                        <span class="s2">&quot;NAME:Surface Material&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;Value:=&quot;</span><span class="p">,</span>
+                        <span class="nb">chr</span><span class="p">(</span><span class="mi">34</span><span class="p">)</span> <span class="o">+</span> <span class="n">val</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;SurfaceMaterial&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="nb">chr</span><span class="p">(</span><span class="mi">34</span><span class="p">),</span>
+                    <span class="p">]</span>
+                <span class="p">)</span>
+            <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+                <span class="n">arg2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                    <span class="p">[</span>
+                        <span class="s2">&quot;NAME:Surface Material&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;Value:=&quot;</span><span class="p">,</span>
+                        <span class="nb">chr</span><span class="p">(</span><span class="mi">34</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;Steel-oxidised-surface&quot;</span> <span class="o">+</span> <span class="nb">chr</span><span class="p">(</span><span class="mi">34</span><span class="p">),</span>
+                    <span class="p">]</span>
+                <span class="p">)</span>
             <span class="k">if</span> <span class="n">val</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;Model&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">):</span>
                 <span class="n">arg2</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="s2">&quot;NAME:Model&quot;</span><span class="p">,</span> <span class="s2">&quot;Value:=&quot;</span><span class="p">,</span> <span class="n">val</span><span class="p">[</span><span class="s2">&quot;Model&quot;</span><span class="p">]])</span>
             <span class="k">if</span> <span class="n">val</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;Group&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">):</span>
@@ -1756,7 +1951,13 @@ function checkPageExistsAndRedirect(event) {
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">_export_objects_properties</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dict_out</span><span class="p">):</span>
         <span class="n">dict_out</span><span class="p">[</span><span class="s2">&quot;objects&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">udc_parts_id</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">modeler</span><span class="p">,</span> <span class="s2">&quot;user_defined_components&quot;</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">refresh_all_ids</span><span class="p">()</span>
+            <span class="n">udc_parts_id</span> <span class="o">=</span> <span class="p">[</span><span class="n">part</span> <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">uc</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">user_defined_components</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">for</span> <span class="n">part</span> <span class="ow">in</span> <span class="n">uc</span><span class="o">.</span><span class="n">parts</span><span class="p">]</span>
         <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">val</span><span class="o">.</span><span class="n">id</span> <span class="ow">in</span> <span class="n">udc_parts_id</span><span class="p">:</span>
+                <span class="k">continue</span>
             <span class="n">dict_out</span><span class="p">[</span><span class="s2">&quot;objects&quot;</span><span class="p">][</span><span class="n">val</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
             <span class="n">dict_out</span><span class="p">[</span><span class="s2">&quot;objects&quot;</span><span class="p">][</span><span class="n">val</span><span class="o">.</span><span class="n">name</span><span class="p">][</span><span class="s2">&quot;SurfaceMaterial&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">val</span><span class="o">.</span><span class="n">surface_material_name</span>
             <span class="n">dict_out</span><span class="p">[</span><span class="s2">&quot;objects&quot;</span><span class="p">][</span><span class="n">val</span><span class="o">.</span><span class="n">name</span><span class="p">][</span><span class="s2">&quot;Material&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">val</span><span class="o">.</span><span class="n">material_name</span>
@@ -1827,49 +2028,457 @@ function checkPageExistsAndRedirect(event) {
         <span class="k">return</span> <span class="kc">True</span>
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
-    <span class="k">def</span> <span class="nf">import_config</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config_file</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_monitor_assignment_finder</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dict_in</span><span class="p">,</span> <span class="n">monitor_obj</span><span class="p">,</span> <span class="n">exclude_set</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">dict_in</span><span class="p">[</span><span class="s2">&quot;monitor&quot;</span><span class="p">][</span><span class="n">monitor_obj</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;Native Assignment&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">):</span>
+            <span class="n">objects_to_check</span> <span class="o">=</span> <span class="p">[</span><span class="n">obj</span> <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">obj</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">items</span><span class="p">()]</span>
+            <span class="n">objects_to_check</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">objects_to_check</span><span class="p">)</span> <span class="o">-</span> <span class="n">exclude_set</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">dict_in</span><span class="p">[</span><span class="s2">&quot;monitor&quot;</span><span class="p">][</span><span class="n">monitor_obj</span><span class="p">][</span><span class="s2">&quot;Type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Face&quot;</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">objects_to_check</span><span class="p">:</span>
+                    <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">obj</span><span class="o">.</span><span class="n">faces</span><span class="p">:</span>
+                        <span class="k">if</span> <span class="p">(</span>
+                            <span class="n">GeometryOperators</span><span class="o">.</span><span class="n">v_norm</span><span class="p">(</span>
+                                <span class="n">GeometryOperators</span><span class="o">.</span><span class="n">v_sub</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">center</span><span class="p">,</span> <span class="n">dict_in</span><span class="p">[</span><span class="s2">&quot;monitor&quot;</span><span class="p">][</span><span class="n">monitor_obj</span><span class="p">][</span><span class="s2">&quot;Location&quot;</span><span class="p">])</span>
+                            <span class="p">)</span>
+                            <span class="o">&lt;=</span> <span class="mf">1e-12</span>
+                            <span class="ow">and</span> <span class="nb">abs</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">area</span> <span class="o">-</span> <span class="n">dict_in</span><span class="p">[</span><span class="s2">&quot;monitor&quot;</span><span class="p">][</span><span class="n">monitor_obj</span><span class="p">][</span><span class="s2">&quot;Area Assignment&quot;</span><span class="p">])</span> <span class="o">&lt;=</span> <span class="mf">1e-12</span>
+                        <span class="p">):</span>
+                            <span class="n">dict_in</span><span class="p">[</span><span class="s2">&quot;monitor&quot;</span><span class="p">][</span><span class="n">monitor_obj</span><span class="p">][</span><span class="s2">&quot;ID&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">id</span>
+                            <span class="k">return</span>
+            <span class="k">elif</span> <span class="n">dict_in</span><span class="p">[</span><span class="s2">&quot;monitor&quot;</span><span class="p">][</span><span class="n">monitor_obj</span><span class="p">][</span><span class="s2">&quot;Type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Surface&quot;</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">objects_to_check</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">faces</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                        <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">obj</span><span class="o">.</span><span class="n">faces</span><span class="p">:</span>
+                            <span class="k">if</span> <span class="p">(</span>
+                                <span class="n">GeometryOperators</span><span class="o">.</span><span class="n">v_norm</span><span class="p">(</span>
+                                    <span class="n">GeometryOperators</span><span class="o">.</span><span class="n">v_sub</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">center</span><span class="p">,</span> <span class="n">dict_in</span><span class="p">[</span><span class="s2">&quot;monitor&quot;</span><span class="p">][</span><span class="n">monitor_obj</span><span class="p">][</span><span class="s2">&quot;Location&quot;</span><span class="p">])</span>
+                                <span class="p">)</span>
+                                <span class="o">&lt;=</span> <span class="mf">1e-12</span>
+                                <span class="ow">and</span> <span class="nb">abs</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">area</span> <span class="o">-</span> <span class="n">dict_in</span><span class="p">[</span><span class="s2">&quot;monitor&quot;</span><span class="p">][</span><span class="n">monitor_obj</span><span class="p">][</span><span class="s2">&quot;Area Assignment&quot;</span><span class="p">])</span> <span class="o">&lt;=</span> <span class="mf">1e-12</span>
+                            <span class="p">):</span>
+                                <span class="n">dict_in</span><span class="p">[</span><span class="s2">&quot;monitor&quot;</span><span class="p">][</span><span class="n">monitor_obj</span><span class="p">][</span><span class="s2">&quot;ID&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">name</span>
+                                <span class="k">return</span>
+            <span class="k">elif</span> <span class="n">dict_in</span><span class="p">[</span><span class="s2">&quot;monitor&quot;</span><span class="p">][</span><span class="n">monitor_obj</span><span class="p">][</span><span class="s2">&quot;Type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Object&quot;</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">objects_to_check</span><span class="p">:</span>
+                    <span class="n">bb</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">bounding_box</span>
+                    <span class="k">if</span> <span class="p">(</span>
+                        <span class="n">GeometryOperators</span><span class="o">.</span><span class="n">v_norm</span><span class="p">(</span>
+                            <span class="n">GeometryOperators</span><span class="o">.</span><span class="n">v_sub</span><span class="p">(</span>
+                                <span class="p">[(</span><span class="n">bb</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">bb</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">3</span><span class="p">])</span> <span class="o">/</span> <span class="mi">2</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)],</span> <span class="n">dict_in</span><span class="p">[</span><span class="s2">&quot;monitor&quot;</span><span class="p">][</span><span class="n">monitor_obj</span><span class="p">][</span><span class="s2">&quot;Location&quot;</span><span class="p">]</span>
+                            <span class="p">)</span>
+                        <span class="p">)</span>
+                        <span class="o">&lt;=</span> <span class="mf">1e-12</span>
+                        <span class="ow">and</span> <span class="nb">abs</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">volume</span> <span class="o">-</span> <span class="n">dict_in</span><span class="p">[</span><span class="s2">&quot;monitor&quot;</span><span class="p">][</span><span class="n">monitor_obj</span><span class="p">][</span><span class="s2">&quot;Volume Assignment&quot;</span><span class="p">])</span> <span class="o">&lt;=</span> <span class="mf">1e-12</span>
+                    <span class="p">):</span>
+                        <span class="n">dict_in</span><span class="p">[</span><span class="s2">&quot;monitor&quot;</span><span class="p">][</span><span class="n">monitor_obj</span><span class="p">][</span><span class="s2">&quot;ID&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">id</span>
+                        <span class="k">return</span>
+            <span class="k">elif</span> <span class="n">dict_in</span><span class="p">[</span><span class="s2">&quot;monitor&quot;</span><span class="p">][</span><span class="n">monitor_obj</span><span class="p">][</span><span class="s2">&quot;Type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Vertex&quot;</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">objects_to_check</span><span class="p">:</span>
+                    <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">obj</span><span class="o">.</span><span class="n">vertices</span><span class="p">:</span>
+                        <span class="k">if</span> <span class="p">(</span>
+                            <span class="n">GeometryOperators</span><span class="o">.</span><span class="n">v_norm</span><span class="p">(</span>
+                                <span class="n">GeometryOperators</span><span class="o">.</span><span class="n">v_sub</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">position</span><span class="p">,</span> <span class="n">dict_in</span><span class="p">[</span><span class="s2">&quot;monitor&quot;</span><span class="p">][</span><span class="n">monitor_obj</span><span class="p">][</span><span class="s2">&quot;Location&quot;</span><span class="p">])</span>
+                            <span class="p">)</span>
+                            <span class="o">&lt;=</span> <span class="mf">1e-12</span>
+                        <span class="p">):</span>
+                            <span class="n">dict_in</span><span class="p">[</span><span class="s2">&quot;monitor&quot;</span><span class="p">][</span><span class="n">monitor_obj</span><span class="p">][</span><span class="s2">&quot;ID&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">id</span>
+                            <span class="k">return</span>
+
+    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">import_config</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config_file</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Import configuration settings from a json file and apply it to the current design.</span>
+<span class="sd">        The sections to be applied are defined with ``configuration.options`` class.</span>
+<span class="sd">        The import operation result is saved in the ``configuration.results`` class.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        config_file : str</span>
+<span class="sd">            Full path to json file.</span>
+<span class="sd">        *args : set, optional</span>
+<span class="sd">            Name of objects to ignore for monitor assignment.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        dict, bool</span>
+<span class="sd">            Config dictionary.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">exclude_set</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+        <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">exclude_set</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;import_config expected at most 2 arguments, got </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">config_file</span><span class="p">)</span> <span class="k">as</span> <span class="n">json_file</span><span class="p">:</span>
+            <span class="n">dict_in</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">json_file</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">results</span><span class="o">.</span><span class="n">_reset_results</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">import_native_components</span> <span class="ow">and</span> <span class="n">dict_in</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;native components&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">):</span>
+            <span class="n">result_coordinate_systems</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="n">add_cs</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">dict_in</span><span class="p">[</span><span class="s2">&quot;coordinatesystems&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+            <span class="n">available_cs</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Global&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">cs</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">cs</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">coordinate_systems</span><span class="p">]</span>
+            <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">while</span> <span class="n">add_cs</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">dict_in</span><span class="p">[</span><span class="s2">&quot;coordinatesystems&quot;</span><span class="p">][</span><span class="n">add_cs</span><span class="p">[</span><span class="n">i</span><span class="p">]][</span><span class="s2">&quot;Reference CS&quot;</span><span class="p">]</span> <span class="ow">in</span> <span class="n">available_cs</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_update_coordinate_systems</span><span class="p">(</span>
+                        <span class="n">add_cs</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">dict_in</span><span class="p">[</span><span class="s2">&quot;coordinatesystems&quot;</span><span class="p">][</span><span class="n">add_cs</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span>
+                    <span class="p">):</span>  <span class="c1"># pragma: no cover</span>
+                        <span class="n">result_coordinate_systems</span> <span class="o">=</span> <span class="kc">False</span>
+                    <span class="n">available_cs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">add_cs</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+                    <span class="n">add_cs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+                    <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">import_coordinate_systems</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="n">result_native_component</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="k">for</span> <span class="n">component_name</span><span class="p">,</span> <span class="n">component_dict</span> <span class="ow">in</span> <span class="n">dict_in</span><span class="p">[</span><span class="s2">&quot;native components&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_update_native_components</span><span class="p">(</span><span class="n">component_name</span><span class="p">,</span> <span class="n">component_dict</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
+                    <span class="n">result_native_component</span> <span class="o">=</span> <span class="kc">False</span>
+
         <span class="n">dict_in</span> <span class="o">=</span> <span class="n">Configurations</span><span class="o">.</span><span class="n">import_config</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config_file</span><span class="p">)</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">import_monitor</span> <span class="ow">and</span> <span class="n">dict_in</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;monitor&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">results</span><span class="o">.</span><span class="n">import_monitor</span> <span class="o">=</span> <span class="kc">True</span>
             <span class="k">for</span> <span class="n">monitor_obj</span> <span class="ow">in</span> <span class="n">dict_in</span><span class="p">[</span><span class="s2">&quot;monitor&quot;</span><span class="p">]:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_monitor_assignment_finder</span><span class="p">(</span><span class="n">dict_in</span><span class="p">,</span> <span class="n">monitor_obj</span><span class="p">,</span> <span class="n">exclude_set</span><span class="p">)</span>
                 <span class="n">m_type</span> <span class="o">=</span> <span class="n">dict_in</span><span class="p">[</span><span class="s2">&quot;monitor&quot;</span><span class="p">][</span><span class="n">monitor_obj</span><span class="p">][</span><span class="s2">&quot;Type&quot;</span><span class="p">]</span>
                 <span class="n">m_obj</span> <span class="o">=</span> <span class="n">dict_in</span><span class="p">[</span><span class="s2">&quot;monitor&quot;</span><span class="p">][</span><span class="n">monitor_obj</span><span class="p">][</span><span class="s2">&quot;ID&quot;</span><span class="p">]</span>
                 <span class="k">if</span> <span class="n">m_type</span> <span class="o">==</span> <span class="s2">&quot;Point&quot;</span><span class="p">:</span>
                     <span class="n">m_obj</span> <span class="o">=</span> <span class="n">dict_in</span><span class="p">[</span><span class="s2">&quot;monitor&quot;</span><span class="p">][</span><span class="n">monitor_obj</span><span class="p">][</span><span class="s2">&quot;Location&quot;</span><span class="p">]</span>
-                <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">update_monitor</span><span class="p">(</span><span class="n">m_type</span><span class="p">,</span> <span class="n">m_obj</span><span class="p">,</span> <span class="n">dict_in</span><span class="p">[</span><span class="s2">&quot;monitor&quot;</span><span class="p">][</span><span class="n">monitor_obj</span><span class="p">][</span><span class="s2">&quot;Quantity&quot;</span><span class="p">],</span> <span class="n">monitor_obj</span><span class="p">):</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">update_monitor</span><span class="p">(</span>
+                    <span class="n">m_type</span><span class="p">,</span> <span class="n">m_obj</span><span class="p">,</span> <span class="n">dict_in</span><span class="p">[</span><span class="s2">&quot;monitor&quot;</span><span class="p">][</span><span class="n">monitor_obj</span><span class="p">][</span><span class="s2">&quot;Quantity&quot;</span><span class="p">],</span> <span class="n">monitor_obj</span>
+                <span class="p">):</span>  <span class="c1"># pragma: no cover</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">results</span><span class="o">.</span><span class="n">import_monitor</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">results</span><span class="o">.</span><span class="n">import_native_components</span> <span class="o">=</span> <span class="n">result_native_component</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">results</span><span class="o">.</span><span class="n">import_coordinate_systems</span> <span class="o">=</span> <span class="n">result_coordinate_systems</span>
+        <span class="k">except</span> <span class="ne">UnboundLocalError</span><span class="p">:</span>
+            <span class="k">pass</span>
         <span class="k">return</span> <span class="n">dict_in</span>
+
+    <span class="nd">@pyaedt_function_handler</span>
+    <span class="k">def</span> <span class="nf">_get_duplicate_names</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># Copy project to get dictionary</span>
+        <span class="n">directory</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">toolkit_directory</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">design_name</span><span class="p">,</span>
+            <span class="n">generate_unique_folder_name</span><span class="p">(</span><span class="s2">&quot;config_export_temp_project&quot;</span><span class="p">),</span>
+        <span class="p">)</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">directory</span><span class="p">)</span>
+        <span class="n">tempproj_name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span> <span class="s2">&quot;temp_proj.aedt&quot;</span><span class="p">)</span>
+        <span class="n">tempproj</span> <span class="o">=</span> <span class="n">Icepak</span><span class="p">(</span><span class="n">tempproj_name</span><span class="p">,</span> <span class="n">specified_version</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">_aedt_version</span><span class="p">)</span>
+        <span class="n">empty_design</span> <span class="o">=</span> <span class="n">tempproj</span><span class="o">.</span><span class="n">design_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span>
+            <span class="nb">list</span><span class="p">(</span>
+                <span class="nb">set</span><span class="p">([</span><span class="nb">id</span> <span class="k">for</span> <span class="nb">id</span><span class="p">,</span> <span class="n">obj</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">obj</span><span class="o">.</span><span class="n">model</span><span class="p">])</span>
+                <span class="o">-</span> <span class="nb">set</span><span class="p">([</span><span class="nb">id</span> <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">obj</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">user_defined_components</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">for</span> <span class="nb">id</span> <span class="ow">in</span> <span class="n">obj</span><span class="o">.</span><span class="n">parts</span><span class="p">])</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">oproject</span><span class="o">.</span><span class="n">CopyDesign</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">design_name</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">odesign</span><span class="o">.</span><span class="n">Undo</span><span class="p">()</span>
+        <span class="n">tempproj</span><span class="o">.</span><span class="n">oproject</span><span class="o">.</span><span class="n">Paste</span><span class="p">()</span>
+        <span class="n">tempproj</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">refresh_all_ids</span><span class="p">()</span>
+        <span class="n">tempproj</span><span class="o">.</span><span class="n">delete_design</span><span class="p">(</span><span class="n">empty_design</span><span class="p">)</span>
+        <span class="n">tempproj</span><span class="o">.</span><span class="n">close_project</span><span class="p">()</span>
+        <span class="n">dictionary</span> <span class="o">=</span> <span class="n">load_keyword_in_aedt_file</span><span class="p">(</span><span class="n">tempproj_name</span><span class="p">,</span> <span class="s2">&quot;UserDefinedModels&quot;</span><span class="p">)[</span><span class="s2">&quot;UserDefinedModels&quot;</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">root</span><span class="p">,</span> <span class="n">dirs</span><span class="p">,</span> <span class="n">files</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span> <span class="n">topdown</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">name</span><span class="p">))</span>
+            <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">dirs</span><span class="p">:</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">rmdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">name</span><span class="p">))</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">rmdir</span><span class="p">(</span><span class="n">directory</span><span class="p">)</span>
+        <span class="n">operation_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Source&quot;</span><span class="p">:</span> <span class="p">{},</span> <span class="s2">&quot;Duplicate&quot;</span><span class="p">:</span> <span class="p">{}}</span>
+        <span class="n">list_dictionaries</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;NativeComponentInstanceWithParams&quot;</span><span class="p">,</span> <span class="s2">&quot;NativeComponentInstance&quot;</span><span class="p">,</span> <span class="s2">&quot;UserDefinedModel&quot;</span><span class="p">]:</span>
+            <span class="k">if</span> <span class="n">dictionary</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="kc">None</span><span class="p">):</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">dictionary</span><span class="p">[</span><span class="n">key</span><span class="p">],</span> <span class="nb">list</span><span class="p">):</span>
+                    <span class="n">list_dictionaries</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">dictionary</span><span class="p">[</span><span class="n">key</span><span class="p">])</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">list_dictionaries</span> <span class="o">+=</span> <span class="n">dictionary</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">component</span> <span class="ow">in</span> <span class="n">list_dictionaries</span><span class="p">:</span>
+            <span class="n">obj_name</span> <span class="o">=</span> <span class="n">component</span><span class="p">[</span><span class="s2">&quot;Attributes&quot;</span><span class="p">][</span><span class="s2">&quot;Name&quot;</span><span class="p">]</span>
+            <span class="n">counter_line</span><span class="p">,</span> <span class="n">counter_axis</span><span class="p">,</span> <span class="n">counter_mirror</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+            <span class="k">if</span> <span class="n">component</span><span class="p">[</span><span class="s2">&quot;Operations&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;UDMOperation&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">):</span>
+                <span class="n">udm_operations</span> <span class="o">=</span> <span class="n">component</span><span class="p">[</span><span class="s2">&quot;Operations&quot;</span><span class="p">][</span><span class="s2">&quot;UDMOperation&quot;</span><span class="p">]</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">udm_operations</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+                    <span class="n">udm_operations</span> <span class="o">=</span> <span class="p">[</span><span class="n">udm_operations</span><span class="p">]</span>
+                <span class="k">for</span> <span class="n">operation</span> <span class="ow">in</span> <span class="n">udm_operations</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">operation</span><span class="p">[</span><span class="s2">&quot;OperationType&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;UDMFromDup&quot;</span><span class="p">):</span>
+                        <span class="k">if</span> <span class="n">operation</span><span class="p">[</span><span class="s2">&quot;CloneOperId&quot;</span><span class="p">]</span> <span class="ow">in</span> <span class="n">operation_dict</span><span class="p">[</span><span class="s2">&quot;Duplicate&quot;</span><span class="p">]:</span>
+                            <span class="n">operation_dict</span><span class="p">[</span><span class="s2">&quot;Duplicate&quot;</span><span class="p">][</span><span class="n">operation</span><span class="p">[</span><span class="s2">&quot;CloneOperId&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">obj_name</span><span class="p">)</span>
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="n">operation_dict</span><span class="p">[</span><span class="s2">&quot;Duplicate&quot;</span><span class="p">][</span><span class="n">operation</span><span class="p">[</span><span class="s2">&quot;CloneOperId&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[</span><span class="n">obj_name</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">component</span><span class="p">[</span><span class="s2">&quot;Operations&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;CloneToOperation&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">):</span>
+                <span class="n">clone_operations</span> <span class="o">=</span> <span class="n">component</span><span class="p">[</span><span class="s2">&quot;Operations&quot;</span><span class="p">][</span><span class="s2">&quot;CloneToOperation&quot;</span><span class="p">]</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">clone_operations</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+                    <span class="n">clone_operations</span> <span class="o">=</span> <span class="p">[</span><span class="n">clone_operations</span><span class="p">]</span>
+                <span class="k">for</span> <span class="n">operation</span> <span class="ow">in</span> <span class="n">clone_operations</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">operation</span><span class="p">[</span><span class="s2">&quot;OperationType&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;UDMDuplicateAlongLine&quot;</span><span class="p">:</span>
+                        <span class="n">counter_line</span> <span class="o">+=</span> <span class="mi">1</span>
+                        <span class="n">operation_dict</span><span class="p">[</span><span class="s2">&quot;Source&quot;</span><span class="p">][</span><span class="n">operation</span><span class="p">[</span><span class="s2">&quot;ID&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[</span>
+                            <span class="s2">&quot;DuplicateAlongLine:&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">counter_line</span><span class="p">),</span>
+                            <span class="n">obj_name</span><span class="p">,</span>
+                        <span class="p">]</span>
+                    <span class="k">elif</span> <span class="n">operation</span><span class="p">[</span><span class="s2">&quot;OperationType&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;UDMDuplicateAroundAxis&quot;</span><span class="p">:</span>
+                        <span class="n">counter_axis</span> <span class="o">+=</span> <span class="mi">1</span>
+                        <span class="n">operation_dict</span><span class="p">[</span><span class="s2">&quot;Source&quot;</span><span class="p">][</span><span class="n">operation</span><span class="p">[</span><span class="s2">&quot;ID&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[</span>
+                            <span class="s2">&quot;DuplicateAroundAxis:&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">counter_axis</span><span class="p">),</span>
+                            <span class="n">obj_name</span><span class="p">,</span>
+                        <span class="p">]</span>
+                    <span class="k">elif</span> <span class="n">operation</span><span class="p">[</span><span class="s2">&quot;OperationType&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;UDMDuplicateMirror&quot;</span><span class="p">:</span>
+                        <span class="n">counter_mirror</span> <span class="o">+=</span> <span class="mi">1</span>
+                        <span class="n">operation_dict</span><span class="p">[</span><span class="s2">&quot;Source&quot;</span><span class="p">][</span><span class="n">operation</span><span class="p">[</span><span class="s2">&quot;ID&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;DuplicateMirror:&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">counter_mirror</span><span class="p">),</span> <span class="n">obj_name</span><span class="p">]</span>
+        <span class="n">duplicate_dict</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">operation_id</span><span class="p">,</span> <span class="n">prop</span> <span class="ow">in</span> <span class="n">operation_dict</span><span class="p">[</span><span class="s2">&quot;Source&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">duplicate_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">prop</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="kc">None</span><span class="p">):</span>
+                <span class="n">duplicate_dict</span><span class="p">[</span><span class="n">prop</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="n">duplicate_dict</span><span class="p">[</span><span class="n">prop</span><span class="p">[</span><span class="mi">1</span><span class="p">]][</span><span class="n">prop</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="n">operation_dict</span><span class="p">[</span><span class="s2">&quot;Duplicate&quot;</span><span class="p">][</span><span class="n">operation_id</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">duplicate_dict</span>
+
+    <span class="nd">@pyaedt_function_handler</span>
+    <span class="k">def</span> <span class="nf">_export_native_components</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dict_out</span><span class="p">):</span>
+        <span class="n">dict_out</span><span class="p">[</span><span class="s2">&quot;native components&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">duplicate_dict</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_duplicate_names</span><span class="p">()</span>
+
+        <span class="k">def</span> <span class="nf">add_duplicate_dic_to_history</span><span class="p">(</span><span class="n">node_name</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">obj_name</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">node_name</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;Duplicate&quot;</span><span class="p">):</span>
+                <span class="n">node</span><span class="p">[</span><span class="s2">&quot;Props&quot;</span><span class="p">][</span><span class="s2">&quot;Duplicate Object&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">duplicate_dict</span><span class="p">[</span><span class="n">obj_name</span><span class="p">][</span><span class="n">node_name</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">node</span><span class="p">[</span><span class="s2">&quot;Children&quot;</span><span class="p">]</span> <span class="o">!=</span> <span class="p">{}:</span>
+                <span class="k">for</span> <span class="n">node_name</span><span class="p">,</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">node</span><span class="p">[</span><span class="s2">&quot;Children&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                    <span class="n">add_duplicate_dic_to_history</span><span class="p">(</span><span class="n">node_name</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">obj_name</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">nc</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">native_components</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">instance_name</span> <span class="o">=</span> <span class="n">nc</span><span class="o">.</span><span class="n">props</span><span class="p">[</span><span class="s2">&quot;SubmodelDefinitionName&quot;</span><span class="p">]</span>
+            <span class="n">dict_out</span><span class="p">[</span><span class="s2">&quot;native components&quot;</span><span class="p">][</span><span class="n">instance_name</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="n">nc_props</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">nc</span><span class="o">.</span><span class="n">props</span><span class="p">)</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+            <span class="n">nc_type</span> <span class="o">=</span> <span class="n">nc</span><span class="o">.</span><span class="n">props</span><span class="p">[</span><span class="s2">&quot;NativeComponentDefinitionProvider&quot;</span><span class="p">][</span><span class="s2">&quot;Type&quot;</span><span class="p">]</span>
+            <span class="n">dict_out</span><span class="p">[</span><span class="s2">&quot;native components&quot;</span><span class="p">][</span><span class="n">instance_name</span><span class="p">][</span><span class="s2">&quot;Type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nc_type</span>
+            <span class="k">if</span> <span class="p">(</span>
+                <span class="n">nc_type</span> <span class="o">==</span> <span class="s2">&quot;PCB&quot;</span>
+                <span class="ow">and</span> <span class="n">nc_props</span><span class="p">[</span><span class="s2">&quot;NativeComponentDefinitionProvider&quot;</span><span class="p">][</span><span class="s2">&quot;DefnLink&quot;</span><span class="p">][</span><span class="s2">&quot;Project&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;This Project*&quot;</span>
+            <span class="p">):</span>
+                <span class="n">nc_props</span><span class="p">[</span><span class="s2">&quot;NativeComponentDefinitionProvider&quot;</span><span class="p">][</span><span class="s2">&quot;DefnLink&quot;</span><span class="p">][</span><span class="s2">&quot;Project&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">project_file</span>
+            <span class="n">dict_out</span><span class="p">[</span><span class="s2">&quot;native components&quot;</span><span class="p">][</span><span class="n">instance_name</span><span class="p">][</span><span class="s2">&quot;Properties&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nc_props</span>
+            <span class="n">dict_out</span><span class="p">[</span><span class="s2">&quot;native components&quot;</span><span class="p">][</span><span class="n">instance_name</span><span class="p">][</span><span class="s2">&quot;Instances&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">user_defined_components</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="n">cs_name</span> <span class="o">=</span> <span class="kc">None</span>
+                <span class="k">if</span> <span class="n">v</span><span class="o">.</span><span class="n">definition_name</span> <span class="o">==</span> <span class="n">instance_name</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="s2">&quot;Target Coordinate System&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">oeditor</span><span class="o">.</span><span class="n">GetChildObject</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">.</span><span class="n">GetPropNames</span><span class="p">():</span>
+                        <span class="n">cs_name</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">target_coordinate_system</span>
+                    <span class="n">obj_history</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">history</span><span class="p">()</span>
+                    <span class="k">if</span> <span class="n">obj_history</span><span class="p">:</span>
+                        <span class="n">obj_history</span> <span class="o">=</span> <span class="n">obj_history</span><span class="o">.</span><span class="n">jsonalize_tree</span><span class="p">()</span>
+                        <span class="k">for</span> <span class="n">node_name</span><span class="p">,</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">obj_history</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                            <span class="n">add_duplicate_dic_to_history</span><span class="p">(</span><span class="n">node_name</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">obj_history</span> <span class="o">=</span> <span class="kc">None</span>
+                    <span class="n">dict_out</span><span class="p">[</span><span class="s2">&quot;native components&quot;</span><span class="p">][</span><span class="n">instance_name</span><span class="p">][</span><span class="s2">&quot;Instances&quot;</span><span class="p">][</span><span class="n">v</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+                        <span class="s2">&quot;CS&quot;</span><span class="p">:</span> <span class="n">cs_name</span><span class="p">,</span>
+                        <span class="s2">&quot;Operations&quot;</span><span class="p">:</span> <span class="n">obj_history</span><span class="p">,</span>
+                    <span class="p">}</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">export_coordinate_systems</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_export_coordinate_systems</span><span class="p">(</span><span class="n">dict_out</span><span class="p">)</span>
+
+    <span class="nd">@pyaedt_function_handler</span>
+    <span class="k">def</span> <span class="nf">_update_native_components</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">native_name</span><span class="p">,</span> <span class="n">native_dict</span><span class="p">):</span>
+        <span class="k">def</span> <span class="nf">apply_operations_to_native_components</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">operation_dict</span><span class="p">,</span> <span class="n">native_dict</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
+            <span class="n">cache_cs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">oeditor</span><span class="o">.</span><span class="n">GetActiveCoordinateSystem</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">set_working_coordinate_system</span><span class="p">(</span><span class="n">operation_dict</span><span class="p">[</span><span class="s2">&quot;Props&quot;</span><span class="p">][</span><span class="s2">&quot;Coordinate System&quot;</span><span class="p">])</span>
+            <span class="n">new_objs</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">refresh_all_ids</span><span class="p">()</span>
+            <span class="n">old_objs</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">user_defined_components</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+            <span class="k">if</span> <span class="n">operation_dict</span><span class="p">[</span><span class="s2">&quot;Props&quot;</span><span class="p">][</span><span class="s2">&quot;Command&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Move&quot;</span><span class="p">:</span>
+                <span class="n">obj</span><span class="o">.</span><span class="n">move</span><span class="p">(</span>
+                    <span class="p">[</span><span class="n">decompose_variable_value</span><span class="p">(</span><span class="n">operation_dict</span><span class="p">[</span><span class="s2">&quot;Props&quot;</span><span class="p">][</span><span class="s2">&quot;Move Vector&quot;</span><span class="p">][</span><span class="mi">2</span> <span class="o">*</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)]</span>
+                <span class="p">)</span>
+            <span class="k">elif</span> <span class="n">operation_dict</span><span class="p">[</span><span class="s2">&quot;Props&quot;</span><span class="p">][</span><span class="s2">&quot;Command&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Rotate&quot;</span><span class="p">:</span>
+                <span class="n">rotation</span> <span class="o">=</span> <span class="n">decompose_variable_value</span><span class="p">(</span><span class="n">operation_dict</span><span class="p">[</span><span class="s2">&quot;Props&quot;</span><span class="p">][</span><span class="s2">&quot;Angle&quot;</span><span class="p">])</span>
+                <span class="n">obj</span><span class="o">.</span><span class="n">rotate</span><span class="p">(</span><span class="n">operation_dict</span><span class="p">[</span><span class="s2">&quot;Props&quot;</span><span class="p">][</span><span class="s2">&quot;Axis&quot;</span><span class="p">],</span> <span class="n">angle</span><span class="o">=</span><span class="n">rotation</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">unit</span><span class="o">=</span><span class="n">rotation</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+            <span class="k">elif</span> <span class="n">operation_dict</span><span class="p">[</span><span class="s2">&quot;Props&quot;</span><span class="p">][</span><span class="s2">&quot;Command&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Mirror&quot;</span><span class="p">:</span>
+                <span class="n">obj</span><span class="o">.</span><span class="n">mirror</span><span class="p">(</span>
+                    <span class="p">[</span>
+                        <span class="n">decompose_variable_value</span><span class="p">(</span><span class="n">operation_dict</span><span class="p">[</span><span class="s2">&quot;Props&quot;</span><span class="p">][</span><span class="s2">&quot;Base Position&quot;</span><span class="p">][</span><span class="mi">2</span> <span class="o">*</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
+                        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+                    <span class="p">],</span>
+                    <span class="p">[</span>
+                        <span class="n">decompose_variable_value</span><span class="p">(</span><span class="n">operation_dict</span><span class="p">[</span><span class="s2">&quot;Props&quot;</span><span class="p">][</span><span class="s2">&quot;Normal Position&quot;</span><span class="p">][</span><span class="mi">2</span> <span class="o">*</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
+                        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+                    <span class="p">],</span>
+                <span class="p">)</span>
+            <span class="k">elif</span> <span class="n">operation_dict</span><span class="p">[</span><span class="s2">&quot;Props&quot;</span><span class="p">][</span><span class="s2">&quot;Command&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;DuplicateAlongLine&quot;</span><span class="p">:</span>
+                <span class="n">new_objs</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">duplicate_along_line</span><span class="p">(</span>
+                    <span class="p">[</span><span class="n">decompose_variable_value</span><span class="p">(</span><span class="n">operation_dict</span><span class="p">[</span><span class="s2">&quot;Props&quot;</span><span class="p">][</span><span class="s2">&quot;Vector&quot;</span><span class="p">][</span><span class="mi">2</span> <span class="o">*</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)],</span>
+                    <span class="n">nclones</span><span class="o">=</span><span class="n">operation_dict</span><span class="p">[</span><span class="s2">&quot;Props&quot;</span><span class="p">][</span><span class="s2">&quot;Total Number&quot;</span><span class="p">],</span>
+                    <span class="n">attach_object</span><span class="o">=</span><span class="n">operation_dict</span><span class="p">[</span><span class="s2">&quot;Props&quot;</span><span class="p">][</span><span class="s2">&quot;Attach To Original Object&quot;</span><span class="p">],</span>
+                <span class="p">)</span>
+            <span class="k">elif</span> <span class="n">operation_dict</span><span class="p">[</span><span class="s2">&quot;Props&quot;</span><span class="p">][</span><span class="s2">&quot;Command&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;DuplicateAroundAxis&quot;</span><span class="p">:</span>
+                <span class="n">rotation</span> <span class="o">=</span> <span class="n">decompose_variable_value</span><span class="p">(</span><span class="n">operation_dict</span><span class="p">[</span><span class="s2">&quot;Props&quot;</span><span class="p">][</span><span class="s2">&quot;Angle&quot;</span><span class="p">])</span>
+                <span class="n">new_objs</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">duplicate_around_axis</span><span class="p">(</span>
+                    <span class="n">operation_dict</span><span class="p">[</span><span class="s2">&quot;Props&quot;</span><span class="p">][</span><span class="s2">&quot;Axis&quot;</span><span class="p">],</span> <span class="n">angle</span><span class="o">=</span><span class="n">rotation</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">nclones</span><span class="o">=</span><span class="n">operation_dict</span><span class="p">[</span><span class="s2">&quot;Props&quot;</span><span class="p">][</span><span class="s2">&quot;Total Number&quot;</span><span class="p">]</span>
+                <span class="p">)</span>
+            <span class="k">elif</span> <span class="n">operation_dict</span><span class="p">[</span><span class="s2">&quot;Props&quot;</span><span class="p">][</span><span class="s2">&quot;Command&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;DuplicateMirror&quot;</span><span class="p">:</span>
+                <span class="n">new_objs</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">duplicate_and_mirror</span><span class="p">(</span>
+                    <span class="n">position</span><span class="o">=</span><span class="p">[</span>
+                        <span class="n">decompose_variable_value</span><span class="p">(</span><span class="n">operation_dict</span><span class="p">[</span><span class="s2">&quot;Props&quot;</span><span class="p">][</span><span class="s2">&quot;Base Position&quot;</span><span class="p">][</span><span class="mi">2</span> <span class="o">*</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
+                        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+                    <span class="p">],</span>
+                    <span class="n">vector</span><span class="o">=</span><span class="p">[</span>
+                        <span class="n">decompose_variable_value</span><span class="p">(</span><span class="n">operation_dict</span><span class="p">[</span><span class="s2">&quot;Props&quot;</span><span class="p">][</span><span class="s2">&quot;Normal Position&quot;</span><span class="p">][</span><span class="mi">2</span> <span class="o">*</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
+                        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+                    <span class="p">],</span>
+                <span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
+                <span class="k">raise</span> <span class="s2">&quot;Operation not supported&quot;</span>
+            <span class="k">if</span> <span class="n">new_objs</span><span class="p">:</span>
+                <span class="n">new_objs</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">new_objs</span><span class="p">)</span> <span class="o">-</span> <span class="nb">set</span><span class="p">(</span><span class="n">old_objs</span><span class="p">))</span>
+                <span class="k">for</span> <span class="n">new_obj</span> <span class="ow">in</span> <span class="n">new_objs</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">native_dict</span><span class="p">[</span><span class="n">new_obj</span><span class="p">][</span><span class="s2">&quot;Operations&quot;</span><span class="p">]:</span>
+                        <span class="k">for</span> <span class="n">dup_obj</span> <span class="ow">in</span> <span class="n">operation_dict</span><span class="p">[</span><span class="s2">&quot;Props&quot;</span><span class="p">][</span><span class="s2">&quot;Duplicate Object&quot;</span><span class="p">]:</span>
+                            <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">operation_dict</span> <span class="ow">in</span> <span class="n">native_dict</span><span class="p">[</span><span class="n">dup_obj</span><span class="p">][</span><span class="s2">&quot;Operations&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                                <span class="n">apply_operations_to_native_components</span><span class="p">(</span>
+                                    <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">user_defined_components</span><span class="p">[</span><span class="n">new_obj</span><span class="p">],</span> <span class="n">operation_dict</span><span class="p">,</span> <span class="n">native_dict</span>
+                                <span class="p">)</span>
+            <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">operation_dict</span> <span class="ow">in</span> <span class="n">operation_dict</span><span class="p">[</span><span class="s2">&quot;Children&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="n">apply_operations_to_native_components</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">operation_dict</span><span class="p">,</span> <span class="n">native_dict</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">set_working_coordinate_system</span><span class="p">(</span><span class="n">cache_cs</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">True</span>
+
+        <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">instance_dict</span> <span class="ow">in</span> <span class="n">native_dict</span><span class="p">[</span><span class="s2">&quot;Instances&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">instance_dict</span><span class="p">[</span><span class="s2">&quot;CS&quot;</span><span class="p">]:</span>
+                <span class="n">nc_dict</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">native_dict</span><span class="p">[</span><span class="s2">&quot;Properties&quot;</span><span class="p">])</span>
+                <span class="n">nc_dict</span><span class="p">[</span><span class="s2">&quot;TargetCS&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">instance_dict</span><span class="p">[</span><span class="s2">&quot;CS&quot;</span><span class="p">]</span>
+                <span class="n">component3d_names</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">oeditor</span><span class="o">.</span><span class="n">Get3DComponentInstanceNames</span><span class="p">(</span><span class="n">native_name</span><span class="p">))</span>
+                <span class="n">native</span> <span class="o">=</span> <span class="n">NativeComponentObject</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="p">,</span> <span class="n">native_dict</span><span class="p">[</span><span class="s2">&quot;Type&quot;</span><span class="p">],</span> <span class="n">native_name</span><span class="p">,</span> <span class="n">nc_dict</span><span class="p">)</span>
+                <span class="n">prj_list</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">project_list</span><span class="p">)</span>
+                <span class="n">definition_names</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">oeditor</span><span class="o">.</span><span class="n">Get3DComponentDefinitionNames</span><span class="p">())</span>
+                <span class="n">instance_names</span> <span class="o">=</span> <span class="p">{</span>
+                    <span class="n">def_name</span><span class="p">:</span> <span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">oeditor</span><span class="o">.</span><span class="n">Get3DComponentInstanceNames</span><span class="p">(</span><span class="n">def_name</span><span class="p">))</span>
+                    <span class="k">for</span> <span class="n">def_name</span> <span class="ow">in</span> <span class="n">definition_names</span>
+                <span class="p">}</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">native</span><span class="o">.</span><span class="n">create</span><span class="p">():</span>  <span class="c1"># pragma: no cover</span>
+                    <span class="k">return</span> <span class="kc">False</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">definition_names</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">oeditor</span><span class="o">.</span><span class="n">Get3DComponentDefinitionNames</span><span class="p">())</span> <span class="o">-</span> <span class="n">definition_names</span><span class="p">)[</span>
+                        <span class="mi">0</span>
+                    <span class="p">]</span>
+                    <span class="n">instance_names</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">oeditor</span><span class="o">.</span><span class="n">Get3DComponentInstanceNames</span><span class="p">(</span><span class="n">definition_names</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
+                    <span class="n">definition_names</span> <span class="o">=</span> <span class="p">[</span>
+                        <span class="n">def_name</span>
+                        <span class="k">for</span> <span class="n">def_name</span> <span class="ow">in</span> <span class="n">definition_names</span>
+                        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">oeditor</span><span class="o">.</span><span class="n">Get3DComponentInstanceNames</span><span class="p">(</span><span class="n">def_name</span><span class="p">))</span> <span class="o">-</span> <span class="n">instance_names</span><span class="p">[</span><span class="n">def_name</span><span class="p">])</span>
+                        <span class="o">&gt;</span> <span class="mi">0</span>
+                    <span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+                    <span class="n">instance_names</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span>
+                        <span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">oeditor</span><span class="o">.</span><span class="n">Get3DComponentInstanceNames</span><span class="p">(</span><span class="n">definition_names</span><span class="p">))</span>
+                        <span class="o">-</span> <span class="n">instance_names</span><span class="p">[</span><span class="n">definition_names</span><span class="p">]</span>
+                    <span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="n">native</span><span class="o">.</span><span class="n">component_name</span> <span class="o">=</span> <span class="n">definition_names</span>
+                <span class="n">native</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">instance_names</span>
+                <span class="k">if</span> <span class="n">nc_dict</span><span class="p">[</span><span class="s2">&quot;NativeComponentDefinitionProvider&quot;</span><span class="p">][</span><span class="s2">&quot;Type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;PCB&quot;</span> <span class="ow">and</span> <span class="n">nc_dict</span><span class="p">[</span>
+                    <span class="s2">&quot;NativeComponentDefinitionProvider&quot;</span>
+                <span class="p">][</span><span class="s2">&quot;DefnLink&quot;</span><span class="p">][</span><span class="s2">&quot;Project&quot;</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">project_file</span> <span class="ow">or</span> <span class="s2">&quot;This Project*&quot;</span><span class="p">]:</span>
+                    <span class="n">prj</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">project_list</span><span class="p">)</span> <span class="o">-</span> <span class="n">prj_list</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+                    <span class="n">design</span> <span class="o">=</span> <span class="n">nc_dict</span><span class="p">[</span><span class="s2">&quot;NativeComponentDefinitionProvider&quot;</span><span class="p">][</span><span class="s2">&quot;DefnLink&quot;</span><span class="p">][</span><span class="s2">&quot;Design&quot;</span><span class="p">]</span>
+                    <span class="n">app</span> <span class="o">=</span> <span class="n">get_pyaedt_app</span><span class="p">(</span><span class="n">prj</span><span class="p">,</span> <span class="n">design</span><span class="p">)</span>
+                    <span class="n">app</span><span class="o">.</span><span class="n">oproject</span><span class="o">.</span><span class="n">Close</span><span class="p">()</span>
+                <span class="n">user_defined_component</span> <span class="o">=</span> <span class="n">UserDefinedComponent</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">modeler</span><span class="p">,</span> <span class="n">instance_names</span><span class="p">,</span> <span class="n">nc_dict</span><span class="p">[</span><span class="s2">&quot;NativeComponentDefinitionProvider&quot;</span><span class="p">],</span> <span class="n">native_dict</span><span class="p">[</span><span class="s2">&quot;Type&quot;</span><span class="p">]</span>
+                <span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">user_defined_components</span><span class="p">[</span><span class="n">instance_names</span><span class="p">]</span> <span class="o">=</span> <span class="n">user_defined_component</span>
+                <span class="n">new_name</span> <span class="o">=</span> <span class="p">[</span>
+                    <span class="n">i</span>
+                    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">oeditor</span><span class="o">.</span><span class="n">Get3DComponentInstanceNames</span><span class="p">(</span><span class="n">user_defined_component</span><span class="o">.</span><span class="n">definition_name</span><span class="p">)</span>
+                    <span class="p">)</span>
+                    <span class="k">if</span> <span class="n">i</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">component3d_names</span>
+                <span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">refresh_all_ids</span><span class="p">()</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">materials</span><span class="o">.</span><span class="n">_load_from_project</span><span class="p">()</span>
+                <span class="k">if</span> <span class="n">native</span><span class="o">.</span><span class="n">component_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">native_components</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">_native_components</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">native</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">instance_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;Operations&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">):</span>
+                    <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">operation_dict</span> <span class="ow">in</span> <span class="n">instance_dict</span><span class="p">[</span><span class="s2">&quot;Operations&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                        <span class="n">apply_operations_to_native_components</span><span class="p">(</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">user_defined_components</span><span class="p">[</span><span class="n">new_name</span><span class="p">],</span>
+                            <span class="n">operation_dict</span><span class="p">,</span>
+                            <span class="n">native_dict</span><span class="p">[</span><span class="s2">&quot;Instances&quot;</span><span class="p">],</span>
+                        <span class="p">)</span>
+        <span class="k">return</span> <span class="kc">True</span>
 </pre></div>
 
-              </article>
-              
-
-              
+            </article>
+            
+            
+            
           </div>
           
-      </div>
+          
+          
+            <div class="bd-sidebar-secondary bd-toc">
+              
+<div class="toc-item">
+  
+<div id="searchbox"></div>
+</div>
+
+<div class="toc-item">
+  
+</div>
+
+<div class="toc-item">
+  
+</div>
+
+            </div>
+          
+          
+        </div>
+        <footer class="bd-footer-content">
+          <div class="bd-footer-content__inner">
+            
+          </div>
+        </footer>
+        
+      </main>
     </div>
+  </div>
 
   
-  
+    
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695"></script>
+  <script src="../../../_static/scripts/bootstrap.js?digest=796348d33e8b1d947c94"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=796348d33e8b1d947c94"></script>
 
-<footer class="bd-footer"><div class="bd-footer__inner container">
+  <footer class="bd-footer"><div class="bd-footer__inner container">
   
   <div class="footer-item">
-    <p class="copyright">
+    
+<p class="copyright">
+
     &copy; Copyright (c) 2023 ANSYS, Inc. All rights reserved.<br>
+
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    <p class="theme-version">
+    Built with the
+    <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">
+        PyData Sphinx Theme
+    </a>
+    0.12.0.
 </p>
   </div>
   
   <div class="footer-item">
-    <p class="sphinx-version">
+    
+<p class="sphinx-version">
 Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.<br>
 </p>
+
   </div>
   
 </div>
-</footer>
+  </footer>
   </body>
 </html>

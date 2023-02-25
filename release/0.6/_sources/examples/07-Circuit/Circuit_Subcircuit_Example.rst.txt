@@ -58,7 +58,7 @@ You can set ``non_graphical`` either to ``True`` or ``False``.
 .. code-block:: default
 
 
-    non_graphical = os.getenv("PYAEDT_NON_GRAPHICAL", "False").lower() in ("true", "1", "t")
+    non_graphical = False
 
 
 
@@ -129,7 +129,7 @@ Parametrize the subcircuit and add a resistor, inductor, and a capacitor with
 the parameter values in the following code example. Connect them in series
 and then use the ``pop_up`` # method to get back to the parent design.
 
-.. GENERATED FROM PYTHON SOURCE LINES 53-65
+.. GENERATED FROM PYTHON SOURCE LINES 53-66
 
 .. code-block:: default
 
@@ -149,6 +149,7 @@ and then use the ``pop_up`` # method to get back to the parent design.
 
 
 
+
 .. rst-class:: sphx-glr-script-out
 
  .. code-block:: none
@@ -158,36 +159,13 @@ and then use the ``pop_up`` # method to get back to the parent design.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 66-70
-
-Duplicate subcircuit
-~~~~~~~~~~~~~~~~~~~~
-Duplicate the previously created subcircuit and set a new parameter value.
-This works only in graphical mode.
-
-.. GENERATED FROM PYTHON SOURCE LINES 70-75
-
-.. code-block:: default
-
-
-    if not non_graphical:
-        new_comp = circuit.modeler.schematic.duplicate(component=subcircuit_name, location=[200, 0])
-        new_comp.parameters["R_val"] = "75ohm"
-
-
-
-
-
-
-
-
-.. GENERATED FROM PYTHON SOURCE LINES 76-79
+.. GENERATED FROM PYTHON SOURCE LINES 67-70
 
 Release AEDT
 ~~~~~~~~~~~~
 Release AEDT.
 
-.. GENERATED FROM PYTHON SOURCE LINES 79-81
+.. GENERATED FROM PYTHON SOURCE LINES 70-72
 
 .. code-block:: default
 
@@ -209,7 +187,7 @@ Release AEDT.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  9.765 seconds)
+   **Total running time of the script:** ( 0 minutes  9.246 seconds)
 
 
 .. _sphx_glr_download_examples_07-Circuit_Circuit_Subcircuit_Example.py:

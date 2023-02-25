@@ -7,35 +7,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>pyaedt.hfss &#8212; PyAEDT</title>
     
-<script>
-  document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-  document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"
-</script>
-
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=92025949c220c2e29695" rel="stylesheet">
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+  <link href="../../_static/styles/theme.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+<link href="../../_static/styles/bootstrap.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=796348d33e8b1d947c94" rel="stylesheet">
 
-
-  <link rel="stylesheet"
-    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2">
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/css\ansys_sphinx_theme.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
-
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=796348d33e8b1d947c94">
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=796348d33e8b1d947c94">
 
     
         <link href="../../_static/css/breadcrumbs.css" rel="stylesheet">
@@ -48,24 +52,56 @@
     <script src="../../_static/sphinx_highlight.js"></script>
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/js\table.js"></script>
+    <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/pyaedt/hfss';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://aedt.docs.pyansys.com/release/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.6';
+        </script>
     <link rel="shortcut icon" href="../../_static/ansys-favicon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="docsearch:language" content="en">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="docsearch:language" content="en">
   </head>
   
   
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
-    <div class="bd-header-announcement container-fluid" id="banner">
-      
 
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  
+  <input type="checkbox" class="sidebar-toggle" name="__primary" id="__primary">
+  <label class="overlay overlay-primary" for="__primary"></label>
+
+  
+  <input type="checkbox" class="sidebar-toggle" name="__secondary" id="__secondary">
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+      <!-- Debugging: html_theme_options =  -->
+
+  <!-- If there is no MiliSearch enabled, use the PyData search -->
+<form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
     </div>
+  </div>
 
+  
     
-    
-    <nav class="bd-header navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="bd-header__inner container-xl">
-
+  <nav class="bd-header navbar navbar-expand-lg bd-navbar" id="navbar-main"><div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+      <span class="fa-solid fa-bars"></span>
+  </label>
   <div id="navbar-start">
     
     
@@ -73,9 +109,15 @@
 
 
 <a class="navbar-brand logo" href="../../index.html">
+
   
   
   
+  
+  
+  
+  
+
   
     <img src="../../_static/pyansys-logo-black-cropped.png" class="logo__image only-light" alt="Logo image">
     <img src="../../_static/pyansys-logo-black-cropped.png" class="logo__image only-dark" alt="Logo image">
@@ -85,158 +127,124 @@
     
   </div>
 
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="fas fa-bars"></span>
-  </button>
-
   
-  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+  <div class="col-lg-9 navbar-header-items">
     <div id="navbar-center" class="mr-auto">
       
       <div class="navbar-center-item">
-        <ul id="navbar-main-elements" class="navbar-nav">
-    <li class="toctree-l1 nav-item">
- <a class="reference internal nav-link" href="../../Getting_started/index.html">
-  Getting started
- </a>
-</li>
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
+        
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../Getting_started/index.html">
+                        Getting started
+                      </a>
+                    </li>
+                
 
-<li class="toctree-l1 nav-item">
- <a class="reference internal nav-link" href="../../User_guide/index.html">
-  User guide
- </a>
-</li>
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../User_guide/index.html">
+                        User guide
+                      </a>
+                    </li>
+                
 
-<li class="toctree-l1 nav-item">
- <a class="reference internal nav-link" href="../../API/index.html">
-  API AEDT reference
- </a>
-</li>
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../API/index.html">
+                        API AEDT reference
+                      </a>
+                    </li>
+                
 
-<li class="toctree-l1 nav-item">
- <a class="reference internal nav-link" href="../../EDBAPI/index.html">
-  API EDB reference
- </a>
-</li>
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../EDBAPI/index.html">
+                        API EDB reference
+                      </a>
+                    </li>
+                
 
-<li class="toctree-l1 nav-item">
- <a class="reference internal nav-link" href="../../examples/index.html">
-  Examples
- </a>
-</li>
-
-<li class="toctree-l1 nav-item">
- <a class="reference internal nav-link" href="../../Contributing.html">
-  Contribute
- </a>
-</li>
-
-    
-</ul>
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../examples/index.html">
+                        Examples
+                      </a>
+                    </li>
+                
+            <div class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    More
+                </button>
+                <div class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../Contributing.html">
+                        Contribute
+                      </a>
+                    </li>
+                
+                </div>
+            </div>
+            
+    </ul>
+</nav>
       </div>
       
     </div>
 
     <div id="navbar-end">
       
+        <div class="navbar-end-item navbar-persistent--container">
+          
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+        </div>
+      
+      
       <div class="navbar-end-item">
-        <div class="dropdown" id="version_switcher">
-    <button type="button" class="btn btn-sm navbar-btn dropdown-toggle" id="version_switcher_button" data-toggle="dropdown">
+        <div class="version-switcher__container dropdown">
+    <button type="button" class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle" data-toggle="dropdown">
         0.6  <!-- this text may get changed later by javascript -->
         <span class="caret"></span>
     </button>
-    <div id="version_switcher_menu" class="dropdown-menu list-group-flush py-0" aria-labelledby="version_switcher_button">
+    <div class="version-switcher__menu dropdown-menu list-group-flush py-0">
     <!-- dropdown will be populated by javascript on page load -->
     </div>
 </div>
-
-<!-- NOTE: this JS must live here (not in our global JS file) because it relies
-     on being processed by Jinja before it is run (specifically for replacing
-     variables _modules/pyaedt/hfss and {'json_url': 'https://aedt.docs.pyansys.com/release/versions.json', 'version_match': '0.6'}.
--->
-
-<script type="text/javascript">
-// Check if corresponding page path exists in other version of docs
-// and, if so, go there instead of the homepage of the other docs version
-function checkPageExistsAndRedirect(event) {
-    const currentFilePath = "_modules/pyaedt/hfss.html",
-          tryUrl = event.target.getAttribute("href");
-    let otherDocsHomepage = tryUrl.replace(currentFilePath, "");
-    $.ajax({
-        type: 'HEAD',
-        url: tryUrl,
-        // if the page exists, go there
-        success: function() {
-            location.href = tryUrl;
-        }
-    }).fail(function() {
-        location.href = otherDocsHomepage;
-    });
-    // this prevents the browser from following the href of the clicked node
-    // (which is fine because this function takes care of redirecting)
-    return false;
-}
-
-// Populate the version switcher from the JSON config file
-(function () {
-    $.getJSON("https://aedt.docs.pyansys.com/release/versions.json", function(data, textStatus, jqXHR) {
-        const currentFilePath = "_modules/pyaedt/hfss.html";
-        let btn = document.getElementById("version_switcher_button");
-        // Set empty strings by default so that these attributes exist and can be used in CSS selectors
-        btn.dataset["activeVersionName"] = "";
-        btn.dataset["activeVersion"] = "";
-        // create links to the corresponding page in the other docs versions
-        $.each(data, function(index, entry) {
-            // if no custom name specified (e.g., "latest"), use version string
-            if (!("name" in entry)) {
-                entry.name = entry.version;
-            }
-            // create the node
-            const node = document.createElement("a");
-            node.setAttribute("class", "list-group-item list-group-item-action py-1");
-            node.textContent = `${entry.name}`;
-            node.setAttribute("href", `${entry.url}${currentFilePath}`);
-            // on click, AJAX calls will check if the linked page exists before
-            // trying to redirect, and if not, will redirect to the homepage
-            // for that version of the docs.
-            node.onclick = checkPageExistsAndRedirect;
-            // Add dataset values for the version and name in case people want
-            // to apply CSS styling based on this information.
-            node.dataset["versionName"] = entry.name;
-            node.dataset["version"] = entry.version;
-
-            $("#version_switcher_menu").append(node);
-            // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.6.46 variable.
-            // also highlight the dropdown entry for the currently-viewed
-            // version's entry
-            if (entry.version == "0.6") {
-                node.classList.add("active");
-                btn.innerText = btn.dataset["activeVersionName"] = entry.name;
-                btn.dataset["activeVersion"] = entry.version;
-            }
-        });
-    });
-})();
-</script>
       </div>
       
       <div class="navbar-end-item">
-        <span id="theme-switch" class="btn btn-sm btn-outline-primary navbar-btn rounded-circle">
-    <a class="theme-switch" data-mode="light"><i class="fas fa-sun"></i></a>
-    <a class="theme-switch" data-mode="dark"><i class="far fa-moon"></i></a>
-    <a class="theme-switch" data-mode="auto"><i class="fas fa-adjust"></i></a>
-</span>
+        <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+</button>
       </div>
       
       <div class="navbar-end-item">
         <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
         <li class="nav-item">
-          <a class="nav-link" href="https://github.com/pyansys/pyaedt" rel="noopener" target="_blank" title="GitHub"><span><i class="fab fa-github-square"></i></span>
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pyansys/pyaedt" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa-brands fa-square-github"></i></span>
             <label class="sr-only">GitHub</label></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="https://github.com/pyansys/pyaedt/discussions" rel="noopener" target="_blank" title="Support"><span><i class="fa fa-comment fa-fw"></i></span>
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pyansys/pyaedt/discussions" title="Support" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa fa-comment fa-fw"></i></span>
             <label class="sr-only">Support</label></a>
         </li>
       </ul>
@@ -244,11 +252,29 @@ function checkPageExistsAndRedirect(event) {
       
     </div>
   </div>
+
+
+  
+  
+    <div class="navbar-persistent--mobile">
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+    </div>
+  
+
+  
+  <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+  </label>
+  
+
 </div>
-    </nav>
+  </nav>
+  
+
     
-     
-<div id="announcement_msg"></div>
+    <div id="announcement_msg"></div>
 <script>
   fetch("announcement.html")
     .then((response) => {
@@ -260,9 +286,10 @@ function checkPageExistsAndRedirect(event) {
     .then(text => document.getElementById("announcement_msg").innerHTML = text)
     .catch((error) => console.error(`Fetch problem: ${error.message}`));
 </script>
+    
 
     
-        <div class="container-xl">
+    <div class="container-xl">
     <div class="row">
         <div class="col-12 col-md-3" id="breadcrumbs-spacer"></div>
         <div class="col-12 col-md-11 col-xl-9" id="breadcrumbs">
@@ -287,42 +314,160 @@ function checkPageExistsAndRedirect(event) {
     
 
 
-    <div class="bd-container container-xl">
-      <div class="bd-container__inner row">
-          
-
-<!-- Only show if we have sidebars configured, else just a small margin  -->
-<div class="bd-sidebar-primary col-12 col-md-3 bd-sidebar">
-  <div class="sidebar-start-items"><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-  <div class="bd-toc-item active">
-    
-    
-    
-  </div>
-</nav>
-  </div>
-  <div class="sidebar-end-items">
-  </div>
-</div>
-
-
-          
-
-
-<div class="bd-sidebar-secondary d-none d-xl-block col-xl-2 bd-toc">
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
   
-</div>
-
-
-          
-          
-          <div class="bd-content col-12 col-md-9 col-xl-7">
-              
-              <article class="bd-article" role="main">
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+      
+      <div class="navbar-center-item">
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
+        
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../Getting_started/index.html">
+                        Getting started
+                      </a>
+                    </li>
                 
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../User_guide/index.html">
+                        User guide
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../API/index.html">
+                        API AEDT reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../EDBAPI/index.html">
+                        API EDB reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../examples/index.html">
+                        Examples
+                      </a>
+                    </li>
+                
+            <div class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    More
+                </button>
+                <div class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../Contributing.html">
+                        Contribute
+                      </a>
+                    </li>
+                
+                </div>
+            </div>
+            
+    </ul>
+</nav>
+      </div>
+      
+      </div>
+    
+
+    
+    
+    <div class="sidebar-header-items__end">
+      
+      <div class="navbar-end-item">
+        <div class="version-switcher__container dropdown">
+    <button type="button" class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle" data-toggle="dropdown">
+        0.6  <!-- this text may get changed later by javascript -->
+        <span class="caret"></span>
+    </button>
+    <div class="version-switcher__menu dropdown-menu list-group-flush py-0">
+    <!-- dropdown will be populated by javascript on page load -->
+    </div>
+</div>
+      </div>
+      
+      <div class="navbar-end-item">
+        <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+</button>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pyansys/pyaedt" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa-brands fa-square-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pyansys/pyaedt/discussions" title="Support" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa fa-comment fa-fw"></i></span>
+            <label class="sr-only">Support</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+    
+  </div>
+
+  
+
+  
+  <div class="sidebar-end-items sidebar-primary__section">
+    <div class="sidebar-end-items__item">
+    </div>
+  </div>
+
+  
+  <div id="rtd-footer-container"></div>
+
+      </div>
+      <main id="main-content" class="bd-main">
+        
+        
+        <div class="bd-content">
+          <div class="bd-article-container">
+            
+            <div class="bd-header-article">
+                
+            </div>
+            
+            
+            <article class="bd-article" role="main">
+              
   <h1>Source code for pyaedt.hfss</h1><div class="highlight"><pre>
 <span></span><span class="sd">&quot;&quot;&quot;This module contains these classes: ``Hfss`` and ``BoundaryType``.&quot;&quot;&quot;</span>
 
@@ -352,6 +497,7 @@ function checkPageExistsAndRedirect(event) {
 <span class="kn">from</span> <span class="nn">pyaedt.modules.Boundary</span> <span class="kn">import</span> <span class="n">NativeComponentObject</span>
 <span class="kn">from</span> <span class="nn">pyaedt.modules.Boundary</span> <span class="kn">import</span> <span class="n">NearFieldSetup</span>
 <span class="kn">from</span> <span class="nn">pyaedt.modules.solutions</span> <span class="kn">import</span> <span class="n">FfdSolutionData</span>
+<span class="kn">from</span> <span class="nn">pyaedt.modules.SolveSweeps</span> <span class="kn">import</span> <span class="n">SetupKeys</span>
 
 
 <div class="viewcode-block" id="Hfss"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.hfss.Hfss.html#pyaedt.hfss.Hfss">[docs]</a><span class="k">class</span> <span class="nc">Hfss</span><span class="p">(</span><span class="n">FieldAnalysis3D</span><span class="p">,</span> <span class="nb">object</span><span class="p">):</span>
@@ -507,9 +653,6 @@ function checkPageExistsAndRedirect(event) {
             <span class="n">aedt_process_id</span><span class="p">,</span>
         <span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_field_setups</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="kn">from</span> <span class="nn">pyaedt.toolkits.antennas</span> <span class="kn">import</span> <span class="n">Antennas</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">antennas</span> <span class="o">=</span> <span class="n">Antennas</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="fm">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span>
@@ -795,7 +938,6 @@ function checkPageExistsAndRedirect(event) {
         <span class="p">)</span>
 
         <span class="k">if</span> <span class="s2">&quot;Modal&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">solution_type</span><span class="p">:</span>
-
             <span class="k">if</span> <span class="n">renorm</span><span class="p">:</span>
                 <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">renorm_impedance</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">))</span> <span class="ow">or</span> <span class="s2">&quot;i&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">renorm_impedance</span><span class="p">:</span>
                     <span class="n">renorm_imp</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">renorm_impedance</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;ohm&quot;</span>
@@ -822,16 +964,18 @@ function checkPageExistsAndRedirect(event) {
     <span class="p">):</span>
         <span class="n">start</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="n">stop</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="k">if</span> <span class="n">int_line_start</span> <span class="ow">and</span> <span class="n">int_line_stop</span><span class="p">:</span>
-            <span class="n">start</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">model_units</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">int_line_start</span><span class="p">]</span>
-            <span class="n">stop</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">model_units</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">int_line_stop</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">int_line_start</span> <span class="ow">and</span> <span class="n">int_line_stop</span><span class="p">:</span>  <span class="c1"># Allow non-numeric arguments</span>
+            <span class="n">start</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">model_units</span> <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="ow">in</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">)</span> <span class="k">else</span> <span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">int_line_start</span><span class="p">]</span>
+            <span class="n">stop</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">model_units</span> <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="ow">in</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">)</span> <span class="k">else</span> <span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">int_line_stop</span><span class="p">]</span>
             <span class="n">useintline</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">useintline</span> <span class="o">=</span> <span class="kc">False</span>
 
-        <span class="n">props</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">({})</span>
-        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">objectname</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+        <span class="n">props</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">({})</span>  <span class="c1"># Used to create the argument to pass to native api: oModule.AssignWavePort()</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">objectname</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>  <span class="c1"># Assumes a Face ID is passed in objectname</span>
             <span class="n">props</span><span class="p">[</span><span class="s2">&quot;Faces&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">objectname</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">objectname</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>  <span class="c1"># Assume [x, y, z] point is passed in objectname</span>
+            <span class="n">props</span><span class="p">[</span><span class="s2">&quot;Faces&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">get_faceid_from_position</span><span class="p">(</span><span class="n">objectname</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">props</span><span class="p">[</span><span class="s2">&quot;Objects&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">objectname</span><span class="p">]</span>
         <span class="n">props</span><span class="p">[</span><span class="s2">&quot;NumModes&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nummodes</span>
@@ -878,7 +1022,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">props</span><span class="p">[</span><span class="s2">&quot;UseAnalyticAlignment&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_boundary</span><span class="p">(</span><span class="n">portname</span><span class="p">,</span> <span class="n">props</span><span class="p">,</span> <span class="s2">&quot;Wave Port&quot;</span><span class="p">)</span>
 
-<div class="viewcode-block" id="Hfss.assigncoating"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.hfss.Hfss.assigncoating.html#pyaedt.hfss.Hfss.assigncoating">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">assigncoating</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">obj</span><span class="p">,</span>
@@ -919,7 +1063,7 @@ function checkPageExistsAndRedirect(event) {
             <span class="n">usehuray</span><span class="p">,</span>
             <span class="n">radius</span><span class="p">,</span>
             <span class="n">ratio</span><span class="p">,</span>
-        <span class="p">)</span></div>
+        <span class="p">)</span>
 
 <div class="viewcode-block" id="Hfss.assign_coating"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.hfss.Hfss.assign_coating.html#pyaedt.hfss.Hfss.assign_coating">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">assign_coating</span><span class="p">(</span>
@@ -1049,7 +1193,76 @@ function checkPageExistsAndRedirect(event) {
             <span class="n">props</span><span class="p">[</span><span class="s2">&quot;IsInternal&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">isInternal</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_boundary</span><span class="p">(</span><span class="s2">&quot;Coating_&quot;</span> <span class="o">+</span> <span class="n">listobjname</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">props</span><span class="p">,</span> <span class="s2">&quot;Finite Conductivity&quot;</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Hfss.create_frequency_sweep"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.hfss.Hfss.create_frequency_sweep.html#pyaedt.hfss.Hfss.create_frequency_sweep">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+    <span class="c1"># TODO: Extract name and type from **kwargs to pass them to create_setup() as setuptype and setupname</span>
+
+<div class="viewcode-block" id="Hfss.create_setup"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.hfss.Hfss.create_setup.html#pyaedt.hfss.Hfss.create_setup">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">create_setup</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">setupname</span><span class="o">=</span><span class="s2">&quot;MySetupAuto&quot;</span><span class="p">,</span> <span class="n">setuptype</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create an analysis setup for HFSS.</span>
+<span class="sd">        Optional arguments are passed along with ``setuptype`` and ``setupname``.  Keyword</span>
+<span class="sd">        names correspond to the ``setuptype``</span>
+<span class="sd">        corresponding to the native AEDT API.  The list of</span>
+<span class="sd">        keywords here is not exhaustive.</span>
+
+<span class="sd">        .. note::</span>
+<span class="sd">           This method overrides the ``Analysis.setup()`` method for the HFSS app.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        setuptype : str, optional</span>
+<span class="sd">            Type of the setup. Based on the solution type, options are</span>
+<span class="sd">            ``&quot;HFSSDrivenAuto&quot;``, ``&quot;HFSSDrivenDefault&quot;``, ``&quot;HFSSEigen&quot;``, ``&quot;HFSSTransient&quot;``,</span>
+<span class="sd">            and ``&quot;HFSSSBR&quot;``. The default is ``&quot;HFSSDrivenAuto&quot;``.</span>
+<span class="sd">        setupname : str, optional</span>
+<span class="sd">            Name of the setup. The default is ``&quot;Setup1&quot;``.</span>
+<span class="sd">        **kwargs : dict, optional</span>
+<span class="sd">            Extra arguments to set up the circuit.</span>
+<span class="sd">            Available keys depend on the setup chosen.</span>
+<span class="sd">            For more information, see</span>
+<span class="sd">            :doc:`../SetupTemplatesHFSS`.</span>
+
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        :class:`pyaedt.modules.SolveSetup.SetupHFSS`, :class:`pyaedt.modules.SolveSetup.SetupHFSSAuto`</span>
+<span class="sd">            3D Solver Setup object.</span>
+
+<span class="sd">        References</span>
+<span class="sd">        ----------</span>
+
+<span class="sd">        &gt;&gt;&gt; oModule.InsertSetup</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+
+<span class="sd">        &gt;&gt;&gt; from pyaedt import Hfss</span>
+<span class="sd">        &gt;&gt;&gt; hfss = Hfss()</span>
+<span class="sd">        &gt;&gt;&gt; hfss.create_setup(setupname=&quot;Setup1&quot;, setuptype=&quot;HFSSDriven&quot;, Frequency=&quot;10GHz&quot;)</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">setuptype</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">setuptype</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">design_solutions</span><span class="o">.</span><span class="n">default_setup</span>
+        <span class="k">elif</span> <span class="n">setuptype</span> <span class="ow">in</span> <span class="n">SetupKeys</span><span class="o">.</span><span class="n">SetupNames</span><span class="p">:</span>
+            <span class="n">setuptype</span> <span class="o">=</span> <span class="n">SetupKeys</span><span class="o">.</span><span class="n">SetupNames</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">setuptype</span><span class="p">)</span>
+        <span class="n">setup</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_setup</span><span class="p">(</span><span class="n">setupname</span><span class="o">=</span><span class="n">setupname</span><span class="p">,</span> <span class="n">setuptype</span><span class="o">=</span><span class="n">setuptype</span><span class="p">)</span>
+        <span class="n">setup</span><span class="o">.</span><span class="n">auto_update</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">for</span> <span class="n">arg_name</span><span class="p">,</span> <span class="n">arg_value</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">setup</span><span class="p">[</span><span class="n">arg_name</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">arg_name</span> <span class="o">==</span> <span class="s2">&quot;MultipleAdaptiveFreqsSetup&quot;</span><span class="p">:</span>
+                    <span class="n">setup</span><span class="p">[</span><span class="n">arg_name</span><span class="p">]</span><span class="o">.</span><span class="n">delete_all</span><span class="p">()</span>
+                    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">arg_value</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+                        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">arg_value</span><span class="p">:</span>
+                            <span class="n">setup</span><span class="p">[</span><span class="n">arg_name</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.02</span><span class="p">]</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">arg_value</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                            <span class="n">setup</span><span class="p">[</span><span class="n">arg_name</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">k</span><span class="p">]</span>
+                    <span class="n">setup</span><span class="o">.</span><span class="n">props</span><span class="p">[</span><span class="s2">&quot;SolveType&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;MultiFrequency&quot;</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">setup</span><span class="p">[</span><span class="n">arg_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">arg_value</span>
+        <span class="n">setup</span><span class="o">.</span><span class="n">auto_update</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">setup</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">setup</span></div>
+
+    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">create_frequency_sweep</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">setupname</span><span class="p">,</span>
@@ -1087,7 +1300,7 @@ function checkPageExistsAndRedirect(event) {
             <span class="n">sweep_type</span><span class="o">=</span><span class="n">sweeptype</span><span class="p">,</span>
             <span class="n">interpolation_tol</span><span class="o">=</span><span class="n">interpolation_tol</span><span class="p">,</span>
             <span class="n">interpolation_max_solutions</span><span class="o">=</span><span class="n">interpolation_max_solutions</span><span class="p">,</span>
-        <span class="p">)</span></div>
+        <span class="p">)</span>
 
 <div class="viewcode-block" id="Hfss.create_linear_count_sweep"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.hfss.Hfss.create_linear_count_sweep.html#pyaedt.hfss.Hfss.create_linear_count_sweep">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">create_linear_count_sweep</span><span class="p">(</span>
@@ -1096,7 +1309,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">unit</span><span class="p">,</span>
         <span class="n">freqstart</span><span class="p">,</span>
         <span class="n">freqstop</span><span class="p">,</span>
-        <span class="n">num_of_freq_points</span><span class="p">,</span>
+        <span class="n">num_of_freq_points</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">sweepname</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">save_fields</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
         <span class="n">save_rad_fields</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
@@ -1118,8 +1331,11 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">            Stopping frequency of the sweep.</span>
 <span class="sd">        num_of_freq_points : int</span>
 <span class="sd">            Number of frequency points in the range.</span>
+<span class="sd">            The default is ``401`` for ``sweep_type = &quot;Interpolating&quot;``. The defaults</span>
+<span class="sd">            are &quot;Fast&quot;`` and ``5`` for ``sweep_type = &quot;&quot;Discrete&quot;``.</span>
 <span class="sd">        sweepname : str, optional</span>
-<span class="sd">            Name of the sweep. The default is ``None``.</span>
+<span class="sd">            Name of the sweep. The default is ``None``, in which</span>
+<span class="sd">            case the default name is automatically assigned.</span>
 <span class="sd">        save_fields : bool, optional</span>
 <span class="sd">            Whether to save the fields. The default is ``True``.</span>
 <span class="sd">        save_rad_fields : bool, optional</span>
@@ -1136,7 +1352,7 @@ function checkPageExistsAndRedirect(event) {
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        :class:`pyaedt.modules.SetupTemplates.SweepHFSS` or bool</span>
+<span class="sd">        :class:`pyaedt.modules.SolveSweeps.SweepHFSS` or bool</span>
 <span class="sd">            Sweep object if successful, ``False`` otherwise.</span>
 
 <span class="sd">        References</span>
@@ -1159,7 +1375,13 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        &lt;class &#39;pyaedt.modules.SetupTemplates.SweepHFSS&#39;&gt;</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="n">sweep_type</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;Discrete&quot;</span><span class="p">,</span> <span class="s2">&quot;Interpolating&quot;</span><span class="p">,</span> <span class="s2">&quot;Fast&quot;</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="n">sweep_type</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;Interpolating&quot;</span><span class="p">,</span> <span class="s2">&quot;Fast&quot;</span><span class="p">]:</span>
+            <span class="k">if</span> <span class="n">num_of_freq_points</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">num_of_freq_points</span> <span class="o">=</span> <span class="mi">401</span>
+        <span class="k">elif</span> <span class="n">sweep_type</span> <span class="o">==</span> <span class="s2">&quot;Discrete&quot;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">num_of_freq_points</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">num_of_freq_points</span> <span class="o">=</span> <span class="mi">5</span>
+        <span class="k">else</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span>
                 <span class="s2">&quot;Invalid value for `sweep_type`. The value must be &#39;Discrete&#39;, &#39;Interpolating&#39;, or &#39;Fast&#39;.&quot;</span>
             <span class="p">)</span>
@@ -1237,7 +1459,7 @@ function checkPageExistsAndRedirect(event) {
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        :class:`pyaedt.modules.SetupTemplates.SweepHFSS` or bool</span>
+<span class="sd">        :class:`pyaedt.modules.SolveSweeps.SweepHFSS` or bool</span>
 <span class="sd">            Sweep object if successful, ``False`` otherwise.</span>
 
 <span class="sd">        References</span>
@@ -1333,7 +1555,7 @@ function checkPageExistsAndRedirect(event) {
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        :class:`pyaedt.modules.SetupTemplates.SweepHFSS` or bool</span>
+<span class="sd">        :class:`pyaedt.modules.SolveSweeps.SweepHFSS` or bool</span>
 <span class="sd">            Sweep object if successful, ``False`` otherwise.</span>
 
 <span class="sd">        References</span>
@@ -2797,7 +3019,7 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">            Name of the coordinate system for the U coordinates. The</span>
 <span class="sd">            default is ``&quot;Global&quot;``.</span>
 <span class="sd">        primary_name : str, optional</span>
-<span class="sd">            Name of the boundary. The default is ``None``.</span>
+<span class="sd">            Name of the boundary. The default is ``None``.  # TODO: Add names of allowed values to docstring.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -3078,7 +3300,7 @@ function checkPageExistsAndRedirect(event) {
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_boundary</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">BoundaryType</span><span class="o">.</span><span class="n">PerfectH</span><span class="p">,</span> <span class="n">sheet_name</span><span class="p">,</span> <span class="n">sourcename</span><span class="p">)</span>
         <span class="k">return</span> <span class="kc">None</span></div>
 
-<div class="viewcode-block" id="Hfss.SARSetup"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.hfss.Hfss.SARSetup.html#pyaedt.hfss.Hfss.SARSetup">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">SARSetup</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Tissue_object_List_ID</span><span class="p">,</span> <span class="n">TissueMass</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">MaterialDensity</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">voxel_size</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">Average_SAR_method</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Define SAR settings.</span>
 
@@ -3087,7 +3309,7 @@ function checkPageExistsAndRedirect(event) {
 
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;`SARSetup` is deprecated. Use `sar_setup` instead.&quot;</span><span class="p">,</span> <span class="ne">DeprecationWarning</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">sar_setup</span><span class="p">(</span><span class="n">Tissue_object_List_ID</span><span class="p">,</span> <span class="n">TissueMass</span><span class="p">,</span> <span class="n">MaterialDensity</span><span class="p">,</span> <span class="n">voxel_size</span><span class="p">,</span> <span class="n">Average_SAR_method</span><span class="p">)</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sar_setup</span><span class="p">(</span><span class="n">Tissue_object_List_ID</span><span class="p">,</span> <span class="n">TissueMass</span><span class="p">,</span> <span class="n">MaterialDensity</span><span class="p">,</span> <span class="n">voxel_size</span><span class="p">,</span> <span class="n">Average_SAR_method</span><span class="p">)</span>
 
 <div class="viewcode-block" id="Hfss.sar_setup"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.hfss.Hfss.sar_setup.html#pyaedt.hfss.Hfss.sar_setup">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">sar_setup</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Tissue_object_List_ID</span><span class="p">,</span> <span class="n">TissueMass</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">MaterialDensity</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">voxel_size</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">Average_SAR_method</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
@@ -3550,6 +3772,119 @@ function checkPageExistsAndRedirect(event) {
                 <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Reference conductors are missing.&quot;</span><span class="p">)</span>
                 <span class="k">return</span> <span class="kc">False</span></div>
 
+<div class="viewcode-block" id="Hfss.create_wave_port"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.hfss.Hfss.create_wave_port.html#pyaedt.hfss.Hfss.create_wave_port">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">create_wave_port</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">port_item</span><span class="p">,</span>  <span class="c1"># Item to use for wave port creation</span>
+        <span class="n">int_start</span><span class="p">,</span>
+        <span class="n">int_stop</span><span class="p">,</span>
+        <span class="n">deemb</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">axisdir</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">impedance</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+        <span class="n">nummodes</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">portname</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">renorm</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">terminal_references</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Assign a wave port to a face given a point on the face.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        port_item : list, int</span>
+<span class="sd">            Item for defining where to create the port.</span>
+<span class="sd">            If a list is passed, then Cartesian [x,y,z] coordinates of a point on the face are</span>
+<span class="sd">            expected. If an integer is passed, it is assumed to be a face ID.</span>
+<span class="sd">        deemb : float, optional</span>
+<span class="sd">            Deembedding value distance in model units. The default is ``0``.</span>
+<span class="sd">        axisdir : int or :class:`pyaedt.application.Analysis.Analysis.AxisDir`, optional</span>
+<span class="sd">            Position of the port. This parameter is used to automatically evaluate</span>
+<span class="sd">            the integration line. The default is ``None``, in which case no integration</span>
+<span class="sd">            line is defined. This parameter should be set to one of the values</span>
+<span class="sd">            for ``Application.AxisDir``,  which are: ``XNeg``, ``YNeg``, ``ZNeg``,</span>
+<span class="sd">            ``XPos``, ``YPos``, and ``ZPos``.</span>
+
+<span class="sd">        impedance : float, optional</span>
+<span class="sd">            Port impedance. The default is ``50``.</span>
+<span class="sd">        nummodes : int, optional</span>
+<span class="sd">            Number of modes. The default is ``1``.</span>
+<span class="sd">        portname : str, optional</span>
+<span class="sd">            Name of the port. The default is ``None``.</span>
+<span class="sd">        renorm : bool, optional</span>
+<span class="sd">            Whether to renormalize the mode. The default is ``True``.</span>
+<span class="sd">        terminal_references : list, optional</span>
+<span class="sd">            For a driven-terminal simulation, list of conductors for port terminal definitions.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        :class:`pyaedt.modules.Boundary.BoundaryObject`</span>
+<span class="sd">            Boundary object.</span>
+
+<span class="sd">        References</span>
+<span class="sd">        ----------</span>
+
+<span class="sd">        &gt;&gt;&gt; oModule.AssignWavePort</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+
+<span class="sd">        Create a circle sheet for creating a wave port named ``&#39;WavePortFromSheet&#39;``.</span>
+
+<span class="sd">        &gt;&gt;&gt; hfss.modeler.model_units(&quot;in&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; hfss.modeler.create_box([-0.2, -0.45, -1], [0.4, 0.9, 2], name=&quot;Xband_WG&quot;, matname=&quot;vacuum&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; setup = hfss.create_setup(&quot;Setup1&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; setup[&quot;Frequency&quot;] = &quot;10GHz&quot;</span>
+<span class="sd">        &gt;&gt;&gt; ports = [ hfss.create_wave_port([0, &quot;a/2&quot;, &quot;-wg_len/2&quot;], portname=&quot;Port1&quot;, deembed=False),</span>
+<span class="sd">        &gt;&gt;&gt;  ...      hfss.create_wave_port([0, &quot;a/2&quot;, &quot;wg_len/2&quot;], portname=&quot;Port2&quot;, deembed=False) ]</span>
+<span class="sd">        &gt;&gt;&gt; [print(name) for p.name in ports]</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># TODO: check that port_item is a planar sheet</span>
+        <span class="k">if</span> <span class="n">terminal_references</span><span class="p">:</span>
+            <span class="n">terminal_references</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">convert_to_selections</span><span class="p">(</span><span class="n">terminal_references</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">port_item</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">oname</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">oeditor</span><span class="o">.</span><span class="n">GetObjectNameByFaceID</span><span class="p">(</span><span class="n">port_item</span><span class="p">)</span>
+            <span class="k">except</span><span class="p">:</span>
+                <span class="n">oname</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">oname</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+        <span class="k">if</span> <span class="s2">&quot;Modal&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">solution_type</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">portname</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">portname</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_unique_source_name</span><span class="p">(</span><span class="n">portname</span><span class="p">,</span> <span class="s2">&quot;Port&quot;</span><span class="p">)</span>
+
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_waveport_driven</span><span class="p">(</span>
+                <span class="n">port_item</span><span class="p">,</span> <span class="n">int_start</span><span class="p">,</span> <span class="n">int_stop</span><span class="p">,</span> <span class="n">impedance</span><span class="p">,</span> <span class="n">portname</span><span class="p">,</span> <span class="n">renorm</span><span class="p">,</span> <span class="n">nummodes</span><span class="p">,</span> <span class="n">deemb</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">port_item</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+                <span class="n">faces</span> <span class="o">=</span> <span class="n">port_item</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">faces</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">get_object_faces</span><span class="p">(</span><span class="n">port_item</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">faces</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Input object is wrong. It must be a face ID or a sheet.&quot;</span><span class="p">)</span>
+                <span class="k">return</span> <span class="kc">False</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">portname</span><span class="p">:</span>
+                <span class="n">portname</span> <span class="o">=</span> <span class="n">generate_unique_name</span><span class="p">(</span><span class="s2">&quot;Port&quot;</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">portname</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">excitations</span><span class="p">:</span>
+                <span class="n">portname</span> <span class="o">=</span> <span class="n">generate_unique_name</span><span class="p">(</span><span class="n">portname</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">terminal_references</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">deemb</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="n">deembed</span> <span class="o">=</span> <span class="kc">None</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">deembed</span> <span class="o">=</span> <span class="n">deemb</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_port_terminal</span><span class="p">(</span>
+                    <span class="n">faces</span><span class="p">,</span>
+                    <span class="n">terminal_references</span><span class="p">,</span>
+                    <span class="n">portname</span><span class="p">,</span>
+                    <span class="n">renorm</span><span class="o">=</span><span class="n">renorm</span><span class="p">,</span>
+                    <span class="n">deembed</span><span class="o">=</span><span class="n">deembed</span><span class="p">,</span>
+                    <span class="n">iswaveport</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                    <span class="n">impedance</span><span class="o">=</span><span class="n">impedance</span><span class="p">,</span>
+                <span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Reference conductors are missing.&quot;</span><span class="p">)</span>
+                <span class="k">return</span> <span class="kc">False</span></div>
+
 <div class="viewcode-block" id="Hfss.create_lumped_port_to_sheet"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.hfss.Hfss.create_lumped_port_to_sheet.html#pyaedt.hfss.Hfss.create_lumped_port_to_sheet">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">create_lumped_port_to_sheet</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">sheet_name</span><span class="p">,</span> <span class="n">axisdir</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">impedance</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">portname</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">renorm</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">deemb</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">reference_object_list</span><span class="o">=</span><span class="p">[]</span>
@@ -3649,7 +3984,7 @@ function checkPageExistsAndRedirect(event) {
             <span class="k">return</span> <span class="n">port</span>
         <span class="k">return</span> <span class="kc">False</span></div>
 
-<div class="viewcode-block" id="Hfss.assig_voltage_source_to_sheet"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.hfss.Hfss.assig_voltage_source_to_sheet.html#pyaedt.hfss.Hfss.assig_voltage_source_to_sheet">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">assig_voltage_source_to_sheet</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sheet_name</span><span class="p">,</span> <span class="n">axisdir</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sourcename</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a voltage source taking one sheet.</span>
 
@@ -3662,7 +3997,7 @@ function checkPageExistsAndRedirect(event) {
             <span class="s2">&quot;`assig_voltage_source_to_sheet` is deprecated. Use `assign_voltage_source_to_sheet` instead.&quot;</span><span class="p">,</span>
             <span class="ne">DeprecationWarning</span><span class="p">,</span>
         <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">assign_voltage_source_to_sheet</span><span class="p">(</span><span class="n">sheet_name</span><span class="p">,</span> <span class="n">axisdir</span><span class="p">,</span> <span class="n">sourcename</span><span class="p">)</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assign_voltage_source_to_sheet</span><span class="p">(</span><span class="n">sheet_name</span><span class="p">,</span> <span class="n">axisdir</span><span class="p">,</span> <span class="n">sourcename</span><span class="p">)</span>
 
 <div class="viewcode-block" id="Hfss.assign_voltage_source_to_sheet"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.hfss.Hfss.assign_voltage_source_to_sheet.html#pyaedt.hfss.Hfss.assign_voltage_source_to_sheet">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">assign_voltage_source_to_sheet</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sheet_name</span><span class="p">,</span> <span class="n">axisdir</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sourcename</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -3850,7 +4185,6 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">solution_type</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;Modal&quot;</span><span class="p">,</span> <span class="s2">&quot;Terminal&quot;</span><span class="p">,</span> <span class="s2">&quot;Transient Network&quot;</span><span class="p">,</span> <span class="s2">&quot;SBR+&quot;</span><span class="p">]:</span>
-
             <span class="k">if</span> <span class="ow">not</span> <span class="n">sourcename</span><span class="p">:</span>
                 <span class="n">sourcename</span> <span class="o">=</span> <span class="n">generate_unique_name</span><span class="p">(</span><span class="s2">&quot;PerfH&quot;</span><span class="p">)</span>
             <span class="k">elif</span> <span class="n">sourcename</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">get_boundaries_name</span><span class="p">():</span>
@@ -3993,7 +4327,6 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">solution_type</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;Modal&quot;</span><span class="p">,</span> <span class="s2">&quot;Terminal&quot;</span><span class="p">,</span> <span class="s2">&quot;Transient Network&quot;</span><span class="p">]:</span>
-
             <span class="k">if</span> <span class="ow">not</span> <span class="n">sourcename</span><span class="p">:</span>
                 <span class="n">sourcename</span> <span class="o">=</span> <span class="n">generate_unique_name</span><span class="p">(</span><span class="s2">&quot;Imped&quot;</span><span class="p">)</span>
             <span class="k">elif</span> <span class="n">sourcename</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">get_boundaries_name</span><span class="p">():</span>
@@ -4602,7 +4935,7 @@ function checkPageExistsAndRedirect(event) {
     <span class="k">def</span> <span class="nf">create_scattering</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">plot_name</span><span class="o">=</span><span class="s2">&quot;S Parameter Plot Nominal&quot;</span><span class="p">,</span> <span class="n">sweep_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">port_names</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">port_excited</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">variations</span><span class="o">=</span><span class="kc">None</span>
     <span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a scattering report.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create an S-parameter report.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -4611,9 +4944,11 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        sweep_name : str, optional</span>
 <span class="sd">             Name of the sweep. The default is ``None``.</span>
 <span class="sd">        port_names : list, optional</span>
-<span class="sd">             List of port names. The default is ``None``.</span>
+<span class="sd">             List of port names. The first index, i, in S[i,j].</span>
+<span class="sd">             The default is ``None``. (include only self-terms)</span>
 <span class="sd">        port_excited : list or str, optional</span>
-<span class="sd">             The default is ``None``.</span>
+<span class="sd">             List of port names. The seconds index, j in S[i,j].</span>
+<span class="sd">             The default is ``None``. (include only self-terms)</span>
 <span class="sd">        variations : str, optional</span>
 <span class="sd">             The default is ``None``.</span>
 
@@ -4630,10 +4965,10 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        Examples</span>
 <span class="sd">        --------</span>
 
-<span class="sd">        Create a scattering named ``&quot;S Parameter Plot Nominal&quot;`` using</span>
-<span class="sd">        the default parameters.</span>
+<span class="sd">        Create ad S-parameter plot named ``&quot;S Parameter Plot Nominal&quot;`` for a 3-port network.</span>
+<span class="sd">        plotting S11, S21, S31.  The port names are ``P1``, ``P2``, and ``P3``.</span>
 
-<span class="sd">        &gt;&gt;&gt; hfss.create_scattering()</span>
+<span class="sd">        &gt;&gt;&gt; hfss.create_scattering(port_names=[&quot;P1&quot;, &quot;P2&quot;, &quot;P3&quot;], port_excited=[&quot;P1&quot;, &quot;P1&quot;, &quot;P1&quot;])</span>
 <span class="sd">        True</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -6151,35 +6486,80 @@ function checkPageExistsAndRedirect(event) {
             <span class="k">return</span> <span class="kc">False</span></div></div>
 </pre></div>
 
-              </article>
-              
-
-              
+            </article>
+            
+            
+            
           </div>
           
-      </div>
+          
+          
+            <div class="bd-sidebar-secondary bd-toc">
+              
+<div class="toc-item">
+  
+<div id="searchbox"></div>
+</div>
+
+<div class="toc-item">
+  
+</div>
+
+<div class="toc-item">
+  
+</div>
+
+            </div>
+          
+          
+        </div>
+        <footer class="bd-footer-content">
+          <div class="bd-footer-content__inner">
+            
+          </div>
+        </footer>
+        
+      </main>
     </div>
+  </div>
 
   
-  
+    
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=796348d33e8b1d947c94"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=796348d33e8b1d947c94"></script>
 
-<footer class="bd-footer"><div class="bd-footer__inner container">
+  <footer class="bd-footer"><div class="bd-footer__inner container">
   
   <div class="footer-item">
-    <p class="copyright">
+    
+<p class="copyright">
+
     &copy; Copyright (c) 2023 ANSYS, Inc. All rights reserved.<br>
+
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    <p class="theme-version">
+    Built with the
+    <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">
+        PyData Sphinx Theme
+    </a>
+    0.12.0.
 </p>
   </div>
   
   <div class="footer-item">
-    <p class="sphinx-version">
+    
+<p class="sphinx-version">
 Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.<br>
 </p>
+
   </div>
   
 </div>
-</footer>
+  </footer>
   </body>
 </html>

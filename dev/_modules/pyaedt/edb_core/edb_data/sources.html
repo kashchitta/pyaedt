@@ -1301,10 +1301,18 @@
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the magnitude of the source.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb_terminal</span><span class="o">.</span><span class="n">GetSourceAmplitude</span><span class="p">()</span><span class="o">.</span><span class="n">ToDouble</span><span class="p">()</span>
 
+    <span class="nd">@magnitude</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">magnitude</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_edb_terminal</span><span class="o">.</span><span class="n">SetSourceAmplitude</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Utility</span><span class="o">.</span><span class="n">Value</span><span class="p">(</span><span class="n">value</span><span class="p">))</span>
+
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">phase</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the phase of the source.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb_terminal</span><span class="o">.</span><span class="n">GetSourcePhase</span><span class="p">()</span><span class="o">.</span><span class="n">ToDouble</span><span class="p">()</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb_terminal</span><span class="o">.</span><span class="n">GetSourcePhase</span><span class="p">()</span><span class="o">.</span><span class="n">ToDouble</span><span class="p">()</span>
+
+    <span class="nd">@phase</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">phase</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_edb_terminal</span><span class="o">.</span><span class="n">SetSourcePhase</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Utility</span><span class="o">.</span><span class="n">Value</span><span class="p">(</span><span class="n">value</span><span class="p">))</span></div>
 
 
 <div class="viewcode-block" id="ExcitationProbes"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.sources.ExcitationProbes.html#pyaedt.edb_core.edb_data.sources.ExcitationProbes">[docs]</a><span class="k">class</span> <span class="nc">ExcitationProbes</span><span class="p">(</span><span class="n">CommonExcitation</span><span class="p">):</span>

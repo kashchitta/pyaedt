@@ -513,7 +513,7 @@
         <span class="n">hide_contents</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
         <span class="n">replace_names</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
         <span class="n">component_outline</span><span class="o">=</span><span class="s2">&quot;BoundingBox&quot;</span><span class="p">,</span>
-        <span class="n">auxiliary_dict_file</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">auxiliary_dict</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
         <span class="n">monitor_objects</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">datasets</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">native_components</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
@@ -563,7 +563,7 @@
 <span class="sd">        component_outline : str, optional</span>
 <span class="sd">            Component outline. Value can either be ``BoundingBox`` or ``None``.</span>
 <span class="sd">            The default is ``BoundingBox``.</span>
-<span class="sd">        auxiliary_dict_file : bool or str, optional</span>
+<span class="sd">        auxiliary_dict : bool or str, optional</span>
 <span class="sd">            Whether to export the auxiliary file containing information about defined datasets and Icepak monitor</span>
 <span class="sd">            objects. A destination file can be specified using a string.</span>
 <span class="sd">            The default is ``False``.</span>
@@ -729,9 +729,9 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="n">arg2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;MeshOperations:=&quot;</span><span class="p">),</span> <span class="n">arg2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">meshops</span><span class="p">)</span>
         <span class="n">arg3</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;NAME:ImageFile&quot;</span><span class="p">,</span> <span class="s2">&quot;ImageFile:=&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">]</span>
-        <span class="k">if</span> <span class="n">auxiliary_dict_file</span><span class="p">:</span>
-            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">auxiliary_dict_file</span><span class="p">,</span> <span class="nb">bool</span><span class="p">):</span>
-                <span class="n">auxiliary_dict_file</span> <span class="o">=</span> <span class="n">component_file</span> <span class="o">+</span> <span class="s2">&quot;.json&quot;</span>
+        <span class="k">if</span> <span class="n">auxiliary_dict</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">auxiliary_dict</span><span class="p">,</span> <span class="nb">bool</span><span class="p">):</span>
+                <span class="n">auxiliary_dict</span> <span class="o">=</span> <span class="n">component_file</span> <span class="o">+</span> <span class="s2">&quot;.json&quot;</span>
             <span class="n">cachesettings</span> <span class="o">=</span> <span class="p">{</span>
                 <span class="n">prop</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">configurations</span><span class="o">.</span><span class="n">options</span><span class="p">,</span> <span class="n">prop</span><span class="p">)</span>
                 <span class="k">for</span> <span class="n">prop</span> <span class="ow">in</span> <span class="nb">vars</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">configurations</span><span class="o">.</span><span class="n">options</span><span class="p">)</span>
@@ -786,7 +786,7 @@
                 <span class="k">for</span> <span class="n">cs</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">out_dict</span><span class="p">[</span><span class="s2">&quot;coordinatesystems&quot;</span><span class="p">]):</span>
                     <span class="k">if</span> <span class="n">cs</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">cs_set</span><span class="p">:</span>
                         <span class="k">del</span> <span class="n">out_dict</span><span class="p">[</span><span class="s2">&quot;coordinatesystems&quot;</span><span class="p">][</span><span class="n">cs</span><span class="p">]</span>
-            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">auxiliary_dict_file</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">outfile</span><span class="p">:</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">auxiliary_dict</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">outfile</span><span class="p">:</span>
                 <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">out_dict</span><span class="p">,</span> <span class="n">outfile</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">_retry_ntimes</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">oeditor</span><span class="o">.</span><span class="n">Create3DComponent</span><span class="p">,</span> <span class="n">arg</span><span class="p">,</span> <span class="n">arg2</span><span class="p">,</span> <span class="n">component_file</span><span class="p">,</span> <span class="n">arg3</span><span class="p">)</span></div>
 

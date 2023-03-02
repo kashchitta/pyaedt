@@ -942,7 +942,9 @@
 
 <span class="sd">        &gt;&gt;&gt; oModule.EditSetup</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">auto_update</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">auto_update</span>
         <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">auto_update</span> <span class="o">=</span> <span class="kc">False</span>
             <span class="n">meshlinks</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">props</span><span class="p">[</span><span class="s2">&quot;MeshLink&quot;</span><span class="p">]</span>
             <span class="c1"># design type</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">p_app</span><span class="o">.</span><span class="n">design_type</span> <span class="o">==</span> <span class="s2">&quot;Mechanical&quot;</span><span class="p">:</span>
@@ -1001,8 +1003,10 @@
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">p_app</span><span class="o">.</span><span class="n">design_type</span> <span class="o">!=</span> <span class="s2">&quot;Maxwell 2D&quot;</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">p_app</span><span class="o">.</span><span class="n">design_type</span> <span class="o">!=</span> <span class="s2">&quot;Maxwell 3D&quot;</span><span class="p">:</span>
                 <span class="n">meshlinks</span><span class="p">[</span><span class="s2">&quot;AdaptPort&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">adapt_port</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">auto_update</span> <span class="o">=</span> <span class="n">auto_update</span>
             <span class="k">return</span> <span class="kc">True</span>
         <span class="k">except</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">auto_update</span> <span class="o">=</span> <span class="n">auto_update</span>
             <span class="k">return</span> <span class="kc">False</span></div>
 
 <div class="viewcode-block" id="Setup.analyze"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.SolveSetup.Setup.analyze.html#pyaedt.modules.SolveSetup.Setup.analyze">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>

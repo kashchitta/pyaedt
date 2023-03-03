@@ -535,6 +535,7 @@
 <li class="toctree-l3"><a class="reference internal" href="pyaedt.circuit.Circuit.pop_up.html">pop_up</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pyaedt.circuit.Circuit.push_down.html">push_down</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pyaedt.circuit.Circuit.push_excitations.html">push_excitations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyaedt.circuit.Circuit.push_time_excitations.html">push_time_excitations</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pyaedt.circuit.Circuit.read_design_data.html">read_design_data</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pyaedt.circuit.Circuit.read_only_variable.html">read_only_variable</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pyaedt.circuit.Circuit.release_desktop.html">release_desktop</a></li>
@@ -693,14 +694,12 @@
 <h1>get_touchstone_data<a class="headerlink" href="#get-touchstone-data" title="Permalink to this heading">#</a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="pyaedt.circuit.Circuit.get_touchstone_data">
-<span class="sig-prename descclassname"><span class="pre">Circuit.</span></span><span class="sig-name descname"><span class="pre">get_touchstone_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">curvenames</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">solution_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variation_dict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pyaedt/circuit.html#Circuit.get_touchstone_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyaedt.circuit.Circuit.get_touchstone_data" title="Permalink to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">Circuit.</span></span><span class="sig-name descname"><span class="pre">get_touchstone_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">setup_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variation_dict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pyaedt/circuit.html#Circuit.get_touchstone_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyaedt.circuit.Circuit.get_touchstone_data" title="Permalink to this definition">#</a></dt>
 <dd><p>Return a Touchstone data plot.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
-<dt><strong>curvenames</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#list" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">list</span></code></a></span></dt><dd><p>List of the curves to plot.</p>
-</dd>
-<dt><strong>solution_name</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#str" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Name of the solution. The default value is <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+<dt><strong>setup_name</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#str" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Name of the solution. The default value is <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
 </dd>
 <dt><strong>variation_dict</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#dict" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">dict</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Dictionary of variation names. The default value is <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
 </dd>
@@ -708,7 +707,7 @@
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt><a class="reference internal" href="pyaedt.modules.solutions.SolutionData.html#pyaedt.modules.solutions.SolutionData" title="pyaedt.modules.solutions.SolutionData"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyaedt.modules.solutions.SolutionData</span></code></a></dt><dd><p>Class containing all requested data.</p>
+<dt><code class="xref py py-class docutils literal notranslate"><span class="pre">pyaedt.generic.touchstone_parser.TouchstoneData</span></code></dt><dd><p>Class containing all requested data.</p>
 </dd>
 </dl>
 </dd>

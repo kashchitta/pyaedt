@@ -559,6 +559,7 @@
 <li class="toctree-l3"><a class="reference internal" href="pyaedt.hfss.Hfss.get_setup.html">get_setup</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pyaedt.hfss.Hfss.get_setups.html">get_setups</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pyaedt.hfss.Hfss.get_sweeps.html">get_sweeps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyaedt.hfss.Hfss.get_touchstone_data.html">get_touchstone_data</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pyaedt.hfss.Hfss.get_traces_for_plot.html">get_traces_for_plot</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pyaedt.hfss.Hfss.hidden_variable.html">hidden_variable</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pyaedt.hfss.Hfss.import_dataset1d.html">import_dataset1d</a></li>
@@ -1261,115 +1262,118 @@ the specified project, which is named <code class="docutils literal notranslate"
 <tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.hfss.Hfss.get_sweeps.html#pyaedt.hfss.Hfss.get_sweeps" title="pyaedt.hfss.Hfss.get_sweeps"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Hfss.get_sweeps</span></code></a>(name)</p></td>
 <td><p>Retrieve all sweeps for a setup.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.hfss.Hfss.get_traces_for_plot.html#pyaedt.hfss.Hfss.get_traces_for_plot" title="pyaedt.hfss.Hfss.get_traces_for_plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Hfss.get_traces_for_plot</span></code></a>([get_self_terms, ...])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.hfss.Hfss.get_touchstone_data.html#pyaedt.hfss.Hfss.get_touchstone_data" title="pyaedt.hfss.Hfss.get_touchstone_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Hfss.get_touchstone_data</span></code></a>(setup_name[, ...])</p></td>
+<td><p>Return a Touchstone data plot.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.hfss.Hfss.get_traces_for_plot.html#pyaedt.hfss.Hfss.get_traces_for_plot" title="pyaedt.hfss.Hfss.get_traces_for_plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Hfss.get_traces_for_plot</span></code></a>([get_self_terms, ...])</p></td>
 <td><p>Retrieve a list of traces of specified designs ready to use in plot reports.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.hfss.Hfss.hidden_variable.html#pyaedt.hfss.Hfss.hidden_variable" title="pyaedt.hfss.Hfss.hidden_variable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Hfss.hidden_variable</span></code></a>(variable_name[, value])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.hfss.Hfss.hidden_variable.html#pyaedt.hfss.Hfss.hidden_variable" title="pyaedt.hfss.Hfss.hidden_variable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Hfss.hidden_variable</span></code></a>(variable_name[, value])</p></td>
 <td><p>Set the variable to a hidden or unhidden variable.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.hfss.Hfss.import_dataset1d.html#pyaedt.hfss.Hfss.import_dataset1d" title="pyaedt.hfss.Hfss.import_dataset1d"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Hfss.import_dataset1d</span></code></a>(filename[, dsname, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.hfss.Hfss.import_dataset1d.html#pyaedt.hfss.Hfss.import_dataset1d" title="pyaedt.hfss.Hfss.import_dataset1d"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Hfss.import_dataset1d</span></code></a>(filename[, dsname, ...])</p></td>
 <td><p>Import a 1D dataset.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.hfss.Hfss.import_dataset3d.html#pyaedt.hfss.Hfss.import_dataset3d" title="pyaedt.hfss.Hfss.import_dataset3d"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Hfss.import_dataset3d</span></code></a>(filename[, dsname, ...])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.hfss.Hfss.import_dataset3d.html#pyaedt.hfss.Hfss.import_dataset3d" title="pyaedt.hfss.Hfss.import_dataset3d"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Hfss.import_dataset3d</span></code></a>(filename[, dsname, ...])</p></td>
 <td><p>Import a 3D dataset.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.hfss.Hfss.insert_design.html#pyaedt.hfss.Hfss.insert_design" title="pyaedt.hfss.Hfss.insert_design"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Hfss.insert_design</span></code></a>([design_name, solution_type])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.hfss.Hfss.insert_design.html#pyaedt.hfss.Hfss.insert_design" title="pyaedt.hfss.Hfss.insert_design"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Hfss.insert_design</span></code></a>([design_name, solution_type])</p></td>
 <td><p>Add a design of a specified type.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.hfss.Hfss.insert_infinite_sphere.html#pyaedt.hfss.Hfss.insert_infinite_sphere" title="pyaedt.hfss.Hfss.insert_infinite_sphere"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Hfss.insert_infinite_sphere</span></code></a>([definition, ...])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.hfss.Hfss.insert_infinite_sphere.html#pyaedt.hfss.Hfss.insert_infinite_sphere" title="pyaedt.hfss.Hfss.insert_infinite_sphere"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Hfss.insert_infinite_sphere</span></code></a>([definition, ...])</p></td>
 <td><p>Create an infinite sphere.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.hfss.Hfss.insert_near_field_box.html#pyaedt.hfss.Hfss.insert_near_field_box" title="pyaedt.hfss.Hfss.insert_near_field_box"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Hfss.insert_near_field_box</span></code></a>([u_length, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.hfss.Hfss.insert_near_field_box.html#pyaedt.hfss.Hfss.insert_near_field_box" title="pyaedt.hfss.Hfss.insert_near_field_box"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Hfss.insert_near_field_box</span></code></a>([u_length, ...])</p></td>
 <td><p>Create a near field box.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.hfss.Hfss.insert_near_field_line.html#pyaedt.hfss.Hfss.insert_near_field_line" title="pyaedt.hfss.Hfss.insert_near_field_line"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Hfss.insert_near_field_line</span></code></a>(line[, points, ...])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.hfss.Hfss.insert_near_field_line.html#pyaedt.hfss.Hfss.insert_near_field_line" title="pyaedt.hfss.Hfss.insert_near_field_line"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Hfss.insert_near_field_line</span></code></a>(line[, points, ...])</p></td>
 <td><p>Create a near field line.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.hfss.Hfss.insert_near_field_rectangle.html#pyaedt.hfss.Hfss.insert_near_field_rectangle" title="pyaedt.hfss.Hfss.insert_near_field_rectangle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Hfss.insert_near_field_rectangle</span></code></a>([u_length, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.hfss.Hfss.insert_near_field_rectangle.html#pyaedt.hfss.Hfss.insert_near_field_rectangle" title="pyaedt.hfss.Hfss.insert_near_field_rectangle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Hfss.insert_near_field_rectangle</span></code></a>([u_length, ...])</p></td>
 <td><p>Create a near field rectangle.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.hfss.Hfss.insert_near_field_sphere.html#pyaedt.hfss.Hfss.insert_near_field_sphere" title="pyaedt.hfss.Hfss.insert_near_field_sphere"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Hfss.insert_near_field_sphere</span></code></a>([radius, ...])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.hfss.Hfss.insert_near_field_sphere.html#pyaedt.hfss.Hfss.insert_near_field_sphere" title="pyaedt.hfss.Hfss.insert_near_field_sphere"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Hfss.insert_near_field_sphere</span></code></a>([radius, ...])</p></td>
 <td><p>Create a near field sphere.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.hfss.Hfss.list_of_variations.html#pyaedt.hfss.Hfss.list_of_variations" title="pyaedt.hfss.Hfss.list_of_variations"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Hfss.list_of_variations</span></code></a>([setup_name, sweep_name])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.hfss.Hfss.list_of_variations.html#pyaedt.hfss.Hfss.list_of_variations" title="pyaedt.hfss.Hfss.list_of_variations"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Hfss.list_of_variations</span></code></a>([setup_name, sweep_name])</p></td>
 <td><p>Retrieve a list of active variations for input setup.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.hfss.Hfss.load_project.html#pyaedt.hfss.Hfss.load_project" title="pyaedt.hfss.Hfss.load_project"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Hfss.load_project</span></code></a>(project_file[, ...])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.hfss.Hfss.load_project.html#pyaedt.hfss.Hfss.load_project" title="pyaedt.hfss.Hfss.load_project"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Hfss.load_project</span></code></a>(project_file[, ...])</p></td>
 <td><p>Open an AEDT project based on a project and optional design.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.hfss.Hfss.plot.html#pyaedt.hfss.Hfss.plot" title="pyaedt.hfss.Hfss.plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Hfss.plot</span></code></a>([objects, show, export_path, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.hfss.Hfss.plot.html#pyaedt.hfss.Hfss.plot" title="pyaedt.hfss.Hfss.plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Hfss.plot</span></code></a>([objects, show, export_path, ...])</p></td>
 <td><p>Plot the model or a subset of objects.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.hfss.Hfss.read_design_data.html#pyaedt.hfss.Hfss.read_design_data" title="pyaedt.hfss.Hfss.read_design_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Hfss.read_design_data</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.hfss.Hfss.read_design_data.html#pyaedt.hfss.Hfss.read_design_data" title="pyaedt.hfss.Hfss.read_design_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Hfss.read_design_data</span></code></a>()</p></td>
 <td><p>Read back the design data as a dictionary.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.hfss.Hfss.read_only_variable.html#pyaedt.hfss.Hfss.read_only_variable" title="pyaedt.hfss.Hfss.read_only_variable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Hfss.read_only_variable</span></code></a>(variable_name[, value])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.hfss.Hfss.read_only_variable.html#pyaedt.hfss.Hfss.read_only_variable" title="pyaedt.hfss.Hfss.read_only_variable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Hfss.read_only_variable</span></code></a>(variable_name[, value])</p></td>
 <td><p>Set the variable to a read-only or not read-only variable.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.hfss.Hfss.release_desktop.html#pyaedt.hfss.Hfss.release_desktop" title="pyaedt.hfss.Hfss.release_desktop"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Hfss.release_desktop</span></code></a>([close_projects, ...])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.hfss.Hfss.release_desktop.html#pyaedt.hfss.Hfss.release_desktop" title="pyaedt.hfss.Hfss.release_desktop"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Hfss.release_desktop</span></code></a>([close_projects, ...])</p></td>
 <td><p>Release AEDT.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.hfss.Hfss.rename_design.html#pyaedt.hfss.Hfss.rename_design" title="pyaedt.hfss.Hfss.rename_design"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Hfss.rename_design</span></code></a>(new_name[, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.hfss.Hfss.rename_design.html#pyaedt.hfss.Hfss.rename_design" title="pyaedt.hfss.Hfss.rename_design"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Hfss.rename_design</span></code></a>(new_name[, ...])</p></td>
 <td><p>Rename the active design.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.hfss.Hfss.sar_setup.html#pyaedt.hfss.Hfss.sar_setup" title="pyaedt.hfss.Hfss.sar_setup"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Hfss.sar_setup</span></code></a>(Tissue_object_List_ID[, ...])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.hfss.Hfss.sar_setup.html#pyaedt.hfss.Hfss.sar_setup" title="pyaedt.hfss.Hfss.sar_setup"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Hfss.sar_setup</span></code></a>(Tissue_object_List_ID[, ...])</p></td>
 <td><p>Define SAR settings.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.hfss.Hfss.save_project.html#pyaedt.hfss.Hfss.save_project" title="pyaedt.hfss.Hfss.save_project"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Hfss.save_project</span></code></a>([project_file, overwrite, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.hfss.Hfss.save_project.html#pyaedt.hfss.Hfss.save_project" title="pyaedt.hfss.Hfss.save_project"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Hfss.save_project</span></code></a>([project_file, overwrite, ...])</p></td>
 <td><p>Save the project and add a message.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.hfss.Hfss.set_active_design.html#pyaedt.hfss.Hfss.set_active_design" title="pyaedt.hfss.Hfss.set_active_design"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Hfss.set_active_design</span></code></a>(name)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.hfss.Hfss.set_active_design.html#pyaedt.hfss.Hfss.set_active_design" title="pyaedt.hfss.Hfss.set_active_design"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Hfss.set_active_design</span></code></a>(name)</p></td>
 <td><p>Change the active design to another design.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.hfss.Hfss.set_active_dso_config_name.html#pyaedt.hfss.Hfss.set_active_dso_config_name" title="pyaedt.hfss.Hfss.set_active_dso_config_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Hfss.set_active_dso_config_name</span></code></a>([...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.hfss.Hfss.set_active_dso_config_name.html#pyaedt.hfss.Hfss.set_active_dso_config_name" title="pyaedt.hfss.Hfss.set_active_dso_config_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Hfss.set_active_dso_config_name</span></code></a>([...])</p></td>
 <td><p>Change a specific registry key to a new value.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.hfss.Hfss.set_auto_open.html#pyaedt.hfss.Hfss.set_auto_open" title="pyaedt.hfss.Hfss.set_auto_open"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Hfss.set_auto_open</span></code></a>([enable, boundary_type])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.hfss.Hfss.set_auto_open.html#pyaedt.hfss.Hfss.set_auto_open" title="pyaedt.hfss.Hfss.set_auto_open"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Hfss.set_auto_open</span></code></a>([enable, boundary_type])</p></td>
 <td><p>Set the HFSS auto open type.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.hfss.Hfss.set_differential_pair.html#pyaedt.hfss.Hfss.set_differential_pair" title="pyaedt.hfss.Hfss.set_differential_pair"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Hfss.set_differential_pair</span></code></a>(...[, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.hfss.Hfss.set_differential_pair.html#pyaedt.hfss.Hfss.set_differential_pair" title="pyaedt.hfss.Hfss.set_differential_pair"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Hfss.set_differential_pair</span></code></a>(...[, ...])</p></td>
 <td><p>Add a differential pair definition.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.hfss.Hfss.set_export_touchstone.html#pyaedt.hfss.Hfss.set_export_touchstone" title="pyaedt.hfss.Hfss.set_export_touchstone"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Hfss.set_export_touchstone</span></code></a>(activate[, ...])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.hfss.Hfss.set_export_touchstone.html#pyaedt.hfss.Hfss.set_export_touchstone" title="pyaedt.hfss.Hfss.set_export_touchstone"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Hfss.set_export_touchstone</span></code></a>(activate[, ...])</p></td>
 <td><p>Set automatic export of the Touchstone file after simulation.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.hfss.Hfss.set_license_type.html#pyaedt.hfss.Hfss.set_license_type" title="pyaedt.hfss.Hfss.set_license_type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Hfss.set_license_type</span></code></a>([license_type])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.hfss.Hfss.set_license_type.html#pyaedt.hfss.Hfss.set_license_type" title="pyaedt.hfss.Hfss.set_license_type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Hfss.set_license_type</span></code></a>([license_type])</p></td>
 <td><p>Change the license type between <code class="docutils literal notranslate"><span class="pre">&quot;Pack&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">&quot;Pool&quot;</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.hfss.Hfss.set_material_threshold.html#pyaedt.hfss.Hfss.set_material_threshold" title="pyaedt.hfss.Hfss.set_material_threshold"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Hfss.set_material_threshold</span></code></a>([threshold])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.hfss.Hfss.set_material_threshold.html#pyaedt.hfss.Hfss.set_material_threshold" title="pyaedt.hfss.Hfss.set_material_threshold"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Hfss.set_material_threshold</span></code></a>([threshold])</p></td>
 <td><p>Set the material conductivity threshold.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.hfss.Hfss.set_registry_from_file.html#pyaedt.hfss.Hfss.set_registry_from_file" title="pyaedt.hfss.Hfss.set_registry_from_file"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Hfss.set_registry_from_file</span></code></a>(registry_file[, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.hfss.Hfss.set_registry_from_file.html#pyaedt.hfss.Hfss.set_registry_from_file" title="pyaedt.hfss.Hfss.set_registry_from_file"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Hfss.set_registry_from_file</span></code></a>(registry_file[, ...])</p></td>
 <td><p>Apply desktop registry settings from an ACT file.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.hfss.Hfss.set_registry_key.html#pyaedt.hfss.Hfss.set_registry_key" title="pyaedt.hfss.Hfss.set_registry_key"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Hfss.set_registry_key</span></code></a>(key_full_name, key_value)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.hfss.Hfss.set_registry_key.html#pyaedt.hfss.Hfss.set_registry_key" title="pyaedt.hfss.Hfss.set_registry_key"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Hfss.set_registry_key</span></code></a>(key_full_name, key_value)</p></td>
 <td><p>Change a specific registry key to a new value.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.hfss.Hfss.set_sbr_current_sources_options.html#pyaedt.hfss.Hfss.set_sbr_current_sources_options" title="pyaedt.hfss.Hfss.set_sbr_current_sources_options"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Hfss.set_sbr_current_sources_options</span></code></a>([...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.hfss.Hfss.set_sbr_current_sources_options.html#pyaedt.hfss.Hfss.set_sbr_current_sources_options" title="pyaedt.hfss.Hfss.set_sbr_current_sources_options"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Hfss.set_sbr_current_sources_options</span></code></a>([...])</p></td>
 <td><p>Set SBR+ setup options for the current source.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.hfss.Hfss.set_sbr_txrx_settings.html#pyaedt.hfss.Hfss.set_sbr_txrx_settings" title="pyaedt.hfss.Hfss.set_sbr_txrx_settings"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Hfss.set_sbr_txrx_settings</span></code></a>(txrx_settings)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.hfss.Hfss.set_sbr_txrx_settings.html#pyaedt.hfss.Hfss.set_sbr_txrx_settings" title="pyaedt.hfss.Hfss.set_sbr_txrx_settings"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Hfss.set_sbr_txrx_settings</span></code></a>(txrx_settings)</p></td>
 <td><p>Set SBR+ TX RX antennas settings.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.hfss.Hfss.set_source_context.html#pyaedt.hfss.Hfss.set_source_context" title="pyaedt.hfss.Hfss.set_source_context"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Hfss.set_source_context</span></code></a>(sources[, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.hfss.Hfss.set_source_context.html#pyaedt.hfss.Hfss.set_source_context" title="pyaedt.hfss.Hfss.set_source_context"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Hfss.set_source_context</span></code></a>(sources[, ...])</p></td>
 <td><p>Set the source context.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.hfss.Hfss.solve_in_batch.html#pyaedt.hfss.Hfss.solve_in_batch" title="pyaedt.hfss.Hfss.solve_in_batch"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Hfss.solve_in_batch</span></code></a>([filename, machine, ...])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.hfss.Hfss.solve_in_batch.html#pyaedt.hfss.Hfss.solve_in_batch" title="pyaedt.hfss.Hfss.solve_in_batch"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Hfss.solve_in_batch</span></code></a>([filename, machine, ...])</p></td>
 <td><p>Analyze a design setup in batch mode.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.hfss.Hfss.submit_job.html#pyaedt.hfss.Hfss.submit_job" title="pyaedt.hfss.Hfss.submit_job"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Hfss.submit_job</span></code></a>(clustername[, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.hfss.Hfss.submit_job.html#pyaedt.hfss.Hfss.submit_job" title="pyaedt.hfss.Hfss.submit_job"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Hfss.submit_job</span></code></a>(clustername[, ...])</p></td>
 <td><p>Submit a job to be solved on a cluster.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.hfss.Hfss.thicken_port_sheets.html#pyaedt.hfss.Hfss.thicken_port_sheets" title="pyaedt.hfss.Hfss.thicken_port_sheets"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Hfss.thicken_port_sheets</span></code></a>(inputlist, value[, ...])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.hfss.Hfss.thicken_port_sheets.html#pyaedt.hfss.Hfss.thicken_port_sheets" title="pyaedt.hfss.Hfss.thicken_port_sheets"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Hfss.thicken_port_sheets</span></code></a>(inputlist, value[, ...])</p></td>
 <td><p>Create thickened sheets over a list of input port sheets.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.hfss.Hfss.validate_full_design.html#pyaedt.hfss.Hfss.validate_full_design" title="pyaedt.hfss.Hfss.validate_full_design"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Hfss.validate_full_design</span></code></a>([dname, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.hfss.Hfss.validate_full_design.html#pyaedt.hfss.Hfss.validate_full_design" title="pyaedt.hfss.Hfss.validate_full_design"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Hfss.validate_full_design</span></code></a>([dname, ...])</p></td>
 <td><p>Validate a design based on an expected value and save information to the log file.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.hfss.Hfss.validate_simple.html#pyaedt.hfss.Hfss.validate_simple" title="pyaedt.hfss.Hfss.validate_simple"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Hfss.validate_simple</span></code></a>([logfile])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.hfss.Hfss.validate_simple.html#pyaedt.hfss.Hfss.validate_simple" title="pyaedt.hfss.Hfss.validate_simple"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Hfss.validate_simple</span></code></a>([logfile])</p></td>
 <td><p>Validate a design.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.hfss.Hfss.value_with_units.html#pyaedt.hfss.Hfss.value_with_units" title="pyaedt.hfss.Hfss.value_with_units"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Hfss.value_with_units</span></code></a>(value[, units])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.hfss.Hfss.value_with_units.html#pyaedt.hfss.Hfss.value_with_units" title="pyaedt.hfss.Hfss.value_with_units"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Hfss.value_with_units</span></code></a>(value[, units])</p></td>
 <td><p>Combine a number and a string containing the modeler length unit in a single string e.g.</p></td>
 </tr>
 </tbody>

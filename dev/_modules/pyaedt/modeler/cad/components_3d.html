@@ -1222,16 +1222,29 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="kn">from</span> <span class="nn">pyaedt.generic.design_types</span> <span class="kn">import</span> <span class="n">get_pyaedt_app</span>
 
+        <span class="n">project_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_primitives</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">project_list</span><span class="p">]</span>
+
         <span class="bp">self</span><span class="o">.</span><span class="n">_primitives</span><span class="o">.</span><span class="n">oeditor</span><span class="o">.</span><span class="n">Edit3DComponentDefinition</span><span class="p">(</span>
             <span class="p">[</span>
                 <span class="s2">&quot;NAME:EditDefinitionData&quot;</span><span class="p">,</span>
                 <span class="p">[</span><span class="s2">&quot;NAME:DefinitionAndPassword&quot;</span><span class="p">,</span> <span class="s2">&quot;Definition:=&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">definition_name</span><span class="p">,</span> <span class="s2">&quot;Password:=&quot;</span><span class="p">,</span> <span class="n">password</span><span class="p">],</span>
             <span class="p">]</span>
         <span class="p">)</span>
-        <span class="n">project</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_primitives</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">odesktop</span><span class="o">.</span><span class="n">GetActiveProject</span><span class="p">()</span>
-        <span class="n">project_name</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">GetName</span><span class="p">()</span>
-        <span class="n">design_name</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">GetActiveDesign</span><span class="p">()</span><span class="o">.</span><span class="n">GetName</span><span class="p">()</span>
-        <span class="k">return</span> <span class="n">get_pyaedt_app</span><span class="p">(</span><span class="n">project_name</span><span class="p">,</span> <span class="n">design_name</span><span class="p">)</span></div></div>
+
+        <span class="n">new_project</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_primitives</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">project_list</span> <span class="k">if</span> <span class="n">i</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">project_list</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="n">new_project</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_primitives</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">odesktop</span><span class="o">.</span><span class="n">SetActiveProject</span><span class="p">(</span><span class="n">new_project</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+            <span class="n">project</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_primitives</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">odesktop</span><span class="o">.</span><span class="n">GetActiveProject</span><span class="p">()</span>
+            <span class="n">project_name</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">GetName</span><span class="p">()</span>
+            <span class="kn">import</span> <span class="nn">os</span>
+
+            <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;posix&quot;</span><span class="p">:</span>
+                <span class="n">design_name</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">GetDesign</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">GetName</span><span class="p">()</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">design_name</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">GetActiveDesign</span><span class="p">()</span><span class="o">.</span><span class="n">GetName</span><span class="p">()</span>
+            <span class="k">return</span> <span class="n">get_pyaedt_app</span><span class="p">(</span><span class="n">project_name</span><span class="p">,</span> <span class="n">design_name</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">False</span></div></div>
 </pre></div>
 
             </article>

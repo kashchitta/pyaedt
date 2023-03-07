@@ -1240,7 +1240,7 @@
             <span class="kn">import</span> <span class="nn">os</span>
 
             <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;posix&quot;</span><span class="p">:</span>
-                <span class="n">design_name</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">GetDesign</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">GetName</span><span class="p">()</span>
+                <span class="n">design_name</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">GetDesigns</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">GetName</span><span class="p">()</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">design_name</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">GetActiveDesign</span><span class="p">()</span><span class="o">.</span><span class="n">GetName</span><span class="p">()</span>
             <span class="k">return</span> <span class="n">get_pyaedt_app</span><span class="p">(</span><span class="n">project_name</span><span class="p">,</span> <span class="n">design_name</span><span class="p">)</span>

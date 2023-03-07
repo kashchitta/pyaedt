@@ -535,7 +535,7 @@
 <span class="sd">        excitation_list : list, optional</span>
 <span class="sd">            List of Excitation names to export. The default is all excitations.</span>
 <span class="sd">        included_cs : list, optional</span>
-<span class="sd">            List of Coordinate Systems to export. The default is all coordinate systems.</span>
+<span class="sd">            List of Coordinate Systems to export. The default is the ``reference_cs``.</span>
 <span class="sd">        reference_cs : str, optional</span>
 <span class="sd">            The Coordinate System reference. The default is ``&quot;Global&quot;``.</span>
 <span class="sd">        is_encrypted : bool, optional</span>
@@ -658,7 +658,7 @@
         <span class="k">if</span> <span class="n">included_cs</span><span class="p">:</span>
             <span class="n">allcs</span> <span class="o">=</span> <span class="n">included_cs</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">allcs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">oeditor</span><span class="o">.</span><span class="n">GetCoordinateSystems</span><span class="p">()</span>
+            <span class="n">allcs</span> <span class="o">=</span> <span class="p">[</span><span class="n">reference_cs</span><span class="p">]</span>
         <span class="n">arg</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;IncludedCS:=&quot;</span><span class="p">),</span> <span class="n">arg</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">allcs</span><span class="p">)</span>
         <span class="n">arg</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;ReferenceCS:=&quot;</span><span class="p">),</span> <span class="n">arg</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">reference_cs</span><span class="p">)</span>
         <span class="n">par_description</span> <span class="o">=</span> <span class="p">[]</span>

@@ -486,7 +486,8 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_original_data</span> <span class="o">=</span> <span class="n">aedtdata</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">number_of_variations</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">aedtdata</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_enable_pandas_output</span> <span class="o">=</span> <span class="kc">True</span> <span class="k">if</span> <span class="n">settings</span><span class="o">.</span><span class="n">enable_pandas_output</span> <span class="ow">and</span> <span class="n">pd</span> <span class="k">else</span> <span class="kc">False</span>
-
+        <span class="bp">self</span><span class="o">.</span><span class="n">_expressions</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_intrinsics</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_nominal_variation</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_nominal_variation</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_original_data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">active_expression</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">expressions</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -544,6 +545,8 @@
         <span class="k">if</span> <span class="n">var_id</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">variations</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">active_variation</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">variations</span><span class="p">[</span><span class="n">var_id</span><span class="p">]</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">nominal_variation</span> <span class="o">=</span> <span class="n">var_id</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_expressions</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_intrinsics</span> <span class="o">=</span> <span class="kc">None</span>
             <span class="k">return</span> <span class="kc">True</span>
         <span class="k">return</span> <span class="kc">False</span></div>
 
@@ -582,13 +585,14 @@
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">intrinsics</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Get intrinsics dictionary on active variation.&quot;&quot;&quot;</span>
-        <span class="n">_sweeps</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">({})</span>
-        <span class="n">intrinsics</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sweeps_names</span> <span class="k">if</span> <span class="n">i</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">nominal_variation</span><span class="o">.</span><span class="n">GetDesignVariableNames</span><span class="p">()]</span>
-        <span class="k">for</span> <span class="n">el</span> <span class="ow">in</span> <span class="n">intrinsics</span><span class="p">:</span>
-            <span class="n">values</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nominal_variation</span><span class="o">.</span><span class="n">GetSweepValues</span><span class="p">(</span><span class="n">el</span><span class="p">,</span> <span class="kc">False</span><span class="p">))</span>
-            <span class="n">_sweeps</span><span class="p">[</span><span class="n">el</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">values</span><span class="p">]</span>
-            <span class="n">_sweeps</span><span class="p">[</span><span class="n">el</span><span class="p">]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">OrderedDict</span><span class="o">.</span><span class="n">fromkeys</span><span class="p">(</span><span class="n">_sweeps</span><span class="p">[</span><span class="n">el</span><span class="p">]))</span>
-        <span class="k">return</span> <span class="n">_sweeps</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_intrinsics</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_intrinsics</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">({})</span>
+            <span class="n">intrinsics</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sweeps_names</span> <span class="k">if</span> <span class="n">i</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">nominal_variation</span><span class="o">.</span><span class="n">GetDesignVariableNames</span><span class="p">()]</span>
+            <span class="k">for</span> <span class="n">el</span> <span class="ow">in</span> <span class="n">intrinsics</span><span class="p">:</span>
+                <span class="n">values</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nominal_variation</span><span class="o">.</span><span class="n">GetSweepValues</span><span class="p">(</span><span class="n">el</span><span class="p">,</span> <span class="kc">False</span><span class="p">))</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_intrinsics</span><span class="p">[</span><span class="n">el</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">values</span><span class="p">]</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_intrinsics</span><span class="p">[</span><span class="n">el</span><span class="p">]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">OrderedDict</span><span class="o">.</span><span class="n">fromkeys</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_intrinsics</span><span class="p">[</span><span class="n">el</span><span class="p">]))</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_intrinsics</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">nominal_variation</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -621,8 +625,10 @@
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">expressions</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Expressions.&quot;&quot;&quot;</span>
-        <span class="n">mydata</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nominal_variation</span><span class="o">.</span><span class="n">GetDataExpressions</span><span class="p">()]</span>
-        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="nb">dict</span><span class="o">.</span><span class="n">fromkeys</span><span class="p">(</span><span class="n">mydata</span><span class="p">))</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_expressions</span><span class="p">:</span>
+            <span class="n">mydata</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nominal_variation</span><span class="o">.</span><span class="n">GetDataExpressions</span><span class="p">()]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_expressions</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">dict</span><span class="o">.</span><span class="n">fromkeys</span><span class="p">(</span><span class="n">mydata</span><span class="p">))</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_expressions</span>
 
 <div class="viewcode-block" id="SolutionData.update_sweeps"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.solutions.SolutionData.update_sweeps.html#pyaedt.modules.solutions.SolutionData.update_sweeps">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">update_sweeps</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>

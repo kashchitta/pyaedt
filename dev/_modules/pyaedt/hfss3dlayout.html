@@ -442,6 +442,7 @@
 <span class="kn">import</span> <span class="nn">fnmatch</span>
 <span class="kn">import</span> <span class="nn">io</span>
 <span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">re</span>
 <span class="kn">import</span> <span class="nn">warnings</span>
 <span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">OrderedDict</span>
 
@@ -454,9 +455,6 @@
 <span class="kn">from</span> <span class="nn">pyaedt.generic.general_methods</span> <span class="kn">import</span> <span class="n">pyaedt_function_handler</span>
 <span class="kn">from</span> <span class="nn">pyaedt.generic.general_methods</span> <span class="kn">import</span> <span class="n">tech_to_control_file</span>
 <span class="kn">from</span> <span class="nn">pyaedt.modules.Boundary</span> <span class="kn">import</span> <span class="n">BoundaryObject3dLayout</span>
-<span class="kn">from</span> <span class="nn">pyaedt.modules.PostProcessor</span> <span class="kn">import</span> <span class="n">ReportDcirCategory</span>
-<span class="kn">from</span> <span class="nn">pyaedt.modules.PostProcessor</span> <span class="kn">import</span> <span class="n">ReportDcirShow</span>
-<span class="kn">from</span> <span class="nn">pyaedt.modules.solutions</span> <span class="kn">import</span> <span class="n">SolutionData</span>
 
 
 <div class="viewcode-block" id="Hfss3dLayout"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.hfss3dlayout.Hfss3dLayout.html#pyaedt.hfss3dlayout.Hfss3dLayout">[docs]</a><span class="k">class</span> <span class="nc">Hfss3dLayout</span><span class="p">(</span><span class="n">FieldAnalysis3DLayout</span><span class="p">):</span>
@@ -2318,7 +2316,7 @@
 
 <div class="viewcode-block" id="Hfss3dLayout.get_model_from_mesh_results"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.hfss3dlayout.Hfss3dLayout.get_model_from_mesh_results.html#pyaedt.hfss3dlayout.Hfss3dLayout.get_model_from_mesh_results">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">get_model_from_mesh_results</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">binary</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the path for the parasolid file in the results folder.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the path for the parasolid file in the result folder.</span>
 <span class="sd">        The parasolid file is generated after the mesh is created in 3D Layout.</span>
 
 <span class="sd">        Parameters</span>
@@ -2440,7 +2438,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Port not found.&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="kc">False</span></div>
 
-<div class="viewcode-block" id="Hfss3dLayout.get_dcir_solution_data"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.hfss3dlayout.Hfss3dLayout.get_dcir_solution_data.html#pyaedt.hfss3dlayout.Hfss3dLayout.get_dcir_solution_data">[docs]</a>    <span class="k">def</span> <span class="nf">get_dcir_solution_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">setup_name</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="s2">&quot;RL&quot;</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;Voltage&quot;</span><span class="p">):</span>
+<div class="viewcode-block" id="Hfss3dLayout.get_dcir_solution_data"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.hfss3dlayout.Hfss3dLayout.get_dcir_solution_data.html#pyaedt.hfss3dlayout.Hfss3dLayout.get_dcir_solution_data">[docs]</a>    <span class="k">def</span> <span class="nf">get_dcir_solution_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">setup_name</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="s2">&quot;RL&quot;</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;Loop_Resistance&quot;</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve dcir solution data. Available element_names are dependent on element_type as below.</span>
 <span class="sd">        Sources [&quot;Voltage&quot;, &quot;Current&quot;, &quot;Power&quot;]</span>
 <span class="sd">        &quot;RL&quot; [&#39;Loop Resistance&#39;, &#39;Path Resistance&#39;, &#39;Resistance&#39;, &#39;Inductance&#39;]</span>
@@ -2456,39 +2454,23 @@
 <span class="sd">            Type of the element. Options are ``&quot;Sources&quot;`, ``&quot;RL&quot;`, ``&quot;Vias&quot;``, ``&quot;Bondwires&quot;``, and ``&quot;Probes&quot;``.</span>
 <span class="sd">        category : str, optional</span>
 <span class="sd">            Name of the element. Options are ``&quot;Voltage&quot;`, ``&quot;Current&quot;`, ``&quot;Power&quot;``, ``&quot;Loop_Resistance&quot;``,</span>
-<span class="sd">            ``&quot;Path_Resistance&quot;``, ``&quot;Resistance&quot;``, ``&quot;Inductance&quot;``, ``&quot;X&quot;``, ``&quot;Y&quot;``, ``&quot;Limit&quot;`` and ``&quot;IR_Drop&quot;``.</span>
+<span class="sd">            ``&quot;Path_Resistance&quot;``, ``&quot;Resistance&quot;``, ``&quot;Inductance&quot;``, ``&quot;X&quot;``, ``&quot;Y&quot;``, ``&quot;Limit&quot;`` and ``&quot;IR Drop&quot;``.</span>
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
 <span class="sd">        pyaedt.modules.solutions.SolutionData</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="n">is_ironpython</span><span class="p">:</span>
+
+        <span class="k">if</span> <span class="n">is_ironpython</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Function is only supported in CPython.&quot;</span><span class="p">)</span>
             <span class="k">return</span> <span class="kc">False</span>
-        <span class="n">show_id</span> <span class="o">=</span> <span class="n">ReportDcirShow</span><span class="p">[</span><span class="n">show</span><span class="p">]</span><span class="o">.</span><span class="n">value</span>
-        <span class="n">category</span> <span class="o">=</span> <span class="n">ReportDcirCategory</span><span class="p">[</span><span class="n">category</span><span class="p">]</span><span class="o">.</span><span class="n">value</span>
-
-        <span class="n">context</span> <span class="o">=</span> <span class="p">[</span>
-            <span class="s2">&quot;NAME:Context&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;SimValueContext:=&quot;</span><span class="p">,</span>
-            <span class="p">[</span><span class="mi">37010</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;DCIRID&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="n">show_id</span><span class="p">,</span> <span class="s2">&quot;IDIID&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">&quot;1&quot;</span><span class="p">],</span>
-        <span class="p">]</span>
-        <span class="n">all_categories</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">post</span><span class="o">.</span><span class="n">oreportsetup</span><span class="o">.</span><span class="n">GetAllCategories</span><span class="p">(</span><span class="s2">&quot;Standard&quot;</span><span class="p">,</span> <span class="s2">&quot;Rectangular Plot&quot;</span><span class="p">,</span> <span class="n">setup_name</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
-        <span class="p">)</span>
-        <span class="k">if</span> <span class="n">category</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">all_categories</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
-            <span class="k">return</span> <span class="kc">False</span>
-
+        <span class="n">all_categories</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">post</span><span class="o">.</span><span class="n">available_quantities_categories</span><span class="p">(</span><span class="n">context</span><span class="o">=</span><span class="n">show</span><span class="p">,</span> <span class="n">is_siwave_dc</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">category</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">all_categories</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>  <span class="c1"># pragma: no cover</span>
         <span class="n">all_quantities</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">post</span><span class="o">.</span><span class="n">available_report_quantities</span><span class="p">(</span>
-            <span class="n">is_siwave_dc</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="n">show</span><span class="p">,</span> <span class="n">quantities_category</span><span class="o">=</span><span class="n">category</span>
+            <span class="n">context</span><span class="o">=</span><span class="n">show</span><span class="p">,</span> <span class="n">is_siwave_dc</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">quantities_category</span><span class="o">=</span><span class="n">category</span>
         <span class="p">)</span>
-        <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">post</span><span class="o">.</span><span class="n">oreportsetup</span><span class="o">.</span><span class="n">GetSolutionDataPerVariation</span><span class="p">(</span>
-            <span class="s2">&quot;Standard&quot;</span><span class="p">,</span>
-            <span class="n">setup_name</span><span class="p">,</span>
-            <span class="n">context</span><span class="p">,</span>
-            <span class="p">[</span><span class="s2">&quot;Index:=&quot;</span><span class="p">,</span> <span class="s2">&quot;All&quot;</span><span class="p">],</span>
-            <span class="n">all_quantities</span><span class="p">,</span>
-        <span class="p">)</span>
-        <span class="k">return</span> <span class="n">SolutionData</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">data</span><span class="p">))</span></div>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">post</span><span class="o">.</span><span class="n">get_solution_data</span><span class="p">(</span><span class="n">all_quantities</span><span class="p">,</span> <span class="n">setup_sweep_name</span><span class="o">=</span><span class="n">setup_name</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="s2">&quot;DCIR&quot;</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="n">show</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Hfss3dLayout.get_touchstone_data"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.hfss3dlayout.Hfss3dLayout.get_touchstone_data.html#pyaedt.hfss3dlayout.Hfss3dLayout.get_touchstone_data">[docs]</a>    <span class="k">def</span> <span class="nf">get_touchstone_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">setup_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">sweep_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">variations</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -2529,7 +2511,123 @@
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">sol_data</span><span class="o">.</span><span class="n">number_of_variations</span><span class="p">):</span>
             <span class="n">sol_data</span><span class="o">.</span><span class="n">set_active_variation</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
             <span class="n">s_parameters</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">TouchstoneData</span><span class="p">(</span><span class="n">solution_data</span><span class="o">=</span><span class="n">sol_data</span><span class="p">))</span>
-        <span class="k">return</span> <span class="n">s_parameters</span></div></div>
+        <span class="k">return</span> <span class="n">s_parameters</span></div>
+
+<div class="viewcode-block" id="Hfss3dLayout.get_dcir_element_data_loop_resistance"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.hfss3dlayout.Hfss3dLayout.get_dcir_element_data_loop_resistance.html#pyaedt.hfss3dlayout.Hfss3dLayout.get_dcir_element_data_loop_resistance">[docs]</a>    <span class="k">def</span> <span class="nf">get_dcir_element_data_loop_resistance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">setup_name</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get dcir element data loop resistance.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        setup_name : str</span>
+<span class="sd">            Name of the setup.</span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        pandas.Dataframe</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">is_ironpython</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Method not supported in IronPython.&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+        <span class="n">solution_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_dcir_solution_data</span><span class="p">(</span><span class="n">setup_name</span><span class="o">=</span><span class="n">setup_name</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="s2">&quot;RL&quot;</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;Loop Resistance&quot;</span><span class="p">)</span>
+
+        <span class="n">terms</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">pattern</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;LoopRes\((.*?)\)&quot;</span>
+        <span class="k">for</span> <span class="n">ex</span> <span class="ow">in</span> <span class="n">solution_data</span><span class="o">.</span><span class="n">expressions</span><span class="p">:</span>
+            <span class="n">matches</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="n">ex</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">matches</span><span class="p">:</span>
+                <span class="n">terms</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">matches</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">))</span>
+        <span class="n">terms</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">terms</span><span class="p">))</span>
+
+        <span class="n">data</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">terms</span><span class="p">:</span>
+            <span class="n">data2</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">ex</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;LoopRes(</span><span class="si">{}</span><span class="s2">,</span><span class="si">{}</span><span class="s2">)&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">terms</span><span class="p">]:</span>
+                <span class="n">d</span> <span class="o">=</span> <span class="n">solution_data</span><span class="o">.</span><span class="n">data_magnitude</span><span class="p">(</span><span class="n">ex</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">d</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">False</span><span class="p">:</span>
+                    <span class="n">data2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">data2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+            <span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">data2</span>
+
+        <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="n">df</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">terms</span>
+        <span class="k">return</span> <span class="n">df</span></div>
+
+<div class="viewcode-block" id="Hfss3dLayout.get_dcir_element_data_current_source"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.hfss3dlayout.Hfss3dLayout.get_dcir_element_data_current_source.html#pyaedt.hfss3dlayout.Hfss3dLayout.get_dcir_element_data_current_source">[docs]</a>    <span class="k">def</span> <span class="nf">get_dcir_element_data_current_source</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">setup_name</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get dcir element data current source.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        setup_name : str</span>
+<span class="sd">            Name of the setup.</span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        pandas.Dataframe</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">is_ironpython</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Method not supported in IronPython.&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+        <span class="n">solution_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_dcir_solution_data</span><span class="p">(</span><span class="n">setup_name</span><span class="o">=</span><span class="n">setup_name</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="s2">&quot;Sources&quot;</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;Voltage&quot;</span><span class="p">)</span>
+        <span class="n">terms</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">pattern</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;^V\((.*?)\)&quot;</span>
+        <span class="k">for</span> <span class="n">t_name</span> <span class="ow">in</span> <span class="n">solution_data</span><span class="o">.</span><span class="n">expressions</span><span class="p">:</span>
+            <span class="n">matches</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="n">t_name</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">matches</span><span class="p">:</span>
+                <span class="n">terms</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">matches</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">terms</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">terms</span><span class="p">))</span>
+
+        <span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Voltage&quot;</span><span class="p">:</span> <span class="p">[]}</span>
+        <span class="k">for</span> <span class="n">t_name</span> <span class="ow">in</span> <span class="n">terms</span><span class="p">:</span>
+            <span class="n">ex</span> <span class="o">=</span> <span class="s2">&quot;V(</span><span class="si">{}</span><span class="s2">)&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">t_name</span><span class="p">)</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="n">solution_data</span><span class="o">.</span><span class="n">data_magnitude</span><span class="p">(</span><span class="n">ex</span><span class="p">,</span> <span class="n">convert_to_SI</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">False</span><span class="p">:</span>
+                <span class="n">data</span><span class="p">[</span><span class="s2">&quot;Voltage&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="n">df</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">terms</span>
+        <span class="k">return</span> <span class="n">df</span></div>
+
+<div class="viewcode-block" id="Hfss3dLayout.get_dcir_element_data_via"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.hfss3dlayout.Hfss3dLayout.get_dcir_element_data_via.html#pyaedt.hfss3dlayout.Hfss3dLayout.get_dcir_element_data_via">[docs]</a>    <span class="k">def</span> <span class="nf">get_dcir_element_data_via</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">setup_name</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get dcir element data via.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        setup_name : str</span>
+<span class="sd">            Name of the setup.</span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        pandas.Dataframe</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">is_ironpython</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Method not supported in IronPython.&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+        <span class="n">cates</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;X&quot;</span><span class="p">,</span> <span class="s2">&quot;Y&quot;</span><span class="p">,</span> <span class="s2">&quot;Current&quot;</span><span class="p">,</span> <span class="s2">&quot;Resistance&quot;</span><span class="p">,</span> <span class="s2">&quot;IR Drop&quot;</span><span class="p">,</span> <span class="s2">&quot;Power&quot;</span><span class="p">]</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">for</span> <span class="n">cat</span> <span class="ow">in</span> <span class="n">cates</span><span class="p">:</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="n">cat</span><span class="p">:</span> <span class="p">[]}</span>
+            <span class="n">solution_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_dcir_solution_data</span><span class="p">(</span><span class="n">setup_name</span><span class="o">=</span><span class="n">setup_name</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="s2">&quot;Vias&quot;</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="n">cat</span><span class="p">)</span>
+            <span class="n">tmp_via_names</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="n">pattern</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;\((.*?)\)&quot;</span>
+            <span class="k">for</span> <span class="n">t_name</span> <span class="ow">in</span> <span class="n">solution_data</span><span class="o">.</span><span class="n">expressions</span><span class="p">:</span>
+                <span class="n">matches</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="n">t_name</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">matches</span><span class="p">:</span>
+                    <span class="n">tmp_via_names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">matches</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+            <span class="k">for</span> <span class="n">ex</span> <span class="ow">in</span> <span class="n">solution_data</span><span class="o">.</span><span class="n">expressions</span><span class="p">:</span>
+                <span class="n">value</span> <span class="o">=</span> <span class="n">solution_data</span><span class="o">.</span><span class="n">data_magnitude</span><span class="p">(</span><span class="n">ex</span><span class="p">,</span> <span class="n">convert_to_SI</span><span class="o">=</span><span class="kc">True</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="n">data</span><span class="p">[</span><span class="n">cat</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+            <span class="n">df_tmp</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+            <span class="n">df_tmp</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">tmp_via_names</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span>
+                <span class="n">df</span> <span class="o">=</span> <span class="n">df_tmp</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">df</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df_tmp</span><span class="p">,</span> <span class="n">left_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">right_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;outer&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">df</span></div></div>
 </pre></div>
 
             </article>

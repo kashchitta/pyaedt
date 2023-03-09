@@ -154,14 +154,14 @@
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../../API/index.html">
-                        API AEDT reference
+                        AEDT API
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../../EDBAPI/index.html">
-                        API EDB reference
+                        EDB API
                       </a>
                     </li>
                 
@@ -348,14 +348,14 @@
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../../API/index.html">
-                        API AEDT reference
+                        AEDT API
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../../EDBAPI/index.html">
-                        API EDB reference
+                        EDB API
                       </a>
                     </li>
                 
@@ -520,7 +520,8 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_original_data</span> <span class="o">=</span> <span class="n">aedtdata</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">number_of_variations</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">aedtdata</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_enable_pandas_output</span> <span class="o">=</span> <span class="kc">True</span> <span class="k">if</span> <span class="n">settings</span><span class="o">.</span><span class="n">enable_pandas_output</span> <span class="ow">and</span> <span class="n">pd</span> <span class="k">else</span> <span class="kc">False</span>
-
+        <span class="bp">self</span><span class="o">.</span><span class="n">_expressions</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_intrinsics</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_nominal_variation</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_nominal_variation</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_original_data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">active_expression</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">expressions</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -578,6 +579,8 @@
         <span class="k">if</span> <span class="n">var_id</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">variations</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">active_variation</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">variations</span><span class="p">[</span><span class="n">var_id</span><span class="p">]</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">nominal_variation</span> <span class="o">=</span> <span class="n">var_id</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_expressions</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_intrinsics</span> <span class="o">=</span> <span class="kc">None</span>
             <span class="k">return</span> <span class="kc">True</span>
         <span class="k">return</span> <span class="kc">False</span></div>
 
@@ -616,13 +619,14 @@
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">intrinsics</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Get intrinsics dictionary on active variation.&quot;&quot;&quot;</span>
-        <span class="n">_sweeps</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">({})</span>
-        <span class="n">intrinsics</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sweeps_names</span> <span class="k">if</span> <span class="n">i</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">nominal_variation</span><span class="o">.</span><span class="n">GetDesignVariableNames</span><span class="p">()]</span>
-        <span class="k">for</span> <span class="n">el</span> <span class="ow">in</span> <span class="n">intrinsics</span><span class="p">:</span>
-            <span class="n">values</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nominal_variation</span><span class="o">.</span><span class="n">GetSweepValues</span><span class="p">(</span><span class="n">el</span><span class="p">,</span> <span class="kc">False</span><span class="p">))</span>
-            <span class="n">_sweeps</span><span class="p">[</span><span class="n">el</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">values</span><span class="p">]</span>
-            <span class="n">_sweeps</span><span class="p">[</span><span class="n">el</span><span class="p">]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">OrderedDict</span><span class="o">.</span><span class="n">fromkeys</span><span class="p">(</span><span class="n">_sweeps</span><span class="p">[</span><span class="n">el</span><span class="p">]))</span>
-        <span class="k">return</span> <span class="n">_sweeps</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_intrinsics</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_intrinsics</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">({})</span>
+            <span class="n">intrinsics</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sweeps_names</span> <span class="k">if</span> <span class="n">i</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">nominal_variation</span><span class="o">.</span><span class="n">GetDesignVariableNames</span><span class="p">()]</span>
+            <span class="k">for</span> <span class="n">el</span> <span class="ow">in</span> <span class="n">intrinsics</span><span class="p">:</span>
+                <span class="n">values</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nominal_variation</span><span class="o">.</span><span class="n">GetSweepValues</span><span class="p">(</span><span class="n">el</span><span class="p">,</span> <span class="kc">False</span><span class="p">))</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_intrinsics</span><span class="p">[</span><span class="n">el</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">values</span><span class="p">]</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_intrinsics</span><span class="p">[</span><span class="n">el</span><span class="p">]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">OrderedDict</span><span class="o">.</span><span class="n">fromkeys</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_intrinsics</span><span class="p">[</span><span class="n">el</span><span class="p">]))</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_intrinsics</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">nominal_variation</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -655,8 +659,10 @@
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">expressions</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Expressions.&quot;&quot;&quot;</span>
-        <span class="n">mydata</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nominal_variation</span><span class="o">.</span><span class="n">GetDataExpressions</span><span class="p">()]</span>
-        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="nb">dict</span><span class="o">.</span><span class="n">fromkeys</span><span class="p">(</span><span class="n">mydata</span><span class="p">))</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_expressions</span><span class="p">:</span>
+            <span class="n">mydata</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nominal_variation</span><span class="o">.</span><span class="n">GetDataExpressions</span><span class="p">()]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_expressions</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">dict</span><span class="o">.</span><span class="n">fromkeys</span><span class="p">(</span><span class="n">mydata</span><span class="p">))</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_expressions</span>
 
 <div class="viewcode-block" id="SolutionData.update_sweeps"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.solutions.SolutionData.update_sweeps.html#pyaedt.modules.solutions.SolutionData.update_sweeps">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">update_sweeps</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -2105,10 +2111,10 @@
             <span class="n">index_str</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_array_index</span><span class="p">(</span><span class="n">port_name</span><span class="p">)</span>
             <span class="n">a</span> <span class="o">=</span> <span class="n">index_str</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
             <span class="n">b</span> <span class="o">=</span> <span class="n">index_str</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-            <span class="n">w_mag1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">assign_weight</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">taper</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">taper</span><span class="p">,</span> <span class="n">port_count</span><span class="o">=</span><span class="n">port_count</span><span class="p">)),</span> <span class="mi">3</span><span class="p">)</span>
+            <span class="n">w_mag1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">assign_weight</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">taper</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">taper</span><span class="p">,</span> <span class="n">port_cont</span><span class="o">=</span><span class="n">port_count</span><span class="p">)),</span> <span class="mi">3</span><span class="p">)</span>
             <span class="n">w_ang1</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">phase_shift_A_rad1</span> <span class="o">+</span> <span class="n">b</span> <span class="o">*</span> <span class="n">phase_shift_B_rad1</span>
 
-            <span class="n">w_mag2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">assign_weight</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">taper</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">taper</span><span class="p">,</span> <span class="n">port_count</span><span class="o">=</span><span class="n">port_count</span><span class="p">)),</span> <span class="mi">3</span><span class="p">)</span>
+            <span class="n">w_mag2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">assign_weight</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">taper</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">taper</span><span class="p">,</span> <span class="n">port_cont</span><span class="o">=</span><span class="n">port_count</span><span class="p">)),</span> <span class="mi">3</span><span class="p">)</span>
             <span class="n">w_ang2</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">phase_shift_A_rad2</span> <span class="o">+</span> <span class="n">b</span> <span class="o">*</span> <span class="n">phase_shift_B_rad2</span>
 
             <span class="n">w_dict</span><span class="p">[</span><span class="n">port_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">w_mag1</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">w_ang1</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">w_mag2</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">w_ang2</span><span class="p">)</span>
@@ -2258,8 +2264,10 @@
             <span class="n">full_setup_str</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">-</span><span class="si">{}</span><span class="s2">-</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sol_setup_name_str</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sphere_name</span><span class="p">,</span> <span class="n">frequency</span><span class="p">)</span>
             <span class="n">export_path</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">/</span><span class="si">{}</span><span class="s2">/eep/&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">working_directory</span><span class="p">,</span> <span class="n">full_setup_str</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">settings</span><span class="o">.</span><span class="n">remote_rpc_session</span><span class="p">:</span>
-                <span class="n">settings</span><span class="o">.</span><span class="n">remote_rpc_session</span><span class="o">.</span><span class="n">root</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">export_path</span><span class="p">)</span>
-                <span class="n">file_exists</span> <span class="o">=</span> <span class="n">settings</span><span class="o">.</span><span class="n">remote_rpc_session</span><span class="o">.</span><span class="n">root</span><span class="o">.</span><span class="n">pathexists</span><span class="p">(</span><span class="n">export_path</span> <span class="o">+</span> <span class="n">exported_name_base</span> <span class="o">+</span> <span class="s2">&quot;.txt&quot;</span><span class="p">)</span>
+                <span class="n">settings</span><span class="o">.</span><span class="n">remote_rpc_session</span><span class="o">.</span><span class="n">filemanager</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">export_path</span><span class="p">)</span>
+                <span class="n">file_exists</span> <span class="o">=</span> <span class="n">settings</span><span class="o">.</span><span class="n">remote_rpc_session</span><span class="o">.</span><span class="n">filemanager</span><span class="o">.</span><span class="n">pathexists</span><span class="p">(</span>
+                    <span class="n">export_path</span> <span class="o">+</span> <span class="n">exported_name_base</span> <span class="o">+</span> <span class="s2">&quot;.txt&quot;</span>
+                <span class="p">)</span>
             <span class="k">elif</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">export_path</span><span class="p">):</span>
                 <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">export_path</span><span class="p">)</span>
                 <span class="n">file_exists</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">export_path</span> <span class="o">+</span> <span class="n">exported_name_base</span> <span class="o">+</span> <span class="s2">&quot;.txt&quot;</span><span class="p">)</span>
@@ -2989,6 +2997,7 @@
         <span class="n">solutionName</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
         <span class="n">quantityName</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
         <span class="n">intrinsincList</span><span class="o">=</span><span class="p">{},</span>
+        <span class="n">seedingFaces</span><span class="o">=</span><span class="p">[],</span>
     <span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_postprocessor</span> <span class="o">=</span> <span class="n">postprocessor</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">oField</span> <span class="o">=</span> <span class="n">postprocessor</span><span class="o">.</span><span class="n">ofieldsreporter</span>
@@ -2996,6 +3005,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">surfaces_indexes</span> <span class="o">=</span> <span class="n">surfacelist</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">line_indexes</span> <span class="o">=</span> <span class="n">linelist</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">cutplane_indexes</span> <span class="o">=</span> <span class="n">cutplanelist</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">seeding_faces</span> <span class="o">=</span> <span class="n">seedingFaces</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">solutionName</span> <span class="o">=</span> <span class="n">solutionName</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">quantityName</span> <span class="o">=</span> <span class="n">quantityName</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">intrinsincList</span> <span class="o">=</span> <span class="n">intrinsincList</span>
@@ -3019,6 +3029,15 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">CloudSpacing</span> <span class="o">=</span> <span class="mf">0.5</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">CloudMinSpacing</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">CloudMaxSpacing</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">LineWidth</span> <span class="o">=</span> <span class="mi">4</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">LineStyle</span> <span class="o">=</span> <span class="s2">&quot;Cylinder&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">IsoValType</span> <span class="o">=</span> <span class="s2">&quot;Tone&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">NumofPoints</span> <span class="o">=</span> <span class="mi">100</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">TraceStepLength</span> <span class="o">=</span> <span class="s2">&quot;0.001mm&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">UseAdaptiveStep</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">SeedingSamplingOption</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">SeedingPointsNumber</span> <span class="o">=</span> <span class="mi">15</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">FractionOfMaximum</span> <span class="o">=</span> <span class="mf">0.8</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">plotGeomInfo</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -3144,6 +3163,19 @@
                 <span class="s2">&quot;GridColor:=&quot;</span><span class="p">,</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">GridColor</span><span class="p">,</span>
             <span class="p">]</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">line_indexes</span><span class="p">:</span>
+            <span class="n">arg</span> <span class="o">=</span> <span class="p">[</span>
+                <span class="s2">&quot;NAME:PlotOnLineSettings&quot;</span><span class="p">,</span>
+                <span class="p">[</span><span class="s2">&quot;NAME:LineSettingsID&quot;</span><span class="p">,</span> <span class="s2">&quot;Width:=&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">LineWidth</span><span class="p">,</span> <span class="s2">&quot;Style:=&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">LineStyle</span><span class="p">],</span>
+                <span class="s2">&quot;IsoValType:=&quot;</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">IsoValType</span><span class="p">,</span>
+                <span class="s2">&quot;ArrowUniform:=&quot;</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">ArrowUniform</span><span class="p">,</span>
+                <span class="s2">&quot;NumofArrow:=&quot;</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">NumofPoints</span><span class="p">,</span>
+                <span class="s2">&quot;Refinement:=&quot;</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">Refinement</span><span class="p">,</span>
+            <span class="p">]</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">arg</span> <span class="o">=</span> <span class="p">[</span>
                 <span class="s2">&quot;NAME:PlotOnVolumeSettings&quot;</span><span class="p">,</span>
@@ -3213,6 +3245,71 @@
         <span class="p">]</span>
 
     <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">surfacePlotInstructionLineTraces</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Surface plot settings for field line traces.</span>
+
+<span class="sd">        ..note::</span>
+<span class="sd">            ``Specify seeding points on selections`` is by default set to &#39;&#39;by sampling&#39;&#39;.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        list</span>
+<span class="sd">            List of plot settings for line traces.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">[</span>
+            <span class="s2">&quot;NAME:&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+            <span class="s2">&quot;SolutionName:=&quot;</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">solutionName</span><span class="p">,</span>
+            <span class="s2">&quot;UserSpecifyName:=&quot;</span><span class="p">,</span>
+            <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">&quot;UserSpecifyFolder:=&quot;</span><span class="p">,</span>
+            <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">&quot;QuantityName:=&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;QuantityName_FieldLineTrace&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;PlotFolder:=&quot;</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">plotFolder</span><span class="p">,</span>
+            <span class="s2">&quot;IntrinsicVar:=&quot;</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">intrinsicVar</span><span class="p">,</span>
+            <span class="s2">&quot;Trace Step Length:=&quot;</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">TraceStepLength</span><span class="p">,</span>
+            <span class="s2">&quot;Use Adaptive Step:=&quot;</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">UseAdaptiveStep</span><span class="p">,</span>
+            <span class="s2">&quot;Seeding Faces:=&quot;</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">seeding_faces</span><span class="p">,</span>
+            <span class="s2">&quot;Seeding Markers:=&quot;</span><span class="p">,</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+            <span class="s2">&quot;Surface Tracing Objects:=&quot;</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">surfaces_indexes</span><span class="p">,</span>
+            <span class="s2">&quot;Volume Tracing Objects:=&quot;</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">volume_indexes</span><span class="p">,</span>
+            <span class="s2">&quot;Seeding Sampling Option:=&quot;</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">SeedingSamplingOption</span><span class="p">,</span>
+            <span class="s2">&quot;Seeding Points Number:=&quot;</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">SeedingPointsNumber</span><span class="p">,</span>
+            <span class="s2">&quot;Fractional of Maximal:=&quot;</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">FractionOfMaximum</span><span class="p">,</span>
+            <span class="s2">&quot;Discrete Seeds Option:=&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Marker Point&quot;</span><span class="p">,</span>
+            <span class="p">[</span>
+                <span class="s2">&quot;NAME:InceptionEvaluationSettings&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;Gas Type:=&quot;</span><span class="p">,</span>
+                <span class="mi">0</span><span class="p">,</span>
+                <span class="s2">&quot;Gas Pressure:=&quot;</span><span class="p">,</span>
+                <span class="mi">1</span><span class="p">,</span>
+                <span class="s2">&quot;Use Inception:=&quot;</span><span class="p">,</span>
+                <span class="kc">True</span><span class="p">,</span>
+                <span class="s2">&quot;Potential U0:=&quot;</span><span class="p">,</span>
+                <span class="mi">0</span><span class="p">,</span>
+                <span class="s2">&quot;Potential K:=&quot;</span><span class="p">,</span>
+                <span class="mi">0</span><span class="p">,</span>
+                <span class="s2">&quot;Potential A:=&quot;</span><span class="p">,</span>
+                <span class="mi">1</span><span class="p">,</span>
+            <span class="p">],</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">field_line_trace_plot_settings</span><span class="p">,</span>
+        <span class="p">]</span>
+
+    <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">field_plot_settings</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Field Plot Settings.</span>
 
@@ -3257,6 +3354,22 @@
             <span class="p">],</span>
         <span class="p">]</span>
 
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">field_line_trace_plot_settings</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Settings for the field line traces in the plot.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        list</span>
+<span class="sd">            List of settings for the field line traces in the plot.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">[</span>
+            <span class="s2">&quot;NAME:FieldLineTracePlotSettings&quot;</span><span class="p">,</span>
+            <span class="p">[</span><span class="s2">&quot;NAME:LineSettingsID&quot;</span><span class="p">,</span> <span class="s2">&quot;Width:=&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">LineWidth</span><span class="p">,</span> <span class="s2">&quot;Style:=&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">LineStyle</span><span class="p">],</span>
+            <span class="s2">&quot;IsoValType:=&quot;</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">IsoValType</span><span class="p">,</span>
+        <span class="p">]</span>
+
 <div class="viewcode-block" id="FieldPlot.create"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.solutions.FieldPlot.create.html#pyaedt.modules.solutions.FieldPlot.create">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a field plot.</span>
@@ -3267,9 +3380,14 @@
 <span class="sd">            ``True`` when successful, ``False`` when failed.</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">oField</span><span class="o">.</span><span class="n">CreateFieldPlot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">surfacePlotInstruction</span><span class="p">,</span> <span class="s2">&quot;Field&quot;</span><span class="p">)</span>
-        <span class="k">return</span> <span class="kc">True</span></div>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">seeding_faces</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">oField</span><span class="o">.</span><span class="n">CreateFieldPlot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">surfacePlotInstructionLineTraces</span><span class="p">,</span> <span class="s2">&quot;FieldLineTrace&quot;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">oField</span><span class="o">.</span><span class="n">CreateFieldPlot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">surfacePlotInstruction</span><span class="p">,</span> <span class="s2">&quot;Field&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span></div>
 
 <div class="viewcode-block" id="FieldPlot.update"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.solutions.FieldPlot.update.html#pyaedt.modules.solutions.FieldPlot.update">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -3284,11 +3402,54 @@
 <span class="sd">        bool</span>
 <span class="sd">            ``True`` when successful, ``False`` when failed.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">oField</span><span class="o">.</span><span class="n">ModifyFieldPlot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">surfacePlotInstruction</span><span class="p">)</span></div>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">seeding_faces</span><span class="p">:</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">seeding_faces</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">seeding_faces</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+                    <span class="k">for</span> <span class="n">face</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">seeding_faces</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
+                        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">face</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">_postprocessor</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Provide valid object id for seeding faces.&quot;</span><span class="p">)</span>
+                            <span class="k">return</span> <span class="kc">False</span>
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="k">if</span> <span class="n">face</span> <span class="ow">not</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_postprocessor</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+                                <span class="bp">self</span><span class="o">.</span><span class="n">_postprocessor</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Invalid object id.&quot;</span><span class="p">)</span>
+                                <span class="bp">self</span><span class="o">.</span><span class="n">seeding_faces</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">face</span><span class="p">)</span>
+                                <span class="k">return</span> <span class="kc">False</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">seeding_faces</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">seeding_faces</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">volume_indexes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">volume_indexes</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+                    <span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">volume_indexes</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
+                        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">_postprocessor</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Provide valid object id for in-volume object.&quot;</span><span class="p">)</span>
+                            <span class="k">return</span> <span class="kc">False</span>
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="k">if</span> <span class="n">obj</span> <span class="ow">not</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_postprocessor</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+                                <span class="bp">self</span><span class="o">.</span><span class="n">_postprocessor</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Invalid object id.&quot;</span><span class="p">)</span>
+                                <span class="bp">self</span><span class="o">.</span><span class="n">volume_indexes</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+                                <span class="k">return</span> <span class="kc">False</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">volume_indexes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">volume_indexes</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">surfaces_indexes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">surfaces_indexes</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+                    <span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">surfaces_indexes</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
+                        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">_postprocessor</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Provide valid object id for surface object.&quot;</span><span class="p">)</span>
+                            <span class="k">return</span> <span class="kc">False</span>
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="k">if</span> <span class="n">obj</span> <span class="ow">not</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_postprocessor</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+                                <span class="bp">self</span><span class="o">.</span><span class="n">_postprocessor</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Invalid object id.&quot;</span><span class="p">)</span>
+                                <span class="bp">self</span><span class="o">.</span><span class="n">surfaces_indexes</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+                                <span class="k">return</span> <span class="kc">False</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">surfaces_indexes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">surfaces_indexes</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">oField</span><span class="o">.</span><span class="n">ModifyFieldPlot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">surfacePlotInstructionLineTraces</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">oField</span><span class="o">.</span><span class="n">ModifyFieldPlot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">surfacePlotInstruction</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span></div>
 
 <div class="viewcode-block" id="FieldPlot.update_field_plot_settings"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.solutions.FieldPlot.update_field_plot_settings.html#pyaedt.modules.solutions.FieldPlot.update_field_plot_settings">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">update_field_plot_settings</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Modify the field plot settings.</span>
+
+<span class="sd">        .. note::</span>
+<span class="sd">            This method is not available for field plot line traces.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>

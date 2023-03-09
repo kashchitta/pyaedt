@@ -157,14 +157,14 @@
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../API/index.html">
-                        API AEDT reference
+                        AEDT API
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../EDBAPI/index.html">
-                        API EDB reference
+                        EDB API
                       </a>
                     </li>
                 
@@ -352,14 +352,14 @@
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../API/index.html">
-                        API AEDT reference
+                        AEDT API
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../EDBAPI/index.html">
-                        API EDB reference
+                        EDB API
                       </a>
                     </li>
                 
@@ -456,6 +456,7 @@
   <div class="bd-toc-item navbar-nav">
     <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../00-EDB/index.html">EDB examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01-HFSS3DLayout/index.html">HFSS 3D Layout examples</a></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">General model and setup examples</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="Configurations.html">General: configuration files</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">General: coordinate system creation</a></li>
@@ -470,7 +471,6 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../02-HFSS/index.html">HFSS examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../02-HFSS3DLayout/index.html">HFSS 3D Layout examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../02-SBR%2B/index.html">SBR+ examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../03-Maxwell/index.html">Maxwell examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../04-Icepak/index.html">Icepak examples</a></li>
@@ -479,7 +479,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../07-Circuit/index.html">Circuit examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../07-EMIT/index.html">EMIT examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../07-TwinBuilder/index.html">Twin Builder examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../08-CableModeling/index.html">Cable Modeling examples</a></li>
 </ul>
 
   </div>
@@ -539,8 +538,8 @@ You can set <code class="docutils literal notranslate"><span class="pre">non_gra
 </section>
 <section id="launch-aedt-in-graphical-mode">
 <h2>Launch AEDT in graphical mode<a class="headerlink" href="#launch-aedt-in-graphical-mode" title="Permalink to this heading">#</a></h2>
-<p>Launch AEDT 2022 R2 in graphical mode.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="n">pyaedt</span><span class="o">.</span><span class="n">launch_desktop</span><span class="p">(</span><span class="n">specified_version</span><span class="o">=</span><span class="s2">&quot;2022.2&quot;</span><span class="p">,</span> <a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a><span class="o">=</span><a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a><span class="p">,</span> <span class="n">new_desktop_session</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<p>Launch AEDT 2023 R1 in graphical mode.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="n">pyaedt</span><span class="o">.</span><span class="n">launch_desktop</span><span class="p">(</span><span class="n">specified_version</span><span class="o">=</span><span class="s2">&quot;2023.1&quot;</span><span class="p">,</span> <a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a><span class="o">=</span><a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a><span class="p">,</span> <span class="n">new_desktop_session</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
@@ -727,7 +726,7 @@ systems and face coordinate systems interact with each other.</p>
 <span class="nb">print</span><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">names</span></a><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[&#39;CS_FCS&#39;, &#39;Face_CS_XHS5XX&#39;, &#39;Face_CS_LDA8OL&#39;, &#39;Face_CS_5FGDZE&#39;, &#39;Face_CS_80T9GT&#39;, &#39;FCS2&#39;, &#39;FCS1&#39;, &#39;CS5&#39;, &#39;CS4&#39;, &#39;CS3&#39;, &#39;CS2&#39;]
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[&#39;CS_FCS&#39;, &#39;Face_CS_M1YDUE&#39;, &#39;Face_CS_WHB7I5&#39;, &#39;Face_CS_ZZSYVS&#39;, &#39;Face_CS_L3PPTB&#39;, &#39;FCS2&#39;, &#39;FCS1&#39;, &#39;CS5&#39;, &#39;CS4&#39;, &#39;CS3&#39;, &#39;CS2&#39;]
 </pre></div>
 </div>
 </section>
@@ -754,8 +753,8 @@ can be translated in respect to any coordinate system.</p>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;CS5 :&quot;</span><span class="p">,</span> <a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">p2</span></a><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Global:  [10.0, -10.0, 10.0]
-CS5 : [10.0, 13.8330960296045, 2.940315329304]
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Global:  [-10.0, -10.0, 10.0]
+CS5 : [-10.0, 13.8330960296045, 2.940315329304]
 </pre></div>
 </div>
 </section>
@@ -770,7 +769,7 @@ All methods provide for saving the project before closing.</p>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>True
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  19.684 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  27.074 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-01-modeling-setup-hfss-coordinatesystem-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/931c6cabb64ed6b3b63808a73c05bd08/HFSS_CoordinateSystem.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">HFSS_CoordinateSystem.py</span></code></a></p>

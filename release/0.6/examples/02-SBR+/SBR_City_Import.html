@@ -157,14 +157,14 @@
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../API/index.html">
-                        API AEDT reference
+                        AEDT API
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../EDBAPI/index.html">
-                        API EDB reference
+                        EDB API
                       </a>
                     </li>
                 
@@ -352,14 +352,14 @@
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../API/index.html">
-                        API AEDT reference
+                        AEDT API
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../EDBAPI/index.html">
-                        API EDB reference
+                        EDB API
                       </a>
                     </li>
                 
@@ -456,9 +456,9 @@
   <div class="bd-toc-item navbar-nav">
     <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../00-EDB/index.html">EDB examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01-HFSS3DLayout/index.html">HFSS 3D Layout examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../01-Modeling-Setup/index.html">General model and setup examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../02-HFSS/index.html">HFSS examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../02-HFSS3DLayout/index.html">HFSS 3D Layout examples</a></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">SBR+ examples</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">SBR+: Import Geometry from Maps</a></li>
 <li class="toctree-l2"><a class="reference internal" href="SBR_Doppler_Example.html">SBR+: doppler setup</a></li>
@@ -473,7 +473,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../07-Circuit/index.html">Circuit examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../07-EMIT/index.html">EMIT examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../07-TwinBuilder/index.html">Twin Builder examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../08-CableModeling/index.html">Cable Modeling examples</a></li>
 </ul>
 
   </div>
@@ -539,7 +538,7 @@ Each design is connected to a different object.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">app</span> <span class="o">=</span> <span class="n">Hfss</span><span class="p">(</span>
     <span class="n">designname</span><span class="o">=</span><span class="s2">&quot;Ansys&quot;</span><span class="p">,</span>
     <span class="n">solution_type</span><span class="o">=</span><span class="s2">&quot;SBR+&quot;</span><span class="p">,</span>
-    <span class="n">specified_version</span><span class="o">=</span><span class="s2">&quot;2022.2&quot;</span><span class="p">,</span>
+    <span class="n">specified_version</span><span class="o">=</span><span class="s2">&quot;2023.1&quot;</span><span class="p">,</span>
     <span class="n">new_desktop_session</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
     <a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a><span class="o">=</span><a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a>
 <span class="p">)</span>
@@ -564,12 +563,7 @@ Each design is connected to a different object.</p>
 </pre></div>
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Creating tmp_cache
-INFO:root:Retrieving https://srtm.kurviger.de/SRTM1//Region_06//N40W081.hgt.zip
-INFO:root:Retrieved https://srtm.kurviger.de/SRTM1//Region_06//N40W081.hgt.zip (8459110 bytes)
-DEBUG:root:Unzipping 8459110 bytes
-DEBUG:root:Unzipped
 4 25934402
-DEBUG:root:saved 25934402 bytes in tmp_cache\N40W081.hgt
 INFO:Global:
 Percent Complete:####.................................... 10%
 INFO:Global:
@@ -590,12 +584,8 @@ INFO:Global:
 Percent Complete:####################################.... 90%
 INFO:Global:100% - Done
 INFO:Global:Processing Geometry
-INFO:Global:saving STL as D:/Projects/Project4026.pyaedt\Ansys/terrain.stl
+INFO:Global:saving STL as D:/Project74.pyaedt\Ansys/terrain.stl
 INFO:Global:Generating Building Geometry
-DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): overpass-api.de:443
-DEBUG:urllib3.connectionpool:https://overpass-api.de:443 &quot;GET /api/status HTTP/1.1&quot; 200 179
-DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): overpass-api.de:443
-DEBUG:urllib3.connectionpool:https://overpass-api.de:443 &quot;POST /api/interpreter HTTP/1.1&quot; 200 2315
 INFO:Global:
 Generating Buildings
 c:\actions-runner\_work\pyaedt\pyaedt\testenv\lib\site-packages\pyvista\core\filters\poly_data.py:2823: PyVistaFutureWarning: The default value of the ``capping`` keyword argument will change in a future version to ``True`` to match the behavior of VTK. We recommend passing the keyword explicitly to prevent future surprises.
@@ -603,10 +593,6 @@ c:\actions-runner\_work\pyaedt\pyaedt\testenv\lib\site-packages\pyvista\core\fil
 INFO:Global:
 Percent Complete:######################################## 100.0%
 INFO:Global:Generating Road Geometry
-DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): overpass-api.de:443
-DEBUG:urllib3.connectionpool:https://overpass-api.de:443 &quot;GET /api/status HTTP/1.1&quot; 200 209
-DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): overpass-api.de:443
-DEBUG:urllib3.connectionpool:https://overpass-api.de:443 &quot;POST /api/interpreter HTTP/1.1&quot; 200 29527
 INFO:Global:
 Percent Complete:########................................ 20.0%
 INFO:Global:
@@ -620,11 +606,11 @@ Percent Complete:################################........ 80.0%
 INFO:Global:
 Percent Complete:######################################## 100.0%
 INFO:Global:Done...
-INFO:Global:Step file D:/Projects/Project4026.pyaedt\Ansys/terrain.stl imported
-INFO:Global:Step file D:/Projects/Project4026.pyaedt\Ansys\buildings.stl imported
-INFO:Global:Step file D:/Projects/Project4026.pyaedt\Ansys\roads.stl imported
+INFO:Global:Step file D:/Project74.pyaedt\Ansys/terrain.stl imported
+INFO:Global:Step file D:/Project74.pyaedt\Ansys\buildings.stl imported
+INFO:Global:Step file D:/Project74.pyaedt\Ansys\roads.stl imported
 
-{&#39;name&#39;: &#39;default&#39;, &#39;version&#39;: 1, &#39;type&#39;: &#39;environment&#39;, &#39;center_lat_lon&#39;: [40.273726, -80.168269], &#39;radius&#39;: 250, &#39;include_buildings&#39;: True, &#39;include_roads&#39;: True, &#39;parts&#39;: {&#39;terrain&#39;: {&#39;file_name&#39;: &#39;D:/Projects/Project4026.pyaedt\\Ansys/terrain.stl&#39;, &#39;color&#39;: &#39;brown&#39;, &#39;material&#39;: &#39;earth&#39;}, &#39;buildings&#39;: {&#39;file_name&#39;: &#39;D:/Projects/Project4026.pyaedt\\Ansys\\buildings.stl&#39;, &#39;color&#39;: &#39;grey&#39;, &#39;material&#39;: &#39;concrete&#39;}, &#39;roads&#39;: {&#39;file_name&#39;: &#39;D:/Projects/Project4026.pyaedt\\Ansys\\roads.stl&#39;, &#39;color&#39;: &#39;black&#39;, &#39;material&#39;: &#39;asphalt&#39;}}}
+{&#39;name&#39;: &#39;default&#39;, &#39;version&#39;: 1, &#39;type&#39;: &#39;environment&#39;, &#39;center_lat_lon&#39;: [40.273726, -80.168269], &#39;radius&#39;: 250, &#39;include_buildings&#39;: True, &#39;include_roads&#39;: True, &#39;parts&#39;: {&#39;terrain&#39;: {&#39;file_name&#39;: &#39;D:/Project74.pyaedt\\Ansys/terrain.stl&#39;, &#39;color&#39;: &#39;brown&#39;, &#39;material&#39;: &#39;earth&#39;}, &#39;buildings&#39;: {&#39;file_name&#39;: &#39;D:/Project74.pyaedt\\Ansys\\buildings.stl&#39;, &#39;color&#39;: &#39;grey&#39;, &#39;material&#39;: &#39;concrete&#39;}, &#39;roads&#39;: {&#39;file_name&#39;: &#39;D:/Project74.pyaedt\\Ansys\\roads.stl&#39;, &#39;color&#39;: &#39;black&#39;, &#39;material&#39;: &#39;asphalt&#39;}}}
 </pre></div>
 </div>
 </section>
@@ -655,7 +641,7 @@ INFO:Global:Step file D:/Projects/Project4026.pyaedt\Ansys\roads.stl imported
 True
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  43.291 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 1 minutes  8.498 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-02-sbr-sbr-city-import-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/34f36d0c0d4b96f1f1dad769b92ae654/SBR_City_Import.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">SBR_City_Import.py</span></code></a></p>

@@ -157,14 +157,14 @@
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../API/index.html">
-                        API AEDT reference
+                        AEDT API
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../EDBAPI/index.html">
-                        API EDB reference
+                        EDB API
                       </a>
                     </li>
                 
@@ -352,14 +352,14 @@
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../API/index.html">
-                        API AEDT reference
+                        AEDT API
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../EDBAPI/index.html">
-                        API EDB reference
+                        EDB API
                       </a>
                     </li>
                 
@@ -456,11 +456,12 @@
   <div class="bd-toc-item navbar-nav">
     <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../00-EDB/index.html">EDB examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01-HFSS3DLayout/index.html">HFSS 3D Layout examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../01-Modeling-Setup/index.html">General model and setup examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../02-HFSS/index.html">HFSS examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../02-HFSS3DLayout/index.html">HFSS 3D Layout examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../02-SBR%2B/index.html">SBR+ examples</a></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Maxwell examples</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Maxwell2D_Electrostatic.html">Maxwell 2D Electrostatic analysis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Maxwell2D_NissanLeaf.html">Maxwell 2D: PM synchronous motor transient analysis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Maxwell2D_Transient.html">Maxwell 2D: transient winding analysis</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Maxwell 3D: bath plate analysis</a></li>
@@ -475,7 +476,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../07-Circuit/index.html">Circuit examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../07-EMIT/index.html">EMIT examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../07-TwinBuilder/index.html">Twin Builder examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../08-CableModeling/index.html">Cable Modeling examples</a></li>
 </ul>
 
   </div>
@@ -541,7 +541,7 @@ the solver, and the version. The following code also creates an instance of the
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">Project_Name</span></a> <span class="o">=</span> <span class="s2">&quot;COMPUMAG&quot;</span>
 <a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">Design_Name</span></a> <span class="o">=</span> <span class="s2">&quot;TEAM 3 Bath Plate&quot;</span>
 <a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">Solver</span></a> <span class="o">=</span> <span class="s2">&quot;EddyCurrent&quot;</span>
-<a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">DesktopVersion</span></a> <span class="o">=</span> <span class="s2">&quot;2022.2&quot;</span>
+<a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">DesktopVersion</span></a> <span class="o">=</span> <span class="s2">&quot;2023.1&quot;</span>
 
 <span class="n">M3D</span> <span class="o">=</span> <span class="n">pyaedt</span><span class="o">.</span><span class="n">Maxwell3d</span><span class="p">(</span>
     <span class="n">projectname</span><span class="o">=</span><span class="n">pyaedt</span><span class="o">.</span><span class="n">generate_unique_project_name</span><span class="p">(),</span>
@@ -553,6 +553,10 @@ the solver, and the version. The following code also creates an instance of the
 <span class="p">)</span>
 <a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">uom</span></a> <span class="o">=</span> <span class="n">M3D</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">model_units</span> <span class="o">=</span> <span class="s2">&quot;mm&quot;</span>
 <span class="n">modeler</span> <span class="o">=</span> <span class="n">M3D</span><span class="o">.</span><span class="n">modeler</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>C:\actions-runner\_work\PyAEDT\PyAEDT\pyaedt\desktop.py:778: ResourceWarning: unclosed &lt;socket.socket fd=5684, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=(&#39;0.0.0.0&#39;, 52962)&gt;
+  self.port = _find_free_port()
 </pre></div>
 </div>
 </section>
@@ -579,7 +583,7 @@ position of the coil.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">M3D</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">create_air_region</span><span class="p">(</span><span class="n">x_pos</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">y_pos</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">z_pos</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">x_neg</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">y_neg</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">z_neg</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modeler.cad.object3d.Object3d object at 0x0000012F1728A610&gt;
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modeler.cad.object3d.Object3d object at 0x00000272CB9E2DC0&gt;
 </pre></div>
 </div>
 </section>
@@ -603,7 +607,7 @@ position of the coil.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">M3D</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">assign_length_mesh</span><span class="p">(</span><span class="s2">&quot;LadderPlate&quot;</span><span class="p">,</span> <span class="n">maxlength</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">maxel</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">meshop_name</span><span class="o">=</span><span class="s2">&quot;Ladder_Mesh&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modules.Mesh.MeshOperation object at 0x0000012F68413D00&gt;
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modules.Mesh.MeshOperation object at 0x00000272CB9E24F0&gt;
 </pre></div>
 </div>
 </section>
@@ -624,7 +628,7 @@ The stranded type forces the current density to be constant in the coil.</p>
 <span class="n">M3D</span><span class="o">.</span><span class="n">assign_current</span><span class="p">(</span><span class="n">object_list</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;SearchCoil_Section1&quot;</span><span class="p">],</span> <span class="n">amplitude</span><span class="o">=</span><span class="mi">1260</span><span class="p">,</span> <span class="n">solid</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;SearchCoil_Excitation&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modules.Boundary.BoundaryObject object at 0x0000012F68413D30&gt;
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modules.Boundary.BoundaryObject object at 0x00000272CB9F9850&gt;
 </pre></div>
 </div>
 </section>
@@ -649,7 +653,7 @@ mesh locally around the line.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">M3D</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">export_path</span><span class="o">=</span><a href="https://docs.python.org/dev/library/os.path.html#os.path.join" title="os.path.join" class="sphx-glr-backref-module-os-path sphx-glr-backref-type-py-function"><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span></a><span class="p">(</span><span class="n">M3D</span><span class="o">.</span><span class="n">working_directory</span><span class="p">,</span> <span class="s2">&quot;Image.jpg&quot;</span><span class="p">),</span> <span class="n">plot_air_objects</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_Maxwell3DTeam3_001.png" srcset="../../_images/sphx_glr_Maxwell3DTeam3_001.png" alt="Maxwell3DTeam3" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.generic.plot.ModelPlotter object at 0x0000012F63190760&gt;
+<img src="../../_images/sphx_glr_Maxwell3DTeam3_001.png" srcset="../../_images/sphx_glr_Maxwell3DTeam3_001.png" alt="Maxwell3DTeam3" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.generic.plot.ModelPlotter object at 0x00000272CCF8CB50&gt;
 </pre></div>
 </div>
 </section>
@@ -735,7 +739,7 @@ eddy effect is ignored for the stranded conductor type used in the search coil.<
 <span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modules.report_templates.Fields object at 0x0000012F172BABE0&gt;
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modules.report_templates.Fields object at 0x00000272CB9E2280&gt;
 </pre></div>
 </div>
 </section>
@@ -784,7 +788,7 @@ eddy effect is ignored for the stranded conductor type used in the search coil.<
 <span class="n">M3D</span><span class="o">.</span><span class="n">post</span><span class="o">.</span><span class="n">create_fieldplot_surface</span><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">surflist</span></a><span class="p">,</span> <span class="s2">&quot;Mag_J&quot;</span><span class="p">,</span> <span class="n">intrinsincDict</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#dict" title="builtins.dict" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">intrinsic_dict</span></a><span class="p">,</span> <span class="n">plot_name</span><span class="o">=</span><span class="s2">&quot;Mag_J&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modules.solutions.FieldPlot object at 0x0000012F171FF550&gt;
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modules.solutions.FieldPlot object at 0x00000272CD14BB20&gt;
 </pre></div>
 </div>
 </section>
@@ -797,7 +801,7 @@ eddy effect is ignored for the stranded conductor type used in the search coil.<
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>True
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 10 minutes  2.217 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 14 minutes  12.087 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-03-maxwell-maxwell3dteam3-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/58f29c439ef8dbb814044510908a1c7b/Maxwell3DTeam3.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">Maxwell3DTeam3.py</span></code></a></p>

@@ -51,7 +51,7 @@ Perform required imports and set paths.
 
  .. code-block:: none
 
-    D:\Temp\pyaedt_prj_WO9\Project_WEQ.aedt
+    D:\Temp\pyaedt_prj_GYQ\Project_H9B.aedt
 
 
 
@@ -60,15 +60,13 @@ Perform required imports and set paths.
 
 Launch AEDT
 ~~~~~~~~~~~
-Launch AEDT 2022 R2 in graphical mode. This example uses SI units.
+Launch AEDT 2023 R1 in graphical mode. This example uses SI units.
 
-.. GENERATED FROM PYTHON SOURCE LINES 26-29
+.. GENERATED FROM PYTHON SOURCE LINES 26-28
 
 .. code-block:: default
 
-
-    desktopVersion = "2022.2"
-
+    desktopVersion = "2023.1"
 
 
 
@@ -76,7 +74,8 @@ Launch AEDT 2022 R2 in graphical mode. This example uses SI units.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 30-37
+
+.. GENERATED FROM PYTHON SOURCE LINES 29-36
 
 Set non-graphical mode
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -86,7 +85,7 @@ You can set ``non_graphical`` either to ``True`` or ``False``.
 The Boolean parameter ``NewThread`` defines whether to create a new instance
 of AEDT or try to connect to an existing instance of it.
 
-.. GENERATED FROM PYTHON SOURCE LINES 37-41
+.. GENERATED FROM PYTHON SOURCE LINES 36-40
 
 .. code-block:: default
 
@@ -101,14 +100,14 @@ of AEDT or try to connect to an existing instance of it.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 42-46
+.. GENERATED FROM PYTHON SOURCE LINES 41-45
 
 Launch AEDT with Circuit
 ~~~~~~~~~~~~~~~~~~~~~~~~
 Launch AEDT with Circuit. The :class:`pyaedt.Desktop` class initializes AEDT
 and starts it on the specified version in the specified graphical mode.
 
-.. GENERATED FROM PYTHON SOURCE LINES 46-50
+.. GENERATED FROM PYTHON SOURCE LINES 45-49
 
 .. code-block:: default
 
@@ -120,16 +119,23 @@ and starts it on the specified version in the specified graphical mode.
 
 
 
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    C:\actions-runner\_work\PyAEDT\PyAEDT\pyaedt\desktop.py:778: ResourceWarning: unclosed <socket.socket fd=3984, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('0.0.0.0', 54312)>
+      self.port = _find_free_port()
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 51-54
+
+.. GENERATED FROM PYTHON SOURCE LINES 50-53
 
 Define variable
 ~~~~~~~~~~~~~~~
 Define a design variable by using a ``$`` prefix.
 
-.. GENERATED FROM PYTHON SOURCE LINES 54-57
+.. GENERATED FROM PYTHON SOURCE LINES 53-56
 
 .. code-block:: default
 
@@ -143,7 +149,7 @@ Define a design variable by using a ``$`` prefix.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 58-63
+.. GENERATED FROM PYTHON SOURCE LINES 57-62
 
 Create schematic from netlist file
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -151,7 +157,7 @@ Create a schematic from a netlist file. The ``create_schematic_from_netlist``
 method reads the netlist file and parses it. All components are parsed
 but only these categories are mapped: R, L, C, Q, U, J, V, and I.
 
-.. GENERATED FROM PYTHON SOURCE LINES 63-66
+.. GENERATED FROM PYTHON SOURCE LINES 62-65
 
 .. code-block:: default
 
@@ -175,14 +181,14 @@ but only these categories are mapped: R, L, C, Q, U, J, V, and I.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 67-71
+.. GENERATED FROM PYTHON SOURCE LINES 66-70
 
 Close project and release AEDT
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 After adding any other desired functionalities, close the project and release
 AEDT.
 
-.. GENERATED FROM PYTHON SOURCE LINES 71-73
+.. GENERATED FROM PYTHON SOURCE LINES 70-72
 
 .. code-block:: default
 
@@ -204,7 +210,7 @@ AEDT.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  8.946 seconds)
+   **Total running time of the script:** ( 0 minutes  23.015 seconds)
 
 
 .. _sphx_glr_download_examples_07-Circuit_Create_Netlist.py:

@@ -154,14 +154,14 @@
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../../API/index.html">
-                        API AEDT reference
+                        AEDT API
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../../EDBAPI/index.html">
-                        API EDB reference
+                        EDB API
                       </a>
                     </li>
                 
@@ -348,14 +348,14 @@
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../../API/index.html">
-                        API AEDT reference
+                        AEDT API
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../../EDBAPI/index.html">
-                        API EDB reference
+                        EDB API
                       </a>
                     </li>
                 
@@ -495,12 +495,6 @@
 <span class="kn">from</span> <span class="nn">pyaedt.modules.Material</span> <span class="kn">import</span> <span class="n">MatProperties</span>
 <span class="kn">from</span> <span class="nn">pyaedt.modules.Material</span> <span class="kn">import</span> <span class="n">OrderedDict</span>
 <span class="kn">from</span> <span class="nn">pyaedt.modules.Material</span> <span class="kn">import</span> <span class="n">SurfaceMaterial</span>
-
-<span class="k">if</span> <span class="ow">not</span> <span class="n">is_ironpython</span><span class="p">:</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-    <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
-        <span class="n">pd</span> <span class="o">=</span> <span class="kc">None</span>
 
 
 <div class="viewcode-block" id="Materials"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.MaterialLib.Materials.html#pyaedt.modules.MaterialLib.Materials">[docs]</a><span class="k">class</span> <span class="nc">Materials</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
@@ -1251,8 +1245,10 @@
 <span class="sd">        List of :class:`pyaedt.modules.Material.Material`</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">pd</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Pandas is needed. Please, install it first.&quot;</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
+            <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+        <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Pandas is needed. Install it.&quot;</span><span class="p">)</span>
             <span class="k">return</span> <span class="kc">False</span>
         <span class="n">materials_added</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="n">props</span> <span class="o">=</span> <span class="p">{}</span>
@@ -1281,7 +1277,7 @@
                     <span class="ow">and</span> <span class="n">val</span><span class="p">[</span><span class="n">keys</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">prop</span><span class="p">)]</span>
                     <span class="ow">and</span> <span class="ow">not</span> <span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">val</span><span class="p">[</span><span class="n">keys</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">prop</span><span class="p">)],</span> <span class="nb">float</span><span class="p">)</span> <span class="ow">and</span> <span class="n">math</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">val</span><span class="p">[</span><span class="n">keys</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">prop</span><span class="p">)]))</span>
                 <span class="p">):</span>
-                    <span class="n">props</span><span class="p">[</span><span class="n">prop</span><span class="p">]</span> <span class="o">=</span> <span class="n">val</span><span class="p">[</span><span class="n">keys</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">prop</span><span class="p">)]</span>
+                    <span class="n">props</span><span class="p">[</span><span class="n">prop</span><span class="p">]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">val</span><span class="p">[</span><span class="n">keys</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">prop</span><span class="p">)])</span>
             <span class="n">new_material</span> <span class="o">=</span> <span class="n">Material</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">newname</span><span class="p">,</span> <span class="n">props</span><span class="p">)</span>
             <span class="n">new_material</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">material_keys</span><span class="p">[</span><span class="n">newname</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_material</span>

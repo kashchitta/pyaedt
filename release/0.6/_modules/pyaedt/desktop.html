@@ -154,14 +154,14 @@
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../API/index.html">
-                        API AEDT reference
+                        AEDT API
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../EDBAPI/index.html">
-                        API EDB reference
+                        EDB API
                       </a>
                     </li>
                 
@@ -348,14 +348,14 @@
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../API/index.html">
-                        API AEDT reference
+                        AEDT API
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../EDBAPI/index.html">
-                        API EDB reference
+                        EDB API
                       </a>
                     </li>
                 
@@ -548,7 +548,7 @@
         <span class="k">return</span> <span class="kc">True</span>
 
 
-<span class="k">def</span> <span class="nf">_find_free_port</span><span class="p">(</span><span class="n">port_start</span><span class="o">=</span><span class="mi">50001</span><span class="p">,</span> <span class="n">port_end</span><span class="o">=</span><span class="mi">60000</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">_find_free_port</span><span class="p">(</span><span class="n">port_start</span><span class="o">=</span><span class="mi">40001</span><span class="p">,</span> <span class="n">port_end</span><span class="o">=</span><span class="mi">55000</span><span class="p">):</span>
     <span class="n">list_ports</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">port_start</span><span class="p">,</span> <span class="n">port_end</span><span class="p">),</span> <span class="n">port_end</span> <span class="o">-</span> <span class="n">port_start</span><span class="p">)</span>
     <span class="n">s</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">()</span>
     <span class="k">for</span> <span class="n">port</span> <span class="ow">in</span> <span class="n">list_ports</span><span class="p">:</span>
@@ -604,9 +604,41 @@
         <span class="k">del</span> <span class="n">module</span><span class="o">.</span><span class="n">desktop</span>
     <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
         <span class="k">pass</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">del</span> <span class="n">module</span><span class="o">.</span><span class="n">sDesktopinstallDirectory</span>
+    <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+        <span class="k">pass</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">del</span> <span class="n">module</span><span class="o">.</span><span class="n">isoutsideDesktop</span>
+    <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+        <span class="k">pass</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">del</span> <span class="n">module</span><span class="o">.</span><span class="n">AEDTVersion</span>
+    <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+        <span class="k">pass</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">del</span> <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">[</span><span class="s2">&quot;PyDesktopPluginDll&quot;</span><span class="p">]</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="k">pass</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">del</span> <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">[</span><span class="s2">&quot;PyDesktopPlugin&quot;</span><span class="p">]</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="k">pass</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">del</span> <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">[</span><span class="s2">&quot;ScriptEnv&quot;</span><span class="p">]</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="k">pass</span>
+    <span class="n">keys</span> <span class="o">=</span> <span class="p">[</span><span class="n">k</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="o">.</span><span class="n">keys</span><span class="p">()]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">keys</span><span class="p">:</span>
+        <span class="k">if</span> <span class="s2">&quot;Ansys.Ansoft&quot;</span> <span class="ow">in</span> <span class="n">i</span><span class="p">:</span>
+            <span class="k">del</span> <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="s2">&quot;AnsysEM&quot;</span> <span class="ow">in</span> <span class="n">p</span><span class="p">:</span>
+            <span class="k">del</span> <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="p">[</span><span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">p</span><span class="p">)]</span>
     <span class="n">gc</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span>
 
 
+<span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
 <span class="k">def</span> <span class="nf">release_desktop</span><span class="p">(</span><span class="n">close_projects</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">close_desktop</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Release the AEDT API.</span>
 
@@ -632,14 +664,18 @@
             <span class="k">for</span> <span class="n">project</span> <span class="ow">in</span> <span class="n">projects</span><span class="p">:</span>
                 <span class="n">desktop</span><span class="o">.</span><span class="n">CloseProject</span><span class="p">(</span><span class="n">project</span><span class="p">)</span>
         <span class="n">pid</span> <span class="o">=</span> <span class="n">_main</span><span class="o">.</span><span class="n">oDesktop</span><span class="o">.</span><span class="n">GetProcessID</span><span class="p">()</span>
-        <span class="k">if</span> <span class="n">settings</span><span class="o">.</span><span class="n">aedt_version</span> <span class="o">&gt;=</span> <span class="s2">&quot;2022.2&quot;</span> <span class="ow">and</span> <span class="n">settings</span><span class="o">.</span><span class="n">use_grpc_api</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">is_ironpython</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">_check_grpc_port</span><span class="p">(</span><span class="n">settings</span><span class="o">.</span><span class="n">port</span><span class="p">,</span> <span class="n">settings</span><span class="o">.</span><span class="n">machine</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">settings</span><span class="o">.</span><span class="n">remote_rpc_session</span> <span class="ow">or</span> <span class="p">(</span>
+            <span class="n">settings</span><span class="o">.</span><span class="n">aedt_version</span> <span class="o">&gt;=</span> <span class="s2">&quot;2022.2&quot;</span> <span class="ow">and</span> <span class="n">settings</span><span class="o">.</span><span class="n">use_grpc_api</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">is_ironpython</span>
+        <span class="p">):</span>
+            <span class="k">try</span><span class="p">:</span>
                 <span class="kn">import</span> <span class="nn">ScriptEnv</span>
 
                 <span class="k">if</span> <span class="n">close_desktop</span><span class="p">:</span>
                     <span class="n">ScriptEnv</span><span class="o">.</span><span class="n">Shutdown</span><span class="p">()</span>
                 <span class="k">else</span><span class="p">:</span>
                     <span class="n">ScriptEnv</span><span class="o">.</span><span class="n">Release</span><span class="p">()</span>
+            <span class="k">except</span><span class="p">:</span>
+                <span class="k">pass</span>
             <span class="n">_delete_objects</span><span class="p">()</span>
             <span class="k">return</span> <span class="kc">True</span>
         <span class="k">elif</span> <span class="ow">not</span> <span class="n">inside_desktop</span><span class="p">:</span>
@@ -1119,8 +1155,8 @@
                 <span class="s2">&quot;PyAEDT supports COM initialization in Windows only. To use in Linux, upgrade to AEDT 2022 R2 or later.&quot;</span>
             <span class="p">)</span>
         <span class="n">base_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_main</span><span class="o">.</span><span class="n">sDesktopinstallDirectory</span>
-        <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">base_path</span><span class="p">)</span>
-        <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">base_path</span><span class="p">,</span> <span class="s2">&quot;PythonFiles&quot;</span><span class="p">,</span> <span class="s2">&quot;DesktopPlugin&quot;</span><span class="p">))</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">base_path</span><span class="p">)</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">base_path</span><span class="p">,</span> <span class="s2">&quot;PythonFiles&quot;</span><span class="p">,</span> <span class="s2">&quot;DesktopPlugin&quot;</span><span class="p">))</span>
         <span class="n">launch_msg</span> <span class="o">=</span> <span class="s2">&quot;AEDT installation Path </span><span class="si">{}</span><span class="s2">.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">base_path</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">launch_msg</span><span class="p">)</span>
         <span class="n">_clr</span><span class="o">.</span><span class="n">AddReference</span><span class="p">(</span><span class="s2">&quot;Ansys.Ansoft.CoreCOMScripting&quot;</span><span class="p">)</span>
@@ -1176,8 +1212,8 @@
 
     <span class="k">def</span> <span class="nf">_init_cpython_new</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">non_graphical</span><span class="p">,</span> <span class="n">new_aedt_session</span><span class="p">,</span> <span class="n">version</span><span class="p">,</span> <span class="n">student_version</span><span class="p">):</span>
         <span class="n">base_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_main</span><span class="o">.</span><span class="n">sDesktopinstallDirectory</span>
-        <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">base_path</span><span class="p">)</span>
-        <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">base_path</span><span class="p">,</span> <span class="s2">&quot;PythonFiles&quot;</span><span class="p">,</span> <span class="s2">&quot;DesktopPlugin&quot;</span><span class="p">))</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">base_path</span><span class="p">)</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">base_path</span><span class="p">,</span> <span class="s2">&quot;PythonFiles&quot;</span><span class="p">,</span> <span class="s2">&quot;DesktopPlugin&quot;</span><span class="p">))</span>
         <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;posix&quot;</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;LD_LIBRARY_PATH&quot;</span><span class="p">):</span>
                 <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;LD_LIBRARY_PATH&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
@@ -1187,6 +1223,7 @@
                 <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;LD_LIBRARY_PATH&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">base_path</span><span class="p">,</span> <span class="s2">&quot;defer&quot;</span><span class="p">)</span>
             <span class="n">pyaedt_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)),</span> <span class="s2">&quot;..&quot;</span><span class="p">))</span>
             <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;PATH&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pyaedt_path</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">pathsep</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;PATH&quot;</span><span class="p">]</span>
+
         <span class="kn">import</span> <span class="nn">ScriptEnv</span>
 
         <span class="n">launch_msg</span> <span class="o">=</span> <span class="s2">&quot;AEDT installation Path </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">base_path</span><span class="p">)</span>
@@ -1589,7 +1626,8 @@
 
         <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">ex_value</span><span class="p">)</span>
 
-<div class="viewcode-block" id="Desktop.release_desktop"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.desktop.Desktop.release_desktop.html#pyaedt.desktop.Desktop.release_desktop">[docs]</a>    <span class="k">def</span> <span class="nf">release_desktop</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">close_projects</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">close_on_exit</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<div class="viewcode-block" id="Desktop.release_desktop"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.desktop.Desktop.release_desktop.html#pyaedt.desktop.Desktop.release_desktop">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">release_desktop</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">close_projects</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">close_on_exit</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Release AEDT.</span>
 
 <span class="sd">        Parameters</span>

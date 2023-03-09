@@ -157,14 +157,14 @@
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../API/index.html">
-                        API AEDT reference
+                        AEDT API
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../EDBAPI/index.html">
-                        API EDB reference
+                        EDB API
                       </a>
                     </li>
                 
@@ -352,14 +352,14 @@
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../API/index.html">
-                        API AEDT reference
+                        AEDT API
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../EDBAPI/index.html">
-                        API EDB reference
+                        EDB API
                       </a>
                     </li>
                 
@@ -456,9 +456,9 @@
   <div class="bd-toc-item navbar-nav">
     <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../00-EDB/index.html">EDB examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01-HFSS3DLayout/index.html">HFSS 3D Layout examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../01-Modeling-Setup/index.html">General model and setup examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../02-HFSS/index.html">HFSS examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../02-HFSS3DLayout/index.html">HFSS 3D Layout examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../02-SBR%2B/index.html">SBR+ examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../03-Maxwell/index.html">Maxwell examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../04-Icepak/index.html">Icepak examples</a></li>
@@ -476,7 +476,6 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../07-EMIT/index.html">EMIT examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../07-TwinBuilder/index.html">Twin Builder examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../08-CableModeling/index.html">Cable Modeling examples</a></li>
 </ul>
 
   </div>
@@ -536,13 +535,17 @@ You can set <code class="docutils literal notranslate"><span class="pre">non_gra
 </section>
 <section id="launch-aedt-with-circuit">
 <h2>Launch AEDT with Circuit<a class="headerlink" href="#launch-aedt-with-circuit" title="Permalink to this heading">#</a></h2>
-<p>Launch AEDT 2022 R2 in graphical mode with Circuit.</p>
+<p>Launch AEDT 2023 R1 in graphical mode with Circuit.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">circuit</span> <span class="o">=</span> <span class="n">pyaedt</span><span class="o">.</span><span class="n">Circuit</span><span class="p">(</span><span class="n">projectname</span><span class="o">=</span><span class="n">pyaedt</span><span class="o">.</span><span class="n">generate_unique_project_name</span><span class="p">(),</span>
-                         <span class="n">specified_version</span><span class="o">=</span><span class="s2">&quot;2022.2&quot;</span><span class="p">,</span>
+                         <span class="n">specified_version</span><span class="o">=</span><span class="s2">&quot;2023.1&quot;</span><span class="p">,</span>
                          <a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a><span class="o">=</span><a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a><span class="p">,</span>
                          <span class="n">new_desktop_session</span><span class="o">=</span><span class="kc">True</span>
                          <span class="p">)</span>
 <span class="n">circuit</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">schematic_units</span> <span class="o">=</span> <span class="s2">&quot;mil&quot;</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>C:\actions-runner\_work\PyAEDT\PyAEDT\pyaedt\desktop.py:778: ResourceWarning: unclosed &lt;socket.socket fd=3984, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=(&#39;0.0.0.0&#39;, 54229)&gt;
+  self.port = _find_free_port()
 </pre></div>
 </div>
 </section>
@@ -589,7 +592,7 @@ and then use the <code class="docutils literal notranslate"><span class="pre">po
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>True
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  9.246 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  29.550 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-07-circuit-circuit-subcircuit-example-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/17b875cf44c190f4df2c5e435eabe140/Circuit_Subcircuit_Example.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">Circuit_Subcircuit_Example.py</span></code></a></p>

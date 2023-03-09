@@ -154,14 +154,14 @@
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../../API/index.html">
-                        API AEDT reference
+                        AEDT API
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../../EDBAPI/index.html">
-                        API EDB reference
+                        EDB API
                       </a>
                     </li>
                 
@@ -348,14 +348,14 @@
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../../API/index.html">
-                        API AEDT reference
+                        AEDT API
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../../EDBAPI/index.html">
-                        API EDB reference
+                        EDB API
                       </a>
                     </li>
                 
@@ -567,14 +567,13 @@
         <span class="n">radius</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="n">oVertexIDs</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="n">object_name</span><span class="p">]</span><span class="o">.</span><span class="n">vertices</span>
         <span class="k">if</span> <span class="n">oVertexIDs</span><span class="p">:</span>
-            <span class="n">vert_id_int</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">id</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">oVertexIDs</span><span class="p">]</span>
             <span class="k">if</span> <span class="n">inner</span><span class="p">:</span>
                 <span class="n">radius</span> <span class="o">=</span> <span class="mi">0</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">radius</span> <span class="o">=</span> <span class="mf">1e9</span>
 
-            <span class="k">for</span> <span class="n">vertex</span> <span class="ow">in</span> <span class="n">vert_id_int</span><span class="p">:</span>
-                <span class="n">pos</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">oeditor</span><span class="o">.</span><span class="n">GetVertexPosition</span><span class="p">(</span><span class="n">vertex</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">vertex</span> <span class="ow">in</span> <span class="n">oVertexIDs</span><span class="p">:</span>
+                <span class="n">pos</span> <span class="o">=</span> <span class="n">vertex</span><span class="o">.</span><span class="n">position</span>
                 <span class="n">vertex_radius</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="nb">float</span><span class="p">(</span><span class="n">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
                 <span class="k">if</span> <span class="n">inner</span><span class="p">:</span>
                     <span class="k">if</span> <span class="n">vertex_radius</span> <span class="o">&gt;</span> <span class="n">radius</span><span class="p">:</span>
@@ -621,6 +620,7 @@
 <span class="sd">        ----------</span>
 <span class="sd">        bounding_box : list.</span>
 <span class="sd">            List of either the 4 or 6 coordinates of the bounding box vertices.</span>
+<span class="sd">            Bounding box is provided as [xmin, ymin, zmin, xmax, ymax, zmax].</span>
 <span class="sd">        check_lines : bool, optional.</span>
 <span class="sd">            Whether to check line objects. The default is ``True``.</span>
 <span class="sd">        check_sheets : bool, optional.</span>
@@ -641,28 +641,29 @@
                 <span class="n">bounding_box</span> <span class="o">=</span> <span class="p">[</span><span class="n">bounding_box</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="n">bounding_box</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">bounding_box</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="n">bounding_box</span><span class="p">[</span><span class="mi">3</span><span class="p">]]</span>
 
         <span class="n">objects_2d</span> <span class="o">=</span> <span class="p">[]</span>
-
         <span class="k">if</span> <span class="n">check_lines</span><span class="p">:</span>
-            <span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_primitives</span><span class="o">.</span><span class="n">line_objects</span><span class="p">:</span>
-                <span class="k">if</span> <span class="p">(</span>
-                    <span class="n">bounding_box</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">obj</span><span class="o">.</span><span class="n">bounding_box</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">bounding_box</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-                    <span class="ow">and</span> <span class="n">bounding_box</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">obj</span><span class="o">.</span><span class="n">bounding_box</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">bounding_box</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-                    <span class="ow">and</span> <span class="n">bounding_box</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">obj</span><span class="o">.</span><span class="n">bounding_box</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">bounding_box</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
-                    <span class="ow">and</span> <span class="n">bounding_box</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">obj</span><span class="o">.</span><span class="n">bounding_box</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">bounding_box</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-                    <span class="ow">and</span> <span class="n">bounding_box</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">obj</span><span class="o">.</span><span class="n">bounding_box</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">bounding_box</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-                    <span class="ow">and</span> <span class="n">bounding_box</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">obj</span><span class="o">.</span><span class="n">bounding_box</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">bounding_box</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+            <span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">line_objects</span><span class="p">:</span>
+                <span class="n">bound</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">bounding_box</span>
+                <span class="k">if</span> <span class="p">(</span>  <span class="c1"># pragma: no cover</span>
+                    <span class="n">bounding_box</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">bound</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">bounding_box</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+                    <span class="ow">and</span> <span class="n">bounding_box</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">bound</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">bounding_box</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
+                    <span class="ow">and</span> <span class="n">bounding_box</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">bound</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">bounding_box</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span>
+                    <span class="ow">and</span> <span class="n">bounding_box</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">bound</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">bounding_box</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+                    <span class="ow">and</span> <span class="n">bounding_box</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">bound</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">bounding_box</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
+                    <span class="ow">and</span> <span class="n">bounding_box</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">bound</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">bounding_box</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span>
                 <span class="p">):</span>
                     <span class="n">objects_2d</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">check_sheets</span><span class="p">:</span>
-            <span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_primitives</span><span class="o">.</span><span class="n">sheet_objects</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">sheet_objects</span><span class="p">:</span>
+                <span class="n">bound</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">bounding_box</span>
                 <span class="k">if</span> <span class="p">(</span>
-                    <span class="n">bounding_box</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">obj</span><span class="o">.</span><span class="n">bounding_box</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">bounding_box</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-                    <span class="ow">and</span> <span class="n">bounding_box</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">obj</span><span class="o">.</span><span class="n">bounding_box</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">bounding_box</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-                    <span class="ow">and</span> <span class="n">bounding_box</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">obj</span><span class="o">.</span><span class="n">bounding_box</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">bounding_box</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
-                    <span class="ow">and</span> <span class="n">bounding_box</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">obj</span><span class="o">.</span><span class="n">bounding_box</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">bounding_box</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-                    <span class="ow">and</span> <span class="n">bounding_box</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">obj</span><span class="o">.</span><span class="n">bounding_box</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">bounding_box</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-                    <span class="ow">and</span> <span class="n">bounding_box</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">obj</span><span class="o">.</span><span class="n">bounding_box</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">bounding_box</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+                    <span class="n">bounding_box</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">bound</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">bounding_box</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+                    <span class="ow">and</span> <span class="n">bounding_box</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">bound</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">bounding_box</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
+                    <span class="ow">and</span> <span class="n">bounding_box</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">bound</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">bounding_box</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span>
+                    <span class="ow">and</span> <span class="n">bounding_box</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">bound</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">bounding_box</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+                    <span class="ow">and</span> <span class="n">bounding_box</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">bound</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">bounding_box</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
+                    <span class="ow">and</span> <span class="n">bounding_box</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">bound</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">bounding_box</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span>
                 <span class="p">):</span>
                     <span class="n">objects_2d</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
 

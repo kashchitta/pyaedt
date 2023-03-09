@@ -154,14 +154,14 @@
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../../API/index.html">
-                        API AEDT reference
+                        AEDT API
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../../EDBAPI/index.html">
-                        API EDB reference
+                        EDB API
                       </a>
                     </li>
                 
@@ -348,14 +348,14 @@
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../../API/index.html">
-                        API AEDT reference
+                        AEDT API
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../../EDBAPI/index.html">
-                        API EDB reference
+                        EDB API
                       </a>
                     </li>
                 
@@ -1204,10 +1204,11 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_y_scale</span> <span class="o">=</span> <span class="mf">1.0</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_z_scale</span> <span class="o">=</span> <span class="mf">1.0</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_convert_fields_in_db</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_log_multiplier</span> <span class="o">=</span> <span class="mf">10.0</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">convert_fields_in_db</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Either if convert the fields before plotting in dB10. Log scale will be disabled.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Either if convert the fields before plotting in dB. Log scale will be disabled.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1222,6 +1223,20 @@
             <span class="n">f</span><span class="o">.</span><span class="n">_cached_polydata</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">frames</span><span class="p">:</span>
             <span class="n">f</span><span class="o">.</span><span class="n">_cached_polydata</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">log_multiplier</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Multiply the log value.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        float</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_log_multiplier</span>
+
+    <span class="nd">@log_multiplier</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">log_multiplier</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_log_multiplier</span> <span class="o">=</span> <span class="n">value</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">x_scale</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -1716,7 +1731,7 @@
                 <span class="k">if</span> <span class="s2">&quot;.aedtplt&quot;</span> <span class="ow">in</span> <span class="n">field</span><span class="o">.</span><span class="n">path</span><span class="p">:</span>
                     <span class="n">vertices</span><span class="p">,</span> <span class="n">faces</span><span class="p">,</span> <span class="n">scalars</span><span class="p">,</span> <span class="n">log1</span> <span class="o">=</span> <span class="n">_parse_aedtplt</span><span class="p">(</span><span class="n">field</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
                     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">convert_fields_in_db</span><span class="p">:</span>
-                        <span class="n">scalars</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="mi">10</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">scalars</span><span class="p">]</span>
+                        <span class="n">scalars</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">log_multiplier</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">scalars</span><span class="p">]</span>
                     <span class="n">fields_vals</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">PolyData</span><span class="p">(</span><span class="n">vertices</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">faces</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
                     <span class="n">field</span><span class="o">.</span><span class="n">_cached_polydata</span> <span class="o">=</span> <span class="n">fields_vals</span>
                     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">scalars</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">list</span><span class="p">):</span>
@@ -1767,10 +1782,10 @@
                             <span class="k">else</span><span class="p">:</span>
                                 <span class="n">values</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">tmp</span><span class="p">[</span><span class="mi">3</span><span class="p">]))</span>
                     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">convert_fields_in_db</span><span class="p">:</span>
-                        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-                            <span class="n">values</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">values</span><span class="p">]</span>
+                        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">list</span><span class="p">):</span>
+                            <span class="n">values</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">log_multiplier</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">i</span><span class="p">))</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">values</span><span class="p">]</span>
                         <span class="k">else</span><span class="p">:</span>
-                            <span class="n">values</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">10</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">value</span><span class="p">]</span> <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">values</span><span class="p">]</span>
+                            <span class="n">values</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">self</span><span class="o">.</span><span class="n">log_multiplier</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">i</span><span class="p">))</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">value</span><span class="p">]</span> <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">values</span><span class="p">]</span>
                     <span class="k">if</span> <span class="n">nodes</span><span class="p">:</span>
                         <span class="k">try</span><span class="p">:</span>
                             <span class="n">conv</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">AEDT_UNITS</span><span class="p">[</span><span class="s2">&quot;Length&quot;</span><span class="p">][</span><span class="bp">self</span><span class="o">.</span><span class="n">units</span><span class="p">]</span>

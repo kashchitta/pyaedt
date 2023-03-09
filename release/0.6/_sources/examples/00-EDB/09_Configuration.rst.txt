@@ -28,7 +28,7 @@ run anlasyis and get results.
 Perform required imports
 ~~~~~~~~~~~~~~~~~~~~~~~~
 Peform required imports. Importing the ``Hfss3dlayout`` object initializes it
-on version 2022 R2.
+on version 2023 R1.
 
 .. GENERATED FROM PYTHON SOURCE LINES 14-18
 
@@ -89,7 +89,7 @@ Download the AEDB file and copy it in the temporary folder.
 
  .. code-block:: none
 
-    Project folder will be D:\Temp\pyaedt_prj_76H\edb/Galileo.aedb
+    Project folder will be D:\Temp\pyaedt_prj_6DS\edb/Galileo.aedb
 
 
 
@@ -98,14 +98,14 @@ Download the AEDB file and copy it in the temporary folder.
 
 Launch EDB
 ~~~~~~~~~~
-Launch the :class:`pyaedt.Edb` class, using EDB 2022 R2 and SI units.
+Launch the :class:`pyaedt.Edb` class, using EDB 2023 R1 and SI units.
 
 .. GENERATED FROM PYTHON SOURCE LINES 39-41
 
 .. code-block:: default
 
 
-    edbapp = pyaedt.Edb(target_aedb, edbversion="2022.2")
+    edbapp = pyaedt.Edb(target_aedb, edbversion="2023.1")
 
 
 
@@ -249,7 +249,7 @@ Check Component Definition
  .. code-block:: none
 
 
-    {'602433-026': <pyaedt.edb_core.edb_data.components_data.EDBComponentDef object at 0x0000012F63683220>}
+    {'602433-026': <pyaedt.edb_core.edb_data.components_data.EDBComponentDef object at 0x00000272B270D040>}
 
 
 
@@ -401,7 +401,7 @@ Project folder aedb will be opened in AEDT Hfss3DLayout and loaded.
 
 .. code-block:: default
 
-    h3d = pyaedt.Hfss3dLayout(specified_version="2022.2", projectname=target_aedb, non_graphical=non_graphical)
+    h3d = pyaedt.Hfss3dLayout(specified_version="2023.1", projectname=target_aedb, non_graphical=non_graphical)
 
 
 
@@ -420,7 +420,7 @@ Project will be solved.
 
 .. code-block:: default
 
-    h3d.analyze_nominal()
+    h3d.analyze()
 
 
 
@@ -512,7 +512,7 @@ Hfss3dLayout is saved and closed.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 1 minutes  40.980 seconds)
+   **Total running time of the script:** ( 2 minutes  13.510 seconds)
 
 
 .. _sphx_glr_download_examples_00-EDB_09_Configuration.py:

@@ -58,7 +58,7 @@ You can set ``non_graphical`` either to ``True`` or ``False``.
 
 
     non_graphical = False
-
+    desktop_version = "2023.1"
 
 
 
@@ -70,7 +70,7 @@ You can set ``non_graphical`` either to ``True`` or ``False``.
 
 Launch AEDT and 2D Extractor
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Launch AEDT 2022 R2 in graphical mode and launch 2D Extractor. This example
+Launch AEDT 2023 R1 in graphical mode and launch 2D Extractor. This example
 uses SI units.
 
 .. GENERATED FROM PYTHON SOURCE LINES 29-36
@@ -78,7 +78,7 @@ uses SI units.
 .. code-block:: default
 
 
-    q = pyaedt.Q2d(specified_version="2022.2",
+    q = pyaedt.Q2d(specified_version=desktop_version,
                    non_graphical=non_graphical,
                    new_desktop_session=True,
                    projectname=pyaedt.generate_unique_name("pyaedt_q2d_example"),
@@ -87,6 +87,13 @@ uses SI units.
 
 
 
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    C:\actions-runner\_work\PyAEDT\PyAEDT\pyaedt\desktop.py:778: ResourceWarning: unclosed <socket.socket fd=6800, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('0.0.0.0', 53503)>
+      self.port = _find_free_port()
 
 
 
@@ -245,7 +252,7 @@ Create a reference ground plane.
  .. code-block:: none
 
 
-    <pyaedt.modeler.cad.object3d.Object3d object at 0x0000012F020442E0>
+    <pyaedt.modeler.cad.object3d.Object3d object at 0x00000272CCF6AB50>
 
 
 
@@ -273,7 +280,7 @@ Create a dielectric.
  .. code-block:: none
 
 
-    <pyaedt.modeler.cad.object3d.Object3d object at 0x0000012F0203CEE0>
+    <pyaedt.modeler.cad.object3d.Object3d object at 0x00000272CCF6AB20>
 
 
 
@@ -283,22 +290,26 @@ Create conformal coating
 ~~~~~~~~~~~~~~~~~~~~~~~~
 Create a conformal coating.
 
-.. GENERATED FROM PYTHON SOURCE LINES 124-150
+.. GENERATED FROM PYTHON SOURCE LINES 124-154
 
 .. code-block:: default
 
 
     sm_obj_list = []
+    ids = [1,2,3]
+    if desktop_version >= "2023.1":
+        ids = [0,1,2]
+
     for obj_name in ["signal", "co_gnd_left", "co_gnd_right"]:
         obj = q.modeler.get_object_from_name(obj_name)
         e_obj_list = []
-        for i in [1, 2, 3]:
+        for i in ids:
             e_obj = q.modeler.create_object_from_edge(obj.edges[i])
             e_obj_list.append(e_obj)
         e_obj_1 = e_obj_list[0]
         q.modeler.unite(e_obj_list)
         new_obj = q.modeler.sweep_along_vector(e_obj_1.id, [0, sm_h, 0])
-        sm_obj_list.append(new_obj)
+        sm_obj_list.append(e_obj_1)
 
     new_obj = q.modeler.create_rectangle(position=[co_gnd_w, layer_2_lh, 0], dimension_list=[clearance, sm_h])
     sm_obj_list.append(new_obj)
@@ -320,13 +331,13 @@ Create a conformal coating.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 151-154
+.. GENERATED FROM PYTHON SOURCE LINES 155-158
 
 Assign conductor
 ~~~~~~~~~~~~~~~~
 Assign a conductor to the signal.
 
-.. GENERATED FROM PYTHON SOURCE LINES 154-160
+.. GENERATED FROM PYTHON SOURCE LINES 158-164
 
 .. code-block:: default
 
@@ -345,17 +356,17 @@ Assign a conductor to the signal.
  .. code-block:: none
 
 
-    <pyaedt.modules.Boundary.BoundaryObject object at 0x0000012F0211AD30>
+    <pyaedt.modules.Boundary.BoundaryObject object at 0x00000272CD1E7430>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 161-164
+.. GENERATED FROM PYTHON SOURCE LINES 165-168
 
 Create reference ground
 ~~~~~~~~~~~~~~~~~~~~~~~
 Create a reference ground.
 
-.. GENERATED FROM PYTHON SOURCE LINES 164-170
+.. GENERATED FROM PYTHON SOURCE LINES 168-174
 
 .. code-block:: default
 
@@ -374,17 +385,17 @@ Create a reference ground.
  .. code-block:: none
 
 
-    <pyaedt.modules.Boundary.BoundaryObject object at 0x0000012F030FB400>
+    <pyaedt.modules.Boundary.BoundaryObject object at 0x00000272CD1E7610>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 171-174
+.. GENERATED FROM PYTHON SOURCE LINES 175-178
 
 Assign Huray model on signal
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Assign the Huray model on the signal.
 
-.. GENERATED FROM PYTHON SOURCE LINES 174-178
+.. GENERATED FROM PYTHON SOURCE LINES 178-182
 
 .. code-block:: default
 
@@ -401,17 +412,17 @@ Assign the Huray model on the signal.
  .. code-block:: none
 
 
-    <pyaedt.modules.Boundary.BoundaryObject object at 0x0000012F0255F7F0>
+    <pyaedt.modules.Boundary.BoundaryObject object at 0x00000272B2652910>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 179-182
+.. GENERATED FROM PYTHON SOURCE LINES 183-186
 
 Create setup, analyze, and plot
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Create the setup, analyze it, and plot solution data.
 
-.. GENERATED FROM PYTHON SOURCE LINES 182-201
+.. GENERATED FROM PYTHON SOURCE LINES 186-205
 
 .. code-block:: default
 
@@ -429,7 +440,7 @@ Create the setup, analyze it, and plot solution data.
 
     sweep.update()
 
-    q.analyze_nominal()
+    q.analyze()
 
     a = q.post.get_solution_data(expressions="Z0(signal,signal)", context="Original")
     a.plot()
@@ -452,13 +463,13 @@ Create the setup, analyze it, and plot solution data.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 202-205
+.. GENERATED FROM PYTHON SOURCE LINES 206-209
 
 Save project and close AEDT
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Save the project and close AEDT.
 
-.. GENERATED FROM PYTHON SOURCE LINES 205-209
+.. GENERATED FROM PYTHON SOURCE LINES 209-213
 
 .. code-block:: default
 
@@ -482,7 +493,7 @@ Save the project and close AEDT.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  34.039 seconds)
+   **Total running time of the script:** ( 0 minutes  41.251 seconds)
 
 
 .. _sphx_glr_download_examples_05-Q3D_Q2D_Example_CPWG.py:

@@ -157,14 +157,14 @@
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../API/index.html">
-                        API AEDT reference
+                        AEDT API
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../EDBAPI/index.html">
-                        API EDB reference
+                        EDB API
                       </a>
                     </li>
                 
@@ -352,14 +352,14 @@
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../API/index.html">
-                        API AEDT reference
+                        AEDT API
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../EDBAPI/index.html">
-                        API EDB reference
+                        EDB API
                       </a>
                     </li>
                 
@@ -456,9 +456,9 @@
   <div class="bd-toc-item navbar-nav">
     <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../00-EDB/index.html">EDB examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01-HFSS3DLayout/index.html">HFSS 3D Layout examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../01-Modeling-Setup/index.html">General model and setup examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../02-HFSS/index.html">HFSS examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../02-HFSS3DLayout/index.html">HFSS 3D Layout examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../02-SBR%2B/index.html">SBR+ examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../03-Maxwell/index.html">Maxwell examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../04-Icepak/index.html">Icepak examples</a></li>
@@ -471,7 +471,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../07-Circuit/index.html">Circuit examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../07-EMIT/index.html">EMIT examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../07-TwinBuilder/index.html">Twin Builder examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../08-CableModeling/index.html">Cable Modeling examples</a></li>
 </ul>
 
   </div>
@@ -539,10 +538,14 @@ You can set <code class="docutils literal notranslate"><span class="pre">non_gra
 <section id="start-hfss">
 <h2>Start HFSS<a class="headerlink" href="#start-hfss" title="Permalink to this heading">#</a></h2>
 <p>Start HFSS and initialize the PyAEDT object.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">version</span></a> <span class="o">=</span> <span class="s2">&quot;2022.2&quot;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">version</span></a> <span class="o">=</span> <span class="s2">&quot;2023.1&quot;</span>
 <span class="n">hfss</span> <span class="o">=</span> <span class="n">pyaedt</span><span class="o">.</span><span class="n">Hfss</span><span class="p">(</span><span class="n">projectname</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">project_temp_name</span></a><span class="p">,</span> <span class="n">specified_version</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">version</span></a><span class="p">,</span> <a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a><span class="o">=</span><a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a><span class="p">,</span>
                    <span class="n">new_desktop_session</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">pin_names</span></a> <span class="o">=</span> <span class="n">hfss</span><span class="o">.</span><span class="n">excitations</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>C:\actions-runner\_work\PyAEDT\PyAEDT\pyaedt\desktop.py:778: ResourceWarning: unclosed &lt;socket.socket fd=4844, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=(&#39;0.0.0.0&#39;, 53853)&gt;
+  self.port = _find_free_port()
 </pre></div>
 </div>
 </section>
@@ -612,7 +615,7 @@ ports on them. Define the voltage source on the input port.</p>
 <h2>Solve and push excitations<a class="headerlink" href="#solve-and-push-excitations" title="Permalink to this heading">#</a></h2>
 <p>Solve the circuit and push excitations to the HFSS model to calculate the
 correct value of losses.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">circuit</span><span class="o">.</span><span class="n">analyze_nominal</span><span class="p">()</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">circuit</span><span class="o">.</span><span class="n">analyze</span><span class="p">()</span>
 <span class="n">circuit</span><span class="o">.</span><span class="n">push_excitations</span><span class="p">(</span><span class="n">instance_name</span><span class="o">=</span><span class="s2">&quot;S1&quot;</span><span class="p">,</span> <a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">setup_name</span></a><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">setup_name</span></a><span class="p">)</span>
 </pre></div>
 </div>
@@ -654,7 +657,7 @@ correct value of losses.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mech</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">export_path</span><span class="o">=</span><a href="https://docs.python.org/dev/library/os.path.html#os.path.join" title="os.path.join" class="sphx-glr-backref-module-os-path sphx-glr-backref-type-py-function"><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span></a><span class="p">(</span><span class="n">mech</span><span class="o">.</span><span class="n">working_directory</span><span class="p">,</span> <span class="s2">&quot;Mech.jpg&quot;</span><span class="p">),</span> <span class="n">plot_air_objects</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_Hfss_Mechanical_001.png" srcset="../../_images/sphx_glr_Hfss_Mechanical_001.png" alt="Hfss Mechanical" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.generic.plot.ModelPlotter object at 0x0000012F0211F550&gt;
+<img src="../../_images/sphx_glr_Hfss_Mechanical_001.png" srcset="../../_images/sphx_glr_Hfss_Mechanical_001.png" alt="Hfss Mechanical" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.generic.plot.ModelPlotter object at 0x00000272CCE1C7C0&gt;
 </pre></div>
 </div>
 </section>
@@ -663,14 +666,56 @@ correct value of losses.</p>
 <p>Solve and plot the thermal results.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mech</span><span class="o">.</span><span class="n">create_setup</span><span class="p">()</span>
 <span class="n">mech</span><span class="o">.</span><span class="n">save_project</span><span class="p">()</span>
-<span class="n">mech</span><span class="o">.</span><span class="n">analyze_nominal</span><span class="p">()</span>
+<span class="n">mech</span><span class="o">.</span><span class="n">analyze</span><span class="p">()</span>
 <a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">surfaces</span></a> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">name</span></a> <span class="ow">in</span> <span class="n">mech</span><span class="o">.</span><span class="n">get_all_conductors_names</span><span class="p">():</span>
     <a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">surfaces</span></a><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">mech</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">get_object_faces</span><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">name</span></a><span class="p">))</span>
 <span class="n">mech</span><span class="o">.</span><span class="n">post</span><span class="o">.</span><span class="n">create_fieldplot_surface</span><span class="p">(</span><span class="n">objlist</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">surfaces</span></a><span class="p">,</span> <span class="n">quantityName</span><span class="o">=</span><span class="s2">&quot;Temperature&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modules.solutions.FieldPlot object at 0x0000012F01A43EE0&gt;
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>  File &quot;C:\actions-runner\_work\_tool\Python\3.8.10\x64\lib\runpy.py&quot;, line 194, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File &quot;C:\actions-runner\_work\_tool\Python\3.8.10\x64\lib\runpy.py&quot;, line 87, in _run_code
+    exec(code, run_globals)
+  File &quot;C:\actions-runner\_work\PyAEDT\PyAEDT\testenv\Scripts\sphinx-build.exe\__main__.py&quot;, line 7, in &lt;module&gt;
+    sys.exit(main())
+  File &quot;c:\actions-runner\_work\pyaedt\pyaedt\testenv\lib\site-packages\sphinx\cmd\build.py&quot;, line 315, in main
+    return build_main(argv)
+  File &quot;c:\actions-runner\_work\pyaedt\pyaedt\testenv\lib\site-packages\sphinx\cmd\build.py&quot;, line 276, in build_main
+    app = Sphinx(args.sourcedir, args.confdir, args.outputdir,
+  File &quot;c:\actions-runner\_work\pyaedt\pyaedt\testenv\lib\site-packages\sphinx\application.py&quot;, line 262, in __init__
+    self._init_builder()
+  File &quot;c:\actions-runner\_work\pyaedt\pyaedt\testenv\lib\site-packages\sphinx\application.py&quot;, line 335, in _init_builder
+    self.events.emit(&#39;builder-inited&#39;)
+  File &quot;c:\actions-runner\_work\pyaedt\pyaedt\testenv\lib\site-packages\sphinx\events.py&quot;, line 94, in emit
+    results.append(listener.handler(self.app, *args))
+  File &quot;c:\actions-runner\_work\pyaedt\pyaedt\testenv\lib\site-packages\sphinx_gallery\gen_gallery.py&quot;, line 538, in generate_gallery_rst
+    ) = generate_dir_rst(
+  File &quot;c:\actions-runner\_work\pyaedt\pyaedt\testenv\lib\site-packages\sphinx_gallery\gen_rst.py&quot;, line 431, in generate_dir_rst
+    intro, title, cost = generate_file_rst(
+  File &quot;c:\actions-runner\_work\pyaedt\pyaedt\testenv\lib\site-packages\sphinx_gallery\gen_rst.py&quot;, line 1027, in generate_file_rst
+    output_blocks, time_elapsed = execute_script(script_blocks,
+  File &quot;c:\actions-runner\_work\pyaedt\pyaedt\testenv\lib\site-packages\sphinx_gallery\gen_rst.py&quot;, line 945, in execute_script
+    output_blocks.append(execute_code_block(
+  File &quot;c:\actions-runner\_work\pyaedt\pyaedt\testenv\lib\site-packages\sphinx_gallery\gen_rst.py&quot;, line 810, in execute_code_block
+    is_last_expr, mem_max = _exec_and_get_memory(
+  File &quot;c:\actions-runner\_work\pyaedt\pyaedt\testenv\lib\site-packages\sphinx_gallery\gen_rst.py&quot;, line 661, in _exec_and_get_memory
+    mem_body, _ = gallery_conf[&#39;call_memory&#39;](
+  File &quot;c:\actions-runner\_work\pyaedt\pyaedt\testenv\lib\site-packages\sphinx_gallery\gen_gallery.py&quot;, line 223, in call_memory
+    return 0., func()
+  File &quot;c:\actions-runner\_work\pyaedt\pyaedt\testenv\lib\site-packages\sphinx_gallery\gen_rst.py&quot;, line 600, in __call__
+    exec(self.code, self.fake_main.__dict__)
+  File &quot;C:\actions-runner\_work\PyAEDT\PyAEDT\examples\06-Multiphysics\Hfss_Mechanical.py&quot;, line 151, in &lt;module&gt;
+    mech.analyze()
+  File &quot;C:\actions-runner\_work\PyAEDT\PyAEDT\pyaedt\application\Analysis.py&quot;, line 1657, in analyze
+    return self.analyze_setup(
+  File &quot;C:\actions-runner\_work\PyAEDT\PyAEDT\pyaedt\generic\general_methods.py&quot;, line 137, in wrapper
+    out = user_function(*args, **kwargs)
+  File &quot;C:\actions-runner\_work\PyAEDT\PyAEDT\pyaedt\application\Analysis.py&quot;, line 1783, in analyze_setup
+    self.odesign.AnalyzeAll()
+RuntimeError: Error 0x80020009;  Logs or message window might have more details
+
+&lt;pyaedt.modules.solutions.FieldPlot object at 0x00000272CCB58700&gt;
 </pre></div>
 </div>
 </section>
@@ -683,7 +728,7 @@ correct value of losses.</p>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>True
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 2 minutes  34.624 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 3 minutes  36.386 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-06-multiphysics-hfss-mechanical-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/1078f46f7b7a79479dc13aa9c2fa2120/Hfss_Mechanical.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">Hfss_Mechanical.py</span></code></a></p>

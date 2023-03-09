@@ -154,14 +154,14 @@
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../../API/index.html">
-                        API AEDT reference
+                        AEDT API
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../../EDBAPI/index.html">
-                        API EDB reference
+                        EDB API
                       </a>
                     </li>
                 
@@ -348,14 +348,14 @@
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../../API/index.html">
-                        API AEDT reference
+                        AEDT API
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../../EDBAPI/index.html">
-                        API EDB reference
+                        EDB API
                       </a>
                     </li>
                 
@@ -1160,7 +1160,19 @@
         <span class="k">return</span> <span class="n">solution_data</span><span class="o">.</span><span class="n">plot_3d</span><span class="p">(</span><span class="n">x_axis</span><span class="o">=</span><span class="n">primary_sweep</span><span class="p">,</span> <span class="n">y_axis</span><span class="o">=</span><span class="n">secondary_sweep</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="PostProcessor.plot_scene"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.AdvancedPostProcessing.PostProcessor.plot_scene.html#pyaedt.modules.AdvancedPostProcessing.PostProcessor.plot_scene">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
-    <span class="k">def</span> <span class="nf">plot_scene</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">frames_list</span><span class="p">,</span> <span class="n">output_gif_path</span><span class="p">,</span> <span class="n">norm_index</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">dy_rng</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">fps</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">view</span><span class="o">=</span><span class="s2">&quot;yz&quot;</span><span class="p">,</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">plot_scene</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">frames_list</span><span class="p">,</span>
+        <span class="n">output_gif_path</span><span class="p">,</span>
+        <span class="n">norm_index</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">dy_rng</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">fps</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>
+        <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">view</span><span class="o">=</span><span class="s2">&quot;yz&quot;</span><span class="p">,</span>
+        <span class="n">zoom</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span>
+        <span class="n">convert_fields_in_db</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">log_multiplier</span><span class="o">=</span><span class="mf">10.0</span><span class="p">,</span>
+    <span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Plot the current model 3D scene with overlapping animation coming from a file list and save the gif.</span>
 
 
@@ -1186,6 +1198,10 @@
 <span class="sd">           The default is ``&quot;isometric&quot;``.</span>
 <span class="sd">        zoom : float, optional</span>
 <span class="sd">            Default zoom. Default Value is `2`.</span>
+<span class="sd">        convert_fields_in_db : bool, optional</span>
+<span class="sd">            Either if convert the fields before plotting in dB. Default Value is `False`.</span>
+<span class="sd">        log_multiplier : float, optional</span>
+<span class="sd">            Field multiplier if field in dB. Default Value is `10.0`.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1225,6 +1241,8 @@
         <span class="n">scene</span><span class="o">.</span><span class="n">bounding_box</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="n">scene</span><span class="o">.</span><span class="n">color_bar</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="n">scene</span><span class="o">.</span><span class="n">gif_file</span> <span class="o">=</span> <span class="n">output_gif_path</span>  <span class="c1"># This gif may be a bit slower so we can speed it up a bit</span>
+        <span class="n">scene</span><span class="o">.</span><span class="n">convert_fields_in_db</span> <span class="o">=</span> <span class="n">convert_fields_in_db</span>
+        <span class="n">scene</span><span class="o">.</span><span class="n">log_multiplier</span> <span class="o">=</span> <span class="n">log_multiplier</span>
         <span class="n">scene</span><span class="o">.</span><span class="n">animate</span><span class="p">()</span></div></div>
 </pre></div>
 

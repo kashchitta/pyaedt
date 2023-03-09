@@ -157,14 +157,14 @@
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../API/index.html">
-                        API AEDT reference
+                        AEDT API
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../EDBAPI/index.html">
-                        API EDB reference
+                        EDB API
                       </a>
                     </li>
                 
@@ -352,14 +352,14 @@
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../API/index.html">
-                        API AEDT reference
+                        AEDT API
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../EDBAPI/index.html">
-                        API EDB reference
+                        EDB API
                       </a>
                     </li>
                 
@@ -456,8 +456,10 @@
   <div class="bd-toc-item navbar-nav">
     <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../00-EDB/index.html">EDB examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01-HFSS3DLayout/index.html">HFSS 3D Layout examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../01-Modeling-Setup/index.html">General model and setup examples</a></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">HFSS examples</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="01-Cable_Modeling_Workflow.html">HFSS: Cable Modeling</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Advanced_Far_Field.html">HFSS: advanced far field postprocessing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Array.html">HFSS: component antenna array</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Flex_CPWG.html">HFSS: flex cable CPWG</a></li>
@@ -472,7 +474,6 @@
 <li class="toctree-l2"><a class="reference internal" href="Waveguide_Filter.html">HFSS: Inductive Iris waveguide filter</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../02-HFSS3DLayout/index.html">HFSS 3D Layout examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../02-SBR%2B/index.html">SBR+ examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../03-Maxwell/index.html">Maxwell examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../04-Icepak/index.html">Icepak examples</a></li>
@@ -481,7 +482,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../07-Circuit/index.html">Circuit examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../07-EMIT/index.html">EMIT examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../07-TwinBuilder/index.html">Twin Builder examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../08-CableModeling/index.html">Cable Modeling examples</a></li>
 </ul>
 
   </div>
@@ -637,7 +637,7 @@ dictionary.</p>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Its length is: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">dictionary_list</span></a><span class="p">)))</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>List of data: [{&#39;frequency&#39;: 150000000.0, &#39;permittivity&#39;: 6.5, &#39;thickness&#39;: 0.010909272161595599, &#39;width&#39;: 0.636880923998186, &#39;length&#39;: 0.38868986554662005, &#39;previous_impedance&#39;: 0}, {&#39;frequency&#39;: 150000000.0, &#39;permittivity&#39;: 6.5, &#39;thickness&#39;: 0.010023348262833779, &#39;width&#39;: 0.636880923998186, &#39;length&#39;: 0.3889939717118322, &#39;previous_impedance&#39;: 0}, {&#39;frequency&#39;: 150000000.0, &#39;permittivity&#39;: 6.5, &#39;thickness&#39;: 0.010909272161595599, &#39;width&#39;: 0.4846160800898129, &#39;length&#39;: 0.39050954401391114, &#39;previous_impedance&#39;: 0}, {&#39;frequency&#39;: 150000000.0, &#39;permittivity&#39;: 6.5, &#39;thickness&#39;: 0.010023348262833779, &#39;width&#39;: 0.4846160800898129, &#39;length&#39;: 0.39069127902191614, &#39;previous_impedance&#39;: 0}, {&#39;frequency&#39;: 150000000.0, &#39;permittivity&#39;: 11.12, &#39;thickness&#39;: 0.0932454788582938, &#39;width&#39;: 0.2761339235854148, &#39;length&#39;: 0.2730762704554516, &#39;previous_impedance&#39;: 0}, {&#39;frequency&#39;: 150000000.0, &#39;permittivity&#39;: 11.12, &#39;thickness&#39;: 0.00803316500225879, &#39;width&#39;: 0.2761339235854148, &#39;length&#39;: 0.3013245313198676, &#39;previous_impedance&#39;: 0}, {&#39;frequency&#39;: 150000000.0, &#39;permittivity&#39;: 11.12, &#39;thickness&#39;: 0.0932454788582938, &#39;width&#39;: 0.2731615125037282, &#39;length&#39;: 0.27337682927090956, &#39;previous_impedance&#39;: 0}, {&#39;frequency&#39;: 150000000.0, &#39;permittivity&#39;: 11.12, &#39;thickness&#39;: 0.00803316500225879, &#39;width&#39;: 0.2731615125037282, &#39;length&#39;: 0.30140541900890955, &#39;previous_impedance&#39;: 0}]
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>List of data: [{&#39;frequency&#39;: 150000000.0, &#39;permittivity&#39;: 2.76, &#39;thickness&#39;: 0.01245074481357994, &#39;width&#39;: 0.49761203643458013, &#39;length&#39;: 0.5994414487939717, &#39;previous_impedance&#39;: 0}, {&#39;frequency&#39;: 150000000.0, &#39;permittivity&#39;: 2.76, &#39;thickness&#39;: 0.025836589439302123, &#39;width&#39;: 0.49761203643458013, &#39;length&#39;: 0.5948123460897401, &#39;previous_impedance&#39;: 0}, {&#39;frequency&#39;: 150000000.0, &#39;permittivity&#39;: 2.76, &#39;thickness&#39;: 0.01245074481357994, &#39;width&#39;: 0.5069975714187701, &#39;length&#39;: 0.5992721373348104, &#39;previous_impedance&#39;: 0}, {&#39;frequency&#39;: 150000000.0, &#39;permittivity&#39;: 2.76, &#39;thickness&#39;: 0.025836589439302123, &#39;width&#39;: 0.5069975714187701, &#39;length&#39;: 0.5945331017440586, &#39;previous_impedance&#39;: 0}, {&#39;frequency&#39;: 150000000.0, &#39;permittivity&#39;: 5.4, &#39;thickness&#39;: 0.027941252739425264, &#39;width&#39;: 0.42515253148525456, &#39;length&#39;: 0.4261261030030248, &#39;previous_impedance&#39;: 0}, {&#39;frequency&#39;: 150000000.0, &#39;permittivity&#39;: 5.4, &#39;thickness&#39;: 0.09431436464992766, &#39;width&#39;: 0.42515253148525456, &#39;length&#39;: 0.39595632061067265, &#39;previous_impedance&#39;: 0}, {&#39;frequency&#39;: 150000000.0, &#39;permittivity&#39;: 5.4, &#39;thickness&#39;: 0.027941252739425264, &#39;width&#39;: 0.5760973562245166, &#39;length&#39;: 0.4215952619632639, &#39;previous_impedance&#39;: 0}, {&#39;frequency&#39;: 150000000.0, &#39;permittivity&#39;: 5.4, &#39;thickness&#39;: 0.09431436464992766, &#39;width&#39;: 0.5760973562245166, &#39;length&#39;: 0.3873962612594097, &#39;previous_impedance&#39;: 0}]
 Its length is: 8
 </pre></div>
 </div>
@@ -648,7 +648,7 @@ Its length is: 8
 Open an HFSS design and create the stackup, add the different layers, and add
 the patch. In the stackup library, most things, like the layers and patch,
 are already parametrized.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">desktopVersion</span></a> <span class="o">=</span> <span class="s2">&quot;2022.2&quot;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">desktopVersion</span></a> <span class="o">=</span> <span class="s2">&quot;2023.1&quot;</span>
 
 <span class="n">hfss</span> <span class="o">=</span> <span class="n">Hfss</span><span class="p">(</span>
     <span class="n">new_desktop_session</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">solution_type</span><span class="o">=</span><span class="s2">&quot;Terminal&quot;</span><span class="p">,</span> <a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a><span class="o">=</span><a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a><span class="p">,</span> <span class="n">specified_version</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">desktopVersion</span></a>
@@ -678,7 +678,7 @@ are already parametrized.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">patch</span><span class="o">.</span><span class="n">create_lumped_port</span><span class="p">(</span><span class="n">reference_layer</span><span class="o">=</span><span class="n">ground</span><span class="p">,</span> <span class="n">opposite_side</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">port_name</span><span class="o">=</span><span class="s2">&quot;one&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modules.Boundary.BoundaryObject object at 0x0000012F634BA6D0&gt;
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modules.Boundary.BoundaryObject object at 0x00000272C379D1F0&gt;
 </pre></div>
 </div>
 </section>
@@ -696,7 +696,7 @@ ensures that the air box is large enough in the normal direction of the patch.</
 <span class="n">hfss</span><span class="o">.</span><span class="n">assign_radiation_boundary_to_objects</span><span class="p">(</span><span class="n">region</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modules.Boundary.BoundaryObject object at 0x0000012F01124B20&gt;
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modules.Boundary.BoundaryObject object at 0x00000272C379D2B0&gt;
 </pre></div>
 </div>
 </section>
@@ -706,7 +706,7 @@ ensures that the air box is large enough in the normal direction of the patch.</
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">hfss</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">export_path</span><span class="o">=</span><a href="https://docs.python.org/dev/library/os.path.html#os.path.join" title="os.path.join" class="sphx-glr-backref-module-os-path sphx-glr-backref-type-py-function"><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span></a><span class="p">(</span><span class="n">hfss</span><span class="o">.</span><span class="n">working_directory</span><span class="p">,</span> <span class="s2">&quot;Image.jpg&quot;</span><span class="p">),</span> <span class="n">plot_air_objects</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_Machine_learning_applied_to_Patch_001.png" srcset="../../_images/sphx_glr_Machine_learning_applied_to_Patch_001.png" alt="Machine learning applied to Patch" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.generic.plot.ModelPlotter object at 0x0000012F01124AC0&gt;
+<img src="../../_images/sphx_glr_Machine_learning_applied_to_Patch_001.png" srcset="../../_images/sphx_glr_Machine_learning_applied_to_Patch_001.png" alt="Machine learning applied to Patch" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.generic.plot.ModelPlotter object at 0x00000272CA044400&gt;
 </pre></div>
 </div>
 </section>
@@ -848,30 +848,30 @@ of each case using the analytic formula.</p>
     <a href="https://docs.python.org/dev/library/stdtypes.html#dict" title="builtins.dict" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">dictio</span></a><span class="p">[</span><span class="s2">&quot;previous_impedance&quot;</span><span class="p">]</span> <span class="o">=</span> <a href="https://docs.python.org/dev/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">previous_impedance</span></a>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>minimum_imaginary: 0.6710650951278502
-previous_impedance: 229.12616766638394
-0.136029941197648
-minimum_imaginary: -0.5760169452779097
-previous_impedance: 227.50878594909744
-0.136848973958958
-minimum_imaginary: 0.21745786250750312
-previous_impedance: 277.59086708052956
-0.13824402976119
-minimum_imaginary: 0.7577076082672839
-previous_impedance: 288.29282046264206
-0.138253030121205
-minimum_imaginary: -0.06589854454646507
-previous_impedance: 310.4943888181896
-0.133035821432857
-minimum_imaginary: -0.01081596215270741
-previous_impedance: 406.8173467494546
-0.14119914796591898
-minimum_imaginary: -0.1464836116081604
-previous_impedance: 333.46096289025365
-0.133740849633985
-minimum_imaginary: -0.7314767593079478
-previous_impedance: 426.0799898528028
-0.140983139325573
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>minimum_imaginary: -0.08192967716463381
+previous_impedance: 348.9531428047299
+0.14695637825513
+minimum_imaginary: 0.21008898112543095
+previous_impedance: 338.52310547032795
+0.14500630025201
+minimum_imaginary: -0.3063576043679643
+previous_impedance: 353.2850759934693
+0.13978309132365302
+minimum_imaginary: -0.0339914604067801
+previous_impedance: 335.0157648744668
+0.14519530781231202
+minimum_imaginary: 0.25325175947882506
+previous_impedance: 314.43402880430483
+0.14353624144965801
+minimum_imaginary: -0.08360929637871727
+previous_impedance: 255.69943130900356
+0.134484879395176
+minimum_imaginary: 0.037459994368118525
+previous_impedance: 255.03124427313463
+0.142777211088444
+minimum_imaginary: -0.05877322759550177
+previous_impedance: 232.26091581902296
+0.135147905916237
 </pre></div>
 </div>
 </section>
@@ -1042,7 +1042,7 @@ for the JSON file.</p>
 <span class="n">joblib</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">regression</span><span class="p">,</span> <a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">model_file</span></a><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[&#39;D:/Projects/Project4025.pyaedt\\HFSS_LVR\\svr_model.joblib&#39;]
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[&#39;D:/Project74.pyaedt\\HFSS_Q08\\svr_model.joblib&#39;]
 </pre></div>
 </div>
 </section>
@@ -1135,14 +1135,14 @@ and substrate thickness and permittivity.</p>
 <a href="https://numpy.org/devdocs/reference/arrays.scalars.html#numpy.float64" title="numpy.float64" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-attribute"><span class="n">average_relative_gap</span></a> <span class="o">=</span> <a href="https://numpy.org/devdocs/reference/arrays.scalars.html#numpy.float64" title="numpy.float64" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-attribute"><span class="n">average_relative_gap</span></a> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><a href="https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">prediction_of_length</span></a><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>value: [136029941.197648, 636.880923998186, 6.5, 10.909272161595599], prediction: 406633.3444469051, reality: 388689.86554662004
-value: [136848973.958958, 636.880923998186, 6.5, 10.023348262833778], prediction: 403625.1716138522, reality: 388993.9717118322
-value: [138244029.76119, 484.6160800898129, 6.5, 10.909272161595599], prediction: 391735.6334490261, reality: 390509.5440139111
-value: [138253030.121205, 484.6160800898129, 6.5, 10.023348262833778], prediction: 390669.42294445244, reality: 390691.27902191615
-value: [133035821.43285699, 276.1339235854148, 11.12, 93.24547885829381], prediction: 246552.77634531388, reality: 273076.27045545157
-value: [141199147.965919, 276.1339235854148, 11.12, 8.03316500225879], prediction: 271465.20733067475, reality: 301324.5313198676
-value: [133740849.633985, 273.1615125037282, 11.12, 93.24547885829381], prediction: 243939.24367885676, reality: 273376.8292709096
-value: [140983139.325573, 273.1615125037282, 11.12, 8.03316500225879], prediction: 271517.41495163925, reality: 301405.41900890955
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>value: [146956378.25513, 497.61203643458015, 2.76, 12.45074481357994], prediction: 602817.8426387254, reality: 599441.4487939717
+value: [145006300.25201, 497.61203643458015, 2.76, 25.836589439302124], prediction: 591870.3350737572, reality: 594812.3460897402
+value: [139783091.323653, 506.9975714187701, 2.76, 12.45074481357994], prediction: 630386.0214442457, reality: 599272.1373348103
+value: [145195307.812312, 506.9975714187701, 2.76, 25.836589439302124], prediction: 591804.221777943, reality: 594533.1017440587
+value: [143536241.449658, 425.15253148525454, 5.4, 27.941252739425263], prediction: 421209.74895434553, reality: 426126.1030030248
+value: [134484879.395176, 425.15253148525454, 5.4, 94.31436464992767], prediction: 415933.09613619285, reality: 395956.32061067264
+value: [142777211.088444, 576.0973562245166, 5.4, 27.941252739425263], prediction: 428701.19381148025, reality: 421595.2619632639
+value: [135147905.916237, 576.0973562245166, 5.4, 94.31436464992767], prediction: 389982.5646744108, reality: 387396.2612594097
 </pre></div>
 </div>
 <p>The first displays are the gap <code class="docutils literal notranslate"><span class="pre">(prediction</span> <span class="pre">-</span> <span class="pre">real)</span></code>. The second displays are
@@ -1188,24 +1188,24 @@ the relative gap <code class="docutils literal notranslate"><span class="pre">((
 </pre></div>
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>sample size: 8
-&lt;0.5 : 1
+&lt;0.5 : 0
 &lt;1 : 0
-&lt;2 : 1
-&lt;5 : 0
-&lt;10 : 0
-&gt;10 : 6
+&lt;2 : 0
+&lt;5 : 5
+&lt;10 : 1
+&gt;10 : 2
 
 sum : 8
 -------------------------------------------
 
-&lt;0.01 : 2
-&lt;0.02 : 0
-&lt;0.05 : 2
-&lt;0.1 : 3
-&lt;0.2 : 1
+&lt;0.01 : 4
+&lt;0.02 : 2
+&lt;0.05 : 0
+&lt;0.1 : 2
+&lt;0.2 : 0
 &gt;0.2 : 0
 sum : 8
-average is : 0.06125476918931098
+average is : 0.019076046195061543
 </pre></div>
 </div>
 </section>
@@ -1219,7 +1219,7 @@ average is : 0.06125476918931098
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>True
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 6 minutes  59.389 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 11 minutes  41.735 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-02-hfss-machine-learning-applied-to-patch-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/d28bc1786d826d6ee59c4f277e69c9aa/Machine_learning_applied_to_Patch.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">Machine_learning_applied_to_Patch.py</span></code></a></p>

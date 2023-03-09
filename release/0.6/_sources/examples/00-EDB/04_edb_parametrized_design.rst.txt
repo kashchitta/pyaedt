@@ -27,7 +27,7 @@ This example shows how you can use HFSS 3D Layout to create and solve a parametr
 Perform required imports
 ~~~~~~~~~~~~~~~~~~~~~~~~
 Perform required imports, which includes importing the ``Hfss3dlayout`` object
-and initializing it on version 2022 R2.
+and initializing it on version 2023 R1.
 
 .. GENERATED FROM PYTHON SOURCE LINES 12-16
 
@@ -77,7 +77,7 @@ Launch EDB.
 
     aedb_path = os.path.join(pyaedt.generate_unique_folder_name(), pyaedt.generate_unique_name("pcb") + ".aedb")
     print(aedb_path)
-    edb = pyaedt.Edb(edbpath=aedb_path, edbversion="2022.2")
+    edb = pyaedt.Edb(edbpath=aedb_path, edbversion="2023.1")
 
 
 
@@ -87,7 +87,7 @@ Launch EDB.
 
  .. code-block:: none
 
-    D:\Temp\pyaedt_prj_17O\pcb_0QOJ8W.aedb
+    D:\Temp\pyaedt_prj_SCZ\pcb_VKGN6Q.aedb
 
 
 
@@ -368,7 +368,7 @@ Create wave ports:
  .. code-block:: none
 
 
-    ('wave_port_2', <pyaedt.edb_core.edb_data.sources.ExcitationDifferential object at 0x0000012F63602DF0>)
+    ('wave_port_2', <pyaedt.edb_core.edb_data.sources.ExcitationDifferential object at 0x00000272B2B437C0>)
 
 
 
@@ -447,7 +447,7 @@ Plot EDB.
 
 
 .. image-sg:: /examples/00-EDB/images/sphx_glr_04_edb_parametrized_design_001.png
-   :alt: Cell_54RZGT
+   :alt: Cell_DKB3MS
    :srcset: /examples/00-EDB/images/sphx_glr_04_edb_parametrized_design_001.png
    :class: sphx-glr-single-img
 
@@ -494,7 +494,7 @@ Open EDB in AEDT.
 .. code-block:: default
 
 
-    h3d = pyaedt.Hfss3dLayout(projectname=os.path.join(aedb_path, "edb.def"), specified_version="2022.2",
+    h3d = pyaedt.Hfss3dLayout(projectname=os.path.join(aedb_path, "edb.def"), specified_version="2023.1",
                               non_graphical=non_graphical)
 
 
@@ -540,7 +540,7 @@ Add HFSS simulation setup.
  .. code-block:: none
 
 
-    <pyaedt.modules.SolveSweeps.SweepHFSS3DLayout object at 0x0000012F68482CD0>
+    <pyaedt.modules.SolveSweeps.SweepHFSS3DLayout object at 0x00000272B2D08EE0>
 
 
 
@@ -548,14 +548,14 @@ Add HFSS simulation setup.
 
 Start HFSS solver
 ~~~~~~~~~~~~~~~~~
-Start the HFSS solver by uncommenting the ``h3d.analyze_nominal()`` command.
+Start the HFSS solver by uncommenting the ``h3d.analyze()`` command.
 
 .. GENERATED FROM PYTHON SOURCE LINES 316-321
 
 .. code-block:: default
 
 
-    # h3d.analyze_nominal()
+    # h3d.analyze()
 
     h3d.release_desktop()
 
@@ -582,7 +582,7 @@ the resonance.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  25.829 seconds)
+   **Total running time of the script:** ( 0 minutes  43.133 seconds)
 
 
 .. _sphx_glr_download_examples_00-EDB_04_edb_parametrized_design.py:

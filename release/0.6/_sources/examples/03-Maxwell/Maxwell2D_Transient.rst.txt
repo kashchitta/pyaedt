@@ -90,12 +90,19 @@ Insert a Maxwell 2D design and save the project.
 .. code-block:: default
 
 
-    maxwell_2d = pyaedt.Maxwell2d(solution_type="TransientXY", specified_version="2022.2", non_graphical=non_graphical,
+    maxwell_2d = pyaedt.Maxwell2d(solution_type="TransientXY", specified_version="2023.1", non_graphical=non_graphical,
                                   new_desktop_session=True, projectname=pyaedt.generate_unique_project_name())
 
 
 
 
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    C:\actions-runner\_work\PyAEDT\PyAEDT\pyaedt\desktop.py:778: ResourceWarning: unclosed <socket.socket fd=4860, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('0.0.0.0', 52909)>
+      self.port = _find_free_port()
 
 
 
@@ -165,7 +172,7 @@ Assigns windings to the sheets and a balloon to the air region.
  .. code-block:: none
 
 
-    <pyaedt.modules.Boundary.BoundaryObject object at 0x0000012F633C9310>
+    <pyaedt.modules.Boundary.BoundaryObject object at 0x00000272CCF850D0>
 
 
 
@@ -196,7 +203,7 @@ Plot the model.
  .. code-block:: none
 
 
-    <pyaedt.generic.plot.ModelPlotter object at 0x0000012F02120550>
+    <pyaedt.generic.plot.ModelPlotter object at 0x00000272CB345CD0>
 
 
 
@@ -250,7 +257,7 @@ Create a rectangular plot.
  .. code-block:: none
 
 
-    <pyaedt.modules.report_templates.Standard object at 0x0000012F634AC340>
+    <pyaedt.modules.report_templates.Standard object at 0x00000272B2BDB370>
 
 
 
@@ -265,7 +272,7 @@ Solve the model.
 .. code-block:: default
 
 
-    maxwell_2d.analyze_nominal(use_auto_settings=False)
+    maxwell_2d.analyze(use_auto_settings=False)
 
 
 
@@ -394,7 +401,7 @@ Close AEDT.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  36.051 seconds)
+   **Total running time of the script:** ( 1 minutes  11.149 seconds)
 
 
 .. _sphx_glr_download_examples_03-Maxwell_Maxwell2D_Transient.py:

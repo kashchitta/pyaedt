@@ -71,7 +71,7 @@ You can set ``non_graphical`` either to ``True`` or ``False``.
 
 Launch HFSS
 ~~~~~~~~~~~
-Launch HFSS 2022 R2 in non-graphical mode and change the
+Launch HFSS 2023 R1 in non-graphical mode and change the
 units to microns.
 
 .. GENERATED FROM PYTHON SOURCE LINES 31-36
@@ -79,7 +79,7 @@ units to microns.
 .. code-block:: default
 
 
-    hfss = pyaedt.Hfss(specified_version="2022.2", non_graphical=non_graphical, designname="A1")
+    hfss = pyaedt.Hfss(specified_version="2023.1", non_graphical=non_graphical, designname="A1")
     hfss.modeler.model_units = "um"
     p = hfss.modeler
 
@@ -198,7 +198,7 @@ Center the return path.
  .. code-block:: none
 
 
-    <pyaedt.modeler.cad.object3d.Object3d object at 0x0000012F0065D070>
+    <pyaedt.modeler.cad.object3d.Object3d object at 0x00000272C3FF6280>
 
 
 
@@ -229,7 +229,7 @@ Create port 1.
  .. code-block:: none
 
 
-    <pyaedt.modules.Boundary.BoundaryObject object at 0x0000012F75CCCB80>
+    <pyaedt.modules.Boundary.BoundaryObject object at 0x00000272C3FF62E0>
 
 
 
@@ -257,7 +257,7 @@ Create port 2.
  .. code-block:: none
 
 
-    <pyaedt.modules.Boundary.BoundaryObject object at 0x0000012F6348E310>
+    <pyaedt.modules.Boundary.BoundaryObject object at 0x00000272C3FF6A00>
 
 
 
@@ -285,7 +285,7 @@ Create the silicon substrate and the ground plane.
  .. code-block:: none
 
 
-    <pyaedt.modeler.cad.object3d.Object3d object at 0x0000012F685A1340>
+    <pyaedt.modeler.cad.object3d.Object3d object at 0x00000272C37FE070>
 
 
 
@@ -315,7 +315,7 @@ Assign the airbox and the radiation.
  .. code-block:: none
 
 
-    <pyaedt.modules.Boundary.BoundaryObject object at 0x0000012F748B6670>
+    <pyaedt.modules.Boundary.BoundaryObject object at 0x00000272CC351EE0>
 
 
 
@@ -373,7 +373,7 @@ Plot the model.
  .. code-block:: none
 
 
-    <pyaedt.generic.plot.ModelPlotter object at 0x0000012F006F37C0>
+    <pyaedt.generic.plot.ModelPlotter object at 0x00000272C60A70D0>
 
 
 
@@ -393,7 +393,7 @@ Create the setup and define a frequency sweep to solve the project.
     hfss.create_linear_count_sweep(setupname="setup1", unit="GHz", freqstart=1e-3, freqstop=50, num_of_freq_points=451,
                                    sweep_type="Interpolating")
     hfss.save_project()
-    hfss.analyze_all()
+    hfss.analyze()
 
 
 
@@ -491,7 +491,7 @@ Save the project and close AEDT.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 1 minutes  29.932 seconds)
+   **Total running time of the script:** ( 1 minutes  34.020 seconds)
 
 
 .. _sphx_glr_download_examples_02-HFSS_HFSS_Spiral.py:

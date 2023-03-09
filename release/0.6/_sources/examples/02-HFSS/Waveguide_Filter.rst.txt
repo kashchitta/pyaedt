@@ -105,7 +105,7 @@ t: Metal thickness of the iris insert.
 Save the project and results in the TEMP folder
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. GENERATED FROM PYTHON SOURCE LINES 51-68
+.. GENERATED FROM PYTHON SOURCE LINES 51-69
 
 .. code-block:: default
 
@@ -117,9 +117,10 @@ Save the project and results in the TEMP folder
 
     # Instantiate the HFSS application
     hfss = pyaedt.Hfss(projectname=project_name + '.aedt',
-                       specified_version="2022.2",
+                       specified_version="2023.1",
                        designname="filter",
                        non_graphical=non_graphical,
+                       new_desktop_session=True,
                        close_on_exit=True)
 
     # hfss.settings.enable_debug_methods_argument_logger = False  # Only for debugging.
@@ -133,12 +134,12 @@ Save the project and results in the TEMP folder
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 69-71
+.. GENERATED FROM PYTHON SOURCE LINES 70-72
 
 Initialize design parameters in HFSS.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. GENERATED FROM PYTHON SOURCE LINES 71-92
+.. GENERATED FROM PYTHON SOURCE LINES 72-93
 
 .. code-block:: default
 
@@ -170,7 +171,7 @@ Initialize design parameters in HFSS.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 93-98
+.. GENERATED FROM PYTHON SOURCE LINES 94-99
 
 Draw parametric waveguide filter
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -178,7 +179,7 @@ Define a function to place each iris at the correct longitudinal (z) position,
 Loop from the largest index (interior of the filter) to 1, which is the first
 iris nearest the waveguide ports.
 
-.. GENERATED FROM PYTHON SOURCE LINES 98-110
+.. GENERATED FROM PYTHON SOURCE LINES 99-111
 
 .. code-block:: default
 
@@ -201,13 +202,13 @@ iris nearest the waveguide ports.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 111-114
+.. GENERATED FROM PYTHON SOURCE LINES 112-115
 
 Place irises
 ~~~~~~~~~~~~
 Place the irises from inner (highest integer) to outer.
 
-.. GENERATED FROM PYTHON SOURCE LINES 114-127
+.. GENERATED FROM PYTHON SOURCE LINES 115-128
 
 .. code-block:: default
 
@@ -231,7 +232,7 @@ Place the irises from inner (highest integer) to outer.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 128-135
+.. GENERATED FROM PYTHON SOURCE LINES 129-136
 
 Draw full waveguide with ports
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -241,7 +242,7 @@ The ``VariableManager`` instance takes the HFSS variable name as a key.
 ``VariableManager`` properties enable access to update, modify and
 evaluate variables.
 
-.. GENERATED FROM PYTHON SOURCE LINES 135-147
+.. GENERATED FROM PYTHON SOURCE LINES 136-148
 
 .. code-block:: default
 
@@ -266,11 +267,11 @@ evaluate variables.
  .. code-block:: none
 
 
-    <pyaedt.modeler.cad.object3d.Object3d object at 0x0000012F631D5220>
+    <pyaedt.modeler.cad.object3d.Object3d object at 0x00000272C562B1C0>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 148-153
+.. GENERATED FROM PYTHON SOURCE LINES 149-154
 
 Draw the whole waveguide.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -278,7 +279,7 @@ wg_z is the total length of the waveguide, including port extension.
 Note that the ``.evaluated_value`` provides access to the numerical value of
 ``wg_z_start`` which is an expression in HFSS.
 
-.. GENERATED FROM PYTHON SOURCE LINES 153-156
+.. GENERATED FROM PYTHON SOURCE LINES 154-157
 
 .. code-block:: default
 
@@ -292,14 +293,14 @@ Note that the ``.evaluated_value`` provides access to the numerical value of
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 157-161
+.. GENERATED FROM PYTHON SOURCE LINES 158-162
 
 Assign wave ports to the end faces of the waveguid
 and define the calibration lines to ensure self-consistent
 polarization between wave ports.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. GENERATED FROM PYTHON SOURCE LINES 161-171
+.. GENERATED FROM PYTHON SOURCE LINES 162-172
 
 .. code-block:: default
 
@@ -320,7 +321,7 @@ polarization between wave ports.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 172-178
+.. GENERATED FROM PYTHON SOURCE LINES 173-179
 
 Insert the mesh adaptation setup using refinement at two frequencies.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -329,7 +330,7 @@ mesh impacts the resonant frequency and hence, the field propagation through the
 filter.  Adaptation at multiple frequencies helps to ensure that energy propagates
 through the resonant structure while the mesh is refined.
 
-.. GENERATED FROM PYTHON SOURCE LINES 178-192
+.. GENERATED FROM PYTHON SOURCE LINES 179-193
 
 .. code-block:: default
 
@@ -356,16 +357,16 @@ through the resonant structure while the mesh is refined.
  .. code-block:: none
 
 
-    <pyaedt.modules.SolveSweeps.SweepHFSS object at 0x0000012F683ECE80>
+    <pyaedt.modules.SolveSweeps.SweepHFSS object at 0x00000272B2D264F0>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 193-195
+.. GENERATED FROM PYTHON SOURCE LINES 194-196
 
 Solve the project with two tasks.
 Each frequency point is solved simultaneously.
 
-.. GENERATED FROM PYTHON SOURCE LINES 195-199
+.. GENERATED FROM PYTHON SOURCE LINES 196-200
 
 .. code-block:: default
 
@@ -380,7 +381,7 @@ Each frequency point is solved simultaneously.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 200-207
+.. GENERATED FROM PYTHON SOURCE LINES 201-208
 
 Generate S-Parameter Plots
  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -390,7 +391,7 @@ Generate S-Parameter Plots
   Caution: The syntax for expressions must be identical to that used
   in HFSS.
 
-.. GENERATED FROM PYTHON SOURCE LINES 207-215
+.. GENERATED FROM PYTHON SOURCE LINES 208-216
 
 .. code-block:: default
 
@@ -423,7 +424,7 @@ Generate S-Parameter Plots
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 1 minutes  26.577 seconds)
+   **Total running time of the script:** ( 1 minutes  48.184 seconds)
 
 
 .. _sphx_glr_download_examples_02-HFSS_Waveguide_Filter.py:

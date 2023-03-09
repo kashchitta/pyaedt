@@ -57,7 +57,7 @@ Perform required imports.
 
  .. code-block:: none
 
-    D:\Temp\pyaedt_prj_WTH\edb/Galileo.aedb
+    D:\Temp\pyaedt_prj_BKA\edb/Galileo.aedb
 
 
 
@@ -66,16 +66,16 @@ Perform required imports.
 
 Launch EDB
 ~~~~~~~~~~
-Launch the :class:`pyaedt.Edb` class, using EDB 2022 R2 and SI units.
+Launch the :class:`pyaedt.Edb` class, using EDB 2023 R1 and SI units.
 
 .. GENERATED FROM PYTHON SOURCE LINES 31-36
 
 .. code-block:: default
 
-
+    edb_version = "2023.1"
     if os.path.exists(aedt_file):
         os.remove(aedt_file)
-    edb = pyaedt.Edb(edbpath=targetfile, edbversion="2022.2")
+    edb = pyaedt.Edb(edbpath=targetfile, edbversion=edb_version)
 
 
 
@@ -227,7 +227,7 @@ connected to a ground through an inductor.
 
  .. code-block:: none
 
-    [{'V1P5_S5', 'BST_V1P5_S5'}, {'BST_V3P3_S5', 'V3P3_S5'}, {'V1P0_S0', 'BST_V1P0_S0'}]
+    [{'V1P5_S5', 'BST_V1P5_S5'}, {'V3P3_S5', 'BST_V3P3_S5'}, {'V1P0_S0', 'BST_V1P0_S0'}]
 
 
 
@@ -457,7 +457,7 @@ properties with assignment and create materials and assign them to layers.
  .. code-block:: none
 
 
-    <Ansys.Ansoft.Edb.Definition.MaterialDef object at 0x0000012F634F7580>
+    <Ansys.Ansoft.Edb.Definition.MaterialDef object at 0x00000272B25DE0C0>
 
 
 
@@ -542,7 +542,7 @@ Export all DC Reports quantities.
 
  .. code-block:: none
 
-    ['"C:\\Program Files\\AnsysEM\\v222\\Win64\\siwave.exe"', '-embedding', '-RunScriptAndExit', '"D:\\Temp\\pyaedt_prj_WTH\\edb\\export_results.py"']
+    ['"C:\\Program Files\\AnsysEM\\v231\\Win64\\siwave.exe"', '-embedding', '-RunScriptAndExit', '"D:\\Temp\\pyaedt_prj_BKA\\edb\\export_results.py"']
 
 
 
@@ -585,7 +585,7 @@ Open Siwave and generate a report. This works on Window only.
 
 
     # from pyaedt import Siwave
-    # siwave = Siwave("2022.2")
+    # siwave = Siwave("2023.1")
     # siwave.open_project(siwave_file)
     # report_file = os.path.join(temp_folder,'Galileo.htm')
     #
@@ -602,7 +602,7 @@ Open Siwave and generate a report. This works on Window only.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  53.470 seconds)
+   **Total running time of the script:** ( 1 minutes  4.652 seconds)
 
 
 .. _sphx_glr_download_examples_00-EDB_01_edb_example.py:

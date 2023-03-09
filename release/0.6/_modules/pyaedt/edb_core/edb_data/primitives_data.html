@@ -154,14 +154,14 @@
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../../../API/index.html">
-                        API AEDT reference
+                        AEDT API
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../../../EDBAPI/index.html">
-                        API EDB reference
+                        EDB API
                       </a>
                     </li>
                 
@@ -348,14 +348,14 @@
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../../../API/index.html">
-                        API AEDT reference
+                        AEDT API
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../../../EDBAPI/index.html">
-                        API EDB reference
+                        EDB API
                       </a>
                     </li>
                 
@@ -727,6 +727,24 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">bbox</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bbox</span>
         <span class="k">return</span> <span class="p">[(</span><span class="n">bbox</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">bbox</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="p">(</span><span class="n">bbox</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">bbox</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span> <span class="o">/</span> <span class="mi">2</span><span class="p">]</span>
+
+<div class="viewcode-block" id="EDBPrimitives.get_center_line"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.get_center_line.html#pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.get_center_line">[docs]</a>    <span class="nd">@pyaedt_function_handler</span>
+    <span class="k">def</span> <span class="nf">get_center_line</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">to_string</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the center line of the trace.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        to_string : bool, optional</span>
+<span class="sd">            Type of return. The default is ``&quot;False&quot;``.</span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        list</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">to_string</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">[[</span><span class="n">p</span><span class="o">.</span><span class="n">X</span><span class="o">.</span><span class="n">ToString</span><span class="p">(),</span> <span class="n">p</span><span class="o">.</span><span class="n">Y</span><span class="o">.</span><span class="n">ToString</span><span class="p">()]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">primitive_object</span><span class="o">.</span><span class="n">GetCenterLine</span><span class="p">()</span><span class="o">.</span><span class="n">Points</span><span class="p">)]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">[[</span><span class="n">p</span><span class="o">.</span><span class="n">X</span><span class="o">.</span><span class="n">ToDouble</span><span class="p">(),</span> <span class="n">p</span><span class="o">.</span><span class="n">Y</span><span class="o">.</span><span class="n">ToDouble</span><span class="p">()]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">primitive_object</span><span class="o">.</span><span class="n">GetCenterLine</span><span class="p">()</span><span class="o">.</span><span class="n">Points</span><span class="p">)]</span></div>
 
 <div class="viewcode-block" id="EDBPrimitives.is_arc"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.is_arc.html#pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives.is_arc">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">is_arc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">point</span><span class="p">):</span>

@@ -63,7 +63,7 @@
     <link rel="shortcut icon" href="../../_static/ansys-favicon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="General model and setup examples" href="../01-Modeling-Setup/index.html" />
+    <link rel="next" title="HFSS 3D Layout examples" href="../01-HFSS3DLayout/index.html" />
     <link rel="prev" title="EDB: fully parametrized CPWG design" href="08_CPWG.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="docsearch:language" content="en">
@@ -157,14 +157,14 @@
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../API/index.html">
-                        API AEDT reference
+                        AEDT API
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../EDBAPI/index.html">
-                        API EDB reference
+                        EDB API
                       </a>
                     </li>
                 
@@ -352,14 +352,14 @@
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../API/index.html">
-                        API AEDT reference
+                        AEDT API
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../EDBAPI/index.html">
-                        API EDB reference
+                        EDB API
                       </a>
                     </li>
                 
@@ -468,9 +468,9 @@
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">EDB: fully configurable project</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../01-HFSS3DLayout/index.html">HFSS 3D Layout examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../01-Modeling-Setup/index.html">General model and setup examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../02-HFSS/index.html">HFSS examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../02-HFSS3DLayout/index.html">HFSS 3D Layout examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../02-SBR%2B/index.html">SBR+ examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../03-Maxwell/index.html">Maxwell examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../04-Icepak/index.html">Icepak examples</a></li>
@@ -479,7 +479,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../07-Circuit/index.html">Circuit examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../07-EMIT/index.html">EMIT examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../07-TwinBuilder/index.html">Twin Builder examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../08-CableModeling/index.html">Cable Modeling examples</a></li>
 </ul>
 
   </div>
@@ -523,7 +522,7 @@ run anlasyis and get results.</p>
 <section id="perform-required-imports">
 <h2>Perform required imports<a class="headerlink" href="#perform-required-imports" title="Permalink to this heading">#</a></h2>
 <p>Peform required imports. Importing the <code class="docutils literal notranslate"><span class="pre">Hfss3dlayout</span></code> object initializes it
-on version 2022 R2.</p>
+on version 2023 R1.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">pyaedt</span>
 </pre></div>
@@ -544,14 +543,14 @@ on version 2022 R2.</p>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Project folder will be&quot;</span><span class="p">,</span> <a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">target_aedb</span></a><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Project folder will be D:\Temp\pyaedt_prj_76H\edb/Galileo.aedb
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Project folder will be D:\Temp\pyaedt_prj_6DS\edb/Galileo.aedb
 </pre></div>
 </div>
 </section>
 <section id="launch-edb">
 <h2>Launch EDB<a class="headerlink" href="#launch-edb" title="Permalink to this heading">#</a></h2>
-<p>Launch the <code class="xref py py-class docutils literal notranslate"><span class="pre">pyaedt.Edb</span></code> class, using EDB 2022 R2 and SI units.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">edbapp</span> <span class="o">=</span> <span class="n">pyaedt</span><span class="o">.</span><span class="n">Edb</span><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">target_aedb</span></a><span class="p">,</span> <span class="n">edbversion</span><span class="o">=</span><span class="s2">&quot;2022.2&quot;</span><span class="p">)</span>
+<p>Launch the <code class="xref py py-class docutils literal notranslate"><span class="pre">pyaedt.Edb</span></code> class, using EDB 2023 R1 and SI units.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">edbapp</span> <span class="o">=</span> <span class="n">pyaedt</span><span class="o">.</span><span class="n">Edb</span><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">target_aedb</span></a><span class="p">,</span> <span class="n">edbversion</span><span class="o">=</span><span class="s2">&quot;2023.1&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
@@ -610,7 +609,7 @@ Csv file is store for convenience in aedb folder.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">edbapp</span><span class="o">.</span><span class="n">core_components</span><span class="o">.</span><span class="n">nport_comp_definition</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>{&#39;602433-026&#39;: &lt;pyaedt.edb_core.edb_data.components_data.EDBComponentDef object at 0x0000012F63683220&gt;}
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>{&#39;602433-026&#39;: &lt;pyaedt.edb_core.edb_data.components_data.EDBComponentDef object at 0x00000272B270D040&gt;}
 </pre></div>
 </div>
 </section>
@@ -681,14 +680,14 @@ Csv file is store for convenience in aedb folder.</p>
 <section id="open-aedt">
 <h2>Open Aedt<a class="headerlink" href="#open-aedt" title="Permalink to this heading">#</a></h2>
 <p>Project folder aedb will be opened in AEDT Hfss3DLayout and loaded.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">h3d</span> <span class="o">=</span> <span class="n">pyaedt</span><span class="o">.</span><span class="n">Hfss3dLayout</span><span class="p">(</span><span class="n">specified_version</span><span class="o">=</span><span class="s2">&quot;2022.2&quot;</span><span class="p">,</span> <span class="n">projectname</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">target_aedb</span></a><span class="p">,</span> <a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a><span class="o">=</span><a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">h3d</span> <span class="o">=</span> <span class="n">pyaedt</span><span class="o">.</span><span class="n">Hfss3dLayout</span><span class="p">(</span><span class="n">specified_version</span><span class="o">=</span><span class="s2">&quot;2023.1&quot;</span><span class="p">,</span> <span class="n">projectname</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">target_aedb</span></a><span class="p">,</span> <a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a><span class="o">=</span><a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a><span class="p">)</span>
 </pre></div>
 </div>
 </section>
 <section id="analyze">
 <h2>Analyze<a class="headerlink" href="#analyze" title="Permalink to this heading">#</a></h2>
 <p>Project will be solved.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">h3d</span><span class="o">.</span><span class="n">analyze_nominal</span><span class="p">()</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">h3d</span><span class="o">.</span><span class="n">analyze</span><span class="p">()</span>
 </pre></div>
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>True
@@ -722,7 +721,7 @@ Csv file is store for convenience in aedb folder.</p>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>True
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 1 minutes  40.980 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 2 minutes  13.510 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-00-edb-09-configuration-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/fe25df7f244aa60366e13f41e866293d/09_Configuration.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">09_Configuration.py</span></code></a></p>

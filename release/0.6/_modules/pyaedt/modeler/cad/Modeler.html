@@ -154,14 +154,14 @@
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../../../API/index.html">
-                        API AEDT reference
+                        AEDT API
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../../../EDBAPI/index.html">
-                        API EDB reference
+                        EDB API
                       </a>
                     </li>
                 
@@ -348,14 +348,14 @@
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../../../API/index.html">
-                        API AEDT reference
+                        AEDT API
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../../../EDBAPI/index.html">
-                        API EDB reference
+                        EDB API
                       </a>
                     </li>
                 
@@ -2076,6 +2076,27 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">obj_to_cover</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">convert_to_selections</span><span class="p">(</span><span class="n">selection</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">oeditor</span><span class="o">.</span><span class="n">CoverLines</span><span class="p">([</span><span class="s2">&quot;NAME:Selections&quot;</span><span class="p">,</span> <span class="s2">&quot;Selections:=&quot;</span><span class="p">,</span> <span class="n">obj_to_cover</span><span class="p">,</span> <span class="s2">&quot;NewPartsModelFlag:=&quot;</span><span class="p">,</span> <span class="s2">&quot;Model&quot;</span><span class="p">])</span>
+        <span class="k">return</span> <span class="kc">True</span>
+
+    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">cover_faces</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">selection</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Cover a sheet.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        selection : str, int</span>
+<span class="sd">            Sheet object to cover.</span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        bool</span>
+
+<span class="sd">        References</span>
+<span class="sd">        ----------</span>
+
+<span class="sd">        &gt;&gt;&gt; oEditor.CoverLines</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">obj_to_cover</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">convert_to_selections</span><span class="p">(</span><span class="n">selection</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">oeditor</span><span class="o">.</span><span class="n">CoverSurfaces</span><span class="p">([</span><span class="s2">&quot;NAME:Selections&quot;</span><span class="p">,</span> <span class="s2">&quot;Selections:=&quot;</span><span class="p">,</span> <span class="n">obj_to_cover</span><span class="p">,</span> <span class="s2">&quot;NewPartsModelFlag:=&quot;</span><span class="p">,</span> <span class="s2">&quot;Model&quot;</span><span class="p">])</span>
         <span class="k">return</span> <span class="kc">True</span>
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
@@ -4933,6 +4954,11 @@
         <span class="n">refresh_all_ids</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
         <span class="n">import_materials</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
         <span class="n">create_lightweigth_part</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">group_by_assembly</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">create_group</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">separate_disjoints_lumped_object</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">import_free_surfaces</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">point_coicidence_tolerance</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">,</span>
     <span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Import a CAD model.</span>
 
@@ -4954,6 +4980,16 @@
 <span class="sd">            Either to import material names from the file or not if presents.</span>
 <span class="sd">        create_lightweigth_part : bool ,optional</span>
 <span class="sd">            Either to import lightweight or not.</span>
+<span class="sd">        group_by_assembly : bool, optional</span>
+<span class="sd">            Either import by sub-assembly or individual parts. The default is ``False``.</span>
+<span class="sd">        create_group : bool, optional</span>
+<span class="sd">            Either to create a new group of imported objects. The default is ``True``.</span>
+<span class="sd">        separate_disjoints_lumped_object : bool, optional</span>
+<span class="sd">            Either to automatically separate disjoint parts. The default is ``False``.</span>
+<span class="sd">        import_free_surfaces : bool, optional</span>
+<span class="sd">            Either to import free surfaces parts. The default is ``False``.</span>
+<span class="sd">        point_coicidence_tolerance : float, optional</span>
+<span class="sd">            Tolerance on point. Default is ``1e-6``.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -4976,15 +5012,15 @@
         <span class="n">vArg1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;Options:=&quot;</span><span class="p">),</span> <span class="n">vArg1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-1&quot;</span><span class="p">)</span>
         <span class="n">vArg1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;FileType:=&quot;</span><span class="p">),</span> <span class="n">vArg1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;UnRecognized&quot;</span><span class="p">)</span>
         <span class="n">vArg1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;MaxStitchTol:=&quot;</span><span class="p">),</span> <span class="n">vArg1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-        <span class="n">vArg1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;ImportFreeSurfaces:=&quot;</span><span class="p">),</span> <span class="n">vArg1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
-        <span class="n">vArg1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;GroupByAssembly:=&quot;</span><span class="p">),</span> <span class="n">vArg1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
-        <span class="n">vArg1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;CreateGroup:=&quot;</span><span class="p">),</span> <span class="n">vArg1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">vArg1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;ImportFreeSurfaces:=&quot;</span><span class="p">),</span> <span class="n">vArg1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">import_free_surfaces</span><span class="p">)</span>
+        <span class="n">vArg1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;GroupByAssembly:=&quot;</span><span class="p">),</span> <span class="n">vArg1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">group_by_assembly</span><span class="p">)</span>
+        <span class="n">vArg1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;CreateGroup:=&quot;</span><span class="p">),</span> <span class="n">vArg1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">create_group</span><span class="p">)</span>
         <span class="n">vArg1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;STLFileUnit:=&quot;</span><span class="p">),</span> <span class="n">vArg1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;Auto&quot;</span><span class="p">)</span>
         <span class="n">vArg1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;MergeFacesAngle:=&quot;</span><span class="p">),</span> <span class="n">vArg1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-        <span class="n">vArg1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;PointCoincidenceTol:=&quot;</span><span class="p">),</span> <span class="n">vArg1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mf">1e-06</span><span class="p">)</span>
+        <span class="n">vArg1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;PointCoincidenceTol:=&quot;</span><span class="p">),</span> <span class="n">vArg1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">point_coicidence_tolerance</span><span class="p">)</span>
         <span class="n">vArg1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;CreateLightweightPart:=&quot;</span><span class="p">),</span> <span class="n">vArg1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">create_lightweigth_part</span><span class="p">)</span>
         <span class="n">vArg1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;ImportMaterialNames:=&quot;</span><span class="p">),</span> <span class="n">vArg1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">import_materials</span><span class="p">)</span>
-        <span class="n">vArg1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;SeparateDisjointLumps:=&quot;</span><span class="p">),</span> <span class="n">vArg1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">vArg1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;SeparateDisjointLumps:=&quot;</span><span class="p">),</span> <span class="n">vArg1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">separate_disjoints_lumped_object</span><span class="p">)</span>
         <span class="n">vArg1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;SourceFile:=&quot;</span><span class="p">),</span> <span class="n">vArg1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">oeditor</span><span class="o">.</span><span class="n">Import</span><span class="p">(</span><span class="n">vArg1</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">refresh_all_ids</span><span class="p">:</span>

@@ -157,14 +157,14 @@
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../API/index.html">
-                        API AEDT reference
+                        AEDT API
                       </a>
                     </li>
                 
 
                     <li class="nav-item current active">
                       <a class="nav-link nav-internal" href="../index.html">
-                        API EDB reference
+                        EDB API
                       </a>
                     </li>
                 
@@ -307,7 +307,7 @@
         <li class="nav-item nav-item-0"><a href="../../index.html">PyAEDT</a> » </li>
     
 
-          <li class="nav-item nav-item-1"><a href="../index.html" >API EDB reference</a> » </li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >EDB API</a> » </li>
           <li class="nav-item nav-item-2"><a href="../PadstackEdb.html" >EDB padstack</a> » </li>
           <li class="nav-item nav-item-3"><a href="pyaedt.edb_core.edb_data.padstacks_data.EDBPadstackInstance.html" accesskey="U">EDBPadstackInstance</a> » </li>
         <li class="nav-item nav-item-this"><a href="">create_rectangle_in_pad</a></li> 
@@ -353,14 +353,14 @@
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../API/index.html">
-                        API AEDT reference
+                        AEDT API
                       </a>
                     </li>
                 
 
                     <li class="nav-item current active">
                       <a class="nav-link nav-internal" href="../index.html">
-                        API EDB reference
+                        EDB API
                       </a>
                     </li>
                 
@@ -537,7 +537,7 @@
 <h1>create_rectangle_in_pad<a class="headerlink" href="#create-rectangle-in-pad" title="Permalink to this heading">#</a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="pyaedt.edb_core.edb_data.padstacks_data.EDBPadstackInstance.create_rectangle_in_pad">
-<span class="sig-prename descclassname"><span class="pre">EDBPadstackInstance.</span></span><span class="sig-name descname"><span class="pre">create_rectangle_in_pad</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">layer_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_points</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pyaedt/edb_core/edb_data/padstacks_data.html#EDBPadstackInstance.create_rectangle_in_pad"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyaedt.edb_core.edb_data.padstacks_data.EDBPadstackInstance.create_rectangle_in_pad" title="Permalink to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">EDBPadstackInstance.</span></span><span class="sig-name descname"><span class="pre">create_rectangle_in_pad</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">layer_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_points</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">partition_max_order</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">16</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pyaedt/edb_core/edb_data/padstacks_data.html#EDBPadstackInstance.create_rectangle_in_pad"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyaedt.edb_core.edb_data.padstacks_data.EDBPadstackInstance.create_rectangle_in_pad" title="Permalink to this definition">#</a></dt>
 <dd><p>Create a rectangle inscribed inside a padstack instance pad. The rectangle is fully inscribed in the
 pad and has the maximum area. It is necessary to specify the layer on which the rectangle will be created.</p>
 <dl class="field-list">
@@ -547,6 +547,9 @@ pad and has the maximum area. It is necessary to specify the layer on which the 
 </dd>
 <dt><strong>return_points</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#bltin-boolean-values" title="(in Python v3.12)"><span class="xref std std-ref">bool</span></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>If <cite>True</cite> does not create the rectangle and just returns a list containing the rectangle vertices.
 Default is <cite>False</cite>.</p>
+</dd>
+<dt><strong>partition_max_order</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/functions.html#float" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">float</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Order of the lattice partition used to find the quasi-lattice polygon that approximates <code class="docutils literal notranslate"><span class="pre">polygon</span></code>.
+Default is <code class="docutils literal notranslate"><span class="pre">16</span></code>.</p>
 </dd>
 </dl>
 </dd>

@@ -154,14 +154,14 @@
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../../API/index.html">
-                        API AEDT reference
+                        AEDT API
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../../EDBAPI/index.html">
-                        API EDB reference
+                        EDB API
                       </a>
                     </li>
                 
@@ -348,14 +348,14 @@
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../../API/index.html">
-                        API AEDT reference
+                        AEDT API
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../../EDBAPI/index.html">
-                        API EDB reference
+                        EDB API
                       </a>
                     </li>
                 
@@ -716,6 +716,82 @@
         <span class="n">circuit_port</span><span class="o">.</span><span class="n">negative_node</span><span class="o">.</span><span class="n">component_node</span> <span class="o">=</span> <span class="n">neg_pin</span><span class="o">.</span><span class="n">GetComponent</span><span class="p">()</span>
         <span class="n">circuit_port</span><span class="o">.</span><span class="n">negative_node</span><span class="o">.</span><span class="n">node_pins</span> <span class="o">=</span> <span class="n">neg_pin</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_terminal_on_pins</span><span class="p">(</span><span class="n">circuit_port</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="EdbSiwave.create_port_between_pin_and_layer"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.siwave.EdbSiwave.create_port_between_pin_and_layer.html#pyaedt.edb_core.siwave.EdbSiwave.create_port_between_pin_and_layer">[docs]</a>    <span class="k">def</span> <span class="nf">create_port_between_pin_and_layer</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">component_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">pins_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">layer_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">reference_net</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">impedance</span><span class="o">=</span><span class="mf">50.0</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create circuit port between pin and a reference layer.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        component_name : str</span>
+<span class="sd">            Component name. The default is ``None``.</span>
+<span class="sd">        pins_name : str</span>
+<span class="sd">            Pin name or list of pin names. The default is ``None``.</span>
+<span class="sd">        layer_name : str</span>
+<span class="sd">            Layer name. The default is ``None``.</span>
+<span class="sd">        reference_net : str</span>
+<span class="sd">            Reference net name. The default is ``None``.</span>
+<span class="sd">        impedance : float, optional</span>
+<span class="sd">            Port impedance. The default is ``50.0`` in ohms.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        PadstackInstanceTerminal</span>
+<span class="sd">            Created terminal.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">pins_name</span><span class="p">:</span>
+            <span class="n">pins_name</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">if</span> <span class="n">pins_name</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">pins_name</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>  <span class="c1"># pragma no cover</span>
+                <span class="n">pins_name</span> <span class="o">=</span> <span class="p">[</span><span class="n">pins_name</span><span class="p">]</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">reference_net</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;no reference net provided, searching net </span><span class="si">{}</span><span class="s2"> instead.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">layer_name</span><span class="p">))</span>
+                <span class="n">reference_net</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span><span class="o">.</span><span class="n">core_nets</span><span class="o">.</span><span class="n">get_net_by_name</span><span class="p">(</span><span class="n">layer_name</span><span class="p">)</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">reference_net</span><span class="p">:</span>  <span class="c1"># pragma no cover</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;reference net </span><span class="si">{}</span><span class="s2"> not found.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">layer_name</span><span class="p">))</span>
+                    <span class="k">return</span> <span class="kc">False</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">reference_net</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Cell</span><span class="o">.</span><span class="n">Net</span><span class="p">):</span>  <span class="c1"># pragma no cover</span>
+                    <span class="n">reference_net</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span><span class="o">.</span><span class="n">core_nets</span><span class="o">.</span><span class="n">get_net_by_name</span><span class="p">(</span><span class="n">reference_net</span><span class="p">)</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">reference_net</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Net </span><span class="si">{}</span><span class="s2"> not found&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">reference_net</span><span class="p">))</span>
+                    <span class="k">return</span> <span class="kc">False</span>
+            <span class="k">for</span> <span class="n">pin_name</span> <span class="ow">in</span> <span class="n">pins_name</span><span class="p">:</span>  <span class="c1"># pragma no cover</span>
+                <span class="n">pin</span> <span class="o">=</span> <span class="p">[</span>
+                    <span class="n">pin</span>
+                    <span class="k">for</span> <span class="n">pin</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span><span class="o">.</span><span class="n">core_padstack</span><span class="o">.</span><span class="n">get_pinlist_from_component_and_net</span><span class="p">(</span><span class="n">component_name</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">pin</span><span class="o">.</span><span class="n">GetName</span><span class="p">()</span> <span class="o">==</span> <span class="n">pin_name</span>
+                <span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+                <span class="n">term_name</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">_</span><span class="si">{}</span><span class="s2">_</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">pin</span><span class="o">.</span><span class="n">GetComponent</span><span class="p">()</span><span class="o">.</span><span class="n">GetName</span><span class="p">(),</span> <span class="n">pin</span><span class="o">.</span><span class="n">GetNet</span><span class="p">()</span><span class="o">.</span><span class="n">GetName</span><span class="p">(),</span> <span class="n">pin</span><span class="o">.</span><span class="n">GetName</span><span class="p">())</span>
+                <span class="n">res</span><span class="p">,</span> <span class="n">start_layer</span><span class="p">,</span> <span class="n">stop_layer</span> <span class="o">=</span> <span class="n">pin</span><span class="o">.</span><span class="n">GetLayerRange</span><span class="p">()</span>
+                <span class="k">if</span> <span class="n">res</span><span class="p">:</span>
+                    <span class="n">pin_instance</span> <span class="o">=</span> <span class="n">pin</span><span class="o">.</span><span class="n">_edb_padstackinstance</span>
+                    <span class="n">positive_terminal</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Cell</span><span class="o">.</span><span class="n">Terminal</span><span class="o">.</span><span class="n">PadstackInstanceTerminal</span><span class="o">.</span><span class="n">Create</span><span class="p">(</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">_active_layout</span><span class="p">,</span> <span class="n">pin_instance</span><span class="o">.</span><span class="n">GetNet</span><span class="p">(),</span> <span class="n">term_name</span><span class="p">,</span> <span class="n">pin_instance</span><span class="p">,</span> <span class="n">start_layer</span>
+                    <span class="p">)</span>
+                    <span class="n">positive_terminal</span><span class="o">.</span><span class="n">SetBoundaryType</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Cell</span><span class="o">.</span><span class="n">Terminal</span><span class="o">.</span><span class="n">BoundaryType</span><span class="o">.</span><span class="n">PortBoundary</span><span class="p">)</span>
+                    <span class="n">positive_terminal</span><span class="o">.</span><span class="n">SetImpedance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Utility</span><span class="o">.</span><span class="n">Value</span><span class="p">(</span><span class="n">impedance</span><span class="p">))</span>
+                    <span class="n">positive_terminal</span><span class="o">.</span><span class="n">SetIsCircuitPort</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+                    <span class="n">pos</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span><span class="o">.</span><span class="n">core_components</span><span class="o">.</span><span class="n">get_pin_position</span><span class="p">(</span><span class="n">pin_instance</span><span class="p">)</span>
+                    <span class="n">position</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Geometry</span><span class="o">.</span><span class="n">PointData</span><span class="p">(</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Utility</span><span class="o">.</span><span class="n">Value</span><span class="p">(</span><span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Utility</span><span class="o">.</span><span class="n">Value</span><span class="p">(</span><span class="n">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+                    <span class="p">)</span>
+                    <span class="n">negative_terminal</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Cell</span><span class="o">.</span><span class="n">Terminal</span><span class="o">.</span><span class="n">PointTerminal</span><span class="o">.</span><span class="n">Create</span><span class="p">(</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">_active_layout</span><span class="p">,</span>
+                        <span class="n">reference_net</span><span class="p">,</span>
+                        <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">_ref&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">term_name</span><span class="p">),</span>
+                        <span class="n">position</span><span class="p">,</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span><span class="o">.</span><span class="n">core_stackup</span><span class="o">.</span><span class="n">signal_layers</span><span class="p">[</span><span class="n">layer_name</span><span class="p">]</span><span class="o">.</span><span class="n">_layer</span><span class="p">,</span>
+                    <span class="p">)</span>
+                    <span class="n">negative_terminal</span><span class="o">.</span><span class="n">SetBoundaryType</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Cell</span><span class="o">.</span><span class="n">Terminal</span><span class="o">.</span><span class="n">BoundaryType</span><span class="o">.</span><span class="n">PortBoundary</span><span class="p">)</span>
+                    <span class="n">negative_terminal</span><span class="o">.</span><span class="n">SetImpedance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Utility</span><span class="o">.</span><span class="n">Value</span><span class="p">(</span><span class="n">impedance</span><span class="p">))</span>
+                    <span class="n">negative_terminal</span><span class="o">.</span><span class="n">SetIsCircuitPort</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">positive_terminal</span><span class="o">.</span><span class="n">SetReferenceTerminal</span><span class="p">(</span><span class="n">negative_terminal</span><span class="p">):</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Port </span><span class="si">{}</span><span class="s2"> successfully created&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">term_name</span><span class="p">))</span>
+                        <span class="k">return</span> <span class="n">positive_terminal</span>
+            <span class="k">return</span> <span class="kc">False</span></div>
 
 <div class="viewcode-block" id="EdbSiwave.create_voltage_source_on_pin"><a class="viewcode-back" href="../../../EDBAPI/_autosummary/pyaedt.edb_core.siwave.EdbSiwave.create_voltage_source_on_pin.html#pyaedt.edb_core.siwave.EdbSiwave.create_voltage_source_on_pin">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">create_voltage_source_on_pin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos_pin</span><span class="p">,</span> <span class="n">neg_pin</span><span class="p">,</span> <span class="n">voltage_value</span><span class="o">=</span><span class="mf">3.3</span><span class="p">,</span> <span class="n">phase_value</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">source_name</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>

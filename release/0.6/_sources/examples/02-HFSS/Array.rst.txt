@@ -98,7 +98,7 @@ Launch HFSS and save the project.
 
     project_name = pyaedt.generate_unique_project_name(project_name="array")
     hfss = pyaedt.Hfss(projectname=project_name,
-                       specified_version="2022.2",
+                       specified_version="2023.1",
                        designname="Array_Simple",
                        non_graphical=non_graphical,
                        new_desktop_session=True)
@@ -113,7 +113,7 @@ Launch HFSS and save the project.
 
  .. code-block:: none
 
-    Project name D:\Temp\pyaedt_prj_L0K\array.aedt
+    Project name D:\Temp\pyaedt_prj_BQE\array.aedt
 
 
 
@@ -168,7 +168,7 @@ Set up a simulation and analyze it.
     setup.props["Frequency"] = "5GHz"
     setup.props["MaximumPasses"] = 3
 
-    hfss.analyze_nominal(num_cores=4)
+    hfss.analyze(num_cores=4)
 
 
 
@@ -363,7 +363,7 @@ that is generated on the fly.
     c:\actions-runner\_work\pyaedt\pyaedt\testenv\lib\site-packages\pyvista\core\dataset.py:2013: PyVistaDeprecationWarning: Use of `DataSet.overwrite` is deprecated. Use `DataSet.copy_from` instead.
       warnings.warn(
 
-    <pyvista.plotting.plotting.Plotter object at 0x0000012F00893580>
+    <pyvista.plotting.plotting.Plotter object at 0x00000272C565B130>
 
 
 
@@ -395,7 +395,7 @@ Release AEDT.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  57.579 seconds)
+   **Total running time of the script:** ( 1 minutes  39.843 seconds)
 
 
 .. _sphx_glr_download_examples_02-HFSS_Array.py:

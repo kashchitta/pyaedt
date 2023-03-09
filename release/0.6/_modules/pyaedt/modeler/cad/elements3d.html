@@ -154,14 +154,14 @@
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../../../API/index.html">
-                        API AEDT reference
+                        AEDT API
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../../../EDBAPI/index.html">
-                        API EDB reference
+                        EDB API
                       </a>
                     </li>
                 
@@ -348,14 +348,14 @@
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../../../API/index.html">
-                        API AEDT reference
+                        AEDT API
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../../../EDBAPI/index.html">
-                        API EDB reference
+                        EDB API
                       </a>
                     </li>
                 
@@ -672,10 +672,11 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">object3d</span><span class="p">,</span> <span class="n">objid</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">object3d</span><span class="p">,</span> <span class="n">objid</span><span class="p">,</span> <span class="n">position</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">objid</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_object3d</span> <span class="o">=</span> <span class="n">object3d</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">oeditor</span> <span class="o">=</span> <span class="n">object3d</span><span class="o">.</span><span class="n">m_Editor</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_position</span> <span class="o">=</span> <span class="n">position</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">position</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -694,6 +695,8 @@
 <span class="sd">        &gt;&gt;&gt; oEditor.GetVertexPosition</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_position</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_position</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">vertex_data</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">oeditor</span><span class="o">.</span><span class="n">GetVertexPosition</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">))</span>
             <span class="k">return</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">vertex_data</span><span class="p">]</span>
@@ -783,6 +786,9 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">vertices</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="n">v</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">oeditor</span><span class="o">.</span><span class="n">GetVertexIDsFromEdge</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">)]</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">v</span><span class="p">:</span>
+            <span class="n">pos</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">oeditor</span><span class="o">.</span><span class="n">GetEdgePositionAtNormalizedParameter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="mi">0</span><span class="p">)]</span>
+            <span class="n">vertices</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">VertexPrimitive</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_object3d</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">pos</span><span class="p">))</span>
         <span class="k">if</span> <span class="n">settings</span><span class="o">.</span><span class="n">aedt_version</span> <span class="o">&gt;</span> <span class="s2">&quot;2022.2&quot;</span><span class="p">:</span>
             <span class="n">v</span> <span class="o">=</span> <span class="n">v</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
         <span class="k">for</span> <span class="n">vertex</span> <span class="ow">in</span> <span class="n">v</span><span class="p">:</span>
@@ -985,6 +991,10 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">vertices</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="n">v</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">oeditor</span><span class="o">.</span><span class="n">GetVertexIDsFromFace</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">)]</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">v</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">el</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">edges</span><span class="p">:</span>
+                <span class="n">pos</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">oeditor</span><span class="o">.</span><span class="n">GetEdgePositionAtNormalizedParameter</span><span class="p">(</span><span class="n">el</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="mi">0</span><span class="p">)]</span>
+                <span class="n">vertices</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">VertexPrimitive</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_object3d</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">pos</span><span class="p">))</span>
         <span class="k">if</span> <span class="n">settings</span><span class="o">.</span><span class="n">aedt_version</span> <span class="o">&gt;</span> <span class="s2">&quot;2022.2&quot;</span><span class="p">:</span>
             <span class="n">v</span> <span class="o">=</span> <span class="n">v</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
         <span class="k">for</span> <span class="n">vertex</span> <span class="ow">in</span> <span class="n">v</span><span class="p">:</span>
@@ -1057,34 +1067,28 @@
 <span class="sd">        &gt;&gt;&gt; oEditor.GetFaceCenter</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">vertices</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">GeometryOperators</span><span class="o">.</span><span class="n">get_polygon_centroid</span><span class="p">([</span><span class="n">pos</span><span class="o">.</span><span class="n">position</span> <span class="k">for</span> <span class="n">pos</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">vertices</span><span class="p">])</span>
+        <span class="n">vtx</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">vertices</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">vtx</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">GeometryOperators</span><span class="o">.</span><span class="n">get_polygon_centroid</span><span class="p">([</span><span class="n">pos</span><span class="o">.</span><span class="n">position</span> <span class="k">for</span> <span class="n">pos</span> <span class="ow">in</span> <span class="n">vtx</span><span class="p">])</span>
+        <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">vtx</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">centroid</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+            <span class="n">eval_points</span> <span class="o">=</span> <span class="mi">4</span>
+            <span class="k">for</span> <span class="n">edge</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">edges</span><span class="p">:</span>
+                <span class="n">centroid</span> <span class="o">=</span> <span class="n">GeometryOperators</span><span class="o">.</span><span class="n">v_sum</span><span class="p">(</span>
+                    <span class="n">centroid</span><span class="p">,</span>
+                    <span class="n">GeometryOperators</span><span class="o">.</span><span class="n">get_polygon_centroid</span><span class="p">(</span>
+                        <span class="p">[</span>
+                            <span class="p">[</span>
+                                <span class="nb">float</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+                                <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">oeditor</span><span class="o">.</span><span class="n">GetEdgePositionAtNormalizedParameter</span><span class="p">(</span><span class="n">edge</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">pos</span> <span class="o">/</span> <span class="n">eval_points</span><span class="p">)</span>
+                            <span class="p">]</span>
+                            <span class="k">for</span> <span class="n">pos</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">eval_points</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+                        <span class="p">]</span>
+                    <span class="p">),</span>
+                <span class="p">)</span>
+            <span class="k">return</span> <span class="n">GeometryOperators</span><span class="o">.</span><span class="n">v_prod</span><span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">edges</span><span class="p">),</span> <span class="n">centroid</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">center</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">center_from_aedt</span>
-            <span class="k">if</span> <span class="n">center</span><span class="p">:</span>
-                <span class="k">return</span> <span class="n">center</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">vertices</span><span class="p">:</span>
-                    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">vertices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">position</span>
-                <span class="k">else</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
-                    <span class="n">centroid</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
-                    <span class="n">eval_points</span> <span class="o">=</span> <span class="mi">4</span>
-                    <span class="k">for</span> <span class="n">edge</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">edges</span><span class="p">:</span>
-                        <span class="n">centroid</span> <span class="o">=</span> <span class="n">GeometryOperators</span><span class="o">.</span><span class="n">v_sum</span><span class="p">(</span>
-                            <span class="n">centroid</span><span class="p">,</span>
-                            <span class="n">GeometryOperators</span><span class="o">.</span><span class="n">get_polygon_centroid</span><span class="p">(</span>
-                                <span class="p">[</span>
-                                    <span class="p">[</span>
-                                        <span class="nb">float</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-                                        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">oeditor</span><span class="o">.</span><span class="n">GetEdgePositionAtNormalizedParameter</span><span class="p">(</span>
-                                            <span class="n">edge</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">pos</span> <span class="o">/</span> <span class="n">eval_points</span>
-                                        <span class="p">)</span>
-                                    <span class="p">]</span>
-                                    <span class="k">for</span> <span class="n">pos</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">eval_points</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-                                <span class="p">]</span>
-                            <span class="p">),</span>
-                        <span class="p">)</span>
-                    <span class="k">return</span> <span class="n">GeometryOperators</span><span class="o">.</span><span class="n">v_prod</span><span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">edges</span><span class="p">),</span> <span class="n">centroid</span><span class="p">)</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">center_from_aedt</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">area</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>

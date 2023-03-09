@@ -64,7 +64,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="HFSS: component antenna array" href="Array.html" />
-    <link rel="prev" title="HFSS examples" href="index.html" />
+    <link rel="prev" title="HFSS: Cable Modeling" href="01-Cable_Modeling_Workflow.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="docsearch:language" content="en">
   </head>
@@ -157,14 +157,14 @@
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../API/index.html">
-                        API AEDT reference
+                        AEDT API
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../EDBAPI/index.html">
-                        API EDB reference
+                        EDB API
                       </a>
                     </li>
                 
@@ -352,14 +352,14 @@
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../API/index.html">
-                        API AEDT reference
+                        AEDT API
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../EDBAPI/index.html">
-                        API EDB reference
+                        EDB API
                       </a>
                     </li>
                 
@@ -456,8 +456,10 @@
   <div class="bd-toc-item navbar-nav">
     <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../00-EDB/index.html">EDB examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01-HFSS3DLayout/index.html">HFSS 3D Layout examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../01-Modeling-Setup/index.html">General model and setup examples</a></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">HFSS examples</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="01-Cable_Modeling_Workflow.html">HFSS: Cable Modeling</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">HFSS: advanced far field postprocessing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Array.html">HFSS: component antenna array</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Flex_CPWG.html">HFSS: flex cable CPWG</a></li>
@@ -472,7 +474,6 @@
 <li class="toctree-l2"><a class="reference internal" href="Waveguide_Filter.html">HFSS: Inductive Iris waveguide filter</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../02-HFSS3DLayout/index.html">HFSS 3D Layout examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../02-SBR%2B/index.html">SBR+ examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../03-Maxwell/index.html">Maxwell examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../04-Icepak/index.html">Icepak examples</a></li>
@@ -481,7 +482,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../07-Circuit/index.html">Circuit examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../07-EMIT/index.html">EMIT examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../07-TwinBuilder/index.html">Twin Builder examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../08-CableModeling/index.html">Cable Modeling examples</a></li>
 </ul>
 
   </div>
@@ -555,8 +555,8 @@ You can set <code class="docutils literal notranslate"><span class="pre">non_gra
 </section>
 <section id="launch-aedt">
 <h2>Launch AEDT<a class="headerlink" href="#launch-aedt" title="Permalink to this heading">#</a></h2>
-<p>Launch AEDT 2022 R2 in non-graphical mode.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">desktopVersion</span></a> <span class="o">=</span> <span class="s2">&quot;2022.2&quot;</span>
+<p>Launch AEDT 2023 R1 in non-graphical mode.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">desktopVersion</span></a> <span class="o">=</span> <span class="s2">&quot;2023.1&quot;</span>
 <a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">NewThread</span></a> <span class="o">=</span> <span class="kc">True</span>
 <span class="n">desktop</span> <span class="o">=</span> <span class="n">pyaedt</span><span class="o">.</span><span class="n">launch_desktop</span><span class="p">(</span><span class="n">specified_version</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">desktopVersion</span></a><span class="p">,</span>
                                 <a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a><span class="o">=</span><a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a><span class="p">,</span>
@@ -597,7 +597,7 @@ The solution time is computed.</p>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Postprocessing Time&quot;</span><span class="p">,</span> <a href="https://docs.python.org/dev/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">end</span></a><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Postprocessing Time 191.4374544620514
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Postprocessing Time 197.64822149276733
 </pre></div>
 </div>
 </section>
@@ -646,8 +646,8 @@ the field based on Phi and Theta and generate a plot.</p>
 
         <span class="n">theta_range</span> <span class="o">=</span> <a href="https://docs.python.org/dev/library/stdtypes.html#dict" title="builtins.dict" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ff_data</span></a><span class="p">[</span><span class="n">port</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
         <span class="n">phi_range</span> <span class="o">=</span> <a href="https://docs.python.org/dev/library/stdtypes.html#dict" title="builtins.dict" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ff_data</span></a><span class="p">[</span><span class="n">port</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
-        <span class="n">theta</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">theta_range</span><span class="p">)),</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">theta_range</span><span class="p">)),</span> <span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">theta_range</span><span class="p">)]</span>
-        <span class="n">phi</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">phi_range</span><span class="p">)),</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">phi_range</span><span class="p">)),</span> <span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">phi_range</span><span class="p">)]</span>
+        <span class="n">theta</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><a href="https://numpy.org/devdocs/reference/generated/numpy.min.html#numpy.min" title="numpy.min" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function"><span class="n">np</span><span class="o">.</span><span class="n">min</span></a><span class="p">(</span><span class="n">theta_range</span><span class="p">)),</span> <span class="nb">int</span><span class="p">(</span><a href="https://numpy.org/devdocs/reference/generated/numpy.max.html#numpy.max" title="numpy.max" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function"><span class="n">np</span><span class="o">.</span><span class="n">max</span></a><span class="p">(</span><span class="n">theta_range</span><span class="p">)),</span> <span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">theta_range</span><span class="p">)]</span>
+        <span class="n">phi</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><a href="https://numpy.org/devdocs/reference/generated/numpy.min.html#numpy.min" title="numpy.min" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function"><span class="n">np</span><span class="o">.</span><span class="n">min</span></a><span class="p">(</span><span class="n">phi_range</span><span class="p">)),</span> <span class="nb">int</span><span class="p">(</span><a href="https://numpy.org/devdocs/reference/generated/numpy.max.html#numpy.max" title="numpy.max" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function"><span class="n">np</span><span class="o">.</span><span class="n">max</span></a><span class="p">(</span><span class="n">phi_range</span><span class="p">)),</span> <span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">phi_range</span><span class="p">)]</span>
         <span class="n">Ntheta</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">theta_range</span><span class="p">)</span>
         <span class="n">Nphi</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">phi_range</span><span class="p">)</span>
 
@@ -685,7 +685,7 @@ the field based on Phi and Theta and generate a plot.</p>
     <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.imshow.html#matplotlib.pyplot.imshow" title="matplotlib.pyplot.imshow" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span></a><span class="p">(</span><span class="n">qty_to_plot</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;jet&quot;</span><span class="p">)</span>
     <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.colorbar.html#matplotlib.pyplot.colorbar" title="matplotlib.pyplot.colorbar" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span></a><span class="p">()</span>
 
-    <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">qty_to_plot</span><span class="p">)</span>
+    <a href="https://numpy.org/devdocs/reference/generated/numpy.max.html#numpy.max" title="numpy.max" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function"><span class="n">np</span><span class="o">.</span><span class="n">max</span></a><span class="p">(</span><span class="n">qty_to_plot</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
@@ -754,7 +754,7 @@ the field based on Phi and Theta and generate a plot.</p>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>True
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 3 minutes  48.863 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 4 minutes  0.960 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-02-hfss-advanced-far-field-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/0ce391b8f8bb3d06931226fd1f2dec74/Advanced_Far_Field.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">Advanced_Far_Field.py</span></code></a></p>

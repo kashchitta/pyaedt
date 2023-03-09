@@ -157,14 +157,14 @@
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../API/index.html">
-                        API AEDT reference
+                        AEDT API
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../EDBAPI/index.html">
-                        API EDB reference
+                        EDB API
                       </a>
                     </li>
                 
@@ -352,14 +352,14 @@
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../API/index.html">
-                        API AEDT reference
+                        AEDT API
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../EDBAPI/index.html">
-                        API EDB reference
+                        EDB API
                       </a>
                     </li>
                 
@@ -468,9 +468,9 @@
 <li class="toctree-l2"><a class="reference internal" href="09_Configuration.html">EDB: fully configurable project</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../01-HFSS3DLayout/index.html">HFSS 3D Layout examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../01-Modeling-Setup/index.html">General model and setup examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../02-HFSS/index.html">HFSS examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../02-HFSS3DLayout/index.html">HFSS 3D Layout examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../02-SBR%2B/index.html">SBR+ examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../03-Maxwell/index.html">Maxwell examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../04-Icepak/index.html">Icepak examples</a></li>
@@ -479,7 +479,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../07-Circuit/index.html">Circuit examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../07-EMIT/index.html">EMIT examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../07-TwinBuilder/index.html">Twin Builder examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../08-CableModeling/index.html">Cable Modeling examples</a></li>
 </ul>
 
   </div>
@@ -549,7 +548,7 @@ is used later.</p>
 <section id="create-edb">
 <h2>Create EDB<a class="headerlink" href="#create-edb" title="Permalink to this heading">#</a></h2>
 <p>Create EDB. If the path doesn’t exist, PyAEDT automatically generates a new AEDB folder.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">edb</span> <span class="o">=</span> <span class="n">pyaedt</span><span class="o">.</span><span class="n">Edb</span><span class="p">(</span><span class="n">edbpath</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">aedb_path</span></a><span class="p">,</span> <span class="n">edbversion</span><span class="o">=</span><span class="s2">&quot;2022.2&quot;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">edb</span> <span class="o">=</span> <span class="n">pyaedt</span><span class="o">.</span><span class="n">Edb</span><span class="p">(</span><span class="n">edbpath</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">aedb_path</span></a><span class="p">,</span> <span class="n">edbversion</span><span class="o">=</span><span class="s2">&quot;2023.1&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
@@ -600,7 +599,7 @@ Otherwise, is a design variable.</p>
 <span class="n">edb</span><span class="o">.</span><span class="n">add_design_variable</span><span class="p">(</span><span class="s2">&quot;trace_out_width&quot;</span><span class="p">,</span> <span class="s2">&quot;0.1mm&quot;</span><span class="p">,</span> <span class="n">is_parameter</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>(True, &lt;Ansys.Ansoft.Edb.Utility.VariableServer object at 0x0000012F6357B8C0&gt;)
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>(True, &lt;Ansys.Ansoft.Edb.Utility.VariableServer object at 0x00000272C3AEDD40&gt;)
 </pre></div>
 </div>
 </section>
@@ -624,7 +623,7 @@ are parametric.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">edb</span><span class="o">.</span><span class="n">core_padstack</span><span class="o">.</span><span class="n">place_padstack</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="s2">&quot;SVIA&quot;</span><span class="p">,</span> <span class="n">net_name</span><span class="o">=</span><span class="s2">&quot;RF&quot;</span><span class="p">,</span> <span class="n">fromlayer</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">trace_in_layer</span></a><span class="p">,</span> <span class="n">tolayer</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">trace_out_layer</span></a><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.edb_core.edb_data.padstacks_data.EDBPadstackInstance object at 0x0000012F75CD1D30&gt;
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.edb_core.edb_data.padstacks_data.EDBPadstackInstance object at 0x00000272C3B00D00&gt;
 </pre></div>
 </div>
 </section>
@@ -678,7 +677,7 @@ vias on different positions.</p>
 <span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives object at 0x0000012F75CD1D00&gt;
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives object at 0x00000272C39CEFA0&gt;
 </pre></div>
 </div>
 </section>
@@ -701,10 +700,10 @@ vias on different positions.</p>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;aedb Saved in </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">aedb_path</span></a><span class="p">))</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>aedb Saved in D:\Temp\pyaedt_prj_RUI\via_opt_2B5RY0.aedb
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>aedb Saved in D:\Temp\pyaedt_prj_CKN\via_opt_TKM1AL.aedb
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  12.334 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  13.481 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-00-edb-06-advanced-edb-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/6ab828cfbc5d1be71d70a028bb615083/06_Advanced_EDB.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">06_Advanced_EDB.py</span></code></a></p>

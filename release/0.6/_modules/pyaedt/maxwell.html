@@ -154,14 +154,14 @@
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../API/index.html">
-                        API AEDT reference
+                        AEDT API
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../EDBAPI/index.html">
-                        API EDB reference
+                        EDB API
                       </a>
                     </li>
                 
@@ -348,14 +348,14 @@
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../API/index.html">
-                        API AEDT reference
+                        AEDT API
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../EDBAPI/index.html">
-                        API EDB reference
+                        EDB API
                       </a>
                     </li>
                 
@@ -488,7 +488,7 @@
 <span class="kn">from</span> <span class="nn">pyaedt.modeler.geometry_operators</span> <span class="kn">import</span> <span class="n">GeometryOperators</span>
 <span class="kn">from</span> <span class="nn">pyaedt.modules.Boundary</span> <span class="kn">import</span> <span class="n">BoundaryObject</span>
 <span class="kn">from</span> <span class="nn">pyaedt.modules.Boundary</span> <span class="kn">import</span> <span class="n">MaxwellParameters</span>
-<span class="kn">from</span> <span class="nn">pyaedt.modules.SolveSweeps</span> <span class="kn">import</span> <span class="n">SetupKeys</span>
+<span class="kn">from</span> <span class="nn">pyaedt.modules.SetupTemplates</span> <span class="kn">import</span> <span class="n">SetupKeys</span>
 
 
 <span class="k">class</span> <span class="nc">Maxwell</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
@@ -1693,7 +1693,7 @@
 <span class="sd">        &gt;&gt;&gt; oModule.ResetSetupToTimeZero</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">oanalysis</span><span class="o">.</span><span class="n">ResetSetupToTimeZero</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_setup</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">analyze_nominal</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">analyze</span><span class="p">()</span>
         <span class="k">return</span> <span class="kc">True</span>
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
@@ -3065,9 +3065,7 @@
     <span class="nd">@model_depth</span><span class="o">.</span><span class="n">setter</span>
     <span class="k">def</span> <span class="nf">model_depth</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Set model depth.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">change_design_settings</span><span class="p">(</span>
-            <span class="p">{</span><span class="s2">&quot;ModelDepth&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_modeler</span><span class="o">.</span><span class="n">_arg_with_dim</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_modeler</span><span class="o">.</span><span class="n">model_units</span><span class="p">)}</span>
-        <span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">change_design_settings</span><span class="p">({</span><span class="s2">&quot;ModelDepth&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">_arg_with_dim</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">model_units</span><span class="p">)})</span>
 
 <div class="viewcode-block" id="Maxwell2d.generate_design_data"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.maxwell.Maxwell2d.generate_design_data.html#pyaedt.maxwell.Maxwell2d.generate_design_data">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">generate_design_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">linefilter</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">objectfilter</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>

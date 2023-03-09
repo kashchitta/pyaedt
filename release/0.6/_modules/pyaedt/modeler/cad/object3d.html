@@ -154,14 +154,14 @@
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../../../API/index.html">
-                        API AEDT reference
+                        AEDT API
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../../../EDBAPI/index.html">
-                        API EDB reference
+                        EDB API
                       </a>
                     </li>
                 
@@ -348,14 +348,14 @@
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../../../API/index.html">
-                        API AEDT reference
+                        AEDT API
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../../../EDBAPI/index.html">
-                        API EDB reference
+                        EDB API
                       </a>
                     </li>
                 
@@ -729,7 +729,8 @@
 
 <div class="viewcode-block" id="Object3d.export_image"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.modeler.cad.object3d.Object3d.export_image.html#pyaedt.modeler.cad.object3d.Object3d.export_image">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">export_image</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file_path</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Export the model to path.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Export the current object to a specified file path.</span>
+
 
 <span class="sd">        .. note::</span>
 <span class="sd">           Works from AEDT 2021.2 in CPython only. PyVista has to be installed.</span>
@@ -737,7 +738,9 @@
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        file_path : str, optional</span>
-<span class="sd">            File name with full path. If `None` Project directory will be used.</span>
+<span class="sd">            File name with full path. If `None` the exported image will be a ``png`` file that</span>
+<span class="sd">            will be saved in ``working_directory``.</span>
+<span class="sd">            To access the ``working_directory`` the use ``app.working_directory`` property.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1196,7 +1199,12 @@
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">object_type</span> <span class="o">==</span> <span class="s2">&quot;Unclassified&quot;</span><span class="p">:</span>
             <span class="k">return</span> <span class="p">[]</span>
         <span class="n">vertices</span> <span class="o">=</span> <span class="p">[]</span>
+
         <span class="n">v</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_primitives</span><span class="o">.</span><span class="n">get_object_vertices</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)]</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">v</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">el</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">edges</span><span class="p">:</span>
+                <span class="n">pos</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_primitives</span><span class="o">.</span><span class="n">oeditor</span><span class="o">.</span><span class="n">GetEdgePositionAtNormalizedParameter</span><span class="p">(</span><span class="n">el</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="mi">0</span><span class="p">)]</span>
+                <span class="n">vertices</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">VertexPrimitive</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">pos</span><span class="p">))</span>
         <span class="k">if</span> <span class="n">settings</span><span class="o">.</span><span class="n">aedt_version</span> <span class="o">&gt;</span> <span class="s2">&quot;2022.2&quot;</span><span class="p">:</span>
             <span class="n">v</span> <span class="o">=</span> <span class="n">v</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
         <span class="k">for</span> <span class="n">vertex</span> <span class="ow">in</span> <span class="n">v</span><span class="p">:</span>

@@ -157,14 +157,14 @@
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../API/index.html">
-                        API AEDT reference
+                        AEDT API
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../EDBAPI/index.html">
-                        API EDB reference
+                        EDB API
                       </a>
                     </li>
                 
@@ -352,14 +352,14 @@
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../API/index.html">
-                        API AEDT reference
+                        AEDT API
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../EDBAPI/index.html">
-                        API EDB reference
+                        EDB API
                       </a>
                     </li>
                 
@@ -468,9 +468,9 @@
 <li class="toctree-l2"><a class="reference internal" href="09_Configuration.html">EDB: fully configurable project</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../01-HFSS3DLayout/index.html">HFSS 3D Layout examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../01-Modeling-Setup/index.html">General model and setup examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../02-HFSS/index.html">HFSS examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../02-HFSS3DLayout/index.html">HFSS 3D Layout examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../02-SBR%2B/index.html">SBR+ examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../03-Maxwell/index.html">Maxwell examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../04-Icepak/index.html">Icepak examples</a></li>
@@ -479,7 +479,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../07-Circuit/index.html">Circuit examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../07-EMIT/index.html">EMIT examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../07-TwinBuilder/index.html">Twin Builder examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../08-CableModeling/index.html">Cable Modeling examples</a></li>
 </ul>
 
   </div>
@@ -522,7 +521,7 @@ to download the full example code</p>
 <section id="perform-required-imports">
 <h2>Perform required imports<a class="headerlink" href="#perform-required-imports" title="Permalink to this heading">#</a></h2>
 <p>Perform required imports, which includes importing the <code class="docutils literal notranslate"><span class="pre">Hfss3dlayout</span></code> object
-and initializing it on version 2022 R2.</p>
+and initializing it on version 2023 R1.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pyaedt</span>
 <span class="kn">import</span> <span class="nn">os</span>
 </pre></div>
@@ -540,10 +539,10 @@ and initializing it on version 2022 R2.</p>
 <p>Launch EDB.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">aedb_path</span></a> <span class="o">=</span> <a href="https://docs.python.org/dev/library/os.path.html#os.path.join" title="os.path.join" class="sphx-glr-backref-module-os-path sphx-glr-backref-type-py-function"><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span></a><span class="p">(</span><span class="n">pyaedt</span><span class="o">.</span><span class="n">generate_unique_folder_name</span><span class="p">(),</span> <span class="n">pyaedt</span><span class="o">.</span><span class="n">generate_unique_name</span><span class="p">(</span><span class="s2">&quot;pcb&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;.aedb&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">aedb_path</span></a><span class="p">)</span>
-<span class="n">edb</span> <span class="o">=</span> <span class="n">pyaedt</span><span class="o">.</span><span class="n">Edb</span><span class="p">(</span><span class="n">edbpath</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">aedb_path</span></a><span class="p">,</span> <span class="n">edbversion</span><span class="o">=</span><span class="s2">&quot;2022.2&quot;</span><span class="p">)</span>
+<span class="n">edb</span> <span class="o">=</span> <span class="n">pyaedt</span><span class="o">.</span><span class="n">Edb</span><span class="p">(</span><span class="n">edbpath</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">aedb_path</span></a><span class="p">,</span> <span class="n">edbversion</span><span class="o">=</span><span class="s2">&quot;2023.1&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>D:\Temp\pyaedt_prj_17O\pcb_0QOJ8W.aedb
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>D:\Temp\pyaedt_prj_SCZ\pcb_VKGN6Q.aedb
 </pre></div>
 </div>
 </section>
@@ -738,7 +737,7 @@ and initializing it on version 2022 R2.</p>
                                             <span class="s2">&quot;wave_port_2&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>(&#39;wave_port_2&#39;, &lt;pyaedt.edb_core.edb_data.sources.ExcitationDifferential object at 0x0000012F63602DF0&gt;)
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>(&#39;wave_port_2&#39;, &lt;pyaedt.edb_core.edb_data.sources.ExcitationDifferential object at 0x00000272B2B437C0&gt;)
 </pre></div>
 </div>
 </section>
@@ -792,7 +791,7 @@ and initializing it on version 2022 R2.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">edb</span><span class="o">.</span><span class="n">core_nets</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_04_edb_parametrized_design_001.png" srcset="../../_images/sphx_glr_04_edb_parametrized_design_001.png" alt="Cell_54RZGT" class = "sphx-glr-single-img"/></section>
+<img src="../../_images/sphx_glr_04_edb_parametrized_design_001.png" srcset="../../_images/sphx_glr_04_edb_parametrized_design_001.png" alt="Cell_DKB3MS" class = "sphx-glr-single-img"/></section>
 <section id="save-edb">
 <h2>Save EDB<a class="headerlink" href="#save-edb" title="Permalink to this heading">#</a></h2>
 <p>Save EDB.</p>
@@ -807,7 +806,7 @@ and initializing it on version 2022 R2.</p>
 <section id="open-edb-in-aedt">
 <h2>Open EDB in AEDT<a class="headerlink" href="#open-edb-in-aedt" title="Permalink to this heading">#</a></h2>
 <p>Open EDB in AEDT.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">h3d</span> <span class="o">=</span> <span class="n">pyaedt</span><span class="o">.</span><span class="n">Hfss3dLayout</span><span class="p">(</span><span class="n">projectname</span><span class="o">=</span><a href="https://docs.python.org/dev/library/os.path.html#os.path.join" title="os.path.join" class="sphx-glr-backref-module-os-path sphx-glr-backref-type-py-function"><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span></a><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">aedb_path</span></a><span class="p">,</span> <span class="s2">&quot;edb.def&quot;</span><span class="p">),</span> <span class="n">specified_version</span><span class="o">=</span><span class="s2">&quot;2022.2&quot;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">h3d</span> <span class="o">=</span> <span class="n">pyaedt</span><span class="o">.</span><span class="n">Hfss3dLayout</span><span class="p">(</span><span class="n">projectname</span><span class="o">=</span><a href="https://docs.python.org/dev/library/os.path.html#os.path.join" title="os.path.join" class="sphx-glr-backref-module-os-path sphx-glr-backref-type-py-function"><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span></a><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">aedb_path</span></a><span class="p">,</span> <span class="s2">&quot;edb.def&quot;</span><span class="p">),</span> <span class="n">specified_version</span><span class="o">=</span><span class="s2">&quot;2023.1&quot;</span><span class="p">,</span>
                           <a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a><span class="o">=</span><a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a><span class="p">)</span>
 </pre></div>
 </div>
@@ -831,14 +830,14 @@ and initializing it on version 2022 R2.</p>
 <span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modules.SolveSweeps.SweepHFSS3DLayout object at 0x0000012F68482CD0&gt;
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modules.SolveSweeps.SweepHFSS3DLayout object at 0x00000272B2D08EE0&gt;
 </pre></div>
 </div>
 </section>
 <section id="start-hfss-solver">
 <h2>Start HFSS solver<a class="headerlink" href="#start-hfss-solver" title="Permalink to this heading">#</a></h2>
-<p>Start the HFSS solver by uncommenting the <code class="docutils literal notranslate"><span class="pre">h3d.analyze_nominal()</span></code> command.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># h3d.analyze_nominal()</span>
+<p>Start the HFSS solver by uncommenting the <code class="docutils literal notranslate"><span class="pre">h3d.analyze()</span></code> command.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># h3d.analyze()</span>
 
 <span class="n">h3d</span><span class="o">.</span><span class="n">release_desktop</span><span class="p">()</span>
 </pre></div>
@@ -850,7 +849,7 @@ and initializing it on version 2022 R2.</p>
 to the wave ports. The problem with poor grounding can be seen in the
 S-parameters. Try to modify this script to add ground vias and eliminate
 the resonance.</p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  25.829 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  43.133 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-00-edb-04-edb-parametrized-design-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/cbfea4fe47d49b8e21941944c962d776/04_edb_parametrized_design.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">04_edb_parametrized_design.py</span></code></a></p>

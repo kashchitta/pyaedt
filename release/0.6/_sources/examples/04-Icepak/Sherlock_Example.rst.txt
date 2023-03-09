@@ -103,14 +103,14 @@ to run this example.
 
 Launch AEDT
 ~~~~~~~~~~~
-Launch AEDT 2022 R2 in graphical mode.
+Launch AEDT 2023 R1 in graphical mode.
 
 .. GENERATED FROM PYTHON SOURCE LINES 48-58
 
 .. code-block:: default
 
 
-    d = pyaedt.launch_desktop(specified_version="2022.2", non_graphical=non_graphical, new_desktop_session=True)
+    d = pyaedt.launch_desktop(specified_version="2023.1", non_graphical=non_graphical, new_desktop_session=True)
 
     start = time.time()
     material_list = os.path.join(input_dir, material_name)
@@ -122,6 +122,13 @@ Launch AEDT 2022 R2 in graphical mode.
 
 
 
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    C:\actions-runner\_work\PyAEDT\PyAEDT\pyaedt\desktop.py:778: ResourceWarning: unclosed <socket.socket fd=5344, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('0.0.0.0', 53455)>
+      self.port = _find_free_port()
 
 
 
@@ -196,7 +203,7 @@ Import a PCB from an AEDB file.
     C:\actions-runner\_work\PyAEDT\PyAEDT\pyaedt\icepak.py:2216: DeprecationWarning: ``outlinepolygon`` was deprecated in 0.6.43. Use ``outline_polygon`` instead.
       warnings.warn(
 
-    <pyaedt.modules.Boundary.NativeComponentObject object at 0x0000012F030FB5B0>
+    <pyaedt.modules.Boundary.NativeComponentObject object at 0x00000272C5777DF0>
 
 
 
@@ -223,7 +230,7 @@ Sherlock STEP file.
  .. code-block:: none
 
 
-    <pyaedt.modeler.cad.Modeler.CoordinateSystem object at 0x0000012F172BAA90>
+    <pyaedt.modeler.cad.Modeler.CoordinateSystem object at 0x00000272CD109C40>
 
 
 
@@ -306,7 +313,7 @@ Plot the model.
  .. code-block:: none
 
 
-    <pyaedt.generic.plot.ModelPlotter object at 0x0000012F004F26D0>
+    <pyaedt.generic.plot.ModelPlotter object at 0x00000272CD109F70>
 
 
 
@@ -358,7 +365,7 @@ Create an air region.
  .. code-block:: none
 
 
-    <pyaedt.modeler.cad.object3d.Object3d object at 0x0000012F056118E0>
+    <pyaedt.modeler.cad.object3d.Object3d object at 0x00000272E15CF5B0>
 
 
 
@@ -483,7 +490,7 @@ Plot the model again now that materials are assigned.
  .. code-block:: none
 
 
-    <pyaedt.generic.plot.ModelPlotter object at 0x0000012F0210DFA0>
+    <pyaedt.generic.plot.ModelPlotter object at 0x00000272E15CF670>
 
 
 
@@ -516,7 +523,7 @@ Set up boundaries.
  .. code-block:: none
 
 
-    <pyaedt.modules.Boundary.BoundaryObject object at 0x0000012F06E1A250>
+    <pyaedt.modules.Boundary.BoundaryObject object at 0x00000272E08F5D30>
 
 
 
@@ -572,8 +579,8 @@ Save the project and release AEDT.
 
  .. code-block:: none
 
-    Elapsed time: 0:00:37.895969
-    Project Saved in D:/Temp/pyaedt_prj_6PX/TutorialBoard.aedt 
+    Elapsed time: 0:00:54.536200
+    Project Saved in D:/Temp/pyaedt_prj_8FS/TutorialBoard.aedt 
 
     True
 
@@ -582,7 +589,7 @@ Save the project and release AEDT.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  43.577 seconds)
+   **Total running time of the script:** ( 1 minutes  24.612 seconds)
 
 
 .. _sphx_glr_download_examples_04-Icepak_Sherlock_Example.py:

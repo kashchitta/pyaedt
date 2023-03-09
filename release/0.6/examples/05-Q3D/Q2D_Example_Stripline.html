@@ -157,14 +157,14 @@
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../API/index.html">
-                        API AEDT reference
+                        AEDT API
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../EDBAPI/index.html">
-                        API EDB reference
+                        EDB API
                       </a>
                     </li>
                 
@@ -352,14 +352,14 @@
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../API/index.html">
-                        API AEDT reference
+                        AEDT API
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../EDBAPI/index.html">
-                        API EDB reference
+                        EDB API
                       </a>
                     </li>
                 
@@ -456,9 +456,9 @@
   <div class="bd-toc-item navbar-nav">
     <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../00-EDB/index.html">EDB examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01-HFSS3DLayout/index.html">HFSS 3D Layout examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../01-Modeling-Setup/index.html">General model and setup examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../02-HFSS/index.html">HFSS examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../02-HFSS3DLayout/index.html">HFSS 3D Layout examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../02-SBR%2B/index.html">SBR+ examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../03-Maxwell/index.html">Maxwell examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../04-Icepak/index.html">Icepak examples</a></li>
@@ -472,7 +472,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../07-Circuit/index.html">Circuit examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../07-EMIT/index.html">EMIT examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../07-TwinBuilder/index.html">Twin Builder examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../08-CableModeling/index.html">Cable Modeling examples</a></li>
 </ul>
 
   </div>
@@ -533,14 +532,18 @@ You can set <code class="docutils literal notranslate"><span class="pre">non_gra
 </section>
 <section id="launch-aedt-and-2d-extractor">
 <h2>Launch AEDT and 2D Extractor<a class="headerlink" href="#launch-aedt-and-2d-extractor" title="Permalink to this heading">#</a></h2>
-<p>Launch AEDT 2022 R2 in graphical mode and launch 2D Extractor. This example
+<p>Launch AEDT 2023 R1 in graphical mode and launch 2D Extractor. This example
 uses SI units.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">q</span> <span class="o">=</span> <span class="n">pyaedt</span><span class="o">.</span><span class="n">Q2d</span><span class="p">(</span><span class="n">projectname</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">project_path</span></a><span class="p">,</span>
                <span class="n">designname</span><span class="o">=</span><span class="s2">&quot;differential_stripline&quot;</span><span class="p">,</span>
-               <span class="n">specified_version</span><span class="o">=</span><span class="s2">&quot;2022.2&quot;</span><span class="p">,</span>
+               <span class="n">specified_version</span><span class="o">=</span><span class="s2">&quot;2023.1&quot;</span><span class="p">,</span>
                <a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a><span class="o">=</span><a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a><span class="p">,</span>
                <span class="n">new_desktop_session</span><span class="o">=</span><span class="kc">True</span>
                <span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>C:\actions-runner\_work\PyAEDT\PyAEDT\pyaedt\desktop.py:778: ResourceWarning: unclosed &lt;socket.socket fd=5072, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=(&#39;0.0.0.0&#39;, 53550)&gt;
+  self.port = _find_free_port()
 </pre></div>
 </div>
 </section>
@@ -641,7 +644,7 @@ uses SI units.</p>
 <span class="n">q</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">create_rectangle</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">layer_3_lh</span></a><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">dimension_list</span><span class="o">=</span><span class="p">[</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">model_w</span></a><span class="p">,</span> <a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">cond_h</span></a><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;ref_gnd_l&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modeler.cad.object3d.Object3d object at 0x0000012F05611790&gt;
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modeler.cad.object3d.Object3d object at 0x00000272CCB59C10&gt;
 </pre></div>
 </div>
 </section>
@@ -659,7 +662,7 @@ uses SI units.</p>
 <span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modeler.cad.object3d.Object3d object at 0x0000012F172BF5B0&gt;
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modeler.cad.object3d.Object3d object at 0x00000272E0BE2C10&gt;
 </pre></div>
 </div>
 </section>
@@ -677,7 +680,7 @@ uses SI units.</p>
 <span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modules.Boundary.BoundaryObject object at 0x0000012F0255F700&gt;
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modules.Boundary.BoundaryObject object at 0x00000272E0BE2370&gt;
 </pre></div>
 </div>
 </section>
@@ -690,7 +693,7 @@ uses SI units.</p>
 <span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modules.Boundary.BoundaryObject object at 0x0000012F01F66D00&gt;
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modules.Boundary.BoundaryObject object at 0x00000272E0BE2700&gt;
 </pre></div>
 </div>
 </section>
@@ -704,7 +707,7 @@ uses SI units.</p>
 <span class="n">q</span><span class="o">.</span><span class="n">assign_huray_finitecond_to_edges</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">edges</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="s2">&quot;0.5um&quot;</span><span class="p">,</span> <span class="n">ratio</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;b_&quot;</span> <span class="o">+</span> <span class="n">obj</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modules.Boundary.BoundaryObject object at 0x0000012F030D17F0&gt;
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modules.Boundary.BoundaryObject object at 0x00000272CB345F70&gt;
 </pre></div>
 </div>
 </section>
@@ -734,7 +737,7 @@ uses SI units.</p>
 <span class="n">sweep</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
 
 <span class="c1"># Analyze the nominal design and plot characteristic impedance.</span>
-<span class="n">q</span><span class="o">.</span><span class="n">analyze_nominal</span><span class="p">()</span>
+<span class="n">q</span><span class="o">.</span><span class="n">analyze</span><span class="p">()</span>
 <a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">plot_sources</span></a> <span class="o">=</span> <span class="n">matrix</span><span class="o">.</span><span class="n">get_sources_for_plot</span><span class="p">(</span><span class="n">category</span><span class="o">=</span><span class="s2">&quot;Z0&quot;</span><span class="p">)</span>
 <span class="n">a</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="n">post</span><span class="o">.</span><span class="n">get_solution_data</span><span class="p">(</span><span class="n">expressions</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">plot_sources</span></a><span class="p">,</span> <span class="n">context</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">matrix</span><span class="o">.</span><span class="n">name</span></a><span class="p">)</span>
 <span class="n">a</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">snapshot_path</span><span class="o">=</span><a href="https://docs.python.org/dev/library/os.path.html#os.path.join" title="os.path.join" class="sphx-glr-backref-module-os-path sphx-glr-backref-type-py-function"><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span></a><span class="p">(</span><span class="n">q</span><span class="o">.</span><span class="n">working_directory</span><span class="p">,</span> <span class="s2">&quot;plot.jpg&quot;</span><span class="p">))</span> <span class="c1"># Save plot as jpg</span>
@@ -761,7 +764,7 @@ uses SI units.</p>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>True
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 2 minutes  42.247 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 3 minutes  49.363 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-05-q3d-q2d-example-stripline-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/de1fbe3bcc93d6c8f34c2054557c1c5f/Q2D_Example_Stripline.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">Q2D_Example_Stripline.py</span></code></a></p>

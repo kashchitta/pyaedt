@@ -81,7 +81,7 @@ Download the project, open it, and save it to the temporary folder.
     project_temp_name = pyaedt.downloads.download_icepak(temp_folder)
 
     ipk = pyaedt.Icepak(projectname=project_temp_name,
-                        specified_version="2022.2",
+                        specified_version="2023.1",
                         new_desktop_session=True,
                         non_graphical=non_graphical
                         )
@@ -96,6 +96,8 @@ Download the project, open it, and save it to the temporary folder.
 
  .. code-block:: none
 
+    C:\actions-runner\_work\PyAEDT\PyAEDT\pyaedt\desktop.py:778: ResourceWarning: unclosed <socket.socket fd=5548, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('0.0.0.0', 53350)>
+      self.port = _find_free_port()
 
     True
 
@@ -128,7 +130,7 @@ Plot the model.
  .. code-block:: none
 
 
-    <pyaedt.generic.plot.ModelPlotter object at 0x0000012F171FF460>
+    <pyaedt.generic.plot.ModelPlotter object at 0x00000272CB345340>
 
 
 
@@ -155,7 +157,7 @@ Create source blocks on the CPU and memories.
  .. code-block:: none
 
 
-    <pyaedt.modules.Boundary.BoundaryObject object at 0x0000012F171FF220>
+    <pyaedt.modules.Boundary.BoundaryObject object at 0x00000272CAB09280>
 
 
 
@@ -183,7 +185,7 @@ Assign openings and a grille.
  .. code-block:: none
 
 
-    <pyaedt.modules.Boundary.BoundaryObject object at 0x0000012F004F26A0>
+    <pyaedt.modules.Boundary.BoundaryObject object at 0x00000272CAB33520>
 
 
 
@@ -272,7 +274,7 @@ Solve the project and plot temperatures.
     plot5 = ipk.post.create_fieldplot_surface(surflist, "SurfTemperature")
 
 
-    ipk.analyze_nominal()
+    ipk.analyze()
 
 
 
@@ -315,7 +317,7 @@ Release AEDT.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  50.039 seconds)
+   **Total running time of the script:** ( 2 minutes  29.606 seconds)
 
 
 .. _sphx_glr_download_examples_04-Icepak_Icepak_Example.py:

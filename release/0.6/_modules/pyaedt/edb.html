@@ -154,14 +154,14 @@
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../API/index.html">
-                        API AEDT reference
+                        AEDT API
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../EDBAPI/index.html">
-                        API EDB reference
+                        EDB API
                       </a>
                     </li>
                 
@@ -348,14 +348,14 @@
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../API/index.html">
-                        API AEDT reference
+                        AEDT API
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../EDBAPI/index.html">
-                        API EDB reference
+                        EDB API
                       </a>
                     </li>
                 
@@ -491,6 +491,7 @@
 <span class="kn">from</span> <span class="nn">pyaedt.edb_core</span> <span class="kn">import</span> <span class="n">EdbNets</span>
 <span class="kn">from</span> <span class="nn">pyaedt.edb_core</span> <span class="kn">import</span> <span class="n">EdbSiwave</span>
 <span class="kn">from</span> <span class="nn">pyaedt.edb_core</span> <span class="kn">import</span> <span class="n">EdbStackup</span>
+<span class="kn">from</span> <span class="nn">pyaedt.edb_core.edb_data.design_options</span> <span class="kn">import</span> <span class="n">EdbDesignOptions</span>
 <span class="kn">from</span> <span class="nn">pyaedt.edb_core.edb_data.edb_builder</span> <span class="kn">import</span> <span class="n">EdbBuilder</span>
 <span class="kn">from</span> <span class="nn">pyaedt.edb_core.edb_data.hfss_simulation_setup_data</span> <span class="kn">import</span> <span class="n">HfssSimulationSetup</span>
 <span class="kn">from</span> <span class="nn">pyaedt.edb_core.edb_data.padstacks_data</span> <span class="kn">import</span> <span class="n">EDBPadstackInstance</span>
@@ -589,7 +590,7 @@
         <span class="n">use_ppe</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
     <span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_clean_variables</span><span class="p">()</span>
-        <span class="k">if</span> <span class="n">is_ironpython</span> <span class="ow">and</span> <span class="n">inside_desktop</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">inside_desktop</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">standalone</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">standalone</span> <span class="o">=</span> <span class="kc">True</span>
@@ -1113,6 +1114,11 @@
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_stackup</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_stackup</span> <span class="o">=</span> <span class="n">EdbStackup</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_stackup</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">design_options</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Design options.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">EdbDesignOptions</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">active_cell</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">stackup</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>

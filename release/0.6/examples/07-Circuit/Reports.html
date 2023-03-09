@@ -157,14 +157,14 @@
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../API/index.html">
-                        API AEDT reference
+                        AEDT API
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../EDBAPI/index.html">
-                        API EDB reference
+                        EDB API
                       </a>
                     </li>
                 
@@ -352,14 +352,14 @@
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../API/index.html">
-                        API AEDT reference
+                        AEDT API
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../EDBAPI/index.html">
-                        API EDB reference
+                        EDB API
                       </a>
                     </li>
                 
@@ -456,9 +456,9 @@
   <div class="bd-toc-item navbar-nav">
     <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../00-EDB/index.html">EDB examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01-HFSS3DLayout/index.html">HFSS 3D Layout examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../01-Modeling-Setup/index.html">General model and setup examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../02-HFSS/index.html">HFSS examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../02-HFSS3DLayout/index.html">HFSS 3D Layout examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../02-SBR%2B/index.html">SBR+ examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../03-Maxwell/index.html">Maxwell examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../04-Icepak/index.html">Icepak examples</a></li>
@@ -476,7 +476,6 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../07-EMIT/index.html">EMIT examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../07-TwinBuilder/index.html">Twin Builder examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../08-CableModeling/index.html">Cable Modeling examples</a></li>
 </ul>
 
   </div>
@@ -532,8 +531,8 @@ to download the full example code</p>
 </section>
 <section id="launch-aedt">
 <h2>Launch AEDT<a class="headerlink" href="#launch-aedt" title="Permalink to this heading">#</a></h2>
-<p>Launch AEDT 2022 R2 in graphical mode. This example uses SI units.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">desktopVersion</span></a> <span class="o">=</span> <span class="s2">&quot;2022.2&quot;</span>
+<p>Launch AEDT 2023 R1 in graphical mode. This example uses SI units.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">desktopVersion</span></a> <span class="o">=</span> <span class="s2">&quot;2023.1&quot;</span>
 </pre></div>
 </div>
 </section>
@@ -559,6 +558,10 @@ and starts the specified version in the specified mode.</p>
                      <span class="p">)</span>
 </pre></div>
 </div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>C:\actions-runner\_work\PyAEDT\PyAEDT\pyaedt\desktop.py:793: ResourceWarning: unclosed &lt;socket.socket fd=5148, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=(&#39;0.0.0.0&#39;, 54367)&gt;
+  self.port = _find_free_port()
+</pre></div>
+</div>
 </section>
 <section id="create-spectrum-report">
 <h2>Create spectrum report<a class="headerlink" href="#create-spectrum-report" title="Permalink to this heading">#</a></h2>
@@ -566,7 +569,7 @@ and starts the specified version in the specified mode.</p>
 or a fully customized one. The following code creates a simple setup and changes
 the JSON file to customize it. In a spectrum report, you can add limitilines and
 notes and edit axes, the grid, and the legend. You can create custom reports
-in non-graphical mode in AEDT 2022 R2 and later.</p>
+in non-graphical mode in AEDT 2023 R1 and later.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">report1</span> <span class="o">=</span> <span class="n">cir</span><span class="o">.</span><span class="n">post</span><span class="o">.</span><span class="n">create_report_from_configuration</span><span class="p">(</span><a href="https://docs.python.org/dev/library/os.path.html#os.path.join" title="os.path.join" class="sphx-glr-backref-module-os-path sphx-glr-backref-type-py-function"><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span></a><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">project_path</span></a><span class="p">,</span><span class="s1">&#39;Spectrum_CISPR_Basic.json&#39;</span><span class="p">))</span>
 
 <span class="k">if</span> <span class="ow">not</span> <a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a><span class="p">:</span>
@@ -579,7 +582,7 @@ in non-graphical mode in AEDT 2022 R2 and later.</p>
 <p>Create a transient report. You can read and modify the JSON file
 before running the script. The following code modifies the traces
 before generating the report. You can create custom reports in non-graphical
-mode in AEDT 2022 R2 and later.</p>
+mode in AEDT 2023 R1 and later.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a><span class="p">:</span>
     <a href="https://docs.python.org/dev/library/stdtypes.html#dict" title="builtins.dict" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">props</span></a> <span class="o">=</span> <span class="n">pyaedt</span><span class="o">.</span><span class="n">data_handler</span><span class="o">.</span><span class="n">json_to_dict</span><span class="p">(</span><a href="https://docs.python.org/dev/library/os.path.html#os.path.join" title="os.path.join" class="sphx-glr-backref-module-os-path sphx-glr-backref-type-py-function"><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span></a><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">project_path</span></a><span class="p">,</span> <span class="s1">&#39;Transient_CISPR_Basic.json&#39;</span><span class="p">))</span>
 <span class="k">else</span><span class="p">:</span>
@@ -596,7 +599,7 @@ mode in AEDT 2022 R2 and later.</p>
 <h2>Create eye diagram<a class="headerlink" href="#create-eye-diagram" title="Permalink to this heading">#</a></h2>
 <p>Create an eye diagram. If the JSON file contains an eye mask, you can create
 an eye diagram and fully customize it. You can create custom reports in
-non-graphical mode in AEDT 2022 R2 and later.</p>
+non-graphical mode in AEDT 2023 R1 and later.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">report4</span> <span class="o">=</span> <span class="n">cir</span><span class="o">.</span><span class="n">post</span><span class="o">.</span><span class="n">create_report_from_configuration</span><span class="p">(</span><a href="https://docs.python.org/dev/library/os.path.html#os.path.join" title="os.path.join" class="sphx-glr-backref-module-os-path sphx-glr-backref-type-py-function"><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span></a><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">project_path</span></a><span class="p">,</span> <span class="s1">&#39;EyeDiagram_CISPR_Basic.json&#39;</span><span class="p">))</span>
 
 <span class="k">if</span> <span class="ow">not</span> <a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a><span class="p">:</span>
@@ -606,6 +609,8 @@ non-graphical mode in AEDT 2022 R2 and later.</p>
     <span class="n">cir</span><span class="o">.</span><span class="n">post</span><span class="o">.</span><span class="n">export_report_to_jpg</span><span class="p">(</span><span class="n">cir</span><span class="o">.</span><span class="n">working_directory</span><span class="p">,</span> <span class="n">report4</span><span class="o">.</span><span class="n">plot_name</span><span class="p">)</span>
 </pre></div>
 </div>
+<p>This is how the spectrum looks like
+.. image:: Resources/spectrum_plot.png</p>
 </section>
 <section id="save-project-and-close-aedt">
 <h2>Save project and close AEDT<a class="headerlink" href="#save-project-and-close-aedt" title="Permalink to this heading">#</a></h2>
@@ -620,7 +625,7 @@ non-graphical mode in AEDT 2022 R2 and later.</p>
 True
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  20.283 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 1 minutes  36.781 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-07-circuit-reports-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/f110684d9f38590baf1593188ee1a63b/Reports.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">Reports.py</span></code></a></p>

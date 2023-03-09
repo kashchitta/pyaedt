@@ -71,7 +71,7 @@ You can set ``non_graphical`` either to ``True`` or ``False``.
 
 Launch AEDT
 ~~~~~~~~~~~
-Launch AEDT 2022 R2 in graphical mode.
+Launch AEDT 2023 R1 in graphical mode.
 
 .. GENERATED FROM PYTHON SOURCE LINES 29-35
 
@@ -79,13 +79,20 @@ Launch AEDT 2022 R2 in graphical mode.
 
 
     m3d = Maxwell3d(projectname=generate_unique_project_name(),
-                    specified_version="2022.2",
+                    specified_version="2023.1",
                     new_desktop_session=True,
                     non_graphical=non_graphical)
 
 
 
 
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    C:\actions-runner\_work\PyAEDT\PyAEDT\pyaedt\desktop.py:778: ResourceWarning: unclosed <socket.socket fd=5520, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('0.0.0.0', 53232)>
+      self.port = _find_free_port()
 
 
 
@@ -184,7 +191,7 @@ Plot the model.
  .. code-block:: none
 
 
-    <pyaedt.generic.plot.ModelPlotter object at 0x0000012F06A6F820>
+    <pyaedt.generic.plot.ModelPlotter object at 0x00000272CA28E640>
 
 
 
@@ -199,7 +206,7 @@ Solve the setup.
 .. code-block:: default
 
 
-    m3d.analyze_nominal()
+    m3d.analyze()
 
 
 
@@ -264,6 +271,128 @@ Get mass center using the fields calculator.
 
 
 
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+      File "C:\actions-runner\_work\_tool\Python\3.8.10\x64\lib\runpy.py", line 194, in _run_module_as_main
+        return _run_code(code, main_globals, None,
+      File "C:\actions-runner\_work\_tool\Python\3.8.10\x64\lib\runpy.py", line 87, in _run_code
+        exec(code, run_globals)
+      File "C:\actions-runner\_work\PyAEDT\PyAEDT\testenv\Scripts\sphinx-build.exe\__main__.py", line 7, in <module>
+        sys.exit(main())
+      File "c:\actions-runner\_work\pyaedt\pyaedt\testenv\lib\site-packages\sphinx\cmd\build.py", line 315, in main
+        return build_main(argv)
+      File "c:\actions-runner\_work\pyaedt\pyaedt\testenv\lib\site-packages\sphinx\cmd\build.py", line 276, in build_main
+        app = Sphinx(args.sourcedir, args.confdir, args.outputdir,
+      File "c:\actions-runner\_work\pyaedt\pyaedt\testenv\lib\site-packages\sphinx\application.py", line 262, in __init__
+        self._init_builder()
+      File "c:\actions-runner\_work\pyaedt\pyaedt\testenv\lib\site-packages\sphinx\application.py", line 335, in _init_builder
+        self.events.emit('builder-inited')
+      File "c:\actions-runner\_work\pyaedt\pyaedt\testenv\lib\site-packages\sphinx\events.py", line 94, in emit
+        results.append(listener.handler(self.app, *args))
+      File "c:\actions-runner\_work\pyaedt\pyaedt\testenv\lib\site-packages\sphinx_gallery\gen_gallery.py", line 538, in generate_gallery_rst
+        ) = generate_dir_rst(
+      File "c:\actions-runner\_work\pyaedt\pyaedt\testenv\lib\site-packages\sphinx_gallery\gen_rst.py", line 431, in generate_dir_rst
+        intro, title, cost = generate_file_rst(
+      File "c:\actions-runner\_work\pyaedt\pyaedt\testenv\lib\site-packages\sphinx_gallery\gen_rst.py", line 1027, in generate_file_rst
+        output_blocks, time_elapsed = execute_script(script_blocks,
+      File "c:\actions-runner\_work\pyaedt\pyaedt\testenv\lib\site-packages\sphinx_gallery\gen_rst.py", line 945, in execute_script
+        output_blocks.append(execute_code_block(
+      File "c:\actions-runner\_work\pyaedt\pyaedt\testenv\lib\site-packages\sphinx_gallery\gen_rst.py", line 810, in execute_code_block
+        is_last_expr, mem_max = _exec_and_get_memory(
+      File "c:\actions-runner\_work\pyaedt\pyaedt\testenv\lib\site-packages\sphinx_gallery\gen_rst.py", line 676, in _exec_and_get_memory
+        mem_max, _ = gallery_conf['call_memory'](
+      File "c:\actions-runner\_work\pyaedt\pyaedt\testenv\lib\site-packages\sphinx_gallery\gen_gallery.py", line 223, in call_memory
+        return 0., func()
+      File "c:\actions-runner\_work\pyaedt\pyaedt\testenv\lib\site-packages\sphinx_gallery\gen_rst.py", line 600, in __call__
+        exec(self.code, self.fake_main.__dict__)
+      File "C:\actions-runner\_work\PyAEDT\PyAEDT\examples\03-Maxwell\Maxwell_Magnet.py", line 95, in <module>
+        xval = m3d.post.get_scalar_field_value("CM_X", None)
+      File "C:\actions-runner\_work\PyAEDT\PyAEDT\pyaedt\generic\general_methods.py", line 137, in wrapper
+        out = user_function(*args, **kwargs)
+      File "C:\actions-runner\_work\PyAEDT\PyAEDT\pyaedt\modules\PostProcessor.py", line 2375, in get_scalar_field_value
+        self.ofieldsreporter.EnterQty(quantity_name)
+    RuntimeError: Error 0x80020009;  Logs or message window might have more details
+      File "C:\actions-runner\_work\_tool\Python\3.8.10\x64\lib\runpy.py", line 194, in _run_module_as_main
+        return _run_code(code, main_globals, None,
+      File "C:\actions-runner\_work\_tool\Python\3.8.10\x64\lib\runpy.py", line 87, in _run_code
+        exec(code, run_globals)
+      File "C:\actions-runner\_work\PyAEDT\PyAEDT\testenv\Scripts\sphinx-build.exe\__main__.py", line 7, in <module>
+        sys.exit(main())
+      File "c:\actions-runner\_work\pyaedt\pyaedt\testenv\lib\site-packages\sphinx\cmd\build.py", line 315, in main
+        return build_main(argv)
+      File "c:\actions-runner\_work\pyaedt\pyaedt\testenv\lib\site-packages\sphinx\cmd\build.py", line 276, in build_main
+        app = Sphinx(args.sourcedir, args.confdir, args.outputdir,
+      File "c:\actions-runner\_work\pyaedt\pyaedt\testenv\lib\site-packages\sphinx\application.py", line 262, in __init__
+        self._init_builder()
+      File "c:\actions-runner\_work\pyaedt\pyaedt\testenv\lib\site-packages\sphinx\application.py", line 335, in _init_builder
+        self.events.emit('builder-inited')
+      File "c:\actions-runner\_work\pyaedt\pyaedt\testenv\lib\site-packages\sphinx\events.py", line 94, in emit
+        results.append(listener.handler(self.app, *args))
+      File "c:\actions-runner\_work\pyaedt\pyaedt\testenv\lib\site-packages\sphinx_gallery\gen_gallery.py", line 538, in generate_gallery_rst
+        ) = generate_dir_rst(
+      File "c:\actions-runner\_work\pyaedt\pyaedt\testenv\lib\site-packages\sphinx_gallery\gen_rst.py", line 431, in generate_dir_rst
+        intro, title, cost = generate_file_rst(
+      File "c:\actions-runner\_work\pyaedt\pyaedt\testenv\lib\site-packages\sphinx_gallery\gen_rst.py", line 1027, in generate_file_rst
+        output_blocks, time_elapsed = execute_script(script_blocks,
+      File "c:\actions-runner\_work\pyaedt\pyaedt\testenv\lib\site-packages\sphinx_gallery\gen_rst.py", line 945, in execute_script
+        output_blocks.append(execute_code_block(
+      File "c:\actions-runner\_work\pyaedt\pyaedt\testenv\lib\site-packages\sphinx_gallery\gen_rst.py", line 810, in execute_code_block
+        is_last_expr, mem_max = _exec_and_get_memory(
+      File "c:\actions-runner\_work\pyaedt\pyaedt\testenv\lib\site-packages\sphinx_gallery\gen_rst.py", line 676, in _exec_and_get_memory
+        mem_max, _ = gallery_conf['call_memory'](
+      File "c:\actions-runner\_work\pyaedt\pyaedt\testenv\lib\site-packages\sphinx_gallery\gen_gallery.py", line 223, in call_memory
+        return 0., func()
+      File "c:\actions-runner\_work\pyaedt\pyaedt\testenv\lib\site-packages\sphinx_gallery\gen_rst.py", line 600, in __call__
+        exec(self.code, self.fake_main.__dict__)
+      File "C:\actions-runner\_work\PyAEDT\PyAEDT\examples\03-Maxwell\Maxwell_Magnet.py", line 96, in <module>
+        yval = m3d.post.get_scalar_field_value("CM_Y", None)
+      File "C:\actions-runner\_work\PyAEDT\PyAEDT\pyaedt\generic\general_methods.py", line 137, in wrapper
+        out = user_function(*args, **kwargs)
+      File "C:\actions-runner\_work\PyAEDT\PyAEDT\pyaedt\modules\PostProcessor.py", line 2375, in get_scalar_field_value
+        self.ofieldsreporter.EnterQty(quantity_name)
+    RuntimeError: Error 0x80020009;  Logs or message window might have more details
+      File "C:\actions-runner\_work\_tool\Python\3.8.10\x64\lib\runpy.py", line 194, in _run_module_as_main
+        return _run_code(code, main_globals, None,
+      File "C:\actions-runner\_work\_tool\Python\3.8.10\x64\lib\runpy.py", line 87, in _run_code
+        exec(code, run_globals)
+      File "C:\actions-runner\_work\PyAEDT\PyAEDT\testenv\Scripts\sphinx-build.exe\__main__.py", line 7, in <module>
+        sys.exit(main())
+      File "c:\actions-runner\_work\pyaedt\pyaedt\testenv\lib\site-packages\sphinx\cmd\build.py", line 315, in main
+        return build_main(argv)
+      File "c:\actions-runner\_work\pyaedt\pyaedt\testenv\lib\site-packages\sphinx\cmd\build.py", line 276, in build_main
+        app = Sphinx(args.sourcedir, args.confdir, args.outputdir,
+      File "c:\actions-runner\_work\pyaedt\pyaedt\testenv\lib\site-packages\sphinx\application.py", line 262, in __init__
+        self._init_builder()
+      File "c:\actions-runner\_work\pyaedt\pyaedt\testenv\lib\site-packages\sphinx\application.py", line 335, in _init_builder
+        self.events.emit('builder-inited')
+      File "c:\actions-runner\_work\pyaedt\pyaedt\testenv\lib\site-packages\sphinx\events.py", line 94, in emit
+        results.append(listener.handler(self.app, *args))
+      File "c:\actions-runner\_work\pyaedt\pyaedt\testenv\lib\site-packages\sphinx_gallery\gen_gallery.py", line 538, in generate_gallery_rst
+        ) = generate_dir_rst(
+      File "c:\actions-runner\_work\pyaedt\pyaedt\testenv\lib\site-packages\sphinx_gallery\gen_rst.py", line 431, in generate_dir_rst
+        intro, title, cost = generate_file_rst(
+      File "c:\actions-runner\_work\pyaedt\pyaedt\testenv\lib\site-packages\sphinx_gallery\gen_rst.py", line 1027, in generate_file_rst
+        output_blocks, time_elapsed = execute_script(script_blocks,
+      File "c:\actions-runner\_work\pyaedt\pyaedt\testenv\lib\site-packages\sphinx_gallery\gen_rst.py", line 945, in execute_script
+        output_blocks.append(execute_code_block(
+      File "c:\actions-runner\_work\pyaedt\pyaedt\testenv\lib\site-packages\sphinx_gallery\gen_rst.py", line 810, in execute_code_block
+        is_last_expr, mem_max = _exec_and_get_memory(
+      File "c:\actions-runner\_work\pyaedt\pyaedt\testenv\lib\site-packages\sphinx_gallery\gen_rst.py", line 676, in _exec_and_get_memory
+        mem_max, _ = gallery_conf['call_memory'](
+      File "c:\actions-runner\_work\pyaedt\pyaedt\testenv\lib\site-packages\sphinx_gallery\gen_gallery.py", line 223, in call_memory
+        return 0., func()
+      File "c:\actions-runner\_work\pyaedt\pyaedt\testenv\lib\site-packages\sphinx_gallery\gen_rst.py", line 600, in __call__
+        exec(self.code, self.fake_main.__dict__)
+      File "C:\actions-runner\_work\PyAEDT\PyAEDT\examples\03-Maxwell\Maxwell_Magnet.py", line 97, in <module>
+        zval = m3d.post.get_scalar_field_value("CM_Z", None)
+      File "C:\actions-runner\_work\PyAEDT\PyAEDT\pyaedt\generic\general_methods.py", line 137, in wrapper
+        out = user_function(*args, **kwargs)
+      File "C:\actions-runner\_work\PyAEDT\PyAEDT\pyaedt\modules\PostProcessor.py", line 2375, in get_scalar_field_value
+        self.ofieldsreporter.EnterQty(quantity_name)
+    RuntimeError: Error 0x80020009;  Logs or message window might have more details
 
 
 
@@ -341,7 +470,7 @@ Save the project and close AEDT.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  33.285 seconds)
+   **Total running time of the script:** ( 0 minutes  55.687 seconds)
 
 
 .. _sphx_glr_download_examples_03-Maxwell_Maxwell_Magnet.py:

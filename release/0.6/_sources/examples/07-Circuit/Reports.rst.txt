@@ -53,14 +53,14 @@ Perform required imports and set the local path to the path for PyAEDT.
 
 Launch AEDT
 ~~~~~~~~~~~
-Launch AEDT 2022 R2 in graphical mode. This example uses SI units.
+Launch AEDT 2023 R1 in graphical mode. This example uses SI units.
 
 .. GENERATED FROM PYTHON SOURCE LINES 25-28
 
 .. code-block:: default
 
 
-    desktopVersion = "2022.2"
+    desktopVersion = "2023.1"
 
 
 
@@ -115,6 +115,13 @@ and starts the specified version in the specified mode.
 
 
 
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    C:\actions-runner\_work\PyAEDT\PyAEDT\pyaedt\desktop.py:793: ResourceWarning: unclosed <socket.socket fd=5148, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('0.0.0.0', 54367)>
+      self.port = _find_free_port()
+
 
 
 
@@ -126,7 +133,7 @@ Create a spectrum report. You can use a JSON file to create a simple setup
 or a fully customized one. The following code creates a simple setup and changes
 the JSON file to customize it. In a spectrum report, you can add limitilines and
 notes and edit axes, the grid, and the legend. You can create custom reports
-in non-graphical mode in AEDT 2022 R2 and later.
+in non-graphical mode in AEDT 2023 R1 and later.
 
 .. GENERATED FROM PYTHON SOURCE LINES 59-65
 
@@ -152,7 +159,7 @@ Create transient report
 Create a transient report. You can read and modify the JSON file
 before running the script. The following code modifies the traces
 before generating the report. You can create custom reports in non-graphical
-mode in AEDT 2022 R2 and later.
+mode in AEDT 2023 R1 and later.
 
 .. GENERATED FROM PYTHON SOURCE LINES 72-83
 
@@ -182,7 +189,7 @@ Create eye diagram
 ~~~~~~~~~~~~~~~~~~
 Create an eye diagram. If the JSON file contains an eye mask, you can create
 an eye diagram and fully customize it. You can create custom reports in
-non-graphical mode in AEDT 2022 R2 and later.
+non-graphical mode in AEDT 2023 R1 and later.
 
 .. GENERATED FROM PYTHON SOURCE LINES 89-98
 
@@ -204,13 +211,18 @@ non-graphical mode in AEDT 2022 R2 and later.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 99-102
+.. GENERATED FROM PYTHON SOURCE LINES 99-101
+
+This is how the spectrum looks like
+.. image:: Resources/spectrum_plot.png
+
+.. GENERATED FROM PYTHON SOURCE LINES 103-106
 
 Save project and close AEDT
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Save the project and close AEDT.
 
-.. GENERATED FROM PYTHON SOURCE LINES 102-106
+.. GENERATED FROM PYTHON SOURCE LINES 106-110
 
 .. code-block:: default
 
@@ -235,7 +247,7 @@ Save the project and close AEDT.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  20.283 seconds)
+   **Total running time of the script:** ( 1 minutes  36.781 seconds)
 
 
 .. _sphx_glr_download_examples_07-Circuit_Reports.py:

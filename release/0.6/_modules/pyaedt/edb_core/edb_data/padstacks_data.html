@@ -154,14 +154,14 @@
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../../../API/index.html">
-                        API AEDT reference
+                        AEDT API
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../../../EDBAPI/index.html">
-                        API EDB reference
+                        EDB API
                       </a>
                     </li>
                 
@@ -348,14 +348,14 @@
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../../../API/index.html">
-                        API AEDT reference
+                        AEDT API
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../../../EDBAPI/index.html">
-                        API EDB reference
+                        EDB API
                       </a>
                     </li>
                 
@@ -1917,7 +1917,7 @@
         <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_edb_padstackinstance</span><span class="o">.</span><span class="n">GetGroup</span><span class="p">()</span><span class="o">.</span><span class="n">GetPlacementLayer</span><span class="p">()</span><span class="o">.</span><span class="n">GetTopBottomAssociation</span><span class="p">())</span>
 
 <div class="viewcode-block" id="EDBPadstackInstance.create_rectangle_in_pad"><a class="viewcode-back" href="../../../../EDBAPI/_autosummary/pyaedt.edb_core.edb_data.padstacks_data.EDBPadstackInstance.create_rectangle_in_pad.html#pyaedt.edb_core.edb_data.padstacks_data.EDBPadstackInstance.create_rectangle_in_pad">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
-    <span class="k">def</span> <span class="nf">create_rectangle_in_pad</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">layer_name</span><span class="p">,</span> <span class="n">return_points</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">create_rectangle_in_pad</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">layer_name</span><span class="p">,</span> <span class="n">return_points</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">partition_max_order</span><span class="o">=</span><span class="mi">16</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a rectangle inscribed inside a padstack instance pad. The rectangle is fully inscribed in the</span>
 <span class="sd">        pad and has the maximum area. It is necessary to specify the layer on which the rectangle will be created.</span>
 
@@ -1929,6 +1929,9 @@
 <span class="sd">        return_points : bool, optional</span>
 <span class="sd">            If `True` does not create the rectangle and just returns a list containing the rectangle vertices.</span>
 <span class="sd">            Default is `False`.</span>
+<span class="sd">        partition_max_order : float, optional</span>
+<span class="sd">            Order of the lattice partition used to find the quasi-lattice polygon that approximates ``polygon``.</span>
+<span class="sd">            Default is ``16``.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2088,7 +2091,9 @@
                     <span class="n">points</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">point</span><span class="o">.</span><span class="n">X</span><span class="o">.</span><span class="n">ToDouble</span><span class="p">(),</span> <span class="n">point</span><span class="o">.</span><span class="n">Y</span><span class="o">.</span><span class="n">ToDouble</span><span class="p">()])</span>
             <span class="n">xpoly</span><span class="p">,</span> <span class="n">ypoly</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">points</span><span class="p">)</span>
             <span class="n">polygon</span> <span class="o">=</span> <span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="n">xpoly</span><span class="p">),</span> <span class="nb">list</span><span class="p">(</span><span class="n">ypoly</span><span class="p">)]</span>
-            <span class="n">rectangles</span> <span class="o">=</span> <span class="n">GeometryOperators</span><span class="o">.</span><span class="n">find_largest_rectangle_inside_polygon</span><span class="p">(</span><span class="n">polygon</span><span class="p">)</span>
+            <span class="n">rectangles</span> <span class="o">=</span> <span class="n">GeometryOperators</span><span class="o">.</span><span class="n">find_largest_rectangle_inside_polygon</span><span class="p">(</span>
+                <span class="n">polygon</span><span class="p">,</span> <span class="n">partition_max_order</span><span class="o">=</span><span class="n">partition_max_order</span>
+            <span class="p">)</span>
             <span class="n">rect</span> <span class="o">=</span> <span class="n">rectangles</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
             <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
                 <span class="n">rect</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">_translate</span><span class="p">(</span><span class="n">_rotate</span><span class="p">(</span><span class="n">rect</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>

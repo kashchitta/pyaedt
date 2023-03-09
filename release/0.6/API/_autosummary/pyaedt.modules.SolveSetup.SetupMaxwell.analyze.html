@@ -157,14 +157,14 @@
 
                     <li class="nav-item current active">
                       <a class="nav-link nav-internal" href="../index.html">
-                        API AEDT reference
+                        AEDT API
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../EDBAPI/index.html">
-                        API EDB reference
+                        EDB API
                       </a>
                     </li>
                 
@@ -307,7 +307,7 @@
         <li class="nav-item nav-item-0"><a href="../../index.html">PyAEDT</a> » </li>
     
 
-          <li class="nav-item nav-item-1"><a href="../index.html" >API AEDT reference</a> » </li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >AEDT API</a> » </li>
           <li class="nav-item nav-item-2"><a href="../Setup.html" >Setup</a> » </li>
           <li class="nav-item nav-item-3"><a href="pyaedt.modules.SolveSetup.SetupMaxwell.html" accesskey="U">SetupMaxwell</a> » </li>
         <li class="nav-item nav-item-this"><a href="">analyze</a></li> 
@@ -353,14 +353,14 @@
 
                     <li class="nav-item current active">
                       <a class="nav-link nav-internal" href="../index.html">
-                        API AEDT reference
+                        AEDT API
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../EDBAPI/index.html">
-                        API EDB reference
+                        EDB API
                       </a>
                     </li>
                 
@@ -536,21 +536,31 @@
 <h1>analyze<a class="headerlink" href="#analyze" title="Permalink to this heading">#</a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="pyaedt.modules.SolveSetup.SetupMaxwell.analyze">
-<span class="sig-prename descclassname"><span class="pre">SetupMaxwell.</span></span><span class="sig-name descname"><span class="pre">analyze</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_cores</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_tasks</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_gpu</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">acf_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_auto_settings</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyaedt.modules.SolveSetup.SetupMaxwell.analyze" title="Permalink to this definition">#</a></dt>
-<dd><p>Analyze a design setup.</p>
+<span class="sig-prename descclassname"><span class="pre">SetupMaxwell.</span></span><span class="sig-name descname"><span class="pre">analyze</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_cores</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_tasks</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_gpu</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">acf_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_auto_settings</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">solve_in_batch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">machine</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'localhost'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">run_in_thread</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">revert_to_initial_mesh</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyaedt.modules.SolveSetup.SetupMaxwell.analyze" title="Permalink to this definition">#</a></dt>
+<dd><p>Solve the active design.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
-<dt><strong>num_cores</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/functions.html#int" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">int</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Number of simulation cores. The default is <code class="docutils literal notranslate"><span class="pre">None.</span></code></p>
+<dt><strong>num_cores</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/functions.html#int" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">int</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Number of simulation cores.</p>
 </dd>
-<dt><strong>num_tasks</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/functions.html#int" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">int</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Number of simulation tasks. The default is <code class="docutils literal notranslate"><span class="pre">None.</span></code></p>
+<dt><strong>num_tasks</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/functions.html#int" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">int</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Number of simulation tasks.</p>
 </dd>
-<dt><strong>num_gpu</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/functions.html#int" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">int</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Number of simulation graphics processing units. The default is <code class="docutils literal notranslate"><span class="pre">None.</span></code></p>
+<dt><strong>num_gpu</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/functions.html#int" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">int</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Number of simulation graphic processing units to use.</p>
 </dd>
-<dt><strong>acf_file</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#str" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Full path to custom ACF file. The default is <code class="docutils literal notranslate"><span class="pre">None.</span></code></p>
+<dt><strong>acf_file</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#str" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Full path to the custom ACF file.</p>
 </dd>
-<dt><strong>use_auto_settings</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#bltin-boolean-values" title="(in Python v3.12)"><span class="xref std std-ref">bool</span></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Whether to use automatic settings in tasks or cores. This parameter
-is not supported by all setup types.</p>
+<dt><strong>use_auto_settings</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#bltin-boolean-values" title="(in Python v3.12)"><span class="xref std std-ref">bool</span></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Set <code class="docutils literal notranslate"><span class="pre">True</span></code> to use automatic settings for HPC. The option is only considered for setups
+that support automatic settings.</p>
+</dd>
+<dt><strong>solve_in_batch</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#bltin-boolean-values" title="(in Python v3.12)"><span class="xref std std-ref">bool</span></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Whether to solve the project in batch or not.
+If <code class="docutils literal notranslate"><span class="pre">True</span></code> the project will be saved, closed, solved and repened.</p>
+</dd>
+<dt><strong>machine</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#str" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Name of the machine if remote.  The default is <code class="docutils literal notranslate"><span class="pre">&quot;localhost&quot;</span></code>.</p>
+</dd>
+<dt><strong>run_in_thread</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#bltin-boolean-values" title="(in Python v3.12)"><span class="xref std std-ref">bool</span></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Whether to submit the batch command as a thread. The default is
+<code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+</dd>
+<dt><strong>revert_to_initial_mesh</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#bltin-boolean-values" title="(in Python v3.12)"><span class="xref std std-ref">bool</span></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Whether to revert to initial mesh before solving or not. Default is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
 </dd>
 </dl>
 </dd>
@@ -561,6 +571,10 @@ is not supported by all setup types.</p>
 </dl>
 </dd>
 </dl>
+<p class="rubric">References</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">oDesign</span><span class="o">.</span><span class="n">Analyze</span>
+</pre></div>
+</div>
 </dd></dl>
 
 </section>

@@ -70,7 +70,7 @@ You can set ``non_graphical`` either to ``True`` or ``False``.
 
 Launch AEDT and Q3D Extractor
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Launch AEDT 2022 R2 in graphical mode and launch Q3D Extractor. This example uses SI units.
+Launch AEDT 2023 R1 in graphical mode and launch Q3D Extractor. This example uses SI units.
 
 .. GENERATED FROM PYTHON SOURCE LINES 28-34
 
@@ -78,13 +78,20 @@ Launch AEDT 2022 R2 in graphical mode and launch Q3D Extractor. This example use
 
 
     q = pyaedt.Q3d(projectname=pyaedt.generate_unique_project_name(),
-                   specified_version="2022.2",
+                   specified_version="2023.1",
                    non_graphical=non_graphical,
                    new_desktop_session=True)
 
 
 
 
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    C:\actions-runner\_work\PyAEDT\PyAEDT\pyaedt\desktop.py:778: ResourceWarning: unclosed <socket.socket fd=3416, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('0.0.0.0', 53625)>
+      self.port = _find_free_port()
 
 
 
@@ -150,7 +157,7 @@ Create polylines for three busbars and a box for the substrate.
  .. code-block:: none
 
 
-    <pyaedt.generic.plot.ModelPlotter object at 0x0000012F688540A0>
+    <pyaedt.generic.plot.ModelPlotter object at 0x00000272CD76FF70>
 
 
 
@@ -306,7 +313,7 @@ Create a rectangular plot and a data table.
  .. code-block:: none
 
 
-    <pyaedt.modules.report_templates.Standard object at 0x0000012F68852880>
+    <pyaedt.modules.report_templates.Standard object at 0x00000272CCB23D90>
 
 
 
@@ -321,7 +328,7 @@ Solve the setup.
 .. code-block:: default
 
 
-    q.analyze_nominal()
+    q.analyze()
     q.save_project()
 
 
@@ -400,7 +407,7 @@ After the simulation completes, you can close AEDT or release it using the
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 1 minutes  5.617 seconds)
+   **Total running time of the script:** ( 1 minutes  50.688 seconds)
 
 
 .. _sphx_glr_download_examples_05-Q3D_Q3D_Example.py:

@@ -28,7 +28,7 @@ for a CPWG (coplanar waveguide with ground).
 Perform required imports
 ~~~~~~~~~~~~~~~~~~~~~~~~
 Peform required imports. Importing the ``Hfss3dlayout`` object initializes it
-on version 2022 R2.
+on version 2023 R1.
 
 .. GENERATED FROM PYTHON SOURCE LINES 13-18
 
@@ -79,7 +79,7 @@ Launch EDB.
 
     aedb_path = os.path.join(pyaedt.generate_unique_folder_name(), pyaedt.generate_unique_name("pcb") + ".aedb")
     print(aedb_path)
-    edbapp = pyaedt.Edb(edbpath=aedb_path, edbversion="2022.2")
+    edbapp = pyaedt.Edb(edbpath=aedb_path, edbversion="2023.1")
 
 
 
@@ -89,7 +89,7 @@ Launch EDB.
 
  .. code-block:: none
 
-    D:\Temp\pyaedt_prj_0PQ\pcb_MRC9LQ.aedb
+    D:\Temp\pyaedt_prj_G19\pcb_H1VEAX.aedb
 
 
 
@@ -204,7 +204,7 @@ Draw a trace.
  .. code-block:: none
 
 
-    <pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives object at 0x0000012F6350E460>
+    <pyaedt.edb_core.edb_data.primitives_data.EDBPrimitives object at 0x00000272C53A5970>
 
 
 
@@ -306,7 +306,7 @@ Open EDB in AEDT.
 .. code-block:: default
 
 
-    h3d = pyaedt.Hfss3dLayout(projectname=os.path.join(aedb_path, "edb.def"), specified_version="2022.2",
+    h3d = pyaedt.Hfss3dLayout(projectname=os.path.join(aedb_path, "edb.def"), specified_version="2023.1",
                               non_graphical=non_graphical)
 
 
@@ -339,7 +339,7 @@ Create wave ports.
  .. code-block:: none
 
 
-    <pyaedt.modules.Boundary.BoundaryObject3dLayout object at 0x0000012F631FA6A0>
+    <pyaedt.modules.Boundary.BoundaryObject3dLayout object at 0x00000272C53A5B50>
 
 
 
@@ -405,7 +405,7 @@ Create an HFSS simulation setup.
  .. code-block:: none
 
 
-    <pyaedt.modules.SolveSweeps.SweepHFSS3DLayout object at 0x0000012F6350E820>
+    <pyaedt.modules.SolveSweeps.SweepHFSS3DLayout object at 0x0000027290698B20>
 
 
 
@@ -427,7 +427,7 @@ Plot layout
 
 
 .. image-sg:: /examples/00-EDB/images/sphx_glr_08_CPWG_001.png
-   :alt: Cell_E8IK56
+   :alt: Cell_HHOM03
    :srcset: /examples/00-EDB/images/sphx_glr_08_CPWG_001.png
    :class: sphx-glr-single-img
 
@@ -439,14 +439,14 @@ Plot layout
 
 Start HFSS solver
 ~~~~~~~~~~~~~~~~~
-Start the HFSS solver by uncommenting the ``h3d.analyze_nominal()`` command.
+Start the HFSS solver by uncommenting the ``h3d.analyze()`` command.
 
 .. GENERATED FROM PYTHON SOURCE LINES 176-190
 
 .. code-block:: default
 
 
-    # h3d.analyze_nominal()
+    # h3d.analyze()
 
     # Save AEDT
     h3d.save_project()
@@ -468,7 +468,7 @@ Start the HFSS solver by uncommenting the ``h3d.analyze_nominal()`` command.
  .. code-block:: none
 
     ****************************************
-    ***Your AEDT project is save to D:\Temp\pyaedt_prj_0PQ\pcb_MRC9LQ.aedt
+    ***Your AEDT project is save to D:\Temp\pyaedt_prj_G19\pcb_H1VEAX.aedt
     ****************************************
 
 
@@ -477,7 +477,7 @@ Start the HFSS solver by uncommenting the ``h3d.analyze_nominal()`` command.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  26.406 seconds)
+   **Total running time of the script:** ( 0 minutes  51.852 seconds)
 
 
 .. _sphx_glr_download_examples_00-EDB_08_CPWG.py:

@@ -157,14 +157,14 @@
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../API/index.html">
-                        API AEDT reference
+                        AEDT API
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../EDBAPI/index.html">
-                        API EDB reference
+                        EDB API
                       </a>
                     </li>
                 
@@ -352,14 +352,14 @@
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../API/index.html">
-                        API AEDT reference
+                        AEDT API
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../EDBAPI/index.html">
-                        API EDB reference
+                        EDB API
                       </a>
                     </li>
                 
@@ -456,6 +456,7 @@
   <div class="bd-toc-item navbar-nav">
     <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../00-EDB/index.html">EDB examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01-HFSS3DLayout/index.html">HFSS 3D Layout examples</a></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">General model and setup examples</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="Configurations.html">General: configuration files</a></li>
 <li class="toctree-l2"><a class="reference internal" href="HFSS_CoordinateSystem.html">General: coordinate system creation</a></li>
@@ -470,7 +471,6 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../02-HFSS/index.html">HFSS examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../02-HFSS3DLayout/index.html">HFSS 3D Layout examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../02-SBR%2B/index.html">SBR+ examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../03-Maxwell/index.html">Maxwell examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../04-Icepak/index.html">Icepak examples</a></li>
@@ -479,7 +479,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../07-Circuit/index.html">Circuit examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../07-EMIT/index.html">EMIT examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../07-TwinBuilder/index.html">Twin Builder examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../08-CableModeling/index.html">Cable Modeling examples</a></li>
 </ul>
 
   </div>
@@ -539,7 +538,7 @@ You can set <code class="docutils literal notranslate"><span class="pre">non_gra
 <section id="create-maxwell-3d-object">
 <h2>Create Maxwell 3D object<a class="headerlink" href="#create-maxwell-3d-object" title="Permalink to this heading">#</a></h2>
 <p>Create a <a class="reference internal" href="../../API/_autosummary/pyaedt.maxwell.Maxwell3d.html#pyaedt.maxwell.Maxwell3d" title="pyaedt.maxwell.Maxwell3d"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyaedt.maxwell.Maxwell3d</span></code></a> object and set the unit type to <code class="docutils literal notranslate"><span class="pre">&quot;mm&quot;</span></code>.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">M3D</span> <span class="o">=</span> <span class="n">pyaedt</span><span class="o">.</span><span class="n">Maxwell3d</span><span class="p">(</span><span class="n">solution_type</span><span class="o">=</span><span class="s2">&quot;Transient&quot;</span><span class="p">,</span> <span class="n">designname</span><span class="o">=</span><span class="s2">&quot;test_polyline_3D&quot;</span><span class="p">,</span> <span class="n">specified_version</span><span class="o">=</span><span class="s2">&quot;2022.2&quot;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">M3D</span> <span class="o">=</span> <span class="n">pyaedt</span><span class="o">.</span><span class="n">Maxwell3d</span><span class="p">(</span><span class="n">solution_type</span><span class="o">=</span><span class="s2">&quot;Transient&quot;</span><span class="p">,</span> <span class="n">designname</span><span class="o">=</span><span class="s2">&quot;test_polyline_3D&quot;</span><span class="p">,</span> <span class="n">specified_version</span><span class="o">=</span><span class="s2">&quot;2023.1&quot;</span><span class="p">,</span>
                        <span class="n">new_desktop_session</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a><span class="o">=</span><a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a><span class="p">,</span> <span class="p">)</span>
 <span class="n">M3D</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">model_units</span> <span class="o">=</span> <span class="s2">&quot;mm&quot;</span>
 <span class="n">prim3D</span> <span class="o">=</span> <span class="n">M3D</span><span class="o">.</span><span class="n">modeler</span>
@@ -770,7 +769,7 @@ a single step.</p>
 <span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modeler.cad.polylines.Polyline object at 0x0000012F75CD05B0&gt;
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modeler.cad.polylines.Polyline object at 0x00000272C3F588E0&gt;
 </pre></div>
 </div>
 </section>
@@ -835,7 +834,7 @@ This is valid usage. The remaining points are ignored.</p>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>True
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  19.514 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  40.333 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-01-modeling-setup-polyline-primitives-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/009b0b396e644019a61af3734d2ced8f/Polyline_Primitives.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">Polyline_Primitives.py</span></code></a></p>

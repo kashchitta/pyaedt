@@ -439,10 +439,8 @@
 <li class="toctree-l3"><a class="reference internal" href="pyaedt.maxwell.Maxwell3d.add_stackup_3d.html">add_stackup_3d</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pyaedt.maxwell.Maxwell3d.add_warning_message.html">add_warning_message</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pyaedt.maxwell.Maxwell3d.add_winding_coils.html">add_winding_coils</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pyaedt.maxwell.Maxwell3d.analyze_all.html">analyze_all</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pyaedt.maxwell.Maxwell3d.analyze_from_initial_mesh.html">analyze_from_initial_mesh</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyaedt.maxwell.Maxwell3d.analyze.html">analyze</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pyaedt.maxwell.Maxwell3d.analyze_from_zero.html">analyze_from_zero</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pyaedt.maxwell.Maxwell3d.analyze_nominal.html">analyze_nominal</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pyaedt.maxwell.Maxwell3d.analyze_setup.html">analyze_setup</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pyaedt.maxwell.Maxwell3d.archive_project.html">archive_project</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pyaedt.maxwell.Maxwell3d.assign_coil.html">assign_coil</a></li>
@@ -570,8 +568,8 @@
 <li class="toctree-l3"><a class="reference internal" href="pyaedt.maxwell.Maxwell3d.Position.html">Position</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pyaedt.maxwell.Maxwell3d.SimulationSetupTypes.html">SimulationSetupTypes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pyaedt.maxwell.Maxwell3d.SolutionTypes.html">SolutionTypes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyaedt.maxwell.Maxwell3d.active_setup.html">active_setup</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pyaedt.maxwell.Maxwell3d.aedt_version_id.html">aedt_version_id</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pyaedt.maxwell.Maxwell3d.analysis_setup.html">analysis_setup</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pyaedt.maxwell.Maxwell3d.available_variations.html">available_variations</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pyaedt.maxwell.Maxwell3d.boundaries.html">boundaries</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pyaedt.maxwell.Maxwell3d.components3d.html">components3d</a></li>
@@ -714,7 +712,7 @@
 <h1>solve_in_batch<a class="headerlink" href="#solve-in-batch" title="Permalink to this heading">#</a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="pyaedt.maxwell.Maxwell3d.solve_in_batch">
-<span class="sig-prename descclassname"><span class="pre">Maxwell3d.</span></span><span class="sig-name descname"><span class="pre">solve_in_batch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">machine</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'localhost'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">run_in_thread</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_cores</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_tasks</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyaedt.maxwell.Maxwell3d.solve_in_batch" title="Permalink to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">Maxwell3d.</span></span><span class="sig-name descname"><span class="pre">solve_in_batch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">machine</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'localhost'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">run_in_thread</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_cores</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_tasks</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">setup_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">revert_to_initial_mesh</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyaedt.maxwell.Maxwell3d.solve_in_batch" title="Permalink to this definition">#</a></dt>
 <dd><p>Analyze a design setup in batch mode.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -734,6 +732,10 @@ is to be solved.</p>
 <dt><strong>num_cores</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/functions.html#int" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">int</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Number of cores to use in simulation.</p>
 </dd>
 <dt><strong>num_tasks</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/functions.html#int" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">int</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Number of tasks to use in simulation.</p>
+</dd>
+<dt><strong>setup_name</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#str" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a></span></dt><dd><p>Name of the setup, which can be an optimetric setup or a simple setup. If <code class="docutils literal notranslate"><span class="pre">None</span></code> all setup will be solved.</p>
+</dd>
+<dt><strong>revert_to_initial_mesh</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#bltin-boolean-values" title="(in Python v3.12)"><span class="xref std std-ref">bool</span></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Whether to revert to initial mesh before solving or not. Default is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
 </dd>
 </dl>
 </dd>

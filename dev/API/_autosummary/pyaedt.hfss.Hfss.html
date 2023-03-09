@@ -434,9 +434,7 @@
 <li class="toctree-l3"><a class="reference internal" href="pyaedt.hfss.Hfss.add_info_message.html">add_info_message</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pyaedt.hfss.Hfss.add_stackup_3d.html">add_stackup_3d</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pyaedt.hfss.Hfss.add_warning_message.html">add_warning_message</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pyaedt.hfss.Hfss.analyze_all.html">analyze_all</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pyaedt.hfss.Hfss.analyze_from_initial_mesh.html">analyze_from_initial_mesh</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pyaedt.hfss.Hfss.analyze_nominal.html">analyze_nominal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyaedt.hfss.Hfss.analyze.html">analyze</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pyaedt.hfss.Hfss.analyze_setup.html">analyze_setup</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pyaedt.hfss.Hfss.archive_project.html">archive_project</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pyaedt.hfss.Hfss.assign_coating.html">assign_coating</a></li>
@@ -600,8 +598,8 @@
 <li class="toctree-l3"><a class="reference internal" href="pyaedt.hfss.Hfss.Position.html">Position</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pyaedt.hfss.Hfss.SimulationSetupTypes.html">SimulationSetupTypes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pyaedt.hfss.Hfss.SolutionTypes.html">SolutionTypes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyaedt.hfss.Hfss.active_setup.html">active_setup</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pyaedt.hfss.Hfss.aedt_version_id.html">aedt_version_id</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pyaedt.hfss.Hfss.analysis_setup.html">analysis_setup</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pyaedt.hfss.Hfss.available_variations.html">available_variations</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pyaedt.hfss.Hfss.boundaries.html">boundaries</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pyaedt.hfss.Hfss.components3d.html">components3d</a></li>
@@ -887,14 +885,8 @@ the specified project, which is named <code class="docutils literal notranslate"
 <tr class="row-even"><td><p><a class="reference internal" href="pyaedt.hfss.Hfss.add_warning_message.html#pyaedt.hfss.Hfss.add_warning_message" title="pyaedt.hfss.Hfss.add_warning_message"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Hfss.add_warning_message</span></code></a>(message_text[, ...])</p></td>
 <td><p>Add a type 0 &quot;Warning&quot; message to either the global, active project, or active design level of the message manager tree.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.hfss.Hfss.analyze_all.html#pyaedt.hfss.Hfss.analyze_all" title="pyaedt.hfss.Hfss.analyze_all"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Hfss.analyze_all</span></code></a>()</p></td>
-<td><p>Analyze all setups in a design.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.hfss.Hfss.analyze_from_initial_mesh.html#pyaedt.hfss.Hfss.analyze_from_initial_mesh" title="pyaedt.hfss.Hfss.analyze_from_initial_mesh"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Hfss.analyze_from_initial_mesh</span></code></a>()</p></td>
-<td><p>Revert the solution to the initial mesh and re-run the solve.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.hfss.Hfss.analyze_nominal.html#pyaedt.hfss.Hfss.analyze_nominal" title="pyaedt.hfss.Hfss.analyze_nominal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Hfss.analyze_nominal</span></code></a>([num_cores, num_tasks, ...])</p></td>
-<td><p>Solve the nominal design.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.hfss.Hfss.analyze.html#pyaedt.hfss.Hfss.analyze" title="pyaedt.hfss.Hfss.analyze"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Hfss.analyze</span></code></a>([setup_name, num_cores, ...])</p></td>
+<td><p>Solve the active design.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="pyaedt.hfss.Hfss.analyze_setup.html#pyaedt.hfss.Hfss.analyze_setup" title="pyaedt.hfss.Hfss.analyze_setup"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Hfss.analyze_setup</span></code></a>(name[, num_cores, ...])</p></td>
 <td><p>Analyze a design setup.</p></td>
@@ -1182,7 +1174,7 @@ the specified project, which is named <code class="docutils literal notranslate"
 <td><p>Export a solution profile to a PROF file.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.hfss.Hfss.export_results.html#pyaedt.hfss.Hfss.export_results" title="pyaedt.hfss.Hfss.export_results"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Hfss.export_results</span></code></a>([analyze, ...])</p></td>
-<td><p>Export all available reports to a file, including sNp, profile, and convergence.</p></td>
+<td><p>Export all available reports to a file, including profile, and convergence and sNp when applicable.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="pyaedt.hfss.Hfss.export_rl_matrix.html#pyaedt.hfss.Hfss.export_rl_matrix" title="pyaedt.hfss.Hfss.export_rl_matrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Hfss.export_rl_matrix</span></code></a>(matrix_name, file_path)</p></td>
 <td><p>Export R/L matrix after solving.</p></td>
@@ -1390,11 +1382,11 @@ the specified project, which is named <code class="docutils literal notranslate"
 <tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.hfss.Hfss.SolutionTypes.html#pyaedt.hfss.Hfss.SolutionTypes" title="pyaedt.hfss.Hfss.SolutionTypes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Hfss.SolutionTypes</span></code></a></p></td>
 <td><p>Solution types.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.hfss.Hfss.aedt_version_id.html#pyaedt.hfss.Hfss.aedt_version_id" title="pyaedt.hfss.Hfss.aedt_version_id"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Hfss.aedt_version_id</span></code></a></p></td>
-<td><p>AEDT version.</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.hfss.Hfss.active_setup.html#pyaedt.hfss.Hfss.active_setup" title="pyaedt.hfss.Hfss.active_setup"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Hfss.active_setup</span></code></a></p></td>
+<td><p>Get or Set the name of the active setup.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.hfss.Hfss.analysis_setup.html#pyaedt.hfss.Hfss.analysis_setup" title="pyaedt.hfss.Hfss.analysis_setup"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Hfss.analysis_setup</span></code></a></p></td>
-<td><p>Analysis setup.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.hfss.Hfss.aedt_version_id.html#pyaedt.hfss.Hfss.aedt_version_id" title="pyaedt.hfss.Hfss.aedt_version_id"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Hfss.aedt_version_id</span></code></a></p></td>
+<td><p>AEDT version.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="pyaedt.hfss.Hfss.available_variations.html#pyaedt.hfss.Hfss.available_variations" title="pyaedt.hfss.Hfss.available_variations"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Hfss.available_variations</span></code></a></p></td>
 <td><p>Available variation object.</p></td>

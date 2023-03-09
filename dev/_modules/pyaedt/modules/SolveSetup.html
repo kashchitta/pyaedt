@@ -451,13 +451,12 @@
 <span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">OrderedDict</span>
 <span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">randrange</span>
 
-<span class="kn">from</span> <span class="nn">pyaedt</span> <span class="kn">import</span> <span class="n">Hfss</span>
 <span class="kn">from</span> <span class="nn">pyaedt.generic.constants</span> <span class="kn">import</span> <span class="n">AEDT_UNITS</span>
 <span class="kn">from</span> <span class="nn">pyaedt.generic.DataHandlers</span> <span class="kn">import</span> <span class="n">_dict2arg</span>
 <span class="kn">from</span> <span class="nn">pyaedt.generic.general_methods</span> <span class="kn">import</span> <span class="n">PropsManager</span>
 <span class="kn">from</span> <span class="nn">pyaedt.generic.general_methods</span> <span class="kn">import</span> <span class="n">generate_unique_name</span>
 <span class="kn">from</span> <span class="nn">pyaedt.generic.general_methods</span> <span class="kn">import</span> <span class="n">pyaedt_function_handler</span>
-<span class="kn">from</span> <span class="nn">pyaedt.modules.SolveSweeps</span> <span class="kn">import</span> <span class="n">SetupKeys</span>
+<span class="kn">from</span> <span class="nn">pyaedt.modules.SetupTemplates</span> <span class="kn">import</span> <span class="n">SetupKeys</span>
 <span class="kn">from</span> <span class="nn">pyaedt.modules.SolveSweeps</span> <span class="kn">import</span> <span class="n">SetupProps</span>
 <span class="kn">from</span> <span class="nn">pyaedt.modules.SolveSweeps</span> <span class="kn">import</span> <span class="n">SweepHFSS</span>
 <span class="kn">from</span> <span class="nn">pyaedt.modules.SolveSweeps</span> <span class="kn">import</span> <span class="n">SweepHFSS3DLayout</span>
@@ -506,11 +505,71 @@
         <span class="k">return</span> <span class="s2">&quot;SetupName &quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s2">&quot; with &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sweeps</span><span class="p">))</span> <span class="o">+</span> <span class="s2">&quot; Sweeps&quot;</span>
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">analyze</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">num_cores</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">num_tasks</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">num_gpu</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">acf_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">use_auto_settings</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">solve_in_batch</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">machine</span><span class="o">=</span><span class="s2">&quot;localhost&quot;</span><span class="p">,</span>
+        <span class="n">run_in_thread</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">revert_to_initial_mesh</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Solve the active design.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        num_cores : int, optional</span>
+<span class="sd">            Number of simulation cores.</span>
+<span class="sd">        num_tasks : int, optional</span>
+<span class="sd">            Number of simulation tasks.</span>
+<span class="sd">        num_gpu : int, optional</span>
+<span class="sd">            Number of simulation graphic processing units to use.</span>
+<span class="sd">        acf_file : str, optional</span>
+<span class="sd">            Full path to the custom ACF file.</span>
+<span class="sd">        use_auto_settings : bool, optional</span>
+<span class="sd">            Set ``True`` to use automatic settings for HPC. The option is only considered for setups</span>
+<span class="sd">            that support automatic settings.</span>
+<span class="sd">        solve_in_batch : bool, optional</span>
+<span class="sd">            Whether to solve the project in batch or not.</span>
+<span class="sd">            If ``True`` the project will be saved, closed, solved and repened.</span>
+<span class="sd">        machine : str, optional</span>
+<span class="sd">            Name of the machine if remote.  The default is ``&quot;localhost&quot;``.</span>
+<span class="sd">        run_in_thread : bool, optional</span>
+<span class="sd">            Whether to submit the batch command as a thread. The default is</span>
+<span class="sd">            ``False``.</span>
+<span class="sd">        revert_to_initial_mesh : bool, optional</span>
+<span class="sd">            Whether to revert to initial mesh before solving or not. Default is ``False``.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        bool</span>
+<span class="sd">            ``True`` when successful, ``False`` when failed.</span>
+
+<span class="sd">        References</span>
+<span class="sd">        ----------</span>
+
+<span class="sd">        &gt;&gt;&gt; oDesign.Analyze</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">analyze_setup</span><span class="p">(</span>
+            <span class="n">setup_name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+            <span class="n">num_cores</span><span class="o">=</span><span class="n">num_cores</span><span class="p">,</span>
+            <span class="n">num_tasks</span><span class="o">=</span><span class="n">num_tasks</span><span class="p">,</span>
+            <span class="n">num_gpu</span><span class="o">=</span><span class="n">num_gpu</span><span class="p">,</span>
+            <span class="n">acf_file</span><span class="o">=</span><span class="n">acf_file</span><span class="p">,</span>
+            <span class="n">use_auto_settings</span><span class="o">=</span><span class="n">use_auto_settings</span><span class="p">,</span>
+            <span class="n">solve_in_batch</span><span class="o">=</span><span class="n">solve_in_batch</span><span class="p">,</span>
+            <span class="n">machine</span><span class="o">=</span><span class="n">machine</span><span class="p">,</span>
+            <span class="n">run_in_thread</span><span class="o">=</span><span class="n">run_in_thread</span><span class="p">,</span>
+            <span class="n">revert_to_initial_mesh</span><span class="o">=</span><span class="n">revert_to_initial_mesh</span><span class="p">,</span>
+        <span class="p">)</span>
+
+    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">_init_props</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">isnewsetup</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">isnewsetup</span><span class="p">:</span>
-            <span class="n">setup_template</span> <span class="o">=</span> <span class="n">SetupKeys</span><span class="o">.</span><span class="n">SetupTemplates</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">setuptype</span><span class="p">]</span>
-            <span class="c1"># for t in setup_template:</span>
-            <span class="c1">#    _tuple2dict(t, self.props)</span>
+            <span class="n">setup_template</span> <span class="o">=</span> <span class="n">SetupKeys</span><span class="o">.</span><span class="n">get_setup_templates</span><span class="p">()[</span><span class="bp">self</span><span class="o">.</span><span class="n">setuptype</span><span class="p">]</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">props</span> <span class="o">=</span> <span class="n">SetupProps</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">setup_template</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">try</span><span class="p">:</span>
@@ -1007,35 +1066,7 @@
             <span class="k">return</span> <span class="kc">True</span>
         <span class="k">except</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">auto_update</span> <span class="o">=</span> <span class="n">auto_update</span>
-            <span class="k">return</span> <span class="kc">False</span></div>
-
-<div class="viewcode-block" id="Setup.analyze"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.SolveSetup.Setup.analyze.html#pyaedt.modules.SolveSetup.Setup.analyze">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
-    <span class="k">def</span> <span class="nf">analyze</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_cores</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">num_tasks</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">num_gpu</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">acf_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">use_auto_settings</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Analyze a design setup.</span>
-
-<span class="sd">        Parameters</span>
-<span class="sd">        ----------</span>
-<span class="sd">        num_cores : int, optional</span>
-<span class="sd">            Number of simulation cores. The default is ``None.``</span>
-<span class="sd">        num_tasks : int, optional</span>
-<span class="sd">            Number of simulation tasks. The default is ``None.``</span>
-<span class="sd">        num_gpu : int, optional</span>
-<span class="sd">            Number of simulation graphics processing units. The default is ``None.``</span>
-<span class="sd">        acf_file : str, optional</span>
-<span class="sd">            Full path to custom ACF file. The default is ``None.``</span>
-<span class="sd">        use_auto_settings : bool, optional</span>
-<span class="sd">            Whether to use automatic settings in tasks or cores. This parameter</span>
-<span class="sd">            is not supported by all setup types.</span>
-
-<span class="sd">        Returns</span>
-<span class="sd">        -------</span>
-<span class="sd">        bool</span>
-<span class="sd">           ``True`` when successful, ``False`` when failed.</span>
-
-<span class="sd">        References</span>
-<span class="sd">        ----------</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">analyze_setup</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">num_cores</span><span class="p">,</span> <span class="n">num_tasks</span><span class="p">,</span> <span class="n">num_gpu</span><span class="p">,</span> <span class="n">acf_file</span><span class="p">,</span> <span class="n">use_auto_settings</span><span class="p">)</span></div></div>
+            <span class="k">return</span> <span class="kc">False</span></div></div>
 
 
 <div class="viewcode-block" id="SetupCircuit"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.SolveSetup.SetupCircuit.html#pyaedt.modules.SolveSetup.SetupCircuit">[docs]</a><span class="k">class</span> <span class="nc">SetupCircuit</span><span class="p">(</span><span class="n">CommonSetup</span><span class="p">):</span>
@@ -1062,9 +1093,7 @@
     <span class="k">def</span> <span class="nf">_init_props</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">isnewsetup</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="n">props</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="k">if</span> <span class="n">isnewsetup</span><span class="p">:</span>
-            <span class="n">setup_template</span> <span class="o">=</span> <span class="n">SetupKeys</span><span class="o">.</span><span class="n">SetupTemplates</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">setuptype</span><span class="p">]</span>
-            <span class="c1"># for t in setup_template:</span>
-            <span class="c1">#    _tuple2dict(t, props)</span>
+            <span class="n">setup_template</span> <span class="o">=</span> <span class="n">SetupKeys</span><span class="o">.</span><span class="n">get_setup_templates</span><span class="p">()[</span><span class="bp">self</span><span class="o">.</span><span class="n">setuptype</span><span class="p">]</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">props</span> <span class="o">=</span> <span class="n">SetupProps</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">setup_template</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">props</span> <span class="o">=</span> <span class="n">SetupProps</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">OrderedDict</span><span class="p">())</span>
@@ -1591,9 +1620,7 @@
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">_init_props</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">isnewsetup</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">isnewsetup</span><span class="p">:</span>
-            <span class="n">setup_template</span> <span class="o">=</span> <span class="n">SetupKeys</span><span class="o">.</span><span class="n">SetupTemplates</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">setuptype</span><span class="p">]</span>
-            <span class="c1"># for t in setup_template:</span>
-            <span class="c1">#    _tuple2dict(t, self.props)</span>
+            <span class="n">setup_template</span> <span class="o">=</span> <span class="n">SetupKeys</span><span class="o">.</span><span class="n">get_setup_templates</span><span class="p">()[</span><span class="bp">self</span><span class="o">.</span><span class="n">setuptype</span><span class="p">]</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">props</span> <span class="o">=</span> <span class="n">SetupProps</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">setup_template</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">try</span><span class="p">:</span>
@@ -1774,6 +1801,8 @@
                 <span class="n">timeout</span> <span class="o">=</span> <span class="mi">0</span>
             <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">keep_net_name</span><span class="p">:</span>
+            <span class="kn">from</span> <span class="nn">pyaedt</span> <span class="kn">import</span> <span class="n">Hfss</span>
+
             <span class="n">primitives_3d_pts_per_nets</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_primitives_points_per_net</span><span class="p">()</span>
             <span class="n">via_per_nets</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_via_position_per_net</span><span class="p">()</span>
             <span class="n">layers_elevation</span> <span class="o">=</span> <span class="p">{</span>

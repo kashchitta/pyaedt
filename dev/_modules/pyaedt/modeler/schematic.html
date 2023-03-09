@@ -436,6 +436,7 @@
               
   <h1>Source code for pyaedt.modeler.schematic</h1><div class="highlight"><pre>
 <span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="kn">import</span> <span class="nn">random</span>
 <span class="kn">import</span> <span class="nn">re</span>
 
 <span class="kn">from</span> <span class="nn">pyaedt.generic.constants</span> <span class="kn">import</span> <span class="n">AEDT_UNITS</span>
@@ -592,6 +593,234 @@
             <span class="k">return</span> <span class="kc">False</span>
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">create_text</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">text</span><span class="p">,</span>
+        <span class="n">x_origin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">y_origin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">text_size</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span>
+        <span class="n">text_angle</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">text_color</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">show_rect</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">x1</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">y1</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">x2</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">y2</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">rect_line_width</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">rect_border_color</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">rect_fill</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">rect_color</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Draw Text.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        text : string</span>
+<span class="sd">            Text to display.</span>
+<span class="sd">        x_origin : float, optional</span>
+<span class="sd">            x origin coordinate of the text box.</span>
+<span class="sd">            Default value is ``0``.</span>
+<span class="sd">        y_origin : float, optional</span>
+<span class="sd">            y origin coordinate of the text box .</span>
+<span class="sd">            Default value is ``0``.</span>
+<span class="sd">        text_size : int, optional</span>
+<span class="sd">            Size of text.</span>
+<span class="sd">            Default value is ``12``.</span>
+<span class="sd">        text_angle : float, optional</span>
+<span class="sd">            Angle of text.</span>
+<span class="sd">            Default value is ``0``.</span>
+<span class="sd">        text_color : int, optional</span>
+<span class="sd">            The RGB value of the text color.</span>
+<span class="sd">            Default value is ``0``.</span>
+<span class="sd">        show_rect : bool, optional</span>
+<span class="sd">            Show rectangle.</span>
+<span class="sd">            Default value is ``False``.</span>
+<span class="sd">        x1 : float, optional</span>
+<span class="sd">            The text rectangle left X value, in meters.</span>
+<span class="sd">            Default value is ``0``.</span>
+<span class="sd">        y1 : float, optional</span>
+<span class="sd">            The text rectangle upper Y value, in meters.</span>
+<span class="sd">            Default value is ``0``.</span>
+<span class="sd">        x2 : float, optional</span>
+<span class="sd">            The text rectangle right X value, in meters.</span>
+<span class="sd">            Default value is ``0``.</span>
+<span class="sd">        y2 : float, optional</span>
+<span class="sd">            The text rectangle lower Y value, in meters.</span>
+<span class="sd">            Default value is ``0``.</span>
+<span class="sd">        rect_line_width : float, optional</span>
+<span class="sd">            The width of the rectangle border, in meters.</span>
+<span class="sd">            Default value is ``0``.</span>
+<span class="sd">        rect_border_color : int, optional</span>
+<span class="sd">            The RGB value of the rectangle border color.</span>
+<span class="sd">            Default value is ``0``.</span>
+<span class="sd">        rect_fill : int, optional</span>
+<span class="sd">            The rectangle fill pattern id.</span>
+<span class="sd">            Available values are: 0 = hollow, 1 = solid, 2 = NEDiagonal, 3 = OrthoCross,</span>
+<span class="sd">            4 = DiagCross, 5 = NWDiagonal, 6 = Horizontal, 7 = Vertical.</span>
+<span class="sd">            Default value is ``0``.</span>
+<span class="sd">        rect_color : int, optional</span>
+<span class="sd">            The RGB value of the rectangle fill color.</span>
+<span class="sd">            Default value is ``0``.</span>
+
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        str</span>
+<span class="sd">             Unique id of the created object when successful, ``False`` when failed.</span>
+
+<span class="sd">        References</span>
+<span class="sd">        ----------</span>
+
+<span class="sd">        &gt;&gt;&gt; oEditor.CreateText</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">element_ids</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">el</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">oeditor</span><span class="o">.</span><span class="n">GetAllGraphics</span><span class="p">():</span>
+            <span class="n">element_ids</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">el</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;@&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]))</span>
+        <span class="n">system_random</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">SystemRandom</span><span class="p">()</span>
+        <span class="n">text_id</span> <span class="o">=</span> <span class="n">system_random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">20000</span><span class="p">,</span> <span class="mi">23000</span><span class="p">)</span>
+        <span class="k">while</span> <span class="n">text_id</span> <span class="ow">in</span> <span class="n">element_ids</span><span class="p">:</span>
+            <span class="n">text_id</span> <span class="o">=</span> <span class="n">system_random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">20000</span><span class="p">,</span> <span class="mi">23000</span><span class="p">)</span>
+        <span class="n">args</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="s2">&quot;NAME:TextData&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;X:=&quot;</span><span class="p">,</span>
+            <span class="n">x_origin</span><span class="p">,</span>
+            <span class="s2">&quot;Y:=&quot;</span><span class="p">,</span>
+            <span class="n">y_origin</span><span class="p">,</span>
+            <span class="s2">&quot;Size:=&quot;</span><span class="p">,</span>
+            <span class="n">text_size</span><span class="p">,</span>
+            <span class="s2">&quot;Angle:=&quot;</span><span class="p">,</span>
+            <span class="n">text_angle</span><span class="p">,</span>
+            <span class="s2">&quot;Text:=&quot;</span><span class="p">,</span>
+            <span class="n">text</span><span class="p">,</span>
+            <span class="s2">&quot;Color:=&quot;</span><span class="p">,</span>
+            <span class="n">text_color</span><span class="p">,</span>
+            <span class="s2">&quot;Id:=&quot;</span><span class="p">,</span>
+            <span class="n">text_id</span><span class="p">,</span>
+            <span class="s2">&quot;ShowRect:=&quot;</span><span class="p">,</span>
+            <span class="n">show_rect</span><span class="p">,</span>
+            <span class="s2">&quot;X1:=&quot;</span><span class="p">,</span>
+            <span class="n">x1</span><span class="p">,</span>
+            <span class="s2">&quot;Y1:=&quot;</span><span class="p">,</span>
+            <span class="n">y1</span><span class="p">,</span>
+            <span class="s2">&quot;X2:=&quot;</span><span class="p">,</span>
+            <span class="n">x2</span><span class="p">,</span>
+            <span class="s2">&quot;Y2:=&quot;</span><span class="p">,</span>
+            <span class="n">y2</span><span class="p">,</span>
+            <span class="s2">&quot;RectLineWidth:=&quot;</span><span class="p">,</span>
+            <span class="n">rect_line_width</span><span class="p">,</span>
+            <span class="s2">&quot;RectBorderColor:=&quot;</span><span class="p">,</span>
+            <span class="n">rect_border_color</span><span class="p">,</span>
+            <span class="s2">&quot;RectFill:=&quot;</span><span class="p">,</span>
+            <span class="n">rect_fill</span><span class="p">,</span>
+            <span class="s2">&quot;RectColor:=&quot;</span><span class="p">,</span>
+            <span class="n">rect_color</span><span class="p">,</span>
+        <span class="p">]</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;NAME:Attributes&quot;</span><span class="p">,</span> <span class="s2">&quot;Page:=&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">oeditor</span><span class="o">.</span><span class="n">CreateText</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="nd">@pyaedt_function_handler</span>
+    <span class="k">def</span> <span class="nf">change_text_property</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">property_id</span><span class="p">,</span> <span class="n">property_name</span><span class="p">,</span> <span class="n">property_value</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Change an oeditor property.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        property_id : str</span>
+<span class="sd">            Object id.</span>
+<span class="sd">        property_name : str</span>
+<span class="sd">            Name of the property. For example, ``Text``.</span>
+<span class="sd">        property_value : str, list, int</span>
+<span class="sd">            Value of the property. It can be a string, an int for a single value, a list of three elements for</span>
+<span class="sd">            ``[r,g,b]`` color values or a list of two elements for ``[x, y]`` coordinates.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        bool</span>
+<span class="sd">            ``True`` when successful, ``False`` when failed.</span>
+
+<span class="sd">        References</span>
+<span class="sd">        ----------</span>
+
+<span class="sd">        &gt;&gt;&gt; oEditor.ChangeProperty</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">graphics_id</span> <span class="o">=</span> <span class="p">[</span><span class="nb">id</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;@&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="nb">id</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">oeditor</span><span class="o">.</span><span class="n">GetAllGraphics</span><span class="p">()]</span>
+        <span class="k">if</span> <span class="n">property_id</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">graphics_id</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Invalid id.&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">property_value</span><span class="p">,</span> <span class="nb">list</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">property_value</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+            <span class="k">if</span> <span class="p">(</span>
+                <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">property_value</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">int</span><span class="p">)</span>
+                <span class="ow">or</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">property_value</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="nb">int</span><span class="p">)</span>
+                <span class="ow">or</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">property_value</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="nb">int</span><span class="p">)</span>
+            <span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Invalid RGB values for color&quot;</span><span class="p">)</span>
+                <span class="k">return</span> <span class="kc">False</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">oeditor</span><span class="o">.</span><span class="n">ChangeProperty</span><span class="p">(</span>
+                <span class="p">[</span>
+                    <span class="s2">&quot;NAME:AllTabs&quot;</span><span class="p">,</span>
+                    <span class="p">[</span>
+                        <span class="s2">&quot;NAME:BaseElementTab&quot;</span><span class="p">,</span>
+                        <span class="p">[</span><span class="s2">&quot;NAME:PropServers&quot;</span><span class="p">,</span> <span class="s2">&quot;SchObj@&quot;</span> <span class="o">+</span> <span class="n">property_id</span><span class="p">],</span>
+                        <span class="p">[</span>
+                            <span class="s2">&quot;NAME:ChangedProps&quot;</span><span class="p">,</span>
+                            <span class="p">[</span>
+                                <span class="s2">&quot;NAME:&quot;</span> <span class="o">+</span> <span class="n">property_name</span><span class="p">,</span>
+                                <span class="s2">&quot;R:=&quot;</span><span class="p">,</span>
+                                <span class="n">property_value</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                                <span class="s2">&quot;G:=&quot;</span><span class="p">,</span>
+                                <span class="n">property_value</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+                                <span class="s2">&quot;B:=&quot;</span><span class="p">,</span>
+                                <span class="n">property_value</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span>
+                            <span class="p">],</span>
+                        <span class="p">],</span>
+                    <span class="p">],</span>
+                <span class="p">]</span>
+            <span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">property_value</span><span class="p">,</span> <span class="nb">list</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">property_value</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="n">xpos</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_arg_with_dim</span><span class="p">(</span><span class="n">property_value</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+            <span class="n">ypos</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_arg_with_dim</span><span class="p">(</span><span class="n">property_value</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">oeditor</span><span class="o">.</span><span class="n">ChangeProperty</span><span class="p">(</span>
+                <span class="p">[</span>
+                    <span class="s2">&quot;NAME:AllTabs&quot;</span><span class="p">,</span>
+                    <span class="p">[</span>
+                        <span class="s2">&quot;NAME:BaseElementTab&quot;</span><span class="p">,</span>
+                        <span class="p">[</span><span class="s2">&quot;NAME:PropServers&quot;</span><span class="p">,</span> <span class="s2">&quot;SchObj@&quot;</span> <span class="o">+</span> <span class="n">property_id</span><span class="p">],</span>
+                        <span class="p">[</span><span class="s2">&quot;NAME:ChangedProps&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;NAME:&quot;</span> <span class="o">+</span> <span class="n">property_name</span><span class="p">,</span> <span class="s2">&quot;X:=&quot;</span><span class="p">,</span> <span class="n">xpos</span><span class="p">,</span> <span class="s2">&quot;Y:=&quot;</span><span class="p">,</span> <span class="n">ypos</span><span class="p">]],</span>
+                    <span class="p">],</span>
+                <span class="p">]</span>
+            <span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">property_value</span><span class="p">,</span> <span class="nb">bool</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">oeditor</span><span class="o">.</span><span class="n">ChangeProperty</span><span class="p">(</span>
+                <span class="p">[</span>
+                    <span class="s2">&quot;NAME:AllTabs&quot;</span><span class="p">,</span>
+                    <span class="p">[</span>
+                        <span class="s2">&quot;NAME:BaseElementTab&quot;</span><span class="p">,</span>
+                        <span class="p">[</span><span class="s2">&quot;NAME:PropServers&quot;</span><span class="p">,</span> <span class="s2">&quot;SchObj@&quot;</span> <span class="o">+</span> <span class="n">property_id</span><span class="p">],</span>
+                        <span class="p">[</span><span class="s2">&quot;NAME:ChangedProps&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;NAME:&quot;</span> <span class="o">+</span> <span class="n">property_name</span><span class="p">,</span> <span class="s2">&quot;Value:=&quot;</span><span class="p">,</span> <span class="n">property_value</span><span class="p">]],</span>
+                    <span class="p">],</span>
+                <span class="p">]</span>
+            <span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">property_value</span><span class="p">,</span> <span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">int</span><span class="p">)):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">oeditor</span><span class="o">.</span><span class="n">ChangeProperty</span><span class="p">(</span>
+                <span class="p">[</span>
+                    <span class="s2">&quot;NAME:AllTabs&quot;</span><span class="p">,</span>
+                    <span class="p">[</span>
+                        <span class="s2">&quot;NAME:BaseElementTab&quot;</span><span class="p">,</span>
+                        <span class="p">[</span><span class="s2">&quot;NAME:PropServers&quot;</span><span class="p">,</span> <span class="s2">&quot;SchObj@&quot;</span> <span class="o">+</span> <span class="n">property_id</span><span class="p">],</span>
+                        <span class="p">[</span><span class="s2">&quot;NAME:ChangedProps&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;NAME:&quot;</span> <span class="o">+</span> <span class="n">property_name</span><span class="p">,</span> <span class="s2">&quot;Value:=&quot;</span><span class="p">,</span> <span class="n">property_value</span><span class="p">]],</span>
+                    <span class="p">],</span>
+                <span class="p">]</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Wrong Property Value&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Property </span><span class="si">{}</span><span class="s2"> Changed correctly.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">property_name</span><span class="p">))</span>
+        <span class="k">return</span> <span class="kc">True</span>
+
+    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">_get_components_selections</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">selections</span><span class="p">,</span> <span class="n">return_as_list</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
         <span class="n">sels</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">selections</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
@@ -608,6 +837,15 @@
         <span class="k">if</span> <span class="ow">not</span> <span class="n">return_as_list</span><span class="p">:</span>
             <span class="k">return</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">sels</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">sels</span>
+
+    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">_arg_with_dim</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="n">val</span> <span class="o">=</span> <span class="n">value</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">val</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{0}{1}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="s2">&quot;mil&quot;</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">val</span>
 
 
 <div class="viewcode-block" id="ModelerNexxim"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modeler.schematic.ModelerNexxim.html#pyaedt.modeler.schematic.ModelerNexxim">[docs]</a><span class="k">class</span> <span class="nc">ModelerNexxim</span><span class="p">(</span><span class="n">ModelerCircuit</span><span class="p">):</span>

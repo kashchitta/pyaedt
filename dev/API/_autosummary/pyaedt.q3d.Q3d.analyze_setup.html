@@ -60,7 +60,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="archive_project" href="pyaedt.q3d.Q3d.archive_project.html" />
-    <link rel="prev" title="analyze_nominal" href="pyaedt.q3d.Q3d.analyze_nominal.html" />
+    <link rel="prev" title="analyze" href="pyaedt.q3d.Q3d.analyze.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="docsearch:language" content="en">
   </head>
@@ -435,9 +435,7 @@
 <li class="toctree-l3"><a class="reference internal" href="pyaedt.q3d.Q3d.add_info_message.html">add_info_message</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pyaedt.q3d.Q3d.add_stackup_3d.html">add_stackup_3d</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pyaedt.q3d.Q3d.add_warning_message.html">add_warning_message</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pyaedt.q3d.Q3d.analyze_all.html">analyze_all</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pyaedt.q3d.Q3d.analyze_from_initial_mesh.html">analyze_from_initial_mesh</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pyaedt.q3d.Q3d.analyze_nominal.html">analyze_nominal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyaedt.q3d.Q3d.analyze.html">analyze</a></li>
 <li class="toctree-l3 current active"><a class="current reference internal" href="#">analyze_setup</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pyaedt.q3d.Q3d.archive_project.html">archive_project</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pyaedt.q3d.Q3d.assign_material.html">assign_material</a></li>
@@ -551,8 +549,8 @@
 <li class="toctree-l3"><a class="reference internal" href="pyaedt.q3d.Q3d.Position.html">Position</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pyaedt.q3d.Q3d.SimulationSetupTypes.html">SimulationSetupTypes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pyaedt.q3d.Q3d.SolutionTypes.html">SolutionTypes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyaedt.q3d.Q3d.active_setup.html">active_setup</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pyaedt.q3d.Q3d.aedt_version_id.html">aedt_version_id</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pyaedt.q3d.Q3d.analysis_setup.html">analysis_setup</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pyaedt.q3d.Q3d.available_variations.html">available_variations</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pyaedt.q3d.Q3d.boundaries.html">boundaries</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pyaedt.q3d.Q3d.components3d.html">components3d</a></li>
@@ -696,12 +694,13 @@
 <h1>analyze_setup<a class="headerlink" href="#analyze-setup" title="Permalink to this heading">#</a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="pyaedt.q3d.Q3d.analyze_setup">
-<span class="sig-prename descclassname"><span class="pre">Q3d.</span></span><span class="sig-name descname"><span class="pre">analyze_setup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_cores</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_tasks</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_gpu</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">acf_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_auto_settings</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_variations_to_distribute</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allowed_distribution_types</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyaedt.q3d.Q3d.analyze_setup" title="Permalink to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">Q3d.</span></span><span class="sig-name descname"><span class="pre">analyze_setup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_cores</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_tasks</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_gpu</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">acf_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_auto_settings</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_variations_to_distribute</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allowed_distribution_types</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">revert_to_initial_mesh</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyaedt.q3d.Q3d.analyze_setup" title="Permalink to this definition">#</a></dt>
 <dd><p>Analyze a design setup.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
-<dt><strong>name</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#str" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a></span></dt><dd><p>Name of the setup, which can be an optimetric setup or a simple setup.</p>
+<dt><strong>name</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#str" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a></span></dt><dd><p>Name of the setup, which can be an optimetric setup or a simple setup.
+If <code class="docutils literal notranslate"><span class="pre">None</span></code> all setups will be solved.</p>
 </dd>
 <dt><strong>num_cores</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/functions.html#int" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">int</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Number of simulation cores. The default is <code class="docutils literal notranslate"><span class="pre">None.</span></code></p>
 </dd>
@@ -717,6 +716,8 @@
 </dd>
 <dt><strong>allowed_distribution_types</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#list" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">list</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>List of strings. Each string represents a distribution type. The default value <code class="docutils literal notranslate"><span class="pre">None</span></code> does nothing.
 An empty list <code class="docutils literal notranslate"><span class="pre">[]</span></code> disables all types.</p>
+</dd>
+<dt><strong>revert_to_initial_mesh</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#bltin-boolean-values" title="(in Python v3.12)"><span class="xref std std-ref">bool</span></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Whether to revert to initial mesh before solving or not. Default is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
 </dd>
 </dl>
 </dd>

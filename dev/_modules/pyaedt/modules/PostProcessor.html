@@ -550,9 +550,12 @@
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        expressions : str or list</span>
-<span class="sd">            Expression List.</span>
+<span class="sd">            Expression List to add into the report. The expression can be any of the available formula</span>
+<span class="sd">            you can enter into the Electronics Desktop Report Editor.</span>
 <span class="sd">        setup_name : str, optional</span>
-<span class="sd">            Setup Name.</span>
+<span class="sd">            Name of the setup. The default is ``None`` which automatically take ``nominal_adaptive`` setup.</span>
+<span class="sd">            Please make sure to build a setup string in the form of ``&quot;SetupName : SetupSweep&quot;``</span>
+<span class="sd">            where ``SetupSweep`` is the Sweep name to use in the export or ``LastAdaptive``.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -566,6 +569,8 @@
 <span class="sd">        &gt;&gt;&gt; report = cir.post.reports_by_category.standard(&quot;dB(S(1,1))&quot;, &quot;LNA&quot;)</span>
 <span class="sd">        &gt;&gt;&gt; report.create()</span>
 <span class="sd">        &gt;&gt;&gt; solutions = report.get_solution_data()</span>
+<span class="sd">        &gt;&gt;&gt; report2 = cir.post.reports_by_category.standard([&quot;dB(S(2,1))&quot;, &quot;dB(S(2,2))&quot;] , &quot;LNA&quot;)</span>
+
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">setup_name</span><span class="p">:</span>
             <span class="n">setup_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_post_app</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">nominal_sweep</span>
@@ -586,9 +591,12 @@
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        expressions : str or list</span>
-<span class="sd">            Expression List.</span>
+<span class="sd">            Expression List to add into the report. The expression can be any of the available formula</span>
+<span class="sd">            you can enter into the Electronics Desktop Report Editor.</span>
 <span class="sd">        setup_name : str, optional</span>
-<span class="sd">            Setup Name.</span>
+<span class="sd">            Name of the setup. The default is ``None`` which automatically take ``nominal_adaptive`` setup.</span>
+<span class="sd">            Please make sure to build a setup string in the form of ``&quot;SetupName : SetupSweep&quot;``</span>
+<span class="sd">            where ``SetupSweep`` is the Sweep name to use in the export or ``LastAdaptive``.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -617,9 +625,12 @@
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        expressions : str or list</span>
-<span class="sd">            Expression List.</span>
+<span class="sd">            Expression List to add into the report. The expression can be any of the available formula</span>
+<span class="sd">            you can enter into the Electronics Desktop Report Editor.</span>
 <span class="sd">        setup_name : str, optional</span>
-<span class="sd">            Setup Name.</span>
+<span class="sd">            Name of the setup. The default is ``None`` which automatically take ``nominal_adaptive`` setup.</span>
+<span class="sd">            Please make sure to build a setup string in the form of ``&quot;SetupName : SetupSweep&quot;``</span>
+<span class="sd">            where ``SetupSweep`` is the Sweep name to use in the export or ``LastAdaptive``.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -650,9 +661,12 @@
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        expressions : str or list</span>
-<span class="sd">            Expression List.</span>
+<span class="sd">            Expression List to add into the report. The expression can be any of the available formula</span>
+<span class="sd">            you can enter into the Electronics Desktop Report Editor.</span>
 <span class="sd">        setup_name : str, optional</span>
-<span class="sd">            Setup Name.</span>
+<span class="sd">            Name of the setup. The default is ``None`` which automatically take ``nominal_adaptive`` setup.</span>
+<span class="sd">            Please make sure to build a setup string in the form of ``&quot;SetupName : SetupSweep&quot;``</span>
+<span class="sd">            where ``SetupSweep`` is the Sweep name to use in the export or ``LastAdaptive``.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -683,9 +697,12 @@
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        expressions : str or list</span>
-<span class="sd">            Expression List.</span>
+<span class="sd">            Expression List to add into the report. The expression can be any of the available formula</span>
+<span class="sd">            you can enter into the Electronics Desktop Report Editor.</span>
 <span class="sd">        setup_name : str, optional</span>
-<span class="sd">            Setup Name.</span>
+<span class="sd">            Name of the setup. The default is ``None`` which automatically take ``nominal_adaptive`` setup.</span>
+<span class="sd">            Please make sure to build a setup string in the form of ``&quot;SetupName : SetupSweep&quot;``</span>
+<span class="sd">            where ``SetupSweep`` is the Sweep name to use in the export or ``LastAdaptive``.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -716,9 +733,12 @@
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        expressions : str or list</span>
-<span class="sd">            Expression List.</span>
+<span class="sd">            Expression List to add into the report. The expression can be any of the available formula</span>
+<span class="sd">            you can enter into the Electronics Desktop Report Editor.</span>
 <span class="sd">        setup_name : str, optional</span>
-<span class="sd">            Setup Name.</span>
+<span class="sd">            Name of the setup. The default is ``None`` which automatically take ``nominal_adaptive`` setup.</span>
+<span class="sd">            Please make sure to build a setup string in the form of ``&quot;SetupName : SetupSweep&quot;``</span>
+<span class="sd">            where ``SetupSweep`` is the Sweep name to use in the export or ``LastAdaptive``.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -752,9 +772,12 @@
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        expressions : str or list</span>
-<span class="sd">            Expression List.</span>
+<span class="sd">            Expression List to add into the report. The expression can be any of the available formula</span>
+<span class="sd">            you can enter into the Electronics Desktop Report Editor.</span>
 <span class="sd">        setup_name : str, optional</span>
-<span class="sd">            Setup name.</span>
+<span class="sd">            Name of the setup. The default is ``None`` which automatically take ``nominal_adaptive`` setup.</span>
+<span class="sd">            Please make sure to build a setup string in the form of ``&quot;SetupName : SetupSweep&quot;``</span>
+<span class="sd">            where ``SetupSweep`` is the Sweep name to use in the export or ``LastAdaptive``.</span>
 <span class="sd">        sphere_name : str, optional</span>
 <span class="sd">            Name of the sphere to create the far field on.</span>
 <span class="sd">        source_context : str, optional</span>
@@ -791,9 +814,12 @@
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        expressions : str or list</span>
-<span class="sd">            Expression List.</span>
+<span class="sd">            Expression List to add into the report. The expression can be any of the available formula</span>
+<span class="sd">            you can enter into the Electronics Desktop Report Editor.</span>
 <span class="sd">        setup_name : str, optional</span>
-<span class="sd">            Setup Name.</span>
+<span class="sd">            Name of the setup. The default is ``None`` which automatically take ``nominal_adaptive`` setup.</span>
+<span class="sd">            Please make sure to build a setup string in the form of ``&quot;SetupName : SetupSweep&quot;``</span>
+<span class="sd">            where ``SetupSweep`` is the Sweep name to use in the export or ``LastAdaptive``.</span>
 <span class="sd">        sphere_name : str, optional</span>
 <span class="sd">            Name of the sphere on which compute antenna parameters.</span>
 
@@ -825,9 +851,12 @@
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        expressions : str or list</span>
-<span class="sd">            Expression List.</span>
+<span class="sd">            Expression List to add into the report. The expression can be any of the available formula</span>
+<span class="sd">            you can enter into the Electronics Desktop Report Editor.</span>
 <span class="sd">        setup_name : str, optional</span>
-<span class="sd">            Setup Name.</span>
+<span class="sd">            Name of the setup. The default is ``None`` which automatically take ``nominal_adaptive`` setup.</span>
+<span class="sd">            Please make sure to build a setup string in the form of ``&quot;SetupName : SetupSweep&quot;``</span>
+<span class="sd">            where ``SetupSweep`` is the Sweep name to use in the export or ``LastAdaptive``.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -858,9 +887,12 @@
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        expressions : str or list</span>
-<span class="sd">            Expression List.</span>
+<span class="sd">            Expression List to add into the report. The expression can be any of the available formula</span>
+<span class="sd">            you can enter into the Electronics Desktop Report Editor.</span>
 <span class="sd">        setup_name : str, optional</span>
-<span class="sd">            Setup Name.</span>
+<span class="sd">            Name of the setup. The default is ``None`` which automatically take ``nominal_adaptive`` setup.</span>
+<span class="sd">            Please make sure to build a setup string in the form of ``&quot;SetupName : SetupSweep&quot;``</span>
+<span class="sd">            where ``SetupSweep`` is the Sweep name to use in the export or ``LastAdaptive``.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -890,9 +922,12 @@
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        expressions : str or list</span>
-<span class="sd">            Expression List.</span>
+<span class="sd">            Expression List to add into the report. The expression can be any of the available formula</span>
+<span class="sd">            you can enter into the Electronics Desktop Report Editor.</span>
 <span class="sd">        setup_name : str, optional</span>
-<span class="sd">            Setup Name.</span>
+<span class="sd">            Name of the setup. The default is ``None`` which automatically take ``nominal_adaptive`` setup.</span>
+<span class="sd">            Please make sure to build a setup string in the form of ``&quot;SetupName : SetupSweep&quot;``</span>
+<span class="sd">            where ``SetupSweep`` is the Sweep name to use in the export or ``LastAdaptive``.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -922,9 +957,12 @@
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        expressions : str or list</span>
-<span class="sd">            Expression List.</span>
+<span class="sd">            Expression List to add into the report. The expression can be any of the available formula</span>
+<span class="sd">            you can enter into the Electronics Desktop Report Editor.</span>
 <span class="sd">        setup_name : str, optional</span>
-<span class="sd">            Setup Name.</span>
+<span class="sd">            Name of the setup. The default is ``None`` which automatically take ``nominal_adaptive`` setup.</span>
+<span class="sd">            Please make sure to build a setup string in the form of ``&quot;SetupName : SetupSweep&quot;``</span>
+<span class="sd">            where ``SetupSweep`` is the Sweep name to use in the export or ``LastAdaptive``.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -954,9 +992,12 @@
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        expressions : str or list</span>
-<span class="sd">            Expression List.</span>
+<span class="sd">            Expression List to add into the report. The expression can be any of the available formula</span>
+<span class="sd">            you can enter into the Electronics Desktop Report Editor.</span>
 <span class="sd">        setup_name : str, optional</span>
-<span class="sd">            Setup Name.</span>
+<span class="sd">            Name of the setup. The default is ``None`` which automatically take ``nominal_adaptive`` setup.</span>
+<span class="sd">            Please make sure to build a setup string in the form of ``&quot;SetupName : SetupSweep&quot;``</span>
+<span class="sd">            where ``SetupSweep`` is the Sweep name to use in the export or ``LastAdaptive``.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -988,9 +1029,12 @@
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        expressions : str or list, optional</span>
-<span class="sd">            Expression List.</span>
+<span class="sd">            Expression List to add into the report. The expression can be any of the available formula</span>
+<span class="sd">            you can enter into the Electronics Desktop Report Editor.</span>
 <span class="sd">        setup_name : str, optional</span>
-<span class="sd">            Setup Name.</span>
+<span class="sd">            Name of the setup. The default is ``None`` which automatically take ``nominal_adaptive`` setup.</span>
+<span class="sd">            Please make sure to build a setup string in the form of ``&quot;SetupName : SetupSweep&quot;``</span>
+<span class="sd">            where ``SetupSweep`` is the Sweep name to use in the export or ``LastAdaptive``.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1711,7 +1755,7 @@
 
     <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">export_report_to_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">,</span> <span class="n">plot_name</span><span class="p">,</span> <span class="n">extension</span><span class="p">,</span> <span class="n">unique_file</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Export the 2D Plot data to a file.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Export a 2D Plot data to a file.</span>
 
 <span class="sd">        This method leaves the data in the plot (as data) as a reference</span>
 <span class="sd">        for the Plot after the loops.</span>
@@ -1743,6 +1787,13 @@
 
 <span class="sd">        &gt;&gt;&gt; oModule.ExportReportDataToFile</span>
 <span class="sd">        &gt;&gt;&gt; oModule.ExportToFile</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; from pyaedt import Circuit</span>
+<span class="sd">        &gt;&gt;&gt; cir = Circuit(&quot;my_project.aedt&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; report = cir.post.create_report(&quot;MyScattering&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; cir.post.export_report_to_file(&quot;C:\\temp&quot;, &quot;MyTestScattering&quot;, &quot;.csv&quot;)</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">npath</span> <span class="o">=</span> <span class="n">output_dir</span>
 
@@ -2172,21 +2223,32 @@
         <span class="n">polyline_points</span><span class="o">=</span><span class="mi">1001</span><span class="p">,</span>
         <span class="n">math_formula</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get SolutionData of a report in AEDT. It can be a 2D plot, 3D solution data class.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get a simulation result from a solved setup and cast it in a ``SolutionData`` object.</span>
+<span class="sd">        Data to be retrieved from Electronics Desktop are any simulation results available in that</span>
+<span class="sd">        specific simulation context.</span>
+<span class="sd">        Most of the argument have some defaults which works for most of the ``Standard`` report quantities.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        expressions : str or list, optional</span>
-<span class="sd">            One or more formulas to add to the report. Example is value ``&quot;dB(S(1,1))&quot;``.</span>
+<span class="sd">            One or more formulas to add to the report. Example is value ``&quot;dB(S(1,1))&quot;`` or a list of values.</span>
 <span class="sd">            Default is `None` which will return all traces.</span>
 <span class="sd">        setup_sweep_name : str, optional</span>
-<span class="sd">            Setup name with the sweep. The default is ``&quot;&quot;``.</span>
+<span class="sd">            Name of the setup. The default is ``None`` which automatically take ``nominal_adaptive`` setup.</span>
+<span class="sd">            Please make sure to build a setup string in the form of ``&quot;SetupName : SetupSweep&quot;``</span>
+<span class="sd">            where ``SetupSweep`` is the Sweep name to use in the export or ``LastAdaptive``.</span>
 <span class="sd">        domain : str, optional</span>
-<span class="sd">            Plot Domain. Options are &quot;Sweep&quot; and &quot;Time&quot;.</span>
+<span class="sd">            Plot Domain. Options are &quot;Sweep&quot; for frequency domain related results and &quot;Time&quot; for transient related data.</span>
 <span class="sd">        variations : dict, optional</span>
-<span class="sd">            Dictionary of all families including the primary sweep. The default is ``{&quot;Freq&quot;: [&quot;All&quot;]}``.</span>
+<span class="sd">            Dictionary of all families including the primary sweep.</span>
+<span class="sd">            The default is ``None`` which will use the nominal variations of the design.</span>
 <span class="sd">        primary_sweep_variable : str, optional</span>
-<span class="sd">            Name of the primary sweep. The default is ``&quot;Freq&quot;``.</span>
+<span class="sd">            Name of the primary sweep. The default is ``&quot;None&quot;`` which, depending on the context,</span>
+<span class="sd">            will internally assign the primary sweep to:</span>
+<span class="sd">            1. ``Freq`` for frequency domain results,</span>
+<span class="sd">            2. ``Time`` for transient results,</span>
+<span class="sd">            3. ``Theta`` for radiation patterns,</span>
+<span class="sd">            4. ``distance`` for field plot over a polyline.</span>
 <span class="sd">        report_category : str, optional</span>
 <span class="sd">            Category of the Report to be created. If `None` default data Report will be used.</span>
 <span class="sd">            The Report Category can be one of the types available for creating a report depend on the simulation setup.</span>
@@ -2194,18 +2256,24 @@
 <span class="sd">            The report category will be in this case &quot;Far Fields&quot;.</span>
 <span class="sd">            Depending on the setup different categories are available.</span>
 <span class="sd">            If `None` default category will be used (the first item in the Results drop down menu in AEDT).</span>
+<span class="sd">            To get the list of available categories user can use method ``available_report_types``.</span>
 <span class="sd">        context : str, dict, optional</span>
-<span class="sd">            The default is ``None``. It can be `None`, ``&quot;Differential Pairs&quot;`` or</span>
-<span class="sd">            Reduce Matrix Name for Q2d/Q3d solution or Infinite Sphere name for Far Fields Plot.</span>
-<span class="sd">            If dictionary is passed, key is the report property name and value is property value.</span>
+<span class="sd">            This is the context of the report.</span>
+<span class="sd">            The default is ``None``. It can be:</span>
+<span class="sd">            1. `None`</span>
+<span class="sd">            2. ``&quot;Differential Pairs&quot;``</span>
+<span class="sd">            3. Reduce Matrix Name for Q2d/Q3d solution</span>
+<span class="sd">            4. Infinite Sphere name for Far Fields Plot.</span>
+<span class="sd">            5. Dictionary. If dictionary is passed, key is the report property name and value is property value.</span>
 <span class="sd">        subdesign_id : int, optional</span>
-<span class="sd">            Subdesign ID for exporting a Touchstone file of this subdesign. This parameter</span>
-<span class="sd">            is valid for Circuit only.</span>
+<span class="sd">            Subdesign ID for exporting a Touchstone file of this subdesign.</span>
+<span class="sd">            This parameter is valid for ``Circuit`` only.</span>
 <span class="sd">            The default value is ``None``.</span>
 <span class="sd">        polyline_points : int, optional</span>
 <span class="sd">            Number of points on which to create the report for plots on polylines.</span>
+<span class="sd">            This parameter is valid for ``Fields`` plot only.</span>
 <span class="sd">        math_formula : str, optional</span>
-<span class="sd">            One of the available AEDT mathematical formulas. For example, ``abs, dB``.</span>
+<span class="sd">            One of the available AEDT mathematical formulas to apply. For example, ``abs, dB``.</span>
 
 
 <span class="sd">        Returns</span>
@@ -3281,8 +3349,9 @@
 <span class="sd">        quantityName : str</span>
 <span class="sd">            Name of the quantity to plot.</span>
 <span class="sd">        setup_name : str, optional</span>
-<span class="sd">            Name of the setup in the format ``&quot;setupName : sweepName&quot;``. The default</span>
-<span class="sd">            is ``None``.</span>
+<span class="sd">            Name of the setup. The default is ``None`` which automatically take ``nominal_adaptive`` setup.</span>
+<span class="sd">            Please make sure to build a setup string in the form of ``&quot;SetupName : SetupSweep&quot;``</span>
+<span class="sd">            where ``SetupSweep`` is the Sweep name to use in the export or ``LastAdaptive``.</span>
 <span class="sd">        intrinsincDict : dict, optional</span>
 <span class="sd">            Dictionary containing all intrinsic variables. The default</span>
 <span class="sd">            is ``{}``.</span>
@@ -3421,8 +3490,9 @@
 <span class="sd">        quantityName : str</span>
 <span class="sd">            Name of the quantity to plot.</span>
 <span class="sd">        setup_name : str, optional</span>
-<span class="sd">            Name of the setup in the format ``&quot;setupName : sweepName&quot;``. The default</span>
-<span class="sd">            is ``None``.</span>
+<span class="sd">            Name of the setup. The default is ``None`` which automatically take ``nominal_adaptive`` setup.</span>
+<span class="sd">            Please make sure to build a setup string in the form of ``&quot;SetupName : SetupSweep&quot;``</span>
+<span class="sd">            where ``SetupSweep`` is the Sweep name to use in the export or ``LastAdaptive``.</span>
 <span class="sd">        intrinsincDict : dict, optional</span>
 <span class="sd">            Dictionary containing all intrinsic variables. The default</span>
 <span class="sd">            is ``{}``.</span>
@@ -3465,9 +3535,9 @@
 <span class="sd">        quantityName : str</span>
 <span class="sd">            Name of the quantity to plot.</span>
 <span class="sd">        setup_name : str, optional</span>
-<span class="sd">            Name of the setup in the format</span>
-<span class="sd">            ``&quot;setupName : sweepName&quot;``. The default is ``None``,</span>
-<span class="sd">            in which case ``&quot;nominal, lastadaptive&quot;`` is used.</span>
+<span class="sd">            Name of the setup. The default is ``None`` which automatically take ``nominal_adaptive`` setup.</span>
+<span class="sd">            Please make sure to build a setup string in the form of ``&quot;SetupName : SetupSweep&quot;``</span>
+<span class="sd">            where ``SetupSweep`` is the Sweep name to use in the export or ``LastAdaptive``.</span>
 <span class="sd">        intrinsincDict : dict, optional</span>
 <span class="sd">            Dictionary containing all intrinsic variables.</span>
 <span class="sd">            The default is ``{}``.</span>
@@ -3502,9 +3572,9 @@
 <span class="sd">        quantityName :</span>
 <span class="sd">            Name of the quantity to plot.</span>
 <span class="sd">        setup_name : str, optional</span>
-<span class="sd">            Name of the setup in the format</span>
-<span class="sd">            ``&quot;setupName : sweepName&quot;``. The default is ``None``,</span>
-<span class="sd">            in which case ``&quot;nominal, lastadaptive&quot;`` is used.</span>
+<span class="sd">            Name of the setup. The default is ``None`` which automatically take ``nominal_adaptive`` setup.</span>
+<span class="sd">            Please make sure to build a setup string in the form of ``&quot;SetupName : SetupSweep&quot;``</span>
+<span class="sd">            where ``SetupSweep`` is the Sweep name to use in the export or ``LastAdaptive``.</span>
 <span class="sd">        intrinsincDict : dict, optional</span>
 <span class="sd">            Dictionary containing all intrinsic variables. The default</span>
 <span class="sd">            is ``{}``.</span>
@@ -3682,7 +3752,7 @@
         <span class="n">width</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
         <span class="n">height</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
     <span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Export a snapshot of the model to a JPG file.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Export a snapshot of the model to a ``JPG`` file.</span>
 
 <span class="sd">        .. note::</span>
 <span class="sd">           This method works only when AEDT is running in the graphical mode.</span>
@@ -3721,8 +3791,13 @@
 <span class="sd">        ----------</span>
 
 <span class="sd">        &gt;&gt;&gt; oEditor.ExportModelImageToFile</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; from pyaedt import Q3d</span>
+<span class="sd">        &gt;&gt;&gt; q3d = Q3d(non_graphical=False)</span>
+<span class="sd">        &gt;&gt;&gt; output_file = q3d.post.export_model_picture(full_name=os.path.join(q3d.working_directory, &quot;images1.jpg&quot;))</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="c1"># Set up arguments list for createReport function</span>
         <span class="k">if</span> <span class="n">selections</span><span class="p">:</span>
             <span class="n">selections</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">convert_to_selections</span><span class="p">(</span><span class="n">selections</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
@@ -3884,19 +3959,37 @@
 
 <div class="viewcode-block" id="PostProcessor.export_mesh_obj"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modules.AdvancedPostProcessing.PostProcessor.export_mesh_obj.html#pyaedt.modules.AdvancedPostProcessing.PostProcessor.export_mesh_obj">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">export_mesh_obj</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">setup_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">intrinsic_dict</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Export the mesh.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Export the mesh in ``aedtplt`` format.</span>
+<span class="sd">        The mesh has to be available in the selected setup.</span>
+<span class="sd">        If a parametric model is provided user can choose the mesh to export providing a specific set of variations.</span>
+<span class="sd">        This method applies only to ``Hfss``, ``Q3d``, ``Q2D``, ``Maxwell3d``, ``Maxwell2d``, ``Icepak``</span>
+<span class="sd">        and ``Mechanical`` objects. This method is calling ``create_fieldplot_surface`` to create a mesh plot and</span>
+<span class="sd">        ``export_field_plot`` to export it as ``aedtplt`` file.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        setup_name : str, optional</span>
-<span class="sd">            Name of the setup. The default is ``None``.</span>
+<span class="sd">            Name of the setup. The default is ``None`` which automatically take ``nominal_adaptive`` setup.</span>
+<span class="sd">            Please make sure to build a setup string in the form of ``&quot;SetupName : SetupSweep&quot;``</span>
+<span class="sd">            where ``SetupSweep`` is the Sweep name to use in the export or ``LastAdaptive``.</span>
 <span class="sd">        intrinsic_dict : dict, optional.</span>
 <span class="sd">            Intrinsic dictionary that is needed for the export.</span>
-<span class="sd">            The default is ``{}``.</span>
+<span class="sd">            The default is ``{}`` which assumes no variables are present in the dict or nominal values are used.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
+<span class="sd">        str</span>
+<span class="sd">            File Generated with full path.</span>
 
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; from pyaedt import Hfss</span>
+<span class="sd">        &gt;&gt;&gt; hfss = Hfss()</span>
+<span class="sd">        &gt;&gt;&gt; hfss.analyze()</span>
+<span class="sd">        &gt;&gt;&gt; # Export report using defaults.</span>
+<span class="sd">        &gt;&gt;&gt; hfss.post.export_mesh_obj(setup_name=None, intrinsic_dict=None)</span>
+<span class="sd">        &gt;&gt;&gt; # Export report using arguments.</span>
+<span class="sd">        &gt;&gt;&gt; hfss.post.export_mesh_obj(setup_name=&quot;MySetup : LastAdaptive&quot;, intrinsic_dict={&quot;w1&quot;:&quot;5mm&quot;, &quot;l1&quot;:&quot;3mm&quot;})</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">intrinsic_dict</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">intrinsic_dict</span> <span class="o">=</span> <span class="p">{}</span>

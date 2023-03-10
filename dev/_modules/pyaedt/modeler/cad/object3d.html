@@ -695,7 +695,8 @@
 
 <div class="viewcode-block" id="Object3d.export_image"><a class="viewcode-back" href="../../../../API/_autosummary/pyaedt.modeler.cad.object3d.Object3d.export_image.html#pyaedt.modeler.cad.polylines.Object3d.export_image">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">export_image</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file_path</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Export the model to path.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Export the current object to a specified file path.</span>
+
 
 <span class="sd">        .. note::</span>
 <span class="sd">           Works from AEDT 2021.2 in CPython only. PyVista has to be installed.</span>
@@ -703,7 +704,9 @@
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        file_path : str, optional</span>
-<span class="sd">            File name with full path. If `None` Project directory will be used.</span>
+<span class="sd">            File name with full path. If `None` the exported image will be a ``png`` file that</span>
+<span class="sd">            will be saved in ``working_directory``.</span>
+<span class="sd">            To access the ``working_directory`` the use ``app.working_directory`` property.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>

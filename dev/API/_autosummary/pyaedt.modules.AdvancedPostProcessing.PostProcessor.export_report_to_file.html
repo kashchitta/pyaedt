@@ -554,7 +554,7 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="pyaedt.modules.AdvancedPostProcessing.PostProcessor.export_report_to_file">
 <span class="sig-prename descclassname"><span class="pre">PostProcessor.</span></span><span class="sig-name descname"><span class="pre">export_report_to_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output_dir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extension</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unique_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyaedt.modules.AdvancedPostProcessing.PostProcessor.export_report_to_file" title="Permalink to this definition">#</a></dt>
-<dd><p>Export the 2D Plot data to a file.</p>
+<dd><p>Export a 2D Plot data to a file.</p>
 <p>This method leaves the data in the plot (as data) as a reference
 for the Plot after the loops.</p>
 <dl class="field-list">
@@ -590,6 +590,13 @@ for the Plot after the loops.</p>
 <p class="rubric">References</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">oModule</span><span class="o">.</span><span class="n">ExportReportDataToFile</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">oModule</span><span class="o">.</span><span class="n">ExportToFile</span>
+</pre></div>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyaedt</span> <span class="kn">import</span> <span class="n">Circuit</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cir</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="s2">&quot;my_project.aedt&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">report</span> <span class="o">=</span> <span class="n">cir</span><span class="o">.</span><span class="n">post</span><span class="o">.</span><span class="n">create_report</span><span class="p">(</span><span class="s2">&quot;MyScattering&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cir</span><span class="o">.</span><span class="n">post</span><span class="o">.</span><span class="n">export_report_to_file</span><span class="p">(</span><span class="s2">&quot;C:</span><span class="se">\t</span><span class="s2">emp&quot;</span><span class="p">,</span> <span class="s2">&quot;MyTestScattering&quot;</span><span class="p">,</span> <span class="s2">&quot;.csv&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>

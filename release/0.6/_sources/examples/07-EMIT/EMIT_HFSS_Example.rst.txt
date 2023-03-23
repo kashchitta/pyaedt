@@ -30,7 +30,7 @@ Perform required imports
 ~~~~~~~~~~~~~~~~~~~~~~~~
 Perform required imports.
 
-.. GENERATED FROM PYTHON SOURCE LINES 12-19
+.. GENERATED FROM PYTHON SOURCE LINES 12-20
 
 .. code-block:: default
 
@@ -40,6 +40,7 @@ Perform required imports.
     # Import required modules
     import pyaedt
     from pyaedt.generic.filesystem import Scratch
+    import pyaedt.emit_core.EmitConstants as econsts
 
 
 
@@ -48,7 +49,7 @@ Perform required imports.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 20-29
+.. GENERATED FROM PYTHON SOURCE LINES 21-30
 
 # Set non-graphical mode
  ~~~~~~~~~~~~~~~~~~~~~~
@@ -60,7 +61,7 @@ Perform required imports.
 
  The following code uses AEDT 2023 R1.
 
-.. GENERATED FROM PYTHON SOURCE LINES 29-35
+.. GENERATED FROM PYTHON SOURCE LINES 30-36
 
 .. code-block:: default
 
@@ -77,14 +78,14 @@ Perform required imports.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 36-40
+.. GENERATED FROM PYTHON SOURCE LINES 37-41
 
 Launch AEDT with EMIT
 ~~~~~~~~~~~~~~~~~~~~~
 Launch AEDT with EMIT. The ``Desktop`` class initializes AEDT and starts it
 on the specified version and in the specified graphical mode.
 
-.. GENERATED FROM PYTHON SOURCE LINES 40-83
+.. GENERATED FROM PYTHON SOURCE LINES 41-84
 
 .. code-block:: default
 
@@ -139,19 +140,19 @@ on the specified version and in the specified graphical mode.
 
  .. code-block:: none
 
-    C:\actions-runner\_work\PyAEDT\PyAEDT\pyaedt\desktop.py:778: ResourceWarning: unclosed <socket.socket fd=7188, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('0.0.0.0', 54482)>
+    c:\actions-runner\_work\pyaedt\pyaedt\testenv\lib\site-packages\pyaedt\desktop.py:848: ResourceWarning: unclosed <socket.socket fd=4868, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('0.0.0.0', 64659)>
       self.port = _find_free_port()
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 84-87
+.. GENERATED FROM PYTHON SOURCE LINES 85-88
 
 Create and connect EMIT components
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Create two radios with antennas connected to each one.
 
-.. GENERATED FROM PYTHON SOURCE LINES 87-91
+.. GENERATED FROM PYTHON SOURCE LINES 88-92
 
 .. code-block:: default
 
@@ -166,13 +167,13 @@ Create two radios with antennas connected to each one.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 92-95
+.. GENERATED FROM PYTHON SOURCE LINES 93-96
 
 Define coupling among RF systems
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Define coupling among the RF systems.
 
-.. GENERATED FROM PYTHON SOURCE LINES 95-102
+.. GENERATED FROM PYTHON SOURCE LINES 96-103
 
 .. code-block:: default
 
@@ -190,7 +191,7 @@ Define coupling among the RF systems.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 103-108
+.. GENERATED FROM PYTHON SOURCE LINES 104-109
 
 Run EMIT simulation
 ~~~~~~~~~~~~~~~~~~~
@@ -198,21 +199,21 @@ Run the EMIT simulation. This portion of the EMIT API is not yet implemented.
 
 This part of the example requires Ansys AEDT 2023 R2. 
 
-.. GENERATED FROM PYTHON SOURCE LINES 108-125
+.. GENERATED FROM PYTHON SOURCE LINES 109-126
 
 .. code-block:: default
 
 
     if desktop_version > "2023.1":
-        rev = aedtapp.analyze()
-        modeRx = aedtapp.tx_rx_mode().rx
-        modeTx = aedtapp.tx_rx_mode().tx
-        modeEmi = aedtapp.result_type().emi
-        rx_bands = aedtapp.results.get_band_names(rad1.name, modeRx) 
-        tx_bands = aedtapp.results.get_band_names(rad2.name, modeTx) 
-        domain = aedtapp.interaction_domain()
+        rev = aedtapp.results.analyze()
+        modeRx = econsts.tx_rx_mode().rx
+        modeTx = econsts.tx_rx_mode().tx
+        modeEmi = econsts.result_type().emi
+        rx_bands = rev.get_band_names(rad1.name, modeRx) 
+        tx_bands = rev.get_band_names(rad2.name, modeTx) 
+        domain = aedtapp.results.interaction_domain()
         domain.set_receiver(rad1.name, rx_bands[0], -1)
-        domain.set_interferers([rad2.name],[tx_bands[0]],[-1])
+        domain.set_interferer([rad2.name],[tx_bands[0]],[-1])
         interaction = rev.run(domain)
         worst = interaction.get_worst_instance(modeEmi)
         if worst.has_valid_values():
@@ -226,7 +227,7 @@ This part of the example requires Ansys AEDT 2023 R2.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 126-131
+.. GENERATED FROM PYTHON SOURCE LINES 127-132
 
 Save project and close AEDT
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -234,7 +235,7 @@ After the simulation completes, you can close AEDT or release it using the
 :func:`pyaedt.Desktop.force_close_desktop` method.
 All methods provide for saving the project before closing.
 
-.. GENERATED FROM PYTHON SOURCE LINES 131-134
+.. GENERATED FROM PYTHON SOURCE LINES 132-135
 
 .. code-block:: default
 
@@ -257,7 +258,7 @@ All methods provide for saving the project before closing.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  22.785 seconds)
+   **Total running time of the script:** ( 0 minutes  22.225 seconds)
 
 
 .. _sphx_glr_download_examples_07-EMIT_EMIT_HFSS_Example.py:

@@ -110,7 +110,7 @@ Start HFSS and initialize the PyAEDT object.
 
  .. code-block:: none
 
-    C:\actions-runner\_work\PyAEDT\PyAEDT\pyaedt\desktop.py:778: ResourceWarning: unclosed <socket.socket fd=4844, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('0.0.0.0', 53853)>
+    c:\actions-runner\_work\pyaedt\pyaedt\testenv\lib\site-packages\pyaedt\desktop.py:848: ResourceWarning: unclosed <socket.socket fd=4248, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('0.0.0.0', 63889)>
       self.port = _find_free_port()
 
 
@@ -347,7 +347,7 @@ Plot the model.
  .. code-block:: none
 
 
-    <pyaedt.generic.plot.ModelPlotter object at 0x00000272CCE1C7C0>
+    <pyaedt.generic.plot.ModelPlotter object at 0x0000018C17882E20>
 
 
 
@@ -412,15 +412,127 @@ Solve and plot the thermal results.
         exec(self.code, self.fake_main.__dict__)
       File "C:\actions-runner\_work\PyAEDT\PyAEDT\examples\06-Multiphysics\Hfss_Mechanical.py", line 151, in <module>
         mech.analyze()
-      File "C:\actions-runner\_work\PyAEDT\PyAEDT\pyaedt\application\Analysis.py", line 1657, in analyze
+      File "c:\actions-runner\_work\pyaedt\pyaedt\testenv\lib\site-packages\pyaedt\application\Analysis.py", line 1660, in analyze
         return self.analyze_setup(
-      File "C:\actions-runner\_work\PyAEDT\PyAEDT\pyaedt\generic\general_methods.py", line 137, in wrapper
+      File "c:\actions-runner\_work\pyaedt\pyaedt\testenv\lib\site-packages\pyaedt\generic\general_methods.py", line 139, in wrapper
         out = user_function(*args, **kwargs)
-      File "C:\actions-runner\_work\PyAEDT\PyAEDT\pyaedt\application\Analysis.py", line 1783, in analyze_setup
+      File "c:\actions-runner\_work\pyaedt\pyaedt\testenv\lib\site-packages\pyaedt\application\Analysis.py", line 1779, in analyze_setup
+        self.set_registry_key(r"Desktop/ActiveDSOConfigurations/" + self.design_type, config_name)
+      File "c:\actions-runner\_work\pyaedt\pyaedt\testenv\lib\site-packages\pyaedt\generic\general_methods.py", line 139, in wrapper
+        out = user_function(*args, **kwargs)
+      File "c:\actions-runner\_work\pyaedt\pyaedt\testenv\lib\site-packages\pyaedt\application\Design.py", line 1393, in set_registry_key
+        self.odesktop.SetRegistryString(key_full_name, key_value)
+    RuntimeError: Error 0x80020009;  Logs or message window might have more details
+      File "C:\actions-runner\_work\_tool\Python\3.8.10\x64\lib\runpy.py", line 194, in _run_module_as_main
+        return _run_code(code, main_globals, None,
+      File "C:\actions-runner\_work\_tool\Python\3.8.10\x64\lib\runpy.py", line 87, in _run_code
+        exec(code, run_globals)
+      File "C:\actions-runner\_work\PyAEDT\PyAEDT\testenv\Scripts\sphinx-build.exe\__main__.py", line 7, in <module>
+        sys.exit(main())
+      File "c:\actions-runner\_work\pyaedt\pyaedt\testenv\lib\site-packages\sphinx\cmd\build.py", line 315, in main
+        return build_main(argv)
+      File "c:\actions-runner\_work\pyaedt\pyaedt\testenv\lib\site-packages\sphinx\cmd\build.py", line 276, in build_main
+        app = Sphinx(args.sourcedir, args.confdir, args.outputdir,
+      File "c:\actions-runner\_work\pyaedt\pyaedt\testenv\lib\site-packages\sphinx\application.py", line 262, in __init__
+        self._init_builder()
+      File "c:\actions-runner\_work\pyaedt\pyaedt\testenv\lib\site-packages\sphinx\application.py", line 335, in _init_builder
+        self.events.emit('builder-inited')
+      File "c:\actions-runner\_work\pyaedt\pyaedt\testenv\lib\site-packages\sphinx\events.py", line 94, in emit
+        results.append(listener.handler(self.app, *args))
+      File "c:\actions-runner\_work\pyaedt\pyaedt\testenv\lib\site-packages\sphinx_gallery\gen_gallery.py", line 538, in generate_gallery_rst
+        ) = generate_dir_rst(
+      File "c:\actions-runner\_work\pyaedt\pyaedt\testenv\lib\site-packages\sphinx_gallery\gen_rst.py", line 431, in generate_dir_rst
+        intro, title, cost = generate_file_rst(
+      File "c:\actions-runner\_work\pyaedt\pyaedt\testenv\lib\site-packages\sphinx_gallery\gen_rst.py", line 1027, in generate_file_rst
+        output_blocks, time_elapsed = execute_script(script_blocks,
+      File "c:\actions-runner\_work\pyaedt\pyaedt\testenv\lib\site-packages\sphinx_gallery\gen_rst.py", line 945, in execute_script
+        output_blocks.append(execute_code_block(
+      File "c:\actions-runner\_work\pyaedt\pyaedt\testenv\lib\site-packages\sphinx_gallery\gen_rst.py", line 810, in execute_code_block
+        is_last_expr, mem_max = _exec_and_get_memory(
+      File "c:\actions-runner\_work\pyaedt\pyaedt\testenv\lib\site-packages\sphinx_gallery\gen_rst.py", line 661, in _exec_and_get_memory
+        mem_body, _ = gallery_conf['call_memory'](
+      File "c:\actions-runner\_work\pyaedt\pyaedt\testenv\lib\site-packages\sphinx_gallery\gen_gallery.py", line 223, in call_memory
+        return 0., func()
+      File "c:\actions-runner\_work\pyaedt\pyaedt\testenv\lib\site-packages\sphinx_gallery\gen_rst.py", line 600, in __call__
+        exec(self.code, self.fake_main.__dict__)
+      File "C:\actions-runner\_work\PyAEDT\PyAEDT\examples\06-Multiphysics\Hfss_Mechanical.py", line 151, in <module>
+        mech.analyze()
+      File "c:\actions-runner\_work\pyaedt\pyaedt\testenv\lib\site-packages\pyaedt\application\Analysis.py", line 1660, in analyze
+        return self.analyze_setup(
+      File "c:\actions-runner\_work\pyaedt\pyaedt\testenv\lib\site-packages\pyaedt\generic\general_methods.py", line 139, in wrapper
+        out = user_function(*args, **kwargs)
+      File "c:\actions-runner\_work\pyaedt\pyaedt\testenv\lib\site-packages\pyaedt\application\Analysis.py", line 1786, in analyze_setup
         self.odesign.AnalyzeAll()
     RuntimeError: Error 0x80020009;  Logs or message window might have more details
+      File "C:\actions-runner\_work\_tool\Python\3.8.10\x64\lib\runpy.py", line 194, in _run_module_as_main
+        return _run_code(code, main_globals, None,
+      File "C:\actions-runner\_work\_tool\Python\3.8.10\x64\lib\runpy.py", line 87, in _run_code
+        exec(code, run_globals)
+      File "C:\actions-runner\_work\PyAEDT\PyAEDT\testenv\Scripts\sphinx-build.exe\__main__.py", line 7, in <module>
+        sys.exit(main())
+      File "c:\actions-runner\_work\pyaedt\pyaedt\testenv\lib\site-packages\sphinx\cmd\build.py", line 315, in main
+        return build_main(argv)
+      File "c:\actions-runner\_work\pyaedt\pyaedt\testenv\lib\site-packages\sphinx\cmd\build.py", line 276, in build_main
+        app = Sphinx(args.sourcedir, args.confdir, args.outputdir,
+      File "c:\actions-runner\_work\pyaedt\pyaedt\testenv\lib\site-packages\sphinx\application.py", line 262, in __init__
+        self._init_builder()
+      File "c:\actions-runner\_work\pyaedt\pyaedt\testenv\lib\site-packages\sphinx\application.py", line 335, in _init_builder
+        self.events.emit('builder-inited')
+      File "c:\actions-runner\_work\pyaedt\pyaedt\testenv\lib\site-packages\sphinx\events.py", line 94, in emit
+        results.append(listener.handler(self.app, *args))
+      File "c:\actions-runner\_work\pyaedt\pyaedt\testenv\lib\site-packages\sphinx_gallery\gen_gallery.py", line 538, in generate_gallery_rst
+        ) = generate_dir_rst(
+      File "c:\actions-runner\_work\pyaedt\pyaedt\testenv\lib\site-packages\sphinx_gallery\gen_rst.py", line 431, in generate_dir_rst
+        intro, title, cost = generate_file_rst(
+      File "c:\actions-runner\_work\pyaedt\pyaedt\testenv\lib\site-packages\sphinx_gallery\gen_rst.py", line 1027, in generate_file_rst
+        output_blocks, time_elapsed = execute_script(script_blocks,
+      File "c:\actions-runner\_work\pyaedt\pyaedt\testenv\lib\site-packages\sphinx_gallery\gen_rst.py", line 945, in execute_script
+        output_blocks.append(execute_code_block(
+      File "c:\actions-runner\_work\pyaedt\pyaedt\testenv\lib\site-packages\sphinx_gallery\gen_rst.py", line 810, in execute_code_block
+        is_last_expr, mem_max = _exec_and_get_memory(
+      File "c:\actions-runner\_work\pyaedt\pyaedt\testenv\lib\site-packages\sphinx_gallery\gen_rst.py", line 661, in _exec_and_get_memory
+        mem_body, _ = gallery_conf['call_memory'](
+      File "c:\actions-runner\_work\pyaedt\pyaedt\testenv\lib\site-packages\sphinx_gallery\gen_gallery.py", line 223, in call_memory
+        return 0., func()
+      File "c:\actions-runner\_work\pyaedt\pyaedt\testenv\lib\site-packages\sphinx_gallery\gen_rst.py", line 600, in __call__
+        exec(self.code, self.fake_main.__dict__)
+      File "C:\actions-runner\_work\PyAEDT\PyAEDT\examples\06-Multiphysics\Hfss_Mechanical.py", line 151, in <module>
+        mech.analyze()
+      File "c:\actions-runner\_work\pyaedt\pyaedt\testenv\lib\site-packages\pyaedt\application\Analysis.py", line 1660, in analyze
+        return self.analyze_setup(
+      File "c:\actions-runner\_work\pyaedt\pyaedt\testenv\lib\site-packages\pyaedt\generic\general_methods.py", line 139, in wrapper
+        out = user_function(*args, **kwargs)
+      File "c:\actions-runner\_work\pyaedt\pyaedt\testenv\lib\site-packages\pyaedt\application\Analysis.py", line 1789, in analyze_setup
+        self.set_registry_key(r"Desktop/ActiveDSOConfigurations/" + self.design_type, active_config)
+      File "c:\actions-runner\_work\pyaedt\pyaedt\testenv\lib\site-packages\pyaedt\generic\general_methods.py", line 139, in wrapper
+        out = user_function(*args, **kwargs)
+      File "c:\actions-runner\_work\pyaedt\pyaedt\testenv\lib\site-packages\pyaedt\application\Design.py", line 1393, in set_registry_key
+        self.odesktop.SetRegistryString(key_full_name, key_value)
+    Traceback (most recent call last):
+      File "C:\Program Files\AnsysEM\v231\Win64\PythonFiles\DesktopPlugin\PyDesktopPlugin.py", line 130, in __Invoke__
+        return AedtAPI.InvokeAedtObjMethod(self.objectID, funcName, argv) #Call C function
+      File "C:\Program Files\AnsysEM\v231\Win64\PythonFiles\DesktopPlugin\PyDesktopPluginDll.py", line 70, in InvokeAedtObjMethod
+        return AedtAPI.InvokeAedtObjMethod(objectID, funcName, argv)
+    RuntimeError: Error 0x80020009;  Logs or message window might have more details
 
-    <pyaedt.modules.solutions.FieldPlot object at 0x00000272CCB58700>
+    During handling of the above exception, another exception occurred:
+
+    Traceback (most recent call last):
+      File "c:\actions-runner\_work\pyaedt\pyaedt\testenv\lib\site-packages\pyaedt\application\Analysis.py", line 1786, in analyze_setup
+        self.odesign.AnalyzeAll()
+      File "C:\Program Files\AnsysEM\v231\Win64\PythonFiles\DesktopPlugin\PyDesktopPlugin.py", line 146, in DynamicFunc
+        return self.__Invoke__(funcName, args)
+      File "C:\Program Files\AnsysEM\v231\Win64\PythonFiles\DesktopPlugin\PyDesktopPlugin.py", line 132, in __Invoke__
+        print_except_and_stop(2)
+      File "C:\Program Files\AnsysEM\v231\Win64\PythonFiles\DesktopPlugin\PyDesktopPlugin.py", line 61, in print_except_and_stop
+        sys.exit()
+    SystemExit
+
+    During handling of the above exception, another exception occurred:
+
+    RuntimeError: Error 0x80020009;  Logs or message window might have more details
+
+    <pyaedt.modules.solutions.FieldPlot object at 0x0000018C1AE06FD0>
 
 
 
@@ -452,7 +564,7 @@ Release AEDT.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 3 minutes  36.386 seconds)
+   **Total running time of the script:** ( 3 minutes  18.948 seconds)
 
 
 .. _sphx_glr_download_examples_06-Multiphysics_Hfss_Mechanical.py:
